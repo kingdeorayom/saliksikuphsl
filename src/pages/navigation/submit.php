@@ -28,7 +28,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </head>
 </head>
 
-<body onload="document.getElementById('submissionGuidelinesPanel').style.display = 'none'">
+<body onload="document.getElementById('submissionGuidelinesPanel').style.display = 'none'; document.getElementById('submitText').style.borderBottom='thick solid #012265';">
 
     <!--Header and Navigation section-->
 
@@ -62,9 +62,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="submitPanelClicked()">Submit</p>
+                    <p class="side-menu-text" onclick="submitPanelClicked()" id="submitText">Submit</p>
                     <hr>
-                    <p class="side-menu-text" onclick="submissionGuidelinesClicked()">Submission Form and Guidelines</p>
+                    <p class="side-menu-text" onclick="submissionGuidelinesClicked()" id="submissionGuidelinesText">Submission Form and Guidelines</p>
                     <hr>
                 </div>
 

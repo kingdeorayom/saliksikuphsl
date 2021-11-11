@@ -28,7 +28,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </head>
 </head>
 
-<body onload="document.getElementById('universityLibraryPanel').style.display = 'none'">
+<body onload="document.getElementById('universityLibraryPanel').style.display = 'none'; document.getElementById('researchDevelopmentCenterText').style.borderBottom='thick solid #012265';">
 
     <!--Header and Navigation section-->
 
@@ -36,7 +36,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <!--Masthead-->
 
-    <section class="masthead p-5 bg-light">
+    <section class=" masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text">Contact</h1>
         </div>
@@ -61,9 +61,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="researchDevelopmentCenterClicked()">Research and Development Center</p>
+                    <p class="side-menu-text" onclick="researchDevelopmentCenterClicked()" id="researchDevelopmentCenterText">Research and Development Center</p>
                     <hr>
-                    <p class="side-menu-text" onclick="universityLibraryClicked()">University Library</p>
+                    <p class="side-menu-text" onclick="universityLibraryClicked()" id="universityLibraryText">University Library</p>
                     <hr>
                 </div>
 
