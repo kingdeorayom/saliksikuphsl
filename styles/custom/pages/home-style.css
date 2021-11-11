@@ -1,0 +1,142 @@
+/*---------------------------------------------------Search Section---------------------------------------------------*/
+
+.search-section {
+  padding: 2%;
+  background-color: whitesmoke;
+}
+
+@media only screen and (max-width: 576px) {
+  .search-button {
+    font-size: 0.8rem;
+  }
+}
+
+.search-button {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 24, 72, 1) -54%,
+    rgba(1, 34, 101, 1) 100%
+  );
+}
+
+.search-option-buttons {
+  color: black !important;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.search-option-buttons:hover {
+  text-decoration: underline;
+}
+
+/*---------------------------------------------------Research Field---------------------------------------------------*/
+
+hr {
+  border: 1px solid grey;
+}
+
+#research-field-title-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+.research-fields-logos {
+  max-width: 64px;
+  max-height: 64px;
+  margin: 20px;
+  /*border: 2px solid black;
+    border-radius: 50%;*/
+}
+
+.research-field-image-link {
+  text-decoration: none;
+  color: darkslategray;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.research-field-image-link:hover {
+  text-decoration: underline;
+  color: #012265;
+}
+
+.research-field-column-item {
+  padding: 20px;
+}
+
+.view-more-link {
+  text-decoration: none;
+  color: darkslategray;
+  font-weight: bold;
+  margin: 1%;
+  padding: 1%;
+}
+
+.view-more-link:hover {
+  text-decoration: underline;
+  color: #012265;
+}
+
+/*---------------------------------------------------Repository Metrics---------------------------------------------------*/
+
+.repository-metrics {
+  background-color: #012265;
+  color: white;
+  font-family: "Arial", sans-serif;
+}
+
+.repository-metrics-logos {
+  max-width: 64px;
+  max-height: 64px;
+  margin: 20%;
+  /*border: 2px solid black;
+    border-radius: 50%;*/
+}
+
+.repository-metrics-p-text {
+  color: darkslategray;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.repository-metrics-column-item {
+  background-color: white;
+  padding: 2%;
+}
+
+.repository-metrics-counter {
+  font-family: "Roboto", sans-serif;
+  color: darkslategray;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+h5 {
+  color: darkslategray;
+}
+
+.view-more-statistics-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.view-more-statistics-link:hover {
+  text-decoration: underline;
+  color: rgba(255, 222, 0, 1);
+}
+
+/*---------------------------------------------------Promotion---------------------------------------------------*/
+
+.promotion-header-text {
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+
+.promotion-content-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: darkslategray;
+}

@@ -1,0 +1,144 @@
+/*---------------------------------------------------Header---------------------------------------------------*/
+
+.header {
+  background-color: #012265 !important;
+  color: yellow;
+}
+
+#header-logo {
+  max-width: 256px;
+}
+
+#header-text {
+  color: white;
+  font-family: "arial", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.5rem;
+}
+
+/*---------------------------------------------------Navigation---------------------------------------------------*/
+
+.navigation-items {
+  background-color: rgba(255, 222, 0, 1);
+  color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: lightgray !important;
+}
+
+.button-login {
+  color: white;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+.button-login-offcanvas {
+  background-color: #012265;
+  color: white;
+  font-family: "Roboto";
+}
+
+.button-login:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.offcanvas {
+  background-color: whitesmoke;
+}
+
+.offcanvas-header {
+  background-color: #012265;
+}
+
+.offcanvas-body {
+  background-color: white;
+}
+
+.offcanvas-link-color {
+  color: black !important;
+}
+
+.offcanvas-signout-link-color {
+  color: red !important;
+}
+
+.onThisPageLinks:hover {
+  cursor: pointer;
+  color: aqua;
+}
+
+/*---------------------------------------------------Masthead---------------------------------------------------*/
+
+.masthead {
+  background-color: white;
+}
+
+#masthead-title-text {
+  color: #012265;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  /*font-size: 3rem;*/
+}
+
+#masthead-content-text {
+  font-family: "Roboto", sans-serif;
+  padding: 2% 0 2% 0;
+  text-align: justify;
+}
+
+.masthead-link {
+  text-decoration: none;
+  color: #012265;
+  font-weight: bold;
+}
+
+.masthead-link:hover {
+  color: #012265;
+  text-decoration: underline;
+}
+
+/*---------------------------------------------------Footer---------------------------------------------------*/
+
+.footer {
+  background-color: rgba(71, 71, 94, 1);
+}
+
+#footer-logo {
+  max-width: 72px;
+}
+
+#footer-text {
+  color: white;
+}
+
+.footer-column-title {
+  color: white;
+  font-weight: bold;
+}
+
+.footer-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-list-link {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-list-link:hover {
+  color: yellow;
+}

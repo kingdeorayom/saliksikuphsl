@@ -1,0 +1,16 @@
+#uphsl-logo {
+  max-width: 128px;
+}
+
+#buttonSubmitVerificationCode {
+  background-color: #012265;
+}
+
+.resend-verification-code {
+  color: #0d6efd;
+}
+
+.resend-verification-code:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
