@@ -17,6 +17,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
                     <option value="dissertation" selected>Dissertation</option>
                     <option value="thesis">Thesis</option>
+                    <option value="capstone">Capstone</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -288,44 +289,48 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <label class="fw-bold my-2">Research Field* <span class="text-secondary fw-light">Tick all that applies</span></label>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="checkBoxAccountancyMarketing">
+                    <label for="checkBoxAccountancyMarketing">Accountancy and Marketing</label>
+                </div>
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="checkBoxEducationalManagement">
+                    <label for="checkBoxEducationalManagement">Educational Management</label>
+                </div>
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="checkBoxITEngineering">
+                    <label for="checkBoxITEngineering">IT and Engineering</label>
+                </div>
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="checkBoxTourismHospitality">
+                    <label for="checkBoxTourismHospitality">Tourism and Hospitality</label>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="form-check m-2">
                     <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="checkBoxArtsHumanities">
                     <label for="checkBoxArtsHumanities">Arts and Humanities</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Culture and Tradition" id="checkBoxCultureTradition" name="checkBoxCultureTradition">
-                    <label for="checkBoxCultureTradition">Culture and Tradition</label>
+                    <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="checkBoxEducationSocialSciences">
+                    <label for="checkBoxEducationSocialSciences">Education and Social Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Education 4.0" id="checkBoxEducation40" name="checkBoxEducation40">
-                    <label for="checkBoxEducation40">Education 4.0</label>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12">
-                <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Education Leadership" id="checkBoxEducationLeadership" name="checkBoxEducationLeadership">
-                    <label for="checkBoxEducationLeadership">Education Leadership</label>
-                </div>
-                <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Environmental Protection" id="checkBoxEnvironmentalProtection" name="checkBoxEnvironmentalProtection">
-                    <label for="checkBoxEnvironmentalProtection">Environmental Protection</label>
-                </div>
-                <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Health & Science" id="checkBoxHealthScience" name="checkBoxHealthScience">
-                    <label for="checkBoxHealthScience">Health & Science</label>
+                    <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="checkBoxLawJusticeSystem">
+                    <label for="checkBoxLawJusticeSystem">Law and Justice System</label>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Industry 4.0" id="checkBoxIndustry40" name="checkBoxIndustry40">
-                    <label for="checkBoxIndustry40">Industry 4.0</label>
+                    <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="checkBoxBusinessManagement">
+                    <label for="checkBoxBusinessManagement">Business Management</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Program and Profile Assessment" id="checkBoxProgramProfileAssessment" name="checkBoxProgramProfileAssessment">
-                    <label for="checkBoxProgramProfileAssessment">Program and Profile Assessment</label>
+                    <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="checkBoxHealthSciences">
+                    <label for="checkBoxHealthSciences">Health and Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Technology Development" id="checkBoxTechnologyDevelopment" name="checkBoxTechnologyDevelopment">
-                    <label for="checkBoxTechnologyDevelopment">Technology Development</label>
+                    <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="checkBoxMarineAviation">
+                    <label for="checkBoxMarineAviation">Marine and Aviation</label>
                 </div>
             </div>
         </div>

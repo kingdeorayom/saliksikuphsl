@@ -25,7 +25,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link rel="stylesheet" href="../../../styles/custom/pages/about-style.css" type="text/css">
 </head>
 
-<body onload="document.getElementById('copyrightPoliciesPanel').style.display = 'none'">
+<body onload="document.getElementById('copyrightPoliciesPanel').style.display = 'none'; document.getElementById('aboutRepositoryText').style.borderBottom = 'thick solid #012265';">
 
     <!--Header and Navigation section-->
 
@@ -58,9 +58,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="aboutRepositoryClicked()">About the Repository</p>
+                    <p class="side-menu-text" onclick="aboutRepositoryClicked()" id="aboutRepositoryText">About the Repository</p>
                     <hr>
-                    <p class="side-menu-text" onclick="copyrightPoliciesClicked()">Copyright & Policies</p>
+                    <p class="side-menu-text" onclick="copyrightPoliciesClicked()" id="copyrightPoliciesText">Copyright & Policies</p>
                     <hr>
                 </div>
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="aboutRepositoryPanel">

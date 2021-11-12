@@ -28,7 +28,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </head>
 </head>
 
-<body onload="document.getElementById('researchJournalPanel').style.display = 'none'; document.getElementById('infographicsPanel').style.display='none'; document.getElementById('co-author-1-td-panel').style.display = 'none'; document.getElementById('co-author-2-td-panel').style.display = 'none'; document.getElementById('co-author-3-td-panel').style.display = 'none'; document.getElementById('co-author-4-td-panel').style.display = 'none'; document.getElementById('co-author-1-info-panel').style.display = 'none'; document.getElementById('co-author-2-info-panel').style.display = 'none'; document.getElementById('co-author-3-info-panel').style.display = 'none'; document.getElementById('co-author-4-info-panel').style.display = 'none';">
+<body onload="document.getElementById('researchJournalPanel').style.display = 'none'; document.getElementById('infographicsPanel').style.display='none'; document.getElementById('co-author-1-td-panel').style.display = 'none'; document.getElementById('co-author-2-td-panel').style.display = 'none'; document.getElementById('co-author-3-td-panel').style.display = 'none'; document.getElementById('co-author-4-td-panel').style.display = 'none'; document.getElementById('co-author-1-info-panel').style.display = 'none'; document.getElementById('co-author-2-info-panel').style.display = 'none'; document.getElementById('co-author-3-info-panel').style.display = 'none'; document.getElementById('co-author-4-info-panel').style.display = 'none'; document.getElementById('thesisDissertationText').style.borderBottom = 'thick solid #012265';">
 
     <!--Header and Navigation section-->
 
@@ -61,11 +61,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <hr>
-                    <p class="side-menu-text" onclick="thesisDissertationPanelClicked()">Thesis/Dissertation</p>
+                    <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
                     <hr>
-                    <p class="side-menu-text" onclick="researchJournalPanelClicked()">Research Journal</p>
+                    <p class="side-menu-text" onclick="researchJournalPanelClicked()" id="researchJournalText">Research Journal</p>
                     <hr>
-                    <p class="side-menu-text" onclick="infographicsPanelClicked()">Infographics</p>
+                    <p class="side-menu-text" onclick="infographicsPanelClicked()" id="infographicsText">Infographics</p>
                     <hr>
                 </div>
                 <?php include_once '../../layouts/submission-forms/thesisDissertationPanel.php' ?>

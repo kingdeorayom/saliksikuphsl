@@ -74,61 +74,61 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row">
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
                     <!--Add justify-content-center to center items inside col-->
-                    <img src="../../../assets/images/research-fields/educational-leadership.png" class="research-fields-logos" alt="Educational Leadership">
+                    <img src="../../../assets/images/research-fields/accountancy-marketing.png" class="research-fields-logos" alt="Accountancy and Marketing">
                     <a href="#" class="research-field-image-link">
-                        <p>Educational Leadership</p>
+                        <p>Accountancy and Marketing</p>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/health-and-science.png" class="research-fields-logos" alt="Health and Science">
-                    <a href="#" class="research-field-image-link">
-                        <p>Health and Science</p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/arts-and-humanities.png" class="research-fields-logos" alt="Arts and Humanities">
+                    <img src="../../../assets/images/research-fields/arts-humanities.png" class="research-fields-logos" alt="Arts and Humanities">
                     <a href="#" class="research-field-image-link">
                         <p>Arts and Humanities</p>
                     </a>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/culture-and-tradition.png" class="research-fields-logos" alt="Culture and Tradition">
+                    <img src="../../../assets/images/research-fields/educational-management.png" class="research-fields-logos" alt="Educational Management">
                     <a href="#" class="research-field-image-link">
-                        <p>Culture and Tradition</p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/program-profile-assessment.png" class="research-fields-logos" alt="Program and Profile">
-                    <a href="#" class="research-field-image-link">
-                        <p>Program and Profile<br>Assessment</p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/education-4.0.png" class="research-fields-logos" alt="Education 4.0">
-                    <a href="#" class="research-field-image-link">
-                        <p>Education 4.0</p>
+                        <p>Educational Management</p>
                     </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/industry-4.0.png" class="research-fields-logos" alt="Industry 4.0">
+                    <img src="../../../assets/images/research-fields/education-social-sciences.png" class="research-fields-logos" alt="Education and Social Sciences">
                     <a href="#" class="research-field-image-link">
-                        <p>Industry 4.0</p>
+                        <p>Education and Social Sciences</p>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/technology-development.png" class="research-fields-logos" alt="Technology Development">
+                    <img src="../../../assets/images/research-fields/business-management.png" class="research-fields-logos" alt="Business Management">
                     <a href="#" class="research-field-image-link">
-                        <p>Technology Development</p>
+                        <p>Business Management</p>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
-                    <img src="../../../assets/images/research-fields/environmental-protection.png" class="research-fields-logos" alt="Environmental Protection">
+                    <img src="../../../assets/images/research-fields/health-sciences.png" class="research-fields-logos" alt="Health and Sciences">
                     <a href="#" class="research-field-image-link">
-                        <p>Environmental Protection</p>
+                        <p>Health and Sciences</p>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                    <img src="../../../assets/images/research-fields/it-engineering.png" class="research-fields-logos" alt="IT and Engineering">
+                    <a href="#" class="research-field-image-link">
+                        <p>IT and Engineering</p>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                    <img src="../../../assets/images/research-fields/law-justice-system.png" class="research-fields-logos" alt="Law and Justice System">
+                    <a href="#" class="research-field-image-link">
+                        <p>Law and Justice System</p>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                    <img src="../../../assets/images/research-fields/tourism-hospitality.png" class="research-fields-logos" alt="Tourism and Hospitality">
+                    <a href="#" class="research-field-image-link">
+                        <p>Tourism and Hospitality</p>
                     </a>
                 </div>
             </div>
