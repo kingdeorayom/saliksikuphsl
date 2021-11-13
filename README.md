@@ -1,2 +1,3 @@
 # saliksikuphsl
-SALIKSIK: UPHSL Institutional Digital Repository for Researches
+
+SALIKSIK: UPHSL Digital Repository for Researches
