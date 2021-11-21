@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
     <h1 class="my-2">Thesis and Dissertation Submission Form</h1>
     <hr>
-    <form action="#" method="POST">
+    <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data">
         <div class="row mt-4">
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type*</label>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row mt-3">
             <div>
                 <label class="fw-bold">Research Title*</label>
-                <input type="text" class="form-control" name="textFieldResearchTitle" required>
+                <input type="text" class="form-control" name="textFieldResearchTitle" id="textFieldResearchTitle" required>
                 <p class="text-secondary mt-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"From Letters to Life: Understanding Language Teachers Experiences in Teaching Literature"</span>.</p>
             </div>
         </div>
@@ -95,18 +95,18 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-2 col-sm-12 mb-3">
                 <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth">
                     <!-- <option value="" selected>Month</option> -->
-                    <option value="January" selected>January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
+                    <option value=1 selected>January</option>
+                    <option value=2>February</option>
+                    <option value=3>March</option>
+                    <option value=4>April</option>
+                    <option value=5>May</option>
+                    <option value=6>June</option>
+                    <option value=7>July</option>
+                    <option value=8>August</option>
+                    <option value=9>September</option>
+                    <option value=10>October</option>
+                    <option value=11>November</option>
+                    <option value=12>December</option>
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12 mb-3">
@@ -211,7 +211,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor1" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor1">
             </div>
         </div>
         <div class="row" id="co-author-2-td-panel">
@@ -230,7 +230,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor2" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor2">
             </div>
         </div>
         <div class="row" id="co-author-3-td-panel">
@@ -249,7 +249,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor3" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor3">
             </div>
         </div>
         <div class="row" id="co-author-4-td-panel">
@@ -268,7 +268,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor4" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor4">
             </div>
         </div>
         <div class="row">
@@ -282,54 +282,54 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row mb-4">
             <div>
                 <label class="fw-bold my-2">Keywords</label>
-                <input type="text" class="form-control" id="textFieldResearchTitle" required>
+                <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" required>
             </div>
         </div>
         <div class="row">
             <label class="fw-bold my-2">Research Field* <span class="text-secondary fw-light">Tick all that applies</span></label>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="checkBoxAccountancyMarketing">
+                    <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="researchFields[]">
                     <label for="checkBoxAccountancyMarketing">Accountancy and Marketing</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="checkBoxEducationalManagement">
+                    <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="researchFields[]">
                     <label for="checkBoxEducationalManagement">Educational Management</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="checkBoxITEngineering">
+                    <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="researchFields[]">
                     <label for="checkBoxITEngineering">IT and Engineering</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="checkBoxTourismHospitality">
+                    <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="researchFields[]">
                     <label for="checkBoxTourismHospitality">Tourism and Hospitality</label>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="checkBoxArtsHumanities">
+                    <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="researchFields[]">
                     <label for="checkBoxArtsHumanities">Arts and Humanities</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="checkBoxEducationSocialSciences">
+                    <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="researchFields[]">
                     <label for="checkBoxEducationSocialSciences">Education and Social Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="checkBoxLawJusticeSystem">
+                    <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="researchFields[]">
                     <label for="checkBoxLawJusticeSystem">Law and Justice System</label>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="checkBoxBusinessManagement">
+                    <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="researchFields[]">
                     <label for="checkBoxBusinessManagement">Business Management</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="checkBoxHealthSciences">
+                    <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="researchFields[]">
                     <label for="checkBoxHealthSciences">Health and Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="checkBoxMarineAviation">
+                    <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="researchFields[]">
                     <label for="checkBoxMarineAviation">Marine and Aviation</label>
                 </div>
             </div>
@@ -337,8 +337,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-4">
             <div class="mb-3">
                 <label class="fw-bold mb-3">Attach Research Paper*</label>
-                <input class="form-control" type="file" name="">
+                <input class="form-control" type="file" name="fileSubmit" required>
                 <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
+                <?php 
+                
+                if (isset($_SESSION['submitError'])){ ?>
+                     <div>Hey</div>
+                    <?php } ?>
             </div>
         </div>
         <hr>
@@ -354,4 +359,5 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
     </form>
+    
 </div>

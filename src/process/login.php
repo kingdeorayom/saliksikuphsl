@@ -17,6 +17,7 @@ if (!isset($_POST['textFieldEmail'], $_POST['textFieldPassword'])) {
 if (empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
     $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
     header("location: ../../index.php");
+    
     exit();
 } else if (!empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
     if ($statement = $connection->prepare('SELECT user_id, first_name, last_name, password, user_type FROM users WHERE email = ?')) {
