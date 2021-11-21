@@ -1,3 +1,13 @@
+.button-update {
+  background-color: #012265;
+  border-color: #012265;
+}
+
+.button-update:hover {
+  background-color: #012b7e;
+  border-color: #012b7e;
+}
+
 /*---------------------------------------------------Masthead---------------------------------------------------*/
 
 .masthead {
@@ -7,7 +17,7 @@
 #masthead-title-text {
   color: #012265;
   font-family: "Roboto", sans-serif;
-  font-weight: 800;
+  font-weight: bold;
   /*font-size: 3rem;*/
 }
 
@@ -28,7 +38,8 @@
   text-decoration: underline;
 }
 
-.faq-link {
-  text-decoration: none;
-  color: black;
+/*---------------------------------------------------Side Menu---------------------------------------------------*/
+
+.side-menu-text:hover {
+  cursor: pointer;
 }

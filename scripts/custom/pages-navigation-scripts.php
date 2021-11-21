@@ -176,6 +176,39 @@
             document.getElementById("submitInfographicsButton").disabled = true;
         }
     }
+
+
+    //////////////////////////////////////////////////////////////////////////////
+
+    function myProfileClicked() {
+        document.getElementById("myProfilePanel").style.display = "block";
+        document.getElementById("myLibraryPanel").style.display = "none";
+        document.getElementById("mySubmissionsPanel").style.display = "none";
+
+        document.getElementById("myProfileText").style.borderBottom = "thick solid #012265";
+        document.getElementById("mySubmissionsText").style.borderBottom = "thick none #012265";
+        document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
+    }
+
+    function myLibraryClicked() {
+        document.getElementById("myProfilePanel").style.display = "none";
+        document.getElementById("myLibraryPanel").style.display = "block";
+        document.getElementById("mySubmissionsPanel").style.display = "none";
+
+        document.getElementById("myLibraryText").style.borderBottom = "thick solid #012265";
+        document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
+        document.getElementById("mySubmissionsText").style.borderBottom = "thick none #012265";
+    }
+
+    function mySubmissionsClicked() {
+        document.getElementById("myProfilePanel").style.display = "none";
+        document.getElementById("myLibraryPanel").style.display = "none";
+        document.getElementById("mySubmissionsPanel").style.display = "block";
+
+        document.getElementById("mySubmissionsText").style.borderBottom = "thick solid #012265";
+        document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
+        document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
+    }
 </script>
 
 <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>

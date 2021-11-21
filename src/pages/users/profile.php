@@ -20,17 +20,68 @@ if (isset($_SESSION['userType'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/profile-style.css" type="text/css">
 </head>
 
-<body>
-    <div class="text-center m-5 p-5">
-        <img src="../../../assets/images/dump/under-construction.png" class="img-fluid"><br><br>
-        <a href="../../pages/navigation/home.php">go back</a>
-    </div>
-</body>
+<body onload="document.getElementById('myLibraryPanel').style.display = 'none'; document.getElementById('mySubmissionsPanel').style.display = 'none'; document.getElementById('myProfileText').style.borderBottom='thick solid #012265';">
 
-<script src="../../scripts/bootstrap/bootstrap.js"></script>
+    <!--Header and Navigation section-->
+
+    <?php include_once '../../layouts/general/header.php' ?>
+
+    <!--Masthead-->
+
+    <section class="masthead p-5 bg-light">
+        <div class="container">
+            <h1 id="masthead-title-text"><?php echo 'Hi, ' . $_SESSION['fullName'] ?></h1>
+        </div>
+    </section>
+
+    <section class="submit-research">
+        <div class="container p-5">
+            <div class="row my-3 d-lg-none">
+                <h3>On this page</h3>
+                <hr>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <ul class="onThisPageLinks">
+                        <li class="btn-link" onclick="myProfileClicked()">My Profile</li>
+                        <li class="btn-link" onclick="myLibraryClicked()">My Library</li>
+                        <li class="btn-link" onclick="mySubmissionsClicked()">My Submissions</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
+                    <!--col-md-12 to stack on top of next column. remove display-none-->
+                    <h3>On this page</h3>
+                    <hr>
+                    <p class="side-menu-text" onclick="myProfileClicked()" id="myProfileText">My Profile</p>
+                    <hr>
+                    <p class="side-menu-text" onclick="myLibraryClicked()" id="myLibraryText">My Library</p>
+                    <hr>
+                    <p class="side-menu-text" onclick="mySubmissionsClicked()" id="mySubmissionsText">My Submissions</p>
+                    <hr>
+                </div>
+
+                <?php include_once '../../layouts/profile-content-user/profilePanel.php' ?>
+                <?php include_once '../../layouts/profile-content-user/libraryPanel.php' ?>
+                <?php include_once '../../layouts/profile-content-user/submissionsPanel.php' ?>
+
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+
+    <?php include_once '../../layouts/general/footer.php' ?>
+    <?php include_once '../../../scripts/custom/pages-navigation-scripts.php' ?>
+</body>
 
 </html>

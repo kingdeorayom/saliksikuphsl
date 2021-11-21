@@ -140,5 +140,13 @@
 }
 
 .footer-list-link:hover {
-  color: yellow;
+  color: white;
+}
+
+.ext-link:hover {
+  color: gainsboro;
+}
+
+.saliksik-logo {
+  max-width: 275px;
 }

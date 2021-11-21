@@ -38,8 +38,8 @@
                 <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle fa-2x me-2 my-2" style="color: white;"></i></button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="#"><i class="far fa-bookmark me-2"></i>My Library</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="#"><i class="far fa-file-alt me-2"></i>My Submission</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>My Submission</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                 </ul>
             </div>
@@ -71,10 +71,10 @@
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>My Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="#"><i class="far fa-bookmark me-2"></i>My Library</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="#"><i class="far fa-file-alt me-2"></i>My Submission</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>My Submission</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
