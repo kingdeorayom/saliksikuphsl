@@ -39,7 +39,7 @@ if (isset($_SESSION['userType'])) {
 
     <section class="masthead p-5 bg-light">
         <div class="container">
-            <h1 id="masthead-title-text"><?php echo 'Hi, ' . $_SESSION['fullName'] ?></h1>
+            <h1 id="masthead-title-text"><?php echo 'Hi, ' . $_SESSION['fullName'] . '!' ?></h1>
         </div>
     </section>
 

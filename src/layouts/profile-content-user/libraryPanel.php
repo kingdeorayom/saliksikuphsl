@@ -7,22 +7,26 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="myLibraryPanel">
+<div class="col-lg-10 col-md-12 col-xs-12 main-column" id="myLibraryPanel">
     <h1 class="my-2">Library</h1>
+    <hr class="my-4">
     <div class="row">
-        <hr class="my-4">
-        <select class="form-select" aria-label="Default select example" name="dropdownLibrary" id="dropdownLibrary">
-            <option value="all" selected>All Items</option>
-            <option value="thesis">Thesis</option>
-            <option value="capstone">Capstone</option>
-            <option value="dissertation">Dissertation</option>
-            <option value="journal">Journal</option>
-            <option value="infographic">Infographic</option>
-            <option value="researchcatalog">Research Catalog</option>
-            <option value="annualreport">Annual Report</option>
-            <option value="researchagenda">Research Agenda</option>
-            <option value="researchcompetencydevelopmentprogram">Research Competency Development Program</option>
-        </select>
+        <div class="col-sm-12 col-md-4">
+            <select class="form-select" aria-label="Default select example" name="dropdownLibrary" id="dropdownLibrary">
+                <option value="all" selected>All Items</option>
+                <option value="thesis">Thesis</option>
+                <option value="capstone">Capstone</option>
+                <option value="dissertation">Dissertation</option>
+                <option value="journal">Journal</option>
+                <option value="infographic">Infographic</option>
+                <option value="researchcatalog">Research Catalog</option>
+                <option value="annualreport">Annual Report</option>
+                <option value="researchagenda">Research Agenda</option>
+                <option value="researchcompetencydevelopmentprogram">RCDP</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
 
     </div>
 </div>

@@ -7,9 +7,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="mySubmissionsPanel">
+<div class="col-lg-10 col-md-12 col-xs-12 main-column" id="mySubmissionsPanel">
     <h1 class="my-2">Submissions</h1>
+    <hr class="my-4">
     <div class="row">
-        <hr class="my-4">
     </div>
 </div>

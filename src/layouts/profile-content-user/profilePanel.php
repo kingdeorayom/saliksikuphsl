@@ -7,10 +7,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="myProfilePanel">
+<div class="col-lg-10 col-md-12 col-xs-12 main-column" id="myProfilePanel">
     <h1 class="my-2">About you</h1>
+    <hr class="my-4">
+
     <div class="row">
-        <hr class="my-4">
         <form action="" method="POST">
             <div class="row">
                 <div>
