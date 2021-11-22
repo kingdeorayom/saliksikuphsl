@@ -207,7 +207,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor1" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
@@ -226,7 +226,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor2" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
@@ -245,7 +245,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor3" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
@@ -264,7 +264,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor4" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
@@ -339,11 +339,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <label class="fw-bold mb-3">Attach Research Paper*</label>
                 <input class="form-control" type="file" name="fileSubmit" required>
                 <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
-                <?php 
-                
-                if (isset($_SESSION['submitError'])){ ?>
-                     <div>Hey</div>
-                    <?php } ?>
+                <?php
+
+                if (isset($_SESSION['submitError'])) { ?>
+                    <div>Hey</div>
+                <?php } ?>
             </div>
         </div>
         <hr>
@@ -359,5 +359,5 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
     </form>
-    
+
 </div>

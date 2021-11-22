@@ -12,29 +12,29 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <hr class="my-4">
 
     <div class="row">
-        <form action="" method="POST">
+        <form action="../../process/update-user-profile.php" method="POST">
             <div class="row">
                 <div>
                     <label class="fw-bold mb-2">Email Address</label>
-                    <input type="text" class="form-control" name="textFieldEmailAddress" required disabled>
+                    <input type="text" class="form-control" name="textFieldEmailAddress" value="<?php echo $_SESSION['email']; ?>" required>
                 </div>
             </div>
             <div class="row my-2">
                 <div>
                     <label class="fw-bold mb-2">First Name</label>
-                    <input type="text" class="form-control" id="textFieldFirstName" required disabled>
+                    <input type="text" class="form-control" id="textFieldFirstName" value="<?php echo $_SESSION['firstName']; ?>" required>
                 </div>
             </div>
             <div class="row my-2">
                 <div>
                     <label class="fw-bold mb-2">Last Name</label>
-                    <input type="text" class="form-control" id="textFieldLastName" required disabled>
+                    <input type="text" class="form-control" id="textFieldLastName" value="<?php echo $_SESSION['lastName']; ?>" required>
                 </div>
             </div>
             <div class="row my-2">
                 <div>
                     <label class="fw-bold mb-2">College/Department</label>
-                    <select class="form-select" aria-label="Default select example" name="dropdownDepartment" disabled>
+                    <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
                         <option value="Basic Education" selected>Basic Education</option>
                         <option value="Senior High School">Senior High School</option>
                         <option value="Arts and Sciences">Arts and Sciences</option>
