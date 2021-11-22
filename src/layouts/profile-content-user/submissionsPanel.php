@@ -8,8 +8,31 @@ if (!isset($_SESSION['isLoggedIn'])) {
 ?>
 
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="mySubmissionsPanel">
-    <h1 class="my-2">Submissions</h1>
-    <hr class="my-4">
-    <div class="row">
+    <div class="submissions">
+        <h1 class="my-2 p-2 fw-bold" style="background-color: gainsboro;">Submissions</h1>
+        <div class="pendingApproval my-3">
+            <h4 class="fw-bold">Pending approval</h4>
+            <hr class="my-4">
+            <p>list of pending approvals here</p>
+            <p>list of pending approvals here</p>
+            <p>list of pending approvals here</p>
+        </div>
+        <div class="forRevision my-3">
+            <h4 class="fw-bold">For revision</h4>
+            <hr class="my-4">
+            <p>list of for revisions here</p>
+            <p>list of for revisions here</p>
+            <p>list of for revisions here</p>
+        </div>
+    </div>
+    <div class="published">
+        <h1 class="my-2 p-2 fw-bold" style="background-color: gainsboro;">Published Works</h1>
+        <div class="publishedWorks my-3">
+            <hr class="my-4">
+            <p>list of published works here</p>
+            <p>list of published works here</p>
+            <p>list of published works here</p>
+            <p>list of published works here</p>
+        </div>
     </div>
 </div>

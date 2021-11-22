@@ -1,3 +1,10 @@
+@media only screen and (max-width: 950px) {
+  .main-column {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+}
+
 .profile {
   font-family: "Arial", sans-serif;
 }
