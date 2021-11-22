@@ -60,6 +60,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <!--col-md-12 to stack on top of next column. remove display-none-->
+                    <h3>On this page</h3>
                     <hr>
                     <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
                     <hr>

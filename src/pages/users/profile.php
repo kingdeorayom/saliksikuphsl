@@ -43,7 +43,7 @@ if (isset($_SESSION['userType'])) {
         </div>
     </section>
 
-    <section class="submit-research">
+    <section class="submit-research profile">
         <div class="container p-5">
             <div class="row my-3 d-lg-none">
                 <h3>On this page</h3>
