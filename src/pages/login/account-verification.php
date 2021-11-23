@@ -33,7 +33,7 @@ if (!isset($_SESSION['email'])) {
     <link rel="stylesheet" href="../../../plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
 </head>
 
-<body style="background-color: grey;">
+<body style="background-color: #012265;">
 
     <!--Main Section-->
     <main class="main">
