@@ -186,11 +186,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="fw-bold">No. of Co-Authors</label>
                 <select id="dropdownThesisDissertationCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" onchange="showThesisDissertationCoAuthorsField();" required>
-                    <option value="0" selected>0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value=0 selected>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
                 </select>
                 <label class="text-secondary">Max 4 co-authors allowed</label>
             </div>
@@ -281,7 +281,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row mb-4">
             <div>
-                <label class="fw-bold my-2">Keywords</label>
+                <label class="fw-bold my-2">Keywords*</label>
                 <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" required>
             </div>
         </div>
