@@ -11,6 +11,12 @@ if (isset($_SESSION['userType'])) {
     die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
+include '../../process/connection.php'; // covers profilePanel.php, libraryPanel.php, submissionsPanel.php
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
 ?>
 
 <!DOCTYPE html>

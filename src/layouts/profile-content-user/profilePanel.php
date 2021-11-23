@@ -5,6 +5,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
+$sql = "SELECT department FROM users WHERE user_id = " . $_SESSION['userid'];
+$result = $connection->query($sql);
+
+$connection->close();
+
 ?>
 
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="myProfilePanel">
@@ -34,21 +39,30 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-2">
                 <div>
                     <label class="fw-bold mb-2">College/Department</label>
-                    <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
-                        <option value="Basic Education" selected>Basic Education</option>
-                        <option value="Senior High School">Senior High School</option>
-                        <option value="Arts and Sciences">Arts and Sciences</option>
-                        <option value="Business and Accountancy">Business and Accountancy</option>
-                        <option value="Computer Studies">Computer Studies</option>
-                        <option value="Criminology">Criminology</option>
-                        <option value="Education">Education</option>
-                        <option value="Engineering, Architecture and Aviation">Engineering, Architecture and Aviation</option>
-                        <option value="Law">Law</option>
-                        <option value="Maritime Education">Maritime Education</option>
-                        <option value="International Hospitality Management">International Hospitality Management</option>
-                        <option value="Graduate School">Graduate School</option>
-                        <option value="Support Services">Support Services</option>
-                    </select>
+                    <?php
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
+                            <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
+                                <option value="Basic Education" <?= $row['department'] == "Basic Education" ? 'selected=selected' : '' ?>>Basic Education</option>
+                                <option value="Senior High School" <?= $row['department'] == "Senior High School" ? 'selected=selected' : '' ?>>Senior High School</option>
+                                <option value="Arts and Sciences" <?= $row['department'] == "Arts and Sciences" ? 'selected=selected' : '' ?>>Arts and Sciences</option>
+                                <option value="Business and Accountancy" <?= $row['department'] == "Business and Accountancy" ? 'selected=selected' : '' ?>>Business and Accountancy</option>
+                                <option value="Computer Studies" <?= $row['department'] == "Computer Studies" ? 'selected=selected' : '' ?>>Computer Studies</option>
+                                <option value="Criminology" <?= $row['department'] == "Criminology" ? 'selected=selected' : '' ?>>Criminology</option>
+                                <option value="Education" <?= $row['department'] == "Education" ? 'selected=selected' : '' ?>>Education</option>
+                                <option value="Engineering, Architecture and Aviation" <?= $row['department'] == "Engineering, Architecture and Aviation" ? 'selected=selected' : '' ?>>Engineering, Architecture and Aviation</option>
+                                <option value="Law" <?= $row['department'] == "Law" ? 'selected=selected' : '' ?>>Law</option>
+                                <option value="Maritime Education" <?= $row['department'] == "Maritime Education" ? 'selected=selected' : '' ?>>Maritime Education</option>
+                                <option value="International Hospitality Management" <?= $row['department'] == "International Hospitality Management" ? 'selected=selected' : '' ?>>International Hospitality Management</option>
+                                <option value="Graduate School" <?= $row['department'] == "Graduate School" ? 'selected=selected' : '' ?>>Graduate School</option>
+                                <option value="Support Services" <?= $row['department'] == "Support Services" ? 'selected=selected' : '' ?>>Support Services</option>
+                            </select>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <h1 class="my-4">Account Parameters</h1>
