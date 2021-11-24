@@ -34,6 +34,7 @@ if ($statement = $connection->prepare('UPDATE users SET password = ? WHERE email
 
     unset($_SESSION['email']);
     unset($_SESSION['toVerify']);
+    unset($_SESSION['resetPassword']);
 
     header("location: ../../index.php");
 } else {

@@ -1,8 +1,8 @@
 <?php session_start();
 
-if (!isset($_SESSION['email'])) {
-    echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
+if (!isset($_SESSION['resetPassword'])) {
+    echo '<a href="../../../index.php">go back</a><br><br>';
+    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
 ?>
@@ -23,7 +23,7 @@ if (!isset($_SESSION['email'])) {
     <link rel="stylesheet" href="../../../styles/custom/pages/reset-password-style.css" type="text/css">
 </head>
 
-<body style="background-color: grey;">
+<body style="background-color: #012265;">
 
     <!--Main Section-->
     <main class="main">
@@ -71,6 +71,7 @@ if (!isset($_SESSION['email'])) {
                             <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
                         </div>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Submit</button>
+                        <a href="../../process/logout.php"><button class="btn btn-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
             </div>

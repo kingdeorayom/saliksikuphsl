@@ -58,7 +58,7 @@
 
                     if (isset($_SESSION['emailDoesNotExists'])) { ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Invalid email!</strong> There is no account linked to the email provided.
+                            <strong>Account not found!</strong> There is no account linked to the email provided.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php

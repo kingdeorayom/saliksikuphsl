@@ -8,8 +8,8 @@ if (mysqli_connect_errno()) {
 };
 
 if (!isset($_POST['textFieldResearchTitle'])) {
-    echo '<a href="../../index.php">go back to login page</a><br><br>';
-    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or home page if already logged in.');
+    echo '<a href="../../index.php">go back</a><br><br>';
+    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
 //for debugging only, should be removed

@@ -7,8 +7,8 @@ if (isset($_SESSION['userType'])) {
         header("Location: ./admin/profile-admin.php");
     }
 } else {
-    echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
+    echo '<a href="../../../index.php">go back</a><br><br>';
+    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
 include '../../process/connection.php'; // covers profilePanel.php, libraryPanel.php, submissionsPanel.php
