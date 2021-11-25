@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
     <h1 class="my-2">Research Journal Submission Form</h1>
     <hr>
-    <form action="#" method="POST">
+    <form action="../../process/journal-submission.php" method="POST" enctype="multipart/form-data">
         <div class="row mt-4">
             <div>
                 <label class="fw-bold">Title*</label>
@@ -21,7 +21,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row">
             <div>
                 <label class="fw-bold">Sub-title</label>
-                <input type="text" class="form-control" id="textFieldJournalSubTitle">
+                <input type="text" class="form-control" name="textFieldJournalSubTitle">
             </div>
         </div>
         <div class="row mt-2">
@@ -57,13 +57,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldVolumeNumber" required>
+                <input type="number" class="form-control" name="textFieldVolumeNumber" required>
             </div>
             <div class="col-lg-12 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">Serial/Issue Number*</label>
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldSerialIssueNumber" required>
+                <input type="number" class="form-control" name="textFieldSerialIssueNumber" required>
             </div>
             <div class="col-lg-12 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">ISSN</label>
@@ -107,14 +107,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-3">
                     <label class="fw-bold mb-3">Attach Front Cover*</label>
-                    <input class="form-control" type="file" id="formFile" name="">
+                    <input class="form-control" type="file" id="formFile" name="journalCoverFile">
                     <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-3">
                     <label class="fw-bold mb-3">Attach Journal Copy*</label>
-                    <input class="form-control" type="file" name="">
+                    <input class="form-control" type="file" name="journalFile">
                     <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
                 </div>
             </div>

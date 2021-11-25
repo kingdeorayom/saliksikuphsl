@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2021 at 02:49 AM
+-- Generation Time: Nov 25, 2021 at 08:42 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -33,18 +33,46 @@ CREATE TABLE `file_information` (
   `file_name` varchar(255) NOT NULL,
   `file_dir` varchar(255) NOT NULL,
   `file_uploader` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `research_id` int(11) NOT NULL
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `file_information`
 --
 
-INSERT INTO `file_information` (`user_id`, `file_id`, `file_name`, `file_dir`, `file_uploader`, `status`, `research_id`) VALUES
-(89, 6, 'Sabao_Hernandez_2017.pdf', '../uploads/619b30fa0fd760.23186888.pdf', 'Marc Menguito', 'pending', 5),
-(89, 7, 'SM CREDIT CARD APPLICATION FORM 2021.pdf', '../uploads/619c45408879d8.54258257.pdf', 'Marc Menguito', 'pending', 6),
-(89, 8, 'Activity-3M-Conceptual-Model-of-the-Study (1).pdf', '../uploads/619c478274cbb2.78887302.pdf', 'Marc Menguito', 'pending', 7);
+INSERT INTO `file_information` (`user_id`, `file_id`, `file_name`, `file_dir`, `file_uploader`, `status`) VALUES
+(89, 12, 'Machine Problem #2M.pdf', '../uploads/theses/619ef1e7e935c6.01070736.pdf', 'Marc Menguito', 'pending'),
+(89, 41, 'Assignment #11 - System Project Development Life Cycle - Menguito.pdf', '../uploads/journals/619f3e18538cf6.22180114.pdf', 'Marc Menguito', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `journal_information`
+--
+
+CREATE TABLE `journal_information` (
+  `file_ref_id` int(11) NOT NULL,
+  `journal_id` int(11) NOT NULL,
+  `journal_title` varchar(255) NOT NULL,
+  `journal_subtitle` varchar(255) NOT NULL,
+  `department` varchar(255) NOT NULL,
+  `volume_number` int(11) NOT NULL,
+  `serial_issue_number` int(11) NOT NULL,
+  `ISSN` varchar(255) NOT NULL,
+  `journal_description` varchar(255) NOT NULL,
+  `chief_editor_first_name` varchar(255) NOT NULL,
+  `chief_editor_middle_initial` varchar(255) NOT NULL,
+  `chief_editor_last_name` varchar(255) NOT NULL,
+  `chief_editor_name_ext` varchar(255) NOT NULL,
+  `chief_editor_email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `journal_information`
+--
+
+INSERT INTO `journal_information` (`file_ref_id`, `journal_id`, `journal_title`, `journal_subtitle`, `department`, `volume_number`, `serial_issue_number`, `ISSN`, `journal_description`, `chief_editor_first_name`, `chief_editor_middle_initial`, `chief_editor_last_name`, `chief_editor_name_ext`, `chief_editor_email`) VALUES
+(41, 1, 'TitleText', 'SubTitle', 'Arts and Sciences', 16, 37, '56ABC', 'desc1', 'Lorenzo', 'Y', 'Menguito', 'exten', 'lorenzo.menguito@yahoo.com');
 
 -- --------------------------------------------------------
 
@@ -53,6 +81,7 @@ INSERT INTO `file_information` (`user_id`, `file_id`, `file_name`, `file_dir`, `
 --
 
 CREATE TABLE `research_information` (
+  `file_ref_id` int(11) NOT NULL,
   `research_id` int(11) NOT NULL,
   `resource_type` varchar(255) NOT NULL,
   `researchers_category` varchar(255) NOT NULL,
@@ -94,10 +123,8 @@ CREATE TABLE `research_information` (
 -- Dumping data for table `research_information`
 --
 
-INSERT INTO `research_information` (`research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coAuthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_name_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_name_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_name_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middile_initial`, `coauthor4_surname`, `coauthor4_name_ext`, `coauthor4_email`) VALUES
-(5, 'dissertation', 'undergraduate', 'Basic Education', 'Research Title', 'Educational Management, IT and Engineering, Arts and Humanities, Education and Social Sciences, Law and Justice System', 1, 1, 2021, 0, 'Marc', 'C.', 'Menguito', 'ext', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(6, 'dissertation', 'undergraduate', 'Basic Education', 'Research Title', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 1, 1, 2021, 0, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 'Lorenzo', 'Y', 'Menguito', 'ext', 'lorenzo.menguito@yahoo.com', 'Lorenzo2', 'Y', 'Menguito', 'text', 'lorenzo.menguito@yahoo.com', '', '', '', '', '', '', '', '', '', ''),
-(7, 'thesis', 'non_teaching_staff', 'Arts and Sciences', '21', 'Accountancy and Marketing, Educational Management, Law and Justice System', 1, 1, 2021, 2, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 'Lorenzo', 'Y', 'Menguito', '', 'lorenzo.menguito@yahoo.com', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coAuthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_name_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_name_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_name_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middile_initial`, `coauthor4_surname`, `coauthor4_name_ext`, `coauthor4_email`) VALUES
+(12, 10, 'capstone', 'faculty', 'Law', 'Research Title', 'Accountancy and Marketing, Educational Management, IT and Engineering', 6, 16, 2021, 0, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -134,6 +161,12 @@ ALTER TABLE `file_information`
   ADD PRIMARY KEY (`file_id`);
 
 --
+-- Indexes for table `journal_information`
+--
+ALTER TABLE `journal_information`
+  ADD PRIMARY KEY (`journal_id`);
+
+--
 -- Indexes for table `research_information`
 --
 ALTER TABLE `research_information`
@@ -153,13 +186,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `file_information`
 --
 ALTER TABLE `file_information`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `journal_information`
+--
+ALTER TABLE `journal_information`
+  MODIFY `journal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `research_information`
 --
 ALTER TABLE `research_information`
-  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`

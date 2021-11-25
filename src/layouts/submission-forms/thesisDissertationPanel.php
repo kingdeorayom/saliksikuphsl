@@ -15,9 +15,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type*</label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="dissertation" selected>Dissertation</option>
-                    <option value="thesis">Thesis</option>
+                    <option value="dissertation">Dissertation</option>
+                    <option value="thesis" >Thesis</option>
                     <option value="capstone">Capstone</option>
+
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
