@@ -12,12 +12,10 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-if(true){
+if(isset($_POST['textFieldJournalTitle'],$_POST['textFieldJournalSubTitle'],$_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'],$_POST['textFieldSerialIssueNumber'],$_POST['textFieldISSN'],$_POST['textFieldChiefEditorFirstName'],$_POST['textFieldChiefEditorMiddleInitial'],$_POST['textFieldChiefEditorLastName'],$_POST['textFieldChiefEditorNameExtension'],$_POST['textFieldEmail'],$_POST['textAreaDescription'],$_FILES['journalCoverFile'],$_FILES['journalFile'])){
+
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
-
-    // print_r($_FILES['journalCoverFile']);
-
 
     $fileCover = $_FILES['journalCoverFile'];
     $fileCoverName = $fileCover['name'];
@@ -39,9 +37,6 @@ if(true){
     $fileActualExt = strtolower(end($fileExt));
     $allowedFile = array('pdf');
 
-    // foreach ($all_required_fields as $key => $value) {
-    //     echo $value;
-    // }
     if(in_array($fileActualExt, $allowedFile)&&in_array($fileCoverActualExt,$allowedCover)){
         if($fileError ===0 && $fileCoverError ===0){
             if($fileSize <5000000 && $fileCoverSize <5000000){
@@ -53,7 +48,6 @@ if(true){
                     exit();
                 }
                 else{
-                    // TODO: add to database
                     $filenameUnique = uniqid('',true);
                     
                     $newFileCover =  $filenameUnique.".".$fileCoverActualExt;
@@ -62,33 +56,24 @@ if(true){
                     $newFile =  $filenameUnique.".".$fileActualExt;
                     $fileDestination = '../uploads/journals/'.$newFile;
 
-
                     $fileStatus = "pending";
                     $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?)');
                     $statement -> bind_param('issss',$userId,$fileName,$fileDestination,$userName,$fileStatus);
                     $statement -> execute();
                     $insertedId = $statement ->insert_id;
                     
-
                     $statement ->close();
                     echo 'file upload success!';
 
                     move_uploaded_file($fileCoverTempLoc,$fileCoverDestination);
                     move_uploaded_file($fileTempLoc,$fileDestination);
                     
-                    
-                    
-                    if($statement = $connection ->prepare('INSERT INTO journal_information(file_ref_id, journal_title, journal_subtitle, department, volume_number, serial_issue_number, ISSN, journal_description, chief_editor_first_name, chief_editor_middle_initial, chief_editor_last_name, chief_editor_name_ext ,chief_editor_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)')){
-                        $statement -> bind_param('isssiisssssss',$insertedId,$_POST['textFieldJournalTitle'],$_POST['textFieldJournalSubTitle'],$_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'], $_POST['textFieldSerialIssueNumber'],$_POST['textFieldISSN'],$_POST['textAreaDescription'],$_POST['textFieldChiefEditorFirstName'],$_POST['textFieldChiefEditorMiddleInitial'],$_POST['textFieldChiefEditorLastName'],$_POST['textFieldChiefEditorNameExtension'],$_POST['textFieldEmail']);
-                        $statement->execute();
-                        
-    
-                        $statement ->close();
-                        echo 'file upload success!';
+                    $statement = $connection ->prepare('INSERT INTO journal_information(file_ref_id, journal_title, journal_subtitle, department, volume_number, serial_issue_number, ISSN, journal_description, chief_editor_first_name, chief_editor_middle_initial, chief_editor_last_name, chief_editor_name_ext ,chief_editor_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                    $statement -> bind_param('isssiisssssss',$insertedId,$_POST['textFieldJournalTitle'],$_POST['textFieldJournalSubTitle'],$_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'], $_POST['textFieldSerialIssueNumber'],$_POST['textFieldISSN'],$_POST['textAreaDescription'],$_POST['textFieldChiefEditorFirstName'],$_POST['textFieldChiefEditorMiddleInitial'],$_POST['textFieldChiefEditorLastName'],$_POST['textFieldChiefEditorNameExtension'],$_POST['textFieldEmail']);
+                    $statement->execute();
 
-                    }
-                    
-
+                    $statement ->close();
+                    echo 'file upload success!';
                 }
 
             }

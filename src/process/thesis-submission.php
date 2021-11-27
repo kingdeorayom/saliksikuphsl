@@ -26,8 +26,8 @@ $_POST['textFieldLastNameCoAuthor3'],$_POST['textFieldNameExtenstionCoAuthor3'],
 $_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],
 $_POST['textFieldLastNameCoAuthor4'],$_POST['textFieldNameExtenstionCoAuthor4'], $_POST['textFieldEmailAuthor4'],);
 
-// TODO: this doesnt actually check it. always returns true, make it check properly
-if(isset($allRequiredFields)){
+
+if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],$_POST['textareaAbstract'], $_POST['textareaKeywords'],$_POST['researchFields'], $_FILES['fileSubmit'])){
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
 
@@ -38,20 +38,16 @@ if(isset($allRequiredFields)){
     $fileTempLoc = $file['tmp_name'];
     $fileError = $file['error'];
 
-
     //extension
     $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
-
     $allowed = array('pdf');
 
     
 
     if(in_array($fileActualExt,$allowed)){
         if($fileError === 0){
-            if($fileSize < 5000000  ){
-                
-
+            if($fileSize < 5000000){
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
                 $result = mysqli_query($connection,$sql);
                 if (mysqli_num_rows($result)>0){
@@ -85,8 +81,6 @@ if(isset($allRequiredFields)){
                     echo 'file upload success!';
                     
                     move_uploaded_file($fileTempLoc,$fileDestination);
-
-                    
                     
                     //concatenate all selected values
                     $comma_separated_fields = implode(', ',$_POST['researchFields']);
@@ -96,13 +90,8 @@ if(isset($allRequiredFields)){
                     $statement -> execute();
 
                     $statement ->close();
-                    
                     echo 'file info table upload success!';
-
                 }
-
-                
-
             }
             else{
                 echo "File size is too large";
