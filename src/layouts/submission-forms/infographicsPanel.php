@@ -1,8 +1,8 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<a href="../../../index.php">go back</a><br><br>';
-    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
+    echo '<a href="../../../index.php">go back to login page</a><br><br>';
+    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
     <h1 class="my-2">Infographics Submission Form</h1>
     <hr>
-    <form action="#" method="POST">
+    <form action="../../process/infographic-submission.php" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-lg-3">
                 <label class="py-2 fw-bold">Research Unit*</label>
@@ -58,18 +58,18 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-2 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth">
                     <!-- <option value="" selected>Month</option> -->
-                    <option value="January" selected>January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
+                    <option value=1 selected>January</option>
+                    <option value=2>February</option>
+                    <option value=3>March</option>
+                    <option value=4>April</option>
+                    <option value=5>May</option>
+                    <option value=6>June</option>
+                    <option value=7>July</option>
+                    <option value=8>August</option>
+                    <option value=9>September</option>
+                    <option value=10>October</option>
+                    <option value=11>November</option>
+                    <option value=12>December</option>
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
@@ -212,11 +212,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor1" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor1" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor1">
             </div>
         </div>
         <div class="row" id="co-author-2-info-panel">
@@ -231,11 +231,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor2" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor2" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor2">
             </div>
         </div>
         <div class="row" id="co-author-3-info-panel">
@@ -250,11 +250,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor3" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor3" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor3">
             </div>
         </div>
         <div class="row" id="co-author-4-info-panel">
@@ -269,11 +269,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtenstionCoAuthor4" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email*</label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor4" required>
+                <input type="text" class="form-control" name="textFieldEmailAuthor4">
             </div>
         </div>
         <div class="row">
@@ -287,7 +287,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-4">
             <div class="mb-3">
                 <label class="fw-bold mb-3">Attach Research Paper*</label>
-                <input class="form-control" type="file" name="">
+                <input class="form-control" type="file" name="fileSubmit">
                 <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
             </div>
         </div>

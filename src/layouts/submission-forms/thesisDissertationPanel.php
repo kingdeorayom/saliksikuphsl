@@ -1,8 +1,8 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<a href="../../../index.php">go back</a><br><br>';
-    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
+    echo '<a href="../../../index.php">go back to login page</a><br><br>';
+    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -15,9 +15,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type*</label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="dissertation" selected>Dissertation</option>
+                    <option value="dissertation">Dissertation</option>
                     <option value="thesis">Thesis</option>
                     <option value="capstone">Capstone</option>
+
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
