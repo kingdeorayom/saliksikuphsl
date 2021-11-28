@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2021 at 10:42 AM
+-- Generation Time: Nov 28, 2021 at 10:49 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -108,7 +108,7 @@ CREATE TABLE `infographic_information` (
   `editor_surname` varchar(255) NOT NULL,
   `editor_ext` varchar(255) NOT NULL,
   `editor_email` varchar(255) NOT NULL,
-  `coAuthor_count` int(11) NOT NULL,
+  `coauthors_count` int(11) NOT NULL,
   `coauthor_group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,7 +116,7 @@ CREATE TABLE `infographic_information` (
 -- Dumping data for table `infographic_information`
 --
 
-INSERT INTO `infographic_information` (`file_ref_id`, `infographic_id`, `infographic_research_unit`, `infographic_researcher_category`, `infographic_publication_month`, `infographic_publication_day`, `infographic_publication_year`, `infographic_title`, `infographic_description`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_ext`, `author_email`, `editor_first_name`, `editor_middle_initial`, `editor_surname`, `editor_ext`, `editor_email`, `coAuthor_count`, `coauthor_group_id`) VALUES
+INSERT INTO `infographic_information` (`file_ref_id`, `infographic_id`, `infographic_research_unit`, `infographic_researcher_category`, `infographic_publication_month`, `infographic_publication_day`, `infographic_publication_year`, `infographic_title`, `infographic_description`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_ext`, `author_email`, `editor_first_name`, `editor_middle_initial`, `editor_surname`, `editor_ext`, `editor_email`, `coauthors_count`, `coauthor_group_id`) VALUES
 (69, 3, 'Arts and Sciences', 'faculty', 1, 1, 2021, '123', '12345', 'Marc', 'C.', 'Menguito', '123', 'lloydmenguito@gmail.com', 'Marc', 'C.', 'Menguito', '321', 'lloydmenguito@gmail.com', 2, 7);
 
 -- --------------------------------------------------------
@@ -159,7 +159,7 @@ CREATE TABLE `research_information` (
   `publication_month` int(11) NOT NULL,
   `publication_day` int(11) NOT NULL,
   `publication_year` int(11) NOT NULL,
-  `coAuthors_count` int(11) NOT NULL,
+  `coauthors_count` int(11) NOT NULL,
   `author_first_name` varchar(255) NOT NULL,
   `author_middle_initial` varchar(255) NOT NULL,
   `author_surname` varchar(255) NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE `research_information` (
 -- Dumping data for table `research_information`
 --
 
-INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coAuthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
+INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coauthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
 (68, 11, 'dissertation', 'undergraduate', 'Basic Education', 'Research Title', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 1, 1, 2021, 1, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 6);
 
 -- --------------------------------------------------------
