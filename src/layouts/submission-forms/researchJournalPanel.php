@@ -13,7 +13,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <form action="../../process/journal-submission.php" method="POST" enctype="multipart/form-data">
         <div class="row mt-4">
             <div>
-                <label class="fw-bold">Title*</label>
+                <label class="fw-bold">Title<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldJournalTitle" required>
                 <p class="text-secondary mt-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"The Lighthouse"</span>.</p>
             </div>
@@ -26,7 +26,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row mt-2">
             <div class="col-lg-6 col-sm-12">
-                <label class="py-2 fw-bold">College/Department*</label>
+                <label class="py-2 fw-bold">College/Department<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
                     <option value="Basic Education" selected>Basic Education</option>
                     <option value="Senior High School">Senior High School</option>
@@ -46,13 +46,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row mt-3">
             <div class="col-lg-4">
-                <label class="py-2 fw-bold">Volume Number*</label>
+                <label class="py-2 fw-bold">Volume Number<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-4">
-                <label class="py-2 fw-bold d-none d-lg-block">Serial/Issue Number*</label>
+                <label class="py-2 fw-bold d-none d-lg-block">Serial/Issue Number<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-4">
-                <label class="py-2 fw-bold d-none d-lg-block">ISSN</label>
+                <label class="py-2 fw-bold d-none d-lg-block">ISSN<span class="text-danger"> *</span></label>
             </div>
         </div>
         <div class="row">
@@ -73,7 +73,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <div class="row mb-3">
-            <label class="py-2 fw-bold">Editor-in-Chief*</label>
+            <label class="py-2 fw-bold">Editor-in-Chief<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldChiefEditorFirstName" placeholder="First Name*" required>
             </div>
@@ -89,7 +89,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 mb-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmail" required>
                 <label class="text-secondary mt-2">Consider your active email address</label>
             </div>
@@ -97,7 +97,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row">
             <div class="col">
                 <div class="my-3">
-                    <label class="form-label fw-bold">Description*</label>
+                    <label class="form-label fw-bold">Description<span class="text-danger"> *</span></label>
                     <textarea class="form-control" name="textAreaDescription" rows="10" required></textarea>
                 </div>
             </div>
@@ -106,16 +106,16 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-2">
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Front Cover*</label>
-                    <input class="form-control" type="file" id="formFile" name="journalCoverFile">
-                    <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
+                    <label class="fw-bold mb-3">Attach Front Cover<span class="text-danger"> *</span></label>
+                    <input class="form-control" type="file" id="formFile" name="journalCoverFile" accept=".png, .jpg, .jpeg" required>
+                    <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>JPG</strong>, <strong>JPEG</strong>, or <strong>PNG</strong> file format.</label>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Journal Copy*</label>
-                    <input class="form-control" type="file" name="journalFile">
-                    <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
+                    <label class="fw-bold mb-3">Attach Journal Copy<span class="text-danger"> *</span></label>
+                    <input class="form-control" type="file" name="journalFile" accept=".pdf" required>
+                    <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
             </div>
         </div>

@@ -31,6 +31,12 @@ $nonrequiredFields = array(
 );
 
 
+if (empty($_POST['textFieldResearchTitle'] && $_POST['textFieldAuthorFirstName'])) {
+    $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
+    header("location: ../pages/navigation/submission-forms.php");
+    exit();
+}
+
 if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldResearchTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaAbstract'], $_POST['textareaKeywords'], $_POST['researchFields'], $_FILES['fileSubmit'])) {
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
@@ -47,15 +53,15 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     $fileActualExt = strtolower(end($fileExt));
     $allowed = array('pdf');
 
-
-
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 5000000) {
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
-                    echo 'there is already a file with the same name uploaded to the database';
+                    // echo 'there is already a file with the same name uploaded to the database';
+                    $_SESSION['duplicateFileName'] = "Duplicate file name!";
+                    header("location: ../pages/navigation/submission-forms.php");
                     $connection->close();
                     exit();
                 } else { //TODO: if first prepared statement fails, should not do 2nd prepared statement
@@ -73,7 +79,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
 
                     $statement->close();
-                    echo 'file upload success!';
+                    // echo 'file upload success!';
 
 
                     //coauthors group table
@@ -83,7 +89,6 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                     $coauthorsInsertedId = $statement->insert_id;
                     $statement->close();
 
-
                     //concatenate all selected values
                     $comma_separated_fields = implode(', ', $_POST['researchFields']);
 
@@ -92,17 +97,26 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                     $statement->execute();
 
                     $statement->close();
-                    echo 'file info table upload success!';
+                    // echo 'file info table upload success!';
                     move_uploaded_file($fileTempLoc, $fileDestination);
+                    $_SESSION['uploadSuccess'] = "Upload success!";
+                    header("location: ../pages/navigation/submission-forms.php");
+                    exit();
                 }
             } else {
-                echo "File size is too large";
+                // echo "File size is too large";
+                $_SESSION['largeFileSize'] = "File size is too large";
+                header("location: ../pages/navigation/submission-forms.php");
+                exit();
             }
         } else {
             echo "There was an error uploading your file";
         }
     } else {
-        echo "You cannot upload files of this type";
+        // echo "You cannot upload files of this type";
+        $_SESSION['invalidThesisFileType'] = "You cannot upload files of this type";
+        header("location: ../pages/navigation/submission-forms.php");
+        exit();
     }
     exit();
 }

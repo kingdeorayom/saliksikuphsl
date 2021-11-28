@@ -12,21 +12,20 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Submission Form</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-        <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-        <link rel="stylesheet" href="../../../styles/custom/pages/submission-forms-style.css" type="text/css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/submission-forms-style.css" type="text/css">
 </head>
+
 
 <body onload="document.getElementById('researchJournalPanel').style.display = 'none'; document.getElementById('infographicsPanel').style.display='none'; document.getElementById('co-author-1-td-panel').style.display = 'none'; document.getElementById('co-author-2-td-panel').style.display = 'none'; document.getElementById('co-author-3-td-panel').style.display = 'none'; document.getElementById('co-author-4-td-panel').style.display = 'none'; document.getElementById('co-author-1-info-panel').style.display = 'none'; document.getElementById('co-author-2-info-panel').style.display = 'none'; document.getElementById('co-author-3-info-panel').style.display = 'none'; document.getElementById('co-author-4-info-panel').style.display = 'none'; document.getElementById('thesisDissertationText').style.borderBottom = 'thick solid #012265';">
 

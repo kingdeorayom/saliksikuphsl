@@ -8,12 +8,59 @@ if (!isset($_SESSION['isLoggedIn'])) {
 ?>
 
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
+    <!--Error messages-->
+    <?php
+    if (isset($_SESSION['largeFileSize'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['largeFileSize']);
+    } else if (isset($_SESSION['invalidThesisFileType'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['invalidThesisFileType']);
+    } else if (isset($_SESSION['invalidJournalFileType'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>File upload failed!</strong> Check to make sure the files are in <strong>PDF</strong> (Journal Copy), <strong>JPG, JPEG, PNG</strong> (Front Cover) format, or that the file to be uploaded is attached.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['invalidJournalFileType']);
+    } else if (isset($_SESSION['duplicateFileName'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['duplicateFileName']);
+    } else if (isset($_SESSION['uploadSuccess'])) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['uploadSuccess']);
+    } else if (isset($_SESSION['emptyInput'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>File upload failed!</strong> One or more of the required fields are empty. Please try again.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['emptyInput']);
+    }
+    ?>
+    <!--Error messages-->
     <h1 class="my-2">Thesis and Dissertation Submission Form</h1>
     <hr>
     <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data">
         <div class="row mt-4">
             <div class="col-lg-4 col-sm-12">
-                <label class="py-2 fw-bold">Resource Type*</label>
+                <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
                     <option value="dissertation">Dissertation</option>
                     <option value="thesis">Thesis</option>
@@ -22,7 +69,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
-                <label class="py-2 fw-bold">Researcher's Category*</label>
+                <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
                     <option value="undergraduate" selected>Undergraduate</option>
                     <option value="postgraduate">Postgraduate</option>
@@ -32,7 +79,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
-                <label class="py-2 fw-bold">Research Unit*</label>
+                <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
                     <option value="Basic Education" selected>Basic Education</option>
                     <option value="Senior High School">Senior High School</option>
@@ -52,13 +99,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row mt-3">
             <div>
-                <label class="fw-bold">Research Title*</label>
+                <label class="fw-bold">Research Title<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldResearchTitle" id="textFieldResearchTitle" required>
                 <p class="text-secondary mt-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"From Letters to Life: Understanding Language Teachers Experiences in Teaching Literature"</span>.</p>
             </div>
         </div>
         <div class="row mb-3">
-            <label class="py-2 fw-bold">Corresponding Author*</label>
+            <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldAuthorFirstName" placeholder="First Name*" required>
             </div>
@@ -74,10 +121,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-6 col-sm-12 d-none d-lg-block">
-                <label class="fw-bold">Publication Date*</label>
+                <label class="fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
         </div>
         <div class="row">
@@ -88,7 +135,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <label class="text-secondary">Consider your active email address</label>
             </div>
             <div class="col-lg-6 col-sm-12 mb-2 d-sm-block d-lg-none">
-                <label class="fw-bold">Publication Date*</label>
+                <label class="fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-6 col-sm-12 mb-3 d-sm-block d-lg-none">
                 <label class="text-secondary">Year is required, Month and Date are optional</label>
@@ -211,7 +258,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor1">
             </div>
         </div>
@@ -230,7 +277,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor2">
             </div>
         </div>
@@ -249,7 +296,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor3">
             </div>
         </div>
@@ -268,26 +315,26 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor4">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Abstract*</label>
+                    <label class="form-label fw-bold">Abstract<span class="text-danger"> *</span></label>
                     <textarea class="form-control" name="textareaAbstract" rows="10" required></textarea>
                 </div>
             </div>
         </div>
         <div class="row mb-4">
             <div>
-                <label class="fw-bold my-2">Keywords*</label>
+                <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" required>
             </div>
         </div>
         <div class="row">
-            <label class="fw-bold my-2">Research Field* <span class="text-secondary fw-light">Tick all that applies</span></label>
+            <label class="fw-bold my-2">Research Field<span class="text-danger"> *</span> <span class="text-secondary fw-light">Tick all that applies</span></label>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
                     <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="researchFields[]">
@@ -337,14 +384,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row my-4">
             <div class="mb-3">
-                <label class="fw-bold mb-3">Attach Research Paper*</label>
-                <input class="form-control" type="file" name="fileSubmit" required>
-                <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
-                <?php
+                <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
+                <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
+                <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+                <!-- <?php
 
-                if (isset($_SESSION['submitError'])) { ?>
+                        if (isset($_SESSION['submitError'])) { ?>
                     <div>Hey</div>
-                <?php } ?>
+                <?php } ?> -->
             </div>
         </div>
         <hr>

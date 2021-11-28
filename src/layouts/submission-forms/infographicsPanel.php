@@ -13,13 +13,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <form action="../../process/infographic-submission.php" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-lg-3">
-                <label class="py-2 fw-bold">Research Unit*</label>
+                <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 d-none d-lg-block">
-                <label class="py-2 fw-bold">Researcher's Category*</label>
+                <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 d-none d-lg-block">
-                <label class="py-2 fw-bold">Publication Date*</label>
+                <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-3 d-sm-block d-lg-none">
-                <label class="py-2 fw-bold">Researcher's Category*</label>
+                <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
@@ -53,7 +53,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-3 d-sm-block d-lg-none">
-                <label class="py-2 fw-bold">Publication Date*</label>
+                <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth">
@@ -139,12 +139,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row my-2">
             <div>
-                <label class="fw-bold">Title/Topic*</label>
+                <label class="fw-bold">Title/Topic<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
             </div>
         </div>
         <div class="row my-2">
-            <label class="py-2 fw-bold">Corresponding Author*</label>
+            <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldAuthorFirstName" placeholder="First Name*" required>
             </div>
@@ -160,13 +160,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmail" required>
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>
         <div class="row my-2">
-            <label class="py-2 fw-bold">Graphics Editor*</label>
+            <label class="py-2 fw-bold">Graphics Editor<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name*" required>
             </div>
@@ -182,7 +182,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldGraphicsEditorEmail" required>
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
@@ -215,7 +215,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor1">
             </div>
         </div>
@@ -234,7 +234,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor2">
             </div>
         </div>
@@ -253,7 +253,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor3">
             </div>
         </div>
@@ -272,23 +272,23 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email*</label>
+                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor4">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Description*</label>
+                    <label class="form-label fw-bold">Description<span class="text-danger"> *</span></label>
                     <textarea class="form-control" name="textareaDescription" rows="10" required></textarea>
                 </div>
             </div>
         </div>
         <div class="row my-4">
             <div class="mb-3">
-                <label class="fw-bold mb-3">Attach Research Paper*</label>
-                <input class="form-control" type="file" name="fileSubmit">
-                <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB</label>
+                <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
+                <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
+                <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
             </div>
         </div>
         <hr>
