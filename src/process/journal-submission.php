@@ -65,8 +65,7 @@ if(isset($_POST['textFieldJournalTitle'],$_POST['textFieldJournalSubTitle'],$_PO
                     $statement ->close();
                     echo 'file upload success!';
 
-                    move_uploaded_file($fileCoverTempLoc,$fileCoverDestination);
-                    move_uploaded_file($fileTempLoc,$fileDestination);
+                    
                     
                     $statement = $connection ->prepare('INSERT INTO journal_information(file_ref_id, journal_title, journal_subtitle, department, volume_number, serial_issue_number, ISSN, journal_description, chief_editor_first_name, chief_editor_middle_initial, chief_editor_last_name, chief_editor_name_ext ,chief_editor_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
                     $statement -> bind_param('isssiisssssss',$insertedId,$_POST['textFieldJournalTitle'],$_POST['textFieldJournalSubTitle'],$_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'], $_POST['textFieldSerialIssueNumber'],$_POST['textFieldISSN'],$_POST['textAreaDescription'],$_POST['textFieldChiefEditorFirstName'],$_POST['textFieldChiefEditorMiddleInitial'],$_POST['textFieldChiefEditorLastName'],$_POST['textFieldChiefEditorNameExtension'],$_POST['textFieldEmail']);
@@ -74,6 +73,8 @@ if(isset($_POST['textFieldJournalTitle'],$_POST['textFieldJournalSubTitle'],$_PO
 
                     $statement ->close();
                     echo 'file upload success!';
+                    move_uploaded_file($fileCoverTempLoc,$fileCoverDestination);
+                    move_uploaded_file($fileTempLoc,$fileDestination);
                 }
 
             }
