@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2021 at 07:32 AM
+-- Generation Time: Nov 28, 2021 at 10:42 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -20,6 +20,44 @@ SET time_zone = "+00:00";
 --
 -- Database: `saliksik_uphsl`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coauthors_information`
+--
+
+CREATE TABLE `coauthors_information` (
+  `group_id` int(11) NOT NULL,
+  `coauthor1_first_name` varchar(255) NOT NULL,
+  `coauthor1_middle_initial` varchar(255) NOT NULL,
+  `coauthor1_surname` varchar(255) NOT NULL,
+  `coauthor1_name_ext` varchar(255) NOT NULL,
+  `coauthor1_email` varchar(255) NOT NULL,
+  `coauthor2_first_name` varchar(255) NOT NULL,
+  `coauthor2_middle_initial` varchar(255) NOT NULL,
+  `coauthor2_surname` varchar(255) NOT NULL,
+  `coauthor2_name_ext` varchar(255) NOT NULL,
+  `coauthor2_email` varchar(255) NOT NULL,
+  `coauthor3_first_name` varchar(255) NOT NULL,
+  `coauthor3_middle_initial` varchar(255) NOT NULL,
+  `coauthor3_surname` varchar(255) NOT NULL,
+  `coauthor3_name_ext` varchar(255) NOT NULL,
+  `coauthor3_email` varchar(255) NOT NULL,
+  `coauthor4_first_name` varchar(255) NOT NULL,
+  `coauthor4_middle_initial` varchar(255) NOT NULL,
+  `coauthor4_surname` varchar(255) NOT NULL,
+  `coauthor4_name_ext` varchar(255) NOT NULL,
+  `coauthor4_email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coauthors_information`
+--
+
+INSERT INTO `coauthors_information` (`group_id`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_name_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_name_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_name_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middle_initial`, `coauthor4_surname`, `coauthor4_name_ext`, `coauthor4_email`) VALUES
+(6, '123', '123', '123', '123', '123', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(7, 'Marc', 'C.', 'Menguito', '2123', 'lloydmenguito@gmail.com', 'Marc', 'C.', 'Menguito', '231', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -41,10 +79,8 @@ CREATE TABLE `file_information` (
 --
 
 INSERT INTO `file_information` (`user_id`, `file_id`, `file_name`, `file_dir`, `file_uploader`, `status`) VALUES
-(89, 12, 'Machine Problem #2M.pdf', '../uploads/theses/619ef1e7e935c6.01070736.pdf', 'Marc Menguito', 'pending'),
-(89, 42, 'Assignment #11 - System Project Development Life Cycle - Menguito.pdf', '../uploads/journals/619f3f392e4444.46357486.pdf', 'Marc Menguito', 'pending'),
-(89, 58, 'JFC COOP MPL 2021.pdf', '../uploads/infographics/61a1b5693c2f19.22613242.pdf', 'Marc Menguito', 'pending'),
-(89, 59, 'Week2-OJT-Weekly-Report (1).pdf', '../uploads/infographics/61a1cce984aea4.15427562.pdf', 'Marc Menguito', 'pending');
+(89, 68, 'Assignment #11 - System Project Development Life Cycle - Menguito.pdf', '../uploads/theses/61a344b61ea902.29102429.pdf', 'Marc Menguito', 'pending'),
+(89, 69, 'JFC COOP MPL 2021.pdf', '../uploads/infographics/61a34cbd3b7a55.65417639.pdf', 'Marc Menguito', 'pending');
 
 -- --------------------------------------------------------
 
@@ -73,35 +109,15 @@ CREATE TABLE `infographic_information` (
   `editor_ext` varchar(255) NOT NULL,
   `editor_email` varchar(255) NOT NULL,
   `coAuthor_count` int(11) NOT NULL,
-  `coauthor1_first_name` varchar(255) NOT NULL,
-  `coauthor1_middle_initial` varchar(255) NOT NULL,
-  `coauthor1_surname` varchar(255) NOT NULL,
-  `coauthor1_ext` varchar(255) NOT NULL,
-  `coauthor1_email` varchar(255) NOT NULL,
-  `coauthor2_first_name` varchar(255) NOT NULL,
-  `coauthor2_middle_initial` varchar(255) NOT NULL,
-  `coauthor2_surname` varchar(255) NOT NULL,
-  `coauthor2_ext` varchar(255) NOT NULL,
-  `coauthor2_email` varchar(255) NOT NULL,
-  `coauthor3_first_name` varchar(255) NOT NULL,
-  `coauthor3_middle_initial` varchar(255) NOT NULL,
-  `coauthor3_surname` varchar(255) NOT NULL,
-  `coauthor3_ext` varchar(255) NOT NULL,
-  `coauthor3_email` varchar(255) NOT NULL,
-  `coauthor4_first_name` varchar(255) NOT NULL,
-  `coauthor4_middle_initial` varchar(255) NOT NULL,
-  `coauthor4_surname` varchar(255) NOT NULL,
-  `coauthor4_ext` varchar(255) NOT NULL,
-  `coauthor4_email` varchar(255) NOT NULL
+  `coauthor_group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `infographic_information`
 --
 
-INSERT INTO `infographic_information` (`file_ref_id`, `infographic_id`, `infographic_research_unit`, `infographic_researcher_category`, `infographic_publication_month`, `infographic_publication_day`, `infographic_publication_year`, `infographic_title`, `infographic_description`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_ext`, `author_email`, `editor_first_name`, `editor_middle_initial`, `editor_surname`, `editor_ext`, `editor_email`, `coAuthor_count`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middle_initial`, `coauthor4_surname`, `coauthor4_ext`, `coauthor4_email`) VALUES
-(58, 1, 'Arts and Sciences', 'faculty', 1, 4, 2020, 'Title', 'q123123', 'Marc', 'C.', 'Menguito', 'ext', 'lloydmenguito@gmail.com', 'Marc2', 'C.2', 'Menguito2', 'ext2', 'lloydmenguito@gmail.com2', 1, 'Marc', 'C.', 'Menguito', '2', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(59, 2, 'Law', 'postgraduate', 1, 1, 2021, 'Title', '123', 'Lorenzo', 'Y', 'Menguito', '123', 'lorenzo.menguito@yahoo.com', 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `infographic_information` (`file_ref_id`, `infographic_id`, `infographic_research_unit`, `infographic_researcher_category`, `infographic_publication_month`, `infographic_publication_day`, `infographic_publication_year`, `infographic_title`, `infographic_description`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_ext`, `author_email`, `editor_first_name`, `editor_middle_initial`, `editor_surname`, `editor_ext`, `editor_email`, `coAuthor_count`, `coauthor_group_id`) VALUES
+(69, 3, 'Arts and Sciences', 'faculty', 1, 1, 2021, '123', '12345', 'Marc', 'C.', 'Menguito', '123', 'lloydmenguito@gmail.com', 'Marc', 'C.', 'Menguito', '321', 'lloydmenguito@gmail.com', 2, 7);
 
 -- --------------------------------------------------------
 
@@ -126,13 +142,6 @@ CREATE TABLE `journal_information` (
   `chief_editor_email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `journal_information`
---
-
-INSERT INTO `journal_information` (`file_ref_id`, `journal_id`, `journal_title`, `journal_subtitle`, `department`, `volume_number`, `serial_issue_number`, `ISSN`, `journal_description`, `chief_editor_first_name`, `chief_editor_middle_initial`, `chief_editor_last_name`, `chief_editor_name_ext`, `chief_editor_email`) VALUES
-(42, 2, 'TitleText', 'SubTitle', 'Arts and Sciences', 16, 37, '56ABC', 'desc1', 'Lorenzo', 'Y', 'Menguito', 'exten', 'lorenzo.menguito@yahoo.com');
-
 -- --------------------------------------------------------
 
 --
@@ -156,34 +165,15 @@ CREATE TABLE `research_information` (
   `author_surname` varchar(255) NOT NULL,
   `author_name_ext` varchar(255) NOT NULL,
   `author_email` varchar(255) NOT NULL,
-  `coauthor1_first_name` varchar(255) NOT NULL,
-  `coauthor1_middle_initial` varchar(255) NOT NULL,
-  `coauthor1_surname` varchar(255) NOT NULL,
-  `coauthor1_name_ext` varchar(255) NOT NULL,
-  `coauthor1_email` varchar(255) NOT NULL,
-  `coauthor2_first_name` varchar(11) NOT NULL,
-  `coauthor2_middle_initial` varchar(255) NOT NULL,
-  `coauthor2_surname` varchar(255) NOT NULL,
-  `coauthor2_name_ext` varchar(255) NOT NULL,
-  `coauthor2_email` varchar(255) NOT NULL,
-  `coauthor3_first_name` varchar(255) NOT NULL,
-  `coauthor3_middle_initial` varchar(255) NOT NULL,
-  `coauthor3_surname` varchar(255) NOT NULL,
-  `coauthor3_name_ext` varchar(255) NOT NULL,
-  `coauthor3_email` varchar(255) NOT NULL,
-  `coauthor4_first_name` varchar(255) NOT NULL,
-  `coauthor4_middile_initial` varchar(255) NOT NULL,
-  `coauthor4_surname` varchar(255) NOT NULL,
-  `coauthor4_name_ext` varchar(255) NOT NULL,
-  `coauthor4_email` varchar(255) NOT NULL
+  `coauthor_group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `research_information`
 --
 
-INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coAuthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_name_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_name_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_name_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middile_initial`, `coauthor4_surname`, `coauthor4_name_ext`, `coauthor4_email`) VALUES
-(12, 10, 'capstone', 'faculty', 'Law', 'Research Title', 'Accountancy and Marketing, Educational Management, IT and Engineering', 6, 16, 2021, 0, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coAuthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
+(68, 11, 'dissertation', 'undergraduate', 'Basic Education', 'Research Title', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 1, 1, 2021, 1, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 6);
 
 -- --------------------------------------------------------
 
@@ -212,6 +202,12 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `department`, `email`
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `coauthors_information`
+--
+ALTER TABLE `coauthors_information`
+  ADD PRIMARY KEY (`group_id`);
 
 --
 -- Indexes for table `file_information`
@@ -248,16 +244,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `coauthors_information`
+--
+ALTER TABLE `coauthors_information`
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `file_information`
 --
 ALTER TABLE `file_information`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `infographic_information`
 --
 ALTER TABLE `infographic_information`
-  MODIFY `infographic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `infographic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `journal_information`
@@ -269,7 +271,7 @@ ALTER TABLE `journal_information`
 -- AUTO_INCREMENT for table `research_information`
 --
 ALTER TABLE `research_information`
-  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
