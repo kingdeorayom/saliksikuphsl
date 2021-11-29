@@ -3,19 +3,14 @@
 session_start();
 
 if (isset($_SESSION['userType'])) {
-    if ($_SESSION['userType'] === "admin") {
-        header("Location: ./profile-admin.php");
+    if ($_SESSION['userType'] !== "admin") {
+        echo '<a href="../../../../index.php">go back</a><br><br>';
+        die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
     }
 } else {
-    echo '<a href="../../../index.php">go back</a><br><br>';
-    die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
+    echo '<a href="../../../../index.php">go back</a><br><br>';
+    die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
 }
-
-include '../../process/connection.php'; // covers profilePanel.php, libraryPanel.php, submissionsPanel.php
-
-if (mysqli_connect_errno()) {
-    exit("Failed to connect to the database: " . mysqli_connect_error());
-};
 
 ?>
 
@@ -35,7 +30,7 @@ if (mysqli_connect_errno()) {
     <link rel="stylesheet" href="../../../styles/custom/pages/profile-style.css" type="text/css">
 </head>
 
-<body onload="document.getElementById('myLibraryPanel').style.display = 'none'; document.getElementById('mySubmissionsPanel').style.display = 'none'; document.getElementById('myProfileText').style.borderBottom='thick solid #012265';">
+<body onload="document.getElementById('accountPreferencePanel').style.display = 'none'; document.getElementById('libraryPanel').style.display = 'none'; document.getElementById('systemLogsPanel').style.display = 'none'; document.getElementById('submissionsText').style.borderBottom='thick solid #012265';">
 
     <!--Header and Navigation section-->
 
@@ -56,9 +51,10 @@ if (mysqli_connect_errno()) {
                 <hr>
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <ul class="onThisPageLinks">
-                        <li class="btn-link" onclick="myProfileClicked()">My Profile</li>
-                        <li class="btn-link" onclick="myLibraryClicked()">My Library</li>
-                        <li class="btn-link" onclick="mySubmissionsClicked()">My Submissions</li>
+                        <li class="btn-link" onclick="submissionsClicked()">Submissions</li>
+                        <li class="btn-link" onclick="accountPreferenceClicked()">Account Preference</li>
+                        <li class="btn-link" onclick="libraryClicked()">Library</li>
+                        <li class="btn-link" onclick="systemLogsClicked()">System Logs</li>
                     </ul>
                 </div>
             </div>
@@ -68,17 +64,20 @@ if (mysqli_connect_errno()) {
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="myProfileClicked()" id="myProfileText">My Profile</p>
+                    <p class="side-menu-text" onclick="submissionsClicked()" id="submissionsText">Submissions</p>
                     <hr>
-                    <p class="side-menu-text" onclick="myLibraryClicked()" id="myLibraryText">My Library</p>
+                    <p class="side-menu-text" onclick="accountPreferenceClicked()" id="accountPreferenceText">Account Preference</p>
                     <hr>
-                    <p class="side-menu-text" onclick="mySubmissionsClicked()" id="mySubmissionsText">My Submissions</p>
+                    <p class="side-menu-text" onclick="libraryClicked()" id="libraryText">Library</p>
+                    <hr>
+                    <p class="side-menu-text" onclick="systemLogsClicked()" id="systemLogsText">System Logs</p>
                     <hr>
                 </div>
 
-                <?php include_once '../../layouts/profile-content-user/profilePanel.php' ?>
-                <?php include_once '../../layouts/profile-content-user/libraryPanel.php' ?>
-                <?php include_once '../../layouts/profile-content-user/submissionsPanel.php' ?>
+                <?php include_once '../../layouts/profile-content-admin/submissionsPanel.php' ?>
+                <?php include_once '../../layouts/profile-content-admin/accountPreferencePanel.php' ?>
+                <?php include_once '../../layouts/profile-content-admin/libraryPanel.php' ?>
+                <?php include_once '../../layouts/profile-content-admin/systemLogsPanel.php' ?>
 
             </div>
         </div>
