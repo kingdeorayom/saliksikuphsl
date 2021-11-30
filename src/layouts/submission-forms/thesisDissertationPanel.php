@@ -386,7 +386,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="mb-3">
                 <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
                 <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
-                <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+                <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 <!-- <?php
 
                         if (isset($_SESSION['submitError'])) { ?>
