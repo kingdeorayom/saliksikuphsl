@@ -13,7 +13,7 @@ $all_required_fields = array(
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
-
+// hindi naman matatawag to? tanggalin nalang
 if (empty($_POST['textFieldJournalTitle'] && $_POST['textFieldChiefEditorFirstName'])) {
     $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
     header("location: ../pages/navigation/submission-forms.php");
@@ -52,9 +52,10 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     // echo 'there is already a file with the same name uploaded to the database';
-                    $_SESSION['duplicateFileName'] = "Duplicate file name!";
-                    header("location: ../pages/navigation/submission-forms.php");
                     $connection->close();
+                    $arr = array('response'=>"duplicate_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
                     exit();
                 } else {
                     $filenameUnique = uniqid('', true);
@@ -84,23 +85,28 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                     // echo 'file upload success!';
                     move_uploaded_file($fileCoverTempLoc, $fileCoverDestination);
                     move_uploaded_file($fileTempLoc, $fileDestination);
-                    $_SESSION['uploadSuccess'] = "Upload success!";
-                    header("location: ../pages/navigation/submission-forms.php");
-                    // header('Location: file-upload-success.php');
+
+                    $arr = array('response'=>"success");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
                     exit();
                 }
             } else {
-                // echo 'file size must not exceed 5000000';
-                $_SESSION['largeFileSize'] = "File size is too large";
-                header("location: ../pages/navigation/submission-forms.php");
-                exit();
+                // echo "File size is too large";
+                $arr = array('response'=>"size_error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
         } else {
-            echo 'fileError';
+            // echo "There was an error uploading your file";
+            $arr = array('response'=>"generic_error");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
         }
     } else {
-        $_SESSION['invalidJournalFileType'] = "You cannot upload files of this type";
-        header("location: ../pages/navigation/submission-forms.php");
-        exit();
+        // echo "You cannot upload files of this type";
+        $arr = array('response'=>"type_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
     }
 }

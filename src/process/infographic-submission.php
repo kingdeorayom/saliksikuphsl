@@ -53,9 +53,10 @@ if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'],
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     // echo 'there is already a file with the same name uploaded to the database';
-                    $_SESSION['duplicateFileName'] = "Duplicate file name!";
-                    header("location: ../pages/navigation/submission-forms.php");
                     $connection->close();
+                    $arr = array('response'=>"duplicate_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
                     exit();
                 } else {
 
@@ -87,23 +88,28 @@ if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'],
                     $statement->close();
 
                     move_uploaded_file($fileTempLoc, $fileDestination);
-                    $_SESSION['uploadSuccess'] = "Upload success!";
-                    header("location: ../pages/navigation/submission-forms.php");
-                    exit();
+
+                    $arr = array('response'=>"success");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
                 }
             } else {
                 // echo "File size is too large";
-                $_SESSION['largeFileSize'] = "File size is too large";
-                header("location: ../pages/navigation/submission-forms.php");
-                exit();
+                $arr = array('response'=>"size_error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
         } else {
-            echo "There was an error uploading your file";
+            // echo "There was an error uploading your file";
+            $arr = array('response'=>"generic_error");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
         }
     } else {
         // echo "You cannot upload files of this type";
-        $_SESSION['invalidThesisFileType'] = "You cannot upload files of this type";
-        header("location: ../pages/navigation/submission-forms.php");
-        exit();
+        $arr = array('response'=>"type_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
     }
+    exit();
 }

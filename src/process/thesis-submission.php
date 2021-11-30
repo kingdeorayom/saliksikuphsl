@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 
 include 'connection.php';
@@ -8,36 +8,26 @@ if (mysqli_connect_errno()) {
 };
 
 //for debugging only, should be removed
-$allRequiredFields = array(
-    $_POST['dropdownResourceType'],
-    $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],
-    $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'],
-    $_POST['dropdownPublicationYear'], $_POST['textFieldResearchTitle'],
-    $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],
-    $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['dropdownCoAuthors'],
-    $_POST['textareaAbstract'], $_POST['textareaKeywords'],
-    $_POST['researchFields'], $_FILES['fileSubmit']
-);
+$allRequiredFields = array($_POST['dropdownResourceType'],
+ $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],
+  $_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],
+  $_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],
+   $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],
+    $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],
+      $_POST['textareaAbstract'], $_POST['textareaKeywords'],
+       $_POST['researchFields'], $_FILES['fileSubmit']);
 
-$nonrequiredFields = array(
-    $_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'],
-    $_POST['textFieldLastNameCoAuthor1'], $_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'],
-    $_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'],
-    $_POST['textFieldLastNameCoAuthor2'], $_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'],
-    $_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'],
-    $_POST['textFieldLastNameCoAuthor3'], $_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'],
-    $_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],
-    $_POST['textFieldLastNameCoAuthor4'], $_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4'],
-);
+$nonrequiredFields = array($_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'],
+$_POST['textFieldLastNameCoAuthor1'],$_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'],
+$_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'],
+$_POST['textFieldLastNameCoAuthor2'],$_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'],
+$_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'],
+$_POST['textFieldLastNameCoAuthor3'],$_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'],
+$_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],
+$_POST['textFieldLastNameCoAuthor4'],$_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4'],);
 
 
-if (empty($_POST['textFieldResearchTitle'] && $_POST['textFieldAuthorFirstName'])) {
-    $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
-    header("location: ../pages/navigation/submission-forms.php");
-    exit();
-}
-
-if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldResearchTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaAbstract'], $_POST['textareaKeywords'], $_POST['researchFields'], $_FILES['fileSubmit'])) {
+if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],$_POST['textareaAbstract'], $_POST['textareaKeywords'],$_POST['researchFields'], $_FILES['fileSubmit'])){
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
 
@@ -49,74 +39,89 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     $fileError = $file['error'];
 
     //extension
-    $fileExt = explode('.', $fileName);
+    $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
     $allowed = array('pdf');
 
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileError === 0) {
-            if ($fileSize < 5000000) {
+    
+
+    if(in_array($fileActualExt,$allowed)){
+        if($fileError === 0){
+            if($fileSize < 5000000){
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
-                $result = mysqli_query($connection, $sql);
-                if (mysqli_num_rows($result) > 0) {
+                $result = mysqli_query($connection,$sql);
+                if (mysqli_num_rows($result)>0){
                     // echo 'there is already a file with the same name uploaded to the database';
-                    $_SESSION['duplicateFileName'] = "Duplicate file name!";
-                    header("location: ../pages/navigation/submission-forms.php");
                     $connection->close();
+                    $arr = array('response'=>"duplicate_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
                     exit();
-                } else { //TODO: if first prepared statement fails, should not do 2nd prepared statement
-
-
-                    $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                    $fileDestination = '../uploads/theses/' . $fileNameNew;
-
+                }
+                else{ //TODO: if first prepared statement fails, should not do 2nd prepared statement
+                    $fileNameNew = uniqid('',true).".".$fileActualExt;
+                    $fileDestination = '../uploads/theses/'.$fileNameNew;
+                    
                     $fileStatus = "pending";
 
-                    $statement = $connection->prepare('INSERT INTO file_information(user_id, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?)');
-                    $statement->bind_param('issss', $userId, $fileName, $fileDestination, $userName, $fileStatus);
-                    $statement->execute();
-                    $insertedId = $statement->insert_id;
+                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?)');
+                    $statement -> bind_param('issss',$userId,$fileName,$fileDestination,$userName,$fileStatus);
+                    $statement -> execute();
+                    $insertedId = $statement ->insert_id;
+                    
 
-
-                    $statement->close();
+                    $statement ->close();
                     // echo 'file upload success!';
-
+                    
 
                     //coauthors group table
                     $statement = $connection->prepare("INSERT INTO coauthors_information(coauthor1_first_name,coauthor1_middle_initial,coauthor1_surname,coauthor1_name_ext,coauthor1_email,coauthor2_first_name,coauthor2_middle_initial,coauthor2_surname,coauthor2_name_ext,coauthor2_email,coauthor3_first_name,coauthor3_middle_initial,coauthor3_surname,coauthor3_name_ext,coauthor3_email,coauthor4_first_name,coauthor4_middle_initial,coauthor4_surname,coauthor4_name_ext,coauthor4_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $statement->bind_param('ssssssssssssssssssss', $_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'], $_POST['textFieldLastNameCoAuthor1'], $_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'], $_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'], $_POST['textFieldLastNameCoAuthor2'], $_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'], $_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'], $_POST['textFieldLastNameCoAuthor3'], $_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'], $_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'], $_POST['textFieldLastNameCoAuthor4'], $_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4']);
-                    $statement->execute();
-                    $coauthorsInsertedId = $statement->insert_id;
-                    $statement->close();
+                    $statement -> bind_param('ssssssssssssssssssss',$_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'],$_POST['textFieldLastNameCoAuthor1'],$_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'],$_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'],$_POST['textFieldLastNameCoAuthor2'],$_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'],$_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'],$_POST['textFieldLastNameCoAuthor3'],$_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'],$_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],$_POST['textFieldLastNameCoAuthor4'],$_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4']);
+                    $statement -> execute();
+                    $coauthorsInsertedId = $statement ->insert_id;
+                    $statement ->close();
+
 
                     //concatenate all selected values
-                    $comma_separated_fields = implode(', ', $_POST['researchFields']);
+                    $comma_separated_fields = implode(', ',$_POST['researchFields']);
 
-                    $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_abstract,research_fields,publication_month,publication_day,publication_year,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email,coauthors_count,coauthor_group_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $statement->bind_param('issssssiiiisssssi', $insertedId, $_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $_POST['textFieldResearchTitle'], $_POST['textareaAbstract'], $comma_separated_fields, $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['dropdownCoAuthors'], $coauthorsInsertedId);
-                    $statement->execute();
+                    $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_fields,publication_month,publication_day,publication_year,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email,coauthors_count,coauthor_group_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    $statement -> bind_param('isssssiiiisssssi',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$comma_separated_fields,$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],$coauthorsInsertedId);
+                    $statement -> execute();
 
-                    $statement->close();
-                    // echo 'file info table upload success!';
+                    $statement ->close();
+
                     move_uploaded_file($fileTempLoc, $fileDestination);
-                    $_SESSION['uploadSuccess'] = "Upload success!";
-                    header("location: ../pages/navigation/submission-forms.php");
-                    exit();
+
+                    $arr = array('response'=>"success");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
                 }
-            } else {
-                // echo "File size is too large";
-                $_SESSION['largeFileSize'] = "File size is too large";
-                header("location: ../pages/navigation/submission-forms.php");
-                exit();
             }
-        } else {
-            echo "There was an error uploading your file";
+            else{
+                // echo "File size is too large";
+                $arr = array('response'=>"size_error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
+                
+            }
         }
-    } else {
+        else{
+            // echo "There was an error uploading your file";
+            $arr = array('response'=>"generic_error");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
+        }
+    }   
+    else{
         // echo "You cannot upload files of this type";
-        $_SESSION['invalidThesisFileType'] = "You cannot upload files of this type";
-        header("location: ../pages/navigation/submission-forms.php");
-        exit();
+        $arr = array('response'=>"type_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
     }
     exit();
+
 }
+
+?>
+
