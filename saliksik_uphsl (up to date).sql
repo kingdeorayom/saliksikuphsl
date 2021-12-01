@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2021 at 02:11 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Dec 01, 2021 at 05:26 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,8 +56,8 @@ CREATE TABLE `coauthors_information` (
 --
 
 INSERT INTO `coauthors_information` (`group_id`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_name_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_name_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_name_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middle_initial`, `coauthor4_surname`, `coauthor4_name_ext`, `coauthor4_email`) VALUES
-(6, '123', '123', '123', '123', '123', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(7, 'Marc', 'C.', 'Menguito', '2123', 'lloydmenguito@gmail.com', 'Marc', 'C.', 'Menguito', '231', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '');
+(42, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(43, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -79,9 +79,8 @@ CREATE TABLE `file_information` (
 --
 
 INSERT INTO `file_information` (`user_id`, `file_id`, `file_name`, `file_dir`, `file_uploader`, `status`) VALUES
-(89, 68, 'Assignment #11 - System Project Development Life Cycle - Menguito.pdf', '../uploads/theses/61a344b61ea902.29102429.pdf', 'Marc Menguito', 'pending'),
-(89, 69, 'JFC COOP MPL 2021.pdf', '../uploads/infographics/61a34cbd3b7a55.65417639.pdf', 'Marc Menguito', 'pending'),
-(87, 70, 'DEFENSE-PPT.pdf', '../uploads/theses/61a37f02e78954.82895197.pdf', 'Serking De Orayom', 'pending');
+(89, 124, 'Increase Decrease 2019.pdf', '../uploads/theses/61a6f42412d5a6.17224454.pdf', 'Marc Menguito', 'pending'),
+(89, 125, 'vaccination_certificate.pdf', '../uploads/theses/61a6f476717ec8.27609926.pdf', 'Marc Menguito', 'pending');
 
 -- --------------------------------------------------------
 
@@ -113,15 +112,6 @@ CREATE TABLE `infographic_information` (
   `coauthor_group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `infographic_information`
---
-
-INSERT INTO `infographic_information` (`file_ref_id`, `infographic_id`, `infographic_research_unit`, `infographic_researcher_category`, `infographic_publication_month`, `infographic_publication_day`, `infographic_publication_year`, `infographic_title`, `infographic_description`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_ext`, `author_email`, `editor_first_name`, `editor_middle_initial`, `editor_surname`, `editor_ext`, `editor_email`, `coauthors_count`, `coauthor_group_id`) VALUES
-(69, 3, 'Arts and Sciences', 'faculty', 1, 1, 2021, '123', '12345', 'Marc', 'C.', 'Menguito', '123', 'lloydmenguito@gmail.com', 'Marc', 'C.', 'Menguito', '321', 'lloydmenguito@gmail.com', 2, 7),
-(73, 4, 'Basic Education', 'undergraduate', 1, 1, 2021, 'dsfdsf', 'jh', 'sdf', 'sdfsd', 'fsdf', 'sdfsdf', 'sdfdsfsd', 'sdfsdf', 'sdfsd', 'fsdf', 'dsfdsf', 'sdfdsfsdf', 4, 9),
-(83, 5, 'Basic Education', 'undergraduate', 1, 1, 2021, 'asdsads', 'asdsad', 'sdadsad', 'sadsa', 'dasd', 'asdasd', 'asdsad', 'dsadsad', 'asd', 'sadsad', 'sadsad', 'sadsadsad', 0, 16);
-
 -- --------------------------------------------------------
 
 --
@@ -145,13 +135,6 @@ CREATE TABLE `journal_information` (
   `chief_editor_email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `journal_information`
---
-
-INSERT INTO `journal_information` (`file_ref_id`, `journal_id`, `journal_title`, `journal_subtitle`, `department`, `volume_number`, `serial_issue_number`, `ISSN`, `journal_description`, `chief_editor_first_name`, `chief_editor_middle_initial`, `chief_editor_last_name`, `chief_editor_name_ext`, `chief_editor_email`) VALUES
-(75, 3, 'title', 'sub', 'Business and Accountancy', 2323, 2323, '2323', 'aaaa', 'aaa', 'aaa', 'aaa', 'aaa', 'aaa');
-
 -- --------------------------------------------------------
 
 --
@@ -165,8 +148,9 @@ CREATE TABLE `research_information` (
   `researchers_category` varchar(255) NOT NULL,
   `research_unit` varchar(255) NOT NULL,
   `research_title` varchar(255) NOT NULL,
-  `research_abstract` text NOT NULL,
+  `research_abstract` varchar(255) NOT NULL,
   `research_fields` varchar(255) NOT NULL,
+  `keywords` varchar(255) NOT NULL,
   `publication_month` int(11) NOT NULL,
   `publication_day` int(11) NOT NULL,
   `publication_year` int(11) NOT NULL,
@@ -183,10 +167,9 @@ CREATE TABLE `research_information` (
 -- Dumping data for table `research_information`
 --
 
-INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_abstract`, `research_fields`, `publication_month`, `publication_day`, `publication_year`, `coauthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
-(68, 11, 'dissertation', 'undergraduate', 'Basic Education', 'Research Title', '', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 1, 1, 2021, 1, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 6),
-(72, 12, 'dissertation', 'undergraduate', 'Basic Education', 'sadsad', 'HG', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 1, 1, 2021, 4, '0', 'sad', 'sadsad', 'sadsadsa', 'dsadsadsd', 8),
-(74, 13, 'dissertation', 'undergraduate', 'Basic Education', 'Title', 'abstract sample lorem ipsum', 'Educational Management, IT and Engineering', 1, 1, 2021, 0, '0', 'A', 'S', 'Jr', 'king@gmail.com', 10);
+INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_abstract`, `research_fields`, `keywords`, `publication_month`, `publication_day`, `publication_year`, `coauthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
+(124, 40, 'capstone', 'undergraduate', 'Basic Education', 'Research Title', 'abscra', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 'key, key21, key234', 1, 1, 2021, 0, '0', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 42),
+(125, 41, 'capstone', 'undergraduate', 'Basic Education', 'Research Title', 'abscra', 'Accountancy and Marketing, Educational Management, IT and Engineering, Tourism and Hospitality', 'key, key21, key234', 1, 1, 2021, 0, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 43);
 
 -- --------------------------------------------------------
 
@@ -226,25 +209,30 @@ ALTER TABLE `coauthors_information`
 -- Indexes for table `file_information`
 --
 ALTER TABLE `file_information`
-  ADD PRIMARY KEY (`file_id`);
+  ADD PRIMARY KEY (`file_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `infographic_information`
 --
 ALTER TABLE `infographic_information`
-  ADD PRIMARY KEY (`infographic_id`);
+  ADD PRIMARY KEY (`infographic_id`),
+  ADD KEY `file_ref_id` (`file_ref_id`);
 
 --
 -- Indexes for table `journal_information`
 --
 ALTER TABLE `journal_information`
-  ADD PRIMARY KEY (`journal_id`);
+  ADD PRIMARY KEY (`journal_id`),
+  ADD KEY `file_ref_id` (`file_ref_id`);
 
 --
 -- Indexes for table `research_information`
 --
 ALTER TABLE `research_information`
-  ADD PRIMARY KEY (`research_id`);
+  ADD PRIMARY KEY (`research_id`),
+  ADD KEY `coauthors_count` (`coauthors_count`),
+  ADD KEY `file_ref_id` (`file_ref_id`) USING BTREE;
 
 --
 -- Indexes for table `users`
@@ -260,37 +248,65 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `coauthors_information`
 --
 ALTER TABLE `coauthors_information`
-  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `file_information`
 --
 ALTER TABLE `file_information`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `infographic_information`
 --
 ALTER TABLE `infographic_information`
-  MODIFY `infographic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `infographic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `journal_information`
 --
 ALTER TABLE `journal_information`
-  MODIFY `journal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `journal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `research_information`
 --
 ALTER TABLE `research_information`
-  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `file_information`
+--
+ALTER TABLE `file_information`
+  ADD CONSTRAINT `file_information_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `infographic_information`
+--
+ALTER TABLE `infographic_information`
+  ADD CONSTRAINT `infographic_information_ibfk_1` FOREIGN KEY (`file_ref_id`) REFERENCES `file_information` (`file_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `journal_information`
+--
+ALTER TABLE `journal_information`
+  ADD CONSTRAINT `journal_information_ibfk_1` FOREIGN KEY (`file_ref_id`) REFERENCES `file_information` (`file_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `research_information`
+--
+ALTER TABLE `research_information`
+  ADD CONSTRAINT `research_information_ibfk_1` FOREIGN KEY (`file_ref_id`) REFERENCES `file_information` (`file_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,23 +8,23 @@ if (mysqli_connect_errno()) {
 };
 
 //for debugging only, should be removed
-$allRequiredFields = array($_POST['dropdownResourceType'],
- $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],
-  $_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],
-  $_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],
-   $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],
-    $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],
-      $_POST['textareaAbstract'], $_POST['textareaKeywords'],
-       $_POST['researchFields'], $_FILES['fileSubmit']);
+// $allRequiredFields = array($_POST['dropdownResourceType'],
+//  $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],
+//   $_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],
+//   $_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],
+//    $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],
+//     $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],
+//       $_POST['textareaAbstract'], $_POST['textareaKeywords'],
+//        $_POST['researchFields'], $_FILES['fileSubmit']);
 
-$nonrequiredFields = array($_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'],
-$_POST['textFieldLastNameCoAuthor1'],$_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'],
-$_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'],
-$_POST['textFieldLastNameCoAuthor2'],$_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'],
-$_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'],
-$_POST['textFieldLastNameCoAuthor3'],$_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'],
-$_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],
-$_POST['textFieldLastNameCoAuthor4'],$_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4'],);
+// $nonrequiredFields = array($_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'],
+// $_POST['textFieldLastNameCoAuthor1'],$_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'],
+// $_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'],
+// $_POST['textFieldLastNameCoAuthor2'],$_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'],
+// $_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'],
+// $_POST['textFieldLastNameCoAuthor3'],$_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'],
+// $_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],
+// $_POST['textFieldLastNameCoAuthor4'],$_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4'],);
 
 
 if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],$_POST['textareaAbstract'], $_POST['textareaKeywords'],$_POST['researchFields'], $_FILES['fileSubmit'])){
@@ -84,9 +84,9 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
 
                     //concatenate all selected values
                     $comma_separated_fields = implode(', ',$_POST['researchFields']);
-
-                    $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_abstract,research_fields,publication_month,publication_day,publication_year,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email,coauthors_count,coauthor_group_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $statement -> bind_param('issssssiiiisssssi',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],$coauthorsInsertedId);
+                    
+                    $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_abstract,research_fields,keywords,publication_month,publication_day,publication_year,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email,coauthor_group_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    $statement -> bind_param('isssssssiiiisssssi',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$coauthorsInsertedId);
                     $statement -> execute();
 
                     $statement ->close();
