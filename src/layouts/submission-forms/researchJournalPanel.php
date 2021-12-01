@@ -113,14 +113,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="mb-3">
                     <label class="fw-bold mb-3">Attach Front Cover<span class="text-danger"> *</span></label>
                     <input class="form-control" type="file" id="formFile" name="journalCoverFile" accept=".png, .jpg, .jpeg" required>
-                    <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>JPG</strong>, <strong>JPEG</strong>, or <strong>PNG</strong> file format.</label>
+                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>JPG</strong>, <strong>JPEG</strong>, or <strong>PNG</strong> file format.</label>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-3">
                     <label class="fw-bold mb-3">Attach Journal Copy<span class="text-danger"> *</span></label>
                     <input class="form-control" type="file" name="journalFile" accept=".pdf" required>
-                    <label class="mt-3 text-secondary">Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
             </div>
         </div>

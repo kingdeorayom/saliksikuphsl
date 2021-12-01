@@ -209,6 +209,56 @@
         document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
         document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
     }
+
+    //////////////////////////////////////////////////////////////////////////////
+
+    function submissionsClicked() {
+        document.getElementById("submissionsPanel").style.display = "block";
+        document.getElementById("libraryPanel").style.display = "none";
+        document.getElementById("systemLogsPanel").style.display = "none";
+        document.getElementById("accountPreferencePanel").style.display = "none";
+
+        document.getElementById("submissionsText").style.borderBottom = "thick solid #012265";
+        document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+        document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+        document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+    }
+
+    function accountPreferenceClicked() {
+        document.getElementById("submissionsPanel").style.display = "none";
+        document.getElementById("libraryPanel").style.display = "none";
+        document.getElementById("systemLogsPanel").style.display = "none";
+        document.getElementById("accountPreferencePanel").style.display = "block";
+
+        document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+        document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+        document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+        document.getElementById("accountPreferenceText").style.borderBottom = "thick solid #012265";
+    }
+
+    function libraryClicked() {
+        document.getElementById("submissionsPanel").style.display = "none";
+        document.getElementById("libraryPanel").style.display = "block";
+        document.getElementById("systemLogsPanel").style.display = "none";
+        document.getElementById("accountPreferencePanel").style.display = "none";
+
+        document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+        document.getElementById("libraryText").style.borderBottom = "thick solid #012265";
+        document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+        document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+    }
+
+    function systemLogsClicked() {
+        document.getElementById("submissionsPanel").style.display = "none";
+        document.getElementById("libraryPanel").style.display = "none";
+        document.getElementById("systemLogsPanel").style.display = "block";
+        document.getElementById("accountPreferencePanel").style.display = "none";
+
+        document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+        document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+        document.getElementById("systemLogsText").style.borderBottom = "thick solid #012265";
+        document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+    }
 </script>
 
 <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
