@@ -62,7 +62,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth">
+                <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth" id="info-month-picker" onchange="changeInputInfo()">
                     <!-- <option value="" selected>Month</option> -->
                     <option value=1 selected>January</option>
                     <option value=2>February</option>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <select class="form-select" aria-label="Default select example" name="dropdownPublicationDay">
+                <select class="form-select" aria-label="Default select example" name="dropdownPublicationDay" id="info-day-picker">
                     <!-- <option value="" selected>Day</option> -->
                     <option value="1" selected>1</option>
                     <option value="2">2</option>
@@ -115,7 +115,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" required>
+                <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" id="info-year-picker" onchange="changeInputInfo()" required>
                     <!-- <option value="" selected>Year</option> -->
                     <option value="2022">2022</option>
                     <option value="2021" selected>2021</option>
@@ -311,6 +311,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </form>
 </div>
+<script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
 <script>
     var alertContainerInfographic = document.getElementById("alert-container-infographic")
     function submitFormInfographic(event){

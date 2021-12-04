@@ -12,11 +12,15 @@ if (mysqli_connect_errno()) {
 if (!isset($_POST['textFieldEmail'], $_POST['textFieldPassword'])) {
     header("location: ../../index.php");
     exit();
+    
 }
 
 if (empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
-    $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
-    header("location: ../../index.php");
+    // $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
+    // header("location: ../../index.php");
+    $arr = array('response'=>"empty_fields");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
     exit();
 } else if (!empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
     if ($statement = $connection->prepare('SELECT user_id, first_name, last_name, department, password, user_type FROM users WHERE email = ?')) {
@@ -41,14 +45,23 @@ if (empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
                 $_SESSION['fullName'] = $firstName . ' ' . $lastName; //
                 $_SESSION['userid'] = $userid; //
 
-                header("Location: ../pages/navigation/home.php");
+                // header("Location: ../pages/navigation/home.php");
+                $arr = array('response'=>"login_success");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             } else {
-                $_SESSION['incorrectUsernamePassword'] = "Incorrect username or password.";
-                header("location: ../../index.php");
+                // $_SESSION['incorrectUsernamePassword'] = "Incorrect username or password.";
+                // header("location: ../../index.php");
+                $arr = array('response'=>"incorrect_credentials");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
         } else {
-            $_SESSION['incorrectUsernamePassword'] = "Incorrect username or password.";
-            header("location: ../../index.php");
+            // $_SESSION['incorrectUsernamePassword'] = "Incorrect username or password.";
+            // header("location: ../../index.php");
+            $arr = array('response'=>"incorrect_credentials");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
         }
     }
 }

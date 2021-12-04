@@ -101,8 +101,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-6 col-sm-12 mb-3 d-sm-block d-lg-none">
                 <label class="text-secondary">Year is required, Month and Date are optional</label>
             </div>
-            <div class="col-lg-2 col-sm-12 mb-3">
-                <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth">
+            <div class="col-lg-2 col-sm-12 mb-3" id="date-picker-container">
+                <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth" id="month-picker" onchange="changeInput()">
                     <!-- <option value="" selected>Month</option> -->
                     <option value=1 selected>January</option>
                     <option value=2>February</option>
@@ -119,7 +119,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12 mb-3">
-                <select class="form-select" aria-label="Default select example" name="dropdownPublicationDay">
+                <select class="form-select" aria-label="Default select example" name="dropdownPublicationDay"id="day-picker">
                     <!-- <option value="" selected>Day</option> -->
                     <option value="1" selected>1</option>
                     <option value="2">2</option>
@@ -155,7 +155,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12">
-                <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" required>
+                <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" id="year-picker" onchange="changeInput()"required>
                     <!-- <option value="" selected>Year</option> -->
                     <option value="2022">2022</option>
                     <option value="2021" selected>2021</option>
@@ -372,6 +372,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </form>
 
 </div>
+<script src ="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
 <script>
     var alertContainerThesis = document.getElementById("alert-container")
     function submitForm(event){
