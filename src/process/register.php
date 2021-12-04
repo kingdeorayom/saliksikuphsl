@@ -63,7 +63,10 @@ if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
             $_SESSION['password'] = $_POST['textFieldPassword'];
             $_SESSION['toVerify'] = true;
 
-            header("location: ../pages/login/account-verification.php");
+            // header("location: ../pages/login/account-verification.php");
+            $arr = array('response'=>"success");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
             exit();
         }
         $statement->close();

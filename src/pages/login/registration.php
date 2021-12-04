@@ -109,6 +109,12 @@ function checkResponseRegister(data){
     if(data.response==="email_exists"){
         alertRegister.innerHTML=`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>An account with this email already exists.</strong> Try another one.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
     }
+    if(data.response==="invalid_email"){
+        alertRegister.innerHTML=`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please enter a valid e-mail.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+    }
+    if(data.response==="success"){
+        window.location="account-verification.php";
+    }
 }
 </script>
 </body>
