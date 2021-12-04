@@ -54,3 +54,29 @@
 .side-menu-text:hover {
   cursor: pointer;
 }
+
+/*---------------------------------------------------submissions---------------------------------------------------*/
+
+.adminPageCountColumn {
+  font-family: "Roboto", sans-serif;
+  background-color: #0e408e;
+  cursor: pointer;
+}
+
+.search-button {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 24, 72, 1) -54%,
+    rgba(1, 34, 101, 1) 100%
+  );
+}
+
+.search-option-buttons {
+  color: black !important;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.search-option-buttons:hover {
+  text-decoration: underline;
+}

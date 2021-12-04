@@ -14,21 +14,30 @@ if (!isset($_POST['textFieldFirstName'], $_POST['textFieldLastName'], $_POST['dr
 }
 
 if (empty($_POST['textFieldFirstName'] && $_POST['textFieldLastName'] && $_POST['textFieldEmail'] && $_POST['textFieldPassword'] && $_POST['textFieldConfirmPassword'])) {
-    $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
-    header("location: ../pages/login/registration.php");
+    // $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
+    // header("location: ../pages/login/registration.php");
+    $arr = array('response'=>"empty_fields");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
     exit();
 } else if (!empty($_POST['textFieldFirstName'] && $_POST['textFieldLastName'] && $_POST['textFieldEmail'] && $_POST['textFieldPassword'] && $_POST['textFieldConfirmPassword'])) {
     if ($_POST['textFieldPassword'] !== $_POST['textFieldConfirmPassword']) {
-        $_SESSION['mismatchedPassword'] = "Password and confirm password does not match.";
-        header("location: ../pages/login/registration.php");
+        // $_SESSION['mismatchedPassword'] = "Password and confirm password does not match.";
+        // header("location: ../pages/login/registration.php");
+        $arr = array('response'=>"passwords_mismatch");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
         exit();
     }
 }
 
 
 if (!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL)) {
-    $_SESSION['invalidEmail'] = "Invalid email.";
-    header("location: ../pages/login/registration.php");
+    // $_SESSION['invalidEmail'] = "Invalid email.";
+    // header("location: ../pages/login/registration.php");
+    $arr = array('response'=>"invalid_email");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
     exit();
 }
 
@@ -41,8 +50,11 @@ if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
         $statement->store_result();
 
         if ($statement->num_rows > 0) {
-            $_SESSION['emailExists'] = "Duplicate email.";
-            header("location: ../pages/login/registration.php");
+            // $_SESSION['emailExists'] = "Duplicate email.";
+            // header("location: ../pages/login/registration.php");
+            $arr = array('response'=>"email_exists");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
         } else {
             $_SESSION['firstname'] = $_POST['textFieldFirstName'];
             $_SESSION['lastname'] = $_POST['textFieldLastName'];
@@ -51,7 +63,10 @@ if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
             $_SESSION['password'] = $_POST['textFieldPassword'];
             $_SESSION['toVerify'] = true;
 
-            header("location: ../pages/login/account-verification.php");
+            // header("location: ../pages/login/account-verification.php");
+            $arr = array('response'=>"success");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
             exit();
         }
         $statement->close();
@@ -60,8 +75,9 @@ if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
     }
 } else {
     $_SESSION['notSchoolEmail'] = "Not school email.";
-    header("location: ../pages/login/registration.php");
-    exit();
+    $arr = array('response'=>"not_school_email");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
 }
 
 $connection->close();

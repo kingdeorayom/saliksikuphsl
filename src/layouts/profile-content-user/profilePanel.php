@@ -15,7 +15,6 @@ $connection->close();
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="myProfilePanel">
     <h1 class="my-2">About you</h1>
     <hr class="my-4">
-
     <div class="row">
         <form action="../../process/update-user-profile.php" method="POST">
             <div class="row">
@@ -65,8 +64,15 @@ $connection->close();
                     ?>
                 </div>
             </div>
-            <h1 class="my-4">Account Parameters</h1>
-            <hr class="my-4">
+            <div class="row my-3">
+                <div class="text-end">
+                    <input type="submit" class="btn btn-primary button-update rounded-0" value="Update information" id="buttonUpdate">
+                </div>
+            </div>
+        </form>
+        <h1 class="my-1">Account Parameters</h1>
+        <hr class="my-4">
+        <form action="../../process/update-user-profile.php" method="POST">
             <div class="row">
                 <div>
                     <label class="fw-bold mb-2">Current Password</label>
@@ -77,14 +83,13 @@ $connection->close();
                 <div>
                     <label class="fw-bold mb-2">New Password</label>
                     <input type="text" class="form-control" id="textFieldNewPassword" required>
-                    <p class="text-secondary mt-2">Please note: if you change your password, you will have to log in again using the new password.
-                    </p>
+                    <p class="text-secondary my-3"><span class="fw-bold text-danger">IMPORTANT:</span> If you change your password, you will have to log in again using the new password.</p>
                 </div>
             </div>
             <hr class="my-2">
             <div class="row my-3">
-                <div class="text-start">
-                    <input type="submit" class="btn fw-bold btn-primary button-update rounded-0" value="Update" id="buttonUpdate">
+                <div class="text-end">
+                    <input type="submit" class="btn btn-primary button-update rounded-0" value="Change password" id="buttonUpdate">
                 </div>
             </div>
         </form>
