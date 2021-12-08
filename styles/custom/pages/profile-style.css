@@ -80,3 +80,13 @@
 .search-option-buttons:hover {
   text-decoration: underline;
 }
+
+.editReviseButton {
+  color: black;
+  text-decoration: none;
+}
+
+.editReviseButton:hover {
+  text-decoration: underline;
+  color: black;
+}

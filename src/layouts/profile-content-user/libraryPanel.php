@@ -26,7 +26,55 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </select>
         </div>
     </div>
-    <div class="row">
+    <div class="library my-3">
+
+        <div class="libraryItem p-3">
+            <div class="row">
+                <div class="col">
+                    <div class="text-start">
+                        <p class="fw-bold" style="color: #012265;">Thesis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4 class="fw-bold mb-3">Challenges Encountered, Engagement and Strategies in Building Community Relations Among Educational Leaders in Philippine Public Schools</h4>
+                    <p class="fw-bold">Jallorina, A., Galicia, L.</p>
+                    <p class="fw-bold">2019</p>
+                </div>
+            </div>
+            <div class="row">
+                <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 –2019.</p>
+            </div>
+            <div class="row">
+                <p><i class="fas fa-trash-alt"></i> Delete</p>
+            </div>
+            <hr class="my-2">
+        </div>
+
+        <div class="libraryItem p-3">
+            <div class="row">
+                <div class="col">
+                    <div class="text-start">
+                        <p class="fw-bold" style="color: #012265;">Thesis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4 class="fw-bold mb-3">Challenges Encountered, Engagement and Strategies in Building Community Relations Among Educational Leaders in Philippine Public Schools</h4>
+                    <p class="fw-bold">Jallorina, A., Galicia, L.</p>
+                    <p class="fw-bold">2019</p>
+                </div>
+            </div>
+            <div class="row">
+                <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 –2019.</p>
+            </div>
+            <div class="row">
+                <p><i class="fas fa-trash-alt"></i> Delete</p>
+            </div>
+            <hr class="my-2">
+        </div>
 
     </div>
 </div>
