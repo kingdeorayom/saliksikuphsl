@@ -11,25 +11,25 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h1 class="my-2 p-2" style="background-color: gainsboro;">Submissions</h1>
     <hr class="my-4">
     <div class="row fw-bold p-3 text-light text-center d-flex justify-content-center">
-        <div class="col py-3 mx-1 my-1 adminPageCountColumn" >
+        <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="pending-container">
             <p>FOR APPROVAL</p>
-            <h1 class="display-4" id="pending-container">0</h1>
+            <h1 class="display-4" >0</h1>
         </div>
-        <div class="col py-3 mx-1 my-1 adminPageCountColumn">
+        <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="revision-container">
             <p>FOR REVISION</p>
-            <h1 class="display-4" id="revision-container">0</h1>
+            <h1 class="display-4" >0</h1>
         </div>
-        <div class="col py-3 mx-1 my-1 adminPageCountColumn">
+        <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="revised-container">
             <p>REVISED</p>
-            <h1 class="display-4" id="revised-container">0</h1>
+            <h1 class="display-4" >0</h1>
         </div>
-        <div class="col py-3 mx-1 my-1 adminPageCountColumn">
+        <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="published-container">
             <p>PUBLISHED</p>
-            <h1 class="display-4" id="published-container">0</h1>
+            <h1 class="display-4" >0</h1>
         </div>
-        <div class="col py-3 mx-1 my-1 adminPageCountColumn">
+        <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="submissions-container">
             <p>ALL SUBMISSIONS</p>
-            <h1 class="display-4" id="submissions-container">0</h1>
+            <h1 class="display-4" >0</h1>
         </div>
     </div>
     <div class="row">
@@ -43,6 +43,17 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </div>
     <div class="row">
-        <div id="results-container"></div>
+        <div id="results-container">
+
+        </div>
+        <div id="pending-results-container" > PENDING</div>
+        <div id="revision-results-container"hidden> For Revision</div>
+        <div id="revised-results-container"hidden> Revised</div>
+        <div id="published-results-container"hidden> Published</div>
+        <div id="submissions-results-container"hidden> All Submissions</div>
+
+
+
+
     </div>
 </div>

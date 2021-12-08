@@ -12,8 +12,7 @@ if (isset($_SESSION['userType'])) {
         echo "you do not have access to this!";
     }
     else{
-        //theses only
-        $statement = $connection->prepare("SELECT * FROM file_information");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id");
         $statement->execute();
         $result = $statement->get_result();
         $submissions = $result->fetch_all(MYSQLI_ASSOC);
@@ -37,25 +36,25 @@ if (isset($_SESSION['userType'])) {
         $infographic = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information WHERE status = 'pending'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'pending'");
         $statement->execute();
         $result = $statement->get_result();
         $pending = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information WHERE status = 'for revision'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE status = 'for revision'");
         $statement->execute();
         $result = $statement->get_result();
         $forRevision = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information WHERE status = 'revised'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE status = 'revised'");
         $statement->execute();
         $result = $statement->get_result();
         $revised = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
         
-        $statement = $connection->prepare("SELECT * FROM file_information WHERE status = 'published'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE status = 'published'");
         $statement->execute();
         $result = $statement->get_result();
         $published = $result->fetch_all(MYSQLI_ASSOC);
