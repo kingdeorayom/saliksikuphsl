@@ -38,8 +38,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <h1 id="masthead-title-text">Search the repository</h1>
 
                     <div class="input-group my-3">
-                        <input type="search" class="form-control form-search" aria-label="Search the repository" aria-describedby="button-addon2">
-                        <button class="btn btn-primary search-button btn-lg" type="submit" id="button-addon2">Search</button>
+                        <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2">
+                        <button class="btn text-light rounded-0 search-button btn-lg" type="submit" id="button-addon2">Search</button>
                     </div>
                 </div>
             </div>

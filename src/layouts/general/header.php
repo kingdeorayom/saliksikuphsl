@@ -39,8 +39,8 @@
                 <?php
                 if ($_SESSION['userType'] === "admin") {
                     echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>Account Preference</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>Account</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
@@ -83,10 +83,10 @@
             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
             echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
             echo '<li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>Account Preference</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>Account</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a>
