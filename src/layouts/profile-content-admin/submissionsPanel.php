@@ -11,30 +11,30 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h1 class="my-2 p-2" style="background-color: gainsboro;">Submissions</h1>
     <hr class="my-4">
     <div class="row fw-bold p-3 text-light text-center d-flex justify-content-center">
-        <div class="col py-3 mx-1 my-1 adminPageCountColumn">
+        <div class="col py-3 mx-1 my-1 adminPageCountColumn" >
             <p>FOR APPROVAL</p>
-            <h1 class="display-4">10</h1>
+            <h1 class="display-4" id="pending-container">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn">
             <p>FOR REVISION</p>
-            <h1 class="display-4">2</h1>
+            <h1 class="display-4" id="revision-container">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn">
             <p>REVISED</p>
-            <h1 class="display-4">1</h1>
+            <h1 class="display-4" id="revised-container">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn">
             <p>PUBLISHED</p>
-            <h1 class="display-4">149</h1>
+            <h1 class="display-4" id="published-container">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn">
             <p>ALL SUBMISSIONS</p>
-            <h1 class="display-4">162</h1>
+            <h1 class="display-4" id="submissions-container">0</h1>
         </div>
     </div>
     <div class="row">
         <div class="col my-3 mx-1">
-            <form action="">
+            <form action="../../process/get-submissions.php" method="POST">
                 <div class="input-group">
                     <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions">
                     <button class="btn btn-primary search-button btn-lg rounded-0" type="submit" id="button-addon2">Search</button>
@@ -43,6 +43,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </div>
     <div class="row">
-        <!--Insert div panel here-->
+        <div id="results-container"></div>
     </div>
 </div>
