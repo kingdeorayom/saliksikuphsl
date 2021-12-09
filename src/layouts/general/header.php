@@ -36,12 +36,25 @@
             </ul>
             <div class="dropdown d-none d-lg-block">
                 <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle fa-2x me-2 my-2" style="color: white;"></i></button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <?php
+                if ($_SESSION['userType'] === "admin") {
+                    echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>Account</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
+                </ul>';
+                } else {
+                    echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>My Submission</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
-                </ul>
+                    </ul>';
+                }
+                ?>
+
             </div>
             <button class="btn d-sm-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="navbar-toggler-icon"></span></button>
         </div>
@@ -63,11 +76,58 @@
         <br>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">
-            <li class="nav-item">
-                <h4><?php echo  $_SESSION['fullName']; ?></strong></h4>
+
+
+        <?php
+        if ($_SESSION['userType'] === "admin") {
+            echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
+            echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
+            echo '<li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/home.php">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/repository.php">REPOSITORY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/statistics.php">STATISTICS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/submit.php">SUBMIT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/researchers.php">RESEARCHERS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/contact.php">CONTACT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/about.php">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link offcanvas-link-color" href="../navigation/faqs.php">FAQs</a>
+            </li>
+
+        </ul>';
+        } else {
+            echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
+            echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
+            echo '<li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>My Profile</a>
             </li>
             <li class="nav-item">
@@ -105,7 +165,9 @@
                 <a class="nav-link offcanvas-link-color" href="../navigation/faqs.php">FAQs</a>
             </li>
 
-        </ul>
+        </ul>';
+        }
+        ?>
         <hr>
     </div>
 </div>

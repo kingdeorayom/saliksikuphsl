@@ -9,6 +9,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="accountPreferencePanel">
     <div class="submissions">
-        <h1 class="my-2 p-2 fw-bold" style="background-color: gainsboro;">Account Preference</h1>
+        <h1 class="my-2 p-2" style="background-color: gainsboro;">Account Preference</h1>
     </div>
 </div>

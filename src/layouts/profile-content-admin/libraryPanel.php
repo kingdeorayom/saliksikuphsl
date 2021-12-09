@@ -9,6 +9,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="libraryPanel">
     <div class="submissions">
-        <h1 class="my-2 p-2 fw-bold" style="background-color: gainsboro;">Library</h1>
+        <h1 class="my-2 p-2" style="background-color: gainsboro;">Library</h1>
     </div>
 </div>

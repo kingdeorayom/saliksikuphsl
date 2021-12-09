@@ -50,10 +50,9 @@ hr {
 
 .research-field-image-link {
   text-decoration: none;
-  color: darkslategray;
+  color: black;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  font-weight: bold;
 }
 
 .research-field-image-link:hover {

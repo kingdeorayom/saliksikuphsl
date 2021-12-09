@@ -1,3 +1,17 @@
+import {
+  pendingThesisTemplate,
+  pendingInfographicTemplate,
+  pendingJournalTemplate,
+  revisionThesisTemplate,
+  revisionInfographicTemplate,
+  revisionJournalTemplate,
+  revisedThesisTemplate,
+  revisedInfographicTemplate,
+  revisedJournalTemplate,
+  publishedThesisTemplate,
+  publishedInfographicTemplate,
+  publishedJournalTemplate,
+} from "./templates.js";
 document.addEventListener("DOMContentLoaded", function () {
   // ====================== count containers =====================================
 
@@ -21,16 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var publishedResultsContainer = document.querySelector(
     "#published-results-container"
   );
-  var submissionsResultsContainer = document.querySelector(
-    "#submissions-results-container"
-  );
   // ======================== count event listeners ========================
   pendingContainer.addEventListener("click", function () {
     pendingResultsContainer.hidden = false;
     revisionResultsContainer.hidden = true;
     revisedResultsContainer.hidden = true;
     publishedResultsContainer.hidden = true;
-    submissionsResultsContainer.hidden = true;
   });
 
   revisionContainer.addEventListener("click", function () {
@@ -38,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     revisionResultsContainer.hidden = false;
     revisedResultsContainer.hidden = true;
     publishedResultsContainer.hidden = true;
-    submissionsResultsContainer.hidden = true;
   });
 
   revisedContainer.addEventListener("click", function () {
@@ -46,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
     revisionResultsContainer.hidden = true;
     revisedResultsContainer.hidden = false;
     publishedResultsContainer.hidden = true;
-    submissionsResultsContainer.hidden = true;
   });
 
   publishedContainer.addEventListener("click", function () {
@@ -54,18 +62,15 @@ document.addEventListener("DOMContentLoaded", function () {
     revisionResultsContainer.hidden = true;
     revisedResultsContainer.hidden = true;
     publishedResultsContainer.hidden = false;
-    submissionsResultsContainer.hidden = true;
   });
 
   submissionsContainer.addEventListener("click", function () {
-    pendingResultsContainer.hidden = true;
-    revisionResultsContainer.hidden = true;
-    revisedResultsContainer.hidden = true;
-    publishedResultsContainer.hidden = true;
-    submissionsResultsContainer.hidden = false;
+    pendingResultsContainer.hidden = false;
+    revisionResultsContainer.hidden = false;
+    revisedResultsContainer.hidden = false;
+    publishedResultsContainer.hidden = false;
   });
 
-  console.log("make ajax call here");
   getSubmissions().then((data) => loadResults(JSON.parse(data)));
 
   function getSubmissions() {
@@ -80,71 +85,55 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function logger(data) {
-    console.log(typeof data);
-    console.log(data);
-  }
-
   function loadResults(data) {
-    console.log(data);
-    console.log(data.pending.length);
+    // updates the count containers
     updateCounts(data);
 
     data["pending"].forEach((result) => {
       if (result["research_title"] !== null) {
-        pendingResultsContainer.innerHTML += `<div>${result.research_title}</div>`;
-      }
-      if (result["journal_title"] !== null) {
-        pendingResultsContainer.innerHTML += `<div>${result.journal_title}</div>`;
+        pendingResultsContainer.innerHTML += pendingThesisTemplate(result);
       }
       if (result["infographic_title"] !== null) {
-        pendingResultsContainer.innerHTML += `<div>${result.infographic_title}</div>`;
+        pendingResultsContainer.innerHTML += pendingInfographicTemplate(result);
+      }
+      if (result["journal_title"] !== null) {
+        pendingResultsContainer.innerHTML += pendingJournalTemplate(result);
       }
     });
-
     data["forRevision"].forEach((result) => {
       if (result["research_title"] !== null) {
-        revisionResultsContainer.innerHTML += `<div>${result.research_title}</div>`;
-      }
-      if (result["journal_title"] !== null) {
-        revisionResultsContainer.innerHTML += `<div>${result.journal_title}</div>`;
+        revisionResultsContainer.innerHTML += revisionThesisTemplate(result);
       }
       if (result["infographic_title"] !== null) {
-        revisionResultsContainer.innerHTML += `<div>${result.infographic_title}</div>`;
+        revisionResultsContainer.innerHTML +=
+          revisionInfographicTemplate(result);
+      }
+      if (result["journal_title"] !== null) {
+        revisionResultsContainer.innerHTML += revisionJournalTemplate(result);
       }
     });
     data["revised"].forEach((result) => {
       if (result["research_title"] !== null) {
-        revisedResultsContainer.innerHTML += `<div>${result.research_title}</div>`;
+        revisedResultsContainer.innerHTML += revisedThesisTemplate(result);
+      }
+
+      if (result["infographic_title"] !== null) {
+        revisedResultsContainer.innerHTML += revisedInfographicTemplate(result);
       }
       if (result["journal_title"] !== null) {
-        revisedResultsContainer.innerHTML += `<div>${result.journal_title}</div>`;
-      }
-      if (result["infographic_title"] !== null) {
-        revisedResultsContainer.innerHTML += `<div>${result.infographic_title}</div>`;
+        revisedResultsContainer.innerHTML += revisedJournalTemplate(result);
       }
     });
     data["published"].forEach((result) => {
       if (result["research_title"] !== null) {
-        publishedResultsContainer.innerHTML += `<div>${result.research_title}</div>`;
-      }
-      if (result["journal_title"] !== null) {
-        publishedResultsContainer.innerHTML += `<div>${result.journal_title}</div>`;
+        publishedResultsContainer.innerHTML += publishedThesisTemplate(result);
       }
       if (result["infographic_title"] !== null) {
-        publishedResultsContainer.innerHTML += `<div>${result.infographic_title}</div>`;
-      }
-    });
-
-    data["submissions"].forEach((result) => {
-      if (result["research_title"] !== null) {
-        submissionsResultsContainer.innerHTML += `<div>${result.research_title}</div>`;
+        publishedResultsContainer.innerHTML +=
+          publishedInfographicTemplate(result);
       }
       if (result["journal_title"] !== null) {
-        submissionsResultsContainer.innerHTML += `<div>${result.journal_title}</div>`;
-      }
-      if (result["infographic_title"] !== null) {
-        submissionsResultsContainer.innerHTML += `<div>${result.infographic_title}</div>`;
+        publishedResultsContainer.innerHTML += publishedJournalTemplate(result);
       }
     });
   }
@@ -160,5 +149,34 @@ document.addEventListener("DOMContentLoaded", function () {
       data.published.length;
     submissionsContainer.querySelector(".display-4").innerHTML =
       data.submissions.length;
+    checkEmptyResults(data);
+  }
+
+  function checkEmptyResults(data) {
+    if (data["pending"].length === 0) {
+      pendingResultsContainer.querySelector(
+        ".results-container"
+      ).innerHTML = `<div>No Results!</div>`;
+    }
+    if (data["forRevision"].length === 0) {
+      revisionResultsContainer.querySelector(
+        ".results-container"
+      ).innerHTML = `<div>No Results!</div>`;
+    }
+    if (data["revised"].length === 0) {
+      revisedResultsContainer.querySelector(
+        ".results-container"
+      ).innerHTML = `<div>No Results!</div>`;
+    }
+    if (data["published"].length === 0) {
+      publishedResultsContainer.querySelector(
+        ".results-container"
+      ).innerHTML = `<div>No Results!</div>`;
+    }
+  }
+
+  function logger(data) {
+    console.log(typeof data);
+    console.log(data);
   }
 });

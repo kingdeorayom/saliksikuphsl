@@ -42,19 +42,19 @@ if (isset($_SESSION['userType'])) {
         $pending = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE status = 'for revision'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'for revision'");
         $statement->execute();
         $result = $statement->get_result();
         $forRevision = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE status = 'revised'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'revised'");
         $statement->execute();
         $result = $statement->get_result();
         $revised = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
         
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE status = 'published'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'published'");
         $statement->execute();
         $result = $statement->get_result();
         $published = $result->fetch_all(MYSQLI_ASSOC);
