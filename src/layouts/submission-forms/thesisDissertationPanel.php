@@ -354,7 +354,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-3">
                     <label class="fw-bold mb-3">Attach Questionnaire<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="" accept=".pdf" required>
+                    <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
             </div>
@@ -379,10 +379,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
 <script>
     var alertContainerThesis = document.getElementById("alert-container")
-
+    var form = document.forms.namedItem("thesis-form");
     function submitForm(event) {
         event.preventDefault();
-        var form = document.forms.namedItem("thesis-form");
+        
         var formdata = new FormData(form);
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
@@ -413,10 +413,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
             alertContainerThesis.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "duplicate_error") {
+            
             alertContainerThesis.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "success") {
             alertContainerThesis.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+            form.reset();
         }
     }
 </script>

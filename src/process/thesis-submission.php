@@ -43,6 +43,19 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
     $fileActualExt = strtolower(end($fileExt));
     $allowed = array('pdf');
 
+
+    //Questionnaire
+    $fileQuestionnaire = $_FILES['fileQuestionnaire'];
+    $fileQuestionnaireName = $fileQuestionnaire['name'];
+    $fileQuestionnaireSize = $fileQuestionnaire['size'];
+    $fileQuestionnaireTempLoc = $fileQuestionnaire['tmp_name'];
+    $fileQuestionnaireError = $fileQuestionnaire['error'];
+
+    //questionExtension
+    $fileQuestionnaireExt = explode('.',$fileQuestionnaireName);
+    $fileQuestionnaireActualExt = strtolower(end($fileQuestionnaireExt));
+    $questionnaireAllowed = array('pdf');
+
     
 
     if(in_array($fileActualExt,$allowed)){
@@ -59,8 +72,13 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     exit();
                 }
                 else{ //TODO: if first prepared statement fails, should not do 2nd prepared statement
-                    $fileNameNew = uniqid('',true).".".$fileActualExt;
+                    $filenameUnique = uniqid('', true);
+
+                    $fileNameNew = $filenameUnique.".".$fileActualExt;
                     $fileDestination = '../uploads/theses/'.$fileNameNew;
+
+                    $fileNameQuestionNew = $filenameUnique."-questionnaire.".$fileQuestionnaireActualExt;
+                    $fileQuestionDestination = '../uploads/theses/questionnaires/'.$fileNameQuestionNew;
                     
                     $fileStatus = "pending";
 
@@ -92,6 +110,8 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $statement ->close();
 
                     move_uploaded_file($fileTempLoc, $fileDestination);
+                    move_uploaded_file($fileQuestionnaireTempLoc, $fileQuestionDestination);
+
 
                     $arr = array('response'=>"success");
                     header('Content-Type: application/json');

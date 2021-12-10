@@ -37,8 +37,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="col my-1 mx-1">
             <form action="">
                 <div class="input-group">
-                    <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions">
-                    <button class="btn text-light search-button btn-lg rounded-0" type="submit" id="button-addon2">Search</button>
+                    <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions" id="search-submissions-admin">
+                    <button class="btn text-light search-button btn-lg rounded-0" type="" id="button-addon2">Search</button>
                 </div>
             </form>
         </div>
@@ -47,11 +47,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <div class="row my-3">
         <div class="col-sm-12 col-md-4">
             <label class="fw-bold">View:</label>
-            <select class="form-select rounded-0 my-2" aria-label="Default select example">
-                <option selected>For Approval</option>
-                <option>For Revision</option>
-                <option>Revised</option>
-                <option>Published</option>
+            <select class="form-select rounded-0 my-2" aria-label="Default select example" id="submission-status-dropdown">
+                <option value="pending" selected>For Approval</option>
+                <option value="for revision">For Revision</option>
+                <option value="revised">Revised</option>
+                <option value="published">Published</option>
+                <option value="submissions">All Submissions</option>
             </select>
         </div>
         <div class="col-sm-12 col-md-4">
@@ -72,7 +73,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <h5>For Approval</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container"></div>
+            <div class = "results-container" hidden><div>No Results!</div></div>
         </div>
 
         <!--For Revision-->
@@ -81,7 +82,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <h5>For Revision</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container"></div>
+            <div class = "results-container" hidden><div>No Results!</div></div>
         </div>
 
         <!--Revised-->
@@ -90,7 +91,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <h5>Revised</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container"></div>
+            <div class = "results-container" hidden><div>No Results!</div></div>
         </div>
 
         <!--Published-->
@@ -99,7 +100,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <h5>Published</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container"></div>
+            <div class = "results-container" hidden><div>No Results!</div></div>
         </div>
 
     </div>
