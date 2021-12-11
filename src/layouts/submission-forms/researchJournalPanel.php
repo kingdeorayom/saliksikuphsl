@@ -141,11 +141,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
 </div>
 <script>
     var alertContainerJournal = document.getElementById("alert-container-journal")
-    var form = document.forms.namedItem("journal-form");
+    var journalForm = document.forms.namedItem("journal-form");
     function submitJournalForm(event){
         event.preventDefault();
         
-        var formdata = new FormData(form);
+        var formdata = new FormData(journalForm);
         postJournal(formdata).then(data=> checkResponse(JSON.parse(data)));
     //     for (var pair of formdata.entries()) {
     //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -177,7 +177,7 @@ if(data.response === "duplicate_error"){
     alertContainerJournal.innerHTML=`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 }
 if(data.response === "success"){
-    form.reset();
+    journalForm.reset();
     alertContainerJournal.innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 }
 }

@@ -379,11 +379,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
 <script>
     var alertContainerThesis = document.getElementById("alert-container")
-    var form = document.forms.namedItem("thesis-form");
+    var thesisForm = document.forms.namedItem("thesis-form");
     function submitForm(event) {
         event.preventDefault();
         
-        var formdata = new FormData(form);
+        var formdata = new FormData(thesisForm);
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -418,7 +418,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         }
         if (data.response === "success") {
             alertContainerThesis.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            form.reset();
+            thesisForm.reset();
         }
     }
 </script>

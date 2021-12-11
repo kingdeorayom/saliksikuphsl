@@ -314,11 +314,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
 <script>
     var alertContainerInfographic = document.getElementById("alert-container-infographic")
-    var form = document.forms.namedItem("infographic-form");
+    var infographicForm = document.forms.namedItem("infographic-form");
     function submitFormInfographic(event){
         event.preventDefault();
         
-        var formdata = new FormData(form);
+        var formdata = new FormData(infographicForm);
         postInfographic(formdata).then(data=> checkResponseInfographic(JSON.parse(data)));
     //     for (var pair of formdata.entries()) {
     //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -350,7 +350,7 @@ if(data.response === "duplicate_error"){
     alertContainerInfographic.innerHTML=`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 }
 if(data.response === "success"){
-    form.reset();
+    infographicForm.reset();
     alertContainerInfographic.innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 }
 
