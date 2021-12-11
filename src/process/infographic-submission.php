@@ -50,7 +50,7 @@ if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'],
             if ($fileSize < 5000000) {
 
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
-                $result = mysqli_query($connection, $sql);
+                $result = mysqli_query($connection, $sql); 
                 if (mysqli_num_rows($result) > 0) {
                     // echo 'there is already a file with the same name uploaded to the database';
                     $connection->close();
