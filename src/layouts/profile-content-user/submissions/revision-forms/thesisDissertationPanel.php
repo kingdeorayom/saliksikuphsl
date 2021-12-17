@@ -15,7 +15,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </div>
     <!-- container for alert messages -->
 
-    <h1 class="my-2">&lt;Insert title here&gt;</h1>
+    <h1 class="my-2">File Upload Information</h1>
     <hr>
     <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
     <form onsubmit="submitForm(event)" name="thesis-form">
@@ -369,7 +369,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" disabled>Submit your research</button>
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Resubmit" id="submitResearchDissertationButton" disabled>Resubmit</button>
             </div>
         </div>
 

@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<a href="../../../index.php">go back to login page</a><br><br>';
+    echo '<a href="../../../../index.php">go back to login page</a><br><br>';
     die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submission Form</title>
+    <title>View Submission</title>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <!--Header and Navigation section-->
 
-    <?php include_once '../../../layouts/general/header.php' ?>
+    <?php include_once './extra-header-footer/header.php' ?>
 
     <section class="submit-research">
         <div class="container p-5">
@@ -42,23 +42,40 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <hr>
                 <p class="side-menu-text">Submitted on:</p>
                 <p class="side-menu-text">2021-11-17 08:52:03</p>
+                <hr>
             </div>
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block">
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h5>Submission Details</h5>
                     <hr>
-                    <p class="side-menu-text">Submitted on:</p>
+                    <p class="side-menu-text" onclick="hey();">Submitted on:</p>
                     <p class="side-menu-text">2021-11-17 08:52:03</p>
+                    <hr>
                 </div>
+
+                <!--Paste include_once statement below here, delete the php tag below-->
+
+                <?php
+
+                // include 1 of the 3 based on whether file is infographics, thesis, journal
+                /* 
+                <?php include_once './submission-forms/thesisDissertationPanel.php' ?>
+                <?php include_once './submission-forms/researchJournalPanel.php' ?>
+                <?php include_once './submission-forms/infographicsPanel.php' ?>
+                */
+
+                ?>
+
             </div>
         </div>
     </section>
 
     <!--Footer-->
 
-    <?php include_once '../../../layouts/general/footer.php' ?>
+    <?php include_once './extra-header-footer/footer.php' ?>
     <?php include_once '../../../../scripts/custom/pages-navigation-scripts.php' ?>
+    <script src="../../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

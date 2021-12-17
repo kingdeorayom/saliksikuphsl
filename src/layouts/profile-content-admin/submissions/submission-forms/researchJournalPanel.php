@@ -133,8 +133,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Save" id="submitJournalButton" disabled>
-                <a href="../../../pages/users/profile.php"><button type="button" class="btn btn-secondary rounded-0">Cancel</button></a>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your work" id="submitJournalButton" disabled>
             </div>
         </div>
 
