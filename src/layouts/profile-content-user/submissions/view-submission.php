@@ -60,9 +60,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
                 // include 1 of the 3 based on whether file is infographics, thesis, journal
                 /* 
-                <?php include_once './submission-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './submission-forms/researchJournalPanel.php' ?>
-                <?php include_once './submission-forms/infographicsPanel.php' ?>
+                <?php include_once './view-submission-forms/thesisDissertationPanel.php' ?>
+                <?php include_once './view-submission-forms/researchJournalPanel.php' ?>
+                <?php include_once './view-submission-forms/infographicsPanel.php' ?>
                 */
 
                 ?>

@@ -66,9 +66,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
                 // include 1 of the 3 based on whether file is infographics, thesis, journal
                 /* 
-                <?php include_once './revision-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './revision-forms/researchJournalPanel.php' ?>
-                <?php include_once './revision-forms/infographicsPanel.php' ?>
+                <?php include_once './view-revision-forms/thesisDissertationPanel.php' ?>
+                <?php include_once './view-revision-forms/researchJournalPanel.php' ?>
+                <?php include_once './view-revision-forms/infographicsPanel.php' ?>
                 */
 
                 ?>

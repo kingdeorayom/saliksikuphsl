@@ -22,7 +22,7 @@ if (isset($_SESSION['userType'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
-    <script src = "../../../scripts/custom/profile-admin.js" type="module"></script>
+    <script src="../../../scripts/custom/profile-admin.js" type="module"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -60,7 +60,6 @@ if (isset($_SESSION['userType'])) {
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
