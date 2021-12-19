@@ -291,22 +291,25 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <div class="row my-4">
-            <div class="mb-3">
-                <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
-                <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
-                <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+            <label class="fw-bold mb-3">Attached Files</label>
+            <div class="col">
+                <label class="my-2">Infographic.pdf</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
+                </div>
             </div>
         </div>
         <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="checkBoxAgree3" onclick="enableDisableSubmitButton3(this);">
-                <label for="checkBoxAgree3">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
+                <input class="form-check-input" type="checkbox" id="needsRevision">
+                <label for="needsRevision" class="text-danger">Needs Revision</label>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitInfographicsButton" disabled>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitInfographicsButton">
             </div>
         </div>
     </form>

@@ -134,7 +134,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <a class="view-more-link" href="#">View More</a>
+                    <a class="view-more-link" href="./repository.php">View More</a>
                 </div>
             </div>
         </div>
@@ -168,7 +168,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <a class="view-more-statistics-link" href="#">View More Statistics</a>
+                    <a class="view-more-statistics-link" href="./statistics.php">View More Statistics</a>
                 </div>
             </div>
         </div>
@@ -184,7 +184,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <p class="promotion-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui iusto facilis, voluptas ipsa totam, necessitatibus, quod pariatur praesentium natus magnam ducimus. Sequi, laudantium rem magnam iure nisi provident reiciendis impedit.</p>
                     <p class="promotion-content-text">Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
                     <p class="text-end">
-                        <a class="btn btn-link btn-lg masthead-link" href="#" role="button">Learn more</a>
+                        <a class="btn btn-link btn-lg masthead-link" href="./about.php" role="button">Learn more</a>
                     </p>
                 </div>
                 <div class="col-lg-5 col-md-12 m-1 d-flex align-items-center">

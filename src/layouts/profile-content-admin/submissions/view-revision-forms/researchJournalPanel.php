@@ -108,32 +108,33 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
 
-        <div class="row my-2">
-            <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Front Cover<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" id="formFile" name="journalCoverFile" accept=".png, .jpg, .jpeg" required>
-                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>JPG</strong>, <strong>JPEG</strong>, or <strong>PNG</strong> file format.</label>
+        <div class="row my-4">
+            <label class="fw-bold mb-3">Attached Files</label>
+            <div class="col">
+                <label class="my-2">Front Cover.png</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                 </div>
-            </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Journal Copy<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="journalFile" accept=".pdf" required>
-                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+                <label class="my-2">Journal.pdf</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                 </div>
             </div>
         </div>
         <hr>
-        <div class="row my-4">
-            <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="checkBoxAgree2" onclick="enableDisableSubmitButton2(this);">
-                <label for="checkBoxAgree2">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your work" id="submitJournalButton" disabled>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitJournalButton">
             </div>
         </div>
 

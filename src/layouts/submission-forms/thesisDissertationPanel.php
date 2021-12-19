@@ -23,20 +23,20 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="dissertation">Dissertation</option>
-                    <option value="thesis">Thesis</option>
-                    <option value="capstone">Capstone</option>
+                    <option value="Dissertation">Dissertation</option>
+                    <option value="Thesis">Thesis</option>
+                    <option value="Capstone">Capstone</option>
 
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="undergraduate" selected>Undergraduate</option>
-                    <option value="postgraduate">Postgraduate</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="non_teaching_staff">Non-teaching Staff</option>
-                    <option value="school_head">School Head</option>
+                    <option value="Undergraduate" selected>Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Non-Teaching Staff">Non-teaching Staff</option>
+                    <option value="School Head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -380,9 +380,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script>
     var alertContainerThesis = document.getElementById("alert-container")
     var thesisForm = document.forms.namedItem("thesis-form");
+
     function submitForm(event) {
         event.preventDefault();
-        
+
         var formdata = new FormData(thesisForm);
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
@@ -413,7 +414,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             alertContainerThesis.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "duplicate_error") {
-            
+
             alertContainerThesis.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "success") {

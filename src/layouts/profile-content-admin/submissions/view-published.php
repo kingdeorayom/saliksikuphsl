@@ -94,18 +94,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <hr>
                 </div>
 
-                <!--Paste include_once statement below here, delete the php tag below-->
+                <?php include_once './view-published-forms/researchJournalPanel.php' ?>
+                <?php /* include above 1 of the 3 based on whether file is infographics, thesis, journal, then delete this php tag
 
-                <?php
-
-                // include 1 of the 3 based on whether file is infographics, thesis, journal
-                /* 
-                <?php include_once './view-revision-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './view-revision-forms/researchJournalPanel.php' ?>
-                <?php include_once './view-revision-forms/infographicsPanel.php' ?>
-                */
-
-                ?>
+                <?php include_once './view-published-forms/thesisDissertationPanel.php' ?>
+                <?php include_once './view-published-forms/researchJournalPanel.php' ?>
+                <?php include_once './view-published-forms/infographicsPanel.php' ?> */ ?>
 
             </div>
         </div>
