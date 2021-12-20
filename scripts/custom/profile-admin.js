@@ -219,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       if (result["status"] === "revised") {
         if (result["research_title"] !== null) {
+          console.log(result);
           revisedResultsContainer.innerHTML += revisedThesisTemplate(result);
         }
 

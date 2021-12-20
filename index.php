@@ -83,7 +83,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                     </div>
                     <div class="row">
                         <form onsubmit="submitLogin(event)" name="login-form">
-                        <!-- <form action="./src/process/login.php" method="POST"> -->
+                            <!-- <form action="./src/process/login.php" method="POST"> -->
                             <label>School Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail">
                             <label>Password</label>
@@ -115,32 +115,35 @@ if (isset($_SESSION['isLoggedIn'])) {
             }
         }
         var alertLogin = document.getElementById('alert-container-login')
-        function submitLogin(event){
+
+        function submitLogin(event) {
             event.preventDefault();
             var loginForm = document.forms.namedItem('login-form');
             var loginData = new FormData(loginForm)
-            postLogin(loginData).then(data=>checkLoginResponse(JSON.parse(data)));
+            postLogin(loginData).then(data => checkLoginResponse(JSON.parse(data)));
         }
-        function postLogin(data){
-            return new Promise((resolve, reject) =>{
+
+        function postLogin(data) {
+            return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST","./src/process/login.php");
+                http.open("POST", "./src/process/login.php");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
-                http.onerror = (e) => reject(Error(`Networking error: ${e}`));  
+                http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data)
             })
         }
-        function checkLoginResponse(data){
+
+        function checkLoginResponse(data) {
             console.log(data)
-            if(data.response==="login_success"){
+            if (data.response === "login_success") {
                 window.location.reload();
                 console.log("success")
             }
-            if(data.response==="empty_fields"){
-                alertLogin.innerHTML= `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+            if (data.response === "empty_fields") {
+                alertLogin.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
             }
-            if(data.response==="incorrect_credentials"){
-                alertLogin.innerHTML= `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Incorrect email or password!</strong> Please try again.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+            if (data.response === "incorrect_credentials") {
+                alertLogin.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Incorrect email or password!</strong> Please try again.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
             }
         }
     </script>

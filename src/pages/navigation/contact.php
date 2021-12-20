@@ -79,7 +79,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                             <h4 class="py-2">Research and Development Center</h4>
                             <p><i class="fas fa-envelope fa-2x px-2" style="color: #012265;"></i> research@uphsl.edu.ph</p>
                             <p><i class="fas fa-phone-alt fa-2x px-2" style="color: #012265;"></i> 049-544-5162</p>
-                            <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> UPHSL Research and Development Center</p>
+                            <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> <a href="https://www.facebook.com/UPHSL-Research-and-Development-Center-100628592098500/">UPHSL Research and Development Center</a></p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                             <h4 class="py-2">UPHSL Main Library</h4>
                             <p><i class="fas fa-envelope fa-2x px-2" style="color: #012265;"></i> librarycollege@uphsl.edu.ph</p>
                             <p><i class="fas fa-phone-alt fa-2x px-2" style="color: #012265;"></i> 049-544-5162</p>
-                            <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> UPHSL Main Library</p>
+                            <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> <a href="https://www.facebook.com/uphslmainlibrary101">UPHSL Main Library</a></p>
                         </div>
                     </div>
                 </div>

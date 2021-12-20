@@ -15,7 +15,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </div>
     <!-- container for alert messages -->
 
-    <h1 class="my-2">Thesis and Dissertation Submission Form</h1>
+    <h1 class="my-2">File Upload Information</h1>
     <hr>
     <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
     <form onsubmit="submitForm(event)" name="thesis-form">
@@ -23,20 +23,20 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="Dissertation">Dissertation</option>
-                    <option value="Thesis">Thesis</option>
-                    <option value="Capstone">Capstone</option>
+                    <option value="dissertation">Dissertation</option>
+                    <option value="thesis">Thesis</option>
+                    <option value="capstone">Capstone</option>
 
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="Undergraduate" selected>Undergraduate</option>
-                    <option value="Postgraduate">Postgraduate</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Non-Teaching Staff">Non-teaching Staff</option>
-                    <option value="School Head">School Head</option>
+                    <option value="undergraduate" selected>Undergraduate</option>
+                    <option value="postgraduate">Postgraduate</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="non_teaching_staff">Non-teaching Staff</option>
+                    <option value="school_head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -343,33 +343,34 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
         </div>
+
         <div class="row my-4">
-            <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
-                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+            <label class="fw-bold mb-3">Attached Files</label>
+            <div class="col">
+                <label class="my-2">File1.pdf</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                 </div>
-            </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Questionnaire<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf" required>
-                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+                <label class="my-2">File2.pdf</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                 </div>
             </div>
         </div>
         <hr>
-        <div class="row my-4">
-            <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="checkBoxAgree1" onclick="enableDisableSubmitButton1(this);">
-                <label for="checkBoxAgree1">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" disabled>Submit your research</button>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="">Edit</button>
             </div>
         </div>
 
@@ -379,18 +380,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
 <script>
     var alertContainerThesis = document.getElementById("alert-container")
-    var thesisForm = document.forms.namedItem("thesis-form");
-<<<<<<< HEAD
-    function submitForm(event) {
-        event.preventDefault();
-        
-=======
+    var form = document.forms.namedItem("thesis-form");
 
     function submitForm(event) {
         event.preventDefault();
 
->>>>>>> development
-        var formdata = new FormData(thesisForm);
+        var formdata = new FormData(form);
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -420,16 +415,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
             alertContainerThesis.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "duplicate_error") {
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> development
             alertContainerThesis.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "success") {
             alertContainerThesis.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            thesisForm.reset();
+            form.reset();
         }
     }
 </script>

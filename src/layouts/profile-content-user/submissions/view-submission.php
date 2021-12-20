@@ -54,13 +54,24 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <hr>
                 </div>
 
+<<<<<<< HEAD
+=======
+                <!--Paste include_once statement below here, delete the php tag below-->
+
+>>>>>>> development
                 <?php
 
                 // include 1 of the 3 based on whether file is infographics, thesis, journal
                 /* 
+<<<<<<< HEAD
                 <?php include_once './submission-forms/thesisDissertationPanel.php' ?>
                 <?php include_once './submission-forms/researchJournalPanel.php' ?>
                 <?php include_once './submission-forms/infographicsPanel.php' ?>
+=======
+                <?php include_once './view-submission-forms/thesisDissertationPanel.php' ?>
+                <?php include_once './view-submission-forms/researchJournalPanel.php' ?>
+                <?php include_once './view-submission-forms/infographicsPanel.php' ?>
+>>>>>>> development
                 */
 
                 ?>
