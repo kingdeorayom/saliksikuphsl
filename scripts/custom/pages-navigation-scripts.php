@@ -1,4 +1,6 @@
 <script>
+    /* Functions for About section */
+
     function aboutRepositoryClicked() {
         document.getElementById("aboutRepositoryPanel").style.display = "block";
         document.getElementById("copyrightPoliciesPanel").style.display = "none";
@@ -15,7 +17,7 @@
         document.getElementById("copyrightPoliciesText").style.borderBottom = "thick solid #012265";
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    /* Functions for Contact section */
 
     function researchDevelopmentCenterClicked() {
         document.getElementById("researchDevelopmentCenterPanel").style.display = "block";
@@ -33,7 +35,7 @@
         document.getElementById("universityLibraryText").style.borderBottom = "thick solid #012265";
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    /* Functions for Submit section */
 
     function submitPanelClicked() {
         document.getElementById("submitPanel").style.display = "block";
@@ -51,7 +53,7 @@
         document.getElementById("submissionGuidelinesText").style.borderBottom = "thick solid #012265";
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    /* Functions for Submission Forms section, all parts including each elements such as checkbox*/
 
     function thesisDissertationPanelClicked() {
         document.getElementById("thesisDissertationPanel").style.display = "block";
@@ -61,8 +63,6 @@
         document.getElementById("thesisDissertationText").style.borderBottom = "thick solid #012265";
         document.getElementById("researchJournalText").style.borderBottom = "thick none #012265";
         document.getElementById("infographicsText").style.borderBottom = "thick none #012265";
-
-
     }
 
     function researchJournalPanelClicked() {
@@ -73,7 +73,6 @@
         document.getElementById("thesisDissertationText").style.borderBottom = "thick none #012265";
         document.getElementById("infographicsText").style.borderBottom = "thick none #012265";
         document.getElementById("researchJournalText").style.borderBottom = "thick solid #012265";
-
     }
 
     function infographicsPanelClicked() {
@@ -85,8 +84,6 @@
         document.getElementById("researchJournalText").style.borderBottom = "thick none #012265";
         document.getElementById("infographicsText").style.borderBottom = "thick solid #012265";
     }
-
-    //////////////////////////////////////////////////////////////////////////////
 
     function showThesisDissertationCoAuthorsField() {
         var x = document.getElementById("dropdownThesisDissertationCoAuthors").value;
@@ -150,9 +147,6 @@
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////
-
-
     function enableDisableSubmitButton1(checkBoxStatus) {
         if (checkBoxStatus.checked) {
             document.getElementById("submitResearchDissertationButton").disabled = false;
@@ -177,8 +171,7 @@
         }
     }
 
-
-    //////////////////////////////////////////////////////////////////////////////
+    /* Functions for User Profile section */
 
     function myProfileClicked() {
         document.getElementById("myProfilePanel").style.display = "block";
@@ -210,7 +203,7 @@
         document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    /* Functions for Admin Profile section */
 
     function submissionsClicked() {
         document.getElementById("submissionsPanel").style.display = "block";
@@ -258,6 +251,56 @@
         document.getElementById("libraryText").style.borderBottom = "thick none #012265";
         document.getElementById("systemLogsText").style.borderBottom = "thick solid #012265";
         document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+    }
+
+    /* Functions for Researchers section */
+
+    function seniorResearchersClicked() {
+        document.getElementById("seniorResearchersPanel").style.display = "block";
+        document.getElementById("juniorResearchersPanel").style.display = "none";
+        document.getElementById("juniorAssociatePanel").style.display = "none";
+        document.getElementById("novicePanel").style.display = "none";
+
+        document.getElementById("seniorResearchersText").style.borderBottom = "thick solid #012265";
+        document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+        document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+        document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+    }
+
+    function juniorResearchersClicked() {
+        document.getElementById("seniorResearchersPanel").style.display = "none";
+        document.getElementById("juniorResearchersPanel").style.display = "block";
+        document.getElementById("juniorAssociatePanel").style.display = "none";
+        document.getElementById("novicePanel").style.display = "none";
+
+        document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+        document.getElementById("juniorResearchersText").style.borderBottom = "thick solid #012265";
+        document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+        document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+    }
+
+    function juniorAssociateClicked() {
+        document.getElementById("seniorResearchersPanel").style.display = "none";
+        document.getElementById("juniorResearchersPanel").style.display = "none";
+        document.getElementById("juniorAssociatePanel").style.display = "block";
+        document.getElementById("novicePanel").style.display = "none";
+
+        document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+        document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+        document.getElementById("juniorAssociateText").style.borderBottom = "thick solid #012265";
+        document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+    }
+
+    function noviceClicked() {
+        document.getElementById("seniorResearchersPanel").style.display = "none";
+        document.getElementById("juniorResearchersPanel").style.display = "none";
+        document.getElementById("juniorAssociatePanel").style.display = "none";
+        document.getElementById("novicePanel").style.display = "block";
+
+        document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+        document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+        document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+        document.getElementById("noviceText").style.borderBottom = "thick solid #012265";
     }
 </script>
 

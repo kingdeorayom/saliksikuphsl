@@ -1,6 +1,6 @@
 <!--Header Section-->
 
-<section class="header navbar navbar-dark bg-dark static-top">
+<section class="header navbar navbar-dark bg-dark static-top" style="font-family: 'Roboto';">
     <div class="container p-2">
         <div class="d-flex align-items-center">
             <a href="../../../pages/navigation/home.php"><img src="../../../../assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>

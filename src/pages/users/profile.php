@@ -49,7 +49,7 @@ if (mysqli_connect_errno()) {
         </div>
     </section>
 
-    <section class="submit-research profile">
+    <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
             <div class="row my-3 d-lg-none">
                 <h3>On this page</h3>

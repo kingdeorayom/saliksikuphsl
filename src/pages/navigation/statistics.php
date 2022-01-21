@@ -30,7 +30,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <?php include_once '../../layouts/general/header.php' ?>
 
-    <h1 class="m-5 p-5">STATISTICS</h1>
+    <section class=" masthead p-5 bg-light">
+        <div class="container">
+            <h1 id="masthead-title-text">Statistics</h1>
+        </div>
+    </section>
 
     <!--Footer section-->
 

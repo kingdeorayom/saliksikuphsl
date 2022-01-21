@@ -1,6 +1,6 @@
 <!--Footer-->
 
-<section class="footer p-5">
+<section class="footer p-5" style="font-family: 'Roboto';">
     <div class="container">
         <div class="row">
             <!-- <div class="col">
