@@ -81,12 +81,12 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $fileQuestionDestination = '../uploads/theses/questionnaires/'.$fileNameQuestionNew;
                     
                     $fileStatus = "pending";
-
-                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?)');
-                    $statement -> bind_param('issss',$userId,$fileName,$fileDestination,$userName,$fileStatus);
+                    $fileType = "thesis";
+                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?,?)');
+                    $statement -> bind_param('isssss',$userId,$fileType,$fileName,$fileDestination,$userName,$fileStatus);
                     $statement -> execute();
                     $insertedId = $statement ->insert_id;
-                    
+                
 
                     $statement ->close();
                     // echo 'file upload success!';

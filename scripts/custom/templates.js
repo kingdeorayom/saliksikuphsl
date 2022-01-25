@@ -11,7 +11,7 @@ export function pendingThesisTemplate(result) {
             <h4 class="mb-3">${result.research_title}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} TODO: time? 08:52:03</p>
+            <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} 08:52:03</p>
         </div>
         <hr class="my-1">
         <a href="../../layouts/profile-content-admin/submissions/view-approval.php"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
@@ -32,10 +32,14 @@ export function pendingInfographicTemplate(result) {
                 <h4 class="mb-3">${result.infographic_title}</h4>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Submitted on:</span> ${result.infographic_publication_year}-${result.infographic_publication_month}-${result.infographic_publication_day} TODO: time? 08:52:03</p>
+                <p><span class="fw-bold">Submitted on:</span> ${result.infographic_publication_year}-${result.infographic_publication_month}-${result.infographic_publication_day} 08:52:03</p>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/profile-content-admin/submissions/view-approval.php"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+            
+            <button class="btn text-light rounded-0 mt-3 submission-link-button" style="background-color: #012265;"data-id=${result.file_id}>
+            Click here to view
+            </button>
+            
             </div>`;
   return template;
 }
@@ -243,7 +247,7 @@ export function publishedThesisTemplate(result) {
             <h4 class="mb-3">${result.research_title}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} TODO: time? 08:52:03</p>
+            <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} 08:52:03</p>
         </div>
         <hr class="my-1">
         <a href="../../layouts/profile-content-admin/submissions/view-published.php"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
@@ -263,7 +267,7 @@ export function publishedInfographicTemplate(result) {
                 <h4 class="mb-3">${result.infographic_title}</h4>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Submitted on:</span> ${result.infographic_publication_year}-${result.infographic_publication_month}-${result.infographic_publication_day} TODO: time? 08:52:03</p>
+                <p><span class="fw-bold">Submitted on:</span> ${result.infographic_publication_year}-${result.infographic_publication_month}-${result.infographic_publication_day} 08:52:03</p>
             </div>
             <hr class="my-1">
             <a href="../../layouts/profile-content-admin/submissions/view-published.php"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>

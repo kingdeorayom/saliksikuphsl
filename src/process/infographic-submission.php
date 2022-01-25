@@ -64,8 +64,9 @@ if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'],
                     $fileDestination = '../uploads/infographics/' . $fileNameNew;
 
                     $fileStatus = "pending";
-                    $statement = $connection->prepare("INSERT INTO file_information(user_id, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?)");
-                    $statement->bind_param('issss', $userId, $fileName, $fileDestination, $userName, $fileStatus);
+                    $fileType = "infographic";
+                    $statement = $connection->prepare("INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?,?)");
+                    $statement->bind_param('isssss', $userId, $fileType, $fileName, $fileDestination, $userName, $fileStatus);
                     $statement->execute();
                     $insertedId = $statement->insert_id;
 

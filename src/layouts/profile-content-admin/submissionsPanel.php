@@ -57,7 +57,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="col-sm-12 col-md-4">
             <label class="fw-bold">Sort by:</label>
-            <select class="form-select rounded-0 my-2" aria-label="Default select example">
+            <select class="form-select rounded-0 my-2" aria-label="Default select example" id ="submission-category-dropdown">
                 <option selected>All category</option>
                 <option>Resource Type</option>
                 <option>Research Unit</option>
@@ -105,3 +105,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     </div>
 </div>
+
+<script>
+    document.querySelector('body').addEventListener('click',function(event){
+        if(event.target.className === 'btn text-light rounded-0 mt-3 submission-link-button'){
+            console.log('make ajax call here?')
+            console.log(event.target.dataset.id)
+            window.location.href="../../layouts/profile-content-admin/submissions/view-approval.php"
+        }
+    })
+</script>

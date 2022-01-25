@@ -85,6 +85,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedStatus = e.target.value;
     changeStatusView(selectedStatus);
   });
+  var submissionCategoryDropdown = document.querySelector(
+    "#submission-category-dropdown"
+  );
+  submissionCategoryDropdown.addEventListener("change", function (e) {
+    const selectedCategory = e.target.value;
+    console.log(selectedCategory);
+  });
+
   //
   // ====================== count containers =====================================
 
