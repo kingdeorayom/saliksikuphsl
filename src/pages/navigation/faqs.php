@@ -38,7 +38,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </section>
 
-    <section class="faqs">
+    <section class="faqs" style="font-family: 'Roboto';">
         <div class="container p-5">
             <h1 class="">Frequently asked questions</h1>
             <hr class="mb-5">

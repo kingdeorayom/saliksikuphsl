@@ -31,7 +31,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <?php include_once '../../layouts/general/header.php' ?>
 
     <!-- Search Section -->
-    <section class="search-section p-5">
+    <section class="search-section p-5" style="font-family: 'Roboto';">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -68,7 +68,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div> -->
 
-            <div class="row">
+            <div class="row" style="font-family: 'Roboto';">
                 <div class="col-lg-2 d-none d-md-none d-lg-block">
                     <!--col-md-12 to stack on top of next column. remove display-none-->
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>

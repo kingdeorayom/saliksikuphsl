@@ -25,12 +25,144 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link rel="stylesheet" href="../../../styles/custom/pages/researchers-style.css" type="text/css">
 </head>
 
-<body>
+<body onload="document.getElementById('juniorResearchersPanel').style.display = 'none'; document.getElementById('juniorAssociatePanel').style.display = 'none'; document.getElementById('novicePanel').style.display = 'none'; document.getElementById('seniorResearchersText').style.borderBottom='thick solid #012265';">
     <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
 
-    <h1 class="m-5 p-5">UNIVERSITY RESEARCHERS</h1>
+    <!--Masthead-->
+
+    <section class=" masthead p-5 bg-light">
+        <div class="container">
+            <h1 id="masthead-title-text">Our Researchers</h1>
+        </div>
+    </section>
+
+    <section class="researchers" style="font-family: 'Roboto';">
+        <div class="container p-5">
+            <div class="row my-3 d-lg-none">
+                <h3>On this page</h3>
+                <hr>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <ul class="onThisPageLinks">
+                        <li class="btn-link" onclick="seniorResearchersClicked()">Senior Researchers</li>
+                        <li class=" btn-link" onclick="juniorResearchersClicked()">Junior Researchers</li>
+                        <li class=" btn-link" onclick="juniorAssociateClicked()">Junior Associate Researchers</li>
+                        <li class=" btn-link" onclick="noviceClicked()">Novice Researchers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
+                    <!--col-md-12 to stack on top of next column. remove display-none-->
+                    <h3>On this page</h3>
+                    <hr>
+                    <p class="side-menu-text" onclick="seniorResearchersClicked()" id="seniorResearchersText">Senior Researchers</p>
+                    <hr>
+                    <p class="side-menu-text" onclick="juniorResearchersClicked()" id="juniorResearchersText">Junior Researchers</p>
+                    <hr>
+                    <p class="side-menu-text" onclick="juniorAssociateClicked()" id="juniorAssociateText">Junior Associate Researchers</p>
+                    <hr>
+                    <p class="side-menu-text" onclick="noviceClicked()" id="noviceText">Novice Researchers</p>
+                    <hr>
+                </div>
+
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="seniorResearchersPanel">
+                    <h1 class="my-2">Senior Researchers</h1>
+                    <hr>
+
+                    <div class="row mx-auto">
+                        <div class="col-sm-12 col-md-6">
+                            <a href="../../layouts/researchers-profile/senior-researcher-profile.php" class="researchers-link">
+                                <div class="box">
+                                    <div class="row py-3 researcher">
+                                        <div class="col-3 avatar">
+                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
+                                        </div>
+                                        <div class="col-9 d-flex align-items-center">
+                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="juniorResearchersPanel">
+                    <h1 class="my-2">Junior Researchers</h1>
+                    <hr>
+
+                    <div class="row mx-auto">
+                        <div class="col-sm-12 col-md-6">
+                            <a href="../../layouts/researchers-profile/junior-researcher-profile.php" class="researchers-link">
+                                <div class="box">
+                                    <div class="row py-3 researcher">
+                                        <div class="col-3 avatar">
+                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
+                                        </div>
+                                        <div class="col-9 d-flex align-items-center">
+                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="juniorAssociatePanel">
+                    <h1 class="my-2">Junior Associate Researchers</h1>
+                    <hr>
+
+                    <div class="row mx-auto">
+                        <div class="col-sm-12 col-md-6">
+                            <a href="../../layouts/researchers-profile/junior-associate-profile.php" class="researchers-link">
+                                <div class="box">
+                                    <div class="row py-3 researcher">
+                                        <div class="col-3 avatar">
+                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
+                                        </div>
+                                        <div class="col-9 d-flex align-items-center">
+                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="novicePanel">
+                    <h1 class="my-2">Novice Researchers</h1>
+                    <hr>
+
+                    <div class="row mx-auto">
+                        <div class="col-sm-12 col-md-6">
+                            <a href="../../layouts/researchers-profile/novice-researcher-profile.php" class="researchers-link">
+                                <div class="box">
+                                    <div class="row py-3 researcher">
+                                        <div class="col-3 avatar">
+                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
+                                        </div>
+                                        <div class="col-9 d-flex align-items-center">
+                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!--Footer section-->
 

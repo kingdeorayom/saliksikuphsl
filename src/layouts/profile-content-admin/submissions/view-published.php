@@ -35,7 +35,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <?php include_once './extra-header-footer/header.php' ?>
 
-    <section class="submit-research">
+    <section class="submit-research" style="font-family: 'Roboto';">
         <div class="container p-5">
             <div class="row my-3 d-lg-none">
                 <h5>Submission Details</h5>
