@@ -4,12 +4,28 @@ session_start();
 
 if (isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] !== "admin") {
-        echo '<a href="../../../index.php">go back</a><br><br>';
-        die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
+        echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
+    <p style="font-size: 50px; font-weight: bold">Oops!</p>
+    <p>Please login as admin to access this page.</p>
+    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
+    <br><br><br>
+    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
+</div>';
+die();
+        // echo '<a href="../../../index.php">go back</a><br><br>';
+        // die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
     }
 } else {
-    echo '<a href="../../../../index.php">go back</a><br><br>';
-    die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
+    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
+    <p style="font-size: 50px; font-weight: bold">Oops!</p>
+    <p>Please login as admin to access this page.</p>
+    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
+    <br><br><br>
+    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
+</div>';
+die();
+    // echo '<a href="../../../index.php">go back</a><br><br>';
+    // die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
 ?>
