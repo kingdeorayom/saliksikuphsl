@@ -11,7 +11,7 @@ if (isset($_SESSION['userType'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+        die();
         // echo '<a href="../../../index.php">go back</a><br><br>';
         // die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
     }
@@ -23,7 +23,7 @@ die();
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back</a><br><br>';
     // die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
 }
@@ -63,17 +63,26 @@ die();
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
-            <div class="row my-3 d-lg-none">
+            <div class="row mb-4 d-lg-none">
+
                 <h3>On this page</h3>
                 <hr>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <select class="form-select" aria-label="Default select example" id="dropdownOnThisPage" onchange="showOnThisPagePanels();">
+                    <option value="submissions" selected>Submissions</option>
+                    <option value="accountpreference">Account Preference</option>
+                    <option value="library">Library</option>
+                    <option value="systemlogs">System Logs</option>
+                </select>
+
+                <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <ul class="onThisPageLinks">
                         <li class="btn-link" onclick="submissionsClicked()">Submissions</li>
                         <li class="btn-link" onclick="accountPreferenceClicked()">Account Preference</li>
                         <li class="btn-link" onclick="libraryClicked()">Library</li>
                         <li class="btn-link" onclick="systemLogsClicked()">System Logs</li>
                     </ul>
-                </div>
+                </div> -->
+
             </div>
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
@@ -102,7 +111,115 @@ die();
     <!--Footer-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-    <?php include_once '../../../scripts/custom/pages-navigation-scripts.php' ?>
+
+    <script>
+        function submissionsClicked() {
+            document.getElementById("submissionsPanel").style.display = "block";
+            document.getElementById("libraryPanel").style.display = "none";
+            document.getElementById("systemLogsPanel").style.display = "none";
+            document.getElementById("accountPreferencePanel").style.display = "none";
+
+            document.getElementById("submissionsText").style.borderBottom = "thick solid #012265";
+            document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+            document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+            document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+        }
+
+        function accountPreferenceClicked() {
+            document.getElementById("submissionsPanel").style.display = "none";
+            document.getElementById("libraryPanel").style.display = "none";
+            document.getElementById("systemLogsPanel").style.display = "none";
+            document.getElementById("accountPreferencePanel").style.display = "block";
+
+            document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+            document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+            document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+            document.getElementById("accountPreferenceText").style.borderBottom = "thick solid #012265";
+        }
+
+        function libraryClicked() {
+            document.getElementById("submissionsPanel").style.display = "none";
+            document.getElementById("libraryPanel").style.display = "block";
+            document.getElementById("systemLogsPanel").style.display = "none";
+            document.getElementById("accountPreferencePanel").style.display = "none";
+
+            document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+            document.getElementById("libraryText").style.borderBottom = "thick solid #012265";
+            document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+            document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+        }
+
+        function systemLogsClicked() {
+            document.getElementById("submissionsPanel").style.display = "none";
+            document.getElementById("libraryPanel").style.display = "none";
+            document.getElementById("systemLogsPanel").style.display = "block";
+            document.getElementById("accountPreferencePanel").style.display = "none";
+
+            document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+            document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+            document.getElementById("systemLogsText").style.borderBottom = "thick solid #012265";
+            document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+        }
+
+        function showOnThisPagePanels() {
+
+            var showOnThisPageValue = document.getElementById("dropdownOnThisPage").value;
+
+            if (showOnThisPageValue == "submissions") {
+
+                document.getElementById("submissionsPanel").style.display = "block";
+                document.getElementById("libraryPanel").style.display = "none";
+                document.getElementById("systemLogsPanel").style.display = "none";
+                document.getElementById("accountPreferencePanel").style.display = "none";
+
+                document.getElementById("submissionsText").style.borderBottom = "thick solid #012265";
+                document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+                document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+                document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+
+            } else if (showOnThisPageValue == "accountpreference") {
+
+                document.getElementById("submissionsPanel").style.display = "none";
+                document.getElementById("libraryPanel").style.display = "none";
+                document.getElementById("systemLogsPanel").style.display = "none";
+                document.getElementById("accountPreferencePanel").style.display = "block";
+
+                document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+                document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+                document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+                document.getElementById("accountPreferenceText").style.borderBottom = "thick solid #012265";
+
+            } else if (showOnThisPageValue == "library") {
+
+                document.getElementById("submissionsPanel").style.display = "none";
+                document.getElementById("libraryPanel").style.display = "block";
+                document.getElementById("systemLogsPanel").style.display = "none";
+                document.getElementById("accountPreferencePanel").style.display = "none";
+
+                document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+                document.getElementById("libraryText").style.borderBottom = "thick solid #012265";
+                document.getElementById("systemLogsText").style.borderBottom = "thick none #012265";
+                document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+
+            } else if (showOnThisPageValue == "systemlogs") {
+
+                document.getElementById("submissionsPanel").style.display = "none";
+                document.getElementById("libraryPanel").style.display = "none";
+                document.getElementById("systemLogsPanel").style.display = "block";
+                document.getElementById("accountPreferencePanel").style.display = "none";
+
+                document.getElementById("submissionsText").style.borderBottom = "thick none #012265";
+                document.getElementById("libraryText").style.borderBottom = "thick none #012265";
+                document.getElementById("systemLogsText").style.borderBottom = "thick solid #012265";
+                document.getElementById("accountPreferenceText").style.borderBottom = "thick none #012265";
+
+            }
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+
 </body>
 
 </html>

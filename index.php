@@ -84,7 +84,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                     <div class="row">
                         <form onsubmit="submitLogin(event)" name="login-form">
                             <!-- <form action="./src/process/login.php" method="POST"> -->
-                            <label>School Email</label>
+                            <label>Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail">
                             <label>Password</label>
                             <input class="form-control my-2" type="password" name="textFieldPassword" id="textFieldPassword">

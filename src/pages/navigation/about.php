@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back to login page</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
@@ -51,16 +51,32 @@ die();
 
     <section class="about-and-copyright" style="font-family: 'Roboto';">
         <div class="container p-5">
-            <div class="row my-3 d-lg-none">
+
+            <!-- <div class="row my-3 d-lg-none">
+
                 <h3>On this page</h3>
                 <hr>
+
+                <div class="m-2">
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="aboutRepositoryClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">About the Repository</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="copyrightPoliciesClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">Copyright & Policies</label>
+                    </div>
+                </div>
+
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <ul class="onThisPageLinks">
                         <li class="btn-link" onclick="aboutRepositoryClicked()">About the Repository</li>
                         <li class=" btn-link" onclick="copyrightPoliciesClicked()">Copyright & Policies</li>
                     </ul>
                 </div>
-            </div>
+
+            </div> -->
+
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <!--col-md-12 to stack on top of next column. remove display-none-->
@@ -73,7 +89,7 @@ die();
                 </div>
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="aboutRepositoryPanel">
 
-                    <h1 class="my-2">About the Repository</h1>
+                    <h1 class="my-1">About the Repository</h1>
                     <p class="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus</p>
                     <hr>
 
@@ -104,6 +120,28 @@ die();
                     </ul>
 
                     <p>Please see the <a href="submit.php">Submit</a> page to learn the benefits of having your research on the Repository and how to submit/contribute your works.</p>
+
+                    <div class="d-lg-none">
+                        <h1 class="my-4">Copyright & Policies</h1>
+                        <hr>
+                        <h1 class="my-4">Copyright ownership in a work</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <hr>
+
+                        <h1 class="my-4">Copyright and the Repository</h1>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor:</p>
+                        <ul>
+                            <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+                            <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+                            <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+                        </ul>
+                        <p>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Aenean euismod: bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                    </div>
 
                 </div>
 
@@ -136,7 +174,28 @@ die();
     <!--Footer section-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-    <?php include_once '../../../scripts/custom/pages-navigation-scripts.php' ?>
+
+    <script>
+        function aboutRepositoryClicked() { // for showing/hiding about repository panel
+            document.getElementById("aboutRepositoryPanel").style.display = "block";
+            document.getElementById("copyrightPoliciesPanel").style.display = "none";
+
+            document.getElementById("aboutRepositoryText").style.borderBottom = "thick solid #012265";
+            document.getElementById("copyrightPoliciesText").style.borderBottom = "thick none #012265";
+        }
+
+        function copyrightPoliciesClicked() { // for showing/hiding copyright policies panel
+            document.getElementById("copyrightPoliciesPanel").style.display = "block";
+            document.getElementById("aboutRepositoryPanel").style.display = "none";
+
+            document.getElementById("aboutRepositoryText").style.borderBottom = "thick none #012265";
+            document.getElementById("copyrightPoliciesText").style.borderBottom = "thick solid #012265";
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+
 </body>
 
 </html>

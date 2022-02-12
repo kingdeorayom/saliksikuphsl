@@ -14,7 +14,7 @@ if (isset($_SESSION['userType'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
@@ -59,16 +59,25 @@ if (mysqli_connect_errno()) {
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
-            <div class="row my-3 d-lg-none">
+            <div class="row mb-4 d-lg-none">
+
                 <h3>On this page</h3>
                 <hr>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
+
+                <select class="form-select" aria-label="Default select example" id="dropdownOnThisPage" onchange="showOnThisPagePanels();">
+                    <option value="myprofile" selected>My Profile</option>
+                    <option value="mylibrary">My Library</option>
+                    <option value="mysubmissions">My Submissions</option>
+                </select>
+
+                <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <ul class="onThisPageLinks">
                         <li class="btn-link" onclick="myProfileClicked()">My Profile</li>
                         <li class="btn-link" onclick="myLibraryClicked()">My Library</li>
                         <li class="btn-link" onclick="mySubmissionsClicked()">My Submissions</li>
                     </ul>
-                </div>
+                </div> -->
+
             </div>
             <div class="row">
 
@@ -95,7 +104,79 @@ if (mysqli_connect_errno()) {
     <!--Footer-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-    <?php include_once '../../../scripts/custom/pages-navigation-scripts.php' ?>
+
+    <script>
+        function myProfileClicked() {
+            document.getElementById("myProfilePanel").style.display = "block";
+            document.getElementById("myLibraryPanel").style.display = "none";
+            document.getElementById("mySubmissionsPanel").style.display = "none";
+
+            document.getElementById("myProfileText").style.borderBottom = "thick solid #012265";
+            document.getElementById("mySubmissionsText").style.borderBottom = "thick none #012265";
+            document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
+        }
+
+        function myLibraryClicked() {
+            document.getElementById("myProfilePanel").style.display = "none";
+            document.getElementById("myLibraryPanel").style.display = "block";
+            document.getElementById("mySubmissionsPanel").style.display = "none";
+
+            document.getElementById("myLibraryText").style.borderBottom = "thick solid #012265";
+            document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
+            document.getElementById("mySubmissionsText").style.borderBottom = "thick none #012265";
+        }
+
+        function mySubmissionsClicked() {
+            document.getElementById("myProfilePanel").style.display = "none";
+            document.getElementById("myLibraryPanel").style.display = "none";
+            document.getElementById("mySubmissionsPanel").style.display = "block";
+
+            document.getElementById("mySubmissionsText").style.borderBottom = "thick solid #012265";
+            document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
+            document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
+        }
+
+        function showOnThisPagePanels() {
+
+            var showOnThisPageValue = document.getElementById("dropdownOnThisPage").value;
+
+            if (showOnThisPageValue == "myprofile") {
+
+                document.getElementById("myProfilePanel").style.display = "block";
+                document.getElementById("myLibraryPanel").style.display = "none";
+                document.getElementById("mySubmissionsPanel").style.display = "none";
+
+                document.getElementById("myProfileText").style.borderBottom = "thick solid #012265";
+                document.getElementById("mySubmissionsText").style.borderBottom = "thick none #012265";
+                document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
+
+            } else if (showOnThisPageValue == "mylibrary") {
+
+                document.getElementById("myProfilePanel").style.display = "none";
+                document.getElementById("myLibraryPanel").style.display = "block";
+                document.getElementById("mySubmissionsPanel").style.display = "none";
+
+                document.getElementById("myLibraryText").style.borderBottom = "thick solid #012265";
+                document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
+                document.getElementById("mySubmissionsText").style.borderBottom = "thick none #012265";
+
+            } else if (showOnThisPageValue == "mysubmissions") {
+
+                document.getElementById("myProfilePanel").style.display = "none";
+                document.getElementById("myLibraryPanel").style.display = "none";
+                document.getElementById("mySubmissionsPanel").style.display = "block";
+
+                document.getElementById("mySubmissionsText").style.borderBottom = "thick solid #012265";
+                document.getElementById("myLibraryText").style.borderBottom = "thick none #012265";
+                document.getElementById("myProfileText").style.borderBottom = "thick none #012265";
+
+            }
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+
 </body>
 
 </html>

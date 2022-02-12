@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../../index.php">go back to login page</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
@@ -82,7 +82,7 @@ die();
     <!--Footer-->
 
     <?php include_once './extra-header-footer/footer.php' ?>
-    <?php include_once '../../../../scripts/custom/pages-navigation-scripts.php' ?>
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
