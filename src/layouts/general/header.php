@@ -39,17 +39,17 @@
                 <?php
                 if ($_SESSION['userType'] === "admin") {
                     echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>Account</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/admin-profile.php"><i class="far fa-user me-2"></i>Account Management</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/admin-submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/admin-library.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                 </ul>';
                 } else {
                     echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>My Submissions</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/user-profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/user-library.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../users/user-submissions.php"><i class="far fa-file-alt me-2"></i>My Submissions</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                     </ul>';
                 }
@@ -82,17 +82,18 @@
         if ($_SESSION['userType'] === "admin") {
             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
             echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
-            echo '<li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
+            echo '
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/admin-profile.php"><i class="far fa-user me-2"></i>Account Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>Account</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/admin-submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/admin-library.php"><i class="far fa-file-alt me-2"></i>Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
@@ -128,13 +129,13 @@
             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
             echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
             echo '<li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-user me-2"></i>My Profile</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/user-profile.php"><i class="far fa-user me-2"></i>My Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/user-library.php"><i class="far fa-bookmark me-2"></i>My Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/profile.php"><i class="far fa-file-alt me-2"></i>My Submissions</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../users/user-submissions.php"><i class="far fa-file-alt me-2"></i>My Submissions</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
