@@ -15,7 +15,7 @@ die();
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
 
     <!-- container for alert messages -->
     <div id='alert-container-infographic'>
@@ -59,11 +59,11 @@ die();
             </div>
             <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="undergraduate" selected>Undergraduate</option>
-                    <option value="postgraduate">Postgraduate</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="non_teaching_staff">Non-teaching Staff</option>
-                    <option value="school_head">School Head</option>
+                    <option value="Undergraduate" selected>Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Non_teaching_staff">Non-teaching Staff</option>
+                    <option value="School_head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-3 d-sm-block d-lg-none">

@@ -15,7 +15,7 @@ die();
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel" hidden>
 
     <!-- container for alert messages -->
     <div id='alert-container'>
@@ -31,20 +31,20 @@ die();
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="dissertation">Dissertation</option>
-                    <option value="thesis">Thesis</option>
-                    <option value="capstone">Capstone</option>
+                    <option value="Dissertation">Dissertation</option>
+                    <option value="Thesis">Thesis</option>
+                    <option value="Capstone">Capstone</option>
 
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="undergraduate" selected>Undergraduate</option>
-                    <option value="postgraduate">Postgraduate</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="non_teaching_staff">Non-teaching Staff</option>
-                    <option value="school_head">School Head</option>
+                    <option value="Undergraduate" selected>Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Non_teaching_staff">Non-teaching Staff</option>
+                    <option value="School_head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">

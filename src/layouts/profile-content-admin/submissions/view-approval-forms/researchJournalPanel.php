@@ -15,7 +15,7 @@ die();
 
 ?>
 
-<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
+<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel" hidden>
     <!-- container for alert messages -->
     <div id='alert-container-journal'>
 
