@@ -39,17 +39,17 @@
                 <?php
                 if ($_SESSION['userType'] === "admin") {
                     echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-user me-2"></i>Account</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/admin-profile.php"><i class="far fa-user me-2"></i>Account</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/admin-submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/admin-library.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                 </ul>';
                 } else {
                     echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../pages/users/profile.php"><i class="far fa-file-alt me-2"></i>My Submissions</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/user-profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/user-library.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="../../../../src/pages/users/user-submissions.php"><i class="far fa-file-alt me-2"></i>My Submissions</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="../../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                     </ul>';
                 }
@@ -67,7 +67,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <div class="d-flex align-items-center">
-            <a href="../navigation/home.php"><img src="../../../../assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>
+            <a href="../../../pages/navigation/home.php"><img src="../../../../assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>
         </div>
         <!-- <h5 id="offcanvasRightLabel" style="color: white;">SALIKSIK:<br>UPHSL Research Repository</h5> -->
         <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -83,16 +83,16 @@
             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
             echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
             echo '<li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
+            <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/admin-profile.php"><i class="far fa-user me-2"></i>Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/admin-submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
+        </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/admin-library.php"><i class="far fa-file-alt me-2"></i>Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-user me-2"></i>Account</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-file-alt me-2"></i>Library</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
@@ -128,13 +128,13 @@
             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
             echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
             echo '<li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-user me-2"></i>My Profile</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/user-profile.php"><i class="far fa-user me-2"></i>My Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-bookmark me-2"></i>My Library</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/user-library.php"><i class="far fa-bookmark me-2"></i>My Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../pages/users/profile.php"><i class="far fa-file-alt me-2"></i>My Submissions</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="../../../../src/pages/users/user-submission.php"><i class="far fa-file-alt me-2"></i>My Submission</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
