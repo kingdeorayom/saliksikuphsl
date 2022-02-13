@@ -63,6 +63,10 @@
   cursor: pointer;
 }
 
+.adminPageCountColumn:hover {
+  background-color: #46679c;
+}
+
 .search-button {
   background: linear-gradient(
     180deg,

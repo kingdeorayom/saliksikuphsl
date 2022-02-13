@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jan 25, 2022 at 05:46 AM
+=======
+-- Generation Time: Feb 12, 2022 at 03:36 AM
+>>>>>>> development
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -51,6 +55,17 @@ CREATE TABLE `coauthors_information` (
   `coauthor4_email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+<<<<<<< HEAD
+=======
+--
+-- Dumping data for table `coauthors_information`
+--
+
+INSERT INTO `coauthors_information` (`group_id`, `coauthor1_first_name`, `coauthor1_middle_initial`, `coauthor1_surname`, `coauthor1_name_ext`, `coauthor1_email`, `coauthor2_first_name`, `coauthor2_middle_initial`, `coauthor2_surname`, `coauthor2_name_ext`, `coauthor2_email`, `coauthor3_first_name`, `coauthor3_middle_initial`, `coauthor3_surname`, `coauthor3_name_ext`, `coauthor3_email`, `coauthor4_first_name`, `coauthor4_middle_initial`, `coauthor4_surname`, `coauthor4_name_ext`, `coauthor4_email`) VALUES
+(60, 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(61, 'Marc', 'C.', 'Menguito', 'ext', 'lloydmenguito@gmail.com', 'Lorenzo', 'Y', 'Menguito', 'ext', 'lorenzo.menguito@yahoo.com', '', '', '', '', '', '', '', '', '', '');
+
+>>>>>>> development
 -- --------------------------------------------------------
 
 --
@@ -68,6 +83,18 @@ CREATE TABLE `file_information` (
   `feedback` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+<<<<<<< HEAD
+=======
+--
+-- Dumping data for table `file_information`
+--
+
+INSERT INTO `file_information` (`user_id`, `file_id`, `file_type`, `file_name`, `file_dir`, `file_uploader`, `status`, `feedback`) VALUES
+(91, 146, 'thesis', 'pre_SW2 - Menguito.pdf', '../uploads/theses/62020b2fb14833.21251587.pdf', 'Marc Menguito', 'pending', ''),
+(91, 147, 'journal', 'Activity #1 - Menguito.pdf', '../uploads/journals/62020b9292bd99.31897748.pdf', 'Marc Menguito', 'pending', ''),
+(91, 148, 'infographic', 'Marc Lloyd Menguito_OJT Contract copy.docx-signed.pdf', '../uploads/infographics/6207007267ac74.42603155.pdf', 'Marc Menguito', 'pending', '');
+
+>>>>>>> development
 -- --------------------------------------------------------
 
 --
@@ -98,6 +125,13 @@ CREATE TABLE `infographic_information` (
   `coauthor_group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `infographic_information`
+--
+
+INSERT INTO `infographic_information` (`file_ref_id`, `infographic_id`, `infographic_research_unit`, `infographic_researcher_category`, `infographic_publication_month`, `infographic_publication_day`, `infographic_publication_year`, `infographic_title`, `infographic_description`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_ext`, `author_email`, `editor_first_name`, `editor_middle_initial`, `editor_surname`, `editor_ext`, `editor_email`, `coauthors_count`, `coauthor_group_id`) VALUES
+(148, 12, 'Basic Education', 'Undergraduate', 1, 1, 2021, 'Infographic Title', 'description infographic', 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com', 'Lorenzo', 'Young', 'Menguito', '', 'lorenzo.menguito@yahoo.com', 2, 61);
+
 -- --------------------------------------------------------
 
 --
@@ -120,6 +154,13 @@ CREATE TABLE `journal_information` (
   `chief_editor_name_ext` varchar(255) NOT NULL,
   `chief_editor_email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `journal_information`
+--
+
+INSERT INTO `journal_information` (`file_ref_id`, `journal_id`, `journal_title`, `journal_subtitle`, `department`, `volume_number`, `serial_issue_number`, `ISSN`, `journal_description`, `chief_editor_first_name`, `chief_editor_middle_initial`, `chief_editor_last_name`, `chief_editor_name_ext`, `chief_editor_email`) VALUES
+(147, 10, 'Title', 'SubTitle', 'Basic Education', 1234, 124, '56ABC', 'desc', 'Marc', 'C.', 'Menguito', '', 'lloydmenguito@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -149,6 +190,16 @@ CREATE TABLE `research_information` (
   `coauthor_group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+<<<<<<< HEAD
+=======
+--
+-- Dumping data for table `research_information`
+--
+
+INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_abstract`, `research_fields`, `keywords`, `publication_month`, `publication_day`, `publication_year`, `coauthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
+(146, 56, 'Dissertation', 'Undergraduate', 'Basic Education', 'Research Title with a really long description to test search function 2', 'abstract', 'Accountancy and Marketing, Educational Management, IT and Engineering', 'key, key21, key234', 1, 1, 2021, 1, 'Marc', 'C.', 'Menguito', 'ext', 'lloydmenguito@gmail.com', 60);
+
+>>>>>>> development
 -- --------------------------------------------------------
 
 --
@@ -222,31 +273,51 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `coauthors_information`
 --
 ALTER TABLE `coauthors_information`
+<<<<<<< HEAD
   MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+=======
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+>>>>>>> development
 
 --
 -- AUTO_INCREMENT for table `file_information`
 --
 ALTER TABLE `file_information`
+<<<<<<< HEAD
   MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+=======
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+>>>>>>> development
 
 --
 -- AUTO_INCREMENT for table `infographic_information`
 --
 ALTER TABLE `infographic_information`
+<<<<<<< HEAD
   MODIFY `infographic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+=======
+  MODIFY `infographic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+>>>>>>> development
 
 --
 -- AUTO_INCREMENT for table `journal_information`
 --
 ALTER TABLE `journal_information`
+<<<<<<< HEAD
   MODIFY `journal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+=======
+  MODIFY `journal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+>>>>>>> development
 
 --
 -- AUTO_INCREMENT for table `research_information`
 --
 ALTER TABLE `research_information`
+<<<<<<< HEAD
   MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+=======
+  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+>>>>>>> development
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back to login page</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
@@ -49,16 +49,44 @@ die();
     <section class="researchers" style="font-family: 'Roboto';">
         <div class="container p-5">
             <div class="row my-3 d-lg-none">
+
                 <h3>On this page</h3>
                 <hr>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
+
+                <select class="form-select" aria-label="Default select example" id="dropdownShowResearchersOption" onchange="showResearchersOption();">
+                    <option value="sr" selected>Senior Researchers</option>
+                    <option value="jr">Junior Researchers</option>
+                    <option value="jra">Junior Associate Researchers</option>
+                    <option value="nr">Novice Researchers</option>
+                </select>
+
+                <!-- <div class="m-2">
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="seniorResearchersClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">Senior Researchers</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="juniorResearchersClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">Junior Researchers</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="juniorAssociateClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                        <label class="form-check-label" for="flexRadioDefault3">Junior Associate Researchers</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="noviceClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                        <label class="form-check-label" for="flexRadioDefault4">Novice Researchers</label>
+                    </div>
+                </div> -->
+
+                <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <ul class="onThisPageLinks">
                         <li class="btn-link" onclick="seniorResearchersClicked()">Senior Researchers</li>
                         <li class=" btn-link" onclick="juniorResearchersClicked()">Junior Researchers</li>
                         <li class=" btn-link" onclick="juniorAssociateClicked()">Junior Associate Researchers</li>
                         <li class=" btn-link" onclick="noviceClicked()">Novice Researchers</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
 
             <div class="row">
@@ -83,6 +111,7 @@ die();
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
                             <a href="../../layouts/researchers-profile/senior-researcher-profile.php" class="researchers-link">
+
                                 <div class="box">
                                     <div class="row py-3 researcher">
                                         <div class="col-3 avatar">
@@ -93,6 +122,7 @@ die();
                                         </div>
                                     </div>
                                 </div>
+
                             </a>
                         </div>
                     </div>
@@ -175,7 +205,106 @@ die();
     <!--Footer section-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-    <?php include_once '../../../scripts/custom/pages-navigation-scripts.php' ?>
+    <script>
+        function seniorResearchersClicked() { // Functions for showing/hiding Researchers panel in researchers.php -- left side menu option -- large view display
+            document.getElementById("seniorResearchersPanel").style.display = "block";
+            document.getElementById("juniorResearchersPanel").style.display = "none";
+            document.getElementById("juniorAssociatePanel").style.display = "none";
+            document.getElementById("novicePanel").style.display = "none";
+
+            document.getElementById("seniorResearchersText").style.borderBottom = "thick solid #012265";
+            document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+            document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+            document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+        }
+
+        function juniorResearchersClicked() {
+            document.getElementById("seniorResearchersPanel").style.display = "none";
+            document.getElementById("juniorResearchersPanel").style.display = "block";
+            document.getElementById("juniorAssociatePanel").style.display = "none";
+            document.getElementById("novicePanel").style.display = "none";
+
+            document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+            document.getElementById("juniorResearchersText").style.borderBottom = "thick solid #012265";
+            document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+            document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+        }
+
+        function juniorAssociateClicked() {
+            document.getElementById("seniorResearchersPanel").style.display = "none";
+            document.getElementById("juniorResearchersPanel").style.display = "none";
+            document.getElementById("juniorAssociatePanel").style.display = "block";
+            document.getElementById("novicePanel").style.display = "none";
+
+            document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+            document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+            document.getElementById("juniorAssociateText").style.borderBottom = "thick solid #012265";
+            document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+        }
+
+        function noviceClicked() {
+            document.getElementById("seniorResearchersPanel").style.display = "none";
+            document.getElementById("juniorResearchersPanel").style.display = "none";
+            document.getElementById("juniorAssociatePanel").style.display = "none";
+            document.getElementById("novicePanel").style.display = "block";
+
+            document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+            document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+            document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+            document.getElementById("noviceText").style.borderBottom = "thick solid #012265";
+        }
+
+        function showResearchersOption() { // Functions for showing/hiding Researchers panel in researchers.php -- dropdown -- Mobile view display
+
+            var showResearcherPanel = document.getElementById("dropdownShowResearchersOption").value;
+
+            if (showResearcherPanel == "sr") {
+                document.getElementById("seniorResearchersPanel").style.display = "block";
+                document.getElementById("juniorResearchersPanel").style.display = "none";
+                document.getElementById("juniorAssociatePanel").style.display = "none";
+                document.getElementById("novicePanel").style.display = "none";
+
+                document.getElementById("seniorResearchersText").style.borderBottom = "thick solid #012265";
+                document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+                document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+                document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+            } else if (showResearcherPanel == "jr") {
+                document.getElementById("seniorResearchersPanel").style.display = "none";
+                document.getElementById("juniorResearchersPanel").style.display = "block";
+                document.getElementById("juniorAssociatePanel").style.display = "none";
+                document.getElementById("novicePanel").style.display = "none";
+
+                document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+                document.getElementById("juniorResearchersText").style.borderBottom = "thick solid #012265";
+                document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+                document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+            } else if (showResearcherPanel == "jra") {
+                document.getElementById("seniorResearchersPanel").style.display = "none";
+                document.getElementById("juniorResearchersPanel").style.display = "none";
+                document.getElementById("juniorAssociatePanel").style.display = "block";
+                document.getElementById("novicePanel").style.display = "none";
+
+                document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+                document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+                document.getElementById("juniorAssociateText").style.borderBottom = "thick solid #012265";
+                document.getElementById("noviceText").style.borderBottom = "thick none #012265";
+            } else if (showResearcherPanel == "nr") {
+                document.getElementById("seniorResearchersPanel").style.display = "none";
+                document.getElementById("juniorResearchersPanel").style.display = "none";
+                document.getElementById("juniorAssociatePanel").style.display = "none";
+                document.getElementById("novicePanel").style.display = "block";
+
+                document.getElementById("seniorResearchersText").style.borderBottom = "thick none #012265";
+                document.getElementById("juniorResearchersText").style.borderBottom = "thick none #012265";
+                document.getElementById("juniorAssociateText").style.borderBottom = "thick none #012265";
+                document.getElementById("noviceText").style.borderBottom = "thick solid #012265";
+            }
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+
 </body>
 
 </html>

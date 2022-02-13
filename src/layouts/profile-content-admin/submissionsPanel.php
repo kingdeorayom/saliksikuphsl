@@ -8,7 +8,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
@@ -21,23 +21,23 @@ die();
     <div class="row fw-bold p-3 text-light text-center d-flex justify-content-center">
         <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="pending-container">
             <p>FOR APPROVAL</p>
-            <h1 class="display-4" >0</h1>
+            <h1 class="display-4">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="revision-container">
             <p>FOR REVISION</p>
-            <h1 class="display-4" >0</h1>
+            <h1 class="display-4">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="revised-container">
             <p>REVISED</p>
-            <h1 class="display-4" >0</h1>
+            <h1 class="display-4">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="published-container">
             <p>PUBLISHED</p>
-            <h1 class="display-4" >0</h1>
+            <h1 class="display-4">0</h1>
         </div>
         <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="submissions-container">
             <p>ALL SUBMISSIONS</p>
-            <h1 class="display-4" >0</h1>
+            <h1 class="display-4">0</h1>
         </div>
     </div>
 
@@ -77,11 +77,13 @@ die();
 
         <!--For Approval-->
 
-        <div class="forApproval my-3"  id="pending-results-container">
+        <div class="forApproval my-3" id="pending-results-container">
             <h5>For Approval</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container" hidden><div>No Results!</div></div>
+            <div class="results-container" hidden>
+                <div>No Results!</div>
+            </div>
         </div>
 
         <!--For Revision-->
@@ -90,7 +92,9 @@ die();
             <h5>For Revision</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container" hidden><div>No Results!</div></div>
+            <div class="results-container" hidden>
+                <div>No Results!</div>
+            </div>
         </div>
 
         <!--Revised-->
@@ -99,7 +103,9 @@ die();
             <h5>Revised</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container" hidden><div>No Results!</div></div>
+            <div class="results-container" hidden>
+                <div>No Results!</div>
+            </div>
         </div>
 
         <!--Published-->
@@ -108,7 +114,9 @@ die();
             <h5>Published</h5>
             <hr class="mb-4">
             <!-- results-container shows "No Results!" or something when empty -->
-            <div class = "results-container" hidden><div>No Results!</div></div>
+            <div class="results-container" hidden>
+                <div>No Results!</div>
+            </div>
         </div>
 
     </div>

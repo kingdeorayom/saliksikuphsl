@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back to login page</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
@@ -51,16 +51,32 @@ die();
 
     <section class="submit-research" style="font-family: 'Roboto';">
         <div class="container p-5">
-            <div class="row my-3 d-lg-none">
+
+            <!-- <div class="row my-3 d-lg-none">
+
                 <h3>On this page</h3>
                 <hr>
+
+                <div class="m-2">
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="submitPanelClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">Submit</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="submissionGuidelinesClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">Submission Form and Guidelines</label>
+                    </div>
+                </div>
+
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <ul class="onThisPageLinks">
                         <li class="btn-link" onclick="submitPanelClicked()">Submit</li>
                         <li class=" btn-link" onclick="submissionGuidelinesClicked()">Submission Form and Guidelines</li>
                     </ul>
                 </div>
-            </div>
+
+            </div> -->
+
             <div class="row">
 
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
@@ -138,7 +154,28 @@ die();
     <!--Footer-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-    <?php include_once '../../../scripts/custom/pages-navigation-scripts.php' ?>
+
+    <script>
+        function submitPanelClicked() { // for showing/hiding submission information panel
+            document.getElementById("submitPanel").style.display = "block";
+            document.getElementById("submissionGuidelinesPanel").style.display = "none";
+
+            document.getElementById("submitText").style.borderBottom = "thick solid #012265";
+            document.getElementById("submissionGuidelinesText").style.borderBottom = "thick none #012265";
+        }
+
+        function submissionGuidelinesClicked() { // for showing/hiding submission guidelines panel
+            document.getElementById("submissionGuidelinesPanel").style.display = "block";
+            document.getElementById("submitPanel").style.display = "none";
+
+            document.getElementById("submitText").style.borderBottom = "thick none #012265";
+            document.getElementById("submissionGuidelinesText").style.borderBottom = "thick solid #012265";
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+
 </body>
 
 </html>
