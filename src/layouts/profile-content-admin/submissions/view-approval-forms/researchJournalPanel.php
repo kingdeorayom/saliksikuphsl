@@ -119,12 +119,12 @@ die();
         <div class="row my-2">
             <label class="fw-bold mb-3">Attached Files</label>
             <div class="col">
-                <label class="my-2">Front Cover.png</label>
+                <label class="my-2" id="journal-cover">Front Cover.png</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                 </div>
-                <label class="my-2">Journal.pdf</label>
+                <label class="my-2" id="journal-file-name">Journal.pdf</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
@@ -134,7 +134,7 @@ die();
         <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevision">
+                <input class="form-check-input" type="checkbox" id="needsRevision" name="needsRevision" value="for revision">
                 <label for="needsRevision" class="text-danger">Needs Revision</label>
             </div>
         </div>
@@ -148,23 +148,24 @@ die();
 </div>
 <script>
     var alertContainerJournal = document.getElementById("alert-container-journal")
-    var form = document.forms.namedItem("journal-form");
+    var journalForm = document.forms.namedItem("journal-form");
 
     function submitJournalForm(event) {
         event.preventDefault();
-
-        var formdata = new FormData(form);
-        postJournal(formdata).then(data => checkResponse(JSON.parse(data)));
+        const fileId = event.target.dataset.id
+        var formdata = new FormData(journalForm);
+        formdata.append("fileId",fileId);
+        updateJournal(formdata).then(data => checkResponse(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
         // }
         window.scrollTo(0, 0);
     }
 
-    function postJournal(data) {
+    function updateJournal(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/journal-submission.php");
+            http.open("POST", "../../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

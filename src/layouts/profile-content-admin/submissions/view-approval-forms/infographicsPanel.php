@@ -301,7 +301,7 @@ die();
         <div class="row my-4">
             <label class="fw-bold mb-3">Attached Files</label>
             <div class="col">
-                <label class="my-2">Infographic.pdf</label>
+                <label class="my-2" id="infographic-file-name">Infographic.pdf</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
@@ -323,6 +323,7 @@ die();
     </form>
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
+
 <script>
     var alertContainerInfographic = document.getElementById("alert-container-infographic")
     var form = document.forms.namedItem("infographic-form");

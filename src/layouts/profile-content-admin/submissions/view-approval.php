@@ -155,7 +155,7 @@ die();
             }
             function journalFill(fileInfo){
                 const journalInputs = document.querySelector('[name="journal-form"]').elements;
-                
+                document.querySelector('[name="journal-form"]').dataset.id=fileInfo.file_id
                 journalInputs[0].value= fileInfo.journal_title
                 journalInputs[1].value= fileInfo.journal_subtitle
                 journalInputs[2].value= fileInfo.department
@@ -177,15 +177,19 @@ die();
                 // dateSubmitted[0].innerText = fileInfo.file_uploader;
                 // dateSubmitted[1].innerText = fileInfo.file_uploader;
 
-
-                
-
                 // journalTitleField.value= fileInfo.journal_title;
+                const journalCover = document.querySelector("#journal-cover");
+                const journalCoverName = fileInfo.file_name.split(".pdf")
+                journalCover.innerHTML = journalCoverName[0] +".jpg"
+
+                const journalFileName = document.querySelector("#journal-file-name");
+                
+                console.log(fileInfo.file_name.split(".pdf"));
+                journalFileName.innerHTML = fileInfo.file_name;
             }
             function infographicFill(fileInfo){
                 const infographicInputs = document.querySelector('[name="infographic-form"]').elements
-                console.log(infographicInputs)
-                console.log(fileInfo)
+
                 infographicInputs[0].value = fileInfo.infographic_research_unit
                 infographicInputs[1].value = fileInfo.infographic_researcher_category
                 infographicInputs[2].value = fileInfo.infographic_publication_month
@@ -229,6 +233,9 @@ die();
                 infographicInputs[36].value = fileInfo.coauthor4_email
 
                 infographicInputs[37].value = fileInfo.infographic_description
+
+                const infographicFileName = document.querySelector("#infographic-file-name")
+                infographicFileName.innerHTML = fileInfo.file_name
             }
     });
   
