@@ -257,7 +257,8 @@ if (isset($_SESSION['userType'])) {
 </head>
 
 
-<body>
+<body onload="document.getElementById('textAreaFeedbackInfographics').style.display = 'none'; document.getElementById('returnButtonInfographics').style.display = 'none';
+document.getElementById('textAreaFeedbackJournal').style.display = 'none'; document.getElementById('returnButtonJournal').style.display = 'none'; document.getElementById('textAreaFeedbackThesis').style.display = 'none'; document.getElementById('returnButtonThesis').style.display = 'none';">
 
     <!--Header and Navigation section-->
 
@@ -302,6 +303,50 @@ if (isset($_SESSION['userType'])) {
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+
+    <script>
+        function enableRevisionInfographics(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("textAreaFeedbackInfographics").style.display = 'block';
+                document.getElementById("returnButtonInfographics").style.display = 'block';
+
+                document.getElementById("publishButtonInfographics").style.display = 'none';
+            } else {
+                document.getElementById("textAreaFeedbackInfographics").style.display = 'none';
+                document.getElementById("returnButtonInfographics").style.display = 'none';
+
+                document.getElementById("publishButtonInfographics").style.display = 'block';
+            }
+        }
+
+        function enableRevisionJournal(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("textAreaFeedbackJournal").style.display = 'block';
+                document.getElementById("returnButtonJournal").style.display = 'block';
+
+                document.getElementById("publishButtonJournal").style.display = 'none';
+            } else {
+                document.getElementById("textAreaFeedbackJournal").style.display = 'none';
+                document.getElementById("returnButtonJournal").style.display = 'none';
+
+                document.getElementById("publishButtonJournal").style.display = 'block';
+            }
+        }
+
+        function enableRevisionThesis(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("textAreaFeedbackThesis").style.display = 'block';
+                document.getElementById("returnButtonThesis").style.display = 'block';
+
+                document.getElementById("publishButtonThesis").style.display = 'none';
+            } else {
+                document.getElementById("textAreaFeedbackThesis").style.display = 'none';
+                document.getElementById("returnButtonThesis").style.display = 'none';
+
+                document.getElementById("publishButtonThesis").style.display = 'block';
+            }
+        }
+    </script>
 </body>
 
 </html>

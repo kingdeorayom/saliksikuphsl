@@ -134,13 +134,26 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevision" name="needsRevision" value="for revision">
-                <label for="needsRevision" class="text-danger">Needs Revision</label>
+                <input class="form-check-input" type="checkbox" id="needsRevisionJournal" name="needsRevisionJournal" value="for revision" onclick="enableRevisionJournal(this);">
+                <label for="needsRevisionJournal" class="text-danger">Needs Revision</label>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="publishButtonJournal">
             <div class="col">
                 <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitJournalButton">
+            </div>
+        </div>
+        <div class="row" id="textAreaFeedbackJournal">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedbackJournal" rows="10" required placeholder="Write your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="returnButtonJournal">
+            <div class="col">
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnJournalButton">
             </div>
         </div>
 

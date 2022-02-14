@@ -74,7 +74,7 @@ if (mysqli_connect_errno()) {
                                     </div>
                                     <div class="col">
                                         <div class="text-end">
-                                            <a href="../../layouts/profile-content-user/submissions/view-submission.php" class="editReviseButton">
+                                            <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
                                                 <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                                             </a>
                                         </div>
@@ -105,7 +105,7 @@ if (mysqli_connect_errno()) {
                                     </div>
                                     <div class="col">
                                         <div class="text-end">
-                                            <a href="../../layouts/profile-content-user/submissions/view-revision.php" class="editReviseButton">
+                                            <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
                                                 <p class="fw-bold"><i class="fas fa-edit"></i> Revise</p>
                                             </a>
                                         </div>

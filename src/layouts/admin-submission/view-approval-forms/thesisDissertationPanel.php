@@ -367,15 +367,32 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
+
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevision">
-                <label for="needsRevision" class="text-danger">Needs Revision</label>
+                <input class="form-check-input" type="checkbox" id="needsRevisionThesis" onclick="enableRevisionThesis(this);">
+                <label for="needsRevisionThesis" class="text-danger">Needs Revision</label>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row" id="publishButtonThesis">
             <div class="col">
                 <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Publish</button>
+            </div>
+        </div>
+
+        <div class="row" id="textAreaFeedbackThesis">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" required placeholder="Write your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="returnButtonThesis">
+            <div class="col">
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnThesisButton">
             </div>
         </div>
 

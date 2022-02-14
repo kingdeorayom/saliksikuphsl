@@ -309,17 +309,34 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
-        <div class="row my-4">
+        <div class="row my-3">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevision">
-                <label for="needsRevision" class="text-danger">Needs Revision</label>
+                <input class="form-check-input" type="checkbox" id="needsRevisionInfographics" onclick="enableRevisionInfographics(this);">
+                <label for="needsRevisionInfographics" class="text-danger">Needs Revision</label>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row" id="textAreaFeedbackInfographics">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedbackInfographics" rows="10" required placeholder="Write your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="publishButtonInfographics">
             <div class="col">
                 <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitInfographicsButton">
             </div>
         </div>
+
+        <div class="row" id="returnButtonInfographics">
+            <div class="col">
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnInfographicsButton">
+            </div>
+        </div>
+
     </form>
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
