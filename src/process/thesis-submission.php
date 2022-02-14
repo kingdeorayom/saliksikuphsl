@@ -108,7 +108,7 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $statement -> execute();
 
                     $statement ->close();
-
+                    
                     move_uploaded_file($fileTempLoc, $fileDestination);
                     move_uploaded_file($fileQuestionnaireTempLoc, $fileQuestionDestination);
 

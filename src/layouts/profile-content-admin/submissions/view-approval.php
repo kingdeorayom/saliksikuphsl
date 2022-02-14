@@ -87,8 +87,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 })
             };
             function thesisFill(fileInfo){
-                console.log(fileInfo);
                 const thesisInputs = document.querySelector('[name="thesis-form"]').elements;
+                document.querySelector('[name="thesis-form"]').dataset.id=fileInfo.file_id
+                document.querySelector('[name="thesis-form"]').dataset.coauthor_id=fileInfo.coauthor_group_id
+                
                 thesisInputs[0].value = fileInfo.resource_type;
                 thesisInputs[1].value = fileInfo.researchers_category;
                 thesisInputs[2].value = fileInfo.research_unit;
@@ -145,13 +147,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         }
                     }
                 }
-
-
-
-
-
-
-
             }
             function journalFill(fileInfo){
                 const journalInputs = document.querySelector('[name="journal-form"]').elements;

@@ -369,7 +369,7 @@ die();
         <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevision">
+                <input class="form-check-input" type="checkbox" id="needsRevision" name="needsRevision" value="for revision">
                 <label for="needsRevision" class="text-danger">Needs Revision</label>
             </div>
         </div>
@@ -389,8 +389,12 @@ die();
 
     function submitForm(event) {
         event.preventDefault();
-
+        const fileId = event.target.dataset.id
+        const authorGroupId = event.target.dataset.coauthor_id
         var formdata = new FormData(form);
+        
+        formdata.append("fileId",fileId);
+        formdata.append("coauthor_id",authorGroupId);
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -401,7 +405,7 @@ die();
     function postThesis(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/thesis-submission.php");
+            http.open("POST", "../../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

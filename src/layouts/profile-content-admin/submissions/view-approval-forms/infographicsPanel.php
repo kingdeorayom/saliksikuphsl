@@ -326,12 +326,12 @@ die();
 
 <script>
     var alertContainerInfographic = document.getElementById("alert-container-infographic")
-    var form = document.forms.namedItem("infographic-form");
+    var infographicsForm = document.forms.namedItem("infographic-form");
 
     function submitFormInfographic(event) {
         event.preventDefault();
 
-        var formdata = new FormData(form);
+        var formdata = new FormData(infographicsForm);
         postInfographic(formdata).then(data => checkResponseInfographic(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 

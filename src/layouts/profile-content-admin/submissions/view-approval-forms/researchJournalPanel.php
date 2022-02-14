@@ -153,8 +153,10 @@ die();
     function submitJournalForm(event) {
         event.preventDefault();
         const fileId = event.target.dataset.id
+        
         var formdata = new FormData(journalForm);
         formdata.append("fileId",fileId);
+        
         updateJournal(formdata).then(data => checkResponse(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -187,8 +189,7 @@ die();
             alertContainerJournal.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "success") {
-            form.reset();
-            alertContainerJournal.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+            alertContainerJournal.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File updated successfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
     }
 </script>
