@@ -75,10 +75,10 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $filenameUnique = uniqid('', true);
 
                     $fileNameNew = $filenameUnique.".".$fileActualExt;
-                    $fileDestination = '../uploads/theses/'.$fileNameNew;
+                    $fileDestination = $parent_path.'/uploads/theses/'.$fileNameNew;
 
                     $fileNameQuestionNew = $filenameUnique."-questionnaire.".$fileQuestionnaireActualExt;
-                    $fileQuestionDestination = '../uploads/theses/questionnaires/'.$fileNameQuestionNew;
+                    $fileQuestionDestination = $parent_path.'/uploads/theses/questionnaires/'.$fileNameQuestionNew;
                     
                     $fileStatus = "pending";
                     $fileType = "thesis";
