@@ -12,7 +12,7 @@ if (isset($_SESSION['userType'])) {
         echo "you do not have access to this!";
     }
     else{
-         print_r($_POST);
+        print_r($_POST);
 
         $id = $_POST['fileId'];
         $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
@@ -21,12 +21,13 @@ if (isset($_SESSION['userType'])) {
         
         $file = $result->fetch_assoc();
         $statement->close();
+
         if($file['file_type']==="thesis"){
             $connection -> begin_transaction();
             try{
                 if(isset($_POST["needsRevision"])){
-                    $statement = $connection->prepare("UPDATE `file_information` SET `status`='for revision' WHERE file_id = ?");
-                    $statement->bind_param("i",$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='for revision', feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("si",$_POST['textAreaFeedbackThesis'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }
@@ -61,8 +62,8 @@ if (isset($_SESSION['userType'])) {
             $connection -> begin_transaction();
             try{
                 if(isset($_POST["needsRevision"])){
-                    $statement = $connection->prepare("UPDATE `file_information` SET `status`='for revision' WHERE file_id = ?");
-                    $statement->bind_param("i",$_POST['fileId']);
+                     $statement = $connection->prepare("UPDATE `file_information` SET status='for revision', feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("si",$_POST['textAreaFeedbackJournal'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }

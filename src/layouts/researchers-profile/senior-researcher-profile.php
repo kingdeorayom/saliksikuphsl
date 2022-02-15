@@ -37,7 +37,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <body>
     <!--Header and Navigation section-->
 
-    <?php include_once '../researchers-profile/extra-header-footer/header.php' ?>
+    <?php include_once '../../layouts/general/header.php' ?>
 
     <!--Masthead-->
 
