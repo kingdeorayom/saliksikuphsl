@@ -10,7 +10,10 @@ function showThesisDissertationCoAuthorsField() {
           `[name='thesis-form'] > #co-author-${i}-td-panel >div >.form-control`
         )
         .forEach((element) => {
-          element.placeholder !== "Extension" ? (element.required = true) : "";
+          element.placeholder !== "Extension" ||
+          element.placeholder !== "Middle Initial"
+            ? (element.required = true)
+            : "";
         });
     }
     for (var i = x + 1; i <= 4; i++) {
@@ -34,7 +37,10 @@ function showThesisDissertationCoAuthorsField() {
           `[name='thesis-form'] > #co-author-${i}-td-panel >div >.form-control`
         )
         .forEach((element) => {
-          element.placeholder !== "Extension" ? (element.required = true) : "";
+          element.placeholder !== "Extension" ||
+          element.placeholder !== "Middle Initial"
+            ? (element.required = true)
+            : "";
         });
     }
     for (var i = x + 1; i <= 4; i++) {
@@ -59,7 +65,10 @@ function showThesisDissertationCoAuthorsField() {
           `[name='thesis-form'] > #co-author-${i}-td-panel >div >.form-control`
         )
         .forEach((element) => {
-          element.placeholder !== "Extension" ? (element.required = true) : "";
+          element.placeholder !== "Extension" ||
+          element.placeholder !== "Middle Initial"
+            ? (element.required = true)
+            : "";
         });
     }
     for (var i = x + 1; i <= 4; i++) {
@@ -83,7 +92,10 @@ function showThesisDissertationCoAuthorsField() {
           `[name='thesis-form'] > #co-author-${i}-td-panel >div >.form-control`
         )
         .forEach((element) => {
-          element.placeholder !== "Extension" ? (element.required = true) : "";
+          element.placeholder !== "Extension" ||
+          element.placeholder !== "Middle Initial"
+            ? (element.required = true)
+            : "";
         });
     }
     for (var i = x + 1; i <= 4; i++) {
