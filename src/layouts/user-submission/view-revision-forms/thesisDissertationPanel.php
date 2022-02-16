@@ -351,33 +351,40 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
         </div>
+
         <div class="row my-4">
-            <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
-                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
-                    <label class="fw-bold mb-3">Attach Questionnaire<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf" required>
-                    <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
-                </div>
+            <label class="fw-bold mb-1">Attached Files</label>
+            <div class="col">
+                <p class="my-3">File1.pdf</p>
+                <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
+                <input class="form-control" type="file" name="" accept=".pdf" required>
+                <p class="my-3">File2.pdf</p>
+                <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
+                <input class="form-control" type="file" name="" accept=".pdf" required>
             </div>
         </div>
         <hr>
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" required placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. "></textarea>
+                </div>
+            </div>
+        </div>
+
+        <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="checkBoxAgree1" onclick="enableDisableSubmitButton1(this);">
-                <label for="checkBoxAgree1">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
+                <input class="form-check-input" type="checkbox" id="checkBoxAgreeThesis" onclick="enableDisableResubmitButtonThesis(this);">
+                <label for="checkBoxAgreeThesis">I have followed and fulfilled all the recommendations stated in the feedback.</label>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Resubmit" id="submitResearchDissertationButton" disabled>Resubmit</button>
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Resubmit" id="resubmitButtonThesis" disabled>Resubmit</button>
             </div>
         </div>
 

@@ -31,6 +31,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/pages/home-style.css" type="text/css">
+
 </head>
 
 <body>
@@ -154,7 +155,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <h1 style="font-family: 'Arial', sans-serif; font-weight: bold;">Repository Metrics</h1>
+                    <h1 style="font-weight: bold;">Repository Metrics</h1>
                 </div>
             </div>
             <div class="row p-5 d-flex justify-content-center">

@@ -8,7 +8,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back to login page</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
@@ -308,8 +308,8 @@ die();
         <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="checkBoxAgree3" onclick="enableDisableSubmitButton3(this);">
-                <label for="checkBoxAgree3">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
+                <input class="form-check-input" type="checkbox" id="checkBoxAgreeInfographics" onclick="enableDisableSubmitButtonInfographics(this);">
+                <label for="checkBoxAgreeInfographics">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
             </div>
         </div>
         <div class="row">
