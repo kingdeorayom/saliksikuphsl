@@ -204,7 +204,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-3">
             <div class="col-lg-4 col-sm-12">
                 <label class="fw-bold">No. of Co-Authors</label>
-                <select id="dropdownInfographicsCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" input="showInfographicsCoAuthorsField();" required>
+                <select id="dropdownInfographicsCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" onchange="showInfographicsCoAuthorsField();" required>
                     <option value="0" selected>0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -347,8 +347,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     function submitFormInfographic(event) {
         event.preventDefault();
-
+        const fileId = event.target.dataset.id
+        const authorGroupId = event.target.dataset.coauthor_id
+        
+        
         var formdata = new FormData(infographicsForm);
+
+        formdata.append("fileId",fileId);
+        formdata.append("coauthor_id",authorGroupId);
         postInfographic(formdata).then(data => checkResponseInfographic(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -359,7 +365,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postInfographic(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/infographic-submission.php");
+            http.open("POST", "../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

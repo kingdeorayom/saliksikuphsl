@@ -98,7 +98,6 @@ if (isset($_SESSION['userType'])) {
             };
 
             function thesisFill(fileInfo) {
-                console.log(fileInfo);
                 const thesisInputs = document.querySelector('[name="thesis-form"]').elements;
                 document.querySelector('[name="thesis-form"]').dataset.id=fileInfo.file_id
                 document.querySelector('[name="thesis-form"]').dataset.coauthor_id=fileInfo.coauthor_group_id
@@ -145,10 +144,8 @@ if (isset($_SESSION['userType'])) {
 
                 const fieldsString = fileInfo.research_fields
                 const fieldsArray = fieldsString.split(',')
-                console.log(fieldsArray)
 
                 const fieldsInput = document.getElementsByName("researchFields[]")
-                console.log(fieldsInput)
 
                 for (var key in fieldsInput) {
                     if (fieldsInput.hasOwnProperty(key)) {
@@ -192,12 +189,13 @@ if (isset($_SESSION['userType'])) {
 
                 const journalFileName = document.querySelector("#journal-file-name");
 
-                console.log(fileInfo.file_name.split(".pdf"));
                 journalFileName.innerHTML = fileInfo.file_name;
             }
 
             function infographicFill(fileInfo) {
                 const infographicInputs = document.querySelector('[name="infographic-form"]').elements
+                document.querySelector('[name="infographic-form"]').dataset.id=fileInfo.file_id
+                document.querySelector('[name="infographic-form"]').dataset.coauthor_id=fileInfo.coauthor_group_id
 
                 infographicInputs[0].value = fileInfo.infographic_research_unit
                 infographicInputs[1].value = fileInfo.infographic_researcher_category
