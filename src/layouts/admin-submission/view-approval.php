@@ -300,54 +300,7 @@ if (isset($_SESSION['userType'])) {
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
-
-    <script>
-        function enableRevisionInfographics(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("textAreaFeedbackInfographics").hidden = false;
-                document.querySelector("[name='textAreaFeedbackInfographics']").required=true
-                document.getElementById("returnButtonInfographics").style.display = 'block';
-
-                document.getElementById("publishButtonInfographics").style.display = 'none';
-            } else {
-                document.getElementById("textAreaFeedbackInfographics").hidden = true;
-                document.getElementById("returnButtonInfographics").style.display = 'none';
-
-                document.getElementById("publishButtonInfographics").style.display = 'block';
-            }
-        }
-
-        function enableRevisionJournal(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("textAreaFeedbackJournal").hidden = false;
-                document.querySelector("[name='textAreaFeedbackJournal']").required=true
-                document.getElementById("returnButtonJournal").style.display = 'block';
-
-                document.getElementById("publishButtonJournal").style.display = 'none';
-            } else {
-                document.getElementById("textAreaFeedbackJournal").hidden = true;
-                document.getElementById("returnButtonJournal").style.display = 'none';
-
-                document.getElementById("publishButtonJournal").style.display = 'block';
-            }
-        }
-
-        function enableRevisionThesis(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("textAreaFeedbackThesis").hidden = false;
-                document.querySelector("[name='textAreaFeedbackThesis']").required=true
-                document.getElementById("returnButtonThesis").style.display = 'block';
-
-                document.getElementById("publishButtonThesis").style.display = 'none';
-            } else {
-                document.getElementById("textAreaFeedbackThesis").hidden = true;
-                document.querySelector("[name='textAreaFeedbackThesis']").required=false
-                document.getElementById("returnButtonThesis").style.display = 'none';
-
-                document.getElementById("publishButtonThesis").style.display = 'block';
-            }
-        }
-    </script>
+    <script src="../../../scripts/custom/feedback-control.js"></script>
 </body>
 
 </html>

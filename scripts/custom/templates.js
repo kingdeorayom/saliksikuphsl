@@ -285,14 +285,7 @@ export function publishedJournalTemplate(result) {
                         <h5 class="mb-3">${result.journal_subtitle}</h5>
                   </div>
                   
-                  <div class="row mb-3">
-                      <div class="col">
-                          <div class="feedback border bg-white p-1">
-                              <p class="fw-bold">Feedback:</p>
-                              <p>${result.feedback}</p>
-                          </div>
-                      </div>
-                  </div>
+                  
                   <hr class="my-1">
                   <a href="../../layouts/admin-submission/view-published.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
                   </div>`;

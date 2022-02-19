@@ -12,7 +12,6 @@ if (isset($_SESSION['userType'])) {
         echo "you do not have access to this!";
     }
     else{
-        print_r($_POST);
 
         $id = $_POST['fileId'];
         $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
@@ -32,7 +31,10 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                 }
                 else{
-                    
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("si",$_POST['textAreaFeedbackThesis'],$_POST['fileId']);
+                    $statement->execute();
+                    $statement->close();
                 }
                 $comma_separated_fields = implode(', ',$_POST['researchFields']);
                 $statement = $connection->prepare("UPDATE research_information SET resource_type= ?,researchers_category=?,research_unit=?,research_title=?,research_abstract=?,research_fields=?,keywords=?,publication_month=?,publication_day=?,publication_year = ?, coauthors_count=?,author_first_name = ?,author_middle_initial = ?, author_surname = ?, author_name_ext = ?, author_email = ? WHERE file_ref_id = ?");
@@ -61,13 +63,16 @@ if (isset($_SESSION['userType'])) {
             $connection -> begin_transaction();
             try{
                 if(isset($_POST["needsRevision"])){
-                     $statement = $connection->prepare("UPDATE `file_information` SET status='for revision', feedback = ? WHERE file_id = ?");
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='for revision', feedback = ? WHERE file_id = ?");
                     $statement->bind_param("si",$_POST['textAreaFeedbackJournal'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }
                 else{
-                    
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("si",$_POST['textAreaFeedbackJournal'],$_POST['fileId']);
+                    $statement->execute();
+                    $statement->close();
                 }
                 $statement = $connection->prepare("UPDATE journal_information SET journal_title= ?,journal_subtitle=?,department=?,volume_number=?,serial_issue_number=?,ISSN=?,journal_description=?,chief_editor_first_name=?,chief_editor_middle_initial=?,chief_editor_last_name = ?, chief_editor_name_ext=?,chief_editor_email = ? WHERE file_ref_id = ?");
                 $statement->bind_param("sssiissssssss",$_POST["textFieldJournalTitle"],$_POST["textFieldJournalSubTitle"],$_POST["dropdownDepartment"],$_POST["textFieldVolumeNumber"],$_POST["textFieldSerialIssueNumber"],$_POST["textFieldISSN"],$_POST["textAreaDescription"],$_POST["textFieldChiefEditorFirstName"],$_POST["textFieldChiefEditorMiddleInitial"],$_POST["textFieldChiefEditorLastName"],$_POST["textFieldChiefEditorNameExtension"],$_POST["textFieldEmail"],$_POST['fileId']);
@@ -96,7 +101,10 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                }
                else{
-
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("si",$_POST['textAreaFeedbackInfographics'],$_POST['fileId']);
+                    $statement->execute();
+                    $statement->close();
                }
                 $statement = $connection->prepare("UPDATE `infographic_information` SET infographic_research_unit = ?,infographic_researcher_category = ?,infographic_publication_month = ?,infographic_publication_day = ?,infographic_publication_year = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
                 $statement->bind_param("ssiiissssssssssssii",$_POST['dropdownResearchUnit'],$_POST['dropdownResearchersCategory'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldInfographicsTitle'],$_POST['textareaDescription'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['textFieldGraphicsEditorFirstName'],$_POST['textFieldGraphicsEditorMiddleInitial'],$_POST['textFieldGraphicsEditorLastName'],$_POST['textFieldGraphicsEditorNameExtension'],$_POST['textFieldGraphicsEditorEmail'],$_POST['dropdownCoAuthors'],$_POST['fileId']);
@@ -115,7 +123,9 @@ if (isset($_SESSION['userType'])) {
                 echo json_encode($arr);
             }
             catch(mysqli_sql_exception $exception){
+                $connection->rollback();
 
+                echo json_encode("error");
             }
         }
 
