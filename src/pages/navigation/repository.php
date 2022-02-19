@@ -43,7 +43,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1 id="masthead-title-text">Search the repository</h1>
+                    <h2 id="masthead-title-text">Search the repository</h2>
 
                     <div class="input-group my-3">
                         <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2">

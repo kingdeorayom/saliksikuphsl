@@ -68,7 +68,7 @@ if (isset($_SESSION['userType'])) {
 
                 <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column">
                     <h1 class="my-2 p-2">Submissions</h1>
-                    <hr class="my-4">
+                    <hr class="my-3">
                     <div class="row fw-bold p-3 text-light text-center d-flex justify-content-center">
                         <div class="col py-3 mx-1 my-1 adminPageCountColumn" id="pending-container">
                             <p>FOR APPROVAL</p>

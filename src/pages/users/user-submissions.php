@@ -49,23 +49,27 @@ if (mysqli_connect_errno()) {
 
     <!--Masthead-->
 
-    <section class="masthead p-5 bg-light">
+    <!-- <section class="masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text">My Submissions</h1>
         </div>
-    </section>
+    </section> -->
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-xs-12 main-column" id="mySubmissionsPanel">
-                    <div class="submissions">
-                        <h1 class="my-2 p-2" style="background-color: gainsboro; border-bottom: 1px solid black">Submissions</h1>
-                        <div class="pendingApproval my-3">
-                            <h4 class="fw-bold" style="color: #012265;">Pending approval</h4>
-                            <hr class="my-4">
 
-                            <div class="box p-3" style="background-color: #f5f5f5;">
+                <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column" id="myProfilePanel">
+
+                    <h1 class="my-2">Submissions</h1>
+                    <hr class="my-4">
+                    <div class="submissions">
+
+                        <div class="pendingApproval my-4">
+                            <h4 class="fw-bold" style="color: #012265;">Pending approval</h4>
+                            <!-- <hr class="my-4"> -->
+
+                            <div class="box p-3 my-3" style="background-color: #f5f5f5;">
                                 <div class="row">
                                     <div class="col">
                                         <div class="text-start">
@@ -90,13 +94,14 @@ if (mysqli_connect_errno()) {
                                 </div>
                             </div>
 
-
                         </div>
-                        <div class="forRevision my-3">
-                            <h4 class="fw-bold" style="color: #012265;">For revision</h4>
-                            <hr class="my-4">
 
-                            <div class="box p-3" style="background-color: #f5f5f5;">
+                        <div class="forRevision my-3">
+
+                            <h4 class="fw-bold" style="color: #012265;">For revision</h4>
+                            <!-- <hr class="my-4"> -->
+
+                            <div class="box p-3 my-3" style="background-color: #f5f5f5;">
                                 <div class="row">
                                     <div class="col">
                                         <div class="text-start">
@@ -129,40 +134,45 @@ if (mysqli_connect_errno()) {
                                 </div>
                             </div>
 
-
                         </div>
-                    </div>
-                    <div class="published">
-                        <h1 class="my-2 p-2" style="background-color: gainsboro; border-bottom: 1px solid black">Published Works</h1>
-                        <div class="publishedWorks my-3">
-                            <hr class="my-4">
 
-                            <div class="box p-3" style="background-color: #f5f5f5;">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="text-start">
-                                            <p class="fw-bold" style="color: #012265;">Thesis</p>
+                    </div>
+
+                    <div class="row">
+                        <h1 class="my-1">Published Works</h1>
+                        <div class="published">
+                            <div class="publishedWorks">
+                                <hr class="mt-3 mb-4">
+
+                                <div class="box p-3 my-3" style="background-color: #f5f5f5;">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="text-start">
+                                                <p class="fw-bold" style="color: #012265;">Thesis</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <h4 class="mb-3 fw-bold">Challenges Encountered, Engagement and Strategies in Building Community Relations Among Educational Leaders in Philippine Public Schools</h4>
-                                        <p class="fw-bold">Jallorina, A., Galicia, L.</p>
-                                        <p class="fw-bold">2019</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4 class="mb-3 fw-bold">Challenges Encountered, Engagement and Strategies in Building Community Relations Among Educational Leaders in Philippine Public Schools</h4>
+                                            <p class="fw-bold">Jallorina, A., Galicia, L.</p>
+                                            <p class="fw-bold">2019</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 –2019.</p>
+                                    </div>
+                                    <div class="row">
+                                        <p><span class="fw-bold">Published on:</span> 2021-11-17 08:52:03</p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 –2019.</p>
-                                </div>
-                                <div class="row">
-                                    <p><span class="fw-bold">Published on:</span> 2021-11-17 08:52:03</p>
-                                </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </section>

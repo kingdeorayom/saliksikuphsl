@@ -56,11 +56,11 @@ $connection->close();
 
     <!--Masthead-->
 
-    <section class="masthead p-5 bg-light">
+    <!-- <section class="masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text"><?php echo 'Hi, ' . $_SESSION['fullName'] . '!' ?></h1>
         </div>
-    </section>
+    </section> -->
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">

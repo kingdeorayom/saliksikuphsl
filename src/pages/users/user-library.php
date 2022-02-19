@@ -49,31 +49,31 @@ if (mysqli_connect_errno()) {
 
     <!--Masthead-->
 
-    <section class="masthead p-5 bg-light">
+    <!-- <section class="masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text">My Library</h1>
         </div>
-    </section>
+    </section> -->
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
             <div class="row">
-                <div class="col col-md-12 col-xs-12 main-column" id="myLibraryPanel">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-4">
-                            <select class="form-select" aria-label="Default select example" name="dropdownLibrary" id="dropdownLibrary">
-                                <option value="all" selected>All Items</option>
-                                <option value="thesis">Thesis</option>
-                                <option value="capstone">Capstone</option>
-                                <option value="dissertation">Dissertation</option>
-                                <option value="journal">Journal</option>
-                                <option value="infographic">Infographic</option>
-                                <option value="researchcatalog">Research Catalog</option>
-                                <option value="annualreport">Annual Report</option>
-                                <option value="researchagenda">Research Agenda</option>
-                                <option value="researchcompetencydevelopmentprogram">RCDP</option>
-                            </select>
-                        </div>
+                <div class="col col-md-12 col-xs-12 main-column mx-auto px-5" id="myLibraryPanel">
+                    <h1 class="my-2">My Library</h1>
+                    <hr class="my-4">
+                    <div class="col-sm-12 col-md-4">
+                        <select class="form-select" aria-label="Default select example" name="dropdownLibrary" id="dropdownLibrary">
+                            <option value="all" selected>All Items</option>
+                            <option value="thesis">Thesis</option>
+                            <option value="capstone">Capstone</option>
+                            <option value="dissertation">Dissertation</option>
+                            <option value="journal">Journal</option>
+                            <option value="infographic">Infographic</option>
+                            <option value="researchcatalog">Research Catalog</option>
+                            <option value="annualreport">Annual Report</option>
+                            <option value="researchagenda">Research Agenda</option>
+                            <option value="researchcompetencydevelopmentprogram">RCDP</option>
+                        </select>
                     </div>
                     <div class="library my-3">
 
