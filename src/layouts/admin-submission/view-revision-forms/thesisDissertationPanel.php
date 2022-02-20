@@ -15,7 +15,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel" hidden>
 
     <!-- container for alert messages -->
     <div id='alert-container'>
@@ -31,20 +31,20 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="dissertation">Dissertation</option>
-                    <option value="thesis">Thesis</option>
-                    <option value="capstone">Capstone</option>
+                    <option value="Dissertation">Dissertation</option>
+                    <option value="Thesis">Thesis</option>
+                    <option value="Capstone">Capstone</option>
 
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="undergraduate" selected>Undergraduate</option>
-                    <option value="postgraduate">Postgraduate</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="non_teaching_staff">Non-teaching Staff</option>
-                    <option value="school_head">School Head</option>
+                    <option value="Undergraduate" selected>Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Non_teaching_staff">Non-teaching Staff</option>
+                    <option value="School_head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -367,20 +367,20 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col">
+
+        <div class="col">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
+                    <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" required></textarea>
                 </div>
+        </div>
+
+        <div class="row" id="publishButtonThesis">
+            <div class="col">
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Edit</button>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitResearchDissertationButton">Edit</button>
-            </div>
-        </div>
 
     </form>
 
@@ -392,8 +392,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     function submitForm(event) {
         event.preventDefault();
-
+        const fileId = event.target.dataset.id
+        const authorGroupId = event.target.dataset.coauthor_id
         var formdata = new FormData(form);
+        
+        formdata.append("fileId",fileId);
+        formdata.append("coauthor_id",authorGroupId);
+        formdata.append("needsRevision","needsRevision")
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -404,7 +409,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postThesis(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/thesis-submission.php");
+            http.open("POST", "../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

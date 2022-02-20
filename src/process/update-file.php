@@ -55,7 +55,9 @@ if (isset($_SESSION['userType'])) {
                 echo json_encode($arr);
             }
             catch(mysqli_sql_exception $exception){
-                
+                $connection->rollback();
+
+                echo json_encode("error");
             }
             
         }

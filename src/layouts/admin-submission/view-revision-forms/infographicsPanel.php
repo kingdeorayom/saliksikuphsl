@@ -15,7 +15,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
 
     <!-- container for alert messages -->
     <div id='alert-container-infographic'>
@@ -59,11 +59,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="undergraduate" selected>Undergraduate</option>
-                    <option value="postgraduate">Postgraduate</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="non_teaching_staff">Non-teaching Staff</option>
-                    <option value="school_head">School Head</option>
+                    <option value="Undergraduate" selected>Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Non_teaching_staff">Non-teaching Staff</option>
+                    <option value="School_head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-3 d-sm-block d-lg-none">
@@ -301,12 +301,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-4">
             <label class="fw-bold mb-3">Attached Files</label>
             <div class="col">
-                <label class="my-2">File1.pdf</label>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
-                </div>
-                <label class="my-2">File2.pdf</label>
+                <label class="my-2" id="infographic-file-name">Infographic.pdf</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
@@ -314,30 +309,41 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
+        
         <div class="row">
             <div class="col">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
+                    <textarea class="form-control" name="textAreaFeedbackInfographics" rows="10" required></textarea>
                 </div>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row" id="publishButtonInfographics">
             <div class="col">
                 <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitInfographicsButton">
             </div>
         </div>
+
     </form>
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
+
 <script>
     var alertContainerInfographic = document.getElementById("alert-container-infographic")
-    var form = document.forms.namedItem("infographic-form");
+    var infographicsForm = document.forms.namedItem("infographic-form");
 
     function submitFormInfographic(event) {
         event.preventDefault();
+        const fileId = event.target.dataset.id
+        const authorGroupId = event.target.dataset.coauthor_id
+        
+        
+        var formdata = new FormData(infographicsForm);
 
-        var formdata = new FormData(form);
+        formdata.append("fileId",fileId);
+        formdata.append("coauthor_id",authorGroupId);
+        formdata.append("needsRevision","needsRevision")
         postInfographic(formdata).then(data => checkResponseInfographic(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -348,7 +354,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postInfographic(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/infographic-submission.php");
+            http.open("POST", "../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);
