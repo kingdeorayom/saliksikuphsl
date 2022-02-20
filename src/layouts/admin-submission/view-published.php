@@ -255,7 +255,7 @@ if (isset($_SESSION['userType'])) {
 </head>
 
 
-<body onload="document.getElementById('returnButtonInfographics').style.display = 'none'; document.getElementById('returnButtonJournal').style.display = 'none'; document.getElementById('returnButtonThesis').style.display = 'none';">
+<body onload="document.getElementById('returnButtonThesis').style.display = 'none';">
 
     <!--Header and Navigation section-->
 
@@ -320,9 +320,9 @@ if (isset($_SESSION['userType'])) {
                     <hr>
                 </div>
 
-                <?php include_once './view-approval-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './view-approval-forms/researchJournalPanel.php' ?>
-                <?php include_once './view-approval-forms/infographicsPanel.php' ?>
+                <?php include_once './view-published-forms/thesisDissertationPanel.php' ?>
+                <?php include_once './view-published-forms/researchJournalPanel.php' ?>
+                <?php include_once './view-published-forms/infographicsPanel.php' ?>
 
             </div>
         </div>
