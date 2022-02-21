@@ -15,7 +15,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel" hidden>
 
     <!-- container for alert messages -->
     <div id='alert-container'>
@@ -31,20 +31,20 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="dissertation">Dissertation</option>
-                    <option value="thesis">Thesis</option>
-                    <option value="capstone">Capstone</option>
+                    <option value="Dissertation">Dissertation</option>
+                    <option value="Thesis">Thesis</option>
+                    <option value="Capstone">Capstone</option>
 
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="undergraduate" selected>Undergraduate</option>
-                    <option value="postgraduate">Postgraduate</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="non_teaching_staff">Non-teaching Staff</option>
-                    <option value="school_head">School Head</option>
+                    <option value="Undergraduate" selected>Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Non_teaching_staff">Non-teaching Staff</option>
+                    <option value="School_head">School Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -351,7 +351,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
         </div>
-
         <div class="row my-4">
             <label class="fw-bold mb-3">Attached Files</label>
             <div class="col">
@@ -368,40 +367,32 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
-                </div>
-            </div>
-        </div>
-        <hr>
+
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevisionThesis" onclick="enableRevisionThesis(this);">
+                <input class="form-check-input" type="checkbox" id="needsRevisionThesis" name="needsRevision" value="for revision" onclick="enableRevisionThesis(this);">
                 <label for="needsRevisionThesis" class="text-danger">Needs Revision</label>
-            </div>
-        </div>
-
-        <div class="row" id="textAreaFeedbackThesis">
-            <div class="col">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
-                </div>
             </div>
         </div>
 
         <div class="row" id="publishButtonThesis">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="">Publish</button>
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Publish</button>
+            </div>
+        </div>
+
+        <div class="row" id="textAreaFeedbackThesis" hidden>
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" placeholder="Write your comment..."></textarea>
+                </div>
             </div>
         </div>
 
         <div class="row" id="returnButtonThesis">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="">Return</button>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnThesisButton">
             </div>
         </div>
 
@@ -415,8 +406,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     function submitForm(event) {
         event.preventDefault();
-
+        const fileId = event.target.dataset.id
+        const authorGroupId = event.target.dataset.coauthor_id
         var formdata = new FormData(form);
+        
+        formdata.append("fileId",fileId);
+        formdata.append("coauthor_id",authorGroupId);
         postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -427,7 +422,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postThesis(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/thesis-submission.php");
+            http.open("POST", "../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

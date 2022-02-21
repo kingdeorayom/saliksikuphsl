@@ -31,8 +31,8 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                 }
                 else{
-                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = ? WHERE file_id = ?");
-                    $statement->bind_param("si",$_POST['textAreaFeedbackThesis'],$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = '' WHERE file_id = ?");
+                    $statement->bind_param("i",$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }
@@ -72,7 +72,7 @@ if (isset($_SESSION['userType'])) {
                 }
                 else{
                     $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = ? WHERE file_id = ?");
-                    $statement->bind_param("si",$_POST['textAreaFeedbackJournal'],$_POST['fileId']);
+                    $statement->bind_param("i",$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }
@@ -103,8 +103,8 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                }
                else{
-                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = ? WHERE file_id = ?");
-                    $statement->bind_param("si",$_POST['textAreaFeedbackInfographics'],$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = '' WHERE file_id = ?");
+                    $statement->bind_param("i",$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                }
