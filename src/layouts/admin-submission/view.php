@@ -113,6 +113,8 @@ if (isset($_GET['id'])) {
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../scripts/custom/coauthors-dropdown.js"></script>
+    <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
+    <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,8 +123,8 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/pages/submission-forms-style.css" type="text/css">
 </head>
-
-<body>
+<!-- onload function for date picker thesis and infographic -->
+<body onload=changeInput() >
     <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
