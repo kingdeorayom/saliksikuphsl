@@ -1,4 +1,3 @@
-const container = document.getElementById("date-picker-container"); //not needed
 const monthInput = document.getElementById("month-picker");
 const dayInput = document.getElementById("day-picker");
 const yearInput = document.getElementById("year-picker");

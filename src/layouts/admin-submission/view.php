@@ -113,8 +113,7 @@ if (isset($_GET['id'])) {
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../scripts/custom/coauthors-dropdown.js"></script>
-    <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
-    <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
+    
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,7 +123,13 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../../../styles/custom/pages/submission-forms-style.css" type="text/css">
 </head>
 <!-- onload function for date picker thesis and infographic -->
-<body onload=changeInput() >
+<body onload="<?php 
+    if ($fileInfo['file_type']=='thesis'){
+        echo 'changeInput()';
+    }
+    else if ($fileInfo['file_type']=='infographic'){
+        echo 'changeInputInfo()';
+    }?>">
     <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
@@ -186,6 +191,14 @@ if (isset($_GET['id'])) {
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
     <script src="../../../scripts/custom/feedback-control.js"></script>
+    <?php
+    if ($fileInfo['file_type']=='thesis') {
+        echo "<script src='../../../scripts/custom/thesis-calendar-date-picker.js'></script>";
+    }
+    else if ($fileInfo['file_type']=='infographic') {
+        echo "<script src='../../../scripts/custom/info-calendar-date-picker.js'></script>";
+    }
+    ?>
 </body>
 
 </html>

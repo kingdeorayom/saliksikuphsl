@@ -148,7 +148,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         if($fileInfo['publication_year']==$i){
                             echo "<option value ='$i' selected>$i</option>";
                         }
-                        echo "<option value='$i'>$i</option>";
+                        else{
+                            echo "<option value ='$i'>$i</option>";
+                        }
                     } ?>
                 </select>
             </div>
@@ -383,7 +385,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </form>
 
 </div>
-<script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
+
 <script>
     var alertContainerThesis = document.getElementById("alert-container")
     var form = document.forms.namedItem("thesis-form");

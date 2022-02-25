@@ -14,8 +14,35 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 ?>
-
-<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel" hidden>
+<div class="row my-3 d-lg-none">
+                <h5>Submission Details</h5>
+                <hr>
+                <p class="side-menu-text">Submitted by:</p>
+                <p class="side-menu-text">Juan Dela Cruz</p>
+                <hr>
+                <p class="side-menu-text">Submitted on:</p>
+                <p class="side-menu-text">2021-11-17 08:52:03</p>
+                <hr>
+                <p class="side-menu-text">Returned on:</p>
+                <p class="side-menu-text">2021-11-17 08:52:03</p>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 d-none d-md-none d-lg-block">
+                    <!--col-md-12 to stack on top of next column. remove display-none-->
+                    <h5>Submission Details</h5>
+                    <hr>
+                    <p class="side-menu-text">Submitted by:</p>
+                    <p class="side-menu-text">Juan Dela Cruz</p>
+                    <hr>
+                    <p class="side-menu-text">Submitted on:</p>
+                    <p class="side-menu-text">2021-11-17 08:52:03</p>
+                    <hr>
+                    <p class="side-menu-text">Returned on:</p>
+                    <p class="side-menu-text">2021-11-17 08:52:03</p>
+                    <hr>
+</div>
+<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
     <!-- container for alert messages -->
     <div id='alert-container-journal'>
 
@@ -23,37 +50,28 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <!-- container for alert messages -->
     <h1 class="my-2">File Upload Information</h1>
     <hr>
-    <form onsubmit="submitJournalForm(event)" name="journal-form">
+    <form onsubmit="submitJournalForm(event)" name="journal-form" data-id=<?php echo $fileInfo['file_id'] ?>>
         <div class="row mt-4">
             <div>
                 <label class="fw-bold">Title<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldJournalTitle" required>
+                <input type="text" class="form-control" name="textFieldJournalTitle" value ="<?php echo $fileInfo['journal_title']?>" required>
                 <p class="text-secondary mt-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"The Lighthouse"</span>.</p>
             </div>
         </div>
         <div class="row">
             <div>
                 <label class="fw-bold">Sub-title</label>
-                <input type="text" class="form-control" name="textFieldJournalSubTitle">
+                <input type="text" class="form-control" name="textFieldJournalSubTitle" value ="<?php echo $fileInfo['journal_subtitle']?>">
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-lg-6 col-sm-12">
                 <label class="py-2 fw-bold">College/Department<span class="text-danger"> *</span></label>
+                
                 <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
-                    <option value="Basic Education" selected>Basic Education</option>
-                    <option value="Senior High School">Senior High School</option>
-                    <option value="Arts and Sciences">Arts and Sciences</option>
-                    <option value="Business and Accountancy">Business and Accountancy</option>
-                    <option value="Computer Studies">Computer Studies</option>
-                    <option value="Criminology">Criminology</option>
-                    <option value="Education">Education</option>
-                    <option value="Engineering, Architecture and Aviation">Engineering, Architecture and Aviation</option>
-                    <option value="Law">Law</option>
-                    <option value="Maritime Education">Maritime Education</option>
-                    <option value="International Hospitality Management">International Hospitality Management</option>
-                    <option value="Graduate School">Graduate School</option>
-                    <option value="Support Services">Support Services</option>
+                <?php foreach($department_list as $key=>$row): ?>
+                    <option value = "<?php echo $row['name'] ?>" <?=$fileInfo['department']==$row['name']? 'selected':''?>><?php echo $row['name'] ?></option>
+                <?php endforeach ?>
                 </select>
             </div>
         </div>
@@ -70,40 +88,40 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="number" class="form-control" name="textFieldVolumeNumber" required>
+                <input type="number" class="form-control" name="textFieldVolumeNumber" value= <?php echo $fileInfo['volume_number'] ?> required>
             </div>
             <div class="col-lg-12 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">Serial/Issue Number*</label>
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="number" class="form-control" name="textFieldSerialIssueNumber" required>
+                <input type="number" class="form-control" name="textFieldSerialIssueNumber" value= <?php echo $fileInfo['serial_issue_number'] ?> required>
             </div>
             <div class="col-lg-12 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">ISSN</label>
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldISSN" required>
+                <input type="text" class="form-control" name="textFieldISSN" value= <?php echo $fileInfo['ISSN'] ?> required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="py-2 fw-bold">Editor-in-Chief<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldChiefEditorFirstName" placeholder="First Name*" required>
+                <input type="text" class="form-control" name="textFieldChiefEditorFirstName" placeholder="First Name*" value= <?php echo $fileInfo['chief_editor_first_name'] ?> required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldChiefEditorMiddleInitial" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldChiefEditorMiddleInitial" placeholder="Middle Initial" value= <?php echo $fileInfo['chief_editor_middle_initial'] ?>>
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldChiefEditorLastName" placeholder="Surname*" required>
+                <input type="text" class="form-control" name="textFieldChiefEditorLastName" placeholder="Surname*" value= <?php echo $fileInfo['chief_editor_last_name'] ?> required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldChiefEditorNameExtension" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldChiefEditorNameExtension" placeholder="Extension" value= <?php echo $fileInfo['chief_editor_name_ext'] ?>>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 mb-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <input type="text" class="form-control" name="textFieldEmail" value= <?php echo $fileInfo['chief_editor_email'] ?> required>
                 <label class="text-secondary mt-2">Consider your active email address</label>
             </div>
         </div>
@@ -111,7 +129,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col">
                 <div class="my-3">
                     <label class="form-label fw-bold">Description<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaDescription" rows="10" required></textarea>
+                    <textarea class="form-control" name="textAreaDescription" rows="10" required><?php echo $fileInfo['journal_description'] ?></textarea>
                 </div>
             </div>
         </div>
@@ -136,7 +154,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedbackJournal" rows="10" required></textarea>
+                    <textarea class="form-control" name="textAreaFeedbackJournal" rows="10" required><?php echo $fileInfo['feedback'] ?></textarea>
                 </div>
             </div>
         </div>

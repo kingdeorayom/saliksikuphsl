@@ -97,7 +97,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         if($fileInfo['infographic_publication_day']==$i){
                             echo "<option value ='$i' selected>$i</option>";
                         }
-                        echo "<option value ='$i'>$i</option>";
+                        else{
+                            echo "<option value ='$i'>$i</option>";
+                        }
                     } ?>
                 </select>
             </div>
