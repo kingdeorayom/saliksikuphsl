@@ -62,23 +62,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </section>
 
-    <section class="contacts">
+    <section class="submit-research" style="font-family: 'Roboto';">
         <div class="container p-5">
 
-            <!-- <div class="row my-3 d-lg-none">
-                <h3>On this page</h3>
-                <hr>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <ul class="searchFilters">
-                        <li class="btn-link">Research and Development Center</li>
-                        <li class=" btn-link">University Library</li>
-                    </ul>
-                </div>
-            </div> -->
+            <div class="row">
 
-            <div class="row" style="font-family: 'Roboto';">
                 <div class="col-lg-2 d-none d-md-none d-lg-block">
-                    <!--col-md-12 to stack on top of next column. remove display-none-->
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
                     <hr>
                     <p class="side-menu-text fw-bold">Publication Year</p>
@@ -227,13 +216,92 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchool">
                         <label class="form-check-label" for="checkBoxGraduateSchool">Graduate School</label>
                     </div>
+                </div>
+
+                <div class="col-lg-10 col-md-12 col-xs-12 main-column">
+                    <h1>Suggestions</h1>
+                    <hr class="my-2">
+
+                    <div class="repositoryItem p-2">
+                        <p class="fw-bold text-start" style="color: #012265;">Thesis</p>
+                        <a href="../../layouts/repository/view-article.php" class="article-title">
+                            <h4 class="fw-bold mb-3">Challenges Encountered, Engagement and Strategies in Building Community Relations Among Educational Leaders in Philippine Public Schools</h4>
+                        </a>
+                        <p class="fw-bold">Jallorina, A., Galicia, L.</p>
+                        <p class="fw-bold">2019</p>
+                        <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 - 2019.</p>
+                        <p class="bookmark"><i class="far fa-bookmark me-2"></i> Add to Bookmarks</p>
+                        <hr class="my-2">
+                    </div>
+
+                    <div class="repositoryItem p-2">
+                        <div class="row">
+                            <div class="text-start">
+                                <p class="fw-bold" style="color: #012265;">Journal</p>
+                            </div>
+                            <div class="col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1">
+                                <img src="../../../assets/images/dump/u135.svg" width="150">
+                            </div>
+                            <div class="col-sm-12 col-lg-10">
+                                <div class="col">
+                                    <a href="../../layouts/repository/view-article.php" class="article-title">
+                                        <h4 class="fw-bold mb-3">Journal Title</h4>
+                                    </a>
+                                    <h5 class="mb-3">Sub title</h5>
+                                    <p class="fw-bold">Volume 11 Series of 2019</p>
+                                    <p>The BRIEF (Business Research Innovations and Educational Forum) is a collection of faculty and student researches in 2019.</p>
+                                    <p class="bookmark"><i class="far fa-bookmark me-2"></i> Add to Bookmarks</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-2 d-none d-sm-none d-lg-block">
+                                <img src="../../../assets/images/dump/u135.svg" width="150">
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                    </div>
+
+                    <div class="repositoryItem p-2">
+                        <div class="row">
+                            <div class="text-start">
+                                <p class="fw-bold" style="color: #012265;">Journal</p>
+                            </div>
+                            <div class="col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1">
+                                <img src="../../../assets/images/dump/u148.svg" width="150">
+                            </div>
+                            <div class="col-sm-12 col-lg-10">
+                                <div class="col">
+                                    <a href="../../layouts/repository/view-article.php" class="article-title">
+                                        <h4 class="fw-bold mb-3">Top 10 Tips for Balancing Teaching and Research</h4>
+                                    </a>
+                                    <h5 class="mb-3">Sub title</h5>
+                                    <p class="fw-bold">Volume 11 Series of 2019</p>
+                                    <p>The BRIEF (Business Research Innovations and Educational Forum) is a collection of faculty and student researches in 2019.</p>
+                                    <p class="bookmark"><i class="far fa-bookmark me-2"></i> Add to Bookmarks</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-2 d-none d-sm-none d-lg-block">
+                                <img src="../../../assets/images/dump/u148.svg" width="150">
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                    </div>
+
+                    <div class="row repository-pagination">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
 
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column text-center">
-                    <h6 class="text-secondary">Search results will appear here</h6>
-                </div>
             </div>
+
         </div>
     </section>
 

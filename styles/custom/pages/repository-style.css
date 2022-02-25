@@ -36,3 +36,17 @@
   font-family: "Roboto", sans-serif;
   font-weight: 800;
 }
+
+.bookmark:hover {
+  cursor: pointer;
+}
+
+.article-title {
+  text-decoration: none !important;
+  color: black;
+}
+
+.article-title:hover {
+  color: black;
+  text-decoration: underline !important;
+}
