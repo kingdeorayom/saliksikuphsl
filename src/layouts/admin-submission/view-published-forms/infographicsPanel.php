@@ -14,8 +14,29 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 ?>
-
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
+<div class="row my-3 d-lg-none">
+                <h5>Submission Details</h5>
+                <hr>
+                <p class="side-menu-text">Submitted by:</p>
+                <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+                <hr>
+                <p class="side-menu-text">Submitted on:</p>
+                <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 d-none d-md-none d-lg-block">
+                    <!--col-md-12 to stack on top of next column. remove display-none-->
+                    <h5>Submission Details</h5>
+                    <hr>
+                    <p class="side-menu-text">Submitted by:</p>
+                    <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+                    <hr>
+                    <p class="side-menu-text">Submitted on:</p>
+                    <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+                    <hr>
+</div>
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
 
     <!-- container for alert messages -->
     <div id='alert-container-infographic'>
@@ -24,7 +45,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <!-- container for alert messages -->
     <h1 class="my-2">File Upload Information</h1>
     <hr>
-    <form onsubmit="submitFormInfographic(event)" name="infographic-form">
+    <form onsubmit="submitFormInfographic(event)" name="infographic-form" data-id="<?php echo $fileInfo['file_id']?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
         <div class="row">
             <div class="col-lg-3">
                 <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
@@ -39,19 +60,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row">
             <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
-                    <option value="Basic Education" selected>Basic Education</option>
-                    <option value="Senior High School">Senior High School</option>
-                    <option value="Arts and Sciences">Arts and Sciences</option>
-                    <option value="Business and Accountancy">Business and Accountancy</option>
-                    <option value="Computer Studies">Computer Studies</option>
-                    <option value="Criminology">Criminology</option>
-                    <option value="Education">Education</option>
-                    <option value="Engineering, Architecture and Aviation">Engineering, Architecture and Aviation</option>
-                    <option value="Law">Law</option>
-                    <option value="Maritime Education">Maritime Education</option>
-                    <option value="International Hospitality Management">International Hospitality Management</option>
-                    <option value="Graduate School">Graduate School</option>
-                    <option value="Support Services">Support Services</option>
+                <?php foreach($department_list as $key=>$row): ?>
+                    <option value = "<?php echo $row['name'] ?>" <?=$fileInfo['infographic_research_unit']==$row['name']? 'selected':''?>><?php echo $row['name'] ?></option>
+                <?php endforeach ?>
                 </select>
             </div>
             <div class="col-lg-3 d-sm-block d-lg-none">
@@ -59,11 +70,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="Undergraduate" selected>Undergraduate</option>
-                    <option value="Postgraduate">Postgraduate</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Non_teaching_staff">Non-teaching Staff</option>
-                    <option value="School_head">School Head</option>
+                <option value="Undergraduate" <?=$fileInfo['infographic_researcher_category']=='Undergraduate'? 'selected' :''?>>Undergraduate</option>
+                    <option value="Postgraduate" <?=$fileInfo['infographic_researcher_category']=='Postgraduate'? 'selected' :''?>>Postgraduate</option>
+                    <option value="Faculty" <?=$fileInfo['infographic_researcher_category']=='Faculty'? 'selected' :''?>>Faculty</option>
+                    <option value="Non_teaching_staff" <?=$fileInfo['infographic_researcher_category']=='Non_teaching_staff'? 'selected' :''?>>Non-teaching Staff</option>
+                    <option value="School_head" <?=$fileInfo['infographic_researcher_category']=='School_head'? 'selected' :''?>>School Head</option>
                 </select>
             </div>
             <div class="col-lg-3 d-sm-block d-lg-none">
@@ -154,50 +165,50 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-2">
             <div>
                 <label class="fw-bold">Title/Topic<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
+                <input type="text" class="form-control" name="textFieldInfographicsTitle" value = "<?php echo $fileInfo['infographic_title']?>" required>
             </div>
         </div>
         <div class="row my-2">
             <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorFirstName" placeholder="First Name*" required>
+                <input type="text" class="form-control" name="textFieldAuthorFirstName" placeholder="First Name*" value = "<?php echo $fileInfo['author_first_name']?>" required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorMiddleInitial" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldAuthorMiddleInitial" placeholder="Middle Initial" value = "<?php echo $fileInfo['author_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorLastName" placeholder="Surname*" required>
+                <input type="text" class="form-control" name="textFieldAuthorLastName" placeholder="Surname*" value = "<?php echo $fileInfo['author_surname']?>" required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorNameExtension" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldAuthorNameExtension" placeholder="Extension" value = "<?php echo $fileInfo['author_ext']?>">
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <input type="text" class="form-control" name="textFieldEmail" value = "<?php echo $fileInfo['author_email']?>" required>
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>
         <div class="row my-2">
             <label class="py-2 fw-bold">Graphics Editor<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name*" required>
+                <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name*" value = "<?php echo $fileInfo['editor_first_name']?>" required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldGraphicsEditorMiddleInitial" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldGraphicsEditorMiddleInitial" placeholder="Middle Initial" value = "<?php echo $fileInfo['editor_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldGraphicsEditorLastName" placeholder="Surname*" required>
+                <input type="text" class="form-control" name="textFieldGraphicsEditorLastName" placeholder="Surname*" value = "<?php echo $fileInfo['editor_surname']?>" required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldGraphicsEditorNameExtension" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldGraphicsEditorNameExtension" placeholder="Extension" value = "<?php echo $fileInfo['editor_ext']?>">
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldGraphicsEditorEmail" required>
+                <input type="text" class="form-control" name="textFieldGraphicsEditorEmail" value = "<?php echo $fileInfo['editor_email']?>" required>
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>
@@ -205,96 +216,96 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="fw-bold">No. of Co-Authors</label>
                 <select id="dropdownInfographicsCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" onchange="showInfographicsCoAuthorsField();" required>
-                    <option value="0" selected>0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value=0 <?=$fileInfo['coauthors_count']==0?'selected':'' ?>>0</option>
+                    <option value=1 <?=$fileInfo['coauthors_count']==1?'selected':'' ?>>1</option>
+                    <option value=2 <?=$fileInfo['coauthors_count']==2?'selected':'' ?>>2</option>
+                    <option value=3 <?=$fileInfo['coauthors_count']==3?'selected':'' ?>>3</option>
+                    <option value=4 <?=$fileInfo['coauthors_count']==4?'selected':'' ?>>4</option>
                 </select>
                 <label class="text-secondary">Max 4 co-authors allowed</label>
             </div>
         </div>
-        <div class="row" id="co-author-1-info-panel">
+        <div class="row" id="co-author-1-info-panel" <?=$fileInfo['coauthors_count']>=1 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 1</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor1_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor1" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor1" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor1_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*" value ="<?php echo $fileInfo['coauthor1_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension" value ="<?php echo $fileInfo['coauthor1_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor1">
+                <input type="text" class="form-control" name="textFieldEmailAuthor1" value ="<?php echo $fileInfo['coauthor1_email']?>">
             </div>
         </div>
-        <div class="row" id="co-author-2-info-panel">
+        <div class="row" id="co-author-2-info-panel" <?=$fileInfo['coauthors_count']>=2 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 2</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor2_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor2" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor2" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor2_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*" value ="<?php echo $fileInfo['coauthor2_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension" value ="<?php echo $fileInfo['coauthor2_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor2">
+                <input type="text" class="form-control" name="textFieldEmailAuthor2" value ="<?php echo $fileInfo['coauthor2_email']?>">
             </div>
         </div>
-        <div class="row" id="co-author-3-info-panel">
+        <div class="row" id="co-author-3-info-panel" <?=$fileInfo['coauthors_count']>=3 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 3</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor3_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor3" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor3" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor3_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*"  value ="<?php echo $fileInfo['coauthor3_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension"  value ="<?php echo $fileInfo['coauthor3_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor3">
+                <input type="text" class="form-control" name="textFieldEmailAuthor3"  value ="<?php echo $fileInfo['coauthor3_email']?>">
             </div>
         </div>
-        <div class="row" id="co-author-4-info-panel">
+        <div class="row" id="co-author-4-info-panel" <?=$fileInfo['coauthors_count']>=4 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 4</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor4_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor4" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor4" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor4_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*" value ="<?php echo $fileInfo['coauthor4_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension" value ="<?php echo $fileInfo['coauthor4_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor4">
+                <input type="text" class="form-control" name="textFieldEmailAuthor4" value ="<?php echo $fileInfo['coauthor4_email']?>">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Description<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textareaDescription" rows="10" required></textarea>
+                    <textarea class="form-control" name="textareaDescription" rows="10" required><?php echo $fileInfo['infographic_description']?></textarea>
                 </div>
             </div>
         </div>

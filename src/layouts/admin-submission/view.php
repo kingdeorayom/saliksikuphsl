@@ -98,7 +98,18 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Approval</title>
+    <title>
+        <?php
+        if($fileInfo['file_type']=='thesis'){
+            echo $fileInfo['research_title'];
+        } 
+        else if($fileInfo['file_type']=='journal'){
+            echo $fileInfo['journal_title'];
+        }
+        else if($fileInfo['file_type']=='infographic'){
+            echo $fileInfo['infographic_title'];
+        } 
+        ?></title>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../scripts/custom/coauthors-dropdown.js"></script>
@@ -130,7 +141,37 @@ if (isset($_GET['id'])) {
                     }
                 }
                 else if($fileInfo['status']=='revised'){
-                    
+                    if ($fileInfo['file_type']=='thesis') {
+                        include_once './view-revised-forms/thesisDissertationPanel.php';
+                    } 
+                    else if($fileInfo['file_type']=='journal'){
+                        include_once './view-revised-forms/researchJournalPanel.php';
+                    }
+                    else if($fileInfo['file_type']=='infographic'){
+                        include_once './view-revised-forms/infographicsPanel.php';
+                    }
+                }
+                else if($fileInfo['status']=='for revision'){
+                    if ($fileInfo['file_type']=='thesis') {
+                        include_once './view-revision-forms/thesisDissertationPanel.php';
+                    } 
+                    else if($fileInfo['file_type']=='journal'){
+                        include_once './view-revision-forms/researchJournalPanel.php';
+                    }
+                    else if($fileInfo['file_type']=='infographic'){
+                        include_once './view-revision-forms/infographicsPanel.php';
+                    }
+                }
+                else if($fileInfo['status']=='pending'){
+                    if ($fileInfo['file_type']=='thesis') {
+                        include_once './view-approval-forms/thesisDissertationPanel.php';
+                    } 
+                    else if($fileInfo['file_type']=='journal'){
+                        include_once './view-approval-forms/researchJournalPanel.php';
+                    }
+                    else if($fileInfo['file_type']=='infographic'){
+                        include_once './view-approval-forms/infographicsPanel.php';
+                    }
                 }
                 ?>
             </div>

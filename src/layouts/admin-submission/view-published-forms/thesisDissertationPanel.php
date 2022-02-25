@@ -47,7 +47,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h1 class="my-2">File Upload Information</h1>
     <hr>
     <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
-    <form onsubmit="submitForm(event)" name="thesis-form">
+    <form onsubmit="submitForm(event)" name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
         <div class="row mt-4">
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
@@ -216,7 +216,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <label class="text-secondary">Max 4 co-authors allowed</label>
             </div>
         </div>
-        <div class="row" id="co-author-1-td-panel">
+        <div class="row" id="co-author-1-td-panel" <?=$fileInfo['coauthors_count']>=1 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 1</label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor1_first_name']?>">
@@ -235,7 +235,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldEmailAuthor1" value ="<?php echo $fileInfo['coauthor1_email']?>">
             </div>
         </div>
-        <div class="row" id="co-author-2-td-panel">
+        <div class="row" id="co-author-2-td-panel" <?=$fileInfo['coauthors_count']>=2 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 2</label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor2_first_name']?>">
@@ -254,7 +254,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldEmailAuthor2" value ="<?php echo $fileInfo['coauthor2_email']?>">
             </div>
         </div>
-        <div class="row" id="co-author-3-td-panel">
+        <div class="row" id="co-author-3-td-panel" <?=$fileInfo['coauthors_count']>=3 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 3</label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor3_first_name']?>">
@@ -273,7 +273,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldEmailAuthor3"  value ="<?php echo $fileInfo['coauthor3_email']?>">
             </div>
         </div>
-        <div class="row" id="co-author-4-td-panel">
+        <div class="row" id="co-author-4-td-panel" <?=$fileInfo['coauthors_count']>=4 ?'':'style="display: none;"' ?>>
             <label class="py-2 fw-bold">Co-Author 4</label>
             <div class="col-lg-4 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor4_first_name']?>">
@@ -303,7 +303,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row mb-4">
             <div>
                 <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" required value = "<?php echo $fileInfo['keywords']?>">
+                <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" value = "<?php echo $fileInfo['keywords']?>" required >
             </div>
         </div>
         <div class="row">
@@ -338,29 +338,41 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Arts and Humanities'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxArtsHumanities">Arts and Humanities</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Education and Social Sciences'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxEducationSocialSciences">Education and Social Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Law and Justice System'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxLawJusticeSystem">Law and Justice System</label>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Business Management'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxBusinessManagement">Business Management</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Health and Sciences'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxHealthSciences">Health and Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Marine and Aviation'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxMarineAviation">Marine and Aviation</label>
                 </div>
             </div>

@@ -14,7 +14,7 @@ export function pendingThesisTemplate(result) {
             <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} 08:52:03</p>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view-approval.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -36,7 +36,7 @@ export function pendingInfographicTemplate(result) {
             </div>
             <hr class="my-1">
             
-            <a href="../../layouts/admin-submission/view-approval.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
             
             </div>`;
   return template;
@@ -59,7 +59,7 @@ export function pendingJournalTemplate(result) {
                 
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view-approval.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -88,7 +88,7 @@ export function revisionThesisTemplate(result) {
             </div>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view-revision.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -117,7 +117,7 @@ export function revisionInfographicTemplate(result) {
             </div>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view-revision.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -144,7 +144,7 @@ export function revisionJournalTemplate(result) {
                 </div>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view-revision.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -171,7 +171,7 @@ export function revisedThesisTemplate(result) {
                   </div>
               </div>
               <hr class="my-1">
-              <a href="../../layouts/admin-submission/view-revised.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+              <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
           </div>`;
   return template;
 }
@@ -200,7 +200,7 @@ export function revisedInfographicTemplate(result) {
               </div>
           </div>
           <hr class="my-1">
-          <a href="../../layouts/admin-submission/view-revised.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+          <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
       </div>`;
   return template;
 }
@@ -227,7 +227,7 @@ export function revisedJournalTemplate(result) {
                       </div>
                   </div>
                   <hr class="my-1">
-                  <a href="../../layouts/admin-submission/view-revised.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+                  <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
                   </div>`;
   return template;
 }
@@ -248,7 +248,7 @@ export function publishedThesisTemplate(result) {
             <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} 08:52:03</p>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view-published.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
         </div>`;
   return template;
 }
@@ -268,7 +268,7 @@ export function publishedInfographicTemplate(result) {
                 <p><span class="fw-bold">Submitted on:</span> ${result.infographic_publication_year}-${result.infographic_publication_month}-${result.infographic_publication_day} 08:52:03</p>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view-published.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -287,7 +287,7 @@ export function publishedJournalTemplate(result) {
                   
                   
                   <hr class="my-1">
-                  <a href="../../layouts/admin-submission/view-published.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
+                  <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light rounded-0 mt-3" style="background-color: #012265;">Click here to view</button></a>
                   </div>`;
   return template;
 }
