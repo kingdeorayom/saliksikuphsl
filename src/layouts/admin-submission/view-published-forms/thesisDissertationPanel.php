@@ -14,8 +14,29 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 ?>
-
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel" hidden>
+<div class="row my-3 d-lg-none">
+                <h5>Submission Details</h5>
+                <hr>
+                <p class="side-menu-text">Submitted by:</p>
+                <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+                <hr>
+                <p class="side-menu-text">Submitted on:</p>
+                <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 d-none d-md-none d-lg-block">
+                    <!--col-md-12 to stack on top of next column. remove display-none-->
+                    <h5>Submission Details</h5>
+                    <hr>
+                    <p class="side-menu-text">Submitted by:</p>
+                    <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+                    <hr>
+                    <p class="side-menu-text">Submitted on:</p>
+                    <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+                    <hr>
+</div>
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
 
     <!-- container for alert messages -->
     <div id='alert-container'>
@@ -31,61 +52,51 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResourceType">
-                    <option value="Dissertation">Dissertation</option>
-                    <option value="Thesis">Thesis</option>
-                    <option value="Capstone">Capstone</option>
+                    <option value="Dissertation" <?=$fileInfo['resource_type']=='Dissertation'? 'selected' :''?>>Dissertation</option>
+                    <option value="Thesis" <?=$fileInfo['resource_type']=='Thesis'? 'selected' :''?>>Thesis</option>
+                    <option value="Capstone" <?=$fileInfo['resource_type']=='Capstone'? 'selected' :''?>>Capstone</option>
 
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
-                    <option value="Undergraduate" selected>Undergraduate</option>
-                    <option value="Postgraduate">Postgraduate</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Non_teaching_staff">Non-teaching Staff</option>
-                    <option value="School_head">School Head</option>
+                    <option value="Undergraduate" <?=$fileInfo['researchers_category']=='Undergraduate'? 'selected' :''?>>Undergraduate</option>
+                    <option value="Postgraduate" <?=$fileInfo['researchers_category']=='Postgraduate'? 'selected' :''?>>Postgraduate</option>
+                    <option value="Faculty" <?=$fileInfo['researchers_category']=='Faculty'? 'selected' :''?>>Faculty</option>
+                    <option value="Non_teaching_staff" <?=$fileInfo['researchers_category']=='Non_teaching_staff'? 'selected' :''?>>Non-teaching Staff</option>
+                    <option value="School_head" <?=$fileInfo['researchers_category']=='School_head'? 'selected' :''?>>School Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
-                    <option value="Basic Education" selected>Basic Education</option>
-                    <option value="Senior High School">Senior High School</option>
-                    <option value="Arts and Sciences">Arts and Sciences</option>
-                    <option value="Business and Accountancy">Business and Accountancy</option>
-                    <option value="Computer Studies">Computer Studies</option>
-                    <option value="Criminology">Criminology</option>
-                    <option value="Education">Education</option>
-                    <option value="Engineering, Architecture and Aviation">Engineering, Architecture and Aviation</option>
-                    <option value="Law">Law</option>
-                    <option value="Maritime Education">Maritime Education</option>
-                    <option value="International Hospitality Management">International Hospitality Management</option>
-                    <option value="Graduate School">Graduate School</option>
-                    <option value="Support Services">Support Services</option>
+                <?php foreach($department_list as $key=>$row): ?>
+                    <option value = "<?php echo $row['name'] ?>" <?=$fileInfo['research_unit']==$row['name']? 'selected':''?>><?php echo $row['name'] ?></option>
+                <?php endforeach ?>
                 </select>
             </div>
         </div>
         <div class="row mt-3">
             <div>
                 <label class="fw-bold">Research Title<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldResearchTitle" id="textFieldResearchTitle" required>
+                <input type="text" class="form-control" name="textFieldResearchTitle" id="textFieldResearchTitle" value ="<?php echo $fileInfo['research_title']?>" required>
                 <p class="text-secondary mt-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"From Letters to Life: Understanding Language Teachers Experiences in Teaching Literature"</span>.</p>
             </div>
         </div>
         <div class="row mb-3">
             <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorFirstName" placeholder="First Name*" required>
+                <input type="text" class="form-control" name="textFieldAuthorFirstName" placeholder="First Name*" value ="<?php echo $fileInfo['author_first_name']?>" required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorMiddleInitial" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldAuthorMiddleInitial" placeholder="Middle Initial" value ="<?php echo $fileInfo['author_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorLastName" placeholder="Surname*" required>
+                <input type="text" class="form-control" name="textFieldAuthorLastName" placeholder="Surname*" value ="<?php echo $fileInfo['author_surname']?>" required>
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldAuthorNameExtension" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldAuthorNameExtension" placeholder="Extension" value ="<?php echo $fileInfo['author_name_ext']?>">
             </div>
         </div>
         <div class="row">
@@ -98,7 +109,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 mb-2">
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <input type="text" class="form-control" name="textFieldEmail" value ="<?php echo $fileInfo['author_email']?>" required>
             </div>
             <div class="col-lg-6 col-sm-12 mb-3 d-sm-block d-lg-none">
                 <label class="text-secondary">Consider your active email address</label>
@@ -112,18 +123,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-2 col-sm-12 mb-3" id="date-picker-container">
                 <select class="form-select" aria-label="Default select example" name="dropdownPublicationMonth" id="month-picker" onchange="changeInput()">
                     <!-- <option value="" selected>Month</option> -->
-                    <option value=1 selected>January</option>
-                    <option value=2>February</option>
-                    <option value=3>March</option>
-                    <option value=4>April</option>
-                    <option value=5>May</option>
-                    <option value=6>June</option>
-                    <option value=7>July</option>
-                    <option value=8>August</option>
-                    <option value=9>September</option>
-                    <option value=10>October</option>
-                    <option value=11>November</option>
-                    <option value=12>December</option>
+                    <?php 
+                    $months = array('January', 'February', 'March', 'April', 'May', 'June','July','August','September','October','November','December');
+                    foreach($months as $key=>$row):?>
+                    <option value=<?=$key+1 ?>><?=$row ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div class="col-lg-2 col-sm-12 mb-3">
@@ -203,11 +207,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="fw-bold">No. of Co-Authors</label>
                 <select id="dropdownThesisDissertationCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" onchange="showThesisDissertationCoAuthorsField();" required>
-                    <option value=0 selected>0</option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
+                    <option value=0 <?=$fileInfo['coauthors_count']==0?'selected':'' ?>>0</option>
+                    <option value=1 <?=$fileInfo['coauthors_count']==1?'selected':'' ?>>1</option>
+                    <option value=2 <?=$fileInfo['coauthors_count']==2?'selected':'' ?>>2</option>
+                    <option value=3 <?=$fileInfo['coauthors_count']==3?'selected':'' ?>>3</option>
+                    <option value=4 <?=$fileInfo['coauthors_count']==4?'selected':'' ?>>4</option>
                 </select>
                 <label class="text-secondary">Max 4 co-authors allowed</label>
             </div>
@@ -215,110 +219,120 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row" id="co-author-1-td-panel">
             <label class="py-2 fw-bold">Co-Author 1</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor1_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor1" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor1" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor1_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*" value ="<?php echo $fileInfo['coauthor1_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension" value ="<?php echo $fileInfo['coauthor1_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor1">
+                <input type="text" class="form-control" name="textFieldEmailAuthor1" value ="<?php echo $fileInfo['coauthor1_email']?>">
             </div>
         </div>
         <div class="row" id="co-author-2-td-panel">
             <label class="py-2 fw-bold">Co-Author 2</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor2_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor2" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor2" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor2_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*" value ="<?php echo $fileInfo['coauthor2_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension" value ="<?php echo $fileInfo['coauthor2_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor2">
+                <input type="text" class="form-control" name="textFieldEmailAuthor2" value ="<?php echo $fileInfo['coauthor2_email']?>">
             </div>
         </div>
         <div class="row" id="co-author-3-td-panel">
             <label class="py-2 fw-bold">Co-Author 3</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor3_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor3" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor3" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor3_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*"  value ="<?php echo $fileInfo['coauthor3_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension"  value ="<?php echo $fileInfo['coauthor3_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor3">
+                <input type="text" class="form-control" name="textFieldEmailAuthor3"  value ="<?php echo $fileInfo['coauthor3_email']?>">
             </div>
         </div>
         <div class="row" id="co-author-4-td-panel">
             <label class="py-2 fw-bold">Co-Author 4</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*" value ="<?php echo $fileInfo['coauthor4_first_name']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor4" placeholder="Middle Initial">
+                <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor4" placeholder="Middle Initial" value ="<?php echo $fileInfo['coauthor4_middle_initial']?>">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*" value ="<?php echo $fileInfo['coauthor4_surname']?>">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
+                <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension" value ="<?php echo $fileInfo['coauthor4_name_ext']?>">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor4">
+                <input type="text" class="form-control" name="textFieldEmailAuthor4" value ="<?php echo $fileInfo['coauthor4_email']?>">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Abstract<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textareaAbstract" rows="10" required></textarea>
+                    <textarea class="form-control" name="textareaAbstract" rows="10" required><?php echo $fileInfo['research_abstract']?></textarea>
                 </div>
             </div>
         </div>
         <div class="row mb-4">
             <div>
                 <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" required>
+                <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" required value = "<?php echo $fileInfo['keywords']?>">
             </div>
         </div>
         <div class="row">
             <label class="fw-bold my-2">Research Field<span class="text-danger"> *</span> <span class="text-secondary fw-light">Tick all that applies</span></label>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="researchFields[]"
+                     <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Accountancy and Marketing'){echo 'checked';}
+                    }?>
+                    >
                     <label for="checkBoxAccountancyMarketing">Accountancy and Marketing</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Educational Management'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxEducationalManagement">Educational Management</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='IT and Engineering'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxITEngineering">IT and Engineering</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="researchFields[]">
+                    <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        if($value=='Tourism and Hospitality'){echo 'checked';}
+                    }?>>
                     <label for="checkBoxTourismHospitality">Tourism and Hospitality</label>
                 </div>
             </div>

@@ -41,7 +41,7 @@ if (isset($_SESSION['userType'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../scripts/custom/coauthors-dropdown.js"></script>
 
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function() {
 
             const queryString = window.location.search;
@@ -245,7 +245,7 @@ if (isset($_SESSION['userType'])) {
                 infographicFileName.innerHTML = fileInfo.file_name
             }
         });
-    </script>
+    </script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">

@@ -2,6 +2,12 @@
 
 session_start();
 
+include '../../process/connection.php';
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
 if (!isset($_SESSION['isLoggedIn'])) {
     echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
     <p style="font-size: 50px; font-weight: bold">Oops!</p>
@@ -26,6 +32,45 @@ if (isset($_SESSION['userType'])) {
     }
 }
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
+    $statement->execute();
+    $result = $statement->get_result();
+    $file = $result->fetch_assoc();
+    $statement->close();
+    if($file['file_type']==="thesis"){
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ri.coauthor_group_id=ci.group_id WHERE file_id= $id");
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $fileInfo = $result->fetch_assoc();
+        $statement->close();
+        echo json_encode($fileInfo);
+    }
+    else if($file['file_type']==="journal"){
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id WHERE file_id= $id");
+        $statement->execute();
+        $result = $statement->get_result();
+        
+        $fileInfo = $result->fetch_assoc();
+        $statement->close();
+        echo json_encode($fileInfo);
+    }
+    else if($file['file_type']==="infographic"){
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ii.coauthor_group_id=ci.group_id WHERE file_id= $id");
+        $statement->execute();
+        $result = $statement->get_result();
+        
+        $fileInfo = $result->fetch_assoc();
+        $statement->close();
+        echo json_encode($fileInfo);
+    }
+
+} else {
+    die();//GET['id'] is not defined;
+} 
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +88,6 @@ if (isset($_SESSION['userType'])) {
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const queryId = urlParams.get('id');
@@ -285,12 +329,17 @@ if (isset($_SESSION['userType'])) {
                     <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
                     <hr>
                 </div>
-
-                <?php include_once './view-approval-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './view-approval-forms/researchJournalPanel.php' ?>
-                <?php include_once './view-approval-forms/infographicsPanel.php' ?>
-
-
+                <?php
+                if ($fileInfo['file_type']=='thesis') {
+                    include_once './view-approval-forms/thesisDissertationPanel.php';
+                } 
+                else if($fileInfo['file_type']=='journal'){
+                    include_once './view-approval-forms/researchJournalPanel.php';
+                }
+                else if($fileInfo['file_type']=='infographic'){
+                    include_once './view-approval-forms/infographicsPanel.php';
+                }
+                ?>
             </div>
         </div>
     </section>

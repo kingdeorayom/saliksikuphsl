@@ -2,6 +2,9 @@
 
 session_start();
 
+include '../../process/connection.php';
+
+
 if (!isset($_SESSION['isLoggedIn'])) {
     echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
     <p style="font-size: 50px; font-weight: bold">Oops!</p>
@@ -14,6 +17,36 @@ if (!isset($_SESSION['isLoggedIn'])) {
     // echo '<a href="../../../index.php">go back to login page</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+} 
+$results_per_page = 5;
+$offset = ($page-1) * $results_per_page;  
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
+$statement = $connection->prepare("SELECT COUNT(*) FROM file_information WHERE status = 'published'");
+$statement->execute();
+$result = $statement->get_result();
+$total_rows = $result->fetch_array()[0];
+$statement->close();
+
+$total_pages = ceil($total_rows/$results_per_page);
+echo $total_pages;
+
+$statement = $connection->prepare("SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id ORDER BY fi.file_id ASC LIMIT ?, ?");
+$statement->bind_param("ii",$offset,$results_per_page);
+$statement->execute();
+$result = $statement->get_result();
+$published = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+print_r($published[0]);
+
+
 
 ?>
 
@@ -231,7 +264,24 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
 
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column text-center">
-                    <h6 class="text-secondary">Search results will appear here</h6>
+                    
+                    <div class="forApproval my-3" id="results-container">
+                            <!-- results-container shows "No Results!" or something when empty -->
+                                <h6 class="text-secondary">Search results will appear here</h6>
+                                <?php foreach($published as $key=>$result):
+                                    if ($result['file_type'] === 'thesis') {
+                                        echo "<div>Insert Thesis Body Here</div>";
+                                    }
+                                    else if ($result['file_type'] === 'journal'){
+                                        echo "<div>Insert Journal Body Here</div>";
+                                    }
+                                    else if ($result['file_type'] === 'infographic'){
+                                        echo "<div>Insert Infographic Body Here</div>";
+                                    }
+                                    ?>
+
+                                <?php endforeach ?>
+                        </div>
                 </div>
             </div>
         </div>
