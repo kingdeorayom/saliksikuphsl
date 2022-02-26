@@ -331,7 +331,7 @@ $statement->close();
                     <div class="row repository-pagination">
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
-                                <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href="" >Previous</a></li>
+                                <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page-1?> >Previous</a></li>
                                 <?php for ($i=1; $i <= $total_pages; $i++){ 
                                     if($i==$page){
                                         echo "<li class='page-item active'><span class='page-link' href='?page={$i}'>$i</span></li>";
