@@ -333,7 +333,12 @@ $statement->close();
                             <ul class="pagination">
                                 <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href="" >Previous</a></li>
                                 <?php for ($i=1; $i <= $total_pages; $i++){ 
-                                    echo "<li class='page-item'><a class='page-link' href='?page={$i}'>$i</a></li>";
+                                    if($i==$page){
+                                        echo "<li class='page-item active'><span class='page-link' href='?page={$i}'>$i</span></li>";
+                                    }
+                                    else{
+                                        echo "<li class='page-item'><a class='page-link' href='?page={$i}'>$i</a></li>";
+                                    }
                                 } ?>
                                 <li class="page-item" <?php if($page==$total_pages){echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page+1?>>Next</a></li>
                             </ul>
