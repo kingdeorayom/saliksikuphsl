@@ -78,6 +78,8 @@ if (isset($_SESSION['userType'])) {
                     <hr>
                 </div>
 
+                <?php include_once './view-submission-forms/infographicsPanel.php' ?>
+
                 <!--Paste include_once statement below here, delete the php tag below-->
                 <?php
 

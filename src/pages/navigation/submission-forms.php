@@ -201,7 +201,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             }
         }
 
-        function enableDisableSubmitButton1(checkBoxStatus) {
+        function enableDisableSubmitButtonThesis(checkBoxStatus) {
             if (checkBoxStatus.checked) {
                 document.getElementById("submitResearchDissertationButton").disabled = false;
             } else {
@@ -209,7 +209,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             }
         }
 
-        function enableDisableSubmitButton2(checkBoxStatus) {
+        function enableDisableSubmitButtonJournal(checkBoxStatus) {
             if (checkBoxStatus.checked) {
                 document.getElementById("submitJournalButton").disabled = false;
             } else {
@@ -217,7 +217,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             }
         }
 
-        function enableDisableSubmitButton3(checkBoxStatus) {
+        function enableDisableSubmitButtonInfographics(checkBoxStatus) {
             if (checkBoxStatus.checked) {
                 document.getElementById("submitInfographicsButton").disabled = false;
             } else {

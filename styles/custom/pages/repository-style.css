@@ -35,5 +35,18 @@
   color: #012265;
   font-family: "Roboto", sans-serif;
   font-weight: 800;
-  /*font-size: 3rem;*/
+}
+
+.bookmark:hover {
+  cursor: pointer;
+}
+
+.article-title {
+  text-decoration: none !important;
+  color: black;
+}
+
+.article-title:hover {
+  color: black;
+  text-decoration: underline !important;
 }

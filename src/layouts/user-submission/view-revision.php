@@ -85,8 +85,9 @@ if (isset($_SESSION['userType'])) {
                     <hr>
                 </div>
 
+                <?php include_once './view-revision-forms/thesisDissertationPanel.php' ?>
+
                 <!--Paste include_once statement below here, delete the php tag below-->
-                <?php include_once './view-revision-forms/infographicsPanel.php' ?>
                 <?php
 
                 // include 1 of the 3 based on whether file is infographics, thesis, journal
@@ -107,6 +108,31 @@ if (isset($_SESSION['userType'])) {
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script>
+        function enableDisableResubmitButtonThesis(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("resubmitButtonThesis").disabled = false;
+            } else {
+                document.getElementById("resubmitButtonThesis").disabled = true;
+            }
+        }
+
+        function enableDisableResubmitButtonJournal(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("resubmitButtonJournal").disabled = false;
+            } else {
+                document.getElementById("resubmitButtonJournal").disabled = true;
+            }
+        }
+
+        function enableDisableResubmitButtonInfographics(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("resubmitButtonInfographics").disabled = false;
+            } else {
+                document.getElementById("resubmitButtonInfographics").disabled = true;
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -55,30 +55,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <section class="contacts" style="font-family: 'Roboto';">
         <div class="container p-5">
 
-            <!-- <div class="row my-3 d-lg-none">
-                <h3>On this page</h3>
-                <hr>
-
-                <div class="m-2">
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="researchDevelopmentCenterClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                        <label class="form-check-label" for="flexRadioDefault1">Research and Development Center</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="universityLibraryClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">University Library</label>
-                    </div>
-                </div>
-
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <ul class="onThisPageLinks">
-                        <li class="btn-link" onclick="researchDevelopmentCenterClicked()">Research and Development Center</li>
-                        <li class=" btn-link" onclick="universityLibraryClicked()">University Library</li>
-                    </ul>
-                </div>
-
-            </div> -->
-
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <!--col-md-12 to stack on top of next column. remove display-none-->

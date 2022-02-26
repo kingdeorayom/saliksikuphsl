@@ -30,6 +30,21 @@
   border-color: gray !important;
 }
 
+#resubmitButtonThesis:disabled {
+  background-color: gray !important;
+  border-color: gray !important;
+}
+
+#resubmitButtonJournal:disabled {
+  background-color: gray !important;
+  border-color: gray !important;
+}
+
+#resubmitButtonInfographics:disabled {
+  background-color: gray !important;
+  border-color: gray !important;
+}
+
 #submitJournalButton:disabled {
   background-color: gray !important;
   border-color: gray !important;
@@ -38,6 +53,11 @@
 #submitInfographicsButton:disabled {
   background-color: gray !important;
   border-color: gray !important;
+}
+
+.remove-attachment:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /*---------------------------------------------------Masthead---------------------------------------------------*/

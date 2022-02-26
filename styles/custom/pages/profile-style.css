@@ -13,10 +13,23 @@
   background-color: #012265;
   border-color: #012265;
 }
-
 .button-update:hover {
-  background-color: #012b7e;
-  border-color: #012b7e;
+  background-color: #012265;
+  border-color: #012265;
+}
+
+.button-update-acctpref,
+.button-edit-acctpref,
+.button-create {
+  background-color: #012265;
+  border-color: #012265;
+}
+
+.button-update-acctpref:hover,
+.button-edit-acctpref:hover,
+.button-create:hover {
+  background-color: #0c42ad;
+  border-color: #0c42ad;
 }
 
 /*---------------------------------------------------Masthead---------------------------------------------------*/

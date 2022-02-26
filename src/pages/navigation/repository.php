@@ -36,15 +36,15 @@ $total_rows = $result->fetch_array()[0];
 $statement->close();
 
 $total_pages = ceil($total_rows/$results_per_page);
-echo $total_pages;
 
-$statement = $connection->prepare("SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id ORDER BY fi.file_id ASC LIMIT ?, ?");
+$query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'published' ORDER BY fi.file_id ASC LIMIT ?, ?";
+$statement = $connection->prepare($query);
 $statement->bind_param("ii",$offset,$results_per_page);
 $statement->execute();
 $result = $statement->get_result();
 $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
-print_r($published[0]);
+
 
 
 
@@ -76,7 +76,7 @@ print_r($published[0]);
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1 id="masthead-title-text">Search the repository</h1>
+                    <h2 id="masthead-title-text">Search the repository</h2>
 
                     <div class="input-group my-3">
                         <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2">
@@ -95,23 +95,11 @@ print_r($published[0]);
         </div>
     </section>
 
-    <section class="contacts">
-        <div class="container p-5">
+    <section class="submit-research" style="font-family: 'Roboto';">
+        <div class="container px-4 py-5">
 
-            <!-- <div class="row my-3 d-lg-none">
-                <h3>On this page</h3>
-                <hr>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <ul class="searchFilters">
-                        <li class="btn-link">Research and Development Center</li>
-                        <li class=" btn-link">University Library</li>
-                    </ul>
-                </div>
-            </div> -->
-
-            <div class="row" style="font-family: 'Roboto';">
+            <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block">
-                    <!--col-md-12 to stack on top of next column. remove display-none-->
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
                     <hr>
                     <p class="side-menu-text fw-bold">Publication Year</p>
@@ -260,30 +248,103 @@ print_r($published[0]);
                         <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchool">
                         <label class="form-check-label" for="checkBoxGraduateSchool">Graduate School</label>
                     </div>
-
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column text-center">
+                
+                <div class="col-lg-10 col-md-12 col-xs-12 main-column">
+                    <h1>Suggestions</h1>
+                    <hr class="my-2">
+                    <?php foreach($published as $key=>$result):
+                                if ($result['file_type'] === 'thesis') {
+                                    echo "<div class='repositoryItem p-2'>
+                                    <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
+                                    <a href='../../layouts/repository/view-article.php' class='article-title'>
+                                        <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
+                                    </a>
+                                    <p class='fw-bold'>Jallorina, A., Galicia, L.</p>
+                                    <p class='fw-bold'>{$result['publication_year']}</p>
+                                    <p>{$result['research_abstract']}</p>
+                                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
+                                    <hr class='my-2'>
+                                </div>";
+                                }
+                                else if ($result['file_type'] === 'journal'){
+                                    echo "<div class='repositoryItem p-2'>
+                                    <div class='row'>
+                                        <div class='text-start'>
+                                            <p class='fw-bold' style='color: #012265;'>Journal {$result['file_id']}</p>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                            <img src='../../../assets/images/dump/u135.svg' width='150'>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-10'>
+                                            <div class='col'>
+                                                <a href='../../layouts/repository/view-article.php' class='article-title'>
+                                                    <h4 class='fw-bold mb-3'>{$result['journal_title']}</h4>
+                                                </a>
+                                                <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
+                                                <p class='fw-bold'>Volume 11 Series of 2019</p>
+                                                <p>The BRIEF (Business Research Innovations and Educational Forum) is a collection of faculty and student researches in 2019.</p>
+                                                <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
+                                            </div>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                            <img src='../../../assets/images/dump/u135.svg' width='150'>
+                                        </div>
+                                    </div>
+                                    <hr class='my-2'>
+                                </div>";
+                                }
+                                else if ($result['file_type'] === 'infographic'){
+                                    echo "<div class='repositoryItem p-2'>
+                                    <div class='row'>
+                                        <div class='text-start'>
+                                            <p class='fw-bold' style='color: #012265;'>Infographic {$result['file_id']}</p>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                            <img src='../../../assets/images/dump/u148.svg' width='150'>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-10'>
+                                            <div class='col'>
+                                                <a href='../../layouts/repository/view-article.php' class='article-title'>
+                                                    <h4 class='fw-bold mb-3'>{$result['infographic_title']}</h4>
+                                                </a>
+                                                <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
+                                                <p class='fw-bold'>Volume 11 Series of 2019</p>
+                                                <p>{$result['infographic_description']}</p>
+                                                <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
+                                            </div>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                            <img src='../../../assets/images/dump/u148.svg' width='150'>
+                                        </div>
+                                    </div>
+                                    <hr class='my-2'>
+                                </div>";
+                                }
+                                ?>
+                            <?php endforeach ?>
                     
-                    <div class="forApproval my-3" id="results-container">
-                            <!-- results-container shows "No Results!" or something when empty -->
-                                <h6 class="text-secondary">Search results will appear here</h6>
-                                <?php foreach($published as $key=>$result):
-                                    if ($result['file_type'] === 'thesis') {
-                                        echo "<div>Insert Thesis Body Here</div>";
-                                    }
-                                    else if ($result['file_type'] === 'journal'){
-                                        echo "<div>Insert Journal Body Here</div>";
-                                    }
-                                    else if ($result['file_type'] === 'infographic'){
-                                        echo "<div>Insert Infographic Body Here</div>";
-                                    }
-                                    ?>
 
-                                <?php endforeach ?>
-                        </div>
+                    
+
+                    <div class="row repository-pagination">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href="" >Previous</a></li>
+                                <?php for ($i=1; $i <= $total_pages; $i++){ 
+                                    echo "<li class='page-item'><a class='page-link' href='?page={$i}'>$i</a></li>";
+                                } ?>
+                                <li class="page-item" <?php if($page==$total_pages){echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page+1?>>Next</a></li>
+                            </ul>
+                            
+                        </nav>
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
     </section>
 
