@@ -18,7 +18,7 @@ if (isset($_SESSION['userType'])) {
         $submissions = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ri.coauthor_group_id=ci.group_id");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id");
         $statement->execute();
         $result = $statement->get_result();
         $thesis = $result->fetch_all(MYSQLI_ASSOC);
@@ -30,7 +30,7 @@ if (isset($_SESSION['userType'])) {
         $journal = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ii.coauthor_group_id=ci.group_id");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id");
         $statement->execute();
         $result = $statement->get_result();
         $infographic = $result->fetch_all(MYSQLI_ASSOC);

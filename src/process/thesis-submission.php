@@ -82,15 +82,6 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     
                     $fileStatus = "pending";
                     $fileType = "thesis";
-                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?,?)');
-                    $statement -> bind_param('isssss',$userId,$fileType,$fileName,$fileDestination,$userName,$fileStatus);
-                    $statement -> execute();
-                    $insertedId = $statement ->insert_id;
-                
-
-                    $statement ->close();
-                    // echo 'file upload success!';
-                    
 
                     //coauthors group table
                     $statement = $connection->prepare("INSERT INTO coauthors_information(coauthor1_first_name,coauthor1_middle_initial,coauthor1_surname,coauthor1_name_ext,coauthor1_email,coauthor2_first_name,coauthor2_middle_initial,coauthor2_surname,coauthor2_name_ext,coauthor2_email,coauthor3_first_name,coauthor3_middle_initial,coauthor3_surname,coauthor3_name_ext,coauthor3_email,coauthor4_first_name,coauthor4_middle_initial,coauthor4_surname,coauthor4_name_ext,coauthor4_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -99,12 +90,21 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $coauthorsInsertedId = $statement ->insert_id;
                     $statement ->close();
 
+                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_uploader, status, coauthor_group_id) VALUES(?,?,?,?,?,?,?)');
+                    $statement -> bind_param('isssssi',$userId,$fileType,$fileName,$fileDestination,$userName,$fileStatus,$coauthorsInsertedId);
+                    $statement -> execute();
+                    $insertedId = $statement ->insert_id;
+                
+
+                    $statement ->close();
+                    // echo 'file upload success!';
+                    
 
                     //concatenate all selected values
                     $comma_separated_fields = implode(', ',$_POST['researchFields']);
                     
-                    $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_abstract,research_fields,keywords,publication_month,publication_day,publication_year,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email,coauthor_group_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $statement -> bind_param('isssssssiiiisssssi',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$coauthorsInsertedId);
+                    $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_abstract,research_fields,keywords,publication_month,publication_day,publication_year,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    $statement -> bind_param('isssssssiiiisssss',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail']);
                     $statement -> execute();
 
                     $statement ->close();

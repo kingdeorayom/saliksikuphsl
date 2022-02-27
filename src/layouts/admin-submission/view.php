@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
     }
     else{
         if($file['file_type']==="thesis"){
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ri.coauthor_group_id=ci.group_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
     
@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
             $statement->close();
         }
         else if($file['file_type']==="infographic"){
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ii.coauthor_group_id=ci.group_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
             
