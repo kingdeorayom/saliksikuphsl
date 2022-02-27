@@ -90,8 +90,8 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $coauthorsInsertedId = $statement ->insert_id;
                     $statement ->close();
 
-                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_uploader, status, coauthor_group_id) VALUES(?,?,?,?,?,?,?)');
-                    $statement -> bind_param('isssssi',$userId,$fileType,$fileName,$fileDestination,$userName,$fileStatus,$coauthorsInsertedId);
+                    $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_dir2, file_uploader, status, coauthor_group_id) VALUES(?,?,?,?,?,?,?,?)');
+                    $statement -> bind_param('issssssi',$userId,$fileType,$fileName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId);
                     $statement -> execute();
                     $insertedId = $statement ->insert_id;
                 

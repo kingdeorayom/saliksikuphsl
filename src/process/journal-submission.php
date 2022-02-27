@@ -68,8 +68,8 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
 
                     $fileStatus = "pending";
                     $fileType = "journal";
-                    $statement = $connection->prepare('INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_uploader, status) VALUES(?,?,?,?,?,?)');
-                    $statement->bind_param('isssss', $userId,$fileType, $fileName, $fileDestination, $userName, $fileStatus);
+                    $statement = $connection->prepare('INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_dir2, file_uploader, status) VALUES(?,?,?,?,?,?,?)');
+                    $statement->bind_param('issssss', $userId,$fileType, $fileName, $fileDestination,$fileCoverDestination, $userName, $fileStatus);
                     $statement->execute();
                     $insertedId = $statement->insert_id;
 

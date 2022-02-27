@@ -37,8 +37,9 @@ $statement->close();
 
 $total_pages = ceil($total_rows/$results_per_page);
 
-$query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'published' ORDER BY fi.file_id ASC LIMIT ?, ?";
-$statement = $connection->prepare($query);
+$query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_dir2`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email, ci.coauthor1_first_name, ci.coauthor1_middle_initial, ci.coauthor1_surname, ci.coauthor1_name_ext, ci.coauthor1_email, ci.coauthor2_first_name, ci.coauthor2_middle_initial, ci.coauthor2_surname, ci.coauthor2_name_ext, ci.coauthor2_email, ci.coauthor3_first_name, ci.coauthor3_middle_initial, ci.coauthor3_surname, ci.coauthor3_name_ext, ci.coauthor3_email, ci.coauthor4_first_name, ci.coauthor4_middle_initial, ci.coauthor4_surname, ci.coauthor4_name_ext, ci.coauthor4_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
+$options = "";
+$statement = $connection->prepare($query.$options." ORDER BY fi.file_id ASC LIMIT ?, ?");
 $statement->bind_param("ii",$offset,$results_per_page);
 $statement->execute();
 $result = $statement->get_result();
@@ -261,7 +262,11 @@ $statement->close();
                                     <a href='../../layouts/repository/view-article.php' class='article-title'>
                                         <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
                                     </a>
-                                    <p class='fw-bold'>Jallorina, A., Galicia, L.</p>
+                                    <p class='fw-bold'>{$result['researcher_surname']}, {$result['researcher_first_name'][0]}.";       
+                                    for($i=1;$i<=$result['research_coauthors_count'];$i++){
+                                        echo ", {$result["coauthor{$i}_surname"]}, {$result["coauthor{$i}_first_name"][0]}.";
+                                    }
+                                    echo"</p>
                                     <p class='fw-bold'>{$result['publication_year']}</p>
                                     <p>{$result['research_abstract']}</p>
                                     <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
@@ -269,6 +274,8 @@ $statement->close();
                                 </div>";
                                 }
                                 else if ($result['file_type'] === 'journal'){
+                                    $journalImage = explode(".pdf",$result['file_dir']);
+                                    $journalImageLink = $journalImage[0].".png";
                                     echo "<div class='repositoryItem p-2'>
                                     <div class='row'>
                                         <div class='text-start'>
@@ -284,12 +291,12 @@ $statement->close();
                                                 </a>
                                                 <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
                                                 <p class='fw-bold'>Volume 11 Series of 2019</p>
-                                                <p>The BRIEF (Business Research Innovations and Educational Forum) is a collection of faculty and student researches in 2019.</p>
+                                                <p>{$result['journal_description']}</p>
                                                 <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
                                             </div>
                                         </div>
                                         <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                            <img src='../../../assets/images/dump/u135.svg' width='150'>
+                                            <img src=../{$result['file_dir2']} width='150'>
                                         </div>
                                     </div>
                                     <hr class='my-2'>
@@ -315,9 +322,6 @@ $statement->close();
                                                 <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
                                             </div>
                                         </div>
-                                        <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                            <img src='../../../assets/images/dump/u148.svg' width='150'>
-                                        </div>
                                     </div>
                                     <hr class='my-2'>
                                 </div>";
@@ -330,7 +334,7 @@ $statement->close();
 
                     <div class="row repository-pagination">
                         <nav aria-label="Page navigation">
-                            <ul class="pagination">
+                            <ul class="pagination d-flex justify-content-center">
                                 <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page-1?> >Previous</a></li>
                                 <?php for ($i=1; $i <= $total_pages; $i++){ 
                                     if($i==$page){
