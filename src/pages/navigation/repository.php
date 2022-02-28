@@ -97,6 +97,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
                             <input type="text" class="form-control">
                             <input type="text" class="form-control">
                         </div>
+                        <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
+
                     </div>
                     <hr>
                     <p class="side-menu-text fw-bold">Resource Type</p>
@@ -215,6 +217,168 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchool">
                         <label class="form-check-label" for="checkBoxGraduateSchool">Graduate School</label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 d-sm-block d-lg-none">
+                    <p class="fst-italic mt-2 mb-4">To filter your search results, click <span style="color: #012265; text-decoration:underline" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">here<span></p>
+
+
+                    <div class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                        <div class="offcanvas-header">
+                            <h6 class="text-white my-1"><i class="fas fa-filter"></i> SEARCH FILTERS</h6>
+                            <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <p class="side-menu-text fw-bold">Publication Year</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021offcanvas">
+                                <label class="form-check-label" for="checkBox2021offcanvas">2021</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas">
+                                <label class="form-check-label" for="checkBox2020offcanvas">2020</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas">
+                                <label class="form-check-label" for="checkBox2019offcanvas">2019</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas">
+                                <label class="form-check-label" for="checkBox2018offcanvas">2018</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017offcanvas">
+                                <label class="form-check-label" for="checkBox2017offcanvas">2017</label>
+                            </div>
+                            <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
+                            <div class="collapse" id="customRangeCollapse">
+                                <div class="input-group my-3">
+                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control">
+                                </div>
+                                <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
+                            </div>
+                            <hr>
+                            <p class="side-menu-text fw-bold">Resource Type</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertationoffcanvas">
+                                <label class="form-check-label" for="checkBoxDissertationoffcanvas">Dissertation</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesisoffcanvas">
+                                <label class="form-check-label" for="checkBoxThesisoffcanvas">Thesis</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournaloffcanvas">
+                                <label class="form-check-label" for="checkBoxJournaloffcanvas">Journal</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographicsoffcanvas">
+                                <label class="form-check-label" for="checkBoxInfographicsoffcanvas">Infographics</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReportoffcanvas">
+                                <label class="form-check-label" for="checkBoxAnnualReportoffcanvas">Annual Report</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgendaoffcanvas">
+                                <label class="form-check-label" for="checkBoxResearchAgendaoffcanvas">Research Agenda</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDPoffcanvas">
+                                <label class="form-check-label" for="checkBoxRCDPoffcanvas">Research Competency Development Program</label>
+                            </div>
+                            <hr>
+                            <p class="side-menu-text fw-bold">Research Field</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxAccountancyMarketingoffcanvas">
+                                <label class="form-check-label" for="checkBoxAccountancyMarketingoffcanvas">Accountancy and Marketing</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsHumanitiesoffcanvas">
+                                <label class="form-check-label" for="checkBoxArtsHumanitiesoffcanvas">Arts and Humanities</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationalManagementoffcanvas">
+                                <label class="form-check-label" for="checkBoxEducationalManagementoffcanvas">Educational Management</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationSocialSciencesoffcanvas">
+                                <label class="form-check-label" for="checkBoxEducationSocialSciencesoffcanvas">Education and Social Sciences</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessManagementoffcanvas">
+                                <label class="form-check-label" for="checkBoxBusinessManagementoffcanvas">Business Management</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxHealthSciencesoffcanvas">
+                                <label class="form-check-label" for="checkBoxHealthSciencesoffcanvas">Health and Sciences</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxITEngineeringoffcanvas">
+                                <label class="form-check-label" for="checkBoxITEngineeringoffcanvas">IT and Engineering</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxLawJusticeSystemoffcanvas">
+                                <label class="form-check-label" for="checkBoxLawJusticeSystemoffcanvas">Law and Justice System</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxMarineAviationoffcanvas">
+                                <label class="form-check-label" for="checkBoxMarineAviationoffcanvas">Marine and Aviation</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxTourismHospitalityoffcanvas">
+                                <label class="form-check-label" for="checkBoxTourismHospitalityoffcanvas">Tourism and Hospitality</label>
+                            </div>
+                            <hr>
+                            <p class="side-menu-text fw-bold">Research Unit</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBasicEducationoffcanvas">
+                                <label class="form-check-label" for="checkBoxBasicEducationoffcanvas">Basic Education</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxSeniorHighSchooloffcanvas">
+                                <label class="form-check-label" for="checkBoxSeniorHighSchooloffcanvas">Senior High School</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsSciencesoffcanvas">
+                                <label class="form-check-label" for="checkBoxArtsSciencesoffcanvas">Arts and Sciences</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessAccountancyoffcanvas">
+                                <label class="form-check-label" for="checkBoxBusinessAccountancyoffcanvas">Business and Accountancy</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxCriminologyoffcanvas">
+                                <label class="form-check-label" for="checkBoxCriminologyoffcanvas">Criminology</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxComputerStudiesoffcanvas">
+                                <label class="form-check-label" for="checkBoxComputerStudiesoffcanvas">Computer Studies</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationoffcanvas">
+                                <label class="form-check-label" for="checkBoxEducationoffcanvas">Education</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEngineeringoffcanvas">
+                                <label class="form-check-label" for="checkBoxEngineeringoffcanvas">Engineering</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxHospitalityManagementoffcanvas">
+                                <label class="form-check-label" for="checkBoxHospitalityManagementoffcanvas">International Hospitality Management</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxMaritimeoffcanvas">
+                                <label class="form-check-label" for="checkBoxMaritimeoffcanvas">Maritime</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchooloffcanvas">
+                                <label class="form-check-label" for="checkBoxGraduateSchooloffcanvas">Graduate School</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
