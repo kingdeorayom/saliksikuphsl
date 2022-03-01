@@ -12,7 +12,7 @@ if (!isset($_POST['textFieldEmail'])) {
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 }
-
+$_SESSION['email'] = $_POST['textFieldEmail'];
 if (empty($_POST['textFieldEmail'])) {
     $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
     header("location: ../pages/login/forgot-password.php");
