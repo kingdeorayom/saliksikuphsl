@@ -53,8 +53,16 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <!--About and Copyright Section-->
 
-    <section class="submit-research">
-        <div class="container p-5">
+    <section class="submit-research" style="font-family: 'Roboto';">
+        <div class=" container p-5">
+            <div class="row my-3">
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item prev-dir-breadcrumb"><a href="../../pages/navigation/submit.php" style="color: #012265; text-decoration:none">Submit</a></li>
+                        <li class="breadcrumb-item active active-dir-breadcrumb" aria-current="page">Submission Forms</li>
+                    </ol>
+                </nav>
+            </div>
             <div class="row mb-4 d-lg-none">
 
                 <h3>Choose a submission form</h3>
