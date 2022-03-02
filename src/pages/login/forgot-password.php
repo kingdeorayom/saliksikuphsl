@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../../../styles/custom/pages/forgot-password-style.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;">
+<body style="background-color: #012265; font-family: 'Roboto';">
 
     <!--Main Section-->
     <main class="main">
@@ -73,7 +73,10 @@
                 </div>
                 <div class="row">
                     <form action="../../process/forgot-password-email-verify.php" method="POST">
-                        <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email']; unset($_SESSION['email']);}?>"> 
+                        <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if (isset($_SESSION['email'])) {
+                                                                                                                        echo $_SESSION['email'];
+                                                                                                                        unset($_SESSION['email']);
+                                                                                                                    } ?>">
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Submit</button>
                         <a href="../../../index.php"><button class="btn bg-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
