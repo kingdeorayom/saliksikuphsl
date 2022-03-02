@@ -24,14 +24,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
 if (isset($_GET['id'])) {
     $statement = $connection->prepare("SELECT * FROM department_list");
     $statement->execute();
-    $result = $statement->get_result();
-    $department_list = $result->fetch_all(MYSQLI_ASSOC);
+    $result = $statement->get_result(); 
+    $department_list=$result->fetch_all(MYSQLI_ASSOC);
     $statement->close();
 
     $statement = $connection->prepare("SELECT * FROM research_fields");
     $statement->execute();
-    $result = $statement->get_result();
-    $research_fields_list = $result->fetch_all(MYSQLI_ASSOC);
+    $result = $statement->get_result(); 
+    $research_fields_list=$result->fetch_all(MYSQLI_ASSOC);
     $statement->close();
 
     $id = $_GET['id'];
@@ -40,38 +40,43 @@ if (isset($_GET['id'])) {
     $result = $statement->get_result();
     $file = $result->fetch_assoc();
     $statement->close();
-    if ($file == null) {
-        die(); //file doesnt exist
-    } else if ($file['status'] != 'published') {
+    if($file== null){
+        die();//file doesnt exist
+    }
+    else if($file['status']!='published'){
         die();
-    } else {
-        if ($file['file_type'] === "thesis") {
+    }
+    else{
+        if($file['file_type']==="thesis"){
             $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
-
+    
             $fileInfo = $result->fetch_assoc();
             $statement->close();
-            $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
-        } else if ($file['file_type'] === "journal") {
+            $researchFieldsArray = array_map('trim',explode(",",$fileInfo['research_fields']));
+        }
+        else if($file['file_type']==="journal"){
             $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
-
+            
             $fileInfo = $result->fetch_assoc();
             $statement->close();
-        } else if ($file['file_type'] === "infographic") {
+        }
+        else if($file['file_type']==="infographic"){
             $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
-
+            
             $fileInfo = $result->fetch_assoc();
             $statement->close();
         }
     }
-} else {
-    die(); //GET['id'] is not defined;
 }
+else {
+    die();//GET['id'] is not defined;
+} 
 
 ?>
 
@@ -97,13 +102,15 @@ if (isset($_GET['id'])) {
     <?php include_once '../../layouts/general/header.php' ?>
 
     <?php
-    if ($fileInfo['file_type'] == 'thesis') {
-        include_once './thesisPanel.php';
-    } else if ($fileInfo['file_type'] == 'journal') {
-        include_once './journalPanel.php';
-    } else if ($fileInfo['file_type'] == 'infographic') {
-        include_once './infographicPanel.php';
-    }
+        if ($fileInfo['file_type']=='thesis') {
+            include_once './thesisPanel.php';
+        }
+        else if ($fileInfo['file_type']=='journal') {
+            include_once './journalPanel.php';
+        }
+        else if ($fileInfo['file_type']=='infographic') {
+            include_once './infographicPanel.php';
+        }
     ?>
 
 

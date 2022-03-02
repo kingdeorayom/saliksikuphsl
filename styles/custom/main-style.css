@@ -17,19 +17,6 @@
   font-size: 1.5rem;
 }
 
-.prev-dir-breadcrumb:hover {
-  text-decoration: underline;
-  color: wheat;
-}
-
-.active-dir-breadcrumb:hover {
-  text-decoration: none;
-}
-
-.active-dir-breadcrumb:hover {
-  text-decoration: none;
-}
-
 /*---------------------------------------------------Navigation---------------------------------------------------*/
 
 .navigation-items {
