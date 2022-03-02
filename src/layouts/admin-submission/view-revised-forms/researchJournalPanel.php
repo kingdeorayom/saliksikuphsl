@@ -15,7 +15,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
+<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel" hidden>
     <!-- container for alert messages -->
     <div id='alert-container-journal'>
 
@@ -116,56 +116,44 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
 
-        <div class="row my-4">
+        <div class="row my-2">
             <label class="fw-bold mb-3">Attached Files</label>
             <div class="col">
-                <label class="my-2">Front Cover.png</label>
+                <label class="my-2" id="journal-cover">Front Cover.png</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                 </div>
-                <label class="my-2">Journal.pdf</label>
+                <label class="my-2" id="journal-file-name">Journal.pdf</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
                 </div>
             </div>
         </div>
         <hr>
         <div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="needsRevisionJournal" onclick="enableRevisionJournal(this);">
+                <input class="form-check-input" type="checkbox" id="needsRevisionJournal" name="needsRevision" value="for revision" onclick="enableRevisionJournal(this);">
                 <label for="needsRevisionJournal" class="text-danger">Needs Revision</label>
             </div>
         </div>
-
-        <div class="row" id="textAreaFeedbackJournal">
+        <div class="row" id="publishButtonJournal">
+            <div class="col">
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitJournalButton">
+            </div>
+        </div>
+        <div class="row" id="textAreaFeedbackJournal" hidden>
             <div class="col">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedback" rows="10" required></textarea>
+                    <textarea class="form-control" name="textAreaFeedbackJournal" rows="10" placeholder="Write your comment..."></textarea>
                 </div>
             </div>
         </div>
-
-        <div class="row" id="publishButtonJournal">
-            <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="">Publish</button>
-            </div>
-        </div>
-
         <div class="row" id="returnButtonJournal">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="">Return</button>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnJournalButton">
             </div>
         </div>
 
@@ -173,23 +161,25 @@ if (!isset($_SESSION['isLoggedIn'])) {
 </div>
 <script>
     var alertContainerJournal = document.getElementById("alert-container-journal")
-    var form = document.forms.namedItem("journal-form");
+    var journalForm = document.forms.namedItem("journal-form");
 
     function submitJournalForm(event) {
         event.preventDefault();
-
-        var formdata = new FormData(form);
-        postJournal(formdata).then(data => checkResponse(JSON.parse(data)));
+        const fileId = event.target.dataset.id
+        
+        var formdata = new FormData(journalForm);
+        formdata.append("fileId", fileId);
+        updateJournal(formdata).then(data => checkResponse(JSON.parse(data)));
         //     for (var pair of formdata.entries()) {
         //     console.log(pair[0]+ ', ' + pair[1]); 
         // }
         window.scrollTo(0, 0);
     }
 
-    function postJournal(data) {
+    function updateJournal(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/journal-submission.php");
+            http.open("POST", "../../process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);
@@ -211,8 +201,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             alertContainerJournal.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
         if (data.response === "success") {
-            form.reset();
-            alertContainerJournal.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+            alertContainerJournal.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File updated successfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
         }
     }
 </script>

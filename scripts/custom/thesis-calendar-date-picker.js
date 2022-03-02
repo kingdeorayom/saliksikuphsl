@@ -1,8 +1,8 @@
-const container = document.getElementById("date-picker-container"); //not needed
 const monthInput = document.getElementById("month-picker");
 const dayInput = document.getElementById("day-picker");
 const yearInput = document.getElementById("year-picker");
 
+let selectedDay = dayInput.value;
 function changeInput() {
   const month = monthInput.value;
   const year = yearInput.value;
@@ -17,6 +17,8 @@ function changeInput() {
     dayHtml += `<option value="${i + 1}">${i + 1}</option>`;
   }
   dayInput.innerHTML = dayHtml;
+  dayInput.value = selectedDay;
+  selectedDay = 1;
 }
 
 function checkLeap(year) {

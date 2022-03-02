@@ -2,6 +2,12 @@
 
 session_start();
 
+include '../../process/connection.php';
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
 if (!isset($_SESSION['isLoggedIn'])) {
     echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
     <p style="font-size: 50px; font-weight: bold">Oops!</p>
@@ -26,6 +32,45 @@ if (isset($_SESSION['userType'])) {
     }
 }
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
+    $statement->execute();
+    $result = $statement->get_result();
+    $file = $result->fetch_assoc();
+    $statement->close();
+    if($file['file_type']==="thesis"){
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ri.coauthor_group_id=ci.group_id WHERE file_id= $id");
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $fileInfo = $result->fetch_assoc();
+        $statement->close();
+        echo json_encode($fileInfo);
+    }
+    else if($file['file_type']==="journal"){
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id WHERE file_id= $id");
+        $statement->execute();
+        $result = $statement->get_result();
+        
+        $fileInfo = $result->fetch_assoc();
+        $statement->close();
+        echo json_encode($fileInfo);
+    }
+    else if($file['file_type']==="infographic"){
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON ii.coauthor_group_id=ci.group_id WHERE file_id= $id");
+        $statement->execute();
+        $result = $statement->get_result();
+        
+        $fileInfo = $result->fetch_assoc();
+        $statement->close();
+        echo json_encode($fileInfo);
+    }
+
+} else {
+    die();//GET['id'] is not defined;
+} 
+
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +84,10 @@ if (isset($_SESSION['userType'])) {
     <title>View Approval</title>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../../scripts/custom/coauthors-dropdown.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const queryId = urlParams.get('id');
@@ -60,6 +106,7 @@ if (isset($_SESSION['userType'])) {
                             journalPanel.hidden = true;
                             infographicsPanel.hidden = true;
                             thesisFill(fileInfo)
+                            showThesisDissertationCoAuthorsField()
                         } else if (fileInfo["file_type"] == "journal") {
                             thesisPanel.hidden = true;
                             journalPanel.hidden = false;
@@ -70,6 +117,7 @@ if (isset($_SESSION['userType'])) {
                             journalPanel.hidden = true;
                             infographicsPanel.hidden = false;
                             infographicFill(fileInfo)
+                            showInfographicsCoAuthorsField();
                         }
                     } else {
                         // file status does not match expected status
@@ -94,8 +142,10 @@ if (isset($_SESSION['userType'])) {
             };
 
             function thesisFill(fileInfo) {
-                console.log(fileInfo);
                 const thesisInputs = document.querySelector('[name="thesis-form"]').elements;
+                document.querySelector('[name="thesis-form"]').dataset.id=fileInfo.file_id
+                document.querySelector('[name="thesis-form"]').dataset.coauthor_id=fileInfo.coauthor_group_id
+                
                 thesisInputs[0].value = fileInfo.resource_type;
                 thesisInputs[1].value = fileInfo.researchers_category;
                 thesisInputs[2].value = fileInfo.research_unit;
@@ -138,10 +188,8 @@ if (isset($_SESSION['userType'])) {
 
                 const fieldsString = fileInfo.research_fields
                 const fieldsArray = fieldsString.split(',')
-                console.log(fieldsArray)
 
                 const fieldsInput = document.getElementsByName("researchFields[]")
-                console.log(fieldsInput)
 
                 for (var key in fieldsInput) {
                     if (fieldsInput.hasOwnProperty(key)) {
@@ -152,13 +200,6 @@ if (isset($_SESSION['userType'])) {
                         }
                     }
                 }
-
-
-
-
-
-
-
             }
 
             function journalFill(fileInfo) {
@@ -192,12 +233,13 @@ if (isset($_SESSION['userType'])) {
 
                 const journalFileName = document.querySelector("#journal-file-name");
 
-                console.log(fileInfo.file_name.split(".pdf"));
                 journalFileName.innerHTML = fileInfo.file_name;
             }
 
             function infographicFill(fileInfo) {
                 const infographicInputs = document.querySelector('[name="infographic-form"]').elements
+                document.querySelector('[name="infographic-form"]').dataset.id=fileInfo.file_id
+                document.querySelector('[name="infographic-form"]').dataset.coauthor_id=fileInfo.coauthor_group_id
 
                 infographicInputs[0].value = fileInfo.infographic_research_unit
                 infographicInputs[1].value = fileInfo.infographic_researcher_category
@@ -257,8 +299,7 @@ if (isset($_SESSION['userType'])) {
 </head>
 
 
-<body onload="document.getElementById('textAreaFeedbackInfographics').style.display = 'none'; document.getElementById('returnButtonInfographics').style.display = 'none';
-document.getElementById('textAreaFeedbackJournal').style.display = 'none'; document.getElementById('returnButtonJournal').style.display = 'none'; document.getElementById('textAreaFeedbackThesis').style.display = 'none'; document.getElementById('returnButtonThesis').style.display = 'none';">
+<body onload="document.getElementById('returnButtonInfographics').style.display = 'none'; document.getElementById('returnButtonJournal').style.display = 'none'; document.getElementById('returnButtonThesis').style.display = 'none';">
 
     <!--Header and Navigation section-->
 
@@ -288,12 +329,17 @@ document.getElementById('textAreaFeedbackJournal').style.display = 'none'; docum
                     <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
                     <hr>
                 </div>
-
-                <?php include_once './view-approval-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './view-approval-forms/researchJournalPanel.php' ?>
-                <?php include_once './view-approval-forms/infographicsPanel.php' ?>
-
-
+                <?php
+                if ($fileInfo['file_type']=='thesis') {
+                    include_once './view-approval-forms/thesisDissertationPanel.php';
+                } 
+                else if($fileInfo['file_type']=='journal'){
+                    include_once './view-approval-forms/researchJournalPanel.php';
+                }
+                else if($fileInfo['file_type']=='infographic'){
+                    include_once './view-approval-forms/infographicsPanel.php';
+                }
+                ?>
             </div>
         </div>
     </section>
@@ -303,50 +349,7 @@ document.getElementById('textAreaFeedbackJournal').style.display = 'none'; docum
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
-
-    <script>
-        function enableRevisionInfographics(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("textAreaFeedbackInfographics").style.display = 'block';
-                document.getElementById("returnButtonInfographics").style.display = 'block';
-
-                document.getElementById("publishButtonInfographics").style.display = 'none';
-            } else {
-                document.getElementById("textAreaFeedbackInfographics").style.display = 'none';
-                document.getElementById("returnButtonInfographics").style.display = 'none';
-
-                document.getElementById("publishButtonInfographics").style.display = 'block';
-            }
-        }
-
-        function enableRevisionJournal(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("textAreaFeedbackJournal").style.display = 'block';
-                document.getElementById("returnButtonJournal").style.display = 'block';
-
-                document.getElementById("publishButtonJournal").style.display = 'none';
-            } else {
-                document.getElementById("textAreaFeedbackJournal").style.display = 'none';
-                document.getElementById("returnButtonJournal").style.display = 'none';
-
-                document.getElementById("publishButtonJournal").style.display = 'block';
-            }
-        }
-
-        function enableRevisionThesis(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("textAreaFeedbackThesis").style.display = 'block';
-                document.getElementById("returnButtonThesis").style.display = 'block';
-
-                document.getElementById("publishButtonThesis").style.display = 'none';
-            } else {
-                document.getElementById("textAreaFeedbackThesis").style.display = 'none';
-                document.getElementById("returnButtonThesis").style.display = 'none';
-
-                document.getElementById("publishButtonThesis").style.display = 'block';
-            }
-        }
-    </script>
+    <script src="../../../scripts/custom/feedback-control.js"></script>
 </body>
 
 </html>
