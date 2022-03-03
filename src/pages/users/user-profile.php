@@ -15,8 +15,6 @@ if (isset($_SESSION['userType'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
 include '../../process/connection.php'; // covers profilePanel.php, libraryPanel.php, submissionsPanel.php
@@ -53,14 +51,6 @@ $connection->close();
     <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
-
-    <!--Masthead-->
-
-    <!-- <section class="masthead p-5 bg-light">
-        <div class="container">
-            <h1 id="masthead-title-text"><?php echo 'Hi, ' . $_SESSION['fullName'] . '!' ?></h1>
-        </div>
-    </section> -->
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
@@ -158,8 +148,6 @@ $connection->close();
     <!--Footer-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-
-
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>

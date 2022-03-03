@@ -11,8 +11,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -30,15 +28,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/faqs-style.css" type="text/css">
 </head>
 
 <body>
-    <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
-
-    <!--Masthead-->
 
     <section class=" masthead p-5 bg-light">
         <div class="container">
@@ -50,7 +44,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="container p-5">
             <h1 class="">Frequently asked questions</h1>
             <hr class="mb-5">
-            <h5>Please consult the following topics for answers to FAQs related to the UPHSL Research Repository or scroll to see each section:</h5>
+            <h5>Click the following topics for answers to FAQs related to the UPHSL Research Repository or scroll to see each section:</h5>
             <ul>
                 <li><a href="#faq1" class="faq-link">Login to the Repository</a></li>
                 <li><a href="#faq2" class="faq-link">Adding Publication Details</a></li>
@@ -98,10 +92,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </section>
 
-
-    <!--Footer section-->
-
     <?php include_once '../../layouts/general/footer.php' ?>
+
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>

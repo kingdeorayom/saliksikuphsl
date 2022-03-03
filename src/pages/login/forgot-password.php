@@ -13,10 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/forgot-password-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;">
+<body>
 
     <!--Main Section-->
     <main class="main">
@@ -73,17 +73,18 @@
                 </div>
                 <div class="row">
                     <form action="../../process/forgot-password-email-verify.php" method="POST">
-                        <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email']; unset($_SESSION['email']);}?>"> 
-                        <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Submit</button>
+                        <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if (isset($_SESSION['email'])) {
+                                                                                                                        echo $_SESSION['email'];
+                                                                                                                        unset($_SESSION['email']);
+                                                                                                                    } ?>" autofocus>
+                        <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonSubmit" id="buttonSubmit">Submit</button>
                         <a href="../../../index.php"><button class="btn bg-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
             </div>
         </div>
     </main>
-
-    <?php include_once '../../../scripts/custom/user-login-register-scripts.php' ?>
-
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

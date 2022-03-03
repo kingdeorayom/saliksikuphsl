@@ -47,14 +47,6 @@ if (mysqli_connect_errno()) {
 
     <?php include_once '../../layouts/general/header.php' ?>
 
-    <!--Masthead-->
-
-    <!-- <section class="masthead p-5 bg-light">
-        <div class="container">
-            <h1 id="masthead-title-text">My Library</h1>
-        </div>
-    </section> -->
-
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">
             <div class="row">

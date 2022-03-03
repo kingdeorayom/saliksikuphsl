@@ -36,24 +36,6 @@
   color: gainsboro !important;
 }
 
-.button-login {
-  color: white;
-  text-decoration: none;
-  font-family: "Roboto";
-  font-weight: bold;
-}
-
-.button-login-offcanvas {
-  background-color: #012265;
-  color: white;
-  font-family: "Roboto";
-}
-
-.button-login:hover {
-  text-decoration: underline;
-  color: white;
-}
-
 .offcanvas {
   background-color: whitesmoke;
 }

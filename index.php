@@ -25,7 +25,7 @@ if (isset($_SESSION['isLoggedIn'])) {
     <link rel="stylesheet" href="styles/custom/pages/login-style.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;">
+<body>
 
     <!--Main Section-->
     <main class="main">
@@ -85,7 +85,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                         <form onsubmit="submitLogin(event)" name="login-form">
                             <!-- <form action="./src/process/login.php" method="POST"> -->
                             <label>Email</label>
-                            <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail">
+                            <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
                             <input class="form-control my-2" type="password" name="textFieldPassword" id="textFieldPassword">
                             <div class="form-check py-2">
@@ -95,9 +95,9 @@ if (isset($_SESSION['isLoggedIn'])) {
                             <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonLogin" id="buttonLogin">Login</button>
                         </form>
                         <div class="text-center py-2">
-                            <a href="./src/pages/login/forgot-password.php" style="text-decoration: none; font-weight: bold; color: #012265">Forgot password?</a>
+                            <a href="./src/pages/login/forgot-password.php" class="forgot-password">Forgot password?</a>
                             <hr class="my-4">
-                            <label>No account yet? <a href="src/pages/login/registration.php" style="text-decoration: none; font-weight: bold; color: #012265">Sign up</a></label>
+                            <label>No account yet? <a href="src/pages/login/registration.php" class="sign-up">Sign up</a></label>
                         </div>
                     </div>
                 </div>

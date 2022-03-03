@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 } else if (isset($_SESSION['email'])) {
@@ -37,11 +37,11 @@ die();
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/password-reset-email-verification-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
     <link rel="stylesheet" href="../../../plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;">
+<body>
 
     <!--Main Section-->
     <main class="main">
@@ -70,7 +70,7 @@ die();
                 <div class="row">
                     <form action="../../process/reset-password-redirect.php" method="POST">
                         <label class="mb-3">We sent a one-time verification code to the email address you provided.<br>Please enter the code below to reset your password.</label>
-                        <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode">
+                        <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode" autofocus>
 
                         <button class="btn text-white w-100 mt-4" type="submit" name="buttonSubmitVerificationCode" id="buttonSubmitVerificationCode">Submit</button>
                         <a href="../../process/logout.php"><button class="btn btn-secondary text-white w-100 mt-2 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
@@ -83,8 +83,23 @@ die();
         </div>
     </main>
 
-    <?php include_once '../../../scripts/custom/user-login-register-scripts.php' ?>
+    <script>
+        function fireSweetAlertResendVerificationCode() {
+            Swal.fire({
+                title: 'Request a new verification code?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire('A new verification code is sent to your email!', '', 'success');
+                    location.reload();
+                } else if (result.isDenied) {}
+            })
+        }
+    </script>
 
+    <script src="../../../plugins/sweetalert/package/dist/sweetalert2.js"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

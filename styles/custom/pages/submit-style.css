@@ -21,36 +21,6 @@
   border-color: #012b7e;
 }
 
-/*---------------------------------------------------Masthead---------------------------------------------------*/
-
-.masthead {
-  background-color: white;
-}
-
-#masthead-title-text {
-  color: #012265;
-  font-family: "Roboto", sans-serif;
-  font-weight: 800;
-  /*font-size: 3rem;*/
-}
-
-#masthead-content-text {
-  font-family: "Roboto", sans-serif;
-  padding: 2% 0 2% 0;
-  text-align: justify;
-}
-
-.masthead-link {
-  text-decoration: none;
-  color: #012265;
-  font-weight: bold;
-}
-
-.masthead-link:hover {
-  color: #012265;
-  text-decoration: underline;
-}
-
 /*---------------------------------------------------Side Menu---------------------------------------------------*/
 
 .side-menu-text:hover {
