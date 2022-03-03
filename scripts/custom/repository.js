@@ -1,3 +1,17 @@
+// code to cache sidebar checkbox values
+var checkboxValues = JSON.parse(localStorage.getItem("checkboxValues")) || {};
+var $checkboxes = $("#sidebar-search-filters :checkbox");
+$checkboxes.on("change", function () {
+  $checkboxes.each(function () {
+    checkboxValues[this.id] = this.checked;
+  });
+  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+});
+
+$.each(checkboxValues, function (key, value) {
+  $("#" + key).prop("checked", value);
+});
+
 const repositorySearchBar = document.querySelector("#repository-search-bar");
 const repositorySearchButton = document.querySelector(
   "#repository-search-button"
@@ -23,6 +37,21 @@ repositorySearchButton.addEventListener("click", function () {
 
 $("form[name='sidebar-filters']").on("change", function () {
   var str = $(this).serialize();
+  var page = "";
+  var url = new URL(window.location);
+  url.searchParams.has("page")
+    ? (page = url.searchParams.get("page"))
+    : (page = 1);
+  $.ajax({
+    method: "POST",
+    url: "./repository-ajax.php?page=" + page + "&" + str,
+  }).done(function (data) {
+    $("#repository-results-container").html(data);
+  });
+});
+
+$(document).ready(function () {
+  var str = $("form[name='sidebar-filters']").serialize();
   var page = "";
   var url = new URL(window.location);
   url.searchParams.has("page")

@@ -96,7 +96,7 @@ $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
 
-print_r($_POST);
+
 ?>
 
 <!DOCTYPE html>
@@ -477,7 +477,7 @@ print_r($_POST);
                     <h1>Search Results</h1>
                     <hr class="my-2">
                     <div id="repository-results-container">
-                    <?php foreach($published as $key=>$result):
+                    <!-- <?php foreach($published as $key=>$result):
                                 if ($result['file_type'] === 'thesis') {
                                     echo "<div class='repositoryItem p-2'>
                                     <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
@@ -548,7 +548,7 @@ print_r($_POST);
                                 </div>";
                                 }
                     ?>
-                    <?php endforeach ?>
+                    <?php endforeach ?> 
                     <div class="row repository-pagination" id="repository-pagination">
                         <nav aria-label="Page navigation">
                             <ul class="pagination d-flex justify-content-center">
@@ -565,7 +565,7 @@ print_r($_POST);
                             </ul>
                             
                         </nav>
-                    </div>
+                    </div>-->
                     </div>
                     
                     

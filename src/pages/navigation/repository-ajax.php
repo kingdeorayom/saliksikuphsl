@@ -167,12 +167,14 @@ foreach($published as $key=>$result):
 
 endforeach ;
 
-
+if($total_rows!=0){
 echo "<div class='row repository-pagination' id='repository-pagination'>
         <nav aria-label='Page navigation'>
             <ul class='pagination d-flex justify-content-center'>";
+$previous_page = $page-1;
+$next_page = $page+1;
 if($page!=1){
-    echo "<li class='page-item'><a class='page-link' href='?page='".$page-1;
+    echo "<li class='page-item'><a class='page-link' href='?page=$previous_page'";
     echo " >Previous</a></li>";
 }
 for ($i=1; $i <= $total_pages; $i++){
@@ -184,7 +186,12 @@ for ($i=1; $i <= $total_pages; $i++){
     }
 }
 if($page<$total_pages){
-    echo "<li class='page-item'><a class='page-link' href='?page='".$page+1;
+    echo "<li class='page-item'><a class='page-link' href='?page=$next_page'";
     echo " >Next</a></li>";
 }
+}
+else{
+    echo 'no results';
+}
+
 ?>
