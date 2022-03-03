@@ -1,11 +1,11 @@
 // code to cache sidebar checkbox values
-var checkboxValues = JSON.parse(localStorage.getItem("checkboxValues")) || {};
+var checkboxValues = JSON.parse(sessionStorage.getItem("checkboxValues")) || {};
 var $checkboxes = $("#sidebar-search-filters :checkbox");
 $checkboxes.on("change", function () {
   $checkboxes.each(function () {
     checkboxValues[this.id] = this.checked;
   });
-  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+  sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
 });
 
 $.each(checkboxValues, function (key, value) {
