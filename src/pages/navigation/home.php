@@ -157,18 +157,18 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
             <div class="row p-5 d-flex justify-content-center">
-                <div class="col-lg-3 col-md-12 repository-metrics-column-item m-3 text-center rounded-3">
-                    <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos" alt="Research Outputs">
+                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-3">
+                    <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5" alt="Research Outputs">
                     <p class="repository-metrics-counter" id="research-output-counter">10,025</p>
                     <p class="repository-metrics-p-text">Research Outputs</p>
                 </div>
-                <div class="col-lg-3 col-md-12 repository-metrics-column-item m-3 text-center rounded-3">
-                    <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos" alt="Authors">
+                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-3">
+                    <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-5" alt="Authors">
                     <p class="repository-metrics-counter" id="authors-counter">10,025</p>
                     <p class="repository-metrics-p-text">Authors</p>
                 </div>
-                <div class="col-lg-3 col-md-12 repository-metrics-column-item m-3 text-center rounded-3">
-                    <img src="../../../assets/images/repository-metrics/total-downloads.png" class="repository-metrics-logos" alt="Total Downloads">
+                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-3">
+                    <img src="../../../assets/images/repository-metrics/total-downloads.png" class="repository-metrics-logos my-5" alt="Total Downloads">
                     <p class="repository-metrics-counter" id="total-downloads-counter">10,025</p>
                     <p class="repository-metrics-p-text">Total Downloads</p>
                 </div>

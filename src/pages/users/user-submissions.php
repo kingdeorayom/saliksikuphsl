@@ -47,7 +47,7 @@ if (mysqli_connect_errno()) {
 
     <?php include_once '../../layouts/general/header.php' ?>
 
-    <section class="submit-research profile" style="font-family: 'Roboto';">
+    <section class="submit-research profile">
         <div class="container p-5">
             <div class="row">
 

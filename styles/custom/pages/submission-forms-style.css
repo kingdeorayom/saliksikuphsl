@@ -26,33 +26,33 @@
 }
 
 #submitResearchDissertationButton:disabled {
-  background-color: gray !important;
-  border-color: gray !important;
+  background-color: #808080 !important;
+  border-color: #808080 !important;
 }
 
 #resubmitButtonThesis:disabled {
-  background-color: gray !important;
-  border-color: gray !important;
+  background-color: #808080 !important;
+  border-color: #808080 !important;
 }
 
 #resubmitButtonJournal:disabled {
-  background-color: gray !important;
-  border-color: gray !important;
+  background-color: #808080 !important;
+  border-color: #808080 !important;
 }
 
 #resubmitButtonInfographics:disabled {
-  background-color: gray !important;
-  border-color: gray !important;
+  background-color: #808080 !important;
+  border-color: #808080 !important;
 }
 
 #submitJournalButton:disabled {
-  background-color: gray !important;
-  border-color: gray !important;
+  background-color: #808080 !important;
+  border-color: #808080 !important;
 }
 
 #submitInfographicsButton:disabled {
-  background-color: gray !important;
-  border-color: gray !important;
+  background-color: #808080 !important;
+  border-color: #808080 !important;
 }
 
 .remove-attachment:hover {
@@ -63,7 +63,7 @@
 /*---------------------------------------------------Masthead---------------------------------------------------*/
 
 .masthead {
-  background-color: white;
+  background-color: #ffffff;
 }
 
 #masthead-title-text {

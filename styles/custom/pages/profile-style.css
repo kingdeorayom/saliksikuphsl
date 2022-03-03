@@ -6,7 +6,7 @@
 }
 
 .profile {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .button-update {
@@ -69,11 +69,11 @@
 }
 
 .editReviseButton {
-  color: black;
+  color: #000000;
   text-decoration: none;
 }
 
 .editReviseButton:hover {
   text-decoration: underline;
-  color: black;
+  color: #000000;
 }

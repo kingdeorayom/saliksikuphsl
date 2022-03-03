@@ -47,7 +47,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <!--About and Copyright Section-->
 
-    <section class="about-and-copyright" style="font-family: 'Roboto';">
+    <section class="about-and-copyright">
         <div class="container p-5">
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">

@@ -60,7 +60,7 @@ if (isset($_SESSION['userType'])) {
 
     <?php include_once '../../layouts/general/header.php' ?>
 
-    <section class="submit-research" style="font-family: 'Roboto';">
+    <section class="submit-research">
         <div class="container p-5">
             <div class="row my-3 d-lg-none">
                 <h5>Submission Details</h5>

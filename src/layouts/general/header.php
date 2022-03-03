@@ -1,6 +1,6 @@
 <!--Header Section-->
 
-<section class="header navbar navbar-dark bg-dark static-top" style="font-family: 'Roboto';">
+<section class="header navbar navbar-dark bg-dark static-top">
     <div class="container p-2">
         <div class="d-flex align-items-center">
             <a href="../../../src/pages/navigation/home.php"><img src="../../../assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>
@@ -70,7 +70,6 @@
         <div class="d-flex align-items-center">
             <a href="../../../src/pages/navigation/home.php"><img src="../../../assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>
         </div>
-        <!-- <h5 id="offcanvasRightLabel" style="color: white;">SALIKSIK:<br>UPHSL Research Repository</h5> -->
         <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div style="background-color: rgba(255, 222, 0, 1);">

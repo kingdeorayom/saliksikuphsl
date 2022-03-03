@@ -28,6 +28,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/faq-style.css" type="text/css">
 </head>
 
 <body>
@@ -40,7 +41,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </section>
 
-    <section class="faqs" style="font-family: 'Roboto';">
+    <section class="faqs" style="font-family: 'Roboto', sans-serif;">
         <div class="container p-5">
             <h1 class="">Frequently asked questions</h1>
             <hr class="mb-5">

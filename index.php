@@ -37,7 +37,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                         <p class="h4 d-none d-lg-block">The Official Institutional Repository of University of Perpetual Help System Laguna</p>
                     </div>
                 </div>
-                <div class="col-lg-5 mx-auto p-5 bg-light" style="font-family: 'Roboto', arial, sans-serif;">
+                <div class="col-lg-5 mx-auto p-5 bg-light">
                     <div class="row p-2" id="alert-container-login">
                         <?php
                         if (isset($_SESSION['registrationSuccessful'])) { ?>

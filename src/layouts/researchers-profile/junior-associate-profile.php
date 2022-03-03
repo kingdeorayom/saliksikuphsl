@@ -41,7 +41,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <!--Masthead-->
 
-    <section class=" masthead p-5 bg-light" style="font-family: 'Roboto';">
+    <section class=" masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text">Researcher's Profile</h1>
         </div>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col-lg-2 p-2">
                     <img src="../../../assets/images/researchers/avatar-lg.svg" class="img-fluid">
                 </div>
-                <div class="col-lg-10" style="font-family: 'Roboto';">
+                <div class="col-lg-10">
                     <h2 class="fw-bold mt-3">Name of Researcher</h2>
                     <h5 class="mb-2">Junior Associate Researcher</h5>
 

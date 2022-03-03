@@ -1,8 +1,16 @@
+/*-------------Fonts-------------*/
+
+.research-fields,
+.repository-metrics,
+.promotion {
+  font-family: "Roboto", sans-serif;
+}
+
 /*---------------------------------------------------Search Section---------------------------------------------------*/
 
 .search-section {
   padding: 2%;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
 }
 
 @media only screen and (max-width: 576px) {
@@ -20,7 +28,7 @@
 }
 
 .search-option-buttons {
-  color: black !important;
+  color: #000000 !important;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
 }
@@ -32,11 +40,10 @@
 /*---------------------------------------------------Research Field---------------------------------------------------*/
 
 hr {
-  border: 1px solid grey;
+  border: 1px solid #808080;
 }
 
 #research-field-title-text {
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -50,8 +57,7 @@ hr {
 
 .research-field-image-link {
   text-decoration: none;
-  color: black;
-  font-family: "Roboto", sans-serif;
+  color: #000000;
   font-size: 1rem;
 }
 
@@ -66,7 +72,7 @@ hr {
 
 .view-more-link {
   text-decoration: none;
-  color: darkslategray;
+  color: #2f4f4f;
   font-weight: bold;
   margin: 1%;
   padding: 1%;
@@ -81,42 +87,35 @@ hr {
 
 .repository-metrics {
   background-color: #012265;
-  color: white;
-  font-family: "Arial", sans-serif;
+  color: #ffffff;
 }
 
 .repository-metrics-logos {
   max-width: 64px;
   max-height: 64px;
-  margin: 20%;
-  /*border: 2px solid black;
-    border-radius: 50%;*/
 }
 
 .repository-metrics-p-text {
-  color: darkslategray;
-  font-family: "Roboto", sans-serif;
+  color: #2f4f4f;
   font-weight: bold;
 }
 
 .repository-metrics-column-item {
-  background-color: white;
+  background-color: #ffffff;
   padding: 2%;
 }
 
 .repository-metrics-counter {
-  font-family: "Roboto", sans-serif;
-  color: darkslategray;
-  font-weight: 500;
+  color: #2f4f4f;
   font-size: 2rem;
 }
 
 h5 {
-  color: darkslategray;
+  color: #2f4f4f;
 }
 
 .view-more-statistics-link {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
 }
@@ -129,13 +128,11 @@ h5 {
 /*---------------------------------------------------Promotion---------------------------------------------------*/
 
 .promotion-header-text {
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   margin-bottom: 5%;
 }
 
 .promotion-content-text {
-  font-family: "Roboto", sans-serif;
   font-weight: normal;
-  color: darkslategray;
+  color: #2f4f4f;
 }

@@ -2,7 +2,8 @@
 
 .header {
   background-color: #012265 !important;
-  color: yellow;
+  color: #ffff00;
+  font-family: "Roboto", sans-serif;
 }
 
 #header-logo {
@@ -10,8 +11,7 @@
 }
 
 #header-text {
-  color: white;
-  font-family: "arial", sans-serif;
+  color: #ffffff;
   font-weight: bold;
   font-style: normal;
   font-size: 1.5rem;
@@ -31,23 +31,27 @@
 
 .navigation-items {
   background-color: rgba(255, 222, 0, 1);
-  color: black !important;
+  color: #000000 !important;
 }
 
 .nav-link {
-  color: white !important;
+  color: #ffffff !important;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-style: normal;
   font-size: 1rem;
 }
 
+.nav-item {
+  font-family: "Roboto", sans-serif;
+}
+
 .nav-link:hover {
-  color: gainsboro !important;
+  color: rgb(148, 141, 141) !important;
 }
 
 .offcanvas {
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
 }
 
 .offcanvas-header {
@@ -55,26 +59,21 @@
 }
 
 .offcanvas-body {
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .offcanvas-link-color {
-  color: black !important;
+  color: #000000 !important;
 }
 
 .offcanvas-signout-link-color {
-  color: red !important;
-}
-
-.onThisPageLinks:hover {
-  cursor: pointer;
-  color: aqua;
+  color: #ff0000 !important;
 }
 
 /*---------------------------------------------------Masthead---------------------------------------------------*/
 
 .masthead {
-  background-color: white;
+  background-color: #ffffff;
 }
 
 #masthead-title-text {
@@ -105,6 +104,7 @@
 
 .footer {
   background-color: rgba(71, 71, 94, 1);
+  font-family: "Roboto", sans-serif;
 }
 
 #footer-logo {
@@ -112,11 +112,11 @@
 }
 
 #footer-text {
-  color: white;
+  color: #ffffff;
 }
 
 .footer-column-title {
-  color: white;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -128,15 +128,15 @@
 
 .footer-list-link {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 }
 
 .footer-list-link:hover {
-  color: white;
+  color: #ffffff;
 }
 
 .ext-link:hover {
-  color: gainsboro;
+  color: #dcdcdc;
 }
 
 .saliksik-logo {

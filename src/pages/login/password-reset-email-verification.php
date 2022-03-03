@@ -41,11 +41,7 @@ if (!isset($_SESSION['email'])) {
     <link rel="stylesheet" href="../../../plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
 </head>
 
-<<<<<<< HEAD
-<body style="background-color: #012265; font-family: 'Roboto';">
-=======
 <body>
->>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
 
     <!--Main Section-->
     <main class="main">

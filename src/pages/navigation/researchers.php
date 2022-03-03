@@ -44,7 +44,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </section>
 
-    <section class="researchers" style="font-family: 'Roboto';">
+    <section class="researchers">
         <div class="container p-5">
             <div class="row my-3 d-lg-none">
 
