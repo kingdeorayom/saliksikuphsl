@@ -21,7 +21,7 @@ if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
     $page = 1;
-} 
+}
 $results_per_page = 5;
 $offset = ($page-1) * $results_per_page;  
 
@@ -107,8 +107,7 @@ print_r($_POST);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repository</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='../../../scripts/custom/repository.js'></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -148,7 +147,6 @@ print_r($_POST);
 
     <section class="submit-research" style="font-family: 'Roboto';">
         <div class="container px-4 py-5">
-
             <div class="row">
                 <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
@@ -203,7 +201,7 @@ print_r($_POST);
                         <label class="form-check-label" for="checkBoxJournal">Journal</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographics" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("infographics",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographics" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("infographic",$_POST["resource_type"])){echo "checked";}}?>>
                         <label class="form-check-label" for="checkBoxInfographics">Infographics</label>
                     </div>
                     <div class="form-check">
@@ -310,8 +308,6 @@ print_r($_POST);
                 
                 <div class="col-sm-12 d-sm-block d-lg-none"  id="modal-search-filters">
                     <p class="fst-italic mt-2 mb-4">To filter your search results, click <span style="color: #012265; text-decoration:underline" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">here<span></p>
-
-
                     <form class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" name="modal-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                         <div class="offcanvas-header">
                             <h6 class="text-white my-1"><i class="fas fa-filter"></i> SEARCH FILTERS</h6>
@@ -367,7 +363,7 @@ print_r($_POST);
                                 <label class="form-check-label" for="checkBoxJournaloffcanvas">Journal</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographicsoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("infographics",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographicsoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("infographic",$_POST["resource_type"])){echo "checked";}}?>>
                                 <label class="form-check-label" for="checkBoxInfographicsoffcanvas">Infographics</label>
                             </div>
                             <div class="form-check">
@@ -475,8 +471,9 @@ print_r($_POST);
                 </div>
 
                 <div class="col-lg-10 col-md-12 col-xs-12 main-column">
-                    <h1>Suggestions</h1>
+                    <h1>Search Results</h1>
                     <hr class="my-2">
+                    <div id="repository-results-container">
                     <?php foreach($published as $key=>$result):
                                 if ($result['file_type'] === 'thesis') {
                                     echo "<div class='repositoryItem p-2'>
@@ -549,13 +546,13 @@ print_r($_POST);
                                 }
                     ?>
                     <?php endforeach ?>
-                    <div class="row repository-pagination">
+                    <div class="row repository-pagination" id="repository-pagination">
                         <nav aria-label="Page navigation">
                             <ul class="pagination d-flex justify-content-center">
                                 <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page-1?> >Previous</a></li>
                                 <?php for ($i=1; $i <= $total_pages; $i++){ 
                                     if($i==$page){
-                                        echo "<li class='page-item active'><span class='page-link' href='?page={$i}'>$i</span></li>";
+                                        echo "<li class='page-item active'><span class='page-link' id='current-page'>$i</span></li>";
                                     }
                                     else{
                                         echo "<li class='page-item'><a class='page-link' href='?page={$i}'>$i</a></li>";
@@ -566,6 +563,9 @@ print_r($_POST);
                             
                         </nav>
                     </div>
+                    </div>
+                    
+                    
                 </div>
 
             </div>
@@ -579,6 +579,8 @@ print_r($_POST);
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='../../../scripts/custom/repository.js'></script>
 </body>
 
 </html>
