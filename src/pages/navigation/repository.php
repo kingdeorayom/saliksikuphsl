@@ -147,7 +147,7 @@ print_r($_POST);
     </section>
 
     <section class="search-section bg-white">
-        <div class="container px-4 py-5">
+        <div class="container p-3">
 
             <div class="row">
                 <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
@@ -309,9 +309,8 @@ print_r($_POST);
                 </form>
                 
                 <div class="col-sm-12 d-sm-block d-lg-none"  id="modal-search-filters">
-                    <div class="text-end mb-5">
+                    <div class="text-end my-3">
                         <p class="fw-bold filter-results" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
-
                     </div>
                     <form class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" name="modal-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                         <div class="offcanvas-header">
@@ -475,7 +474,7 @@ print_r($_POST);
                     </form>
                 </div>
 
-                <div class="col-lg-10 col-md-12 col-xs-12 main-column">
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column">
                     <h1>Suggestions</h1>
                     <hr class="my-2">
                     <?php foreach($published as $key=>$result):
