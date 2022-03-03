@@ -13,10 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/forgot-password-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
 </head>
 
-<body style="background-color: #012265; font-family: 'Roboto';">
+<body>
 
     <!--Main Section-->
     <main class="main">
@@ -76,17 +76,20 @@
                         <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if (isset($_SESSION['email'])) {
                                                                                                                         echo $_SESSION['email'];
                                                                                                                         unset($_SESSION['email']);
+<<<<<<< HEAD
                                                                                                                     } ?>">
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Submit</button>
+=======
+                                                                                                                    } ?>" autofocus>
+                        <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonSubmit" id="buttonSubmit">Submit</button>
+>>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
                         <a href="../../../index.php"><button class="btn bg-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
             </div>
         </div>
     </main>
-
-    <?php include_once '../../../scripts/custom/user-login-register-scripts.php' ?>
-
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

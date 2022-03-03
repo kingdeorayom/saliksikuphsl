@@ -28,10 +28,10 @@ if (!isset($_SESSION['resetPassword'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/reset-password-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;font-family: 'Roboto';">
+<body>
 
     <!--Main Section-->
     <main class="main">
@@ -86,8 +86,22 @@ if (!isset($_SESSION['resetPassword'])) {
         </div>
     </main>
 
-    <?php include_once '../../../scripts/custom/user-login-register-scripts.php' ?>
+    <script>
+        function showHidePassword() {
 
+            var checkboxShowHidePasswordValue = document.getElementById("textFieldPassword");
+            var checkboxShowHideRepeatPasswordValue = document.getElementById("textFieldConfirmPassword");
+
+            if (checkboxShowHidePasswordValue.type === "password") {
+                checkboxShowHidePasswordValue.type = "text";
+                checkboxShowHideRepeatPasswordValue.type = "text";
+            } else {
+                checkboxShowHidePasswordValue.type = "password";
+                checkboxShowHideRepeatPasswordValue.type = "password";
+            }
+        }
+    </script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

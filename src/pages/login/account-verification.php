@@ -37,21 +37,16 @@ if (!isset($_SESSION['email'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/account-verification-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
     <link rel="stylesheet" href="../../../plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;font-family: 'Roboto';">
+<body>
 
     <!--Main Section-->
     <main class="main">
         <div class="container mx-auto my-5 d-flex justify-content-center align-items-center h-auto">
             <div class="col-lg-6 p-5 bg-light">
-                <div class="row p-2">
-                    <div class="text-center">
-                        <img src="../../../assets/images/core/uphsl-logo.png" id="uphsl-logo" alt="UPHSL Logo">
-                    </div>
-                </div>
                 <div class="row py-2">
                     <?php
                     if (isset($_SESSION['incorrectVerificationCode'])) { ?>
@@ -70,7 +65,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="row">
                     <form action="../../process/account-verify.php" method="POST">
                         <label class="mb-3">We sent a one-time verification code to the email you used to register.<br>Please enter the code below to verify your account.</label>
-                        <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode">
+                        <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode" autofocus>
 
                         <button class="btn text-white w-100 mt-4" type="submit" name="buttonSubmitVerificationCode" id="buttonSubmitVerificationCode">Submit</button>
                         <a href="../../process/logout.php"><button class="btn btn-secondary text-white w-100 mt-2 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
@@ -83,7 +78,23 @@ if (!isset($_SESSION['email'])) {
         </div>
     </main>
 
-    <?php include_once '../../../scripts/custom/user-login-register-scripts.php' ?>
+    <script>
+        function fireSweetAlertResendVerificationCode() {
+            Swal.fire({
+                title: 'Request a new verification code?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire('A new verification code is sent to your email!', '', 'success');
+                    location.reload();
+                } else if (result.isDenied) {}
+            })
+        }
+    </script>
+
+    <script src="../../../plugins/sweetalert/package/dist/sweetalert2.js"></script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

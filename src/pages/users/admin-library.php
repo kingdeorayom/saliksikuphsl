@@ -12,8 +12,6 @@ if (isset($_SESSION['userType'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
         die();
-        // echo '<a href="../../../index.php">go back</a><br><br>';
-        // die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
     }
 } else {
     echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
@@ -24,8 +22,6 @@ if (isset($_SESSION['userType'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back</a><br><br>';
-    // die('Please login as admin to access this page. <br>Click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
 ?>
@@ -52,14 +48,6 @@ if (isset($_SESSION['userType'])) {
     <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
-
-    <!--Masthead-->
-
-    <!-- <section class="masthead p-5 bg-light">
-        <div class="container">
-            <h1 id="masthead-title-text">My Library</h1>
-        </div>
-    </section> -->
 
     <section class="submit-research profile" style="font-family: 'Roboto';">
         <div class="container p-5">

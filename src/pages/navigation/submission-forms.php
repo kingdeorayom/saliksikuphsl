@@ -11,8 +11,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -51,8 +49,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
     </section>
 
-    <!--About and Copyright Section-->
-
     <section class="submit-research">
         <div class="container p-5">
             <div class="row mb-4 d-lg-none">
@@ -76,18 +72,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     </div>
                 </div>
 
-                <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <ul class="onThisPageLinks">
-                        <li class="btn-link" onclick="thesisDissertationPanelClicked()">Thesis/Dissertation Submission Form</li>
-                        <li class=" btn-link" onclick="researchJournalPanelClicked()">Research Journal Submission Form</li>
-                        <li class=" btn-link" onclick="infographicsPanelClicked()">Infographics Submission Form</li>
-                    </ul>
-                </div> -->
-
             </div>
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-                    <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
                     <hr>
                     <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>

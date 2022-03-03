@@ -11,8 +11,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -58,7 +56,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2">
+                        <input type="search" autofocus class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2">
                         <button class="btn text-light search-button btn-lg rounded-0" type="submit" id="button-addon2">Search</button>
                     </div>
                 </div>

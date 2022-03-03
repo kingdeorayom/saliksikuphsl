@@ -11,8 +11,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -51,35 +49,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <section class="about-and-copyright" style="font-family: 'Roboto';">
         <div class="container p-5">
-
-            <!-- <div class="row my-3 d-lg-none">
-
-                <h3>On this page</h3>
-                <hr>
-
-                <div class="m-2">
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="aboutRepositoryClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                        <label class="form-check-label" for="flexRadioDefault1">About the Repository</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" onclick="copyrightPoliciesClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">Copyright & Policies</label>
-                    </div>
-                </div>
-
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <ul class="onThisPageLinks">
-                        <li class="btn-link" onclick="aboutRepositoryClicked()">About the Repository</li>
-                        <li class=" btn-link" onclick="copyrightPoliciesClicked()">Copyright & Policies</li>
-                    </ul>
-                </div>
-
-            </div> -->
-
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-                    <!--col-md-12 to stack on top of next column. remove display-none-->
                     <h3>On this page</h3>
                     <hr>
                     <p class="side-menu-text" onclick="aboutRepositoryClicked()" id="aboutRepositoryText">About the Repository</p>

@@ -1,6 +1,45 @@
-#saliksik-logo {
+/* ------------------------------ Login Page ------------------------------ */
+
+body {
+  background-color: #012265;
+  font-family: "Roboto", sans-serif;
 }
 
 #buttonLogin {
   background-color: #012265;
+}
+
+.forgot-password,
+.sign-up,
+.resend-verification-code {
+  text-decoration: none;
+  font-weight: bold;
+  color: #012265;
+}
+
+.forgot-password:hover,
+.sign-up:hover,
+.resend-verification-code:hover {
+  color: #012265;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#buttonCreateAccount,
+#buttonSubmit,
+#buttonSubmitVerificationCode {
+  background-color: #012265;
+}
+
+/* ------------------------------ Registration Page ------------------------------ */
+
+.to-login {
+  text-decoration: none;
+  font-weight: bold;
+  color: #012265;
+}
+
+.to-login:hover {
+  text-decoration: underline;
+  color: #012265;
 }

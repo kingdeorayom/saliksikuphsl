@@ -13,11 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/registration-style.css" type="text/css">
+    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
 
 </head>
 
+<<<<<<< HEAD
 <body style="background-color: #012265; font-family: 'Roboto'">
+=======
+<body>
+>>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
 
     <!--Main Section-->
     <main class=" main">
@@ -38,9 +42,15 @@
                     <form onsubmit="submitRegister(event)" name="register-form">
 
                         <label>First Name</label>
+<<<<<<< HEAD
                         <input class="form-control my-1" type="text" name="textFieldFirstName" id="textFieldFirstName">
                         <label>Last Name</label>
                         <input class="form-control my-1" type="text" name="textFieldLastName" id="textFieldLastName">
+=======
+                        <input class="form-control" type="text" name="textFieldFirstName" id="textFieldFirstName" autofocus>
+                        <label class="mt-2">Last Name</label>
+                        <input class="form-control" type="text" name="textFieldLastName" id="textFieldLastName">
+>>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
                         <label class="py-2">College/Department</label>
                         <select class="form-select my-1" aria-label="Default select example" name="dropdownDeparment">
                             <option value="Basic Education" selected>Basic Education</option>
@@ -58,11 +68,19 @@
                             <option value="Support Services">Support Services</option>
                         </select>
                         <label class="py-2">School Email</label>
+<<<<<<< HEAD
                         <input class="form-control my-1" type="text" name="textFieldEmail" id="textFieldEmail">
                         <label>Password</label>
                         <input class="form-control mt-1 mb-2" type="password" name="textFieldPassword" id="textFieldPassword">
                         <label>Confirm Password</label>
                         <input class="form-control my-1" type="password" name="textFieldConfirmPassword" id="textFieldConfirmPassword">
+=======
+                        <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail">
+                        <label class="mt-2">Password</label>
+                        <input class="form-control" type="password" name="textFieldPassword" id="textFieldPassword">
+                        <label class="my-2">Confirm Password</label>
+                        <input class="form-control" type="password" name="textFieldConfirmPassword" id="textFieldConfirmPassword">
+>>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
                         <div class="form-check py-2">
                             <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword" onclick="showHidePassword()">
                             <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
@@ -70,14 +88,17 @@
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Create account</button>
                     </form>
                     <div class="text-center pt-4">
-                        Have an account?<br><a href="../../../index.php" style="text-decoration: none; font-weight: bold; color: #012265">Click here to login</a>
+                        <p>Have an account?<br><a href="../../../index.php" class="to-login">Click here to login</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+<<<<<<< HEAD
     <?php include_once '../../../scripts/custom/user-login-register-scripts.php' ?>
+=======
+>>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
     <script>
         var alertRegister = document.getElementById('alert-container-register');
 
@@ -120,6 +141,22 @@
             }
         }
     </script>
+    <script>
+        function showHidePassword() {
+
+            var checkboxShowHidePasswordValue = document.getElementById("textFieldPassword");
+            var checkboxShowHideRepeatPasswordValue = document.getElementById("textFieldConfirmPassword");
+
+            if (checkboxShowHidePasswordValue.type === "password") {
+                checkboxShowHidePasswordValue.type = "text";
+                checkboxShowHideRepeatPasswordValue.type = "text";
+            } else {
+                checkboxShowHidePasswordValue.type = "password";
+                checkboxShowHideRepeatPasswordValue.type = "password";
+            }
+        }
+    </script>
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>
