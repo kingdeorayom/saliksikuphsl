@@ -30,11 +30,57 @@ if (mysqli_connect_errno()) {
 };
 
 $query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_dir2`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email, ci.coauthor1_first_name, ci.coauthor1_middle_initial, ci.coauthor1_surname, ci.coauthor1_name_ext, ci.coauthor1_email, ci.coauthor2_first_name, ci.coauthor2_middle_initial, ci.coauthor2_surname, ci.coauthor2_name_ext, ci.coauthor2_email, ci.coauthor3_first_name, ci.coauthor3_middle_initial, ci.coauthor3_surname, ci.coauthor3_name_ext, ci.coauthor3_email, ci.coauthor4_first_name, ci.coauthor4_middle_initial, ci.coauthor4_surname, ci.coauthor4_name_ext, ci.coauthor4_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
-if(isset($_GET['query']) && $_GET['query']!=''){
-    $search = "AND ri.research_title LIKE '%{$_GET["query"]}%' OR ji.journal_title LIKE '%{$_GET["query"]}%' OR ii.infographic_title LIKE '%{$_GET["query"]}%'";
+
+if(isset($_POST['title_query']) && $_POST['title_query']!=''){
+    $search = " AND (ri.research_title LIKE '%{$_POST["title_query"]}%' OR ji.journal_title LIKE '%{$_POST["title_query"]}%' OR ii.infographic_title LIKE '%{$_POST["title_query"]}%')";
     $query .= $search;
 }
-
+if(isset($_POST['publication_year'])){
+    $year = " AND (";
+    foreach($_POST['publication_year'] as $key => $value){
+        $year .= "ri.publication_year = $value OR ii.infographic_publication_year = $value";
+        if ($key < count($_POST['publication_year'])-1){
+            $year .= " OR ";
+        }
+    }
+    $year .= ") ";
+    $query .= $year;
+}
+if(isset($_POST['resource_type'])){
+    $resource_type = " AND (";
+    foreach($_POST['resource_type'] as $key => $value){
+        $resource_type .= "fi.file_type LIKE '$value' OR ri.resource_type LIKE '$value'";
+        if ($key < count($_POST['resource_type'])-1){
+            $resource_type .= " OR ";
+        }
+    }
+    $resource_type .= ") ";
+    $query .= $resource_type;
+}
+if(isset($_POST['research_field'])){
+    $research_field = " AND (";
+    foreach($_POST['research_field'] as $key => $value){
+        echo $value;
+        $research_field .= "ri.research_fields LIKE '%$value%'";
+        if ($key < count($_POST['research_field'])-1){
+            $research_field .= " OR ";
+        }
+    }
+    $research_field .= ") ";
+    $query .= $research_field;
+}
+if(isset($_POST['resource_unit'])){
+    $resource_unit = " AND (";
+    foreach($_POST['resource_unit'] as $key => $value){
+        echo $value;
+        $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%' OR ii.infographic_research_unit LIKE '%$value%'";
+        if ($key < count($_POST['resource_unit'])-1){
+            $resource_unit .= " OR ";
+        }
+    }
+    $resource_unit .= ") ";
+    $query .= $resource_unit;
+}
 
 $statement = $connection->prepare($query);
 $statement->execute();
@@ -52,8 +98,7 @@ $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
 
-
-
+print_r($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -106,10 +151,11 @@ $statement->close();
         <div class="container px-4 py-5">
 
             <div class="row">
-                <div class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters">
+                <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
                     <hr>
                     <p class="side-menu-text fw-bold">Publication Year</p>
+                        <input id="hidden-sidebar-query"name="title_query" hidden>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2021">2021</label>
@@ -146,8 +192,12 @@ $statement->close();
                         <label class="form-check-label" for="checkBoxDissertation">Dissertation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesis">
+                        <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesis" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxThesis">Thesis</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="capstone" id="checkBoxCapstone" name="resource_type[]">
+                        <label class="form-check-label" for="checkBoxCapstone">Capstone</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournal" name="resource_type[]">
@@ -172,94 +222,93 @@ $statement->close();
                     <hr>
                     <p class="side-menu-text fw-bold">Research Field</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxAccountancyMarketing" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="research_field[]">
                         <label class="form-check-label" for="checkBoxAccountancyMarketing">Accountancy and Marketing</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsHumanities" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="research_field[]">
                         <label class="form-check-label" for="checkBoxArtsHumanities">Arts and Humanities</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationalManagement" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="research_field[]">
                         <label class="form-check-label" for="checkBoxEducationalManagement">Educational Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationSocialSciences" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="research_field[]">
                         <label class="form-check-label" for="checkBoxEducationSocialSciences">Education and Social Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessManagement" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="research_field[]">
                         <label class="form-check-label" for="checkBoxBusinessManagement">Business Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxHealthSciences" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="research_field[]">
                         <label class="form-check-label" for="checkBoxHealthSciences">Health and Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxITEngineering" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="research_field[]">
                         <label class="form-check-label" for="checkBoxITEngineering">IT and Engineering</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxLawJusticeSystem" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="research_field[]">
                         <label class="form-check-label" for="checkBoxLawJusticeSystem">Law and Justice System</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxMarineAviation" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="research_field[]">
                         <label class="form-check-label" for="checkBoxMarineAviation">Marine and Aviation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxTourismHospitality" name="resource_field[]">
+                        <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="research_field[]">
                         <label class="form-check-label" for="checkBoxTourismHospitality">Tourism and Hospitality</label>
                     </div>
                     <hr>
                     <p class="side-menu-text fw-bold">Research Unit</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxBasicEducation" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Basic Education" id="checkBoxBasicEducation" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxBasicEducation">Basic Education</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxSeniorHighSchool" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Senior High School" id="checkBoxSeniorHighSchool" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxSeniorHighSchool">Senior High School</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsSciences" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Arts and Sciences" id="checkBoxArtsSciences" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxArtsSciences">Arts and Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessAccountancy" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Business and Accountancy" id="checkBoxBusinessAccountancy" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxBusinessAccountancy">Business and Accountancy</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxCriminology" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Criminology" id="checkBoxCriminology" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxCriminology">Criminology</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxComputerStudies" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Computer Studies" id="checkBoxComputerStudies" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxComputerStudies">Computer Studies</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxEducation" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Education" id="checkBoxEducation" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxEducation">Education</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxEngineering" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxEngineering">Engineering</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxHospitalityManagement" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="International Hospitality Management" id="checkBoxHospitalityManagement" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxHospitalityManagement">International Hospitality Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxMaritime" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxMaritime">Maritime</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchool" name="resource_unit[]">
+                        <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchool" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxGraduateSchool">Graduate School</label>
                     </div>
-                </div>
-
-
+                </form>
+                
                 <div class="col-sm-12 d-sm-block d-lg-none"  id="modal-search-filters">
                     <p class="fst-italic mt-2 mb-4">To filter your search results, click <span style="color: #012265; text-decoration:underline" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">here<span></p>
 
@@ -272,23 +321,23 @@ $statement->close();
                         <div class="offcanvas-body">
                             <p class="side-menu-text fw-bold">Publication Year</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021offcanvas">
+                                <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021offcanvas" name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2021offcanvas">2021</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas">
+                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2020offcanvas">2020</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas">
+                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2019offcanvas">2019</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas">
+                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2018offcanvas">2018</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017offcanvas">
+                                <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2017offcanvas">2017</label>
                             </div>
                             <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
@@ -302,119 +351,119 @@ $statement->close();
                             <hr>
                             <p class="side-menu-text fw-bold">Resource Type</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertationoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertationoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxDissertationoffcanvas">Dissertation</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesisoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesisoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxThesisoffcanvas">Thesis</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournaloffcanvas">
+                                <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournaloffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxJournaloffcanvas">Journal</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographicsoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographicsoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxInfographicsoffcanvas">Infographics</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReportoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReportoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxAnnualReportoffcanvas">Annual Report</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgendaoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgendaoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxResearchAgendaoffcanvas">Research Agenda</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDPoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDPoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxRCDPoffcanvas">Research Competency Development Program</label>
                             </div>
                             <hr>
                             <p class="side-menu-text fw-bold">Research Field</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxAccountancyMarketingoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxAccountancyMarketingoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxAccountancyMarketingoffcanvas">Accountancy and Marketing</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsHumanitiesoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsHumanitiesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxArtsHumanitiesoffcanvas">Arts and Humanities</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationalManagementoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationalManagementoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxEducationalManagementoffcanvas">Educational Management</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationSocialSciencesoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationSocialSciencesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxEducationSocialSciencesoffcanvas">Education and Social Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessManagementoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessManagementoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxBusinessManagementoffcanvas">Business Management</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxHealthSciencesoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxHealthSciencesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxHealthSciencesoffcanvas">Health and Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxITEngineeringoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxITEngineeringoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxITEngineeringoffcanvas">IT and Engineering</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxLawJusticeSystemoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxLawJusticeSystemoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxLawJusticeSystemoffcanvas">Law and Justice System</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxMarineAviationoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxMarineAviationoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxMarineAviationoffcanvas">Marine and Aviation</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxTourismHospitalityoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxTourismHospitalityoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxTourismHospitalityoffcanvas">Tourism and Hospitality</label>
                             </div>
                             <hr>
                             <p class="side-menu-text fw-bold">Research Unit</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBasicEducationoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBasicEducationoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxBasicEducationoffcanvas">Basic Education</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxSeniorHighSchooloffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxSeniorHighSchooloffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxSeniorHighSchooloffcanvas">Senior High School</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsSciencesoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxArtsSciencesoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxArtsSciencesoffcanvas">Arts and Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessAccountancyoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxBusinessAccountancyoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxBusinessAccountancyoffcanvas">Business and Accountancy</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxCriminologyoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxCriminologyoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxCriminologyoffcanvas">Criminology</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxComputerStudiesoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxComputerStudiesoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxComputerStudiesoffcanvas">Computer Studies</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEducationoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxEducationoffcanvas">Education</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEngineeringoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxEngineeringoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxEngineeringoffcanvas">Engineering</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxHospitalityManagementoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxHospitalityManagementoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxHospitalityManagementoffcanvas">International Hospitality Management</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxMaritimeoffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxMaritimeoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxMaritimeoffcanvas">Maritime</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchooloffcanvas">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBoxGraduateSchooloffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxGraduateSchooloffcanvas">Graduate School</label>
                             </div>
                         </div>
