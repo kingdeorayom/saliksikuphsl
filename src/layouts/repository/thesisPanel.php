@@ -1,6 +1,13 @@
-<?php echo "<section class='submit-research' style='font-family: 'Roboto';'>
+<?php echo "<section class='submit-research' style=\"font-family: 'Roboto';\">
         <div class='container p-5'>
-
+        <div class=\"row my-3\">
+        <nav style=\"--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);\" aria-label=\"breadcrumb\">
+            <ol class=\"breadcrumb\">
+                <li class=\"breadcrumb-item prev-dir-breadcrumb\"><a href=\"../../pages/navigation/repository.php\" style=\"color: #012265; text-decoration:none\">Repository</a></li>
+                <li class=\"breadcrumb-item active active-dir-breadcrumb\" aria-current=\"page\">View Article</li>
+            </ol>
+        </nav>
+    </div>
             <div class='row'>
 
                 <div class='col-lg-2 col-md-12 col-sm-12'>
@@ -18,10 +25,10 @@
                     <h2>{$fileInfo['research_title']}</h2>
                     <hr class='my-4'>
                     <p class='fw-bold'>{$fileInfo['author_surname']}, {$fileInfo['author_first_name'][0]}.";
-                    for($i=1;$i<=$fileInfo['coauthors_count'];$i++){
-                        echo ", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.";
-                    }
-                    echo "<p>{$fileInfo['publication_year']}, {$fileInfo['publication_month']} {$fileInfo['publication_day']}</p>
+for ($i = 1; $i <= $fileInfo['coauthors_count']; $i++) {
+    echo ", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.";
+}
+echo "<p>{$fileInfo['publication_year']}, {$fileInfo['publication_month']} {$fileInfo['publication_day']}</p>
                     <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
                     <h3 class='mt-5'>Abstract</h3>
                     <p>{$fileInfo['research_abstract']}</p>
@@ -68,5 +75,4 @@
             </div>
 
         </div>
-    </section>"
-?>
+    </section>";

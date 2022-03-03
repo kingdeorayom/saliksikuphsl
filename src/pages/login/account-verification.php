@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 } else if (isset($_SESSION['email'])) {
@@ -41,7 +41,7 @@ die();
     <link rel="stylesheet" href="../../../plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;">
+<body style="background-color: #012265;font-family: 'Roboto';">
 
     <!--Main Section-->
     <main class="main">

@@ -8,7 +8,7 @@ if (!isset($_SESSION['resetPassword'])) {
     <br><br><br>
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
-die();
+    die();
     // echo '<a href="../../../index.php">go back</a><br><br>';
     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
@@ -31,7 +31,7 @@ die();
     <link rel="stylesheet" href="../../../styles/custom/pages/reset-password-style.css" type="text/css">
 </head>
 
-<body style="background-color: #012265;">
+<body style="background-color: #012265;font-family: 'Roboto';">
 
     <!--Main Section-->
     <main class="main">
@@ -70,9 +70,9 @@ die();
                 </div>
                 <div class="row">
                     <form action="../../process/reset-password-actual.php" method="POST">
-                        <label>Enter new password</label>
+                        <label class="my-2">Enter new password</label>
                         <input class="form-control" type="password" name="textFieldPassword" id="textFieldPassword">
-                        <label>Confirm Password</label>
+                        <label class="my-2">Confirm Password</label>
                         <input class="form-control" type="password" name="textFieldConfirmPassword" id="textFieldConfirmPassword">
                         <div class="form-check py-2">
                             <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword" onclick="showHidePassword()">
