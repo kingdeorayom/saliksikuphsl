@@ -76,13 +76,8 @@
                         <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if (isset($_SESSION['email'])) {
                                                                                                                         echo $_SESSION['email'];
                                                                                                                         unset($_SESSION['email']);
-<<<<<<< HEAD
-                                                                                                                    } ?>">
-                        <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Submit</button>
-=======
                                                                                                                     } ?>" autofocus>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonSubmit" id="buttonSubmit">Submit</button>
->>>>>>> 5fa21b301cc118a75b51c2f32cb563b9669a4e80
                         <a href="../../../index.php"><button class="btn bg-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
