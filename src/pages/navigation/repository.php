@@ -310,7 +310,7 @@ print_r($_POST);
                 
                 <div class="col-sm-12 d-sm-block d-lg-none"  id="modal-search-filters">
                     <div class="text-end mb-5">
-                        <p class="fw-bold" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
+                        <p class="fw-bold filter-results" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
 
                     </div>
                     <form class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" name="modal-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">

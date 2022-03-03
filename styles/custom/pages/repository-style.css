@@ -1,5 +1,9 @@
 /*---------------------------------------------------Search Section---------------------------------------------------*/
 
+.filter-results:hover {
+  cursor: pointer;
+}
+
 .search-section {
   padding: 2%;
   background-color: #f5f5f5;
