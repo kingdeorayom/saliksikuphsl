@@ -122,7 +122,7 @@ print_r($_POST);
     <?php include_once '../../layouts/general/header.php' ?>
 
     <!-- Search Section -->
-    <section class="search-section p-5" style="font-family: 'Roboto';">
+    <section class="search-section p-5">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -145,7 +145,7 @@ print_r($_POST);
         </div>
     </section>
 
-    <section class="submit-research" style="font-family: 'Roboto';">
+    <section class="search-section bg-white">
         <div class="container px-4 py-5">
             <div class="row">
                 <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
@@ -307,7 +307,10 @@ print_r($_POST);
                 </form>
                 
                 <div class="col-sm-12 d-sm-block d-lg-none"  id="modal-search-filters">
-                    <p class="fst-italic mt-2 mb-4">To filter your search results, click <span style="color: #012265; text-decoration:underline" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">here<span></p>
+                    <div class="text-end mb-5">
+                        <p class="fw-bold" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
+
+                    </div>
                     <form class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" name="modal-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                         <div class="offcanvas-header">
                             <h6 class="text-white my-1"><i class="fas fa-filter"></i> SEARCH FILTERS</h6>
