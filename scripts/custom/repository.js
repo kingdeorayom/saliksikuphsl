@@ -1,4 +1,14 @@
 // code to cache sidebar checkbox values
+var searchbarValue = sessionStorage.getItem("searchbarValue");
+$("#repository-search-bar").on("input", function () {
+  searchbarValue = this.value;
+  sessionStorage.setItem("searchbarValue", searchbarValue);
+});
+
+$("#repository-search-bar").val(sessionStorage.searchbarValue);
+$("#hidden-sidebar-query").val(sessionStorage.searchbarValue);
+$("#hidden-modal-query").val(sessionStorage.searchbarValue);
+
 var checkboxValues = JSON.parse(sessionStorage.getItem("checkboxValues")) || {};
 var $checkboxes = $("#sidebar-search-filters :checkbox");
 $checkboxes.on("change", function () {
@@ -34,7 +44,12 @@ repositorySearchButton.addEventListener("click", function () {
     sidebarForm.submit();
   }
 });
-$("#repository-search-bar").on("input", function () {
+
+$("#repository-search-bar").on("input", getResults);
+$("form[name='sidebar-filters']").on("change", getResults);
+$(document).ready(getResults);
+
+function getResults() {
   var str = $("form[name='sidebar-filters']").serialize();
   var page = "";
   var url = new URL(window.location);
@@ -47,34 +62,4 @@ $("#repository-search-bar").on("input", function () {
   }).done(function (data) {
     $("#repository-results-container").html(data);
   });
-});
-
-$("form[name='sidebar-filters']").on("change", function () {
-  var str = $(this).serialize();
-  var page = "";
-  var url = new URL(window.location);
-  url.searchParams.has("page")
-    ? (page = url.searchParams.get("page"))
-    : (page = 1);
-  $.ajax({
-    method: "POST",
-    url: "./repository-ajax.php?page=" + page + "&" + str,
-  }).done(function (data) {
-    $("#repository-results-container").html(data);
-  });
-});
-
-$(document).ready(function () {
-  var str = $("form[name='sidebar-filters']").serialize();
-  var page = "";
-  var url = new URL(window.location);
-  url.searchParams.has("page")
-    ? (page = url.searchParams.get("page"))
-    : (page = 1);
-  $.ajax({
-    method: "POST",
-    url: "./repository-ajax.php?page=" + page + "&" + str,
-  }).done(function (data) {
-    $("#repository-results-container").html(data);
-  });
-});
+}
