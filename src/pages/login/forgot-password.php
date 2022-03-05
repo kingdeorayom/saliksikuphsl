@@ -78,7 +78,7 @@
                                                                                                                         unset($_SESSION['email']);
                                                                                                                     } ?>" autofocus>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonSubmit" id="buttonSubmit">Submit</button>
-                        <a href="../../../index.php"><button class="btn bg-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
+                        <a href="../../../index.php"><button class="btn btn-secondary text-white w-100 mb-2 button-cancel" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
             </div>

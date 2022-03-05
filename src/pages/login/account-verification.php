@@ -109,7 +109,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="row">
                     <form action="../../process/account-verify.php" method="POST">
                         <label class="mb-3">We sent a one-time verification code to the email you used to register.<br>Please enter the code below to verify your account.</label>
-                        <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode" autofocus>
+                        <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode" autofocus maxlength="6">
 
                         <button class="btn text-white w-100 mt-4" type="submit" name="buttonSubmitVerificationCode" id="buttonSubmitVerificationCode">Submit</button>
                         <a href="../../process/logout.php"><button class="btn btn-secondary text-white w-100 mt-2 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>

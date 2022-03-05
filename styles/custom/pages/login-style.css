@@ -31,6 +31,13 @@ body {
   background-color: #012265;
 }
 
+#buttonCreateAccount:hover,
+#buttonSubmit:hover,
+#buttonSubmitVerificationCode:hover {
+  background-color: #27498d;
+  border-color: #27498d;
+}
+
 /* ------------------------------ Registration Page ------------------------------ */
 
 .to-login {
