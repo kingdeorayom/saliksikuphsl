@@ -1,5 +1,10 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../../vendor/autoload.php';
+
 session_start();
 
 if (!isset($_SESSION['email'])) {
@@ -11,15 +16,54 @@ if (!isset($_SESSION['email'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 } else if (isset($_SESSION['email'])) {
     $verificationCode = uniqid();
     $_SESSION['verificationCode'] = strtoupper(substr($verificationCode, 7));
     $subject = '[SALIKSIK: UPHSL Research Repository] Verification Code';
-    $message =  'Hello, ' .  $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . '!' . "\n\n" . 'A registration attempt using this email address ' . $_SESSION['email'] . ' was made and requires further verification.' . "\n" . 'To complete the sign up process, enter the verification code given below:' . "\n\n" . 'Verification code: ' . $_SESSION['verificationCode'] . "\n\n" . 'If it wasn\'t you who attempted to register the email in the website, kindly disregard this message. The registration process will be cancelled and the email will not be used.' . "\n\n" . 'Thanks,' . "\n" . 'The SALIKSIK: UPHSL Research Repository Team' . "\n\n" . 'This is a system generated message. Do not reply.';
     $recipient = $_SESSION['email'];
-    mail($recipient, $subject, $message, 'From: noreply@gmail.com');
+
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com;';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'saliksikuphsl@gmail.com';
+        $mail->Password   = 'kingdeorayom();';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+        $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
+        $mail->addAddress($recipient);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+
+        // $mail->AddEmbeddedImage("Beautiful Butterfly_64.jpg", "my-attach", "rocks.png");
+        // $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
+
+        $mail->Body    = '<p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+        
+        Hello, ' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . '!' . '<br><br>
+        
+        A registration attempt using this email address ' . $recipient . ' was made and requires further verification.<br><br>
+        
+        To complete the sign up process, enter the verification code given below: <br><br>
+        
+        Verification code: <span style="background-color: gainsboro">' . $_SESSION['verificationCode'] . '</span><br><br>
+        
+        If it wasn&apos;t you who attempted to register the email in the website, kindly disregard this message.<br><br>
+        
+        The registration process will be cancelled and the email will not be used.<br><br>
+        
+        Thanks,<br>
+        The SALIKSIK: UPHSL Research Repository Team<br><br>
+        
+        This is a system generated message. Do not reply.</p>';
+
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
 }
 
 ?>
