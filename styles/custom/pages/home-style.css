@@ -25,6 +25,7 @@
     rgba(0, 24, 72, 1) -54%,
     rgba(1, 34, 101, 1) 100%
   );
+  font-family: "Roboto", sans-serif;
 }
 
 .search-option-buttons {
@@ -35,6 +36,27 @@
 
 .search-option-buttons:hover {
   text-decoration: underline;
+}
+
+.modal-content {
+  font-family: "Roboto", sans-serif;
+}
+
+.modal-header {
+  background-color: #012265;
+}
+.modal-title {
+  color: #ffffff;
+}
+
+.modal-search-button {
+  background-color: #012265;
+  border-color: #012265;
+}
+
+.modal-search-button:hover {
+  background-color: #27498d;
+  border-color: #27498d;
 }
 
 /*---------------------------------------------------Research Field---------------------------------------------------*/
