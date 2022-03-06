@@ -81,3 +81,16 @@
   background-color: #27498d;
   border-color: #27498d;
 }
+
+.button-file {
+  background-color: #da4c53;
+  /* border: 2px solid #da4c53; */
+  border-radius: 1;
+  color: white;
+}
+
+.button-file:hover {
+  background-color: #c51f28;
+  /* border: 2px solid #da4c53; */
+  color: white;
+}

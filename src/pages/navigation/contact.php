@@ -13,6 +13,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../../../styles/custom/pages/contact-style.css');
+
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +32,21 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-        <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-        <link rel="stylesheet" href="../../../styles/custom/pages/contact-style.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+        <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/contact-style.css?id=' . $pagecssVersion ?>" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#universityLibraryPanel").hide();
+                $("#researchDevelopmentCenterText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+            });
+        </script>
     </head>
 </head>
 
-<body onload="document.getElementById('universityLibraryPanel').style.display = 'none'; document.getElementById('researchDevelopmentCenterText').style.borderBottom='thick solid #012265';">
+<body>
 
     <!--Header and Navigation section-->
 
@@ -121,21 +133,41 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <?php include_once '../../layouts/general/footer.php' ?>
 
     <script>
-        function researchDevelopmentCenterClicked() { // for showing/hiding research development center contact panel
-            document.getElementById("researchDevelopmentCenterPanel").style.display = "block";
-            document.getElementById("universityLibraryPanel").style.display = "none";
+        $(document).ready(function() {
 
-            document.getElementById("researchDevelopmentCenterText").style.borderBottom = "thick solid #012265";
-            document.getElementById("universityLibraryText").style.borderBottom = "thick none #012265";
-        }
+            $("#universityLibraryPanel").hide();
+            $("#researchDevelopmentCenterText").css({
+                "border-bottom": "thick solid #012265",
+            });
 
-        function universityLibraryClicked() { // for showing/hiding university library contact panel
-            document.getElementById("universityLibraryPanel").style.display = "block";
-            document.getElementById("researchDevelopmentCenterPanel").style.display = "none";
+            $("#researchDevelopmentCenterText").click(function() {
 
-            document.getElementById("researchDevelopmentCenterText").style.borderBottom = "thick none #012265";
-            document.getElementById("universityLibraryText").style.borderBottom = "thick solid #012265";
-        }
+                $("#universityLibraryPanel").hide();
+                $("#universityLibraryText").css({
+                    "border-bottom": "thick none #012265",
+                });
+
+                $("#researchDevelopmentCenterPanel").show();
+                $("#researchDevelopmentCenterText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+
+            });
+
+            $("#universityLibraryText").click(function() {
+
+                $("#universityLibraryPanel").show();
+                $("#universityLibraryText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+
+                $("#researchDevelopmentCenterPanel").hide();
+                $("#researchDevelopmentCenterText").css({
+                    "border-bottom": "thick none #012265",
+                });
+
+            });
+        });
     </script>
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>

@@ -9,8 +9,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
 
 ?>
@@ -166,7 +164,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function submitJournalForm(event) {
         event.preventDefault();
         const fileId = event.target.dataset.id
-        
+
         var formdata = new FormData(journalForm);
         formdata.append("fileId", fileId);
         updateJournal(formdata).then(data => checkResponse(JSON.parse(data)));

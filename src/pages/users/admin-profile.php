@@ -24,6 +24,9 @@ if (isset($_SESSION['userType'])) {
     die();
 }
 
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
+$profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
 ?>
 
 <!DOCTYPE html>
@@ -34,13 +37,13 @@ if (isset($_SESSION['userType'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
-    <script src="../../../scripts/custom/profile-admin.js" type="module"></script>
+    <script src="<?php echo '../../../scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/profile-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/profile-style.css?id=' . $pagecssVersion ?>" type="text/css">
 </head>
 
 <body>

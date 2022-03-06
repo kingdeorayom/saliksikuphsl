@@ -36,8 +36,7 @@ echo "<p>{$fileInfo['infographic_publication_year']}, {$fileInfo['infographic_pu
                     <div class='row my-4'>
                         <label class='fw-bold mb-3'>Attached Files</label>
                         <div class='col'>
-                            <button class='btn btn-danger'>File 1.pdf</button>
-                            <button class='btn btn-danger'>File 2.png</button>
+                        <button class='btn button-file'><i class='far fa-file-pdf me-2'></i> File.pdf</button>
                         </div>
                     </div>
 

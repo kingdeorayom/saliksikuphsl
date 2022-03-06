@@ -1,10 +1,7 @@
-<!--Header Section-->
-
 <section class="header navbar navbar-dark bg-dark static-top">
     <div class="container p-2">
         <div class="d-flex align-items-center">
             <a href="../../../src/pages/navigation/home.php"><img src="../../../assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>
-            <!-- <h1 class="text-white" id="header-text">UNIVERSITY OF<br>PERPETUAL<br>HELP SYSTEM LAGUNA</h1> -->
         </div>
 
         <div class="navbar navbar-expand-md">

@@ -9,9 +9,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back to login page</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
 }
+
+$ajaxsubmissionjournal = filemtime('../../../scripts/custom/ajax-submissions-journal.js');
 
 ?>
 
@@ -147,4 +147,4 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     </form>
 </div>
-<script src="../../../scripts/custom/ajax-submissions-journal.js"></script>
+<script src="<?php echo '../../../scripts/custom/ajax-submissions-journal.js?id=' . $ajaxsubmissionjournal ?>"></script>

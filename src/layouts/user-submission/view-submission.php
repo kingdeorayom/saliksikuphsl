@@ -15,22 +15,10 @@ if (isset($_SESSION['userType'])) {
     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
 </div>';
     die();
-    // echo '<a href="../../../index.php">go back</a><br><br>';
-    // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page, or to the homepage if already logged in.');
 }
 
-// if (!isset($_SESSION['isLoggedIn'])) {
-//     echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-//     <p style="font-size: 50px; font-weight: bold">Oops!</p>
-//     <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-//     <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-//     <br><br><br>
-//     <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-// </div>';
-//     die();
-//     // echo '<a href="../../../../index.php">go back to login page</a><br><br>';
-//     // die('If you are seeing this message, it means you accessed this page outside of the normal process intended by the developers.<br>Please click the link above to return to the login page.');
-// }
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style.css');
 
 ?>
 
@@ -48,8 +36,8 @@ if (isset($_SESSION['userType'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/submission-forms-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/submission-forms-style.css?id=' . $pagecssVersion ?>" type="text/css">
 </head>
 
 

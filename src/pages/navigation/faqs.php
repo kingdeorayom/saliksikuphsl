@@ -13,6 +13,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +29,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/faq-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
 </head>
 
 <body>

@@ -95,7 +95,9 @@ $result = $statement->get_result();
 $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
-
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../../../styles/custom/pages/repository-style.css');
+$repositoryjs = filemtime('../../../scripts/custom/repository.js');
 
 ?>
 
@@ -112,8 +114,8 @@ $statement->close();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/repository-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/repository-style.css?id=' . $pagecssVersion ?>" type="text/css">
 </head>
 
 <body>
@@ -129,7 +131,7 @@ $statement->close();
                     <h2 id="masthead-title-text">Search the repository</h2>
 
                     <div class="input-group my-3">
-                        <input type="search" class="form-control form-search rounded-0" id="repository-search-bar" aria-label="Search the repository" <?php if(isset($_POST['title_query'])){ echo "value = '{$_POST['title_query']}'";} ?>>
+                        <input type="search" autofocus class="form-control form-search rounded-0" id="repository-search-bar" aria-label="Search the repository" <?php if(isset($_POST['title_query'])){ echo "value = '{$_POST['title_query']}'";} ?>>
                         <button class="btn text-light rounded-0 search-button btn-lg" id="repository-search-button">Search</button>
                     </div>
                 </div>
@@ -663,7 +665,7 @@ $statement->close();
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='../../../scripts/custom/repository.js'></script>
+	<script src="<?php echo '../../../scripts/custom/repository.js?id=' . $repositoryjs ?>"></script>
 </body>
 
 </html>

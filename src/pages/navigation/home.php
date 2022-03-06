@@ -13,6 +13,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
+
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +30,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/home-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/home-style.css?id=' . $pagecssVersion ?>" type="text/css">
 
 </head>
 
@@ -56,7 +59,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <input type="search" autofocus class="form-control form-search rounded-0" aria-label="Search the repository">
+                        <input type="search" autofocus class="form-control form-search rounded-0" placeholder="Search the repository" aria-label="Search the repository">
                         <button class="btn text-light search-button btn-lg rounded-0" type="submit" id="button-search">Search</button>
                     </div>
                 </div>

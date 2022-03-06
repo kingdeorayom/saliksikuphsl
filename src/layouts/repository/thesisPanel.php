@@ -38,8 +38,8 @@ echo "<p>{$fileInfo['publication_year']}, {$fileInfo['publication_month']} {$fil
                     <div class='row my-4'>
                         <label class='fw-bold mb-3'>Attached Files</label>
                         <div class='col'>
-                            <button class='btn btn-danger'>File 1.pdf</button>
-                            <button class='btn btn-danger'>File 2.png</button>
+                            <button class='btn button-file'><i class='far fa-file-pdf me-2'></i> Full manuscript.pdf</button>
+                            <button class='btn button-file my-1'><i class='far fa-file-pdf me-2'></i> Survey questionnaire.pdf</button>
                         </div>
                     </div>
 

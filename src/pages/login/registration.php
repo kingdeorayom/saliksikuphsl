@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+$maincssVersion = filemtime('../../../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +19,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="../../../styles/custom/pages/login-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
 
 </head>
 
@@ -23,11 +30,6 @@
     <main class=" main">
         <div class="container mx-auto my-5 d-flex justify-content-center align-items-center h-auto">
             <div class="col-lg-6 p-5 bg-light">
-                <!-- <div class="row p-2">
-                    <div class="text-center">
-                        <img src="../../../assets/images/core/uphsl-logo.png" id="uphsl-logo" alt="UPHSL Logo">
-                    </div>
-                </div> -->
                 <div class="row py-2" id="alert-container-register">
                     <!--  -->
                 </div>

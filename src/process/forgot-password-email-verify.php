@@ -26,7 +26,7 @@ if (!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL)) {
 }
 
 $email = $_POST['textFieldEmail'];
-//"~@uphsl\.edu\.ph$~"
+
 if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
     if ($statement = $connection->prepare('SELECT user_id, password FROM users WHERE email = ?')) {
         $statement->bind_param('s', $_POST['textFieldEmail']);
@@ -51,18 +51,4 @@ if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
     header("location: ../pages/login/forgot-password.php");
     exit();
 }
-
-// $email = $_POST['textFieldEmail'];
-// //"~@uphsl\.edu\.ph$~"
-// if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
-//     $_SESSION['email'] = $_POST['textFieldEmail'];
-//     $_SESSION['toVerify'] = true;
-//     header("location: ../pages/login/password-reset-email-verification.php");
-//     exit();
-// } else {
-//     $_SESSION['notSchoolEmail'] = "Not school email.";
-//     header("location: ../pages/login/forgot-password.php");
-//     exit();
-// }
-
 $connection->close();

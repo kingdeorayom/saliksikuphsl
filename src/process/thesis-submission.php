@@ -7,26 +7,6 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-//for debugging only, should be removed
-// $allRequiredFields = array($_POST['dropdownResourceType'],
-//  $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],
-//   $_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],
-//   $_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],
-//    $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],
-//     $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],
-//       $_POST['textareaAbstract'], $_POST['textareaKeywords'],
-//        $_POST['researchFields'], $_FILES['fileSubmit']);
-
-// $nonrequiredFields = array($_POST['textFieldFirstNameCoAuthor1'], $_POST['textFieldMiddleInitialCoAuthor1'],
-// $_POST['textFieldLastNameCoAuthor1'],$_POST['textFieldNameExtCoAuthor1'], $_POST['textFieldEmailAuthor1'],
-// $_POST['textFieldFirstNameCoAuthor2'], $_POST['textFieldMiddleInitialCoAuthor2'],
-// $_POST['textFieldLastNameCoAuthor2'],$_POST['textFieldNameExtCoAuthor2'], $_POST['textFieldEmailAuthor2'],
-// $_POST['textFieldFirstNameCoAuthor3'], $_POST['textFieldMiddleInitialCoAuthor3'],
-// $_POST['textFieldLastNameCoAuthor3'],$_POST['textFieldNameExtCoAuthor3'], $_POST['textFieldEmailAuthor3'],
-// $_POST['textFieldFirstNameCoAuthor4'], $_POST['textFieldMiddleInitialCoAuthor4'],
-// $_POST['textFieldLastNameCoAuthor4'],$_POST['textFieldNameExtCoAuthor4'], $_POST['textFieldEmailAuthor4'],);
-
-
 if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldResearchTitle'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'],$_POST['dropdownCoAuthors'],$_POST['textareaAbstract'], $_POST['textareaKeywords'],$_POST['researchFields'], $_FILES['fileSubmit'])){
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
@@ -64,7 +44,6 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
                 $result = mysqli_query($connection,$sql);
                 if (mysqli_num_rows($result)>0){
-                    // echo 'there is already a file with the same name uploaded to the database';
                     $connection->close();
                     $arr = array('response'=>"duplicate_error");
                     header('Content-Type: application/json');
@@ -142,6 +121,3 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
     exit();
 
 }
-
-?>
-

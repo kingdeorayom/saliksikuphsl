@@ -183,22 +183,22 @@ document.addEventListener("DOMContentLoaded", function () {
     pendingResultsContainer.innerHTML = `<h5>For Approval</h5>
     <hr class="mb-4">
     <!-- results-container shows "No Results!" or something when empty -->
-    <div class = "results-container" hidden><div>No Results!</div></div>`;
+    <div class = "results-container h5 text-secondary text-center" hidden><div>No results found. Try another search filter.</div></div>`;
 
     revisionResultsContainer.innerHTML = `<h5>For Revision</h5>
     <hr class="mb-4">
     <!-- results-container shows "No Results!" or something when empty -->
-    <div class = "results-container" hidden><div>No Results!</div></div>`;
+    <div class = "results-container h5 text-secondary text-center" hidden><div>No results found. Try another search filter.</div></div>`;
 
     revisedResultsContainer.innerHTML = `<h5>Revised</h5>
     <hr class="mb-4">
     <!-- results-container shows "No Results!" or something when empty -->
-    <div class = "results-container" hidden><div>No Results!</div></div>`;
+    <div class = "results-container h5 text-secondary text-center" hidden><div>No results found. Try another search filter.</div></div>`;
 
     publishedResultsContainer.innerHTML = `<h5>Published</h5>
     <hr class="mb-4">
     <!-- results-container shows "No Results!" or something when empty -->
-    <div class = "results-container" hidden><div>No Results!</div></div>`;
+    <div class = "results-container h5 text-secondary text-center" hidden><div>No results found. Try another search filter.</div></div>`;
 
     data.forEach((result) => {
       if (result["status"] === "pending") {
