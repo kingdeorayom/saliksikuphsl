@@ -21,7 +21,7 @@
                     <hr>
                 </div>
 
-                <div class='col-lg-10 col-md-12 col-xs-12 main-column'>
+                <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column'>
                     <h2>{$fileInfo['research_title']}</h2>
                     <hr class='my-4'>
                     <p class='fw-bold'>{$fileInfo['author_surname']}, {$fileInfo['author_first_name'][0]}.";

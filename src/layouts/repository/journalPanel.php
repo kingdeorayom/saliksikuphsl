@@ -21,7 +21,7 @@
                     <hr>
                 </div>
 
-                <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column my-2'>
+                <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column'>
 
                     <div class='row'>
                     <div class='col-sm-12 d-sm-block d-md-none text-center'>
