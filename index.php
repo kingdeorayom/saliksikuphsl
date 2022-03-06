@@ -18,7 +18,7 @@ if (isset($_SESSION['isLoggedIn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
     <?php include_once './assets/fonts/google-fonts.php' ?>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="styles/custom/main-style.css" type="text/css">
     <link rel="stylesheet" href="styles/custom/pages/login-style.css" type="text/css">
@@ -88,7 +88,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                             <label>Password</label>
                             <input class="form-control my-2" type="password" name="textFieldPassword" id="textFieldPassword">
                             <div class="form-check py-2">
-                                <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword" onclick="showHidePassword()">
+                                <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword">
                                 <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
                             </div>
                             <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonLogin" id="buttonLogin">Login</button>
@@ -105,14 +105,17 @@ if (isset($_SESSION['isLoggedIn'])) {
     </main>
 
     <script>
-        function showHidePassword() {
-            var checkboxShowHidePasswordValue = document.getElementById("textFieldPassword");
-            if (checkboxShowHidePasswordValue.type === "password") {
-                checkboxShowHidePasswordValue.type = "text";
-            } else {
-                checkboxShowHidePasswordValue.type = "password";
-            }
-        }
+        $(document).ready(function() {
+            $("#checkboxShowHidePassword").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#textFieldPassword").attr("type", "text");
+                } else {
+                    $("#textFieldPassword").attr("type", "password");
+                }
+            });
+        });
+    </script>
+    <script>
         var alertLogin = document.getElementById('alert-container-login')
 
         function submitLogin(event) {

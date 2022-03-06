@@ -28,18 +28,15 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
     <title>About</title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/about-style.css?id=' . $pagecssVersion ?>" type="text/css">
 </head>
 
-<body onload="document.getElementById('copyrightPoliciesPanel').style.display = 'none'; document.getElementById('aboutRepositoryText').style.borderBottom = 'thick solid #012265';">
-
-    <!--Header and Navigation section-->
+<body>
 
     <?php include_once '../../layouts/general/header.php' ?>
-
-    <!--Masthead-->
 
     <section class="masthead p-5 bg-light">
         <div class="container">
@@ -47,17 +44,15 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
         </div>
     </section>
 
-    <!--About and Copyright Section-->
-
     <section class="about-and-copyright">
         <div class="container p-5">
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="aboutRepositoryClicked()" id="aboutRepositoryText">About the Repository</p>
+                    <p class="side-menu-text" id="aboutRepositoryText">About the Repository</p>
                     <hr>
-                    <p class="side-menu-text" onclick="copyrightPoliciesClicked()" id="copyrightPoliciesText">Copyright & Policies</p>
+                    <p class="side-menu-text" id="copyrightPoliciesText">Copyright & Policies</p>
                     <hr>
                 </div>
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="aboutRepositoryPanel">
@@ -149,21 +144,43 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
     <?php include_once '../../layouts/general/footer.php' ?>
 
     <script>
-        function aboutRepositoryClicked() { // for showing/hiding about repository panel
-            document.getElementById("aboutRepositoryPanel").style.display = "block";
-            document.getElementById("copyrightPoliciesPanel").style.display = "none";
+        $(document).ready(function() {
 
-            document.getElementById("aboutRepositoryText").style.borderBottom = "thick solid #012265";
-            document.getElementById("copyrightPoliciesText").style.borderBottom = "thick none #012265";
-        }
+            /* on load */
+            $("#copyrightPoliciesPanel").hide();
+            $("#aboutRepositoryText").css({
+                "border-bottom": "thick solid #012265",
+            });
+            /* on load */
 
-        function copyrightPoliciesClicked() { // for showing/hiding copyright policies panel
-            document.getElementById("copyrightPoliciesPanel").style.display = "block";
-            document.getElementById("aboutRepositoryPanel").style.display = "none";
+            $("#aboutRepositoryText").click(function() {
 
-            document.getElementById("aboutRepositoryText").style.borderBottom = "thick none #012265";
-            document.getElementById("copyrightPoliciesText").style.borderBottom = "thick solid #012265";
-        }
+                $("#copyrightPoliciesPanel").hide();
+                $("#copyrightPoliciesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+
+                $("#aboutRepositoryPanel").show();
+                $("#aboutRepositoryText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+
+            });
+
+            $("#copyrightPoliciesText").click(function() {
+
+                $("#copyrightPoliciesPanel").show();
+                $("#copyrightPoliciesText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+
+                $("#aboutRepositoryPanel").hide();
+                $("#aboutRepositoryText").css({
+                    "border-bottom": "thick none #012265",
+                });
+
+            });
+        });
     </script>
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>

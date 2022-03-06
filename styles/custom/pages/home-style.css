@@ -19,6 +19,10 @@
   }
 }
 
+.form-search {
+  font-family: "Roboto", sans-serif;
+}
+
 .search-button {
   background-color: #012265;
   border-color: #012265;

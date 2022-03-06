@@ -17,6 +17,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
     <title>Create your account</title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -65,7 +66,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                         <label class="my-2">Confirm Password</label>
                         <input class="form-control" type="password" name="textFieldConfirmPassword" id="textFieldConfirmPassword">
                         <div class="form-check py-2">
-                            <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword" onclick="showHidePassword()">
+                            <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword">
                             <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
                         </div>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Create account</button>
@@ -121,19 +122,15 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         }
     </script>
     <script>
-        function showHidePassword() {
-
-            var checkboxShowHidePasswordValue = document.getElementById("textFieldPassword");
-            var checkboxShowHideRepeatPasswordValue = document.getElementById("textFieldConfirmPassword");
-
-            if (checkboxShowHidePasswordValue.type === "password") {
-                checkboxShowHidePasswordValue.type = "text";
-                checkboxShowHideRepeatPasswordValue.type = "text";
-            } else {
-                checkboxShowHidePasswordValue.type = "password";
-                checkboxShowHideRepeatPasswordValue.type = "password";
-            }
-        }
+        $(document).ready(function() {
+            $("#checkboxShowHidePassword").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#textFieldPassword").attr("type", "text");
+                } else {
+                    $("#textFieldPassword").attr("type", "password");
+                }
+            });
+        });
     </script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>

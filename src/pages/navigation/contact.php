@@ -23,43 +23,27 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/contact-style.css');
 
 <head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact</title>
-        <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
-        <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
-        <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/contact-style.css?id=' . $pagecssVersion ?>" type="text/css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#universityLibraryPanel").hide();
-                $("#researchDevelopmentCenterText").css({
-                    "border-bottom": "thick solid #012265",
-                });
-            });
-        </script>
-    </head>
+    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/contact-style.css?id=' . $pagecssVersion ?>" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-    <!--Header and Navigation section-->
-
     <?php include_once '../../layouts/general/header.php' ?>
-
-    <!--Masthead-->
 
     <section class=" masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text">Contact</h1>
         </div>
     </section>
-
-    <!--About and Copyright Section-->
 
     <section class="contacts">
         <div class="container p-5">
@@ -68,9 +52,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/contact-style.css');
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="researchDevelopmentCenterClicked()" id="researchDevelopmentCenterText">Research and Development Center</p>
+                    <p class="side-menu-text" id="researchDevelopmentCenterText">Research and Development Center</p>
                     <hr>
-                    <p class="side-menu-text" onclick="universityLibraryClicked()" id="universityLibraryText">University Library</p>
+                    <p class="side-menu-text" id="universityLibraryText">University Library</p>
                     <hr>
                 </div>
 
@@ -134,10 +118,12 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/contact-style.css');
     <script>
         $(document).ready(function() {
 
+            /* on load */
             $("#universityLibraryPanel").hide();
             $("#researchDevelopmentCenterText").css({
                 "border-bottom": "thick solid #012265",
             });
+            /* on load */
 
             $("#researchDevelopmentCenterText").click(function() {
 

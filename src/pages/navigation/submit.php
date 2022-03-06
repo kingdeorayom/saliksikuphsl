@@ -28,18 +28,15 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
     <title>Submit</title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/submit-style.css?id=' . $pagecssVersion ?>" type="text/css">
 </head>
 
-<body onload="document.getElementById('submissionGuidelinesPanel').style.display = 'none'; document.getElementById('submitText').style.borderBottom='thick solid #012265';">
-
-    <!--Header and Navigation section-->
+<body>
 
     <?php include_once '../../layouts/general/header.php' ?>
-
-    <!--Masthead-->
 
     <section class="masthead p-5 bg-light">
         <div class="container">
@@ -56,9 +53,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
 
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="submitPanelClicked()" id="submitText">Submit</p>
+                    <p class="side-menu-text" id="submitText">Submit</p>
                     <hr>
-                    <p class="side-menu-text" onclick="submissionGuidelinesClicked()" id="submissionGuidelinesText">Submission Form and Guidelines</p>
+                    <p class="side-menu-text" id="submissionGuidelinesText">Submission Form and Guidelines</p>
                     <hr>
                 </div>
 
@@ -81,7 +78,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
                             <div class="col-lg-12">
                                 <p>To submit a copy of your thesis you are required to complete the Thesis Deposit Form (link below) - your thesis can be attached to the Form:</p><br>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0" onclick="submissionGuidelinesClicked()">Submit Research</button>
+                                    <button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0" id="buttonToSubmission">Submit Research</button>
                                 </div>
                                 <p class="py-5">Please contact <a href="#" target="_blank">research@uphsl.edu.ph</a> if you have any further queries regarding thesis submission.</p>
                             </div>
@@ -124,26 +121,47 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
         </div>
     </section>
 
-    <!--Footer-->
-
     <?php include_once '../../layouts/general/footer.php' ?>
 
     <script>
-        function submitPanelClicked() { // for showing/hiding submission information panel
-            document.getElementById("submitPanel").style.display = "block";
-            document.getElementById("submissionGuidelinesPanel").style.display = "none";
-
-            document.getElementById("submitText").style.borderBottom = "thick solid #012265";
-            document.getElementById("submissionGuidelinesText").style.borderBottom = "thick none #012265";
-        }
-
-        function submissionGuidelinesClicked() { // for showing/hiding submission guidelines panel
-            document.getElementById("submissionGuidelinesPanel").style.display = "block";
-            document.getElementById("submitPanel").style.display = "none";
-
-            document.getElementById("submitText").style.borderBottom = "thick none #012265";
-            document.getElementById("submissionGuidelinesText").style.borderBottom = "thick solid #012265";
-        }
+        $(document).ready(function() {
+            /* on load */
+            $("#submissionGuidelinesPanel").hide();
+            $("#submitText").css({
+                "border-bottom": "thick solid #012265",
+            });
+            /* on load */
+            $("#submitText").click(function() {
+                $("#submissionGuidelinesPanel").hide();
+                $("#submissionGuidelinesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#submitPanel").show();
+                $("#submitText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+            });
+            $("#submissionGuidelinesText").click(function() {
+                $("#submissionGuidelinesPanel").show();
+                $("#submissionGuidelinesText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#submitPanel").hide();
+                $("#submitText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+            $("#buttonToSubmission").click(function() {
+                $("#submissionGuidelinesPanel").show();
+                $("#submissionGuidelinesText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#submitPanel").hide();
+                $("#submitText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+        });
     </script>
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
