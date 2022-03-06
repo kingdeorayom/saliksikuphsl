@@ -27,9 +27,8 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senior Researcher Profile</title>
     <!--To be changed with the researcher's name-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/researchers-style.css?id=' . $pagecssVersion ?>" type="text/css">
