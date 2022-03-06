@@ -103,13 +103,12 @@
 /*---------------------------------------------------Footer---------------------------------------------------*/
 
 .footer {
-  background-color: rgba(71, 71, 94, 1);
-  /* background-color: #7f7f7f; */
+  background-color: #7f7f7f;
   font-family: "Roboto", sans-serif;
 }
 
 .footer-banner {
-  background-color: #012265;
+  background-color: #47475e;
 }
 
 #footer-logo {
