@@ -196,6 +196,10 @@ $result = $statement->get_result();
 $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
+if($page > $total_pages && $total_pages!=0){
+    echo '<h5 style="color: grey;"><br>No Results on this page. Please go back.</h5>';
+
+}
 foreach ($published as $key => $result) :
     if ($result['file_type'] === 'thesis') {
         echo "<div class='repositoryItem p-2'>

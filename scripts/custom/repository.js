@@ -94,25 +94,25 @@ $("form[name='modal-filters']")
 
 $("form[name='advanced-filter']").on("submit", function (event) {
   event.preventDefault();
-  document.forms.namedItem("sidebar-filters").reset();
-  document.forms.namedItem("modal-filters").reset();
-  var str = $("form[name='advanced-filter']").serialize();
-  var page = "";
-  var url = new URL(window.location);
-  url.searchParams.has("page")
-    ? (page = url.searchParams.get("page"))
-    : (page = 1);
-  $.ajax({
-    method: "POST",
-    url: "./repository-ajax.php?page=" + page + "&" + str,
-  }).done(function (data) {
-    $("#repository-results-container").html(data);
-    $("#search-modal").modal("hide");
-    sessionStorage.removeItem("searchbarValue");
-    sessionStorage.removeItem("checkboxValues");
-  });
+  // document.forms.namedItem("sidebar-filters").reset();
+  // document.forms.namedItem("modal-filters").reset();
+  // var str = $("form[name='advanced-filter']").serialize();
+  // var page = "";
+  // var url = new URL(window.location);
+  // url.searchParams.has("page")
+  //   ? (page = url.searchParams.get("page"))
+  //   : (page = 1);
+  // $.ajax({
+  //   method: "POST",
+  //   url: "./repository-ajax.php?page=" + page + "&" + str,
+  // }).done(function (data) {
+  //   $("#repository-results-container").html(data);
+  //   $("#search-modal").modal("hide");
+  //   sessionStorage.removeItem("searchbarValue");
+  //   sessionStorage.removeItem("checkboxValues");
+  // });
 });
-
+$("form[name='advanced-filter']").on("change", getResults);
 $("#repository-search-bar").on("change", getResults);
 $("form[name='sidebar-filters']").on("change", getResults);
 $("form[name='modal-filters']").on("change", getResults);
@@ -120,13 +120,7 @@ $("form[name='modal-filters']").on("change", getResults);
 $(document).ready(getResults);
 
 function getResults() {
-  var str = "";
-  if (sessionStorage.getItem("checkboxValues")) {
-    str = $("form[name='sidebar-filters']").serialize();
-  } else {
-    str = $("form[name='advanced-filter']").serialize();
-  }
-
+  var str = $("#sidebar-search-filters,#advanced-search").serialize();
   var page = "";
   var url = new URL(window.location);
   url.searchParams.has("page")

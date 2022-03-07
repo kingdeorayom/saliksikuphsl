@@ -258,8 +258,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                     <div class="collapse" id="customRangeCollapse">
                         <div class="input-group my-3">
-                            <input type="text" class="form-control" name = "fromYear">
-                            <input type="text" class="form-control" name = "toYear">
+                            <input type="text" class="form-control" name = "fromYear" id="sidebar-from-year">
+                            <input type="text" class="form-control" name = "toYear"  id="sidebar-from-year">
                         </div>
                         <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
 
