@@ -45,8 +45,32 @@ repositorySearchButton.addEventListener("click", function () {
   }
 });
 
+$("form[name='sidebar-filters']")
+  .on("change", function () {
+    $(this)
+      .find(":checkbox")
+      .each(function (index) {
+        $("form[name='modal-filters']").find(":checkbox")[index].checked =
+          this.checked;
+      });
+  })
+  .trigger("change");
+
+$("form[name='modal-filters']")
+  .on("change", function () {
+    $(this)
+      .find(":checkbox")
+      .each(function (index) {
+        $("form[name='sidebar-filters']").find(":checkbox")[index].checked =
+          this.checked;
+      });
+  })
+  .trigger("change");
+
 $("#repository-search-bar").on("input", getResults);
 $("form[name='sidebar-filters']").on("change", getResults);
+$("form[name='modal-filters']").on("change", getResults);
+
 $(document).ready(getResults);
 
 function getResults() {
