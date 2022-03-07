@@ -120,7 +120,7 @@ if(isset($_GET['authored_by']) && $_GET['authored_by']!=''){
     $query .= $authored_by;
 }
 if(isset($_GET['advanced_from_year']) && $_GET['advanced_from_year']!='' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year']!=''){
-    $date_range = " AND (ri.publication_year BETWEEN {$_GET['advanced_from_year']} AND {$_GET['advanced_to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['advanced_to_year']} AND {$_GET['advanced_to_year']})";
+    $date_range = " AND (ri.publication_year BETWEEN {$_GET['advanced_from_year']} AND {$_GET['advanced_to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['advanced_from_year']} AND {$_GET['advanced_to_year']})";
     $query .= $date_range;
 }
 if(isset($_GET['advanced_from_year']) && $_GET['advanced_from_year']!='' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year']==''){
@@ -146,6 +146,23 @@ if (isset($_GET['publication_year'])) {
     }
     $year .= ") ";
     $query .= $year;
+}
+if (isset($_GET['from_year']) && $_GET['from_year']!='' && isset($_GET['to_year']) && $_GET['to_year']!='') {
+    $year_range = " AND (ri.publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']})";
+    $query .= $year_range;
+}
+if (isset($_GET['from_year']) && $_GET['from_year']!='' && isset($_GET['to_year']) && $_GET['to_year']=='') {
+    $from_year_range = " AND (ri.publication_year >= {$_GET['from_year']} OR ii.infographic_publication_year >= {$_GET['from_year']})";
+    $query .= $from_year_range;
+}
+if (isset($_GET['from_year']) && $_GET['from_year']=='' && isset($_GET['to_year']) && $_GET['to_year']!='') {
+    $to_year_range = " AND (ri.publication_year <= {$_GET['to_year']} OR ii.infographic_publication_year <= {$_GET['to_year']})";
+    $query .= $to_year_range;
+}
+
+if (isset($_GET['from_year']) && $_GET['from_year']!='' && isset($_GET['to_year']) && $_GET['to_year']!='') {
+    $year_range = " AND (ri.publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']})";
+    $query .= $year_range;
 }
 if (isset($_GET['resource_type'])) {
     $resource_type = " AND (";

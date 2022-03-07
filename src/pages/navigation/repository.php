@@ -258,8 +258,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                     <div class="collapse" id="customRangeCollapse">
                         <div class="input-group my-3">
-                            <input type="text" class="form-control" name = "fromYear" id="sidebar-from-year">
-                            <input type="text" class="form-control" name = "toYear"  id="sidebar-from-year">
+                            <input type="text" class="form-control" name = "from_year" id="sidebar-from-year">
+                            <input type="text" class="form-control" name = "to_year"  id="sidebar-to-year">
                         </div>
                         <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
 
@@ -392,12 +392,12 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <div class="text-end my-3">
                         <p class="fw-bold filter-results" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
                     </div>
-                    <form class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" name="modal-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                    <div class="offcanvas offcanvas-top h-auto" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
                         <div class="offcanvas-header">
                             <h6 class="text-white my-1"><i class="fas fa-filter"></i> SEARCH FILTERS</h6>
                             <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
+                        <form class="offcanvas-body" id="modal-search-filters" name="modal-filters">
                             <p class="side-menu-text fw-bold">Publication Year</p>
                             <input id="hidden-modal-query" name="title_query" hidden <?php if(isset($_POST['title_query'])){ echo "value = '{$_POST['title_query']}'";} ?>>
                             <div class="form-check">
@@ -423,8 +423,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                             <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                             <div class="collapse" id="customRangeCollapse">
                                 <div class="input-group my-3">
-                                    <input type="text" class="form-control" name ="fromYear">
-                                    <input type="text" class="form-control" name ="toYear">
+                                    <input type="text" class="form-control" name = "from_year" id="modal-from-year">
+                                    <input type="text" class="form-control" name = "to_year"  id="modal-to-year">
                                 </div>
                                 <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
                             </div>
@@ -550,8 +550,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                 <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchooloffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Graduate School",$_POST["resource_unit"])){echo "checked";}}?>>
                                 <label class="form-check-label" for="checkBoxGraduateSchooloffcanvas">Graduate School</label>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+</div>
                 </div>
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column">
