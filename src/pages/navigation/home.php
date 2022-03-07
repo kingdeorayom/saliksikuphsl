@@ -59,7 +59,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 <div class="col">
                     <div class="input-group mb-3">
                         <input type="search" autofocus class="form-control form-search rounded-0" id="home-search-bar" placeholder="Search the repository" aria-label="Search the repository" name="title_query">
-                        <button class="btn text-light search-button btn-lg rounded-0" id="button-search"><a href="repository.php">Search</a></button>
+                        <a href="repository.php"><button class="btn text-light search-button btn-lg rounded-0" id="button-search">Search</button></a>
                     </div>
                 </div>
             </div>

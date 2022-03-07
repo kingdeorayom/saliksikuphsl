@@ -67,7 +67,18 @@ $("form[name='modal-filters']")
   })
   .trigger("change");
 
-$("#repository-search-bar").on("input", getResults);
+$("form[name='advanced-filter']").on("submit", function (event) {
+  event.preventDefault();
+  var str = $("form[name='advanced-filter']").serialize();
+  console.log(str);
+  $.ajax({ method: "POST", url: "./repository-ajax.php?" + str }).done(
+    function (data) {
+      $("#repository-results-container").html(data);
+    }
+  );
+});
+
+$("#repository-search-bar").on("change", getResults);
 $("form[name='sidebar-filters']").on("change", getResults);
 $("form[name='modal-filters']").on("change", getResults);
 

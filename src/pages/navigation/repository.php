@@ -152,7 +152,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                             <h5 class="modal-title"><i class="fas fa-search mx-2" style="color: white;"></i> Advanced Search</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <form class="modal-body" id="advanced-search" name="advanced-filter">
                             <div class="row my-3 px-3">
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">Find articles</h6>
@@ -163,36 +163,36 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">all</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="word_search">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with the <span class="fw-bold">exact phrase</span></h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="phrase_search">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">at least one</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="word_exists">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal"><span class="fw-bold">without</span> the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="word_not_exists">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">where my words occur</h6>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check mt-2">
-                                        <input class="form-check-input" type="radio" name="radioButtonModal" id="radio-button-anywhere" checked>
+                                        <input class="form-check-input" type="radio" name="exists" value="anywhere" id="radio-button-anywhere" checked>
                                         <label class="form-check-label" for="radio-button-anywhere">anywhere in the article</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioButtonModal" id="radio-button-title">
+                                        <input class="form-check-input" type="radio" name="exists" value="title" id="radio-button-title">
                                         <label class="form-check-label" for="radio-button-title">in the title of the article</label>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <h6 class="my-2 fw-normal">Return articles <span class="fw-bold">authored</span> by</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="authored_by">
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., "Dela Cruz" or Garcia</label>
                                 </div>
                                 <div class="col-6">
@@ -208,17 +208,17 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group mt-2">
-                                        <input type="text" class="form-control form-control-sm rounded-0 me-1">
+                                        <input type="text" class="form-control form-control-sm rounded-0 me-1" name="advanced_from_year">
                                         <label class="mt-1">—</label>
-                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1">
+                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1" name="advanced_to_year">
                                     </div>
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="button" class="btn btn-primary rounded-0 modal-search-button">Search</button>
+                                    <button type="submit" class="btn btn-primary rounded-0 modal-search-button">Search</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -258,8 +258,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                     <div class="collapse" id="customRangeCollapse">
                         <div class="input-group my-3">
-                            <input type="text" class="form-control">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name = "fromYear">
+                            <input type="text" class="form-control" name = "toYear">
                         </div>
                         <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
 
@@ -423,8 +423,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                             <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                             <div class="collapse" id="customRangeCollapse">
                                 <div class="input-group my-3">
-                                    <input type="text" class="form-control">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name ="fromYear">
+                                    <input type="text" class="form-control" name ="toYear">
                                 </div>
                                 <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
                             </div>
