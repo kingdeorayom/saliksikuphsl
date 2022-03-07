@@ -126,12 +126,10 @@ if(isset($_GET['advanced_from_year']) && $_GET['advanced_from_year']!='' && isse
 if(isset($_GET['advanced_from_year']) && $_GET['advanced_from_year']!='' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year']==''){
     $date_from = " AND (ri.publication_year >= {$_GET['advanced_from_year']} OR ii.infographic_publication_year >= {$_GET['advanced_from_year']})";
     $query .= $date_from;
-    echo 'success';
 }
 if(isset($_GET['advanced_from_year']) && $_GET['advanced_from_year']=='' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year']!=''){
-    $date_from = "AND (ri.publication_year <= {$_GET['advanced_to_year']} OR ii.infographic_publication_year <= {$_GET['advanced_to_year']})";
-    $query .= $date_from;
-    echo 'success';
+    $date_to = "AND (ri.publication_year <= {$_GET['advanced_to_year']} OR ii.infographic_publication_year <= {$_GET['advanced_to_year']})";
+    $query .= $date_to;
 }
 
 if (isset($_GET['title_query']) && $_GET['title_query'] != '') {

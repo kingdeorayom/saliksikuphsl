@@ -163,25 +163,25 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">all</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="word_search">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_word_search" type="text" name="word_search">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with the <span class="fw-bold">exact phrase</span></h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="phrase_search">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_phrase_search" type="text" name="phrase_search">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">at least one</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="word_exists">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_exist" type="text" name="word_exists">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal"><span class="fw-bold">without</span> the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="word_not_exists">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_not_exists" type="text" name="word_not_exists">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">where my words occur</h6>
@@ -200,7 +200,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <h6 class="my-2 fw-normal">Return articles <span class="fw-bold">authored</span> by</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text" name="authored_by">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_author_search" type="text" name="authored_by">
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., "Dela Cruz" or Garcia</label>
                                 </div>
                                 <div class="col-6">
@@ -208,9 +208,9 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group mt-2">
-                                        <input type="text" class="form-control form-control-sm rounded-0 me-1" name="advanced_from_year">
+                                        <input type="text" class="form-control form-control-sm rounded-0 me-1" id="advanced_from_year" name="advanced_from_year">
                                         <label class="mt-1">—</label>
-                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1" name="advanced_to_year">
+                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1" id="advanced_to_year" name="advanced_to_year">
                                     </div>
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>

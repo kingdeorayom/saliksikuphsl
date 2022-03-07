@@ -21,6 +21,31 @@ $checkboxes.on("change", function () {
 $.each(checkboxValues, function (key, value) {
   $("#" + key).prop("checked", value);
 });
+var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
+var $modalRadio = $("#advanced-search :radio");
+$modalRadio.on("change", function () {
+  $modalRadio.each(function () {
+    modalRadio[this.id] = this.checked;
+  });
+  sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
+});
+
+$.each(modalRadio, function (key, value) {
+  $("#" + key).prop("checked", value);
+});
+
+var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
+var $modalInputs = $("#advanced-search :text");
+$modalInputs.on("change", function () {
+  $modalInputs.each(function () {
+    modalInputs[this.id] = this.value;
+  });
+  sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
+});
+
+$.each(modalInputs, function (key, value) {
+  $("#" + key).prop("value", value);
+});
 
 const repositorySearchBar = document.querySelector("#repository-search-bar");
 const repositorySearchButton = document.querySelector(
@@ -69,14 +94,23 @@ $("form[name='modal-filters']")
 
 $("form[name='advanced-filter']").on("submit", function (event) {
   event.preventDefault();
+  document.forms.namedItem("sidebar-filters").reset();
+  document.forms.namedItem("modal-filters").reset();
   var str = $("form[name='advanced-filter']").serialize();
-  console.log(str);
-  $.ajax({ method: "POST", url: "./repository-ajax.php?" + str }).done(
-    function (data) {
-      $("#repository-results-container").html(data);
-      $("#search-modal").modal("hide");
-    }
-  );
+  var page = "";
+  var url = new URL(window.location);
+  url.searchParams.has("page")
+    ? (page = url.searchParams.get("page"))
+    : (page = 1);
+  $.ajax({
+    method: "POST",
+    url: "./repository-ajax.php?page=" + page + "&" + str,
+  }).done(function (data) {
+    $("#repository-results-container").html(data);
+    $("#search-modal").modal("hide");
+    sessionStorage.removeItem("searchbarValue");
+    sessionStorage.removeItem("checkboxValues");
+  });
 });
 
 $("#repository-search-bar").on("change", getResults);
@@ -86,7 +120,13 @@ $("form[name='modal-filters']").on("change", getResults);
 $(document).ready(getResults);
 
 function getResults() {
-  var str = $("form[name='sidebar-filters']").serialize();
+  var str = "";
+  if (sessionStorage.getItem("checkboxValues")) {
+    str = $("form[name='sidebar-filters']").serialize();
+  } else {
+    str = $("form[name='advanced-filter']").serialize();
+  }
+
   var page = "";
   var url = new URL(window.location);
   url.searchParams.has("page")
