@@ -94,6 +94,7 @@ $("form[name='modal-filters']")
 
 $("form[name='advanced-filter']").on("submit", function (event) {
   event.preventDefault();
+  $("#search-modal").modal("hide");
   // document.forms.namedItem("sidebar-filters").reset();
   // document.forms.namedItem("modal-filters").reset();
   // var str = $("form[name='advanced-filter']").serialize();
