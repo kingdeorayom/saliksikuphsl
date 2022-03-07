@@ -57,10 +57,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="input-group mb-3">
-                        <input type="search" autofocus class="form-control form-search rounded-0" placeholder="Search the repository" aria-label="Search the repository">
+                    <form class="input-group mb-3" action ="repository.php" method="POST">
+                        <input type="search" autofocus class="form-control form-search rounded-0" id="home-search-bar" placeholder="Search the repository" aria-label="Search the repository" name="title_query">
                         <button class="btn text-light search-button btn-lg rounded-0" type="submit" id="button-search">Search</button>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -289,6 +289,14 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        var searchbarValue = sessionStorage.getItem("searchbarValue");
+        $("#home-search-bar").on("input", function () {
+            searchbarValue = this.value;
+            sessionStorage.setItem("searchbarValue", searchbarValue);
+        });
+    </script>
 </body>
 
 </html>
