@@ -74,6 +74,7 @@ $("form[name='advanced-filter']").on("submit", function (event) {
   $.ajax({ method: "POST", url: "./repository-ajax.php?" + str }).done(
     function (data) {
       $("#repository-results-container").html(data);
+      $("#search-modal").modal("hide");
     }
   );
 });
