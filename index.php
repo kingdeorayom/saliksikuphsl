@@ -7,6 +7,9 @@ if (isset($_SESSION['isLoggedIn'])) {
     header("Location: src/pages/navigation/home.php");
 }
 
+$maincssVersion = filemtime('styles/custom/main-style.css');
+$pagecssVersion = filemtime('styles/custom/pages/login-style.css');
+
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +23,8 @@ if (isset($_SESSION['isLoggedIn'])) {
     <?php include_once './assets/fonts/google-fonts.php' ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="styles/custom/main-style.css" type="text/css">
-    <link rel="stylesheet" href="styles/custom/pages/login-style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
 </head>
 
 <body>
