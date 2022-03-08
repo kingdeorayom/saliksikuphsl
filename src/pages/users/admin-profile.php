@@ -27,6 +27,7 @@ if (isset($_SESSION['userType'])) {
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
 $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
+print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -53,11 +54,9 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
 
     <section class="submit-research profile">
         <div class="container p-5">
-
             <div class="row">
-
                 <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column">
-                    <div class="submissions">
+                    <form class="submissions" name="account-preference">
                         <h1 class="my-2 p-2">Account Preference</h1>
                         <hr class="my-3">
                         <div class="row my-5">
@@ -65,25 +64,25 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                                 <h6 class="fw-bold mt-3 mb-2">First Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" name="first-name-input" value="<?php echo $_SESSION['firstName']; ?>" disabled>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Last Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" name="last-name-input" value="<?php echo $_SESSION['lastName']; ?>" disabled>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Current Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="password" name="current-password-input">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">New Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="password" name="new-password-input" >
                             </div>
                             <hr class="mt-4 mb-3">
                             <label for="" class="mt-3 mb-2"><span class="fw-bold">Please note:</span> If you change your password, you will have to log in again using the new password.</label>
@@ -92,7 +91,7 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                                 <button type="button" class="btn btn-secondary button-update-acctpref rounded-0">Update</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column">
@@ -113,19 +112,19 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                                 <h6 class="fw-bold mt-3 mb-2">First Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" >
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Last Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" >
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">School Email</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" >
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Department</h6>
@@ -151,13 +150,13 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                                 <h6 class="fw-bold mt-3 mb-2">Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" >
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Confirm Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" id="">
+                                <input class="form-control my-2" type="text" >
                             </div>
                             <hr class="my-4">
                             <div class="text-end">

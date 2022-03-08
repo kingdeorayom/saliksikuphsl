@@ -11,8 +11,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
-$ajaxsubmissionjournal = filemtime('../../../scripts/custom/ajax-submissions-journal.js');
-
 ?>
 
 <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
@@ -147,4 +145,34 @@ $ajaxsubmissionjournal = filemtime('../../../scripts/custom/ajax-submissions-jou
 
     </form>
 </div>
-<script src="<?php echo '../../../scripts/custom/ajax-submissions-journal.js?id=' . $ajaxsubmissionjournal ?>"></script>
+<script type="text/javascript">
+
+$("form[name='journal-form']").on("submit", function(event){
+    event.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+        method: "POST",
+        url:"../../process/journal-submission.php",
+        data: formData,
+        contentType: false, 
+        processData: false, 
+    }).done(function(data){
+    if(data.response === "type_error"){
+        $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
+    }
+    else if(data.response ==="generic_error"){
+        $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+    }    
+    else if (data.response==="size_error"){
+        $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+    }
+    else if (data.response=="duplicate_error"){
+        $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+    }
+    else if (data.response==="success"){
+        $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+        document.forms.namedItem("journal-form").reset();
+    }
+    })
+})
+</script>
