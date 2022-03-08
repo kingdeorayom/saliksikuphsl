@@ -366,16 +366,17 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
-        <div class="row my-4">
+        <?php if($_SESSION['userType']!='admin'){
+            echo '<div class="row my-4">
             <div class="form-check m-2">
                 <input class="form-check-input" type="checkbox" id="checkBoxAgreeThesis" onclick="enableDisableSubmitButtonThesis(this);">
                 <label for="checkBoxAgreeThesis">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
             </div>
-        </div>
-
+        </div>';
+        } ?>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" disabled>Submit your research</button>
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" <?php if($_SESSION['userType'] !== "admin"){ echo 'disabled';}?> >Submit your research</button>
             </div>
         </div>
 
