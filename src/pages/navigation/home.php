@@ -223,7 +223,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <a class="view-more-link" href="./repository.php">View More</a>
+                    <a class="view-more-link" href="./research-fields.php">View More</a>
                 </div>
             </div>
         </div>
