@@ -88,7 +88,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
                                         </div>
                                         <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                            <p class="h5 researcher-name">Name of Researcher</p>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
                                         </div>
                                         <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                            <p class="h5 researcher-name">Name of Researcher</p>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
                                         </div>
                                         <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                            <p class="h5 researcher-name">Name of Researcher</p>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
                                         </div>
                                         <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name" style="font-family: Roboto;">Name of Researcher</p>
+                                            <p class="h5 researcher-name">Name of Researcher</p>
                                         </div>
                                     </div>
                                 </div>
