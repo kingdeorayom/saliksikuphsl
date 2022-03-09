@@ -37,52 +37,133 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
     <section class=" masthead p-5 bg-light">
         <div class="container">
-            <div class="col d-flex align-items-center">
-                <!-- <img src="../../../assets/images/research-fields/accountancy-marketing.png" class="research-fields-logos"> -->
-                <h1 id="masthead-title-text">&lt;Research Field Name Here&gt;</h1>
-            </div>
+            <h1 id="masthead-title-text"> Research Fields</h1>
         </div>
     </section>
 
     <section class="research-fields">
         <div class="container p-5">
+            <div class="row">
 
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="col-sm-12 col-md-6">
 
-                <div class="accordion-item my-2">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-headingOne">2022 Researches</button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
+                    <a href="research-field.php" class="field-link">
+                        <div class="row field bg-light mt-3 mb-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/accountancy-marketing.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Accountancy and Marketing</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields//arts-humanities.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Arts and Humanities</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/business-management.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Business Management</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/educational-management.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Educational Management</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light mt-4 mb-2 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/education-social-sciences.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Education and Social Sciences</p>
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
 
-                <div class="accordion-item my-2">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-headingTwo">2021 Researches</button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                        <div class="accordion-body">
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
+                <div class="col-sm-12 col-md-6">
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light mt-3 mb-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/health-sciences.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Health and Sciences</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/it-engineering.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">IT and Engineering</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/law-justice-system.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Law and Justice System</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/marine-aviation.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Marine and Aviation</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../../../assets/images/research-fields/tourism-hospitality.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Tourism and Hospitality</p>
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
 
             </div>
-
         </div>
     </section>
 
