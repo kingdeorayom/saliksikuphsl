@@ -32,7 +32,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/contact-style.css');
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/contact-style.css?id=' . $pagecssVersion ?>" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -49,112 +48,23 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/contact-style.css');
         <div class="container p-5">
 
             <div class="row">
-                <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-                    <h3>On this page</h3>
-                    <hr>
-                    <p class="side-menu-text" id="researchDevelopmentCenterText">Research and Development Center</p>
-                    <hr>
-                    <p class="side-menu-text" id="universityLibraryText">University Library</p>
-                    <hr>
+                <h1 class="my-2">Contact Us</h1>
+                <p class="my-4">For further information or assistance in submitting research, please contact:</p>
+
+                <div class="col-lg-2 d-flex justify-content-center align-items-center">
+                    <img src="../../../assets/images/contact/research-development-logo.png" class="research-development-logo">
                 </div>
-
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchDevelopmentCenterPanel">
-                    <h1 class="my-2">Contact Us</h1>
-                    <div class="row">
-                        <p class="my-4">For further information or assistance in submitting research, please contact:</p>
-
-                        <div class="col-lg-2 d-flex justify-content-center align-items-center">
-                            <img src="../../../assets/images/contact/research-development-logo.png" class="research-development-logo">
-                        </div>
-                        <div class="col-lg-10">
-                            <h4 class="py-2">Research and Development Center</h4>
-                            <p><i class="fas fa-envelope fa-2x px-2" style="color: #012265;"></i> research@uphsl.edu.ph</p>
-                            <p><i class="fas fa-phone-alt fa-2x px-2" style="color: #012265;"></i> 049-544-5162</p>
-                            <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> <a href="https://www.facebook.com/UPHSL-Research-and-Development-Center-100628592098500/" target="_blank">UPHSL Research and Development Center</a></p>
-                        </div>
-
-                        <div class="d-lg-none">
-
-                            <p class="my-4">For further information in copyright and policies, assistance, or feedback, please contact:</p>
-                            <div class="col-lg-2 d-flex justify-content-center align-items-center">
-                                <img src="../../../assets/images/contact/uphsl-main-library-logo.png" class="uphsl-main-library-logo">
-                            </div>
-
-                            <div class="col-lg-10">
-                                <h4 class="py-2">UPHSL Main Library</h4>
-                                <p><i class="fas fa-envelope fa-2x px-2" style="color: #012265;"></i> librarycollege@uphsl.edu.ph</p>
-                                <p><i class="fas fa-phone-alt fa-2x px-2" style="color: #012265;"></i> 049-544-5162</p>
-                                <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> <a href="https://www.facebook.com/uphslmainlibrary101" target="_blank">UPHSL Main Library</a></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="universityLibraryPanel">
-                    <h1 class="my-2">Contact Us</h1>
-                    <div class="row">
-                        <p class="my-4">For further information in copyright and policies, assistance, or feedback, please contact:</p>
-                        <div class="col-lg-2 d-flex justify-content-center align-items-center">
-                            <img src="../../../assets/images/contact/uphsl-main-library-logo.png" class="uphsl-main-library-logo">
-                        </div>
-                        <div class="col-lg-10">
-                            <h4 class="py-2">UPHSL Main Library</h4>
-                            <p><i class="fas fa-envelope fa-2x px-2" style="color: #012265;"></i> librarycollege@uphsl.edu.ph</p>
-                            <p><i class="fas fa-phone-alt fa-2x px-2" style="color: #012265;"></i> 049-544-5162</p>
-                            <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> <a href="https://www.facebook.com/uphslmainlibrary101" target="_blank">UPHSL Main Library</a></p>
-                        </div>
-                    </div>
+                <div class="col-lg-10">
+                    <h4 class="py-2">Research and Development Center</h4>
+                    <p><i class="fas fa-envelope fa-2x px-2" style="color: #012265;"></i> research@uphsl.edu.ph</p>
+                    <p><i class="fas fa-phone-alt fa-2x px-2" style="color: #012265;"></i> 049-544-5162</p>
+                    <p><i class="fab fa-facebook fa-2x px-2" style="color: #012265;"></i> <a href="https://www.facebook.com/UPHSL-Research-and-Development-Center-100628592098500/" target="_blank" class="facebook-page">UPHSL Research and Development Center</a></p>
                 </div>
 
             </div>
-        </div>
     </section>
 
-    <!--Footer-->
-
     <?php include_once '../../layouts/general/footer.php' ?>
-
-    <script>
-        $(document).ready(function() {
-
-            /* on load */
-            $("#universityLibraryPanel").hide();
-            $("#researchDevelopmentCenterText").css({
-                "border-bottom": "thick solid #012265",
-            });
-            /* on load */
-
-            $("#researchDevelopmentCenterText").click(function() {
-
-                $("#universityLibraryPanel").hide();
-                $("#universityLibraryText").css({
-                    "border-bottom": "thick none #012265",
-                });
-
-                $("#researchDevelopmentCenterPanel").show();
-                $("#researchDevelopmentCenterText").css({
-                    "border-bottom": "thick solid #012265",
-                });
-
-            });
-
-            $("#universityLibraryText").click(function() {
-
-                $("#universityLibraryPanel").show();
-                $("#universityLibraryText").css({
-                    "border-bottom": "thick solid #012265",
-                });
-
-                $("#researchDevelopmentCenterPanel").hide();
-                $("#researchDevelopmentCenterText").css({
-                    "border-bottom": "thick none #012265",
-                });
-
-            });
-        });
-    </script>
-
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 

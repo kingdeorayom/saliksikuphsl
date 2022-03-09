@@ -1,5 +1,3 @@
-/*---------------------------------------------------About and Copyright Section---------------------------------------------------*/
-
 .contacts {
   font-family: "Roboto", sans-serif;
 }
@@ -20,11 +18,8 @@
   margin: 2%;
 }
 
-.uphsl-main-library-logo {
-  max-width: 128px;
-  max-height: 128px;
-  padding: 2%;
-  margin: 2%;
+.facebook-page {
+  text-decoration: none;
 }
 
 /*---------------------------------------------------Side Menu---------------------------------------------------*/
