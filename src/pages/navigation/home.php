@@ -68,7 +68,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <a href="#"><button class="btn btn-link btn-lg search-option-buttons" data-bs-toggle="modal" data-bs-target="#search-modal" type="button" id=""><i class="fas fa-search fa-2x p-3" style="color: gray;"></i><br>Advanced Search</button></a>
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <a href="repository.php"><button class="btn btn-link btn-lg search-option-buttons" type="button" id=""><i class="fas fa-book fa-2x p-3" style="color: gray;"></i><br>Browse Researches</button></a>
+                    <a href="./browse-researches.php"><button class="btn btn-link btn-lg search-option-buttons" type="button" id=""><i class="fas fa-book fa-2x p-3" style="color: gray;"></i><br>Browse Researches</button></a>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
     <section class="research-fields p-5">
         <div class="container">
             <h1 id="research-field-title-text">Research Fields</h1>
-            <hr>
+            <hr class="hr-home">
             <div class="row">
                 <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
                     <!--Add justify-content-center to center items inside col-->
@@ -223,7 +223,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <a class="view-more-link" href="./research-fields.php">View More</a>
+                    <a class="view-more-link" href="./browse-research-fields.php">View More</a>
                 </div>
             </div>
         </div>
