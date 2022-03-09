@@ -87,6 +87,46 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <hr>
                     <div class="row">
 
+                        <div class="accordion accordion-flush">
+
+                            <div class="accordion-item my-2">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#bed-researches" aria-expanded="false">
+                                        Basic Education Department
+                                    </button>
+                                </h2>
+                                <div id="bed-researches" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <a href="#" class="department-title-content">
+                                            <p>Research Title Here</p>
+                                        </a>
+                                        <a href="#" class="department-title-content">
+                                            <p>Research Title Here</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item my-2">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#shs-researches" aria-expanded="false">
+                                        Senior High School
+                                    </button>
+                                </h2>
+                                <div id="shs-researches" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <a href="#" class="department-title-content">
+                                            <p>Research Title Here</p>
+                                        </a>
+                                        <a href="#" class="department-title-content">
+                                            <p>Research Title Here</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
@@ -146,7 +186,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
     <script>
         $(document).ready(function() {
-
             /* on load */
             $("#journalsPanel").hide();
             $("#infographicsPanel").hide();
@@ -154,26 +193,21 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
             $("#annualReportsPanel").hide();
             $("#researchAgendaPanel").hide();
             $("#rcdpPanel").hide();
-
             $("#researchesText").css({
                 "border-bottom": "thick solid #012265",
             });
             /* on load */
-
             $("#researchesText").click(function() {
-
                 $("#researchesPanel").show();
                 $("#researchesText").css({
                     "border-bottom": "thick solid #012265",
                 });
-
                 $("#journalsPanel").hide();
                 $("#infographicsPanel").hide();
                 $("#researchCatalogsPanel").hide();
                 $("#annualReportsPanel").hide();
                 $("#researchAgendaPanel").hide();
                 $("#rcdpPanel").hide();
-
                 $("#researchJournalText").css({
                     "border-bottom": "thick none #012265",
                 });
@@ -193,21 +227,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     "border-bottom": "thick none #012265",
                 });
             });
-
             $("#researchJournalText").click(function() {
-
                 $("#journalsPanel").show();
                 $("#researchJournalText").css({
                     "border-bottom": "thick solid #012265",
                 });
-
                 $("#researchesPanel").hide();
                 $("#infographicsPanel").hide();
                 $("#researchCatalogsPanel").hide();
                 $("#annualReportsPanel").hide();
                 $("#researchAgendaPanel").hide();
                 $("#rcdpPanel").hide();
-
                 $("#researchesText").css({
                     "border-bottom": "thick none #012265",
                 });
@@ -227,11 +257,385 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     "border-bottom": "thick none #012265",
                 });
             });
+            $("#infographicsText").click(function() {
+                $("#infographicsPanel").show();
+                $("#infographicsText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#researchesPanel").hide();
+                $("#journalsPanel").hide();
+                $("#researchCatalogsPanel").hide();
+                $("#annualReportsPanel").hide();
+                $("#researchAgendaPanel").hide();
+                $("#rcdpPanel").hide();
 
+                $("#researchesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchJournalText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchCatalogsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#annualReportsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchAgendaText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#rcdpText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+            $("#researchCatalogsText").click(function() {
+
+                $("#researchCatalogsPanel").show();
+                $("#researchCatalogsText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#researchesPanel").hide();
+                $("#journalsPanel").hide();
+                $("#infographicsPanel").hide();
+                $("#annualReportsPanel").hide();
+                $("#researchAgendaPanel").hide();
+                $("#rcdpPanel").hide();
+
+                $("#researchesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchJournalText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#infographicsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#annualReportsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchAgendaText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#rcdpText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+            $("#annualReportsText").click(function() {
+                $("#annualReportsPanel").show();
+                $("#annualReportsText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#researchesPanel").hide();
+                $("#journalsPanel").hide();
+                $("#infographicsPanel").hide();
+                $("#researchCatalogsPanel").hide();
+                $("#researchAgendaPanel").hide();
+                $("#rcdpPanel").hide();
+
+                $("#researchesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchJournalText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#infographicsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchCatalogsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchAgendaText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#rcdpText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+            $("#researchAgendaText").click(function() {
+
+                $("#researchAgendaPanel").show();
+                $("#researchAgendaText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#researchesPanel").hide();
+                $("#journalsPanel").hide();
+                $("#infographicsPanel").hide();
+                $("#researchCatalogsPanel").hide();
+                $("#annualReportsPanel").hide();
+                $("#rcdpPanel").hide();
+
+                $("#researchesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchJournalText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#infographicsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchCatalogsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#annualReportsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#rcdpText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+            $("#rcdpText").click(function() {
+
+                $("#rcdpPanel").show();
+                $("#rcdpText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#researchesPanel").hide();
+                $("#journalsPanel").hide();
+                $("#infographicsPanel").hide();
+                $("#researchCatalogsPanel").hide();
+                $("#annualReportsPanel").hide();
+                $("#researchAgendaPanel").hide();
+
+                $("#researchesText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchJournalText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#infographicsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchCatalogsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#annualReportsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+                $("#researchAgendaText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+            $('#dropdownOnThisPage').on('change', function() {
+                if (this.value == 'researches') {
+                    $("#researchesPanel").show();
+                    $("#researchesText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+                    $("#journalsPanel").hide();
+                    $("#infographicsPanel").hide();
+                    $("#researchCatalogsPanel").hide();
+                    $("#annualReportsPanel").hide();
+                    $("#researchAgendaPanel").hide();
+                    $("#rcdpPanel").hide();
+
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#infographicsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#rcdpText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                } else if (this.value == 'researchJournal') {
+                    $("#journalsPanel").show();
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+
+                    $("#researchesPanel").hide();
+                    $("#infographicsPanel").hide();
+                    $("#researchCatalogsPanel").hide();
+                    $("#annualReportsPanel").hide();
+                    $("#researchAgendaPanel").hide();
+                    $("#rcdpPanel").hide();
+
+                    $("#researchesText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#infographicsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#rcdpText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                } else if (this.value == 'infographics') {
+                    $("#infographicsPanel").show();
+                    $("#infographicsText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+
+                    $("#researchesPanel").hide();
+                    $("#journalsPanel").hide();
+                    $("#researchCatalogsPanel").hide();
+                    $("#annualReportsPanel").hide();
+                    $("#researchAgendaPanel").hide();
+                    $("#rcdpPanel").hide();
+
+                    $("#researchesText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#rcdpText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                } else if (this.value == 'researchCatalogs') {
+                    $("#researchCatalogsPanel").show();
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+
+                    $("#researchesPanel").hide();
+                    $("#journalsPanel").hide();
+                    $("#infographicsPanel").hide();
+                    $("#annualReportsPanel").hide();
+                    $("#researchAgendaPanel").hide();
+                    $("#rcdpPanel").hide();
+
+                    $("#researchesText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#infographicsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#rcdpText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                } else if (this.value == 'annualReports') {
+                    $("#annualReportsPanel").show();
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+
+                    $("#researchesPanel").hide();
+                    $("#journalsPanel").hide();
+                    $("#infographicsPanel").hide();
+                    $("#researchCatalogsPanel").hide();
+                    $("#researchAgendaPanel").hide();
+                    $("#rcdpPanel").hide();
+
+                    $("#researchesText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#infographicsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#rcdpText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                } else if (this.value == 'researchAgenda') {
+                    $("#researchAgendaPanel").show();
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+
+                    $("#researchesPanel").hide();
+                    $("#journalsPanel").hide();
+                    $("#infographicsPanel").hide();
+                    $("#researchCatalogsPanel").hide();
+                    $("#annualReportsPanel").hide();
+                    $("#rcdpPanel").hide();
+
+                    $("#researchesText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#infographicsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#rcdpText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                } else if (this.value == 'rcdp') {
+                    $("#rcdpPanel").show();
+                    $("#rcdpText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
+
+                    $("#researchesPanel").hide();
+                    $("#journalsPanel").hide();
+                    $("#infographicsPanel").hide();
+                    $("#researchCatalogsPanel").hide();
+                    $("#annualReportsPanel").hide();
+                    $("#researchAgendaPanel").hide();
+
+                    $("#researchesText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchJournalText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#infographicsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchCatalogsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#annualReportsText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                    $("#researchAgendaText").css({
+                        "border-bottom": "thick none #012265",
+                    });
+                }
+            });
         });
     </script>
-
-
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 

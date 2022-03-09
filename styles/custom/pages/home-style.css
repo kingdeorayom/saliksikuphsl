@@ -138,13 +138,13 @@
   color: #000000;
 }
 
-.accordion-item {
+/* .accordion-item {
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-width: 2px;
-  border-color: #e7f1ff;
-}
+  border-color: gainsboro;
+} */
 
 /*---------------------------------------------------Repository Metrics---------------------------------------------------*/
 
@@ -204,4 +204,20 @@ h5 {
 
 .side-menu-text:hover {
   cursor: pointer;
+}
+
+/*---------------------------------------------------Browse Researches Accordion Items---------------------------------------------------*/
+
+.department-title-content {
+  color: #000000;
+  text-decoration: none;
+}
+
+.department-title-content:hover {
+  text-decoration: underline;
+  color: #000000;
+}
+
+.department-title {
+  font-size: 20px;
 }

@@ -47,13 +47,16 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
     <section class="research-fields">
         <div class="container p-5">
 
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+
+            <div class="accordion accordion-flush">
 
                 <div class="accordion-item my-2">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-headingOne">2022 Researches</button>
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#researches2022" aria-expanded="false">
+                            2022 Researches
+                        </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                    <div id="researches2022" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <a href="#" class="field-research-title">
                                 <p>Research Title Here</p>
@@ -66,10 +69,12 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 </div>
 
                 <div class="accordion-item my-2">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-headingTwo">2021 Researches</button>
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#researches2021" aria-expanded="false">
+                            2021 Researches
+                        </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div id="researches2021" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <a href="#" class="field-research-title">
                                 <p>Research Title Here</p>
