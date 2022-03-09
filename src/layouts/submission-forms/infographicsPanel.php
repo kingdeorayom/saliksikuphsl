@@ -11,7 +11,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
-$ajaxsubmissioninfo = filemtime('../../../scripts/custom/ajax-submissions-info.js');
 
 ?>
 
@@ -306,18 +305,49 @@ $ajaxsubmissioninfo = filemtime('../../../scripts/custom/ajax-submissions-info.j
             </div>
         </div>
         <hr>
-        <div class="row my-4">
+        <?php if($_SESSION['userType']!='admin'){
+        echo '<div class="row my-4">
             <div class="form-check m-2">
                 <input class="form-check-input" type="checkbox" id="checkBoxAgreeInfographics" onclick="enableDisableSubmitButtonInfographics(this);">
                 <label for="checkBoxAgreeInfographics">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
             </div>
-        </div>
+        </div>';}?>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitInfographicsButton" disabled>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitInfographicsButton" <?php if($_SESSION['userType'] !== "admin"){ echo 'disabled';}?> >
             </div>
         </div>
     </form>
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
-<script src="<?php echo '../../../scripts/custom/ajax-submissions-info.js?id=' . $ajaxsubmissioninfo ?>"></script>
+<script type="text/javascript">
+
+$("form[name='infographic-form']").on("submit", function(event){
+    event.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+        method: "POST",
+        url:"../../process/infographic-submission.php",
+        data: formData,
+        contentType: false, 
+        processData: false, 
+    }).done(function(data){
+    if(data.response === "type_error"){
+        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
+    }
+    else if(data.response ==="generic_error"){
+        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+    }    
+    else if (data.response==="size_error"){
+        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+    }
+    else if (data.response=="duplicate_error"){
+        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+    }
+    else if (data.response==="success"){
+        $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+        document.forms.namedItem("infographic-form").reset();
+    }
+    })
+})
+</script>

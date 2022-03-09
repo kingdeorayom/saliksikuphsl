@@ -55,9 +55,12 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
         <div class="container p-5">
             <div class="row mb-4 d-lg-none">
 
-                <h3>Choose a submission form</h3>
-                <hr>
+                
 
+                <?php
+                    if($_SESSION['userType'] === "admin"){
+                        echo '<h3>Choose a submission form</h3>
+                        <hr>
                 <div class="m-2">
                     <p class="fw-bold">What are you going to submit?</p>
                     <div class="form-check">
@@ -72,19 +75,27 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                         <input class="form-check-input" onclick="infographicsPanelClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                         <label class="form-check-label" for="flexRadioDefault3">Infographics</label>
                     </div>
-                </div>
+                </div>';
+                    }
+                    ?>
 
             </div>
             <div class="row">
-                <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-                    <h3>On this page</h3>
-                    <hr>
-                    <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
-                    <hr>
-                    <p class="side-menu-text" onclick="researchJournalPanelClicked()" id="researchJournalText">Research Journal</p>
-                    <hr>
-                    <p class="side-menu-text" onclick="infographicsPanelClicked()" id="infographicsText">Infographics</p>
-                    <hr>
+            <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
+            <h3>On this page</h3>
+                        <hr>
+                        <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
+                        <hr>
+            <?php
+                    if($_SESSION['userType'] === "admin"){
+                        echo '
+                        <p class="side-menu-text" onclick="researchJournalPanelClicked()" id="researchJournalText">Research Journal</p>
+                        <hr>
+                        <p class="side-menu-text" onclick="infographicsPanelClicked()" id="infographicsText">Infographics</p>
+                        <hr>
+                    ';
+                    }
+                    ?>
                 </div>
                 <?php include_once '../../layouts/submission-forms/thesisDissertationPanel.php' ?>
                 <?php include_once '../../layouts/submission-forms/researchJournalPanel.php' ?>

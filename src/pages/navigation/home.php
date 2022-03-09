@@ -58,8 +58,8 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <input type="search" autofocus class="form-control form-search rounded-0" placeholder="Search the repository" aria-label="Search the repository">
-                        <button class="btn text-light search-button btn-lg rounded-0" type="submit" id="button-search">Search</button>
+                        <input type="search" autofocus class="form-control form-search rounded-0" id="home-search-bar" placeholder="Search the repository" aria-label="Search the repository" name="title_query">
+                        <a href="repository.php"><button class="btn text-light search-button btn-lg rounded-0" id="button-search">Search</button></a>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                             <h5 class="modal-title"><i class="fas fa-search mx-2" style="color: white;"></i> Advanced Search</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="advanced-search" name="advanced-filter">
                             <div class="row my-3 px-3">
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">Find articles</h6>
@@ -91,36 +91,36 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">all</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_word_search" type="text" name="word_search">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with the <span class="fw-bold">exact phrase</span></h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_phrase_search" type="text" name="phrase_search">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">at least one</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_exist" type="text" name="word_exists">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal"><span class="fw-bold">without</span> the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_not_exists" type="text" name="word_not_exists">
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">where my words occur</h6>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check mt-2">
-                                        <input class="form-check-input" type="radio" name="radioButtonModal" id="radio-button-anywhere" checked>
+                                        <input class="form-check-input" type="radio" name="exists" value="anywhere" id="radio-button-anywhere" checked>
                                         <label class="form-check-label" for="radio-button-anywhere">anywhere in the article</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioButtonModal" id="radio-button-title">
+                                        <input class="form-check-input" type="radio" name="exists" value="title" id="radio-button-title">
                                         <label class="form-check-label" for="radio-button-title">in the title of the article</label>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                                     <h6 class="my-2 fw-normal">Return articles <span class="fw-bold">authored</span> by</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" type="text">
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_author_search" type="text" name="authored_by">
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., "Dela Cruz" or Garcia</label>
                                 </div>
                                 <div class="col-6">
@@ -136,14 +136,14 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group mt-2">
-                                        <input type="text" class="form-control form-control-sm rounded-0 me-1">
+                                        <input type="text" class="form-control form-control-sm rounded-0 me-1" id="advanced_from_year" name="advanced_from_year">
                                         <label class="mt-1">—</label>
-                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1">
+                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1" id="advanced_to_year" name="advanced_to_year">
                                     </div>
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="button" class="btn btn-primary rounded-0 modal-search-button">Search</button>
+                                    <a href="repository.php"><button class="btn btn-primary rounded-0 modal-search-button">Search</button></a>
                                 </div>
                             </div>
                         </div>
@@ -289,6 +289,39 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        var searchbarValue = sessionStorage.getItem("searchbarValue");
+        $("#home-search-bar").on("input", function () {
+            searchbarValue = this.value;
+            sessionStorage.setItem("searchbarValue", searchbarValue);
+        });
+        var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
+  var $modalRadio = $("#advanced-search :radio");
+  $modalRadio.on("change", function () {
+    $modalRadio.each(function () {
+      modalRadio[this.id] = this.checked;
+    });
+    sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
+  });
+
+  $.each(modalRadio, function (key, value) {
+    $("#" + key).prop("checked", value);
+  });
+
+  var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
+  var $modalInputs = $("#advanced-search :text");
+  $modalInputs.on("change", function () {
+    $modalInputs.each(function () {
+      modalInputs[this.id] = this.value;
+    });
+    sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
+  });
+
+  $.each(modalInputs, function (key, value) {
+    $("#" + key).prop("value", value);
+  });
+    </script>
 </body>
 
 </html>
