@@ -66,7 +66,12 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                     $newFile =  $filenameUnique . "." . $fileActualExt;
                     $fileDestination = '../uploads/journals/' . $newFile;
 
-                    $fileStatus = "pending";
+                    if($_SESSION['userType']!='admin'){
+                        $fileStatus = "pending";
+                    }
+                    else {
+                        $fileStatus = "published";
+                    }
                     $fileType = "journal";
                     $connection->begin_transaction();
                     try{
