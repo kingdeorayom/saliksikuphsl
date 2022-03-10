@@ -301,10 +301,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col">
                 <p class="my-3">File1.pdf</p>
                 <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
-                <input class="form-control" type="file" name="" accept=".pdf" required>
+                <input class="form-control" type="file" name="" accept=".pdf, .jpg, .jpeg, .png" required>
                 <p class="my-3">File2.pdf</p>
                 <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
-                <input class="form-control" type="file" name="" accept=".pdf" required>
+                <input class="form-control" type="file" name="" accept=".pdf, .jpg, .jpeg, .png" required>
             </div>
         </div>
         <hr>
