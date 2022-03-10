@@ -1,13 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../layouts/general/error.php");
     die();
 }
 
@@ -366,7 +360,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <hr>
-        <?php if($_SESSION['userType']!='admin'){
+        <?php if ($_SESSION['userType'] != 'admin') {
             echo '<div class="row my-4">
             <div class="form-check m-2">
                 <input class="form-check-input" type="checkbox" id="checkBoxAgreeThesis" onclick="enableDisableSubmitButtonThesis(this);">
@@ -376,7 +370,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" <?php if($_SESSION['userType'] !== "admin"){ echo 'disabled';}?> >Submit your research</button>
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" <?php if ($_SESSION['userType'] !== "admin") {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>Submit your research</button>
             </div>
         </div>
 
@@ -385,33 +381,28 @@ if (!isset($_SESSION['isLoggedIn'])) {
 </div>
 <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
 <script type="text/javascript">
-
-$("form[name='thesis-form']").on("submit", function(event){
-    event.preventDefault();
-    var formData = new FormData(this);
-    $.ajax({
-        method: "POST",
-        url:"../../process/thesis-submission.php",
-        data: formData,
-        contentType: false, 
-        processData: false, 
-    }).done(function(data){
-    if(data.response === "type_error"){
-        $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
-    }
-    else if(data.response ==="generic_error"){
-        $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-    }    
-    else if (data.response==="size_error"){
-        $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-    }
-    else if (data.response==="duplicate_error"){
-        $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-    }
-    else if (data.response==="success"){
-        $("#alert-container").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-        document.forms.namedItem("thesis-form").reset();
-    }
+    $("form[name='thesis-form']").on("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            method: "POST",
+            url: "../../process/thesis-submission.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+        }).done(function(data) {
+            if (data.response === "type_error") {
+                $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
+            } else if (data.response === "generic_error") {
+                $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            } else if (data.response === "size_error") {
+                $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            } else if (data.response === "duplicate_error") {
+                $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            } else if (data.response === "success") {
+                $("#alert-container").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                document.forms.namedItem("thesis-form").reset();
+            }
+        })
     })
-})
 </script>

@@ -3,13 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../layouts/general/error.php");
     die();
 }
 
@@ -292,35 +286,35 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         var searchbarValue = sessionStorage.getItem("searchbarValue");
-        $("#home-search-bar").on("input", function () {
+        $("#home-search-bar").on("input", function() {
             searchbarValue = this.value;
             sessionStorage.setItem("searchbarValue", searchbarValue);
         });
         var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
-  var $modalRadio = $("#advanced-search :radio");
-  $modalRadio.on("change", function () {
-    $modalRadio.each(function () {
-      modalRadio[this.id] = this.checked;
-    });
-    sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
-  });
+        var $modalRadio = $("#advanced-search :radio");
+        $modalRadio.on("change", function() {
+            $modalRadio.each(function() {
+                modalRadio[this.id] = this.checked;
+            });
+            sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
+        });
 
-  $.each(modalRadio, function (key, value) {
-    $("#" + key).prop("checked", value);
-  });
+        $.each(modalRadio, function(key, value) {
+            $("#" + key).prop("checked", value);
+        });
 
-  var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
-  var $modalInputs = $("#advanced-search :text");
-  $modalInputs.on("change", function () {
-    $modalInputs.each(function () {
-      modalInputs[this.id] = this.value;
-    });
-    sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
-  });
+        var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
+        var $modalInputs = $("#advanced-search :text");
+        $modalInputs.on("change", function() {
+            $modalInputs.each(function() {
+                modalInputs[this.id] = this.value;
+            });
+            sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
+        });
 
-  $.each(modalInputs, function (key, value) {
-    $("#" + key).prop("value", value);
-  });
+        $.each(modalInputs, function(key, value) {
+            $("#" + key).prop("value", value);
+        });
     </script>
 </body>
 

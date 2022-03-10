@@ -4,23 +4,11 @@ session_start();
 
 if (isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] !== "admin") {
-        echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>Please login as admin to access this page.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+        header("location: ../../layouts/general/error.php");
         die();
     }
 } else {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>Please login as admin to access this page.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../layouts/general/error.php");
     die();
 }
 
@@ -82,7 +70,7 @@ print_r($_SESSION);
                                 <h6 class="fw-bold mt-3 mb-2">New Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name="new-password-input" >
+                                <input class="form-control my-2" type="password" name="new-password-input">
                             </div>
                             <hr class="mt-4 mb-3">
                             <label for="" class="mt-3 mb-2"><span class="fw-bold">Please note:</span> If you change your password, you will have to log in again using the new password.</label>
@@ -112,19 +100,19 @@ print_r($_SESSION);
                                 <h6 class="fw-bold mt-3 mb-2">First Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" >
+                                <input class="form-control my-2" type="text">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Last Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" >
+                                <input class="form-control my-2" type="text">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">School Email</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" >
+                                <input class="form-control my-2" type="text">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Department</h6>
@@ -150,13 +138,13 @@ print_r($_SESSION);
                                 <h6 class="fw-bold mt-3 mb-2">Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" >
+                                <input class="form-control my-2" type="text">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Confirm Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text" >
+                                <input class="form-control my-2" type="text">
                             </div>
                             <hr class="my-4">
                             <div class="text-end">

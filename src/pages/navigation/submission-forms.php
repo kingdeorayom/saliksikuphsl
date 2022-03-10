@@ -3,13 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../layouts/general/error.php");
     die();
 }
 
@@ -55,11 +49,11 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
         <div class="container p-5">
             <div class="row mb-4 d-lg-none">
 
-                
+
 
                 <?php
-                    if($_SESSION['userType'] === "admin"){
-                        echo '<h3>Choose a submission form</h3>
+                if ($_SESSION['userType'] === "admin") {
+                    echo '<h3>Choose a submission form</h3>
                         <hr>
                 <div class="m-2">
                     <p class="fw-bold">What are you going to submit?</p>
@@ -76,18 +70,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                         <label class="form-check-label" for="flexRadioDefault3">Infographics</label>
                     </div>
                 </div>';
-                    }
-                    ?>
+                }
+                ?>
 
             </div>
             <div class="row">
-            <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-            <h3>On this page</h3>
-                        <hr>
-                        <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
-                        <hr>
-            <?php
-                    if($_SESSION['userType'] === "admin"){
+                <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
+                    <h3>On this page</h3>
+                    <hr>
+                    <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
+                    <hr>
+                    <?php
+                    if ($_SESSION['userType'] === "admin") {
                         echo '
                         <p class="side-menu-text" onclick="researchJournalPanelClicked()" id="researchJournalText">Research Journal</p>
                         <hr>
