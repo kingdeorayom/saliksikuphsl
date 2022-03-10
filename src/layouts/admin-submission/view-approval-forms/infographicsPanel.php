@@ -141,15 +141,15 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
             <div class="row my-2">
-                <label class="py-2 fw-bold">Graphics Editor<span class="text-danger"> *</span></label>
+                <label class="py-2 fw-bold">Graphics Editor</label>
                 <div class="col-lg-4 col-sm-12 py-2">
-                    <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name*" value="<?php echo $fileInfo['editor_first_name'] ?>" required>
+                    <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name" value="<?php echo $fileInfo['editor_first_name'] ?>">
                 </div>
                 <div class="col-lg-2 col-sm-12 py-2">
                     <input type="text" class="form-control" name="textFieldGraphicsEditorMiddleInitial" placeholder="Middle Initial" value="<?php echo $fileInfo['editor_middle_initial'] ?>">
                 </div>
                 <div class="col-lg-4 col-sm-12 py-2">
-                    <input type="text" class="form-control" name="textFieldGraphicsEditorLastName" placeholder="Surname*" value="<?php echo $fileInfo['editor_surname'] ?>" required>
+                    <input type="text" class="form-control" name="textFieldGraphicsEditorLastName" placeholder="Surname" value="<?php echo $fileInfo['editor_surname'] ?>">
                 </div>
                 <div class="col-lg-2 col-sm-12 py-2">
                     <input type="text" class="form-control" name="textFieldGraphicsEditorNameExtension" placeholder="Extension" value="<?php echo $fileInfo['editor_ext'] ?>">
@@ -157,8 +157,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
-                    <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldGraphicsEditorEmail" value="<?php echo $fileInfo['editor_email'] ?>" required>
+                    <label class="fw-bold">Email</label>
+                    <input type="text" class="form-control" name="textFieldGraphicsEditorEmail" value="<?php echo $fileInfo['editor_email'] ?>">
                     <label class="text-secondary my-2">Consider your active email address</label>
                 </div>
             </div>
@@ -190,7 +190,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension" value="<?php echo $fileInfo['coauthor1_name_ext'] ?>">
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
-                    <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                    <label class="fw-bold">Email</label>
                     <input type="text" class="form-control" name="textFieldEmailAuthor1" value="<?php echo $fileInfo['coauthor1_email'] ?>">
                 </div>
             </div>
@@ -209,7 +209,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension" value="<?php echo $fileInfo['coauthor2_name_ext'] ?>">
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
-                    <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                    <label class="fw-bold">Email</label>
                     <input type="text" class="form-control" name="textFieldEmailAuthor2" value="<?php echo $fileInfo['coauthor2_email'] ?>">
                 </div>
             </div>
@@ -228,7 +228,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension" value="<?php echo $fileInfo['coauthor3_name_ext'] ?>">
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
-                    <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                    <label class="fw-bold">Email</label>
                     <input type="text" class="form-control" name="textFieldEmailAuthor3" value="<?php echo $fileInfo['coauthor3_email'] ?>">
                 </div>
             </div>
@@ -247,7 +247,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension" value="<?php echo $fileInfo['coauthor4_name_ext'] ?>">
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
-                    <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                    <label class="fw-bold">Email</label>
                     <input type="text" class="form-control" name="textFieldEmailAuthor4" value="<?php echo $fileInfo['coauthor4_email'] ?>">
                 </div>
             </div>
