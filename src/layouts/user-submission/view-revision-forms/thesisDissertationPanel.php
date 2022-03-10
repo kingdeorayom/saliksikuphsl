@@ -64,133 +64,133 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
                 <div id="dropdownArtsSciences" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownArtsSciences">
-                        <option value="">Bachelor of Science in Psychology</option>
-                        <option value="">Bachelor of Arts in Psychology</option>
-                        <option value="">Bachelor of Arts in Political Science</option>
-                        <option value="">Bachelor of Arts in Communication</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Psychology">Bachelor of Science in Psychology</option>
+                        <option value="Bachelor of Arts in Psychology">Bachelor of Arts in Psychology</option>
+                        <option value="Bachelor of Arts in Political Science">Bachelor of Arts in Political Science</option>
+                        <option value="Bachelor of Arts in Communication">Bachelor of Arts in Communication</option>
                     </select>
                 </div>
 
                 <div id="dropdownBusinessAccountancy" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownBusinessAccountancy">
-                        <option value="">Bachelor of Science in Accountancy</option>
-                        <option value="">Bachelor of Science in Management Accounting</option>
-                        <option value="">Bachelor of Science in Business Administration Major In Business Management</option>
-                        <option value="">Bachelor of Science in Business Administration Major In Marketing Management</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Accountancy">Bachelor of Science in Accountancy</option>
+                        <option value="Bachelor of Science in Management Accounting">Bachelor of Science in Management Accounting</option>
+                        <option value="Bachelor of Science in Business Administration Major In Business Management">Bachelor of Science in Business Administration Major In Business Management</option>
+                        <option value="Bachelor of Science in Business Administration Major In Marketing Management">Bachelor of Science in Business Administration Major In Marketing Management</option>
                     </select>
                 </div>
 
                 <div id="dropdownComputerStudies" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownComputerStudies">
-                        <option value="">Bachelor of Science in Information Technology</option>
-                        <option value="">Bachelor of Science in Computer Science</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
+                        <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
                     </select>
                 </div>
 
                 <div id="dropdownCriminology" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownCriminology">
-                        <option value="">Bachelor of Science in Criminology</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Criminology">Bachelor of Science in Criminology</option>
                     </select>
                 </div>
 
                 <div id="dropdownEducation" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownEducation">
-                        <option value="">Bachelor of Secondary Education Major in English</option>
-                        <option value="">Bachelor of Secondary Education Major in Filipino</option>
-                        <option value="">Bachelor of Secondary Education Major in Mathematics</option>
-                        <option value="">Bachelor of Secondary Education Major in Science</option>
-                        <option value="">Bachelor of Secondary Education Major in Social Studies</option>
-                        <option value="">Bachelor of Elementary Education</option>
-                        <option value="">Bachelor in Library and Information Science</option>
-                        <option value="">Bachelor of Early Childhood Education</option>
-                        <option value="">Bachelor of Special Needs Education</option>
-                        <option value="">Bachelor of Physical Education</option>
-                        <option value="">Education Modular Approach Program</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Secondary Education Major in English">Bachelor of Secondary Education Major in English</option>
+                        <option value="Bachelor of Secondary Education Major in Filipino">Bachelor of Secondary Education Major in Filipino</option>
+                        <option value="Bachelor of Secondary Education Major in Mathematics">Bachelor of Secondary Education Major in Mathematics</option>
+                        <option value="Bachelor of Secondary Education Major in Science">Bachelor of Secondary Education Major in Science</option>
+                        <option value="Bachelor of Secondary Education Major in Social Studies">Bachelor of Secondary Education Major in Social Studies</option>
+                        <option value="Bachelor of Elementary Education">Bachelor of Elementary Education</option>
+                        <option value="Bachelor in Library and Information Science">Bachelor in Library and Information Science</option>
+                        <option value="Bachelor of Early Childhood Education">Bachelor of Early Childhood Education</option>
+                        <option value="Bachelor of Special Needs Education">Bachelor of Special Needs Education</option>
+                        <option value="Bachelor of Physical Education">Bachelor of Physical Education</option>
+                        <option value="Education Modular Approach Program">Education Modular Approach Program</option>
                     </select>
                 </div>
 
                 <div id="dropdownEngineering" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownEngineering">
-                        <option value="">Bachelor of Science in Mechanical Engineering</option>
-                        <option value="">Bachelor of Science in Industrial Engineering</option>
-                        <option value="">Bachelor of Science in Computer Engineering</option>
-                        <option value="">Bachelor of Science in Electronics Engineering</option>
-                        <option value="">Bachelor of Science in Electrical Engineering</option>
-                        <option value="">Bachelor of Science in Civil Engineering</option>
-                        <option value="">Bachelor of Science in Architecture</option>
-                        <option value="">Bachelor of Science in Aircraft Maintenance Technology </option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Mechanical Engineering">Bachelor of Science in Mechanical Engineering</option>
+                        <option value="Bachelor of Science in Industrial Engineering">Bachelor of Science in Industrial Engineering</option>
+                        <option value="Bachelor of Science in Computer Engineering">Bachelor of Science in Computer Engineering</option>
+                        <option value="Bachelor of Science in Electronics Engineering">Bachelor of Science in Electronics Engineering</option>
+                        <option value="Bachelor of Science in Electrical Engineering">Bachelor of Science in Electrical Engineering</option>
+                        <option value="Bachelor of Science in Civil Engineering">Bachelor of Science in Civil Engineering</option>
+                        <option value="Bachelor of Science in Architecture">Bachelor of Science in Architecture</option>
+                        <option value="Bachelor of Science in Aircraft Maintenance Technology">Bachelor of Science in Aircraft Maintenance Technology</option>
                     </select>
                 </div>
 
                 <div id="dropdownMaritime" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownMaritime">
-                        <option value="">Bachelor of Science in Marine Engineering</option>
-                        <option value="">Bachelor of Science in Marine Transportation</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Marine Engineering">Bachelor of Science in Marine Engineering</option>
+                        <option value="Bachelor of Science in Marine Transportation">Bachelor of Science in Marine Transportation</option>
                     </select>
                 </div>
 
                 <div id="dropdownManagement" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownManagement">
-                        <option value="">Bachelor of Science in Hospitality Management</option>
-                        <option value="">Bachelor of Science in Tourism Management</option>
-                        <option value="">Bachelor of Science in Nutrition and Dietetics</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in Hospitality Management</option>
+                        <option value="Bachelor of Science in Tourism Management">Bachelor of Science in Tourism Management</option>
+                        <option value="Bachelor of Science in Nutrition and Dietetics">Bachelor of Science in Nutrition and Dietetics</option>
                     </select>
                 </div>
 
                 <div id="dropdownGraduateSchool" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownGraduateSchool">
-                        <option value="">Doctor of Philosophy Major in Educational Management</option>
-                        <option value="">Doctor of Philosophy in Business Management</option>
-                        <option value="">Doctor of Occupational Therapy</option>
-                        <option value="">Doctor of Physical Therapy</option>
-                        <option value="">Master in Business Administration</option>
-                        <option value="">Master of Science of Clinical Program Development</option>
-                        <option value="">Master of Science in Microbiology</option>
-                        <option value="">Master of Arts in Education - Major in Administration and Supervision</option>
-                        <option value="">Master of Arts in Education - Major in Health Sciences Education</option>
-                        <option value="">Master of Arts in Education - Major in Guidance and Counseling</option>
-                        <option value="">Master of Arts in Education - Major in Teaching English as Second Language</option>
-                        <option value="">Master of Arts in Education - Major in Educational Management</option>
-                        <option value="">Master of Arts in Education - Major in Religious Studies</option>
-                        <option value="">Master of Arts in Education - Major in Special Education</option>
-                        <option value="">Master of Arts in Education - Major in Mathematics</option>
-                        <option value="">Master of Arts in Education - Major in Filipino</option>
-                        <option value="">Master of Science in Clinical Laboratory Science</option>
-                        <option value="">Master of Science in Management Engineering</option>
-                        <option value="">Master of Science in Information Technology</option>
-                        <option value="">Master of Arts in Guidance and Counseling</option>
-                        <option value="">Master of Arts in Communication</option>
-                        <option value="">Master of Science in Microbiology</option>
-                        <option value="">Master of Science in Pharmacy</option>
-                        <option value="">Master of Science in Psychology</option>
-                        <option value="">Master of Science in Radiologic Technology</option>
-                        <option value="">Master of Library and Information Science</option>
-                        <option value="">Master in Hospital Administration</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Doctor of Philosophy Major in Educational Management">Doctor of Philosophy Major in Educational Management</option>
+                        <option value="Doctor of Philosophy in Business Management">Doctor of Philosophy in Business Management</option>
+                        <option value="Doctor of Occupational Therapy">Doctor of Occupational Therapy</option>
+                        <option value="Doctor of Physical Therapy">Doctor of Physical Therapy</option>
+                        <option value="Master in Business Administration">Master in Business Administration</option>
+                        <option value="Master of Science of Clinical Program Development">Master of Science of Clinical Program Development</option>
+                        <option value="Master of Science in Microbiology">Master of Science in Microbiology</option>
+                        <option value="Master of Arts in Education - Major in Administration and Supervision">Master of Arts in Education - Major in Administration and Supervision</option>
+                        <option value="Master of Arts in Education - Major in Health Sciences Education">Master of Arts in Education - Major in Health Sciences Education</option>
+                        <option value="Master of Arts in Education - Major in Guidance and Counseling">Master of Arts in Education - Major in Guidance and Counseling</option>
+                        <option value="Master of Arts in Education - Major in Teaching English as Second Language">Master of Arts in Education - Major in Teaching English as Second Language</option>
+                        <option value="Master of Arts in Education - Major in Educational Management">Master of Arts in Education - Major in Educational Management</option>
+                        <option value="Master of Arts in Education - Major in Religious Studies">Master of Arts in Education - Major in Religious Studies</option>
+                        <option value="Master of Arts in Education - Major in Special Education">Master of Arts in Education - Major in Special Education</option>
+                        <option value="Master of Arts in Education - Major in Mathematics">Master of Arts in Education - Major in Mathematics</option>
+                        <option value="Master of Arts in Education - Major in Filipino">Master of Arts in Education - Major in Filipino</option>
+                        <option value="Master of Science in Clinical Laboratory Science">Master of Science in Clinical Laboratory Science</option>
+                        <option value="Master of Science in Management Engineering">Master of Science in Management Engineering</option>
+                        <option value="Master of Science in Information Technology">Master of Science in Information Technology</option>
+                        <option value="Master of Arts in Guidance and Counseling">Master of Arts in Guidance and Counseling</option>
+                        <option value="Master of Arts in Communication">Master of Arts in Communication</option>
+                        <option value="Master of Science in Microbiology">Master of Science in Microbiology</option>
+                        <option value="Master of Science in Pharmacy">Master of Science in Pharmacy</option>
+                        <option value="Master of Science in Psychology">Master of Science in Psychology</option>
+                        <option value="Master of Science in Radiologic Technology">Master of Science in Radiologic Technology</option>
+                        <option value="Master of Library and Information Science">Master of Library and Information Science</option>
+                        <option value="Master in Hospital Administration">Master in Hospital Administration</option>
                     </select>
                 </div>
 
                 <div id="dropdownSupportServices" hidden>
                     <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
-                    <select class=" form-select" name="dropdownSupportServices">
-                        <option value="">Community Outreach Department</option>
-                        <option value="">Human Resource Department</option>
-                        <option value="">Information Technology Services</option>
-                        <option value="">International and External Affairs</option>
-                        <option value="">Library</option>
-                        <option value="">Marketing Department</option>
-                        <option value="">Quality Assurance Office</option>
-                        <option value="">Research and Development Center</option>
-                        <option value="">Student Personnel Services</option>
-                        <option value="">University Registrar</option>
+                    <select class=" form-select" name="dropdownCourse" disabled>
+                        <option value="Community Outreach Department">Community Outreach Department</option>
+                        <option value="Human Resource Department">Human Resource Department</option>
+                        <option value="Information Technology Services">Information Technology Services</option>
+                        <option value="International and External Affairs">International and External Affairs</option>
+                        <option value="Library">Library</option>
+                        <option value="Marketing Department">Marketing Department</option>
+                        <option value="Quality Assurance Office">Quality Assurance Office</option>
+                        <option value="Research and Development Center">Research and Development Center</option>
+                        <option value="Student Personnel Services">Student Personnel Services</option>
+                        <option value="University Registrar">University Registrar</option>
                     </select>
                 </div>
 
@@ -577,138 +577,369 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
             if (this.value == 'Arts and Sciences') {
                 $("#dropdownArtsSciences").prop('hidden', false);
+                $("#dropdownArtsSciences :input").prop('disabled', false);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
+
             } else if (this.value == 'Business and Accountancy') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', false);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', false);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Computer Studies') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', false);
+                $("#dropdownComputerStudies :input").prop('disabled', false);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Criminology') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', false);
+                $("#dropdownCriminology :input").prop('disabled', false);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Education') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', false);
+                $("#dropdownEducation :input").prop('disabled', false);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Engineering, Architecture and Aviation') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', false);
+                $("#dropdownEngineering :input").prop('disabled', false);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Maritime Education') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', false);
+                $("#dropdownMaritime :input").prop('disabled', false);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'International Hospitality Management') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', false);
+                $("#dropdownManagement :input").prop('disabled', false);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Graduate School') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', false);
+                $("#dropdownGraduateSchool :input").prop('disabled', false);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Support Services') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', false);
+                $("#dropdownSupportServices :input").prop('disabled', false);
             } else if (this.value == 'Basic Education') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             } else if (this.value == 'Senior High School') {
                 $("#dropdownArtsSciences").prop('hidden', true);
+                $("#dropdownArtsSciences :input").prop('disabled', true);
+
                 $("#dropdownBusinessAccountancy").prop('hidden', true);
+                $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+
                 $("#dropdownComputerStudies").prop('hidden', true);
+                $("#dropdownComputerStudies :input").prop('disabled', true);
+
                 $("#dropdownCriminology").prop('hidden', true);
+                $("#dropdownCriminology :input").prop('disabled', true);
+
                 $("#dropdownEducation").prop('hidden', true);
+                $("#dropdownEducation :input").prop('disabled', true);
+
                 $("#dropdownEngineering").prop('hidden', true);
+                $("#dropdownEngineering :input").prop('disabled', true);
+
                 $("#dropdownMaritime").prop('hidden', true);
+                $("#dropdownMaritime :input").prop('disabled', true);
+
                 $("#dropdownManagement").prop('hidden', true);
+                $("#dropdownManagement :input").prop('disabled', true);
+
                 $("#dropdownGraduateSchool").prop('hidden', true);
+                $("#dropdownGraduateSchool :input").prop('disabled', true);
+
                 $("#dropdownSupportServices").prop('hidden', true);
+                $("#dropdownSupportServices :input").prop('disabled', true);
             }
         });
+
+        $("#dropdownResearchUnit").trigger("change");
 
     });
 </script>
