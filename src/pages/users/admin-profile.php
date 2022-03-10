@@ -26,7 +26,6 @@ if (isset($_SESSION['userType'])) {
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
-$profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
 print_r($_SESSION);
 ?>
 
@@ -38,9 +37,8 @@ print_r($_SESSION);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
-    <script src="<?php echo '../../../scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/profile-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -87,8 +85,8 @@ print_r($_SESSION);
                             <hr class="mt-4 mb-3">
                             <label for="" class="mt-3 mb-2"><span class="fw-bold">Please note:</span> If you change your password, you will have to log in again using the new password.</label>
                             <div class="text-end">
-                                <button type="button" class="btn btn-secondary button-edit-acctpref rounded-0">Edit</button>
-                                <button type="button" class="btn btn-secondary button-update-acctpref rounded-0">Update</button>
+                                <button type="button" class="btn btn-secondary button-edit-acctpref rounded-0" id='edit-button'>Edit</button>
+                                <button type="submit" class="btn btn-secondary button-update-acctpref rounded-0" id='update-button' disabled>Update</button>
                             </div>
                         </div>
                     </form>
@@ -175,7 +173,22 @@ print_r($_SESSION);
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
-
+    <script type="text/javascript">
+        $("#edit-button").on("click", function(){
+            $("#update-button").prop("disabled",!$("#update-button").prop("disabled"))
+        })
+        $("form[name='account-preference']").on("submit", function(event){
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                method: "POST",
+                url:"update-account.php",
+                data: formData,
+                contentType: false, 
+        processData: false, 
+            })
+        })
+    </script>
 </body>
 
 </html>

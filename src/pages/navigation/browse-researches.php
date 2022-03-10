@@ -110,7 +110,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                         }
                     }
                     $unit_array = array_unique($unit_array);
-                    print_r($unit_array) ;
                     foreach($unit_array as $key => $result){
                         echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
@@ -123,7 +122,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                             foreach($published as $key => $item){
                                 if($item['file_type']=='thesis' && $item['research_unit']==$result){
                                     echo "
-                                    <a href='#' class='department-title-content'>
+                                    <a href='../../layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                         <p>{$item['research_title']}</p>
                                     </a>";
                                 }
