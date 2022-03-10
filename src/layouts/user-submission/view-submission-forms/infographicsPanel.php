@@ -17,19 +17,27 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h1 class="my-2">File Upload Information</h1>
     <hr>
     <form onsubmit="submitFormInfographic(event)" name="infographic-form">
+
+        <div class="row my-2">
+            <div>
+                <label class="fw-bold my-2">Title/Topic<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 d-none d-lg-block">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-            </div>
+            </div> -->
             <div class="col-lg-3 d-none d-lg-block">
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-12 py-2">
+            <!-- <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
                     <option value="Basic Education" selected>Basic Education</option>
                     <option value="Senior High School">Senior High School</option>
@@ -57,7 +65,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <option value="non_teaching_staff">Non-teaching Staff</option>
                     <option value="school_head">School Head</option>
                 </select>
-            </div>
+            </div> -->
             <div class="col-lg-3 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
@@ -143,12 +151,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
         </div>
-        <div class="row my-2">
-            <div>
-                <label class="fw-bold">Title/Topic<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
-            </div>
-        </div>
+
         <div class="row my-2">
             <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
@@ -167,7 +170,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row">
             <div class="col-lg-6 col-sm-12">
                 <label class="fw-bold">Email</label>
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <input type="text" class="form-control" name="textFieldEmail">
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>

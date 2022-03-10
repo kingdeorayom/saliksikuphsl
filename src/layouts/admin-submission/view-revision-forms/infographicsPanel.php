@@ -45,29 +45,37 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <h1 class="my-2">File Upload Information</h1>
         <hr>
         <form onsubmit="submitFormInfographic(event)" name="infographic-form" data-id="<?php echo $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+
+            <div class="row my-3">
+                <div>
+                    <label class="fw-bold my-2">Title/Topic<span class="text-danger"> *</span></label>
+                    <input type="text" class="form-control" name="textFieldInfographicsTitle" value="<?php echo $fileInfo['infographic_title'] ?>" required>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-3">
                     <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
                 </div>
                 <div class="col-lg-3 d-none d-lg-block">
                     <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-                </div>
+                </div> -->
                 <div class="col-lg-3 d-none d-lg-block">
                     <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-12 py-2">
+                <!-- <div class="col-lg-3 col-sm-12 py-2">
                     <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
                         <?php foreach ($department_list as $key => $row) : ?>
                             <option value="<?php echo $row['name'] ?>" <?= $fileInfo['infographic_research_unit'] == $row['name'] ? 'selected' : '' ?>><?php echo $row['name'] ?></option>
                         <?php endforeach ?>
                     </select>
-                </div>
-                <div class="col-lg-3 d-sm-block d-lg-none">
+                </div> -->
+                <!-- <div class="col-lg-3 d-sm-block d-lg-none">
                     <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-                </div>
-                <div class="col-lg-3 col-sm-12 py-2">
+                </div> -->
+                <!-- <div class="col-lg-3 col-sm-12 py-2">
                     <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
                         <option value="Undergraduate" <?= $fileInfo['infographic_researcher_category'] == 'Undergraduate' ? 'selected' : '' ?>>Undergraduate</option>
                         <option value="Postgraduate" <?= $fileInfo['infographic_researcher_category'] == 'Postgraduate' ? 'selected' : '' ?>>Postgraduate</option>
@@ -75,7 +83,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <option value="Non_teaching_staff" <?= $fileInfo['infographic_researcher_category'] == 'Non_teaching_staff' ? 'selected' : '' ?>>Non-teaching Staff</option>
                         <option value="School_head" <?= $fileInfo['infographic_researcher_category'] == 'School_head' ? 'selected' : '' ?>>School Head</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="col-lg-3 d-sm-block d-lg-none">
                     <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
                 </div>
@@ -113,12 +121,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     </select>
                 </div>
             </div>
-            <div class="row my-2">
-                <div>
-                    <label class="fw-bold">Title/Topic<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldInfographicsTitle" value="<?php echo $fileInfo['infographic_title'] ?>" required>
-                </div>
-            </div>
+
             <div class="row my-2">
                 <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
                 <div class="col-lg-4 col-sm-12 py-2">
@@ -136,8 +139,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
-                    <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldEmail" value="<?php echo $fileInfo['author_email'] ?>" required>
+                    <label class="fw-bold">Email</label>
+                    <input type="text" class="form-control" name="textFieldEmail" value="<?php echo $fileInfo['author_email'] ?>">
                     <label class="text-secondary my-2">Consider your active email address</label>
                 </div>
             </div>
