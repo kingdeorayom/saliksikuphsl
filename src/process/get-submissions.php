@@ -12,60 +12,57 @@ if (isset($_SESSION['userType'])) {
         echo "you do not have access to this!";
     }
     else{
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id");
+        $statement = $connection->prepare("SELECT status, COUNT(status) AS count FROM file_information GROUP BY status");
         $statement->execute();
-        $result = $statement->get_result();
-        $submissions = $result->fetch_all(MYSQLI_ASSOC);
+        $result_count = $statement->get_result();
+        $result_count = $result_count->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id");
-        $statement->execute();
-        $result = $statement->get_result();
-        $thesis = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
+        $query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_dir2`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email, ci.coauthor1_first_name, ci.coauthor1_middle_initial, ci.coauthor1_surname, ci.coauthor1_name_ext, ci.coauthor1_email, ci.coauthor2_first_name, ci.coauthor2_middle_initial, ci.coauthor2_surname, ci.coauthor2_name_ext, ci.coauthor2_email, ci.coauthor3_first_name, ci.coauthor3_middle_initial, ci.coauthor3_surname, ci.coauthor3_name_ext, ci.coauthor3_email, ci.coauthor4_first_name, ci.coauthor4_middle_initial, ci.coauthor4_surname, ci.coauthor4_name_ext, ci.coauthor4_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id";
+        if(isset($_POST['status_view']) && $_POST['status_view'] !="submissions"){
+            $status = " WHERE fi.status = '{$_POST["status_view"]}'";;
+            $query .= $status;
+        }
+        if(isset($_POST['title_query']) && !empty($_POST['title_query'])){
+            $search = " AND (ri.research_title LIKE '%{$_POST["title_query"]}%' OR ji.journal_title LIKE '%{$_POST["title_query"]}%' OR ii.infographic_title LIKE '%{$_POST["title_query"]}%')";
+            $query .= $search;
+        }
+        if(isset($_POST['sort_by']) && $_POST['sort_by']!='All Category'){
+            $sort = " ORDER BY";
+            if($_POST['sort_by']=="Resource Type"){
+                $sort .= " ri.resource_type";
+            }
+            else if($_POST['sort_by']=="Research Unit"){
+                $sort .= " ri.research_unit, ji.department";
+            }
+            else if($_POST['sort_by']=="Researcher's Category"){
+                $sort .= " ri.researchers_category";
+            }
+            $sort .= " DESC";
+            $query .= $sort;
+        }
+        $connection->begin_transaction();
+        try{
+            $statement = $connection->prepare($query);
+            $statement->execute();
+            $result = $statement->get_result();
+            $result = $result->fetch_all(MYSQLI_ASSOC);
+            $statement->close();
+            
+            $connection->commit();
+            
+            
+            header("Content-Type: application/json");
+            $array['result']= $result;
+            $array['result_count']= $result_count;
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id");
-        $statement->execute();
-        $result = $statement->get_result();
-        $journal = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
+            echo json_encode($array);
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id");
-        $statement->execute();
-        $result = $statement->get_result();
-        $infographic = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
+        }catch(mysqli_sql_exception $exception){
+            $connection->rollback();
 
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'pending'");
-        $statement->execute();
-        $result = $statement->get_result();
-        $pending = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
-
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'for revision'");
-        $statement->execute();
-        $result = $statement->get_result();
-        $forRevision = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
-
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'revised'");
-        $statement->execute();
-        $result = $statement->get_result();
-        $revised = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
+            echo $exception;
+        }
         
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'published' OR fi.status = 'hidden'");
-        $statement->execute();
-        $result = $statement->get_result();
-        $published = $result->fetch_all(MYSQLI_ASSOC);
-        $statement->close();
-
-
-        $final = array("submissions"=>$submissions,"thesis"=>$thesis,"journal"=>$journal,
-        "infographic"=>$infographic,"pending"=>$pending,"forRevision"=>$forRevision,
-        "revised"=>$revised,"published"=>$published);
-            header('Content-Type: application/json');
-            echo json_encode($final);
-
     }
 }

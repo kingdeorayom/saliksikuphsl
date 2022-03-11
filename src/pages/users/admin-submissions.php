@@ -25,6 +25,8 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Submissions</title>
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="<?php echo '../../../scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
@@ -74,8 +76,8 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                         <div class="col my-1 mx-1">
                             <form action="">
                                 <div class="input-group">
-                                    <input type="search" autofocus class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions" id="search-submissions-admin">
-                                    <button class="btn text-light search-button btn-lg rounded-0" type="" id="button-addon2">Search</button>
+                                    <input type="search" autofocus class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions" id="search-submissions-admin" name="title_query">
+                                    <button class="btn text-light search-button btn-lg rounded-0" type="button" id="admin-search-button">Search</button>
                                 </div>
                             </form>
                         </div>
@@ -84,7 +86,7 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                     <div class="row my-3">
                         <div class="col-sm-12 col-md-4">
                             <label class="fw-bold">View:</label>
-                            <select class="form-select rounded-0 my-2" aria-label="Default select example" id="submission-status-dropdown">
+                            <select class="form-select rounded-0 my-2" aria-label="Default select example" id="submission-status-dropdown" name="status_view">
                                 <option value="pending" selected>For Approval</option>
                                 <option value="for revision">For Revision</option>
                                 <option value="revised">Revised</option>
@@ -94,60 +96,23 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <label class="fw-bold">Sort by:</label>
-                            <select class="form-select rounded-0 my-2" aria-label="Default select example" id="submission-category-dropdown">
-                                <option selected>All category</option>
-                                <option>Resource Type</option>
-                                <option>Research Unit</option>
-                                <option>Researcher's Category</option>
+                            <select class="form-select rounded-0 my-2" aria-label="Default select example" id="submission-category-dropdown" name="sort_by">
+                                <option value="All Category" selected>All Category</option>
+                                <option value="Resource Type">Resource Type</option>
+                                <option value="Research Unit">Research Unit</option>
+                                <option value="Researcher's Category">Researcher's Category</option>
                             </select>
                         </div>
                     </div>
                     <div class="row my-4">
-
-                        <!--For Approval-->
-
-                        <div class="forApproval my-3" id="pending-results-container">
-                            <h5>For Approval</h5>
+                        <div class ="my-3">
+                            <h5>Results</h5>
                             <hr class="mb-4">
                             <!-- results-container shows "No Results!" or something when empty -->
-                            <div class="results-container" hidden>
+                            <div id="results-container">
                                 <div>No Results!</div>
                             </div>
                         </div>
-
-                        <!--For Revision-->
-
-                        <div class="forRevision my-3" id="revision-results-container" hidden>
-                            <h5>For Revision</h5>
-                            <hr class="mb-4">
-                            <!-- results-container shows "No Results!" or something when empty -->
-                            <div class="results-container" hidden>
-                                <div>No Results!</div>
-                            </div>
-                        </div>
-
-                        <!--Revised-->
-
-                        <div class="revised my-3" id="revised-results-container" hidden>
-                            <h5>Revised</h5>
-                            <hr class="mb-4">
-                            <!-- results-container shows "No Results!" or something when empty -->
-                            <div class="results-container" hidden>
-                                <div>No Results!</div>
-                            </div>
-                        </div>
-
-                        <!--Published-->
-
-                        <div class="published my-3" id="published-results-container" hidden>
-                            <h5>Published</h5>
-                            <hr class="mb-4">
-                            <!-- results-container shows "No Results!" or something when empty -->
-                            <div class="results-container" hidden>
-                                <div>No Results!</div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
