@@ -10,10 +10,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_at']?></p>
     <hr>
 </div>
 <div class="row">
@@ -22,10 +22,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <h5>Submission Details</h5>
         <hr>
         <p class="side-menu-text">Submitted by:</p>
-        <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_at']?></p>
         <hr>
     </div>
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
@@ -259,9 +259,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-4">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                    <label class="my-2" id="infographic-file-name">Infographic.pdf</label>
+                    <label class="my-2" id="infographic-file-name"><a href='<?php echo "../".$fileInfo['file_dir']; ?>'>Infographic.pdf</a></label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='shown' <?php if($fileInfo['status']=='published'){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
                 </div>
@@ -278,8 +278,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </div>
 
     <script>
-        var alertContainerInfographic = document.getElementById("alert-container-infographic")
-        var infographicsForm = document.forms.namedItem("infographic-form");
         $("form[name='infographic-form']").on("submit", function(event){
             event.preventDefault();
             var fileId = event.target.dataset.id
@@ -309,14 +307,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 }
                 if (data.response === "success") {
                     $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                    
+
                 }
             })
         })
-
-
-        function checkResponseInfographic(data) {
-            
-
-        }
     </script>

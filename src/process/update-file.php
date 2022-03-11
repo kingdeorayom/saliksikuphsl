@@ -96,11 +96,12 @@ if (isset($_SESSION['userType'])) {
         else if($file['file_type']==="infographic"){
             $connection -> begin_transaction();
             try{
-                if(isset($_POST['shown']) && $_POST['shown']=='on'){
-                    $fileStatus = 'published';
+                $fileStatus = 'published';
+                if(isset($_POST['file1Shown'])){
+                    $fileOneShown = 1;
                 }
-                else if(!isset($_POST['shown'])){
-                    $fileStatus = 'hidden';
+                else if(!isset($_POST['file1Shown'])){
+                    $fileOneShown = 0;
                 }
                 if(isset($_POST["needsRevision"])){
                     $fileStatus = 'for revision';
@@ -110,8 +111,8 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                }
                else{
-                    $statement = $connection->prepare("UPDATE `file_information` SET status= ?, feedback = '' WHERE file_id = ?");
-                    $statement->bind_param("si",$fileStatus,$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, status= ?, feedback = '' WHERE file_id = ?");
+                    $statement->bind_param("isi",$fileOneShown,$fileStatus,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                }
