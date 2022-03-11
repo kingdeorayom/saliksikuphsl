@@ -66,21 +66,20 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                     $newFile =  $filenameUnique . "." . $fileActualExt;
                     $fileDestination = '../uploads/journals/' . $newFile;
 
-                    if($_SESSION['userType']!='admin'){
-                        $fileStatus = "pending";
-                    }
-                    else {
-                        $fileStatus = "published";
-                    }
-                    $fileType = "journal";
                     $connection->begin_transaction();
                     try{
-                        $statement = $connection->prepare('INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_dir2, file_uploader, status) VALUES(?,?,?,?,?,?,?)');
-                        $statement->bind_param('issssss', $userId,$fileType, $fileName, $fileDestination,$fileCoverDestination, $userName, $fileStatus);
+                        $fileStatus = "published"; //only admin can access this so we can direct publish it instead
+                        $fileType = "journal";
+
+                        $submitted = date('Y-m-d H:i:s');
+
+                        $statement = $connection->prepare('INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_dir2, file_uploader, status, submitted_at) VALUES(?,?,?,?,?,?,?,?)');
+                        $statement->bind_param('isssssss', $userId, $fileType, $fileName, $fileDestination,$fileCoverDestination, $userName, $fileStatus, $submitted);
                         $statement->execute();
                         $insertedId = $statement->insert_id;
                         $statement->close();
     
+                        
                         $statement = $connection->prepare('INSERT INTO journal_information(file_ref_id, journal_title, journal_subtitle, department, volume_number, serial_issue_number, ISSN, journal_description, chief_editor_first_name, chief_editor_middle_initial, chief_editor_last_name, chief_editor_name_ext ,chief_editor_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
                         $statement->bind_param('isssiisssssss', $insertedId, $_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'], $_POST['textFieldSerialIssueNumber'], $_POST['textFieldISSN'], $_POST['textAreaDescription'], $_POST['textFieldChiefEditorFirstName'], $_POST['textFieldChiefEditorMiddleInitial'], $_POST['textFieldChiefEditorLastName'], $_POST['textFieldChiefEditorNameExtension'], $_POST['textFieldEmail']);
                         $statement->execute();
