@@ -121,7 +121,7 @@ $coauthorsDropdown = filemtime('../../../scripts/custom/coauthors-dropdown.js');
     <section class="submit-research">
         <div class="container p-5">
             <?php
-            if ($fileInfo['status'] == 'published') {
+            if ($fileInfo['status'] == 'published'|| $fileInfo['status'] == 'hidden') {
                 if ($fileInfo['file_type'] == 'thesis') {
                     include_once './view-published-forms/thesisDissertationPanel.php';
                 } else if ($fileInfo['file_type'] == 'journal') {

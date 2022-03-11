@@ -38,12 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       }
-      console.log("hello");
     });
-    console.log("newdata", newData);
     loadData(newData);
-
-    console.log("globaldata", globalData);
   });
 
   function changeStatusView(selected) {
@@ -166,7 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const pendingCount = data.filter((item) => item.status === "pending");
     const revisionCount = data.filter((item) => item.status === "for revision");
     const revisedCount = data.filter((item) => item.status === "revised");
-    const publishedCount = data.filter((item) => item.status === "published");
+    const publishedCount = data.filter(
+      (item) => item.status === "published" || item.status === "hidden"
+    );
     pendingContainer.querySelector(".display-4").innerHTML =
       pendingCount.length;
     revisionContainer.querySelector(".display-4").innerHTML =
@@ -239,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
           revisedResultsContainer.innerHTML += revisedJournalTemplate(result);
         }
       }
-      if (result["status"] === "published") {
+      if (result["status"] === "published" || result["status"] === "hidden") {
         if (result["research_title"] !== null) {
           publishedResultsContainer.innerHTML +=
             publishedThesisTemplate(result);

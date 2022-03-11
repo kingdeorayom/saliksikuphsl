@@ -54,7 +54,7 @@ if (isset($_SESSION['userType'])) {
         $revised = $result->fetch_all(MYSQLI_ASSOC);
         $statement->close();
         
-        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'published'");
+        $statement = $connection->prepare("SELECT * FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id WHERE fi.status = 'published' OR fi.status = 'hidden'");
         $statement->execute();
         $result = $statement->get_result();
         $published = $result->fetch_all(MYSQLI_ASSOC);

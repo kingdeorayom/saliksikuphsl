@@ -96,20 +96,27 @@ if (isset($_SESSION['userType'])) {
         else if($file['file_type']==="infographic"){
             $connection -> begin_transaction();
             try{
+                if(isset($_POST['shown']) && $_POST['shown']=='on'){
+                    $fileStatus = 'published';
+                }
+                else if(!isset($_POST['shown'])){
+                    $fileStatus = 'hidden';
+                }
                 if(isset($_POST["needsRevision"])){
-                    $statement = $connection->prepare("UPDATE `file_information` SET status='for revision', feedback = ? WHERE file_id = ?");
-                    $statement->bind_param("si",$_POST['textAreaFeedbackInfographics'],$_POST['fileId']);
+                    $fileStatus = 'for revision';
+                    $statement = $connection->prepare("UPDATE `file_information` SET status= ?, feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("ssi",$fileStatus,$_POST['textAreaFeedbackInfographics'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                }
                else{
-                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = '' WHERE file_id = ?");
-                    $statement->bind_param("i",$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET status= ?, feedback = '' WHERE file_id = ?");
+                    $statement->bind_param("si",$fileStatus,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                }
-                $statement = $connection->prepare("UPDATE `infographic_information` SET infographic_research_unit = ?,infographic_researcher_category = ?,infographic_publication_month = ?,infographic_publication_day = ?,infographic_publication_year = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
-                $statement->bind_param("ssiiissssssssssssii",$_POST['dropdownResearchUnit'],$_POST['dropdownResearchersCategory'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldInfographicsTitle'],$_POST['textareaDescription'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['textFieldGraphicsEditorFirstName'],$_POST['textFieldGraphicsEditorMiddleInitial'],$_POST['textFieldGraphicsEditorLastName'],$_POST['textFieldGraphicsEditorNameExtension'],$_POST['textFieldGraphicsEditorEmail'],$_POST['dropdownCoAuthors'],$_POST['fileId']);
+                $statement = $connection->prepare("UPDATE `infographic_information` SET infographic_publication_month = ?,infographic_publication_day = ?,infographic_publication_year = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
+                $statement->bind_param("iiissssssssssssii",$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldInfographicsTitle'],$_POST['textareaDescription'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['textFieldGraphicsEditorFirstName'],$_POST['textFieldGraphicsEditorMiddleInitial'],$_POST['textFieldGraphicsEditorLastName'],$_POST['textFieldGraphicsEditorNameExtension'],$_POST['textFieldGraphicsEditorEmail'],$_POST['dropdownCoAuthors'],$_POST['fileId']);
                 $statement->execute();
                 $statement->close();
 

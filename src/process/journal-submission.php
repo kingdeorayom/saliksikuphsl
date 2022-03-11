@@ -70,6 +70,7 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                     try{
                         $fileStatus = "published"; //only admin can access this so we can direct publish it instead
                         $fileType = "journal";
+                        
 
                         $submitted = date('Y-m-d H:i:s');
 
