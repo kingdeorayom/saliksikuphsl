@@ -14,7 +14,7 @@ if (empty($_POST['textFieldInfographicsTitle'] && $_POST['textFieldGraphicsEdito
     exit();
 }
 
-if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldInfographicsTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaDescription'], $_FILES['fileSubmit'])) {
+if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldInfographicsTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaDescription'], $_FILES['fileSubmit'])) {
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
 
@@ -52,7 +52,7 @@ if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'],
                             $coauthorsInsertedId = $statement->insert_id;
                             $statement->close();
         
-                            $fileStatus = "pending";
+                            $fileStatus = "published"; //only admin can access this so we can direct publish it instead
                             $fileType = "infographic";
                             $statement = $connection->prepare("INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_uploader, status, coauthor_group_id) VALUES(?,?,?,?,?,?,?)");
                             $statement->bind_param('isssssi', $userId, $fileType, $fileName, $fileDestination, $userName, $fileStatus,$coauthorsInsertedId);
@@ -60,8 +60,8 @@ if (isset($_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'],
                             $insertedId = $statement->insert_id;
                             $statement->close();
         
-                            $statement = $connection->prepare("INSERT INTO infographic_information(file_ref_id,infographic_research_unit,infographic_researcher_category,infographic_publication_month,infographic_publication_day,infographic_publication_year,	infographic_title,infographic_description,author_first_name,author_middle_initial,author_surname,author_ext,author_email,editor_first_name,editor_middle_initial,editor_surname,editor_ext,editor_email,coauthors_count) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                            $statement->bind_param('issiiissssssssssssi', $insertedId, $_POST['dropdownResearchUnit'], $_POST['dropdownResearchersCategory'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldInfographicsTitle'], $_POST['textareaDescription'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors']);
+                            $statement = $connection->prepare("INSERT INTO infographic_information(file_ref_id,infographic_publication_month,infographic_publication_day,infographic_publication_year,	infographic_title,infographic_description,author_first_name,author_middle_initial,author_surname,author_ext,author_email,editor_first_name,editor_middle_initial,editor_surname,editor_ext,editor_email,coauthors_count) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                            $statement->bind_param('iiiissssssssssssi', $insertedId, $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldInfographicsTitle'], $_POST['textareaDescription'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors']);
                             $statement->execute();
                             $statement->close();
         

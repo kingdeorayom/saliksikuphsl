@@ -5,13 +5,7 @@ session_start();
 include '../../process/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../layouts/general/error.php");
     die();
 }
 
@@ -99,19 +93,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="researchesPanel">
                     <h1 class="my-2">Browse Researches</h1>
                     <hr>
-                    
+
                     <div class="row">
                         <div class="accordion accordion-flush">
-                        <?php 
-                    $unit_array = array();
-                    foreach($published as $key => $result){
-                        if($result['file_type']=='thesis'){
-                            array_push($unit_array,$result['research_unit']);   
-                        }
-                    }
-                    $unit_array = array_unique($unit_array);
-                    foreach($unit_array as $key => $result){
-                        echo "<div class='accordion-item my-2'>
+                            <?php
+                            $unit_array = array();
+                            foreach ($published as $key => $result) {
+                                if ($result['file_type'] == 'thesis') {
+                                    array_push($unit_array, $result['research_unit']);
+                                }
+                            }
+                            $unit_array = array_unique($unit_array);
+                            print_r($unit_array);
+                            foreach ($unit_array as $key => $result) {
+                                echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
                             <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
                                 {$result}
@@ -119,19 +114,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                         </h2>
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
                             <div class='accordion-body'>";
-                            foreach($published as $key => $item){
-                                if($item['file_type']=='thesis' && $item['research_unit']==$result){
-                                    echo "
-                                    <a href='../../layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                foreach ($published as $key => $item) {
+                                    if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
+                                        echo "
+                                    <a href='#' class='department-title-content'>
                                         <p>{$item['research_title']}</p>
                                     </a>";
+                                    }
                                 }
-                            }
-                        echo "</div>
+                                echo "</div>
                         </div>
                     </div>";
-                    }
-                    ?>
+                            }
+                            ?>
 
                         </div>
 

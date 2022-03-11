@@ -1,13 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-    <p>Please click <a href="../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../layouts/general/error.php");
     die();
 }
 
@@ -24,19 +18,25 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h1 class="my-2">Infographics Submission Form</h1>
     <hr>
     <form onsubmit="submitFormInfographic(event)" name="infographic-form">
+        <div class="row my-2">
+            <div>
+                <label class="fw-bold my-2">Title/Topic<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 d-none d-lg-block">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-            </div>
+            </div> -->
             <div class="col-lg-3 d-none d-lg-block">
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-12 py-2">
+            <!-- <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
                     <option value="Basic Education" selected>Basic Education</option>
                     <option value="Senior High School">Senior High School</option>
@@ -64,7 +64,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <option value="Non-Teaching Staff">Non-teaching Staff</option>
                     <option value="School Head">School Head</option>
                 </select>
-            </div>
+            </div> -->
             <div class="col-lg-3 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
@@ -150,12 +150,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
         </div>
-        <div class="row my-2">
-            <div>
-                <label class="fw-bold">Title/Topic<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
-            </div>
-        </div>
+
         <div class="row my-2">
             <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
@@ -173,21 +168,21 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <label class="fw-bold">Email</label>
+                <input type="text" class="form-control" name="textFieldEmail">
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>
         <div class="row my-2">
-            <label class="py-2 fw-bold">Graphics Editor<span class="text-danger"> *</span></label>
+            <label class="py-2 fw-bold">Graphics Editor</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name*" required>
+                <input type="text" class="form-control" name="textFieldGraphicsEditorFirstName" placeholder="First Name">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldGraphicsEditorMiddleInitial" placeholder="Middle Initial">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldGraphicsEditorLastName" placeholder="Surname*" required>
+                <input type="text" class="form-control" name="textFieldGraphicsEditorLastName" placeholder="Surname">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldGraphicsEditorNameExtension" placeholder="Extension">
@@ -195,8 +190,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldGraphicsEditorEmail" required>
+                <label class="fw-bold">Email</label>
+                <input type="text" class="form-control" name="textFieldGraphicsEditorEmail">
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>
@@ -228,7 +223,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                <label class="fw-bold">Email</label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor1">
             </div>
         </div>
@@ -247,7 +242,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                <label class="fw-bold">Email</label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor2">
             </div>
         </div>
@@ -266,7 +261,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                <label class="fw-bold">Email</label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor3">
             </div>
         </div>
@@ -285,7 +280,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
+                <label class="fw-bold">Email</label>
                 <input type="text" class="form-control" name="textFieldEmailAuthor4">
             </div>
         </div>
@@ -300,54 +295,52 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-4">
             <div class="mb-3">
                 <label class="fw-bold mb-3">Attach File<span class="text-danger"> *</span></label>
-                <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
-                <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
+                <input class="form-control" type="file" name="fileSubmit" accept=".pdf, .jpg, .jpeg, .png" required>
+                <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB.</label>
             </div>
         </div>
         <hr>
-        <?php if($_SESSION['userType']!='admin'){
-        echo '<div class="row my-4">
+        <?php if ($_SESSION['userType'] != 'admin') {
+            echo '<div class="row my-4">
             <div class="form-check m-2">
                 <input class="form-check-input" type="checkbox" id="checkBoxAgreeInfographics" onclick="enableDisableSubmitButtonInfographics(this);">
                 <label for="checkBoxAgreeInfographics">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
             </div>
-        </div>';}?>
+        </div>';
+        } ?>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitInfographicsButton" <?php if($_SESSION['userType'] !== "admin"){ echo 'disabled';}?> >
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitInfographicsButton" <?php if ($_SESSION['userType'] !== "admin") {
+                                                                                                                                                                echo 'disabled';
+                                                                                                                                                            } ?>>
             </div>
         </div>
     </form>
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
 <script type="text/javascript">
-
-$("form[name='infographic-form']").on("submit", function(event){
-    event.preventDefault();
-    var formData = new FormData(this);
-    $.ajax({
-        method: "POST",
-        url:"../../process/infographic-submission.php",
-        data: formData,
-        contentType: false, 
-        processData: false, 
-    }).done(function(data){
-    if(data.response === "type_error"){
-        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
-    }
-    else if(data.response ==="generic_error"){
-        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-    }    
-    else if (data.response==="size_error"){
-        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-    }
-    else if (data.response=="duplicate_error"){
-        $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-    }
-    else if (data.response==="success"){
-        $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-        document.forms.namedItem("infographic-form").reset();
-    }
+    $("form[name='infographic-form']").on("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            method: "POST",
+            url: "../../process/infographic-submission.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+        }).done(function(data) {
+            if (data.response === "type_error") {
+                $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
+            } else if (data.response === "generic_error") {
+                $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            } else if (data.response === "size_error") {
+                $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            } else if (data.response == "duplicate_error") {
+                $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            } else if (data.response === "success") {
+                $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                document.forms.namedItem("infographic-form").reset();
+            }
+        })
     })
-})
 </script>

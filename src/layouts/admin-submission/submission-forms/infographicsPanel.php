@@ -1,13 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    echo '<div style="font-family: arial; padding: 3%; font-size: 30px; text-align: center;">
-    <p style="font-size: 50px; font-weight: bold">Oops!</p>
-    <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-    <p>Please click <a href="../../../../index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-    <br><br><br>
-    <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
-</div>';
+    header("location: ../../../layouts/general/error.php");
     die();
 }
 
@@ -23,19 +17,27 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h1 class="my-2">File Upload Information</h1>
     <hr>
     <form onsubmit="submitFormInfographic(event)" name="infographic-form">
+
+        <div class="row my-2">
+            <div>
+                <label class="fw-bold my-2">Title/Topic<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 d-none d-lg-block">
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-            </div>
+            </div> -->
             <div class="col-lg-3 d-none d-lg-block">
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-12 py-2">
+            <!-- <div class="col-lg-3 col-sm-12 py-2">
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit">
                     <option value="Basic Education" selected>Basic Education</option>
                     <option value="Senior High School">Senior High School</option>
@@ -63,7 +65,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <option value="non_teaching_staff">Non-teaching Staff</option>
                     <option value="school_head">School Head</option>
                 </select>
-            </div>
+            </div> -->
             <div class="col-lg-3 d-sm-block d-lg-none">
                 <label class="py-2 fw-bold">Publication Date<span class="text-danger"> *</span></label>
             </div>
@@ -149,12 +151,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </select>
             </div>
         </div>
-        <div class="row my-2">
-            <div>
-                <label class="fw-bold">Title/Topic<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldInfographicsTitle" required>
-            </div>
-        </div>
+
         <div class="row my-2">
             <label class="py-2 fw-bold">Corresponding Author<span class="text-danger"> *</span></label>
             <div class="col-lg-4 col-sm-12 py-2">
@@ -172,8 +169,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <label class="fw-bold">Email</label>
+                <input type="text" class="form-control" name="textFieldEmail">
                 <label class="text-secondary my-2">Consider your active email address</label>
             </div>
         </div>
@@ -299,7 +296,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-4">
             <div class="mb-3">
                 <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
-                <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
+                <input class="form-control" type="file" name="fileSubmit" accept=".pdf, .jpg, .jpeg, .png" required>
                 <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
             </div>
         </div>

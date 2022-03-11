@@ -59,7 +59,12 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                     $fileNameQuestionNew = $filenameUnique."-questionnaire.".$fileQuestionnaireActualExt;
                     $fileQuestionDestination = '../uploads/theses/questionnaires/'.$fileNameQuestionNew;
                     
-                    $fileStatus = "pending";
+                    if($_SESSION['userType']!='admin'){
+                        $fileStatus = "pending";
+                    }
+                    else{
+                        $fileStatus = "published";
+                    }
                     $fileType = "thesis";
                     $connection->begin_transaction();
                     try{
@@ -69,6 +74,7 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                         $coauthorsInsertedId = $statement ->insert_id;
                         $statement ->close();
 
+                        
                         $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_dir2, file_uploader, status, coauthor_group_id) VALUES(?,?,?,?,?,?,?,?)');
                         $statement -> bind_param('issssssi',$userId,$fileType,$fileName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId);
                         $statement -> execute();
@@ -76,9 +82,14 @@ if(isset($_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'], $
                         $statement ->close();
 
                         $comma_separated_fields = implode(', ',$_POST['researchFields']);
-                    
-                        $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_title,research_abstract,research_fields,keywords,publication_month,publication_day,publication_year,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                        $statement -> bind_param('isssssssiiiisssss',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail']);
+                        if(!isset($_POST['dropdownCourse'])){
+                            $course = '';
+                        }
+                        else{
+                            $course = $_POST['dropdownCourse'];
+                        }
+                        $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_course,research_title,research_abstract,research_fields,keywords,publication_month,publication_day,publication_year,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        $statement -> bind_param('issssssssiiiisssss',$insertedId,$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$course,$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail']);
                         $statement -> execute();
                         $statement ->close();
 
