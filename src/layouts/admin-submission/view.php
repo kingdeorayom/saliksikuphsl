@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
         die(); //file doesnt exist
     } else {
         if ($file['file_type'] === "thesis") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
 
@@ -54,14 +54,14 @@ if (isset($_GET['id'])) {
             $statement->close();
             $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
         } else if ($file['file_type'] === "journal") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id LEFT JOIN (SELECT ref_id, feedback, MAX(returned_on) as 'returned_on' FROM feedback_log GROUP BY ref_id) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
 
             $fileInfo = $result->fetch_assoc();
             $statement->close();
         } else if ($file['file_type'] === "infographic") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
             $statement->execute();
             $result = $statement->get_result();
 
