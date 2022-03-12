@@ -98,7 +98,7 @@ export function revisionInfographicTemplate(result) {
         <div class="row">
             <div class="col">
                 <div class="text-start">
-                    <p class="fw-bold" style="color: #012265;"> Infographic | ${result.infographic_researcher_category} | ${result.infographic_research_unit}</p>
+                    <p class="fw-bold" style="color: #012265;"> Infographic</p>
                 </div>
             </div>
         </div>
