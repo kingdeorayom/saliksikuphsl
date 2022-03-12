@@ -286,7 +286,9 @@ export function publishedJournalTemplate(result) {
                       <h4 class="">${result.journal_title}</h4>
                         <h5 class="mb-3">${result.journal_subtitle}</h5>
                   </div>
-                  
+                    <div class="row">
+                    <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
+                    </div>
                   
                   <hr class="my-1">
                   <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
