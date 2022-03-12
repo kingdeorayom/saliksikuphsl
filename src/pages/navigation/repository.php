@@ -9,83 +9,83 @@ if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");
     die();
 }
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 1;
-}
-$results_per_page = 5;
-$offset = ($page-1) * $results_per_page;  
+// if (isset($_GET['page'])) {
+//     $page = $_GET['page'];
+// } else {
+//     $page = 1;
+// }
+// $results_per_page = 5;
+// $offset = ($page-1) * $results_per_page;  
 
-if (mysqli_connect_errno()) {
-    exit("Failed to connect to the database: " . mysqli_connect_error());
-};
+// if (mysqli_connect_errno()) {
+//     exit("Failed to connect to the database: " . mysqli_connect_error());
+// };
 
-$query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_dir2`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email, ci.coauthor1_first_name, ci.coauthor1_middle_initial, ci.coauthor1_surname, ci.coauthor1_name_ext, ci.coauthor1_email, ci.coauthor2_first_name, ci.coauthor2_middle_initial, ci.coauthor2_surname, ci.coauthor2_name_ext, ci.coauthor2_email, ci.coauthor3_first_name, ci.coauthor3_middle_initial, ci.coauthor3_surname, ci.coauthor3_name_ext, ci.coauthor3_email, ci.coauthor4_first_name, ci.coauthor4_middle_initial, ci.coauthor4_surname, ci.coauthor4_name_ext, ci.coauthor4_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
+// $query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_dir2`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email, ci.coauthor1_first_name, ci.coauthor1_middle_initial, ci.coauthor1_surname, ci.coauthor1_name_ext, ci.coauthor1_email, ci.coauthor2_first_name, ci.coauthor2_middle_initial, ci.coauthor2_surname, ci.coauthor2_name_ext, ci.coauthor2_email, ci.coauthor3_first_name, ci.coauthor3_middle_initial, ci.coauthor3_surname, ci.coauthor3_name_ext, ci.coauthor3_email, ci.coauthor4_first_name, ci.coauthor4_middle_initial, ci.coauthor4_surname, ci.coauthor4_name_ext, ci.coauthor4_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
 
-if(isset($_POST['title_query']) && $_POST['title_query']!=''){
-    $search = " AND (ri.research_title LIKE '%{$_POST["title_query"]}%' OR ji.journal_title LIKE '%{$_POST["title_query"]}%' OR ii.infographic_title LIKE '%{$_POST["title_query"]}%')";
-    $query .= $search;
-}
-if(isset($_POST['publication_year'])){
-    $year = " AND (";
-    foreach($_POST['publication_year'] as $key => $value){
-        $year .= "ri.publication_year = $value OR ii.infographic_publication_year = $value";
-        if ($key < count($_POST['publication_year'])-1){
-            $year .= " OR ";
-        }
-    }
-    $year .= ") ";
-    $query .= $year;
-}
-if(isset($_POST['resource_type'])){
-    $resource_type = " AND (";
-    foreach($_POST['resource_type'] as $key => $value){
-        $resource_type .= "fi.file_type LIKE '$value' OR ri.resource_type LIKE '$value'";
-        if ($key < count($_POST['resource_type'])-1){
-            $resource_type .= " OR ";
-        }
-    }
-    $resource_type .= ") ";
-    $query .= $resource_type;
-}
-if(isset($_POST['research_field'])){
-    $research_field = " AND (";
-    foreach($_POST['research_field'] as $key => $value){
-        $research_field .= "ri.research_fields LIKE '%$value%'";
-        if ($key < count($_POST['research_field'])-1){
-            $research_field .= " OR ";
-        }
-    }
-    $research_field .= ") ";
-    $query .= $research_field;
-}
-if(isset($_POST['resource_unit'])){
-    $resource_unit = " AND (";
-    foreach($_POST['resource_unit'] as $key => $value){
-        $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%' OR ii.infographic_research_unit LIKE '%$value%'";
-        if ($key < count($_POST['resource_unit'])-1){
-            $resource_unit .= " OR ";
-        }
-    }
-    $resource_unit .= ") ";
-    $query .= $resource_unit;
-}
+// if(isset($_POST['title_query']) && $_POST['title_query']!=''){
+//     $search = " AND (ri.research_title LIKE '%{$_POST["title_query"]}%' OR ji.journal_title LIKE '%{$_POST["title_query"]}%' OR ii.infographic_title LIKE '%{$_POST["title_query"]}%')";
+//     $query .= $search;
+// }
+// if(isset($_POST['publication_year'])){
+//     $year = " AND (";
+//     foreach($_POST['publication_year'] as $key => $value){
+//         $year .= "ri.publication_year = $value OR ii.infographic_publication_year = $value";
+//         if ($key < count($_POST['publication_year'])-1){
+//             $year .= " OR ";
+//         }
+//     }
+//     $year .= ") ";
+//     $query .= $year;
+// }
+// if(isset($_POST['resource_type'])){
+//     $resource_type = " AND (";
+//     foreach($_POST['resource_type'] as $key => $value){
+//         $resource_type .= "fi.file_type LIKE '$value' OR ri.resource_type LIKE '$value'";
+//         if ($key < count($_POST['resource_type'])-1){
+//             $resource_type .= " OR ";
+//         }
+//     }
+//     $resource_type .= ") ";
+//     $query .= $resource_type;
+// }
+// if(isset($_POST['research_field'])){
+//     $research_field = " AND (";
+//     foreach($_POST['research_field'] as $key => $value){
+//         $research_field .= "ri.research_fields LIKE '%$value%'";
+//         if ($key < count($_POST['research_field'])-1){
+//             $research_field .= " OR ";
+//         }
+//     }
+//     $research_field .= ") ";
+//     $query .= $research_field;
+// }
+// if(isset($_POST['resource_unit'])){
+//     $resource_unit = " AND (";
+//     foreach($_POST['resource_unit'] as $key => $value){
+//         $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%' OR ii.infographic_research_unit LIKE '%$value%'";
+//         if ($key < count($_POST['resource_unit'])-1){
+//             $resource_unit .= " OR ";
+//         }
+//     }
+//     $resource_unit .= ") ";
+//     $query .= $resource_unit;
+// }
 
-$statement = $connection->prepare($query);
-$statement->execute();
-$result = $statement->get_result();
-$total_rows = mysqli_num_rows($result);
-$statement->close();
+// $statement = $connection->prepare($query);
+// $statement->execute();
+// $result = $statement->get_result();
+// $total_rows = mysqli_num_rows($result);
+// $statement->close();
 
-$total_pages = ceil($total_rows/$results_per_page);
+// $total_pages = ceil($total_rows/$results_per_page);
 
-$statement = $connection->prepare($query." ORDER BY fi.file_id ASC LIMIT ?, ?");
-$statement->bind_param("ii",$offset,$results_per_page);
-$statement->execute();
-$result = $statement->get_result();
-$published = $result->fetch_all(MYSQLI_ASSOC);
-$statement->close();
+// $statement = $connection->prepare($query." ORDER BY fi.file_id ASC LIMIT ?, ?");
+// $statement->bind_param("ii",$offset,$results_per_page);
+// $statement->execute();
+// $result = $statement->get_result();
+// $published = $result->fetch_all(MYSQLI_ASSOC);
+// $statement->close();
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/repository-style.css');

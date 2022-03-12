@@ -46,8 +46,11 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     $statement->close();
                 }
-                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status= ? WHERE file_id = ?");
-                    $statement->bind_param("iisi",$fileOneShown,$fileTwoShown,$fileStatus,$_POST['fileId']);
+                if($fileStatus == 'published'){
+                    $published_on = date('Y-m-d H:i:s');
+                }
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status= ?, published_on = ? WHERE file_id = ?");
+                    $statement->bind_param("iissi",$fileOneShown,$fileTwoShown,$fileStatus, $published_on,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
 
@@ -102,8 +105,11 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     $statement->close();
                 }
-                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status= ? WHERE file_id = ?");
-                    $statement->bind_param("iisi",$fileOneShown,$fileTwoShown,$fileStatus,$_POST['fileId']);
+                if($fileStatus == 'published'){
+                    $published_on = date('Y-m-d H:i:s');
+                }
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status= ?, published_on = ? WHERE file_id = ?");
+                    $statement->bind_param("iissi",$fileOneShown,$fileTwoShown,$fileStatus,$published_on,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 
@@ -142,10 +148,13 @@ if (isset($_SESSION['userType'])) {
                     $statement->bind_param("iss",$_POST['fileId'],$_POST['textAreaFeedbackInfographics'],$returned);
                     $statement->execute();
                     $statement->close();
-               }
-               
-                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, status= ? WHERE file_id = ?");
-                    $statement->bind_param("isi",$fileOneShown,$fileStatus,$_POST['fileId']);
+                }
+                if($fileStatus == 'published'){
+                    $published_on = date('Y-m-d H:i:s');
+                }
+
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, status= ?, published_on = ? WHERE file_id = ?");
+                    $statement->bind_param("issi",$fileOneShown,$fileStatus,$published_on,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                
