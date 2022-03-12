@@ -60,6 +60,7 @@ function submitData() {
 }
 
 function loadData(data) {
+  console.table(data);
   $("#results-container").html("");
   data.forEach((result) => {
     if (result["status"] == "pending") {
