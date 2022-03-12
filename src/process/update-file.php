@@ -64,15 +64,28 @@ if (isset($_SESSION['userType'])) {
         else if($file['file_type']==="journal"){
             $connection -> begin_transaction();
             try{
+                $fileStatus = 'published'; //only admin can access this so direct publish it
+                if(isset($_POST['file1Shown'])){
+                    $fileOneShown = 1;
+                }
+                else if(!isset($_POST['file1Shown'])){
+                    $fileOneShown = 0;
+                }
+                if(isset($_POST['file2Shown'])){
+                    $fileTwoShown = 1;
+                }
+                else if(!isset($_POST['file2Shown'])){
+                    $fileTwoShown = 0;
+                }
                 if(isset($_POST["needsRevision"])){
-                    $statement = $connection->prepare("UPDATE `file_information` SET status='for revision', feedback = ? WHERE file_id = ?");
-                    $statement->bind_param("si",$_POST['textAreaFeedbackJournal'],$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status='for revision', feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("iisi",$fileOneShown,$fileTwoShown,$_POST['textAreaFeedbackJournal'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }
                 else{
-                    $statement = $connection->prepare("UPDATE `file_information` SET status='published', feedback = '' WHERE file_id = ?");
-                    $statement->bind_param("i",$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status='published', feedback = '' WHERE file_id = ?");
+                    $statement->bind_param("iii",$fileOneShown,$fileTwoShown, $_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                 }
@@ -105,8 +118,8 @@ if (isset($_SESSION['userType'])) {
                 }
                 if(isset($_POST["needsRevision"])){
                     $fileStatus = 'for revision';
-                    $statement = $connection->prepare("UPDATE `file_information` SET status= ?, feedback = ? WHERE file_id = ?");
-                    $statement->bind_param("ssi",$fileStatus,$_POST['textAreaFeedbackInfographics'],$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, status= ?, feedback = ? WHERE file_id = ?");
+                    $statement->bind_param("issi",$fileOneShown,$fileStatus,$_POST['textAreaFeedbackInfographics'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
                }

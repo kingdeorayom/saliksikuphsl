@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
     <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
