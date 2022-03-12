@@ -107,7 +107,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
 
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="copyrightPoliciesPanel">
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="copyrightPoliciesPanel" hidden>
 
                     <h1 class="my-2">Copyright & Policies</h1>
                     <hr>
@@ -141,7 +141,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
         $(document).ready(function() {
 
             /* on load */
-            $("#copyrightPoliciesPanel").hide();
             $("#aboutRepositoryText").css({
                 "border-bottom": "thick solid #012265",
             });
@@ -149,12 +148,12 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
 
             $("#aboutRepositoryText").click(function() {
 
-                $("#copyrightPoliciesPanel").hide();
+                $("#copyrightPoliciesPanel").prop('hidden', true);
                 $("#copyrightPoliciesText").css({
                     "border-bottom": "thick none #012265",
                 });
 
-                $("#aboutRepositoryPanel").show();
+                $("#aboutRepositoryPanel").prop('hidden', false);
                 $("#aboutRepositoryText").css({
                     "border-bottom": "thick solid #012265",
                 });
@@ -163,12 +162,12 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
 
             $("#copyrightPoliciesText").click(function() {
 
-                $("#copyrightPoliciesPanel").show();
+                $("#copyrightPoliciesPanel").prop('hidden', false);
                 $("#copyrightPoliciesText").css({
                     "border-bottom": "thick solid #012265",
                 });
 
-                $("#aboutRepositoryPanel").hide();
+                $("#aboutRepositoryPanel").prop('hidden', true);
                 $("#aboutRepositoryText").css({
                     "border-bottom": "thick none #012265",
                 });

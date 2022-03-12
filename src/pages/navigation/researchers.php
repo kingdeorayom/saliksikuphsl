@@ -93,7 +93,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="juniorResearchersPanel">
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="juniorResearchersPanel" hidden>
                     <h1 class="my-2">Junior Researchers</h1>
                     <hr>
 
@@ -116,7 +116,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="juniorAssociatePanel">
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="juniorAssociatePanel" hidden>
                     <h1 class="my-2">Junior Associate Researchers</h1>
                     <hr>
 
@@ -139,7 +139,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="novicePanel">
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="novicePanel" hidden>
                     <h1 class="my-2">Novice Researchers</h1>
                     <hr>
 
@@ -171,18 +171,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
     <script>
         $(document).ready(function() {
             /* on load */
-            $("#juniorResearchersPanel").hide();
-            $("#juniorAssociatePanel").hide();
-            $("#novicePanel").hide();
             $("#seniorResearchersText").css({
                 "border-bottom": "thick solid #012265",
             });
             /* on load */
-
             $("#seniorResearchersText").click(function() {
-                $("#juniorResearchersPanel").hide();
-                $("#juniorAssociatePanel").hide();
-                $("#novicePanel").hide();
+                $("#seniorResearchersPanel").prop('hidden', false);
+                $("#juniorResearchersPanel").prop('hidden', true);
+                $("#juniorAssociatePanel").prop('hidden', true);
+                $("#novicePanel").prop('hidden', true);
+                $("#seniorResearchersText").css({
+                    "border-bottom": "thick solid #012265",
+                });
                 $("#juniorResearchersText").css({
                     "border-bottom": "thick none #012265",
                 });
@@ -191,19 +191,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 });
                 $("#noviceText").css({
                     "border-bottom": "thick none #012265",
-                });
-                $("#seniorResearchersPanel").show();
-                $("#seniorResearchersText").css({
-                    "border-bottom": "thick solid #012265",
                 });
             });
 
             $("#juniorResearchersText").click(function() {
-                $("#seniorResearchersPanel").hide();
-                $("#juniorAssociatePanel").hide();
-                $("#novicePanel").hide();
+                $("#seniorResearchersPanel").prop('hidden', true);
+                $("#juniorResearchersPanel").prop('hidden', false);
+                $("#juniorAssociatePanel").prop('hidden', true);
+                $("#novicePanel").prop('hidden', true);
                 $("#seniorResearchersText").css({
                     "border-bottom": "thick none #012265",
+                });
+                $("#juniorResearchersText").css({
+                    "border-bottom": "thick solid #012265",
                 });
                 $("#juniorAssociateText").css({
                     "border-bottom": "thick none #012265",
@@ -211,35 +211,32 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 $("#noviceText").css({
                     "border-bottom": "thick none #012265",
                 });
-                $("#juniorResearchersPanel").show();
-                $("#juniorResearchersText").css({
-                    "border-bottom": "thick solid #012265",
-                });
-            });
 
+            });
             $("#juniorAssociateText").click(function() {
-                $("#seniorResearchersPanel").hide();
-                $("#juniorResearchersPanel").hide();
-                $("#novicePanel").hide();
+                $("#seniorResearchersPanel").prop('hidden', true);
+                $("#juniorResearchersPanel").prop('hidden', true);
+                $("#juniorAssociatePanel").prop('hidden', false);
+                $("#novicePanel").prop('hidden', true);
                 $("#seniorResearchersText").css({
                     "border-bottom": "thick none #012265",
                 });
                 $("#juniorResearchersText").css({
                     "border-bottom": "thick none #012265",
+                });
+                $("#juniorAssociateText").css({
+                    "border-bottom": "thick solid #012265",
                 });
                 $("#noviceText").css({
                     "border-bottom": "thick none #012265",
                 });
-                $("#juniorAssociatePanel").show();
-                $("#juniorAssociateText").css({
-                    "border-bottom": "thick solid #012265",
-                });
-            });
 
+            });
             $("#noviceText").click(function() {
-                $("#seniorResearchersPanel").hide();
-                $("#juniorResearchersPanel").hide();
-                $("#juniorAssociatePanel").hide();
+                $("#seniorResearchersPanel").prop('hidden', true);
+                $("#juniorResearchersPanel").prop('hidden', true);
+                $("#juniorAssociatePanel").prop('hidden', true);
+                $("#novicePanel").prop('hidden', false);
                 $("#seniorResearchersText").css({
                     "border-bottom": "thick none #012265",
                 });
@@ -249,7 +246,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 $("#juniorAssociateText").css({
                     "border-bottom": "thick none #012265",
                 });
-                $("#novicePanel").show();
                 $("#noviceText").css({
                     "border-bottom": "thick solid #012265",
                 });
@@ -257,9 +253,13 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
             $('#dropdownShowResearchersOption').on('change', function() {
                 if (this.value == 'sr') {
-                    $("#juniorResearchersPanel").hide();
-                    $("#juniorAssociatePanel").hide();
-                    $("#novicePanel").hide();
+                    $("#seniorResearchersPanel").prop('hidden', false);
+                    $("#juniorResearchersPanel").prop('hidden', true);
+                    $("#juniorAssociatePanel").prop('hidden', true);
+                    $("#novicePanel").prop('hidden', true);
+                    $("#seniorResearchersText").css({
+                        "border-bottom": "thick solid #012265",
+                    });
                     $("#juniorResearchersText").css({
                         "border-bottom": "thick none #012265",
                     });
@@ -268,49 +268,46 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     });
                     $("#noviceText").css({
                         "border-bottom": "thick none #012265",
-                    });
-                    $("#seniorResearchersPanel").show();
-                    $("#seniorResearchersText").css({
-                        "border-bottom": "thick solid #012265",
                     });
                 } else if (this.value == 'jr') {
-                    $("#seniorResearchersPanel").hide();
-                    $("#juniorAssociatePanel").hide();
-                    $("#novicePanel").hide();
+                    $("#seniorResearchersPanel").prop('hidden', true);
+                    $("#juniorResearchersPanel").prop('hidden', false);
+                    $("#juniorAssociatePanel").prop('hidden', true);
+                    $("#novicePanel").prop('hidden', true);
                     $("#seniorResearchersText").css({
                         "border-bottom": "thick none #012265",
+                    });
+                    $("#juniorResearchersText").css({
+                        "border-bottom": "thick solid #012265",
                     });
                     $("#juniorAssociateText").css({
                         "border-bottom": "thick none #012265",
                     });
                     $("#noviceText").css({
                         "border-bottom": "thick none #012265",
-                    });
-                    $("#juniorResearchersPanel").show();
-                    $("#juniorResearchersText").css({
-                        "border-bottom": "thick solid #012265",
                     });
                 } else if (this.value == 'jra') {
-                    $("#seniorResearchersPanel").hide();
-                    $("#juniorResearchersPanel").hide();
-                    $("#novicePanel").hide();
+                    $("#seniorResearchersPanel").prop('hidden', true);
+                    $("#juniorResearchersPanel").prop('hidden', true);
+                    $("#juniorAssociatePanel").prop('hidden', false);
+                    $("#novicePanel").prop('hidden', true);
                     $("#seniorResearchersText").css({
                         "border-bottom": "thick none #012265",
                     });
                     $("#juniorResearchersText").css({
                         "border-bottom": "thick none #012265",
+                    });
+                    $("#juniorAssociateText").css({
+                        "border-bottom": "thick solid #012265",
                     });
                     $("#noviceText").css({
                         "border-bottom": "thick none #012265",
                     });
-                    $("#juniorAssociatePanel").show();
-                    $("#juniorAssociateText").css({
-                        "border-bottom": "thick solid #012265",
-                    });
                 } else if (this.value == 'nr') {
-                    $("#seniorResearchersPanel").hide();
-                    $("#juniorResearchersPanel").hide();
-                    $("#juniorAssociatePanel").hide();
+                    $("#seniorResearchersPanel").prop('hidden', true);
+                    $("#juniorResearchersPanel").prop('hidden', true);
+                    $("#juniorAssociatePanel").prop('hidden', true);
+                    $("#novicePanel").prop('hidden', false);
                     $("#seniorResearchersText").css({
                         "border-bottom": "thick none #012265",
                     });
@@ -320,7 +317,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     $("#juniorAssociateText").css({
                         "border-bottom": "thick none #012265",
                     });
-                    $("#novicePanel").show();
                     $("#noviceText").css({
                         "border-bottom": "thick solid #012265",
                     });
