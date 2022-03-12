@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_SESSION['isLoggedIn'])) {
+    header("Location: ../navigation/home.php");
+    die();
+}
+
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
 
