@@ -10,10 +10,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']; ?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_at']; ?></p>
     <hr>
 </div>
 <div class="row">
@@ -22,10 +22,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <h5>Submission Details</h5>
         <hr>
         <p class="side-menu-text">Submitted by:</p>
-        <p class="side-menu-text" name="author-submitted">Juan Dela Cruz</p>
+        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']; ?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text" name="date-submitted">2021-11-17 08:52:03</p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_at']; ?></p>
         <hr>
     </div>
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
@@ -490,13 +490,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col">
                     <label class="my-2">File1.pdf</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
                     <label class="my-2">File2.pdf</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo"  name='file2Shown' <?php if($fileInfo['file2_shown']){echo 'checked';} ?>>
+                        <label class="form-check-label" for="flexSwitchCheckDefaultTwo">Show in Repository</label>
                     </div>
                 </div>
             </div>

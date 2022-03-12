@@ -77,7 +77,7 @@ export function revisionThesisTemplate(result) {
             <h4 class="mb-3">${result.research_title}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} 08:52:03</p>
+            <p><span class="fw-bold">Returned on:</span> ${result.returned_on}</p>
         </div>
         <div class="row mb-3">
             <div class="col">
@@ -106,7 +106,7 @@ export function revisionInfographicTemplate(result) {
             <h4 class="mb-3">${result.infographic_title}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${result.infographic_publication_year}-${result.infographic_publication_month}-${result.infographic_publication_day} 08:52:03</p>
+            <p><span class="fw-bold">Returned on:</span> ${result.returned_on}</p>
         </div>
         <div class="row mb-3">
             <div class="col">
@@ -134,7 +134,9 @@ export function revisionJournalTemplate(result) {
                 <h4 class="">${result.journal_title}</h4>
                   <h5 class="mb-3">${result.journal_subtitle}</h5>
             </div>
-            
+            <div class="row">
+            <p><span class="fw-bold">Returned on:</span> ${result.returned_on}</p>
+            </div>
             <div class="row mb-3">
                 <div class="col">
                     <div class="feedback border bg-white p-1">
