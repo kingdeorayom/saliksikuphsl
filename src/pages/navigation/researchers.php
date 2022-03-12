@@ -177,148 +177,83 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             /* on load */
             $("#seniorResearchersText").click(function() {
                 $("#seniorResearchersPanel").prop('hidden', false);
-                $("#juniorResearchersPanel").prop('hidden', true);
-                $("#juniorAssociatePanel").prop('hidden', true);
-                $("#novicePanel").prop('hidden', true);
+                $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
                 $("#seniorResearchersText").css({
                     "border-bottom": "thick solid #012265",
                 });
-                $("#juniorResearchersText").css({
-                    "border-bottom": "thick none #012265",
-                });
-                $("#juniorAssociateText").css({
-                    "border-bottom": "thick none #012265",
-                });
-                $("#noviceText").css({
+                $("#juniorResearchersText, #juniorAssociateText, #noviceText").css({
                     "border-bottom": "thick none #012265",
                 });
             });
 
             $("#juniorResearchersText").click(function() {
-                $("#seniorResearchersPanel").prop('hidden', true);
                 $("#juniorResearchersPanel").prop('hidden', false);
-                $("#juniorAssociatePanel").prop('hidden', true);
-                $("#novicePanel").prop('hidden', true);
-                $("#seniorResearchersText").css({
-                    "border-bottom": "thick none #012265",
-                });
+                $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
                 $("#juniorResearchersText").css({
                     "border-bottom": "thick solid #012265",
                 });
-                $("#juniorAssociateText").css({
+                $("#seniorResearchersText, #juniorAssociateText, #noviceText").css({
                     "border-bottom": "thick none #012265",
                 });
-                $("#noviceText").css({
-                    "border-bottom": "thick none #012265",
-                });
-
             });
+
             $("#juniorAssociateText").click(function() {
-                $("#seniorResearchersPanel").prop('hidden', true);
-                $("#juniorResearchersPanel").prop('hidden', true);
                 $("#juniorAssociatePanel").prop('hidden', false);
-                $("#novicePanel").prop('hidden', true);
-                $("#seniorResearchersText").css({
-                    "border-bottom": "thick none #012265",
-                });
-                $("#juniorResearchersText").css({
-                    "border-bottom": "thick none #012265",
-                });
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel").prop('hidden', true);
                 $("#juniorAssociateText").css({
                     "border-bottom": "thick solid #012265",
                 });
-                $("#noviceText").css({
+                $("#seniorResearchersText, #juniorResearchersText, #noviceText").css({
                     "border-bottom": "thick none #012265",
                 });
-
             });
             $("#noviceText").click(function() {
-                $("#seniorResearchersPanel").prop('hidden', true);
-                $("#juniorResearchersPanel").prop('hidden', true);
-                $("#juniorAssociatePanel").prop('hidden', true);
                 $("#novicePanel").prop('hidden', false);
-                $("#seniorResearchersText").css({
-                    "border-bottom": "thick none #012265",
-                });
-                $("#juniorResearchersText").css({
-                    "border-bottom": "thick none #012265",
-                });
-                $("#juniorAssociateText").css({
-                    "border-bottom": "thick none #012265",
-                });
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel").prop('hidden', true);
                 $("#noviceText").css({
                     "border-bottom": "thick solid #012265",
+                });
+                $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
+                    "border-bottom": "thick none #012265",
                 });
             });
 
             $('#dropdownShowResearchersOption').on('change', function() {
                 if (this.value == 'sr') {
                     $("#seniorResearchersPanel").prop('hidden', false);
-                    $("#juniorResearchersPanel").prop('hidden', true);
-                    $("#juniorAssociatePanel").prop('hidden', true);
-                    $("#novicePanel").prop('hidden', true);
+                    $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
                     $("#seniorResearchersText").css({
                         "border-bottom": "thick solid #012265",
                     });
-                    $("#juniorResearchersText").css({
-                        "border-bottom": "thick none #012265",
-                    });
-                    $("#juniorAssociateText").css({
-                        "border-bottom": "thick none #012265",
-                    });
-                    $("#noviceText").css({
+                    $("#juniorResearchersText, #juniorAssociateText, #noviceText").css({
                         "border-bottom": "thick none #012265",
                     });
                 } else if (this.value == 'jr') {
-                    $("#seniorResearchersPanel").prop('hidden', true);
                     $("#juniorResearchersPanel").prop('hidden', false);
-                    $("#juniorAssociatePanel").prop('hidden', true);
-                    $("#novicePanel").prop('hidden', true);
-                    $("#seniorResearchersText").css({
-                        "border-bottom": "thick none #012265",
-                    });
+                    $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
                     $("#juniorResearchersText").css({
                         "border-bottom": "thick solid #012265",
                     });
-                    $("#juniorAssociateText").css({
-                        "border-bottom": "thick none #012265",
-                    });
-                    $("#noviceText").css({
+                    $("#seniorResearchersText, #juniorAssociateText, #noviceText").css({
                         "border-bottom": "thick none #012265",
                     });
                 } else if (this.value == 'jra') {
-                    $("#seniorResearchersPanel").prop('hidden', true);
-                    $("#juniorResearchersPanel").prop('hidden', true);
                     $("#juniorAssociatePanel").prop('hidden', false);
-                    $("#novicePanel").prop('hidden', true);
-                    $("#seniorResearchersText").css({
-                        "border-bottom": "thick none #012265",
-                    });
-                    $("#juniorResearchersText").css({
-                        "border-bottom": "thick none #012265",
-                    });
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel").prop('hidden', true);
                     $("#juniorAssociateText").css({
                         "border-bottom": "thick solid #012265",
                     });
-                    $("#noviceText").css({
+                    $("#seniorResearchersText, #juniorResearchersText, #noviceText").css({
                         "border-bottom": "thick none #012265",
                     });
                 } else if (this.value == 'nr') {
-                    $("#seniorResearchersPanel").prop('hidden', true);
-                    $("#juniorResearchersPanel").prop('hidden', true);
-                    $("#juniorAssociatePanel").prop('hidden', true);
                     $("#novicePanel").prop('hidden', false);
-                    $("#seniorResearchersText").css({
-                        "border-bottom": "thick none #012265",
-                    });
-                    $("#juniorResearchersText").css({
-                        "border-bottom": "thick none #012265",
-                    });
-                    $("#juniorAssociateText").css({
-                        "border-bottom": "thick none #012265",
-                    });
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel").prop('hidden', true);
                     $("#noviceText").css({
                         "border-bottom": "thick solid #012265",
+                    });
+                    $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
+                        "border-bottom": "thick none #012265",
                     });
                 }
             });

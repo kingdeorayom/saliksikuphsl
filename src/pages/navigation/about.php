@@ -139,39 +139,30 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
 
     <script>
         $(document).ready(function() {
-
             /* on load */
             $("#aboutRepositoryText").css({
                 "border-bottom": "thick solid #012265",
             });
             /* on load */
-
             $("#aboutRepositoryText").click(function() {
-
                 $("#copyrightPoliciesPanel").prop('hidden', true);
                 $("#copyrightPoliciesText").css({
                     "border-bottom": "thick none #012265",
                 });
-
                 $("#aboutRepositoryPanel").prop('hidden', false);
                 $("#aboutRepositoryText").css({
                     "border-bottom": "thick solid #012265",
                 });
-
             });
-
             $("#copyrightPoliciesText").click(function() {
-
                 $("#copyrightPoliciesPanel").prop('hidden', false);
                 $("#copyrightPoliciesText").css({
                     "border-bottom": "thick solid #012265",
                 });
-
                 $("#aboutRepositoryPanel").prop('hidden', true);
                 $("#aboutRepositoryText").css({
                     "border-bottom": "thick none #012265",
                 });
-
             });
         });
     </script>

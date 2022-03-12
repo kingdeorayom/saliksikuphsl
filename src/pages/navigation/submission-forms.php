@@ -31,7 +31,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
 </head>
 
 
-<body onload="document.getElementById('researchJournalPanel').style.display = 'none'; document.getElementById('infographicsPanel').style.display='none'; document.getElementById('co-author-1-td-panel').style.display = 'none'; document.getElementById('co-author-2-td-panel').style.display = 'none'; document.getElementById('co-author-3-td-panel').style.display = 'none'; document.getElementById('co-author-4-td-panel').style.display = 'none'; document.getElementById('co-author-1-info-panel').style.display = 'none'; document.getElementById('co-author-2-info-panel').style.display = 'none'; document.getElementById('co-author-3-info-panel').style.display = 'none'; document.getElementById('co-author-4-info-panel').style.display = 'none'; document.getElementById('thesisDissertationText').style.borderBottom = 'thick solid #012265';">
+<body>
 
     <!--Header and Navigation section-->
 
@@ -58,16 +58,16 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 <div class="m-2">
                     <p class="fw-bold">What are you going to submit?</p>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="thesisDissertationPanelClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                        <label class="form-check-label" for="flexRadioDefault1">Thesis/Dissertation</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonThesis" checked>
+                        <label class="form-check-label" for="radioButtonThesis">Thesis/Dissertation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="researchJournalPanelClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">Research Journal</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonJournal">
+                        <label class="form-check-label" for="radioButtonJournal">Research Journal</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" onclick="infographicsPanelClicked();" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                        <label class="form-check-label" for="flexRadioDefault3">Infographics</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonInfographic">
+                        <label class="form-check-label" for="radioButtonInfographic">Infographics</label>
                     </div>
                 </div>';
                 }
@@ -78,14 +78,14 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" onclick="thesisDissertationPanelClicked()" id="thesisDissertationText">Thesis/Dissertation</p>
+                    <p class="side-menu-text" id="thesisDissertationText">Thesis/Dissertation</p>
                     <hr>
                     <?php
                     if ($_SESSION['userType'] === "admin") {
                         echo '
-                        <p class="side-menu-text" onclick="researchJournalPanelClicked()" id="researchJournalText">Research Journal</p>
+                        <p class="side-menu-text" id="researchJournalText">Research Journal</p>
                         <hr>
-                        <p class="side-menu-text" onclick="infographicsPanelClicked()" id="infographicsText">Infographics</p>
+                        <p class="side-menu-text" id="infographicsText">Infographics</p>
                         <hr>
                     ';
                     }
@@ -103,126 +103,94 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
     <?php include_once '../../layouts/general/footer.php' ?>
 
     <script>
-        function thesisDissertationPanelClicked() {
-            document.getElementById("thesisDissertationPanel").style.display = "block";
-            document.getElementById("researchJournalPanel").style.display = "none";
-            document.getElementById("infographicsPanel").style.display = "none";
+        $(document).ready(function() {
 
-            document.getElementById("thesisDissertationText").style.borderBottom = "thick solid #012265";
-            document.getElementById("researchJournalText").style.borderBottom = "thick none #012265";
-            document.getElementById("infographicsText").style.borderBottom = "thick none #012265";
-        }
+            /* on load */
+            $("#thesisDissertationText").css({
+                "border-bottom": "thick solid #012265",
+            });
 
-        function researchJournalPanelClicked() {
-            document.getElementById("researchJournalPanel").style.display = "block";
-            document.getElementById("thesisDissertationPanel").style.display = "none";
-            document.getElementById("infographicsPanel").style.display = "none";
+            $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel, #co-author-1-info-panel, #co-author-2-info-panel, #co-author-3-info-panel, #co-author-4-info-panel").css('display', 'none');
+            /* on load */
 
-            document.getElementById("thesisDissertationText").style.borderBottom = "thick none #012265";
-            document.getElementById("infographicsText").style.borderBottom = "thick none #012265";
-            document.getElementById("researchJournalText").style.borderBottom = "thick solid #012265";
-        }
+            $("#thesisDissertationText, #radioButtonThesis").click(function() {
+                $("#thesisDissertationPanel").prop('hidden', false);
+                $("#researchJournalPanel, #infographicsPanel").prop('hidden', true);
+                $("#thesisDissertationText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#researchJournalText, #infographicsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
 
-        function infographicsPanelClicked() {
-            document.getElementById("infographicsPanel").style.display = "block";
-            document.getElementById("researchJournalPanel").style.display = "none";
-            document.getElementById("thesisDissertationPanel").style.display = "none";
+            $("#researchJournalText, #radioButtonJournal").click(function() {
+                $("#researchJournalPanel").prop('hidden', false);
+                $("#thesisDissertationPanel, #infographicsPanel").prop('hidden', true);
+                $("#researchJournalText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#thesisDissertationText, #infographicsText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
 
-            document.getElementById("thesisDissertationText").style.borderBottom = "thick none #012265";
-            document.getElementById("researchJournalText").style.borderBottom = "thick none #012265";
-            document.getElementById("infographicsText").style.borderBottom = "thick solid #012265";
-        }
+            $("#infographicsText, #radioButtonInfographic").click(function() {
+                $("#infographicsPanel").prop('hidden', false);
+                $("#thesisDissertationPanel, #researchJournalPanel").prop('hidden', true);
+                $("#infographicsText").css({
+                    "border-bottom": "thick solid #012265",
+                });
+                $("#thesisDissertationText, #researchJournalText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
 
-        function showThesisDissertationCoAuthorsField() {
-            var x = document.getElementById("dropdownThesisDissertationCoAuthors").value;
+            $("#checkBoxAgreeThesis").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#submitResearchDissertationButton").prop('disabled', false);
+                } else {
+                    $("#submitResearchDissertationButton").prop('disabled', true);
+                }
+            });
 
-            if (x == 1) {
-                document.getElementById("co-author-1-td-panel").style.display = "flex";
-                document.getElementById("co-author-2-td-panel").style.display = "none";
-                document.getElementById("co-author-3-td-panel").style.display = "none";
-                document.getElementById("co-author-4-td-panel").style.display = "none";
-            } else if (x == 2) {
-                document.getElementById("co-author-1-td-panel").style.display = "flex";
-                document.getElementById("co-author-2-td-panel").style.display = "flex";
-                document.getElementById("co-author-3-td-panel").style.display = "none";
-                document.getElementById("co-author-4-td-panel").style.display = "none";
-            } else if (x == 3) {
-                document.getElementById("co-author-1-td-panel").style.display = "flex";
-                document.getElementById("co-author-2-td-panel").style.display = "flex";
-                document.getElementById("co-author-3-td-panel").style.display = "flex";
-                document.getElementById("co-author-4-td-panel").style.display = "none";
-            } else if (x == 4) {
-                document.getElementById("co-author-1-td-panel").style.display = "flex";
-                document.getElementById("co-author-2-td-panel").style.display = "flex";
-                document.getElementById("co-author-3-td-panel").style.display = "flex";
-                document.getElementById("co-author-4-td-panel").style.display = "flex";
-            } else if (x == 0) {
-                document.getElementById("co-author-1-td-panel").style.display = "none";
-                document.getElementById("co-author-2-td-panel").style.display = "none";
-                document.getElementById("co-author-3-td-panel").style.display = "none";
-                document.getElementById("co-author-4-td-panel").style.display = "none";
-            }
-        }
+            $('#dropdownThesisDissertationCoAuthors').on('change', function() {
+                if (this.value == 1) {
+                    $("#co-author-1-td-panel").css('display', 'flex');
+                    $("#co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel").css('display', 'none');
+                } else if (this.value == 2) {
+                    $("#co-author-1-td-panel, #co-author-2-td-panel").css('display', 'flex');
+                    $("#co-author-3-td-panel, #co-author-4-td-panel").css('display', 'none');
+                } else if (this.value == 3) {
+                    $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel").css('display', 'flex');
+                    $("#co-author-4-td-panel").css('display', 'none');
+                } else if (this.value == 4) {
+                    $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel").css('display', 'flex');
+                } else if (this.value == 0) {
+                    $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel").css('display', 'none');
+                }
+            });
 
-        function showInfographicsCoAuthorsField() {
-            var y = document.getElementById("dropdownInfographicsCoAuthors").value;
-
-            if (y == 1) {
-                document.getElementById("co-author-1-info-panel").style.display = "flex";
-                document.getElementById("co-author-2-info-panel").style.display = "none";
-                document.getElementById("co-author-3-info-panel").style.display = "none";
-                document.getElementById("co-author-4-info-panel").style.display = "none";
-            } else if (y == 2) {
-                document.getElementById("co-author-1-info-panel").style.display = "flex";
-                document.getElementById("co-author-2-info-panel").style.display = "flex";
-                document.getElementById("co-author-3-info-panel").style.display = "none";
-                document.getElementById("co-author-4-info-panel").style.display = "none";
-            } else if (y == 3) {
-                document.getElementById("co-author-1-info-panel").style.display = "flex";
-                document.getElementById("co-author-2-info-panel").style.display = "flex";
-                document.getElementById("co-author-3-info-panel").style.display = "flex";
-                document.getElementById("co-author-4-info-panel").style.display = "none";
-            } else if (y == 4) {
-                document.getElementById("co-author-1-info-panel").style.display = "flex";
-                document.getElementById("co-author-2-info-panel").style.display = "flex";
-                document.getElementById("co-author-3-info-panel").style.display = "flex";
-                document.getElementById("co-author-4-info-panel").style.display = "flex";
-            } else if (y == 0) {
-                document.getElementById("co-author-1-info-panel").style.display = "none";
-                document.getElementById("co-author-2-info-panel").style.display = "none";
-                document.getElementById("co-author-3-info-panel").style.display = "none";
-                document.getElementById("co-author-4-info-panel").style.display = "none";
-            }
-        }
-
-        function enableDisableSubmitButtonThesis(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("submitResearchDissertationButton").disabled = false;
-            } else {
-                document.getElementById("submitResearchDissertationButton").disabled = true;
-            }
-        }
-
-        function enableDisableSubmitButtonJournal(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("submitJournalButton").disabled = false;
-            } else {
-                document.getElementById("submitJournalButton").disabled = true;
-            }
-        }
-
-        function enableDisableSubmitButtonInfographics(checkBoxStatus) {
-            if (checkBoxStatus.checked) {
-                document.getElementById("submitInfographicsButton").disabled = false;
-            } else {
-                document.getElementById("submitInfographicsButton").disabled = true;
-            }
-        }
+            $('#dropdownInfographicsCoAuthors').on('change', function() {
+                if (this.value == 1) {
+                    $("#co-author-1-info-panel").css('display', 'flex');
+                    $("#co-author-2-info-panel, #co-author-3-info-panel, #co-author-4-info-panel").css('display', 'none');
+                } else if (this.value == 2) {
+                    $("#co-author-1-info-panel, #co-author-2-info-panel").css('display', 'flex');
+                    $("#co-author-3-info-panel, #co-author-4-info-panel").css('display', 'none');
+                } else if (this.value == 3) {
+                    $("#co-author-1-info-panel, #co-author-2-info-panel, #co-author-3-info-panel").css('display', 'flex');
+                    $("#co-author-4-info-panel").css('display', 'none');
+                } else if (this.value == 4) {
+                    $("#co-author-1-info-panel, #co-author-2-info-panel, #co-author-3-info-panel, #co-author-4-info-panel").css('display', 'flex');
+                } else if (this.value == 0) {
+                    $("#co-author-1-info-panel, #co-author-2-info-panel, #co-author-3-info-panel, #co-author-4-info-panel").css('display', 'none');
+                }
+            });
+        });
     </script>
-
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
-
 </body>
 
 </html>

@@ -127,12 +127,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
             /* on load */
 
             $("#submitText").click(function() {
-
                 $("#submissionGuidelinesPanel").prop('hidden', true);
                 $("#submissionGuidelinesText").css({
                     "border-bottom": "thick none #012265",
                 });
-
                 $("#submitPanel").prop('hidden', false);
                 $("#submitText").css({
                     "border-bottom": "thick solid #012265",
@@ -140,12 +138,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
             });
 
             $("#submissionGuidelinesText").click(function() {
-                
                 $("#submissionGuidelinesPanel").prop('hidden', false);
                 $("#submissionGuidelinesText").css({
                     "border-bottom": "thick solid #012265",
                 });
-
                 $("#submitPanel").prop('hidden', true);
                 $("#submitText").css({
                     "border-bottom": "thick none #012265",
@@ -158,7 +154,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
                 $("#submissionGuidelinesText").css({
                     "border-bottom": "thick solid #012265",
                 });
-
                 $("#submitPanel").prop('hidden', true);
                 $("#submitText").css({
                     "border-bottom": "thick none #012265",
