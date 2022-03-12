@@ -13,7 +13,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p class="side-menu-text"><?php echo $fileInfo['file_uploader'] ?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['submitted_at'] ?></p>
+    <p class="side-menu-text"><?php echo $fileInfo['submitted_on'] ?></p>
     <hr>
     <p class="side-menu-text">Returned on:</p>
     <p class="side-menu-text"><?php echo $fileInfo['returned_on'] ?></p>
@@ -28,7 +28,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <p class="side-menu-text"><?php echo $fileInfo['file_uploader'] ?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['submitted_at'] ?></p>
+        <p class="side-menu-text"><?php echo $fileInfo['submitted_on'] ?></p>
         <hr>
         <p class="side-menu-text">Returned on:</p>
         <p class="side-menu-text"><?php echo $fileInfo['returned_on'] ?></p>

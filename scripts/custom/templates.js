@@ -11,7 +11,7 @@ export function pendingThesisTemplate(result) {
             <h4 class="mb-3">${result.research_title}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Submitted on:</span> ${result.submitted_at}</p>
+            <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
         </div>
         <hr class="my-1">
         <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
@@ -32,7 +32,7 @@ export function pendingInfographicTemplate(result) {
                 <h4 class="mb-3">${result.infographic_title}</h4>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Submitted on:</span> ${result.submitted_at}</p>
+                <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
             </div>
             <hr class="my-1">
             
@@ -247,7 +247,7 @@ export function publishedThesisTemplate(result) {
             <h4 class="mb-3">${result.research_title}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Submitted on:</span> ${result.publication_year}-${result.publication_month}-${result.publication_day} 08:52:03</p>
+            <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
         </div>
         <hr class="my-1">
         <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
@@ -267,7 +267,7 @@ export function publishedInfographicTemplate(result) {
                 <h4 class="mb-3">${result.infographic_title}</h4>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Submitted on:</span> ${result.submitted_at}</p>
+                <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
             </div>
             <hr class="my-1">
             <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>

@@ -74,7 +74,7 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
 
                         $submitted = date('Y-m-d H:i:s');
 
-                        $statement = $connection->prepare('INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_dir2, file_uploader, status, submitted_at) VALUES(?,?,?,?,?,?,?,?)');
+                        $statement = $connection->prepare('INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_dir2, file_uploader, status, submitted_on) VALUES(?,?,?,?,?,?,?,?)');
                         $statement->bind_param('isssssss', $userId, $fileType, $fileName, $fileDestination,$fileCoverDestination, $userName, $fileStatus, $submitted);
                         $statement->execute();
                         $insertedId = $statement->insert_id;

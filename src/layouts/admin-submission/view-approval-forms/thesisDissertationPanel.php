@@ -13,7 +13,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']; ?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_at']; ?></p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
     <hr>
 </div>
 <div class="row">
@@ -25,7 +25,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']; ?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_at']; ?></p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
         <hr>
     </div>
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
