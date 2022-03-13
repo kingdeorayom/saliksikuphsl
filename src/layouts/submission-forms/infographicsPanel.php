@@ -8,7 +8,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
+<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
 
     <!-- container for alert messages -->
     <div id='alert-container-infographic'>
@@ -303,7 +303,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <?php if ($_SESSION['userType'] != 'admin') {
             echo '<div class="row my-4">
             <div class="form-check m-2">
-                <input class="form-check-input" type="checkbox" id="checkBoxAgreeInfographics" onclick="enableDisableSubmitButtonInfographics(this);">
+                <input class="form-check-input" type="checkbox" id="checkBoxAgreeInfographics">
                 <label for="checkBoxAgreeInfographics">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
             </div>
         </div>';

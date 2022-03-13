@@ -22,7 +22,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
     <title>Submit</title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../../scripts/jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/submit-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -80,7 +80,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
                     </div>
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="submissionGuidelinesPanel">
+                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="submissionGuidelinesPanel" hidden>
                     <h1 class="my-2">Submission Form and Guidelines</h1>
                     <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
                     <div class="row">
@@ -119,38 +119,42 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
 
     <script>
         $(document).ready(function() {
+
             /* on load */
-            $("#submissionGuidelinesPanel").hide();
             $("#submitText").css({
                 "border-bottom": "thick solid #012265",
             });
             /* on load */
+
             $("#submitText").click(function() {
-                $("#submissionGuidelinesPanel").hide();
+                $("#submissionGuidelinesPanel").prop('hidden', true);
                 $("#submissionGuidelinesText").css({
                     "border-bottom": "thick none #012265",
                 });
-                $("#submitPanel").show();
+                $("#submitPanel").prop('hidden', false);
                 $("#submitText").css({
                     "border-bottom": "thick solid #012265",
                 });
             });
+
             $("#submissionGuidelinesText").click(function() {
-                $("#submissionGuidelinesPanel").show();
+                $("#submissionGuidelinesPanel").prop('hidden', false);
                 $("#submissionGuidelinesText").css({
                     "border-bottom": "thick solid #012265",
                 });
-                $("#submitPanel").hide();
+                $("#submitPanel").prop('hidden', true);
                 $("#submitText").css({
                     "border-bottom": "thick none #012265",
                 });
             });
+
             $("#buttonToSubmission").click(function() {
-                $("#submissionGuidelinesPanel").show();
+
+                $("#submissionGuidelinesPanel").prop('hidden', false);
                 $("#submissionGuidelinesText").css({
                     "border-bottom": "thick solid #012265",
                 });
-                $("#submitPanel").hide();
+                $("#submitPanel").prop('hidden', true);
                 $("#submitText").css({
                     "border-bottom": "thick none #012265",
                 });

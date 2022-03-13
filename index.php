@@ -5,6 +5,7 @@ session_start();
 
 if (isset($_SESSION['isLoggedIn'])) {
     header("Location: src/pages/navigation/home.php");
+    die();
 }
 
 $maincssVersion = filemtime('styles/custom/main-style.css');
