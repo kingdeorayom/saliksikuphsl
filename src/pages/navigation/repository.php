@@ -133,7 +133,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <a href="#"><button class="btn btn-link btn-lg search-option-buttons" data-bs-toggle="modal" data-bs-target="#search-modal" type="button" id=""><i class="fas fa-search fa-2x p-3" style="color: gray;"></i><br>Advanced Search</button></a>
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <a href="#"><button class="btn btn-link btn-lg search-option-buttons" type="button" id=""><i class="fas fa-book fa-2x p-3" style="color: gray;"></i><br>Browse Researches</button></a>
+                    <a href="browse-researches.php"><button class="btn btn-link btn-lg search-option-buttons" type="button" id=""><i class="fas fa-book fa-2x p-3" style="color: gray;"></i><br>Browse Researches</button></a>
                 </div>
             </div>
 			
