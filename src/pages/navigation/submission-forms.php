@@ -156,16 +156,30 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 if (this.value == 1) {
                     $("#co-author-1-td-panel").css('display', 'flex');
                     $("#co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel").css('display', 'none');
+
+                    $("#textFieldFirstNameCoAuthor1, #textFieldLastNameCoAuthor1, #textFieldEmailAuthor1").prop('required', true);
+
                 } else if (this.value == 2) {
                     $("#co-author-1-td-panel, #co-author-2-td-panel").css('display', 'flex');
                     $("#co-author-3-td-panel, #co-author-4-td-panel").css('display', 'none');
+
+                    $("#textFieldFirstNameCoAuthor1, #textFieldLastNameCoAuthor1, #textFieldEmailAuthor1, #textFieldFirstNameCoAuthor2, #textFieldLastNameCoAuthor2, #textFieldEmailAuthor2").prop('required', true);
+
                 } else if (this.value == 3) {
                     $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel").css('display', 'flex');
                     $("#co-author-4-td-panel").css('display', 'none');
+
+                    $("#textFieldFirstNameCoAuthor1, #textFieldLastNameCoAuthor1, #textFieldEmailAuthor1, #textFieldFirstNameCoAuthor2, #textFieldLastNameCoAuthor2, #textFieldEmailAuthor2, #textFieldFirstNameCoAuthor3, #textFieldLastNameCoAuthor3, #textFieldEmailAuthor3").prop('required', true);
+
                 } else if (this.value == 4) {
                     $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel").css('display', 'flex');
+
+                    $("#textFieldFirstNameCoAuthor1, #textFieldLastNameCoAuthor1, #textFieldEmailAuthor1, #textFieldFirstNameCoAuthor2, #textFieldLastNameCoAuthor2, #textFieldEmailAuthor2, #textFieldFirstNameCoAuthor3, #textFieldLastNameCoAuthor3, #textFieldEmailAuthor3, #textFieldFirstNameCoAuthor4, #textFieldLastNameCoAuthor4, #textFieldEmailAuthor4").prop('required', true);
+
                 } else if (this.value == 0) {
                     $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel").css('display', 'none');
+
+                    $("#textFieldFirstNameCoAuthor1, #textFieldLastNameCoAuthor1, #textFieldEmailAuthor1, #textFieldFirstNameCoAuthor2, #textFieldLastNameCoAuthor2, #textFieldEmailAuthor2, #textFieldFirstNameCoAuthor3, #textFieldLastNameCoAuthor3, #textFieldEmailAuthor3, #textFieldFirstNameCoAuthor4, #textFieldLastNameCoAuthor4, #textFieldEmailAuthor4").prop('required', false);
                 }
             });
 
