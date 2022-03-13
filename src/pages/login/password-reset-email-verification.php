@@ -14,7 +14,7 @@ if (!isset($_SESSION['email'])) {
 
     $verificationCode = uniqid();
     $_SESSION['verificationCode'] = strtoupper(substr($verificationCode, 7));
-    $subject = '[SALIKSIK: UPHSL Research Repository] Verification Code';
+    $subject = '[SALIKSIK: UPHSL Research Repository] Reset your password';
     $recipient = $_SESSION['email'];
 
     $mail = new PHPMailer(true);
@@ -22,12 +22,12 @@ if (!isset($_SESSION['email'])) {
     try {
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com;';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'saliksikuphsl@gmail.com';
-        $mail->Password   = 'kingdeorayom();';
+        $mail->Host = 'smtp.gmail.com;';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'saliksikuphsl@gmail.com';
+        $mail->Password = 'kingdeorayom();';
         $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        $mail->Port = 587;
         $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
         $mail->addAddress($recipient);
         $mail->isHTML(true);
@@ -38,7 +38,7 @@ if (!isset($_SESSION['email'])) {
         $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
         */
 
-        $mail->Body    = '<p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px">
+        $mail->Body    = '<p>
         
         Hi, <br><br>
         
@@ -46,7 +46,7 @@ if (!isset($_SESSION['email'])) {
         
         To complete the password reset process, enter the verification code given below: <br><br>
         
-        Verification code: <span style="background-color: gainsboro">' . $_SESSION['verificationCode'] . '</span><br><br>
+        Verification code: <strong>' . $_SESSION['verificationCode'] . '</strong><br><br>
         
         If it wasn&apos;t you who attempted to reset the password of the account this email is linked to, kindly disregard this message.<br><br>
         
