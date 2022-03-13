@@ -331,7 +331,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-3">
             <div class="col-lg-4 col-sm-12">
                 <label class="fw-bold">No. of Co-Authors</label>
-                <select id="dropdownThesisDissertationCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" onchange="showThesisDissertationCoAuthorsField();" required>
+                <select id="dropdownThesisDissertationCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" required>
                     <option value=0 selected>0</option>
                     <option value=1>1</option>
                     <option value=2>2</option>
@@ -344,77 +344,77 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row" id="co-author-1-td-panel">
             <label class="py-2 fw-bold">Co-Author 1</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor1" placeholder="First Name*" id="textFieldFirstNameCoAuthor1">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor1" placeholder="Middle Initial">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor1" placeholder="Surname*" id="textFieldLastNameCoAuthor1">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor1" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor1">
+                <input type="text" class="form-control" name="textFieldEmailAuthor1" id="textFieldEmailAuthor1">
             </div>
         </div>
         <div class="row" id="co-author-2-td-panel">
             <label class="py-2 fw-bold">Co-Author 2</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor2" placeholder="First Name*" id="textFieldFirstNameCoAuthor2">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor2" placeholder="Middle Initial">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor2" placeholder="Surname*" id="textFieldLastNameCoAuthor2">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor2" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor2">
+                <input type="text" class="form-control" name="textFieldEmailAuthor2" id="textFieldEmailAuthor2">
             </div>
         </div>
         <div class="row" id="co-author-3-td-panel">
             <label class="py-2 fw-bold">Co-Author 3</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor3" placeholder="First Name*" id="textFieldFirstNameCoAuthor3">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor3" placeholder="Middle Initial">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor3" placeholder="Surname*" id="textFieldLastNameCoAuthor3">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor3" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor3">
+                <input type="text" class="form-control" name="textFieldEmailAuthor3" id="textFieldEmailAuthor3">
             </div>
         </div>
         <div class="row" id="co-author-4-td-panel">
             <label class="py-2 fw-bold">Co-Author 4</label>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*">
+                <input type="text" class="form-control" name="textFieldFirstNameCoAuthor4" placeholder="First Name*" id="textFieldFirstNameCoAuthor4">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldMiddleInitialCoAuthor4" placeholder="Middle Initial">
             </div>
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*">
+                <input type="text" class="form-control" name="textFieldLastNameCoAuthor4" placeholder="Surname*" id="textFieldLastNameCoAuthor4">
             </div>
             <div class="col-lg-2 col-sm-12 py-2">
                 <input type="text" class="form-control" name="textFieldNameExtCoAuthor4" placeholder="Extension">
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor4">
+                <input type="text" class="form-control" name="textFieldEmailAuthor4" id="textFieldEmailAuthor4">
             </div>
         </div>
         <div class="row">
@@ -494,6 +494,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">Uploading your file...</div>
             </div>
         </div>
         <hr>
@@ -916,4 +921,19 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         $("#dropdownResearchUnit").trigger("change");
     });
+</script>
+
+<script>
+    var i = 0;
+
+    function makeProgress() {
+        if (i < 100) {
+            i = i + 1;
+            $(".progress-bar").css("width", i + "%").text(i + "%");
+        }
+
+        // Wait for sometime before running this script again
+        setTimeout("makeProgress()", 100);
+    }
+    makeProgress();
 </script>

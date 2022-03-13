@@ -13,13 +13,6 @@ function sendMail()
 {
     $mail = new PHPMailer(true);
 
-    $recipient1 = $_POST['textFieldEmail'];
-    // $recipient2 = $_POST['textFieldEmailAuthor1'];
-    // $recipient3 = $_POST['textFieldEmailAuthor2'];
-    // $recipient4 = $_POST['textFieldEmailAuthor3'];
-    // $recipient5 = $_POST['textFieldEmailAuthor4'];
-    $subject = "[SALIKSIK: UPHSL Research Repository] Manuscript Received";
-
     try {
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
@@ -30,61 +23,67 @@ function sendMail()
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
-        $mail->addAddress($recipient1);
-        // $mail->addAddress($recipient2);
-        // $mail->addAddress($recipient3);
-        // $mail->addAddress($recipient4);
-        // $mail->addAddress($recipient5);
         $mail->isHTML(true);
+        $subject = "[SALIKSIK: UPHSL Research Repository] Manuscript Received";
         $mail->Subject = $subject;
 
-        $mail->Body = '<body>
+        if (empty($_POST['textFieldEmailAuthor2'] || $_POST['textFieldEmailAuthor3'] ||  $_POST['textFieldEmailAuthor4'])) {
 
-        <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ',<br><br>
-        
-        We have received your manuscript. Please check the submission details below:</p><br>
+            // email to author and co author 1 -- WORKING
 
-        <table>
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"><strong>Title</strong></td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px 30px 5px 5px;">' . $_POST['textFieldResearchTitle'] . '</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"><strong>Resource Type</strong></td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px 30px 5px 5px;">' . $_POST['dropdownResourceType'] . '</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"><strong>Author/s</strong></td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px 30px 5px 5px;">' . $_POST['textFieldAuthorFirstName'] . '</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"><strong>Researcher\'s Category</strong></td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px 30px 5px 5px;">' . $_POST['dropdownResearchersCategory'] . '</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"><strong>Research Unit</strong></td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px 30px 5px 5px;">' . $_POST['dropdownResearchUnit'] . '</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"><strong>Attached File/s</strong></td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px 30px 5px 5px;">' . $_SESSION['fileNameForEmail'] . '</td>
-            </tr>
-        </table><br>
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->Body = 'test email for author, coauthor 1';
+            $mail->send();
+        } else  if (empty($_POST['textFieldEmailAuthor3'] || $_POST['textFieldEmailAuthor4'])) {
 
-        <p>In case of any issue, you may email us at research@uphsl.edu.ph or you can directly edit your submission by checking <strong>My Submissions</strong> under your profile.<br><br>
+            // email to author and co author 1, 2 -- WORKING
 
-        Thanks,<br>
-        The SALIKSIK: UPHSL Research Repository Team<br><br>
-        
-        This is a system generated message. Do not reply.</p>
-        </body>';
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $recipient3 = $_POST['textFieldEmailAuthor2'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->addAddress($recipient3);
+            $mail->Body = 'test email for author, coauthor 1, 2';
+            $mail->send();
+        } else  if (empty($_POST['textFieldEmailAuthor4'])) {
 
-        $mail->send();
+            // email to author and co author 1, 2, 3 -- WORKING
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $recipient3 = $_POST['textFieldEmailAuthor2'];
+            $recipient4 = $_POST['textFieldEmailAuthor3'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->addAddress($recipient3);
+            $mail->addAddress($recipient4);
+            $mail->Body = 'test email for author, coauthor 1, 2, 3';
+            $mail->send();
+        } else {
+
+            // email to author and co author 1, 2, 3, 4 -- WORKING
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $recipient3 = $_POST['textFieldEmailAuthor2'];
+            $recipient4 = $_POST['textFieldEmailAuthor3'];
+            $recipient5 = $_POST['textFieldEmailAuthor4'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->addAddress($recipient3);
+            $mail->addAddress($recipient4);
+            $mail->addAddress($recipient5);
+            $mail->Body = 'test email for ALL authors';
+            $mail->send();
+        }
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-
 
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
