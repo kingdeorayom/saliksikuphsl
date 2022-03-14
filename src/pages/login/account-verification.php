@@ -37,24 +37,18 @@ if (!isset($_SESSION['email'])) {
         $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
         */
 
-        $mail->Body    = '<p>
-        
-        Hello, ' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . '!' . '<br><br>
-        
-        A registration attempt using this email address ' . $recipient . ' was made and requires further verification.<br><br>
-        
-        To complete the sign up process, enter the verification code given below: <br><br>
-        
-        Verification code: <strong>' . $_SESSION['verificationCode'] . '</strong><br><br>
-        
-        If it wasn&apos;t you who attempted to register the email in the website, kindly disregard this message.<br><br>
-        
-        The registration process will be cancelled and the email will not be used.<br><br>
-        
-        Thanks,<br>
-        The SALIKSIK: UPHSL Research Repository Team<br><br>
-        
-        This is a system generated message. Do not reply.</p>';
+        $mail->Body = '
+        <body>
+            <p>Hello, ' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . '!</p>
+            <p>A registration attempt using this email address ' . $recipient . ' was made and requires further verification.</p>
+            <p>To complete the sign up process, enter the verification code given below.</p>
+            <p>Verification code: <strong>' . $_SESSION['verificationCode'] . '</strong></p>
+            <p>If it wasn&apos;t you who attempted to register the email in the website, kindly disregard this message.</p>
+            <p>The registration process will be cancelled and the email will not be used.</p>
+            <p>Thanks,</p>
+            <p>The SALIKSIK: UPHSL Research Repository Team</p>
+            <p><em>This is a system generated message. Do not reply.</em></p>
+        </body>';
 
         $mail->send();
     } catch (Exception $e) {

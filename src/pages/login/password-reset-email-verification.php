@@ -38,24 +38,18 @@ if (!isset($_SESSION['email'])) {
         $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
         */
 
-        $mail->Body    = '<p>
-        
-        Hi, <br><br>
-        
-        A password reset attempt using this email address ' . $recipient . ' was made and requires further verification.<br><br>
-        
-        To complete the password reset process, enter the verification code given below: <br><br>
-        
-        Verification code: <strong>' . $_SESSION['verificationCode'] . '</strong><br><br>
-        
-        If it wasn&apos;t you who attempted to reset the password of the account this email is linked to, kindly disregard this message.<br><br>
-        
-        The password reset process will be cancelled and the email will not be used.<br><br>
-        
-        Thanks,<br>
-        The SALIKSIK: UPHSL Research Repository Team<br><br>
-        
-        This is a system generated message. Do not reply.</p>';
+        $mail->Body = '
+        <body>
+            <p>Hi,</p>
+            <p>A password reset attempt using this email address ' . $recipient . ' was made and requires further verification.</p>
+            <p>To complete the password reset process, enter the verification code given below.</p>
+            <p>Verification code: <strong>' . $_SESSION['verificationCode'] . '</strong></p>
+            <p>If it wasn&apos;t you who attempted to reset the password of the account this email is linked to, kindly disregard this message.</p>
+            <p>The password reset process will be cancelled and the email will not be used.</p>
+            <p>Thanks,</p>
+            <p>The SALIKSIK: UPHSL Research Repository Team</p>
+            <p><em>This is a system generated message. Do not reply.</em></p>
+        </body>';
 
         $mail->send();
     } catch (Exception $e) {
