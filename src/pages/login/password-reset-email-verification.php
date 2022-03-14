@@ -1,67 +1,8 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../../../vendor/autoload.php';
-
 session_start();
 
-if (!isset($_SESSION['email'])) {
-    header("location: ../../layouts/general/error.php"); //
-    die();
-} else if (isset($_SESSION['email'])) {
-
-    $verificationCode = uniqid();
-    $_SESSION['verificationCode'] = strtoupper(substr($verificationCode, 7));
-    $subject = '[SALIKSIK: UPHSL Research Repository] Reset your password';
-    $recipient = $_SESSION['email'];
-
-    $mail = new PHPMailer(true);
-
-    try {
-        $mail->SMTPDebug = 0;
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com;';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'saliksikuphsl@gmail.com';
-        $mail->Password = 'kingdeorayom();';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-        $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
-        $mail->addAddress($recipient);
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-
-        /* for embedding images on emails
-        $mail->AddEmbeddedImage("Beautiful Butterfly_64.jpg", "my-attach", "rocks.png");
-        $mail->Body = 'Embedded Image: <img alt="PHPMailer" src="cid:my-attach"> Here is an image!';
-        */
-
-        $mail->Body    = '<p>
-        
-        Hi, <br><br>
-        
-        A password reset attempt using this email address ' . $recipient . ' was made and requires further verification.<br><br>
-        
-        To complete the password reset process, enter the verification code given below: <br><br>
-        
-        Verification code: <strong>' . $_SESSION['verificationCode'] . '</strong><br><br>
-        
-        If it wasn&apos;t you who attempted to reset the password of the account this email is linked to, kindly disregard this message.<br><br>
-        
-        The password reset process will be cancelled and the email will not be used.<br><br>
-        
-        Thanks,<br>
-        The SALIKSIK: UPHSL Research Repository Team<br><br>
-        
-        This is a system generated message. Do not reply.</p>';
-
-        $mail->send();
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-}
+include '../../process/sendmail.php';
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');

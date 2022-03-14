@@ -3,7 +3,7 @@ session_start();
 
 include 'connection.php';
 
-if (!isset($_SESSION['toVerify'])) {
+if (!isset($_SESSION['toVerifyAccountCreation'])) {
     header("location: ../../index.php");
     exit();
 } else {
@@ -23,7 +23,8 @@ if (!isset($_SESSION['toVerify'])) {
             unset($_SESSION['department']);
             unset($_SESSION['email']);
             unset($_SESSION['password']);
-            unset($_SESSION['toVerify']);
+            unset($_SESSION['toVerifyAccountCreation']);
+            unset($_SESSION['verificationCode']);
 
             header("location: ../../index.php");
         } else {

@@ -131,8 +131,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
             $("#checkboxShowHidePassword").change(function() {
                 if ($(this).is(':checked')) {
                     $("#textFieldPassword").attr("type", "text");
+                    $("#textFieldConfirmPassword").attr("type", "text");
                 } else {
                     $("#textFieldPassword").attr("type", "password");
+                    $("#textFieldConfirmPassword").attr("type", "password");
                 }
             });
         });

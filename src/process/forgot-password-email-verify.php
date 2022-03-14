@@ -35,7 +35,7 @@ if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
 
         if ($statement->num_rows > 0) {
             $_SESSION['email'] = $_POST['textFieldEmail'];
-            $_SESSION['toVerify'] = true;
+            $_SESSION['toVerifyPasswordReset'] = true;
             header("location: ../pages/login/password-reset-email-verification.php");
             exit();
         } else {

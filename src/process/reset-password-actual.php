@@ -35,8 +35,11 @@ if ($statement = $connection->prepare('UPDATE users SET password = ? WHERE email
     $_SESSION['passwordResetSuccessful'] = "Password changed successfully";
 
     unset($_SESSION['email']);
-    unset($_SESSION['toVerify']);
+    unset($_SESSION['toVerifyPasswordReset']);
     unset($_SESSION['resetPassword']);
+    unset($_SESSION['password']);
+    unset($_SESSION['verificationCode']);
+    unset($_SESSION['incorrectVerificationCode']);
 
     $arr = array('response' => "login_success");
     header('Content-Type: application/json');

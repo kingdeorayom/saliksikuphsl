@@ -1,89 +1,9 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../../vendor/autoload.php';
-
 session_start();
 
 include 'connection.php';
-
-function sendMail()
-{
-    $mail = new PHPMailer(true);
-
-    try {
-        $mail->SMTPDebug = 0;
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com;';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'saliksikuphsl@gmail.com';
-        $mail->Password = 'kingdeorayom();';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-        $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
-        $mail->isHTML(true);
-        $subject = "[SALIKSIK: UPHSL Research Repository] Manuscript Received";
-        $mail->Subject = $subject;
-
-        if (empty($_POST['textFieldEmailAuthor2'] || $_POST['textFieldEmailAuthor3'] ||  $_POST['textFieldEmailAuthor4'])) {
-
-            // email to author and co author 1 -- WORKING
-
-            $recipient1 = $_POST['textFieldEmail'];
-            $recipient2 = $_POST['textFieldEmailAuthor1'];
-            $mail->addAddress($recipient1);
-            $mail->addAddress($recipient2);
-            $mail->Body = 'test email for author, coauthor 1';
-            $mail->send();
-        } else  if (empty($_POST['textFieldEmailAuthor3'] || $_POST['textFieldEmailAuthor4'])) {
-
-            // email to author and co author 1, 2 -- WORKING
-
-            $recipient1 = $_POST['textFieldEmail'];
-            $recipient2 = $_POST['textFieldEmailAuthor1'];
-            $recipient3 = $_POST['textFieldEmailAuthor2'];
-            $mail->addAddress($recipient1);
-            $mail->addAddress($recipient2);
-            $mail->addAddress($recipient3);
-            $mail->Body = 'test email for author, coauthor 1, 2';
-            $mail->send();
-        } else  if (empty($_POST['textFieldEmailAuthor4'])) {
-
-            // email to author and co author 1, 2, 3 -- WORKING
-
-            $recipient1 = $_POST['textFieldEmail'];
-            $recipient2 = $_POST['textFieldEmailAuthor1'];
-            $recipient3 = $_POST['textFieldEmailAuthor2'];
-            $recipient4 = $_POST['textFieldEmailAuthor3'];
-            $mail->addAddress($recipient1);
-            $mail->addAddress($recipient2);
-            $mail->addAddress($recipient3);
-            $mail->addAddress($recipient4);
-            $mail->Body = 'test email for author, coauthor 1, 2, 3';
-            $mail->send();
-        } else {
-
-            // email to author and co author 1, 2, 3, 4 -- WORKING
-
-            $recipient1 = $_POST['textFieldEmail'];
-            $recipient2 = $_POST['textFieldEmailAuthor1'];
-            $recipient3 = $_POST['textFieldEmailAuthor2'];
-            $recipient4 = $_POST['textFieldEmailAuthor3'];
-            $recipient5 = $_POST['textFieldEmailAuthor4'];
-            $mail->addAddress($recipient1);
-            $mail->addAddress($recipient2);
-            $mail->addAddress($recipient3);
-            $mail->addAddress($recipient4);
-            $mail->addAddress($recipient5);
-            $mail->Body = 'test email for ALL authors';
-            $mail->send();
-        }
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-}
+include 'sendmail.php';
 
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
@@ -100,7 +20,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     $fileTempLoc = $file['tmp_name'];
     $fileError = $file['error'];
 
-    $_SESSION['fileNameForEmail'] = $fileName;
+    $_SESSION['manuscriptFileNameForEmail'] = $fileName;
 
     //extension
     $fileExt = explode('.', $fileName);
@@ -114,6 +34,8 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     $fileQuestionnaireSize = $fileQuestionnaire['size'];
     $fileQuestionnaireTempLoc = $fileQuestionnaire['tmp_name'];
     $fileQuestionnaireError = $fileQuestionnaire['error'];
+
+    $_SESSION['questionnaireFileNameForEmail'] = $fileQuestionnaireName;
 
     //questionExtension
     $fileQuestionnaireExt = explode('.', $fileQuestionnaireName);
@@ -189,6 +111,10 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         $arr = array('response' => "success");
                         header('Content-Type: application/json');
                         echo json_encode($arr);
+
+                        $_SESSION['sendEmailAfterSubmit'] = true;
+
+
 
                         sendMail();
                     } catch (mysqli_sql_exception $exception) {
