@@ -13,7 +13,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <div class="row my-3">
         <label class="my-2" id="fileUploadLabelInfographic" hidden>Uploading your file...</label>
         <div class="progress" id='infographic-progress-container' hidden>
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="infographic-progress-bar">0%</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="infographic-progress-bar">0%</div>
         </div>
     </div>
     <div id='alert-container-infographic'>
