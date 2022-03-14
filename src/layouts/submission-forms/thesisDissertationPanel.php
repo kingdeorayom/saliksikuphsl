@@ -527,6 +527,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         event.preventDefault();
         $("#thesis-progress-container").prop('hidden',false);
         var formData = new FormData(this);
+        window.scrollTo(0,0);
         $.ajax({
             xhr: function(){
                 var xhr = new window.XMLHttpRequest();
@@ -544,7 +545,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             contentType: false,
             processData: false,
         }).done(function(data) {
-            window.scrollTo(0,0);
+            
             $("#thesis-progress-container").prop('hidden',true);
             if (data.response === "type_error") {
                 $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
