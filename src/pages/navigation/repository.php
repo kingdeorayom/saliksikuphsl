@@ -208,7 +208,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="button" class="btn btn-primary rounded-0 modal-search-button">Search</button>
+                                    <button type="submit" class="btn btn-primary rounded-0 modal-search-button">Search</button>
                                 </div>
                             </div>
                         </form>

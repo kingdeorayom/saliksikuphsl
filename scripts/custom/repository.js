@@ -67,10 +67,7 @@ $(document).ready(function () {
     searchbarValue = this.value;
     sessionStorage.setItem("searchbarValue", searchbarValue);
   });
-
   $("#repository-search-bar").val(sessionStorage.searchbarValue);
-  $("#hidden-sidebar-query").val(sessionStorage.searchbarValue);
-  $("#hidden-modal-query").val(sessionStorage.searchbarValue);
 
   var textInputs = JSON.parse(sessionStorage.getItem("textInputs")) || {};
   var $textInputs = $("#sidebar-search-filters :text");
@@ -151,6 +148,8 @@ function changePage(page) {
     processData: false,
   }).done(function (data) {
     $("#repository-results-container").html(data);
+    window.scrollTo(0, 325);
+    // scrolls to first result; TODO: change it to something more reliable
   });
 }
 function getResults() {
