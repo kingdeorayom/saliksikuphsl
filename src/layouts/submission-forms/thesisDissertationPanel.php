@@ -11,12 +11,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <!-- container for alert messages -->
     <div class="row my-3">
+        <label class="my-2" id="fileUploadLabelThesis" hidden>Uploading your file...</label>
+
         <div class="progress" id='thesis-progress-container' hidden>
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="thesis-progress-bar">0%</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="thesis-progress-bar">0%</div>
         </div>
     </div>
     <div id='alert-container'>
-        
+
     </div>
     <!-- container for alert messages -->
 
@@ -525,15 +527,16 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script type="text/javascript">
     $("form[name='thesis-form']").on("submit", function(event) {
         event.preventDefault();
-        $("#thesis-progress-container").prop('hidden',false);
+        $("#thesis-progress-container").prop('hidden', false);
+        $("#fileUploadLabelThesis").prop('hidden', false);
         var formData = new FormData(this);
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         $.ajax({
-            xhr: function(){
+            xhr: function() {
                 var xhr = new window.XMLHttpRequest();
-                xhr.upload.addEventListener('progress',function(e) {
-                    if(e.lengthComputable){
-                        var percent = Math.round((e.loaded / e.total)* 100)
+                xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        var percent = Math.round((e.loaded / e.total) * 100)
                         $('#thesis-progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
                     }
                 })
@@ -545,8 +548,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
             contentType: false,
             processData: false,
         }).done(function(data) {
-            
-            $("#thesis-progress-container").prop('hidden',true);
+
+            $("#thesis-progress-container").prop('hidden', true);
+            $("#fileUploadLabelThesis").prop('hidden', true);
             if (data.response === "type_error") {
                 $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
             } else if (data.response === "generic_error") {
