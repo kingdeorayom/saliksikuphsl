@@ -123,8 +123,8 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <h2 id="masthead-title-text">Search the repository</h2>
 
                     <div class="input-group my-3">
-                        <input type="search" autofocus class="form-control form-search rounded-0" id="repository-search-bar" aria-label="Search the repository" <?php if(isset($_POST['title_query'])){ echo "value = '{$_POST['title_query']}'";} ?>>
-                        <button class="btn text-light rounded-0 search-button btn-lg" id="repository-search-button">Search</button>
+                        <input type="search" autofocus class="form-control form-search rounded-0" id="repository-search-bar" aria-label="Search the repository" name='title_query'>
+                        <button type="button" class="btn text-light rounded-0 search-button btn-lg" id="repository-search-button">Search</button>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary rounded-0 modal-search-button">Search</button>
+                                    <button type="button" class="btn btn-primary rounded-0 modal-search-button">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -223,29 +223,28 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
         <div class="container p-3">
 
             <div class="row">
-                <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters">
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
                     <hr>
                     <p class="side-menu-text fw-bold">Publication Year</p>
-                        <input id="hidden-sidebar-query"name="title_query" hidden <?php if(isset($_POST['title_query'])){ echo "value = '{$_POST['title_query']}'";} ?>>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021" name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2021,$_POST["publication_year"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2021">2021</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020" name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2020,$_POST["publication_year"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2020">2020</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019" name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2019,$_POST["publication_year"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2019">2019</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018" name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2018,$_POST["publication_year"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2018">2018</label>
                     </div>
                     <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017" name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2017,$_POST["publication_year"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2017">2017</label>
                     </div>
                     <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
@@ -254,134 +253,134 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                             <input type="text" class="form-control" name = "from_year" id="sidebar-from-year">
                             <input type="text" class="form-control" name = "to_year"  id="sidebar-to-year">
                         </div>
-                        <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
+                        <button type="button" class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
 
                     </div>
                     <hr>
                     <p class="side-menu-text fw-bold">Resource Type</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertation" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("dissertation",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertation" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxDissertation">Dissertation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesis" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("thesis",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesis" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxThesis">Thesis</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="capstone" id="checkBoxCapstone" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("capstone",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="capstone" id="checkBoxCapstone" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxCapstone">Capstone</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournal" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("journal",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournal" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxJournal">Journal</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographics" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("infographic",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographics" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxInfographics">Infographics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReport" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("annual_report",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReport" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxAnnualReport">Annual Report</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgenda" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("research_agenda",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgenda" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxResearchAgenda">Research Agenda</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDP" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("research_competency_development_program",$_POST["resource_type"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDP" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxRCDP">Research Competency Development Program</label>
                     </div>
                     <hr>
                     <p class="side-menu-text fw-bold">Research Field</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Accountancy and Marketing",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketing" name="research_field[]">
                         <label class="form-check-label" for="checkBoxAccountancyMarketing">Accountancy and Marketing</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Arts and Humanities",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanities" name="research_field[]">
                         <label class="form-check-label" for="checkBoxArtsHumanities">Arts and Humanities</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Educational Management",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="research_field[]">
                         <label class="form-check-label" for="checkBoxEducationalManagement">Educational Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Education and Social Sciences",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="research_field[]">
                         <label class="form-check-label" for="checkBoxEducationSocialSciences">Education and Social Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Business Management",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="research_field[]">
                         <label class="form-check-label" for="checkBoxBusinessManagement">Business Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Health and Sciences",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciences" name="research_field[]">
                         <label class="form-check-label" for="checkBoxHealthSciences">Health and Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Health and Sciences",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="research_field[]">
                         <label class="form-check-label" for="checkBoxITEngineering">IT and Engineering</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Law and Justice System",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="research_field[]">
                         <label class="form-check-label" for="checkBoxLawJusticeSystem">Law and Justice System</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Marine and Aviation",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="research_field[]">
                         <label class="form-check-label" for="checkBoxMarineAviation">Marine and Aviation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Tourism and Hospitality",$_POST["research_field"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="research_field[]">
                         <label class="form-check-label" for="checkBoxTourismHospitality">Tourism and Hospitality</label>
                     </div>
                     <hr>
                     <p class="side-menu-text fw-bold">Research Unit</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Basic Education" id="checkBoxBasicEducation" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Basic Education",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Basic Education" id="checkBoxBasicEducation" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxBasicEducation">Basic Education</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Senior High School" id="checkBoxSeniorHighSchool" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Senior High School",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Senior High School" id="checkBoxSeniorHighSchool" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxSeniorHighSchool">Senior High School</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Arts and Sciences" id="checkBoxArtsSciences" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Arts and Sciences",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Arts and Sciences" id="checkBoxArtsSciences" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxArtsSciences">Arts and Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Business and Accountancy" id="checkBoxBusinessAccountancy" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Business and Accountancy",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Business and Accountancy" id="checkBoxBusinessAccountancy" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxBusinessAccountancy">Business and Accountancy</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Criminology" id="checkBoxCriminology" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Criminology",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Criminology" id="checkBoxCriminology" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxCriminology">Criminology</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Computer Studies" id="checkBoxComputerStudies" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Computer Studies",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Computer Studies" id="checkBoxComputerStudies" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxComputerStudies">Computer Studies</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Education" id="checkBoxEducation" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Education",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Education" id="checkBoxEducation" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxEducation">Education</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Engineering",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxEngineering">Engineering</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="International Hospitality Management" id="checkBoxHospitalityManagement" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("International Hospitality Management",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="International Hospitality Management" id="checkBoxHospitalityManagement" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxHospitalityManagement">International Hospitality Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Maritime",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxMaritime">Maritime</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchool" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Graduate School",$_POST["resource_unit"])){echo "checked";}}?>>
+                        <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchool" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxGraduateSchool">Graduate School</label>
                     </div>
                 </form>
                 
-                <div class="col-sm-12 d-sm-block d-lg-none"  id="modal-search-filters">
+                <div class="col-sm-12 d-sm-block d-lg-none">
                     <div class="text-end my-3">
                         <p class="fw-bold filter-results" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
                     </div>
@@ -392,25 +391,24 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                         </div>
                         <form class="offcanvas-body" id="modal-search-filters" name="modal-filters">
                             <p class="side-menu-text fw-bold">Publication Year</p>
-                            <input id="hidden-modal-query" name="title_query" hidden <?php if(isset($_POST['title_query'])){ echo "value = '{$_POST['title_query']}'";} ?>>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021offcanvas" name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2021,$_POST["publication_year"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021offcanvas" name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2021offcanvas">2021</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas"  name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2020,$_POST["publication_year"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2020offcanvas">2020</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas"  name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2019,$_POST["publication_year"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2019offcanvas">2019</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas"  name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2018,$_POST["publication_year"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2018offcanvas">2018</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017offcanvas"  name="publication_year[]" <?php if(isset($_POST["publication_year"])){if(in_array(2017,$_POST["publication_year"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="2017" id="checkBox2017offcanvas"  name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2017offcanvas">2017</label>
                             </div>
                             <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
@@ -419,128 +417,128 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                     <input type="text" class="form-control" name = "from_year" id="modal-from-year">
                                     <input type="text" class="form-control" name = "to_year"  id="modal-to-year">
                                 </div>
-                                <button class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
+                                <button type="button" class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
                             </div>
                             <hr>
                             <p class="side-menu-text fw-bold">Resource Type</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertationoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("dissertation",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="dissertation" id="checkBoxDissertationoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxDissertationoffcanvas">Dissertation</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesisoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("thesis",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="thesis" id="checkBoxThesisoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxThesisoffcanvas">Thesis</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="capstone" id="checkBoxCapstoneoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("capstone",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="capstone" id="checkBoxCapstoneoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxCapstoneoffcanvas">Capstone</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournaloffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("journal",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="journal" id="checkBoxJournaloffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxJournaloffcanvas">Journal</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographicsoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("infographic",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographicsoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxInfographicsoffcanvas">Infographics</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReportoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("annual_report",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReportoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxAnnualReportoffcanvas">Annual Report</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgendaoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("research_agenda",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="research_agenda" id="checkBoxResearchAgendaoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxResearchAgendaoffcanvas">Research Agenda</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDPoffcanvas" name="resource_type[]" <?php if(isset($_POST["resource_type"])){if(in_array("research_competency_development_program",$_POST["resource_type"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="research_competency_development_program" id="checkBoxRCDPoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxRCDPoffcanvas">Research Competency Development Program</label>
                             </div>
                             <hr>
                             <p class="side-menu-text fw-bold">Research Field</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketingoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Accountancy and Marketing",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Accountancy and Marketing" id="checkBoxAccountancyMarketingoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxAccountancyMarketingoffcanvas">Accountancy and Marketing</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanitiesoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Arts and Humanities",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Arts and Humanities" id="checkBoxArtsHumanitiesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxArtsHumanitiesoffcanvas">Arts and Humanities</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagementoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Educational Management",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagementoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxEducationalManagementoffcanvas">Educational Management</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciencesoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Education and Social Sciences",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciencesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxEducationSocialSciencesoffcanvas">Education and Social Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagementoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Business Management",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagementoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxBusinessManagementoffcanvas">Business Management</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciencesoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Health and Sciences",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Health and Sciences" id="checkBoxHealthSciencesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxHealthSciencesoffcanvas">Health and Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineeringoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("IT and Engineering",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineeringoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxITEngineeringoffcanvas">IT and Engineering</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystemoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Law and Justice System",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystemoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxLawJusticeSystemoffcanvas">Law and Justice System</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviationoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Marine and Aviation",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviationoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxMarineAviationoffcanvas">Marine and Aviation</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitalityoffcanvas" name="research_field[]" <?php if(isset($_POST["research_field"])){if(in_array("Tourism and Hospitality",$_POST["research_field"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitalityoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxTourismHospitalityoffcanvas">Tourism and Hospitality</label>
                             </div>
                             <hr>
                             <p class="side-menu-text fw-bold">Research Unit</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Basic Education" id="checkBoxBasicEducationoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Basic Education",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Basic Education" id="checkBoxBasicEducationoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxBasicEducationoffcanvas">Basic Education</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Senior High School" id="checkBoxSeniorHighSchooloffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Senior High School",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Senior High School" id="checkBoxSeniorHighSchooloffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxSeniorHighSchooloffcanvas">Senior High School</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Arts and Sciences" id="checkBoxArtsSciencesoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Arts and Sciences",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Arts and Sciences" id="checkBoxArtsSciencesoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxArtsSciencesoffcanvas">Arts and Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Business and Accountancy" id="checkBoxBusinessAccountancyoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Business and Accountancy",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Business and Accountancy" id="checkBoxBusinessAccountancyoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxBusinessAccountancyoffcanvas">Business and Accountancy</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Criminology" id="checkBoxCriminologyoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Criminology",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Criminology" id="checkBoxCriminologyoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxCriminologyoffcanvas">Criminology</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Computer Studies" id="checkBoxComputerStudiesoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Computer Studies",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Computer Studies" id="checkBoxComputerStudiesoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxComputerStudiesoffcanvas">Computer Studies</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Education" id="checkBoxEducationoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Education",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Education" id="checkBoxEducationoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxEducationoffcanvas">Education</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineeringoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Engineering",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineeringoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxEngineeringoffcanvas">Engineering</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="International Hospitality Management" id="checkBoxHospitalityManagementoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("International Hospitality Management",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="International Hospitality Management" id="checkBoxHospitalityManagementoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxHospitalityManagementoffcanvas">International Hospitality Management</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritimeoffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Maritime",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritimeoffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxMaritimeoffcanvas">Maritime</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchooloffcanvas" name="resource_unit[]" <?php if(isset($_POST["resource_unit"])){if(in_array("Graduate School",$_POST["resource_unit"])){echo "checked";}}?>>
+                                <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchooloffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxGraduateSchooloffcanvas">Graduate School</label>
                             </div>
                         </form>
@@ -551,98 +549,7 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <h1>Suggestions</h1>
                     <hr class="my-2">
                     <div id="repository-results-container">
-                    <!-- <?php foreach($published as $key=>$result):
-                                if ($result['file_type'] === 'thesis') {
-                                    echo "<div class='repositoryItem p-2'>
-                                    <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
-                                    <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
-                                        <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
-                                    </a>
-                                    <p class='fw-bold'>{$result['researcher_surname']}, {$result['researcher_first_name'][0]}.";       
-                                    for($i=1;$i<=$result['research_coauthors_count'];$i++){
-                                        echo ", {$result["coauthor{$i}_surname"]}, {$result["coauthor{$i}_first_name"][0]}.";
-                                    }
-                                    echo"</p>
-                                    <p class='fw-bold'>{$result['publication_year']}</p>
-                                    <p>{$result['research_abstract']}</p>
-                                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                                    <hr class='my-2'>
-                                </div>";
-                                }
-                                else if ($result['file_type'] === 'journal'){
-                                    $journalImage = explode(".pdf",$result['file_dir']);
-                                    $journalImageLink = $journalImage[0].".png";
-                                    echo "<div class='repositoryItem p-2'>
-                                    <div class='row'>
-                                        <div class='text-start'>
-                                            <p class='fw-bold' style='color: #012265;'>Journal {$result['file_id']}</p>
-                                        </div>
-                                        <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                        <img src=../{$result['file_dir2']} width='150'>
-                                        </div>
-                                        <div class='col-sm-12 col-lg-10'>
-                                            <div class='col'>
-                                                <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
-                                                    <h4 class='fw-bold mb-3'>{$result['journal_title']}</h4>
-                                                </a>
-                                                <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
-                                                <p class='fw-bold'>Volume 11 Series of 2019</p>
-                                                <p>{$result['journal_description']}</p>
-                                                <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                                            </div>
-                                        </div>
-                                        <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                            <img src=../{$result['file_dir2']} width='150'>
-                                        </div>
-                                    </div>
-                                    <hr class='my-2'>
-                                </div>";
-                                }
-                                else if ($result['file_type'] === 'infographic'){
-                                    echo "<div class='repositoryItem p-2'>
-                                    <div class='row'>
-                                        <div class='text-start'>
-                                            <p class='fw-bold' style='color: #012265;'>Infographic {$result['file_id']}</p>
-                                        </div>
-                                        <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                        </div>
-                                        <div class='col-sm-12 col-lg-10'>
-                                            <div class='col'>
-                                                <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
-                                                    <h4 class='fw-bold mb-3'>{$result['infographic_title']}</h4>
-                                                </a>
-                                                <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
-                                                <p class='fw-bold'>Volume 11 Series of 2019</p>
-                                                <p>{$result['infographic_description']}</p>
-                                                <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr class='my-2'>
-                                </div>";
-                                }
-                    ?>
-                    <?php endforeach ?> 
-                    <div class="row repository-pagination" id="repository-pagination">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination d-flex justify-content-center">
-                                <li class="page-item" <?php if($page==1){ echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page-1?> >Previous</a></li>
-                                <?php for ($i=1; $i <= $total_pages; $i++){ 
-                                    if($i==$page){
-                                        echo "<li class='page-item active'><span class='page-link' id='current-page'>$i</span></li>";
-                                    }
-                                    else{
-                                        echo "<li class='page-item'><a class='page-link' href='?page={$i}'>$i</a></li>";
-                                    }
-                                } ?>
-                                <li class="page-item" <?php if($page>=$total_pages){echo 'hidden';} ?>><a class="page-link" href=<?php echo '?page='.$page+1?>>Next</a></li>
-                            </ul>
-                            
-                        </nav>
-                    </div>-->
-                    </div>
-                    
-                    
+                    </div> 
                 </div>
 
             </div>

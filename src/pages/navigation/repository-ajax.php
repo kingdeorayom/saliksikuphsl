@@ -8,8 +8,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");
     die();
 }
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
+if (isset($_POST['page'])) {
+    $page = $_POST['page'];
 } else {
     $page = 1;
 }
@@ -23,11 +23,11 @@ if (mysqli_connect_errno()) {
 $query = "SELECT
 fi.*,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
 
-if (isset($_GET['exists'])) {
-    if ($_GET['exists'] == 'anywhere') {
-        if (isset($_GET['word_search']) && $_GET['word_search'] != '') {
+if (isset($_POST['exists'])) {
+    if ($_POST['exists'] == 'anywhere') {
+        if (isset($_POST['word_search']) && $_POST['word_search'] != '') {
             $words_exists = " AND (";
-            $words_exists_array = explode(" ", $_GET['word_search']);
+            $words_exists_array = explode(" ", $_POST['word_search']);
             foreach ($words_exists_array as $key => $word) {
                 $words_exists .= "ri.research_title LIKE '%$word%' OR ri.research_abstract LIKE '%$word%' OR ji.journal_title LIKE '%$word%' OR ji.journal_subtitle LIKE '%$word%' OR ji.journal_description LIKE '%$word%' OR ii.infographic_title LIKE '%$word%' LIKE '%$word%' OR ii.infographic_description LIKE '%$word%'";
                 if ($key < count($words_exists_array) - 1) {
@@ -37,13 +37,13 @@ if (isset($_GET['exists'])) {
             $words_exists .= ") ";
             $query .= $words_exists;
         }
-        if (isset($_GET['phrase_search']) && $_GET['phrase_search'] != '') {
-            $phrase_exists = " AND (ri.research_title LIKE '%{$_GET["phrase_search"]}%' OR ri.research_abstract LIKE '%{$_GET["phrase_search"]}%' OR ji.journal_title LIKE '%{$_GET["phrase_search"]}%' OR ji.journal_subtitle LIKE '%{$_GET["phrase_search"]}%' OR ji.journal_description LIKE '%{$_GET["phrase_search"]}%' OR ii.infographic_title LIKE '%{$_GET["phrase_search"]}%' OR ii.infographic_description LIKE '%{$_GET["phrase_search"]}%')";
+        if (isset($_POST['phrase_search']) && $_POST['phrase_search'] != '') {
+            $phrase_exists = " AND (ri.research_title LIKE '%{$_POST["phrase_search"]}%' OR ri.research_abstract LIKE '%{$_POST["phrase_search"]}%' OR ji.journal_title LIKE '%{$_POST["phrase_search"]}%' OR ji.journal_subtitle LIKE '%{$_POST["phrase_search"]}%' OR ji.journal_description LIKE '%{$_POST["phrase_search"]}%' OR ii.infographic_title LIKE '%{$_POST["phrase_search"]}%' OR ii.infographic_description LIKE '%{$_POST["phrase_search"]}%')";
             $query .= $phrase_exists;
         }
-        if (isset($_GET['word_exists']) && $_GET['word_exists'] != '') {
+        if (isset($_POST['word_exists']) && $_POST['word_exists'] != '') {
             $word_list_exists = " AND (";
-            $word_list_exists_array = explode(" ", $_GET['word_exists']);
+            $word_list_exists_array = explode(" ", $_POST['word_exists']);
             foreach ($word_list_exists_array as $key => $word) {
                 $word_list_exists .= "ri.research_title LIKE '%$word%' OR ri.research_abstract LIKE '%$word%' OR ji.journal_title LIKE '%$word%' OR ji.journal_subtitle LIKE '%$word%' OR ji.journal_description LIKE '%$word%' OR ii.infographic_title LIKE '%$word%' LIKE '%$word%' OR ii.infographic_description LIKE '%$word%'";
                 if ($key < count($word_list_exists_array) - 1) {
@@ -53,9 +53,9 @@ if (isset($_GET['exists'])) {
             $word_list_exists .= ") ";
             $query .= $word_list_exists;
         }
-        if (isset($_GET['word_not_exists']) && $_GET['word_not_exists'] != '') {
+        if (isset($_POST['word_not_exists']) && $_POST['word_not_exists'] != '') {
             $word_list_not_exists = " AND (";
-            $word_list_not_exists_array = explode(" ", $_GET['word_not_exists']);
+            $word_list_not_exists_array = explode(" ", $_POST['word_not_exists']);
             foreach ($word_list_not_exists_array as $key => $word) {
                 $word_list_not_exists .= "(ri.research_title NOT LIKE '%$word%' AND ri.research_abstract NOT LIKE '%$word%') OR (ji.journal_title NOT LIKE '%$word%' AND ji.journal_subtitle NOT LIKE '%$word%' AND ji.journal_description NOT LIKE '%$word%') OR (ii.infographic_title NOT LIKE '%$word%' AND ii.infographic_description NOT LIKE '%$word%')";
                 if ($key < count($word_list_not_exists_array) - 1) {
@@ -65,10 +65,10 @@ if (isset($_GET['exists'])) {
             $word_list_not_exists .= ") ";
             $query .= $word_list_not_exists;
         }
-    } else if ($_GET['exists'] == 'title') {
-        if (isset($_GET['word_search']) && $_GET['word_search'] != '') {
+    } else if ($_POST['exists'] == 'title') {
+        if (isset($_POST['word_search']) && $_POST['word_search'] != '') {
             $words_exists = " AND (";
-            $words_exists_array = explode(" ", $_GET['word_search']);
+            $words_exists_array = explode(" ", $_POST['word_search']);
             foreach ($words_exists_array as $key => $word) {
                 $words_exists .= "ri.research_title LIKE '%$word%' OR ji.journal_title LIKE '%$word%' OR ii.infographic_title LIKE '%$word%'";
                 if ($key < count($words_exists_array) - 1) {
@@ -78,13 +78,13 @@ if (isset($_GET['exists'])) {
             $words_exists .= ") ";
             $query .= $words_exists;
         }
-        if (isset($_GET['phrase_search']) && $_GET['phrase_search'] != '') {
-            $phrase_exists = " AND (ri.research_title LIKE '%{$_GET["phrase_search"]}%' OR ji.journal_title LIKE '%{$_GET["phrase_search"]}%' OR ii.infographic_title LIKE '%{$_GET["phrase_search"]}%')";
+        if (isset($_POST['phrase_search']) && $_POST['phrase_search'] != '') {
+            $phrase_exists = " AND (ri.research_title LIKE '%{$_POST["phrase_search"]}%' OR ji.journal_title LIKE '%{$_POST["phrase_search"]}%' OR ii.infographic_title LIKE '%{$_POST["phrase_search"]}%')";
             $query .= $phrase_exists;
         }
-        if (isset($_GET['word_exists']) && $_GET['word_exists'] != '') {
+        if (isset($_POST['word_exists']) && $_POST['word_exists'] != '') {
             $word_list_exists = " AND (";
-            $word_list_exists_array = explode(" ", $_GET['word_exists']);
+            $word_list_exists_array = explode(" ", $_POST['word_exists']);
             foreach ($word_list_exists_array as $key => $word) {
                 $word_list_exists .= "ri.research_title LIKE '%$word%' OR ji.journal_title LIKE '%$word%' OR ii.infographic_title LIKE '%$word%'";
                 if ($key < count($word_list_exists_array) - 1) {
@@ -94,9 +94,9 @@ if (isset($_GET['exists'])) {
             $word_list_exists .= ") ";
             $query .= $word_list_exists;
         }
-        if (isset($_GET['word_not_exists']) && $_GET['word_not_exists'] != '') {
+        if (isset($_POST['word_not_exists']) && $_POST['word_not_exists'] != '') {
             $word_list_not_exists = " AND (";
-            $word_list_not_exists_array = explode(" ", $_GET['word_not_exists']);
+            $word_list_not_exists_array = explode(" ", $_POST['word_not_exists']);
             foreach ($word_list_not_exists_array as $key => $word) {
                 $word_list_not_exists .= "ri.research_title NOT LIKE '%$word%' OR ji.journal_title NOT LIKE '%$word%' OR ii.infographic_title NOT LIKE '%$word%'";
                 if ($key < count($word_list_not_exists_array) - 1) {
@@ -108,82 +108,82 @@ if (isset($_GET['exists'])) {
         }
     }
 }
-if (isset($_GET['authored_by']) && $_GET['authored_by'] != '') {
-    $authored_by = " AND (ri.author_first_name LIKE '{$_GET['authored_by']}' OR ri.author_surname LIKE '{$_GET['authored_by']}' OR ii.author_first_name LIKE '{$_GET['authored_by']}' OR ii.author_surname LIKE '{$_GET['authored_by']}' OR ji.chief_editor_first_name LIKE '{$_GET['authored_by']}' OR ji.chief_editor_last_name LIKE '{$_GET['authored_by']}' OR coauthor1_first_name LIKE '{$_GET['authored_by']}' OR coauthor1_surname LIKE '{$_GET['authored_by']}' OR coauthor2_first_name LIKE '{$_GET['authored_by']}' OR coauthor2_surname LIKE '{$_GET['authored_by']}' OR coauthor3_first_name LIKE '{$_GET['authored_by']}' OR coauthor3_surname LIKE '{$_GET['authored_by']}' OR coauthor4_first_name LIKE '{$_GET['authored_by']}' OR coauthor4_surname LIKE '{$_GET['authored_by']}')";
+if (isset($_POST['authored_by']) && $_POST['authored_by'] != '') {
+    $authored_by = " AND (ri.author_first_name LIKE '{$_POST['authored_by']}' OR ri.author_surname LIKE '{$_POST['authored_by']}' OR ii.author_first_name LIKE '{$_POST['authored_by']}' OR ii.author_surname LIKE '{$_POST['authored_by']}' OR ji.chief_editor_first_name LIKE '{$_POST['authored_by']}' OR ji.chief_editor_last_name LIKE '{$_POST['authored_by']}' OR coauthor1_first_name LIKE '{$_POST['authored_by']}' OR coauthor1_surname LIKE '{$_POST['authored_by']}' OR coauthor2_first_name LIKE '{$_POST['authored_by']}' OR coauthor2_surname LIKE '{$_POST['authored_by']}' OR coauthor3_first_name LIKE '{$_POST['authored_by']}' OR coauthor3_surname LIKE '{$_POST['authored_by']}' OR coauthor4_first_name LIKE '{$_POST['authored_by']}' OR coauthor4_surname LIKE '{$_POST['authored_by']}')";
     $query .= $authored_by;
 }
-if (isset($_GET['advanced_from_year']) && $_GET['advanced_from_year'] != '' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year'] != '') {
-    $date_range = " AND (ri.publication_year BETWEEN {$_GET['advanced_from_year']} AND {$_GET['advanced_to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['advanced_from_year']} AND {$_GET['advanced_to_year']})";
+if (isset($_POST['advanced_from_year']) && $_POST['advanced_from_year'] != '' && isset($_POST['advanced_to_year']) && $_POST['advanced_to_year'] != '') {
+    $date_range = " AND (ri.publication_year BETWEEN {$_POST['advanced_from_year']} AND {$_POST['advanced_to_year']} OR ii.infographic_publication_year BETWEEN {$_POST['advanced_from_year']} AND {$_POST['advanced_to_year']})";
     $query .= $date_range;
 }
-if (isset($_GET['advanced_from_year']) && $_GET['advanced_from_year'] != '' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year'] == '') {
-    $date_from = " AND (ri.publication_year >= {$_GET['advanced_from_year']} OR ii.infographic_publication_year >= {$_GET['advanced_from_year']})";
+if (isset($_POST['advanced_from_year']) && $_POST['advanced_from_year'] != '' && isset($_POST['advanced_to_year']) && $_POST['advanced_to_year'] == '') {
+    $date_from = " AND (ri.publication_year >= {$_POST['advanced_from_year']} OR ii.infographic_publication_year >= {$_POST['advanced_from_year']})";
     $query .= $date_from;
 }
-if (isset($_GET['advanced_from_year']) && $_GET['advanced_from_year'] == '' && isset($_GET['advanced_to_year']) && $_GET['advanced_to_year'] != '') {
-    $date_to = "AND (ri.publication_year <= {$_GET['advanced_to_year']} OR ii.infographic_publication_year <= {$_GET['advanced_to_year']})";
+if (isset($_POST['advanced_from_year']) && $_POST['advanced_from_year'] == '' && isset($_POST['advanced_to_year']) && $_POST['advanced_to_year'] != '') {
+    $date_to = "AND (ri.publication_year <= {$_POST['advanced_to_year']} OR ii.infographic_publication_year <= {$_POST['advanced_to_year']})";
     $query .= $date_to;
 }
 
-if (isset($_GET['title_query']) && $_GET['title_query'] != '') {
-    $search = " AND (ri.research_title LIKE '%{$_GET["title_query"]}%' OR ji.journal_title LIKE '%{$_GET["title_query"]}%' OR ii.infographic_title LIKE '%{$_GET["title_query"]}%')";
+if (isset($_POST['title_query']) && $_POST['title_query'] != '') {
+    $search = " AND (ri.research_title LIKE '%{$_POST["title_query"]}%' OR ji.journal_title LIKE '%{$_POST["title_query"]}%' OR ii.infographic_title LIKE '%{$_POST["title_query"]}%')";
     $query .= $search;
 }
-if (isset($_GET['publication_year'])) {
+if (isset($_POST['publication_year'])) {
     $year = " AND (";
-    foreach ($_GET['publication_year'] as $key => $value) {
+    foreach ($_POST['publication_year'] as $key => $value) {
         $year .= "ri.publication_year = $value OR ii.infographic_publication_year = $value";
-        if ($key < count($_GET['publication_year']) - 1) {
+        if ($key < count($_POST['publication_year']) - 1) {
             $year .= " OR ";
         }
     }
     $year .= ") ";
     $query .= $year;
 }
-if (isset($_GET['from_year']) && $_GET['from_year'] != '' && isset($_GET['to_year']) && $_GET['to_year'] != '') {
-    $year_range = " AND (ri.publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']})";
+if (isset($_POST['from_year']) && $_POST['from_year'] != '' && isset($_POST['to_year']) && $_POST['to_year'] != '') {
+    $year_range = " AND (ri.publication_year BETWEEN {$_POST['from_year']} AND {$_POST['to_year']} OR ii.infographic_publication_year BETWEEN {$_POST['from_year']} AND {$_POST['to_year']})";
     $query .= $year_range;
 }
-if (isset($_GET['from_year']) && $_GET['from_year'] != '' && isset($_GET['to_year']) && $_GET['to_year'] == '') {
-    $from_year_range = " AND (ri.publication_year >= {$_GET['from_year']} OR ii.infographic_publication_year >= {$_GET['from_year']})";
+if (isset($_POST['from_year']) && $_POST['from_year'] != '' && isset($_POST['to_year']) && $_POST['to_year'] == '') {
+    $from_year_range = " AND (ri.publication_year >= {$_POST['from_year']} OR ii.infographic_publication_year >= {$_POST['from_year']})";
     $query .= $from_year_range;
 }
-if (isset($_GET['from_year']) && $_GET['from_year'] == '' && isset($_GET['to_year']) && $_GET['to_year'] != '') {
-    $to_year_range = " AND (ri.publication_year <= {$_GET['to_year']} OR ii.infographic_publication_year <= {$_GET['to_year']})";
+if (isset($_POST['from_year']) && $_POST['from_year'] == '' && isset($_POST['to_year']) && $_POST['to_year'] != '') {
+    $to_year_range = " AND (ri.publication_year <= {$_POST['to_year']} OR ii.infographic_publication_year <= {$_POST['to_year']})";
     $query .= $to_year_range;
 }
 
-if (isset($_GET['from_year']) && $_GET['from_year'] != '' && isset($_GET['to_year']) && $_GET['to_year'] != '') {
-    $year_range = " AND (ri.publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']} OR ii.infographic_publication_year BETWEEN {$_GET['from_year']} AND {$_GET['to_year']})";
+if (isset($_POST['from_year']) && $_POST['from_year'] != '' && isset($_POST['to_year']) && $_POST['to_year'] != '') {
+    $year_range = " AND (ri.publication_year BETWEEN {$_POST['from_year']} AND {$_POST['to_year']} OR ii.infographic_publication_year BETWEEN {$_POST['from_year']} AND {$_POST['to_year']})";
     $query .= $year_range;
 }
-if (isset($_GET['resource_type'])) {
+if (isset($_POST['resource_type'])) {
     $resource_type = " AND (";
-    foreach ($_GET['resource_type'] as $key => $value) {
+    foreach ($_POST['resource_type'] as $key => $value) {
         $resource_type .= "fi.file_type LIKE '$value' OR ri.resource_type LIKE '$value'";
-        if ($key < count($_GET['resource_type']) - 1) {
+        if ($key < count($_POST['resource_type']) - 1) {
             $resource_type .= " OR ";
         }
     }
     $resource_type .= ") ";
     $query .= $resource_type;
 }
-if (isset($_GET['research_field'])) {
+if (isset($_POST['research_field'])) {
     $research_field = " AND (";
-    foreach ($_GET['research_field'] as $key => $value) {
+    foreach ($_POST['research_field'] as $key => $value) {
         $research_field .= "ri.research_fields LIKE '%$value%'";
-        if ($key < count($_GET['research_field']) - 1) {
+        if ($key < count($_POST['research_field']) - 1) {
             $research_field .= " OR ";
         }
     }
     $research_field .= ") ";
     $query .= $research_field;
 }
-if (isset($_GET['resource_unit'])) {
+if (isset($_POST['resource_unit'])) {
     $resource_unit = " AND (";
-    foreach ($_GET['resource_unit'] as $key => $value) {
+    foreach ($_POST['resource_unit'] as $key => $value) {
         $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%' OR ii.infographic_research_unit LIKE '%$value%'";
-        if ($key < count($_GET['resource_unit']) - 1) {
+        if ($key < count($_POST['resource_unit']) - 1) {
             $resource_unit .= " OR ";
         }
     }
@@ -287,19 +287,17 @@ if ($total_rows != 0) {
     $previous_page = $page - 1;
     $next_page = $page + 1;
     if ($page != 1) {
-        echo "<li class='page-item'><a class='page-link' href='?page=$previous_page'";
-        echo " >Previous</a></li>";
+        echo "<li class='page-item'><a class='page-link' data-id='$previous_page'>Previous</a></li>";
     }
     for ($i = 1; $i <= $total_pages; $i++) {
         if ($i == $page) {
-            echo "<li class='page-item active'><span class='page-link' id='current-page'>$i</span></li>";
+            echo "<li class='page-item active'><span class='page-link' data-id='current-page'>$i</span></li>";
         } else {
-            echo "<li class='page-item'><a class='page-link' href='?page={$i}'>$i</a></li>";
+            echo "<li class='page-item'><a class='page-link' data-id='$i'>$i</a></li>";
         }
     }
     if ($page < $total_pages) {
-        echo "<li class='page-item'><a class='page-link' href='?page=$next_page'";
-        echo " >Next</a></li>";
+        echo "<li class='page-item'><a class='page-link' data-id=$next_page>Next</a></li>";
     }
 } else {
     echo '<h5 style="color: grey;"><br>No results found. Try another search filter.</h5>';

@@ -1,30 +1,30 @@
-const repositorySearchBar = document.querySelector("#repository-search-bar");
-const repositorySearchButton = document.querySelector(
-  "#repository-search-button"
-);
-const hiddenSideBarQuery = document.querySelector("#hidden-sidebar-query");
-const hiddenModalQuery = document.querySelector("#hidden-modal-query");
+// const repositorySearchBar = document.querySelector("#repository-search-bar");
+// const repositorySearchButton = document.querySelector(
+//   "#repository-search-button"
+// );
+// const hiddenSideBarQuery = document.querySelector("#hidden-sidebar-query");
+// const hiddenModalQuery = document.querySelector("#hidden-modal-query");
 
-repositorySearchBar.addEventListener("input", function () {
-  hiddenSideBarQuery.value = repositorySearchBar.value;
-  hiddenModalQuery.value = repositorySearchBar.value;
-});
+// repositorySearchBar.addEventListener("input", function () {
+//   hiddenSideBarQuery.value = repositorySearchBar.value;
+//   hiddenModalQuery.value = repositorySearchBar.value;
+// });
 
-repositorySearchButton.addEventListener("click", function () {
-  const sidebarForm = document.forms.namedItem("sidebar-filters");
-  const modalForm = document.forms.namedItem("modal-filters");
+// repositorySearchButton.addEventListener("click", function () {
+//   const sidebarForm = document.forms.namedItem("sidebar-filters");
+//   const modalForm = document.forms.namedItem("modal-filters");
 
-  if (screen.width <= 991) {
-    modalForm.submit();
-  } else if (screen.width > 991) {
-    sidebarForm.submit();
-  }
-});
+//   if (screen.width <= 991) {
+//     modalForm.submit();
+//   } else if (screen.width > 991) {
+//     sidebarForm.submit();
+//   }
+// });
 
 $("form[name='sidebar-filters']")
   .on("change", function () {
-    console.log($("form[name='modal-filters']").find(":input"));
-    console.log($("form[name='sidebar-filters']").find(":input"));
+    // console.log($("form[name='modal-filters']").find(":input"));
+    // console.log($("form[name='sidebar-filters']").find(":input"));
 
     $(this)
       .find(":input")
@@ -124,19 +124,51 @@ $(document).ready(function () {
   $.each(modalInputs, function (key, value) {
     $("#" + key).prop("value", value);
   });
+});
+
+$(window).on("load", function () {
   getResults();
 });
 
-function getResults() {
-  var str = $("#advanced-search,#modal-search-filters").serialize();
-  var page = "";
-  var url = new URL(window.location);
-  url.searchParams.has("page")
-    ? (page = url.searchParams.get("page"))
-    : (page = 1);
+$("#repository-results-container").on("click", "li > a", function () {
+  changePage($(this).data("id"));
+});
+
+function changePage(page) {
+  var formData = new FormData($("#sidebar-search-filters")[0]);
+  var advancedSearch = new FormData($("#advanced-search")[0]);
+  formData.append("title_query", $("#repository-search-bar").val());
+
+  for (var pair of advancedSearch.entries()) {
+    formData.append(pair[0], pair[1]);
+  }
+  formData.append("page", page);
   $.ajax({
     method: "POST",
-    url: "./repository-ajax.php?page=" + page + "&" + str,
+    data: formData,
+    url: "./repository-ajax.php",
+    contentType: false,
+    processData: false,
+  }).done(function (data) {
+    $("#repository-results-container").html(data);
+  });
+}
+function getResults() {
+  // var str = $("#advanced-search,#modal-search-filters").serialize();
+  var formData = new FormData($("#sidebar-search-filters")[0]);
+  var advancedSearch = new FormData($("#advanced-search")[0]);
+  formData.append("title_query", $("#repository-search-bar").val());
+
+  for (var pair of advancedSearch.entries()) {
+    formData.append(pair[0], pair[1]);
+  }
+
+  $.ajax({
+    method: "POST",
+    data: formData,
+    url: "./repository-ajax.php",
+    contentType: false,
+    processData: false,
   }).done(function (data) {
     $("#repository-results-container").html(data);
   });

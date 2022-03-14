@@ -497,8 +497,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
         </div>
         <div class="row my-5">
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">Uploading your file...</div>
+            <div class="progress" hidden>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="progress-bar">0%</div>
             </div>
         </div>
         <hr>
@@ -525,8 +525,19 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script type="text/javascript">
     $("form[name='thesis-form']").on("submit", function(event) {
         event.preventDefault();
+        $(".progress").prop('hidden',false);
         var formData = new FormData(this);
         $.ajax({
+            xhr: function(){
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener('progress',function(e) {
+                    if(e.lengthComputable){
+                        var percent = Math.round((e.loaded / e.total)* 100)
+                        $('.progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+                    }
+                })
+                return xhr;
+            },
             method: "POST",
             url: "../../process/thesis-submission.php",
             data: formData,
@@ -924,16 +935,16 @@ if (!isset($_SESSION['isLoggedIn'])) {
 </script>
 
 <script>
-    var i = 0;
+    // var i = 0;
 
-    function makeProgress() {
-        if (i < 100) {
-            i = i + 1;
-            $(".progress-bar").css("width", i + "%").text(i + "%");
-        }
+    // function makeProgress() {
+    //     if (i < 100) {
+    //         i = i + 1;
+    //         $(".progress-bar").css("width", i + "%").text(i + "%");
+    //     }
 
-        // Wait for sometime before running this script again
-        setTimeout("makeProgress()", 100);
-    }
-    makeProgress();
+    //     // Wait for sometime before running this script again
+    //     setTimeout("makeProgress()", 100);
+    // }
+    // makeProgress();
 </script>
