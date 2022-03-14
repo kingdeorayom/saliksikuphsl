@@ -10,8 +10,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
 
     <!-- container for alert messages -->
+    <div class="row my-3">
+        <div class="progress" id='thesis-progress-container' hidden>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="thesis-progress-bar">0%</div>
+        </div>
+    </div>
     <div id='alert-container'>
-
+        
     </div>
     <!-- container for alert messages -->
 
@@ -496,11 +501,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
         </div>
-        <div class="row my-5">
-            <div class="progress" hidden>
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="progress-bar">0%</div>
-            </div>
-        </div>
         <hr>
         <?php if ($_SESSION['userType'] != 'admin') {
             echo '<div class="row my-4">
@@ -525,7 +525,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <script type="text/javascript">
     $("form[name='thesis-form']").on("submit", function(event) {
         event.preventDefault();
-        $(".progress").prop('hidden',false);
+        $("#thesis-progress-container").prop('hidden',false);
         var formData = new FormData(this);
         $.ajax({
             xhr: function(){
@@ -533,7 +533,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 xhr.upload.addEventListener('progress',function(e) {
                     if(e.lengthComputable){
                         var percent = Math.round((e.loaded / e.total)* 100)
-                        $('.progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+                        $('#thesis-progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
                     }
                 })
                 return xhr;
@@ -544,6 +544,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
             contentType: false,
             processData: false,
         }).done(function(data) {
+            window.scrollTo(0,0);
+            $("#thesis-progress-container").prop('hidden',true);
             if (data.response === "type_error") {
                 $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
             } else if (data.response === "generic_error") {
@@ -932,19 +934,4 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         $("#dropdownResearchUnit").trigger("change");
     });
-</script>
-
-<script>
-    // var i = 0;
-
-    // function makeProgress() {
-    //     if (i < 100) {
-    //         i = i + 1;
-    //         $(".progress-bar").css("width", i + "%").text(i + "%");
-    //     }
-
-    //     // Wait for sometime before running this script again
-    //     setTimeout("makeProgress()", 100);
-    // }
-    // makeProgress();
 </script>
