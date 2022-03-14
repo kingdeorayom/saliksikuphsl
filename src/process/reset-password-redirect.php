@@ -3,7 +3,7 @@ session_start();
 
 include 'connection.php';
 
-if (!isset($_SESSION['toVerify'])) {
+if (!isset($_SESSION['toVerifyPasswordReset'])) {
     header("location: ../../index.php");
     exit();
 }
