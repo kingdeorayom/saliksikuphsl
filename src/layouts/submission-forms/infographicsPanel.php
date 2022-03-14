@@ -202,7 +202,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row my-3">
             <div class="col-lg-4 col-sm-12">
                 <label class="fw-bold">No. of Co-Authors</label>
-                <select id="dropdownInfographicsCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" onchange="showInfographicsCoAuthorsField();" required>
+                <select id="dropdownInfographicsCoAuthors" class="form-select my-3" aria-label="Default select example" name="dropdownCoAuthors" required>
                     <option value="0" selected>0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -323,6 +323,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
 <script type="text/javascript">
+
     $("form[name='infographic-form']").on("submit", function(event) {
         event.preventDefault();
         var formData = new FormData(this);
@@ -356,6 +357,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             } else if (data.response === "success") {
                 $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 document.forms.namedItem("infographic-form").reset();
+                $("#dropdownInfographicsCoAuthors").trigger('change');
             }
         })
     })
