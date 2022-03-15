@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['email'])) {
-    header('Location: ../../src/layouts/general/error.php');
+    header('Location: ../../layouts/general/error.php');
     exit();
 }
 
