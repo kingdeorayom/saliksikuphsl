@@ -392,7 +392,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="row mb-4">
                 <div>
-                    <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span></label>
+                    <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span> <span class="text-secondary fw-normal">Each keyword should be separated by a comma. For example: <em>language</em>, <em>literature</em>, <em>teaching experiences</em></span></label>
                     <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" value="<?php echo $fileInfo['keywords'] ?>" required>
                 </div>
             </div>
