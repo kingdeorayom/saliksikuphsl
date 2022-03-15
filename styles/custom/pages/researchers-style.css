@@ -43,3 +43,20 @@
 .side-menu-text:hover {
   cursor: pointer;
 }
+
+.button-add-profile,
+.button-add-work {
+  background-color: #012265;
+  color: #ffffff;
+}
+
+.button-add-profile:hover,
+.button-add-work:hover {
+  background-color: #27498d;
+  color: #ffffff;
+}
+
+.button-save:hover {
+  background-color: #012265;
+  border-color: #012265;
+}
