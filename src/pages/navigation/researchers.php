@@ -67,8 +67,16 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <p class="side-menu-text" id="noviceText">Novice Researchers</p>
                     <hr>
 
-                    <!-- <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile"><i class="fas fa-plus"></i> Add Profile</button> -->
-                    <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile">+ Add Profile</button>
+                    <?php
+
+                    if ($_SESSION['userType'] === "admin") {
+                        echo '
+                        <!-- <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile"><i class="fas fa-plus"></i> Add Profile</button> -->
+                        <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile">+ Add Profile</button>
+                        ';
+                    }
+
+                    ?>
 
                 </div>
 
@@ -166,7 +174,11 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                 </div>
 
-                <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="addNewResearcherPanel" hidden>
+
+                <?php
+
+                if ($_SESSION['userType'] === "admin") {
+                    echo '<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="addNewResearcherPanel" hidden>
                     <h1 class="my-2">Add New Profile</h1>
                     <hr>
 
@@ -260,7 +272,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         </div>
                     </div>
 
-                </div>
+                </div>';
+                }
+
+                ?>
 
             </div>
         </div>

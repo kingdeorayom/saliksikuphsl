@@ -56,7 +56,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <img src="../../../assets/images/researchers/avatar-lg.svg" class="img-fluid">
                 </div>
                 <div class="col-lg-10">
-                    <h2 class="fw-bold mt-3">Name of Researcher</h2>
+                    <h2 class="fw-bold mt-3">Name of Researcher <a href="#" class="edit-profile-button"><i class="fas fa-edit h5" title="Edit profile"></i></a></h2>
                     <h5 class="mb-2">Junior Associate Researcher</h5>
 
                     <div class="row my-5">

@@ -94,3 +94,7 @@
   /* border: 2px solid #da4c53; */
   color: white;
 }
+
+.repository-pagination {
+  cursor: pointer;
+}
