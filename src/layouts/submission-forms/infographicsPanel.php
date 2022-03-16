@@ -11,8 +11,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
     <!-- container for alert messages -->
     <div class="row my-3">
+        <label class="my-2" id="fileUploadLabelInfographic" hidden>Uploading your file...</label>
         <div class="progress" id='infographic-progress-container' hidden>
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="infographic-progress-bar">0%</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="infographic-progress-bar">0%</div>
         </div>
     </div>
     <div id='alert-container-infographic'>
@@ -323,18 +324,18 @@ if (!isset($_SESSION['isLoggedIn'])) {
 </div>
 <script src="../../../scripts/custom/info-calendar-date-picker.js"></script>
 <script type="text/javascript">
-
     $("form[name='infographic-form']").on("submit", function(event) {
         event.preventDefault();
-        $("#infographic-progress-container").prop('hidden',false);
+        $("#infographic-progress-container").prop('hidden', false);
+        $("#fileUploadLabelInfographic").prop('hidden', false);
         var formData = new FormData(this);
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         $.ajax({
-            xhr: function(){
+            xhr: function() {
                 var xhr = new window.XMLHttpRequest();
-                xhr.upload.addEventListener('progress',function(e) {
-                    if(e.lengthComputable){
-                        var percent = Math.round((e.loaded / e.total)* 100)
+                xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        var percent = Math.round((e.loaded / e.total) * 100)
                         $('#infographic-progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
                     }
                 })
@@ -348,7 +349,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         }).done(function(data) {
             var percent = 0; //reset to default
             $('#infographic-progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
-            $("#infographic-progress-container").prop('hidden',true);
+            $("#infographic-progress-container").prop('hidden', true);
+            $("#fileUploadLabelInfographic").prop('hidden', true);
             if (data.response === "type_error") {
                 $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
             } else if (data.response === "generic_error") {

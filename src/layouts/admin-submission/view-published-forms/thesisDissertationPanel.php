@@ -398,7 +398,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="row mb-4">
                 <div>
-                    <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span></label>
+                    <label class="fw-bold my-2">Keywords<span class="text-danger"> *</span> <span class="text-secondary fw-normal">Each keyword should be separated by a comma. For example: <em>language</em>, <em>literature</em>, <em>teaching experiences</em></span></label>
                     <input type="text" class="form-control" name="textareaKeywords" id="textFieldResearchKeyword" value="<?php echo $fileInfo['keywords'] ?>" required>
                 </div>
             </div>
@@ -496,12 +496,16 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col">
                     <label class="my-2">File1.pdf</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if ($fileInfo['file1_shown']) {
+                                                                                                                            echo 'checked';
+                                                                                                                        } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
                     <label class="my-2">File2.pdf</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo"  name='file2Shown' <?php if($fileInfo['file2_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if ($fileInfo['file2_shown']) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefaultTwo">Show in Repository</label>
                     </div>
                 </div>
@@ -576,366 +580,84 @@ if (!isset($_SESSION['isLoggedIn'])) {
             $('#dropdownResearchUnit').on('change', function() {
 
                 if (this.value == 'Arts and Sciences') {
+
                     $("#dropdownArtsSciences").prop('hidden', false);
                     $("#dropdownArtsSciences :input").prop('disabled', false);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
+                    $("#dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
                 } else if (this.value == 'Business and Accountancy') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
 
                     $("#dropdownBusinessAccountancy").prop('hidden', false);
                     $("#dropdownBusinessAccountancy :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Computer Studies') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
 
                     $("#dropdownComputerStudies").prop('hidden', false);
                     $("#dropdownComputerStudies :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Criminology') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
 
                     $("#dropdownCriminology").prop('hidden', false);
                     $("#dropdownCriminology :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Education') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
 
                     $("#dropdownEducation").prop('hidden', false);
                     $("#dropdownEducation :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Engineering, Architecture and Aviation') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
 
                     $("#dropdownEngineering").prop('hidden', false);
                     $("#dropdownEngineering :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Maritime Education') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
 
                     $("#dropdownMaritime").prop('hidden', false);
                     $("#dropdownMaritime :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'International Hospitality Management') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
 
                     $("#dropdownManagement").prop('hidden', false);
                     $("#dropdownManagement :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Graduate School') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
 
                     $("#dropdownGraduateSchool").prop('hidden', false);
                     $("#dropdownGraduateSchool :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Support Services') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
-
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
 
                     $("#dropdownSupportServices").prop('hidden', false);
                     $("#dropdownSupportServices :input").prop('disabled', false);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input").prop('disabled', true);
+
                 } else if (this.value == 'Basic Education') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
 
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
                 } else if (this.value == 'Senior High School') {
-                    $("#dropdownArtsSciences").prop('hidden', true);
-                    $("#dropdownArtsSciences :input").prop('disabled', true);
 
-                    $("#dropdownBusinessAccountancy").prop('hidden', true);
-                    $("#dropdownBusinessAccountancy :input").prop('disabled', true);
-
-                    $("#dropdownComputerStudies").prop('hidden', true);
-                    $("#dropdownComputerStudies :input").prop('disabled', true);
-
-                    $("#dropdownCriminology").prop('hidden', true);
-                    $("#dropdownCriminology :input").prop('disabled', true);
-
-                    $("#dropdownEducation").prop('hidden', true);
-                    $("#dropdownEducation :input").prop('disabled', true);
-
-                    $("#dropdownEngineering").prop('hidden', true);
-                    $("#dropdownEngineering :input").prop('disabled', true);
-
-                    $("#dropdownMaritime").prop('hidden', true);
-                    $("#dropdownMaritime :input").prop('disabled', true);
-
-                    $("#dropdownManagement").prop('hidden', true);
-                    $("#dropdownManagement :input").prop('disabled', true);
-
-                    $("#dropdownGraduateSchool").prop('hidden', true);
-                    $("#dropdownGraduateSchool :input").prop('disabled', true);
-
-                    $("#dropdownSupportServices").prop('hidden', true);
-                    $("#dropdownSupportServices :input").prop('disabled', true);
+                    $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
                 }
             });
 

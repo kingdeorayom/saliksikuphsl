@@ -145,7 +145,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <h1 class="my-2">Browse Infographics</h1>
                     <hr>
                     <div class="row">
-
+                        <div class="browseInfographics">
+                            <a href="#" class="actual-content-title">
+                                <p>Infographic 1 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Infographic 2 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Infographic 2 Title Here</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -153,7 +163,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <h1 class="my-2">Browse Research Catalogs</h1>
                     <hr>
                     <div class="row">
-
+                        <div class="browseResearchCatalogs">
+                            <a href="#" class="actual-content-title">
+                                <p>Research Catalog 1 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Research Catalog 2 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Research Catalog 3 Title Here</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -161,7 +181,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <h1 class="my-2">Browse Annual Reports</h1>
                     <hr>
                     <div class="row">
-
+                        <div class="browseAnnualReports">
+                            <a href="#" class="actual-content-title">
+                                <p>Annual Report 1 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Annual Report 2 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Annual Report 3 Title Here</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -169,7 +199,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <h1 class="my-2">Browse Research Agenda</h1>
                     <hr>
                     <div class="row">
-
+                        <div class="browseResearchAgenda">
+                            <a href="#" class="actual-content-title">
+                                <p>Research Agenda 1 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Research Agenda 2 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>Research Agenda 3 Title Here</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -177,7 +217,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <h1 class="my-2">Browse Research Competency Development Program</h1>
                     <hr>
                     <div class="row">
-
+                        <div class="browseRCDP">
+                            <a href="#" class="actual-content-title">
+                                <p>RCDP 1 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>RCDP 2 Title Here</p>
+                            </a>
+                            <a href="#" class="actual-content-title">
+                                <p>RCDP 3 Title Here</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 

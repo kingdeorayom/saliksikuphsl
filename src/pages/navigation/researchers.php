@@ -66,6 +66,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <hr>
                     <p class="side-menu-text" id="noviceText">Novice Researchers</p>
                     <hr>
+
+                    <?php
+
+                    if ($_SESSION['userType'] === "admin") {
+                        echo '
+                        <!-- <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile"><i class="fas fa-plus"></i> Add Profile</button> -->
+                        <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile">+ Add Profile</button>
+                        ';
+                    }
+
+                    ?>
+
                 </div>
 
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="seniorResearchersPanel">
@@ -76,7 +88,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12 col-md-6">
                             <a href="../../layouts/researchers-profile/senior-researcher-profile.php" class="researchers-link">
 
-                                <div class="box">
+                                <div class="box my-2">
                                     <div class="row py-3 researcher">
                                         <div class="col-3 avatar">
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
@@ -100,7 +112,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
                             <a href="../../layouts/researchers-profile/junior-researcher-profile.php" class="researchers-link">
-                                <div class="box">
+                                <div class="box my-2">
                                     <div class="row py-3 researcher">
                                         <div class="col-3 avatar">
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
@@ -123,7 +135,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
                             <a href="../../layouts/researchers-profile/junior-associate-profile.php" class="researchers-link">
-                                <div class="box">
+                                <div class="box my-2">
                                     <div class="row py-3 researcher">
                                         <div class="col-3 avatar">
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
@@ -146,7 +158,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
                             <a href="../../layouts/researchers-profile/novice-researcher-profile.php" class="researchers-link">
-                                <div class="box">
+                                <div class="box my-2">
                                     <div class="row py-3 researcher">
                                         <div class="col-3 avatar">
                                             <img src="../../../assets/images/researchers/avatar.svg" alt="">
@@ -161,6 +173,109 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     </div>
 
                 </div>
+
+
+                <?php
+
+                if ($_SESSION['userType'] === "admin") {
+                    echo '<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="addNewResearcherPanel" hidden>
+                    <h1 class="my-2">Add New Profile</h1>
+                    <hr>
+
+                    <div class="row mx-auto">
+                        <div class="col-sm-12">
+
+                            <form action="">
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <label class="py-2 fw-bold">Researcher Type<span class="text-danger"> *</span></label>
+                                        <select class="form-select my-2" aria-label="Default select example" id="dropdownResearcherType">
+                                            <option value="" selected>Senior Researcher</option>
+                                            <option value="">Junior Researcher</option>
+                                            <option value="">Junior Associate Researcher</option>
+                                            <option value="">Novice Researcher</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 my-2">
+                                        <label class="py-2 fw-bold">College/Department<span class="text-danger"> *</span></label>
+                                        <select class="form-select" aria-label="Default select example" id="dropdownResearcherDepartment">
+                                            <option value="" selected>Basic Education Department</option>
+                                            <option value="">Senior High School Department</option>
+                                            <option value="">College of Arts and Sciences</option>
+                                            <option value="">College of Business and Accountancy</option>
+                                            <option value="">College of Computer Studies</option>
+                                            <option value="">College of Criminology</option>
+                                            <option value="">College of Education</option>
+                                            <option value="">College of Engineering, Architecture, and Aviation</option>
+                                            <option value="">College of International Hospitality Management</option>
+                                            <option value="">College of Maritime Education</option>
+                                            <option value="">Graduate School</option>
+                                            <option value="">Community Outreach Department</option>
+                                            <option value="">Human Resource Department</option>
+                                            <option value="">Information Technology Services</option>
+                                            <option value="">International and External Affairs</option>
+                                            <option value="">Library</option>
+                                            <option value="">Marketing Department</option>
+                                            <option value="">Quality Assurance Office</option>
+                                            <option value="">Research and Development Center</option>
+                                            <option value="">Student Personnel Services</option>
+                                            <option value="">University Registrar</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="py-2 fw-bold">Name<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control" name="textFieldResearcherName" id="textFieldResearcherName" required>
+                                        <label class="py-2 fw-bold">Highest Educational Attainment<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control" name="textFieldEducationalAttainment" id="textFieldEducationalAttainment" required>
+                                        <label class="py-2 fw-bold">Research Interest<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control" name="textFieldResearchInterest" id="textFieldResearchInterest" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="py-2 my-2 fw-bold">Published Works</label>
+
+                                        <div class="publishedWork border p-3 mt-0 mb-3">
+                                            <label class="fw-bold">Title</label>
+                                            <input type="text" class="form-control" name="" id="" required>
+                                            <label class="py-2 fw-bold">Link</label>
+                                            <input type="text" class="form-control" name="" id="" required>
+                                        </div>
+
+                                        <div class="publishedWork border p-3 my-4">
+                                            <label class="fw-bold">Title</label>
+                                            <input type="text" class="form-control" name="" id="" required>
+                                            <label class="py-2 fw-bold">Link</label>
+                                            <input type="text" class="form-control" name="" id="" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <!-- <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork"><i class="fas fa-plus"></i> Add Work</button> -->
+                                        <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork">+ Add Work</button>
+                                        <div class="text-end">
+                                            <button class="btn btn-secondary rounded-0 button-save mt-3" id="buttonSave"><i class="fas fa-save me-2"></i> Save Record</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>';
+                }
+
+                ?>
 
             </div>
         </div>
@@ -177,7 +292,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             /* on load */
             $("#seniorResearchersText").click(function() {
                 $("#seniorResearchersPanel").prop('hidden', false);
-                $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#seniorResearchersText").css({
                     "border-bottom": "thick solid #012265",
                 });
@@ -188,7 +303,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
             $("#juniorResearchersText").click(function() {
                 $("#juniorResearchersPanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#juniorResearchersText").css({
                     "border-bottom": "thick solid #012265",
                 });
@@ -199,7 +314,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
             $("#juniorAssociateText").click(function() {
                 $("#juniorAssociatePanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#juniorAssociateText").css({
                     "border-bottom": "thick solid #012265",
                 });
@@ -209,11 +324,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             });
             $("#noviceText").click(function() {
                 $("#novicePanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#noviceText").css({
                     "border-bottom": "thick solid #012265",
                 });
                 $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
+                    "border-bottom": "thick none #012265",
+                });
+            });
+
+            $("#buttonAddProfile").click(function() {
+                $("#addNewResearcherPanel").prop('hidden', false);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText").css({
                     "border-bottom": "thick none #012265",
                 });
             });
