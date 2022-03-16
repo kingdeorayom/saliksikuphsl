@@ -47,9 +47,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
 
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" id="submitText">Submit</p>
+                    <p class="side-menu-text px-3" id="submitText">Submit</p>
                     <hr>
-                    <p class="side-menu-text" id="submissionGuidelinesText">Submission Form and Guidelines</p>
+                    <p class="side-menu-text px-3" id="submissionGuidelinesText">Submission Form and Guidelines</p>
                     <hr>
                 </div>
 
@@ -122,29 +122,29 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
 
             /* on load */
             $("#submitText").css({
-                "border-bottom": "thick solid #012265",
+                "border-left": "thick solid #012265",
             });
             /* on load */
 
             $("#submitText").click(function() {
                 $("#submissionGuidelinesPanel").prop('hidden', true);
                 $("#submissionGuidelinesText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
                 $("#submitPanel").prop('hidden', false);
                 $("#submitText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
             });
 
             $("#submissionGuidelinesText").click(function() {
                 $("#submissionGuidelinesPanel").prop('hidden', false);
                 $("#submissionGuidelinesText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#submitPanel").prop('hidden', true);
                 $("#submitText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -152,11 +152,11 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submit-style.css');
 
                 $("#submissionGuidelinesPanel").prop('hidden', false);
                 $("#submissionGuidelinesText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#submitPanel").prop('hidden', true);
                 $("#submitText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
         });
