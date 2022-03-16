@@ -78,20 +78,29 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                     <hr>
                     <p class="side-menu-text" id="thesisDissertationText">Thesis/Dissertation</p>
                     <hr>
+
                     <?php
                     if ($_SESSION['userType'] === "admin") {
                         echo '
-                        <p class="side-menu-text" id="researchJournalText">Research Journal</p>
-                        <hr>
-                        <p class="side-menu-text" id="infographicsText">Infographics</p>
-                        <hr>
-                    ';
+                            <p class="side-menu-text" id="researchJournalText">Research Journal</p>
+                            <hr>
+                            <p class="side-menu-text" id="infographicsText">Infographics</p>
+                            <hr>';
                     }
                     ?>
+
                 </div>
-                <?php include_once '../../layouts/submission-forms/thesisDissertationPanel.php' ?>
-                <?php include_once '../../layouts/submission-forms/researchJournalPanel.php' ?>
-                <?php include_once '../../layouts/submission-forms/infographicsPanel.php' ?>
+
+                <?php
+                if ($_SESSION['userType'] === "admin") {
+                    include_once '../../layouts/submission-forms/thesisDissertationPanel.php';
+                    include_once '../../layouts/submission-forms/researchJournalPanel.php';
+                    include_once '../../layouts/submission-forms/infographicsPanel.php';
+                } else {
+                    include_once '../../layouts/submission-forms/thesisDissertationPanel.php';
+                }
+                ?>
+
             </div>
         </div>
     </section>
