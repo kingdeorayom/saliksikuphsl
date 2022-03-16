@@ -24,8 +24,6 @@ $(document).ready(function () {
   });
 });
 function loadData(data) {
-  console.table(data);
-  //   $("#results-container").html("");
   data.forEach((result) => {
     if (result["status"] == "pending") {
       if (result["file_type"] == "thesis") {
@@ -61,4 +59,11 @@ function loadData(data) {
       }
     }
   });
+  // code to show message if no results are found
+  if ($(".submissions > div > div").length == 0) {
+    $(".submissions").html("no results");
+  }
+  if ($(".published > div > div").length == 0) {
+    $(".published").html("no results");
+  }
 }
