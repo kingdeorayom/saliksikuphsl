@@ -74,14 +74,15 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
             </div>
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-                    <h3>On this page</h3>
-                    <hr>
-                    <p class="side-menu-text" id="thesisDissertationText">Thesis/Dissertation</p>
-                    <hr>
+
 
                     <?php
                     if ($_SESSION['userType'] === "admin") {
                         echo '
+                            <h3>On this page</h3>
+                            <hr>
+                            <p class="side-menu-text" id="thesisDissertationText">Thesis/Dissertation</p>
+                            <hr>
                             <p class="side-menu-text" id="researchJournalText">Research Journal</p>
                             <hr>
                             <p class="side-menu-text" id="infographicsText">Infographics</p>
