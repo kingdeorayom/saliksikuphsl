@@ -56,9 +56,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <p><?php echo $fileInfo['journal_description'] ?></p>
 
                     <div class='row my-4'>
-                        <label class='fw-bold mb-3'>Attached Files</label>
+                        <p class='fw-bold mb-3'>Attached Files</p>
                         <div class='col'>
-                            <button class='btn button-file'><i class='far fa-file-pdf me-2'></i> File name.pdf</button>
+                            <button class='btn button-file rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> File name.pdf</button>
                         </div>
                     </div>
 

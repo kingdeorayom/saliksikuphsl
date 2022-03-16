@@ -83,16 +83,14 @@
 }
 
 .button-file {
-  background-color: #da4c53;
-  /* border: 2px solid #da4c53; */
-  border-radius: 1;
-  color: white;
+  background-color: #f2f2f2;
+  /* border-radius: 1; */
+  /* color: white; */
 }
 
 .button-file:hover {
-  background-color: #c51f28;
-  /* border: 2px solid #da4c53; */
-  color: white;
+  background-color: #dbdbdb;
+  /* color: white; */
 }
 
 .repository-pagination {
