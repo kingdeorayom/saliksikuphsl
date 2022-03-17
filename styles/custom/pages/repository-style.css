@@ -112,6 +112,39 @@
   /* color: white; */
 }
 
+
+/*---------------------------------------------------Pagination---------------------------------------------------*/
+
 .repository-pagination {
   cursor: pointer;
+}
+
+.page-link {
+  color: #000000;
+}
+.page-link:hover {
+  color: #000000;
+}
+
+.pagination > .prev > .page-link, 
+.pagination > .next > .page-link {
+  background-color: #dcdcdc !important;
+}
+
+.pagination > .prev > .page-link:hover, 
+.pagination > .next > .page-link:hover {
+  color: #ffffff !important;
+  background-color: grey !important;
+}
+
+.pagination > .active > span {
+    color: #000000 !important;
+    background-color: #dcdcdc !important;
+    border: solid 1px #dcdcdc !important;
+}
+
+.pagination > .active > span:hover {
+  color: #ffffff !important;
+  background-color: grey !important;
+  border: solid 1px grey !important;
 }
