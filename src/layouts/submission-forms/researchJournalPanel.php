@@ -124,7 +124,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
+                <div class="mb-0">
                     <label class="fw-bold mb-3">Attach Journal Copy<span class="text-danger"> *</span></label>
                     <input class="form-control" type="file" name="journalFile" accept=".pdf" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
@@ -142,7 +142,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your work" id="submitJournalButton" <?php if ($_SESSION['userType'] !== "admin") {
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit your work" id="submitJournalButton" <?php if ($_SESSION['userType'] !== "admin") {
                                                                                                                                                     echo 'disabled';
                                                                                                                                                 } ?>>
             </div>

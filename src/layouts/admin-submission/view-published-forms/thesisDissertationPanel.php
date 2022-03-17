@@ -63,7 +63,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <option value="Postgraduate" <?= $fileInfo['researchers_category'] == 'Postgraduate' ? 'selected' : '' ?>>Postgraduate</option>
                         <option value="Faculty" <?= $fileInfo['researchers_category'] == 'Faculty' ? 'selected' : '' ?>>Faculty</option>
                         <option value="Non_teaching_staff" <?= $fileInfo['researchers_category'] == 'Non_teaching_staff' ? 'selected' : '' ?>>Non-teaching Staff</option>
-                        <option value="School_head" <?= $fileInfo['researchers_category'] == 'School_head' ? 'selected' : '' ?>>School Head</option>
+                        <option value="Department_head" <?= $fileInfo['researchers_category'] == 'Department_head' ? 'selected' : '' ?>>Department Head</option>
                     </select>
                 </div>
                 <div class="col-lg-4 col-sm-12">
