@@ -127,6 +127,26 @@ $(window).on("load", function () {
   getResults();
 });
 
+$("#sidebar-clear-filter-button").on("click", function () {
+  $("#sidebar-search-filters")[0].reset();
+  $("#advanced-search")[0].reset();
+  getResults();
+  window.scrollTo(0, 0);
+});
+
+$("#modal-clear-filter-button").on("click", function () {
+  $("#sidebar-search-filters")[0].reset();
+  $("#modal-search-filters")[0].reset();
+  $("#advanced-search")[0].reset();
+  getResults();
+  $("#offcanvasTop .offcanvas-body").animate(
+    {
+      scrollTop: 0,
+    },
+    "slow"
+  );
+});
+
 $("#repository-results-container").on("click", "li > a", function () {
   changePage($(this).data("id"));
 });

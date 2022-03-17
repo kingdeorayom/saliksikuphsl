@@ -182,7 +182,7 @@ if (isset($_POST['research_field'])) {
 if (isset($_POST['resource_unit'])) {
     $resource_unit = " AND (";
     foreach ($_POST['resource_unit'] as $key => $value) {
-        $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%' OR ii.infographic_research_unit LIKE '%$value%'";
+        $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%'";
         if ($key < count($_POST['resource_unit']) - 1) {
             $resource_unit .= " OR ";
         }
@@ -190,6 +190,18 @@ if (isset($_POST['resource_unit'])) {
     $resource_unit .= ") ";
     $query .= $resource_unit;
 }
+if (isset($_POST['researcher_category'])) {
+    $researcher_category = " AND (";
+    foreach ($_POST['researcher_category'] as $key => $value) {
+        $researcher_category .= "ri.researchers_category LIKE '%$value%'";
+        if ($key < count($_POST['researcher_category']) - 1) {
+            $researcher_category .= " OR ";
+        }
+    }
+    $researcher_category .= ") ";
+    $query .= $researcher_category;
+}
+
 
 $statement = $connection->prepare($query);
 $statement->execute();
