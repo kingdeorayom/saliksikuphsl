@@ -67,6 +67,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonInfographic">
                         <label class="form-check-label" for="radioButtonInfographic">Infographics</label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonReports">
+                        <label class="form-check-label" for="radioButtonReports">Research Reports</label>
+                    </div>
                 </div>';
                 }
                 ?>
@@ -87,6 +91,8 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                             <p class="side-menu-text px-3" id="researchJournalText">Research Journal</p>
                             <hr>
                             <p class="side-menu-text px-3" id="infographicsText">Infographics</p>
+                            <hr>
+                            <p class="side-menu-text px-3" id="reportsText">Research Reports</p>
                             <hr>';
                     }
                     ?>
@@ -98,6 +104,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                     include_once '../../layouts/submission-forms/thesisDissertationPanel.php';
                     include_once '../../layouts/submission-forms/researchJournalPanel.php';
                     include_once '../../layouts/submission-forms/infographicsPanel.php';
+                    include_once '../../layouts/submission-forms/reportsPanel.php';
                 } else {
                     include_once '../../layouts/submission-forms/thesisDissertationPanel.php';
                 }
@@ -124,33 +131,44 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
 
             $("#thesisDissertationText, #radioButtonThesis").click(function() {
                 $("#thesisDissertationPanel").prop('hidden', false);
-                $("#researchJournalPanel, #infographicsPanel").prop('hidden', true);
+                $("#researchJournalPanel, #infographicsPanel, #reportsPanel").prop('hidden', true);
                 $("#thesisDissertationText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#researchJournalText, #infographicsText").css({
+                $("#researchJournalText, #infographicsText, #reportsText").css({
                     "border-left": "thick none #012265",
                 });
             });
 
             $("#researchJournalText, #radioButtonJournal").click(function() {
                 $("#researchJournalPanel").prop('hidden', false);
-                $("#thesisDissertationPanel, #infographicsPanel").prop('hidden', true);
+                $("#thesisDissertationPanel, #infographicsPanel, #reportsPanel").prop('hidden', true);
                 $("#researchJournalText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#thesisDissertationText, #infographicsText").css({
+                $("#thesisDissertationText, #infographicsText, #reportsText").css({
                     "border-left": "thick none #012265",
                 });
             });
 
             $("#infographicsText, #radioButtonInfographic").click(function() {
                 $("#infographicsPanel").prop('hidden', false);
-                $("#thesisDissertationPanel, #researchJournalPanel").prop('hidden', true);
+                $("#thesisDissertationPanel, #researchJournalPanel, #reportsPanel").prop('hidden', true);
                 $("#infographicsText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#thesisDissertationText, #researchJournalText").css({
+                $("#thesisDissertationText, #researchJournalText, #reportsText").css({
+                    "border-left": "thick none #012265",
+                });
+            });
+
+            $("#reportsText, #radioButtonReports").click(function() {
+                $("#reportsPanel").prop('hidden', false);
+                $("#thesisDissertationPanel, #researchJournalPanel, #infographicsPanel").prop('hidden', true);
+                $("#reportsText").css({
+                    "border-left": "thick solid #012265",
+                });
+                $("#thesisDissertationText, #researchJournalText, #infographicsText").css({
                     "border-left": "thick none #012265",
                 });
             });

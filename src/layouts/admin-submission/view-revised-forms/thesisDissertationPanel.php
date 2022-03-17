@@ -36,7 +36,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <option value="Postgraduate">Postgraduate</option>
                     <option value="Faculty">Faculty</option>
                     <option value="Non_teaching_staff">Non-teaching Staff</option>
-                    <option value="School_head">School Head</option>
+                    <option value="Department_head">Department Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">

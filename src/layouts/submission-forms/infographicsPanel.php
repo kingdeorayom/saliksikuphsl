@@ -297,8 +297,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
         </div>
-        <div class="row my-4">
-            <div class="mb-3">
+        <div class="row my-2">
+            <div class="mb-0">
                 <label class="fw-bold mb-3">Attach File<span class="text-danger"> *</span></label>
                 <input class="form-control" type="file" name="fileSubmit" accept=".pdf, .jpg, .jpeg, .png" required>
                 <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB.</label>
@@ -315,7 +315,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitInfographicsButton" <?php if ($_SESSION['userType'] !== "admin") {
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit your work" id="submitInfographicsButton" <?php if ($_SESSION['userType'] !== "admin") {
                                                                                                                                                                 echo 'disabled';
                                                                                                                                                             } ?>>
             </div>
