@@ -51,6 +51,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <option value="jr">Junior Researchers</option>
                     <option value="jra">Junior Associate Researchers</option>
                     <option value="nr">Novice Researchers</option>
+                    <?php if ($_SESSION['userType'] === "admin") {
+                        echo '<option value="add">Add New Profile</option>';
+                    } ?>
                 </select>
             </div>
 
@@ -58,13 +61,13 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" id="seniorResearchersText">Senior Researchers</p>
+                    <p class="side-menu-text px-3" id="seniorResearchersText">Senior Researchers</p>
                     <hr>
-                    <p class="side-menu-text" id="juniorResearchersText">Junior Researchers</p>
+                    <p class="side-menu-text px-3" id="juniorResearchersText">Junior Researchers</p>
                     <hr>
-                    <p class="side-menu-text" id="juniorAssociateText">Junior Associate Researchers</p>
+                    <p class="side-menu-text px-3" id="juniorAssociateText">Junior Associate Researchers</p>
                     <hr>
-                    <p class="side-menu-text" id="noviceText">Novice Researchers</p>
+                    <p class="side-menu-text px-3" id="noviceText">Novice Researchers</p>
                     <hr>
 
                     <?php
@@ -260,9 +263,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                 <div class="row">
                                     <div class="col">
                                         <!-- <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork"><i class="fas fa-plus"></i> Add Work</button> -->
-                                        <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork">+ Add Work</button>
+                                        
                                         <div class="text-end">
-                                            <button class="btn btn-secondary rounded-0 button-save mt-3" id="buttonSave"><i class="fas fa-save me-2"></i> Save Record</button>
+                                            <button class="btn btn-link rounded-0 button-add-work" id="buttonAddWork">Add Another Work</button>
+                                            <button class="btn rounded-0 button-save" id="buttonSave"><i class="fas fa-save me-2"></i> Save Record</button>
                                         </div>
                                     </div>
                                 </div>
@@ -287,17 +291,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
         $(document).ready(function() {
             /* on load */
             $("#seniorResearchersText").css({
-                "border-bottom": "thick solid #012265",
+                "border-left": "thick solid #012265",
             });
             /* on load */
             $("#seniorResearchersText").click(function() {
                 $("#seniorResearchersPanel").prop('hidden', false);
                 $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#seniorResearchersText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#juniorResearchersText, #juniorAssociateText, #noviceText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -305,10 +309,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 $("#juniorResearchersPanel").prop('hidden', false);
                 $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#juniorResearchersText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#seniorResearchersText, #juniorAssociateText, #noviceText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -316,20 +320,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 $("#juniorAssociatePanel").prop('hidden', false);
                 $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#juniorAssociateText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#seniorResearchersText, #juniorResearchersText, #noviceText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
             $("#noviceText").click(function() {
                 $("#novicePanel").prop('hidden', false);
                 $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel").prop('hidden', true);
                 $("#noviceText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -337,46 +341,52 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 $("#addNewResearcherPanel").prop('hidden', false);
                 $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
                 $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
             $('#dropdownShowResearchersOption').on('change', function() {
                 if (this.value == 'sr') {
                     $("#seniorResearchersPanel").prop('hidden', false);
-                    $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                    $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                     $("#seniorResearchersText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#juniorResearchersText, #juniorAssociateText, #noviceText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'jr') {
                     $("#juniorResearchersPanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                     $("#juniorResearchersText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#seniorResearchersText, #juniorAssociateText, #noviceText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'jra') {
                     $("#juniorAssociatePanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
                     $("#juniorAssociateText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#seniorResearchersText, #juniorResearchersText, #noviceText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'nr') {
                     $("#novicePanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel").prop('hidden', true);
                     $("#noviceText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
+                    });
+                } else if (this.value == 'add') {
+                    $("#addNewResearcherPanel").prop('hidden', false);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                    $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText").css({
+                        "border-left": "thick none #012265",
                     });
                 }
             });

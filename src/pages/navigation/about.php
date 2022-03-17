@@ -44,9 +44,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" id="aboutRepositoryText">About the Repository</p>
+                    <p class="side-menu-text px-3" id="aboutRepositoryText">About the Repository</p>
                     <hr>
-                    <p class="side-menu-text" id="copyrightPoliciesText">Copyright & Policies</p>
+                    <p class="side-menu-text px-3" id="copyrightPoliciesText">Copyright & Policies</p>
                     <hr>
                 </div>
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="aboutRepositoryPanel">
@@ -141,27 +141,27 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/about-style.css');
         $(document).ready(function() {
             /* on load */
             $("#aboutRepositoryText").css({
-                "border-bottom": "thick solid #012265",
+                "border-left": "thick solid #012265",
             });
             /* on load */
             $("#aboutRepositoryText").click(function() {
                 $("#copyrightPoliciesPanel").prop('hidden', true);
                 $("#copyrightPoliciesText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
                 $("#aboutRepositoryPanel").prop('hidden', false);
                 $("#aboutRepositoryText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
             });
             $("#copyrightPoliciesText").click(function() {
                 $("#copyrightPoliciesPanel").prop('hidden', false);
                 $("#copyrightPoliciesText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#aboutRepositoryPanel").prop('hidden', true);
                 $("#aboutRepositoryText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
         });

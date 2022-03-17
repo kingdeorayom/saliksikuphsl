@@ -155,20 +155,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
             <h1 id="research-field-title-text">Research Fields</h1>
             <hr class="hr-home">
             <div class="row">
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <!--Add justify-content-center to center items inside col-->
                     <img src="../../../assets/images/research-fields/accountancy-marketing.png" class="research-fields-logos" alt="Accountancy and Marketing">
                     <a href="#" class="research-field-image-link">
                         <p>Accountancy and Marketing</p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/arts-humanities.png" class="research-fields-logos" alt="Arts and Humanities">
                     <a href="#" class="research-field-image-link">
                         <p>Arts and Humanities</p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/educational-management.png" class="research-fields-logos" alt="Educational Management">
                     <a href="#" class="research-field-image-link">
                         <p>Educational Management</p>
@@ -176,19 +176,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/education-social-sciences.png" class="research-fields-logos" alt="Education and Social Sciences">
                     <a href="#" class="research-field-image-link">
                         <p>Education and Social Sciences</p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/business-management.png" class="research-fields-logos" alt="Business Management">
                     <a href="#" class="research-field-image-link">
                         <p>Business Management</p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/health-sciences.png" class="research-fields-logos" alt="Health and Sciences">
                     <a href="#" class="research-field-image-link">
                         <p>Health and Sciences</p>
@@ -196,19 +196,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/it-engineering.png" class="research-fields-logos" alt="IT and Engineering">
                     <a href="#" class="research-field-image-link">
                         <p>IT and Engineering</p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/law-justice-system.png" class="research-fields-logos" alt="Law and Justice System">
                     <a href="#" class="research-field-image-link">
                         <p>Law and Justice System</p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-12 d-flex align-items-center research-field-column-item">
+                <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="../../../assets/images/research-fields/tourism-hospitality.png" class="research-fields-logos" alt="Tourism and Hospitality">
                     <a href="#" class="research-field-image-link">
                         <p>Tourism and Hospitality</p>
@@ -226,24 +226,27 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
     <!--Repository Metrics-->
 
     <section class="repository-metrics py-5">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col d-flex justify-content-center">
                     <h1 style="font-weight: bold;">Repository Metrics</h1>
                 </div>
             </div>
-            <div class="row p-5 d-flex justify-content-center">
-                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-3">
+            <div class="row d-flex justify-content-center m-5">
+
+                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
                     <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5" alt="Research Outputs">
                     <p class="repository-metrics-counter" id="research-output-counter">10,025</p>
                     <p class="repository-metrics-p-text">Research Outputs</p>
                 </div>
-                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-3">
+
+                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
                     <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-5" alt="Authors">
                     <p class="repository-metrics-counter" id="authors-counter">10,025</p>
                     <p class="repository-metrics-p-text">Authors</p>
                 </div>
-                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-3">
+
+                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
                     <img src="../../../assets/images/repository-metrics/total-downloads.png" class="repository-metrics-logos my-5" alt="Total Downloads">
                     <p class="repository-metrics-counter" id="total-downloads-counter">10,025</p>
                     <p class="repository-metrics-p-text">Total Downloads</p>
