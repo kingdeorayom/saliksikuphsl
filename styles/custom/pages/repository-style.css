@@ -128,23 +128,23 @@
 
 .pagination > .prev > .page-link, 
 .pagination > .next > .page-link {
+  color: #012265 !important;
   background-color: #dcdcdc !important;
 }
 
 .pagination > .prev > .page-link:hover, 
 .pagination > .next > .page-link:hover {
-  color: #ffffff !important;
-  background-color: grey !important;
+  text-decoration: underline !important;
 }
 
 .pagination > .active > span {
-    color: #000000 !important;
-    background-color: #dcdcdc !important;
-    border: solid 1px #dcdcdc !important;
+    color: #ffffff !important;
+    background-color: #012265 !important;
+    border: solid 1px #012265 !important;
 }
 
-.pagination > .active > span:hover {
+/* .pagination > .active > span:hover {
   color: #ffffff !important;
   background-color: grey !important;
   border: solid 1px grey !important;
-}
+} */
