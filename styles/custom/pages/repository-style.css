@@ -59,6 +59,25 @@
   text-decoration: underline !important;
 }
 
+.button-clear-side-menu {
+  background-color: gainsboro;
+}
+
+.button-clear-side-menu:hover {
+  background-color: #5c636a;
+  color: #ffffff;
+}
+
+.button-clear-offcanvas {
+  background-color: gainsboro;
+}
+
+.button-clear-offcanvas:hover {
+  background-color: #5c636a;
+  color: #ffffff;
+}
+
+
 /*---------------------------------------------------Modal Window---------------------------------------------------*/
 
 .modal-content {
