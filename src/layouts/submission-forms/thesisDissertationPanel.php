@@ -7,7 +7,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 ?>
 
-<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
+<div class="<?php if ($_SESSION['userType'] === "admin") {
+                echo 'col-lg-10 px-5 col-md-12 col-xs-12 main-column';
+            } else {
+                echo 'col-lg-12 px-5 col-md-12 col-xs-12 main-column';
+            } ?>" id="thesisDissertationPanel">
 
     <!-- container for alert messages -->
     <div class="row my-3">

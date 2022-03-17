@@ -52,19 +52,40 @@
   cursor: pointer;
 }
 
-.button-add-profile,
-.button-add-work {
+.button-add-profile {
   background-color: #012265;
   color: #ffffff;
 }
 
-.button-add-profile:hover,
-.button-add-work:hover {
+.button-add-profile:hover {
   background-color: #27498d;
   color: #ffffff;
 }
 
-.button-save:hover,
+.button-add-work {
+  text-decoration: none;
+  color: #5c636a;
+}
+
+.button-add-work:hover {
+  color: #012265;
+}
+
+.button-save {
+  background-color: #5c636a;
+  color: #ffffff;
+}
+
+.button-save:hover {
+  background-color: #012265;
+  border-color: #012265;
+  color: #ffffff;
+}
+
+.button-update {
+  background-color: #5c636a;
+  color: #ffffff;
+}
 .button-update:hover {
   background-color: #012265;
   border-color: #012265;

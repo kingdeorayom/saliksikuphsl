@@ -227,6 +227,10 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
                     <hr>
                     <p class="side-menu-text fw-bold">Publication Year</p>
+                    <!-- <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="2022" id="checkBox2022" name="publication_year[]">
+                        <label class="form-check-label" for="checkBox2022">2022</label>
+                    </div> -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021" name="publication_year[]">
                         <label class="form-check-label" for="checkBox2021">2021</label>
@@ -278,6 +282,10 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                         <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographics" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxInfographics">Infographics</label>
                     </div>
+                    <!-- <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="research_catalog" id="checkBoxResearchCatalog" name="resource_type[]">
+                        <label class="form-check-label" for="checkBoxResearchCatalog">Research Catalog</label>
+                    </div> -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReport" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxAnnualReport">Annual Report</label>
@@ -378,6 +386,29 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                         <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchool" name="resource_unit[]">
                         <label class="form-check-label" for="checkBoxGraduateSchool">Graduate School</label>
                     </div>
+                    <!-- <hr>
+                    <p class="side-menu-text fw-bold">Researcher's Category</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Senior Researcher" id="checkBoxSeniorResearcher" name="">
+                        <label class="form-check-label" for="checkBoxSeniorResearcher">Senior Researcher</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Junior Researcher" id="checkBoxJuniorResearcher" name="">
+                        <label class="form-check-label" for="checkBoxJuniorResearcher">Junior Researcher</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Junior Associate Researcher" id="checkBoxJuniorAssociate" name="">
+                        <label class="form-check-label" for="checkBoxJuniorAssociate">Junior Associate Researcher</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Novice Researcher" id="checkBoxNoviceResearcher" name="">
+                        <label class="form-check-label" for="checkBoxNoviceResearcher">Novice Researcher</label>
+                    </div> -->
+
+                    <div class="row my-0">
+                        <hr class="my-3">
+                        <button class="btn w-100 rounded-0 button-clear-side-menu my-3">Clear all</button>
+                    </div>
                 </form>
                 
                 <div class="col-sm-12 d-sm-block d-lg-none">
@@ -391,6 +422,10 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                         </div>
                         <form class="offcanvas-body" id="modal-search-filters" name="modal-filters">
                             <p class="side-menu-text fw-bold">Publication Year</p>
+                            <!-- <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2022" id="checkBox2022offcanvas" name="publication_year[]">
+                                <label class="form-check-label" for="checkBox2022offcanvas">2022</label>
+                            </div> -->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="2021" id="checkBox2021offcanvas" name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2021offcanvas">2021</label>
@@ -441,6 +476,10 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                 <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographicsoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxInfographicsoffcanvas">Infographics</label>
                             </div>
+                            <!-- <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="research_catalog" id="checkBoxResearchCatalogoffcanvas" name="resource_type[]">
+                                <label class="form-check-label" for="checkBoxResearchCatalogoffcanvas">Research Catalog</label>
+                            </div> -->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="annual_report" id="checkBoxAnnualReportoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxAnnualReportoffcanvas">Annual Report</label>
@@ -541,8 +580,32 @@ $repositoryjs = filemtime('../../../scripts/custom/repository.js');
                                 <input class="form-check-input" type="checkbox" value="Graduate School" id="checkBoxGraduateSchooloffcanvas" name="resource_unit[]">
                                 <label class="form-check-label" for="checkBoxGraduateSchooloffcanvas">Graduate School</label>
                             </div>
+                            <!-- <hr>
+                            <p class="side-menu-text fw-bold">Researcher's Category</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Senior Researcher" id="checkBoxSeniorResearcheroffcanvas" name="">
+                                <label class="form-check-label" for="checkBoxSeniorResearcheroffcanvas">Senior Researcher</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Junior Researcher" id="checkBoxJuniorResearcheroffcanvas" name="">
+                                <label class="form-check-label" for="checkBoxJuniorResearcheroffcanvas">Junior Researcher</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Junior Associate Researcher" id="checkBoxJuniorAssociateoffcanvas" name="">
+                                <label class="form-check-label" for="checkBoxJuniorAssociateoffcanvas">Junior Associate Researcher</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Novice Researcher" id="checkBoxNoviceResearcheroffcanvas" name="">
+                                <label class="form-check-label" for="checkBoxNoviceResearcheroffcanvas">Novice Researcher</label>
+                            </div> -->
+                            <div class="row my-0">
+                                <hr class="my-3">
+                                <div class="text-center">
+                                <button class="btn rounded-0 button-clear-offcanvas my-3 w-50 mx-auto">Clear all</button>
+                                </div>
+                            </div>
                         </form>
-</div>
+                    </div>
                 </div>
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column">

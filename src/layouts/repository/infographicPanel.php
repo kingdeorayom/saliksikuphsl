@@ -35,7 +35,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <h2><?php echo $fileInfo['infographic_title']; ?></h2>
                     <hr class='my-4'>
                     <p class='fw-bold'><?php
-                    echo $fileInfo['author_surname'].",".$fileInfo['author_first_name'][0].".";
+                    echo $fileInfo['author_surname'].", ".$fileInfo['author_first_name'][0].".";
                     for($i = 1; $i <= $fileInfo['coauthors_count']; $i++) {
                         echo ", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.";
                     }
@@ -48,7 +48,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <div class='row my-4'>
                         <label class='fw-bold mb-3'>Attached Files</label>
                         <div class='col'>
-                        <button class='btn button-file'><i class='far fa-file-pdf me-2'></i> File.pdf</button>
+                        <button class='btn button-file rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> File.pdf</button>
                         </div>
                     </div>
 

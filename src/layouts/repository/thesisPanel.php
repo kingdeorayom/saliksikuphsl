@@ -36,7 +36,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <hr class='my-4'>
                     <p class='fw-bold'>
                     <?php
-                    echo $fileInfo['author_surname'].",".$fileInfo['author_first_name'][0].".";
+                    echo $fileInfo['author_surname'].", ".$fileInfo['author_first_name'][0].".";
                     for($i = 1; $i <= $fileInfo['coauthors_count']; $i++) {
                         echo ", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.";
                     }
@@ -49,14 +49,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <?php echo "<p class='fst-italic'>{$fileInfo['keywords']}</p>" ?> 
 
                     <div class='row my-4'>
-                        <label class='fw-bold mb-3'>Attached Files</label>
+                        <p class='fw-bold mb-3'>Attached Files</p>
                         <div class='col'>
-                            <button class='btn button-file'><i class='far fa-file-pdf me-2'></i> Full manuscript.pdf</button>
-                            <button class='btn button-file my-1'><i class='far fa-file-pdf me-2'></i> Survey questionnaire.pdf</button>
+                            <button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> Full manuscript.pdf</button>
+                            <button class='btn button-file mx-1 my-2 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> Survey questionnaire.pdf</button>
                         </div>
                     </div>
 
-                    <div class='row my-5'>
+                    <div class='row my-3'>
                         <div class='col-lg-3 border-top border-2'>
                             <h6 class='fw-bold my-3'>Resource Type</h6>
                         </div>

@@ -57,7 +57,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                     <p class="fw-bold">What are you going to submit?</p>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonThesis" checked>
-                        <label class="form-check-label" for="radioButtonThesis">Thesis/Dissertation</label>
+                        <label class="form-check-label" for="radioButtonThesis">Thesis and Dissertation</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioButtonJournal">
@@ -74,24 +74,35 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
             </div>
             <div class="row">
                 <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-                    <h3>On this page</h3>
-                    <hr>
-                    <p class="side-menu-text" id="thesisDissertationText">Thesis/Dissertation</p>
-                    <hr>
+
+
                     <?php
                     if ($_SESSION['userType'] === "admin") {
                         echo '
-                        <p class="side-menu-text" id="researchJournalText">Research Journal</p>
-                        <hr>
-                        <p class="side-menu-text" id="infographicsText">Infographics</p>
-                        <hr>
-                    ';
+                            <h3>On this page</h3>
+                            <!--<h5 class="p-2" style="background-color: #012265; color: white;">On this page</h5>-->
+                            <hr>
+                            <p class="side-menu-text px-3" id="thesisDissertationText">Thesis and Dissertation</p>
+                            <hr>
+                            <p class="side-menu-text px-3" id="researchJournalText">Research Journal</p>
+                            <hr>
+                            <p class="side-menu-text px-3" id="infographicsText">Infographics</p>
+                            <hr>';
                     }
                     ?>
+
                 </div>
-                <?php include_once '../../layouts/submission-forms/thesisDissertationPanel.php' ?>
-                <?php include_once '../../layouts/submission-forms/researchJournalPanel.php' ?>
-                <?php include_once '../../layouts/submission-forms/infographicsPanel.php' ?>
+
+                <?php
+                if ($_SESSION['userType'] === "admin") {
+                    include_once '../../layouts/submission-forms/thesisDissertationPanel.php';
+                    include_once '../../layouts/submission-forms/researchJournalPanel.php';
+                    include_once '../../layouts/submission-forms/infographicsPanel.php';
+                } else {
+                    include_once '../../layouts/submission-forms/thesisDissertationPanel.php';
+                }
+                ?>
+
             </div>
         </div>
     </section>
@@ -105,7 +116,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
 
             /* on load */
             $("#thesisDissertationText").css({
-                "border-bottom": "thick solid #012265",
+                "border-left": "thick solid #012265",
             });
 
             $("#co-author-1-td-panel, #co-author-2-td-panel, #co-author-3-td-panel, #co-author-4-td-panel, #co-author-1-info-panel, #co-author-2-info-panel, #co-author-3-info-panel, #co-author-4-info-panel").css('display', 'none');
@@ -115,10 +126,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 $("#thesisDissertationPanel").prop('hidden', false);
                 $("#researchJournalPanel, #infographicsPanel").prop('hidden', true);
                 $("#thesisDissertationText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchJournalText, #infographicsText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -126,10 +137,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 $("#researchJournalPanel").prop('hidden', false);
                 $("#thesisDissertationPanel, #infographicsPanel").prop('hidden', true);
                 $("#researchJournalText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#thesisDissertationText, #infographicsText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -137,10 +148,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 $("#infographicsPanel").prop('hidden', false);
                 $("#thesisDissertationPanel, #researchJournalPanel").prop('hidden', true);
                 $("#infographicsText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#thesisDissertationText, #researchJournalText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
