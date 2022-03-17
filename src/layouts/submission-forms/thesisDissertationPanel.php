@@ -46,7 +46,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <option value="Postgraduate">Postgraduate</option>
                     <option value="Faculty">Faculty</option>
                     <option value="Non-Teaching Staff">Non-teaching Staff</option>
-                    <option value="School Head">School Head</option>
+                    <option value="Department Head">Department Head</option>
                 </select>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -493,14 +493,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row my-4">
             <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
+                <div class="mb-0">
                     <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
                     <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
-                <div class="mb-3">
+                <div class="mb-0">
                     <label class="fw-bold mb-3">Attach Questionnaire<span class="text-danger"> *</span></label>
                     <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
@@ -518,7 +518,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton" <?php if ($_SESSION['userType'] !== "admin") {
+                <button type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit your research" id="submitResearchDissertationButton" <?php if ($_SESSION['userType'] !== "admin") {
                                                                                                                                                                         echo 'disabled';
                                                                                                                                                                     } ?>>Submit your research</button>
             </div>
