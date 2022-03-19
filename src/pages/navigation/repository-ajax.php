@@ -218,6 +218,15 @@ $result = $statement->get_result();
 $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
+$statement = $connection->prepare("SELECT * FROM user_bookmarks WHERE user_id = ?");
+$statement->bind_param("i", $_SESSION["userid"]);
+$statement->execute();
+$result = $statement->get_result();
+$bookmarks = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+
+
 if ($page > $total_pages && $total_pages != 0) {
     echo '<h5 style="color: grey;"><br>No Results on this page. Please go back.</h5>';
 }
@@ -234,9 +243,16 @@ foreach ($published as $key => $result) :
         }
         echo "</p>
         <p class='fw-bold'>{$result['publication_year']}</p>
-        <p>{$result['research_abstract']}</p>
-        <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-        <hr class='my-2'>
+        <p>{$result['research_abstract']}</p>";
+        foreach($bookmarks as $ref => $bookmark){
+            if($result['file_id']==$bookmark['ref_id']){
+                echo "bookmarked";
+            }
+            else{
+                echo "<p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+            }
+        }
+        echo "<hr class='my-2'>
     </div>";
     } else if ($result['file_type'] === 'journal') {
         $journalImage = explode(".pdf", $result['file_dir']);
@@ -256,9 +272,16 @@ foreach ($published as $key => $result) :
                     </a>
                     <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
                     <p class='fw-bold'>Volume 11 Series of 2019</p>
-                    <p>{$result['journal_description']}</p>
-                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                </div>
+                    <p>{$result['journal_description']}</p>";
+                    foreach($bookmarks as $ref => $bookmark){
+                        if($result['file_id']==$bookmark['ref_id']){
+                            echo "bookmarked";
+                        }
+                        else{
+                            echo "<p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                        }
+                    }
+                echo "</div>
             </div>
             <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                 <img src=../{$result['file_dir2']} width='150'>
@@ -281,9 +304,16 @@ foreach ($published as $key => $result) :
                     </a>
                     <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
                     <p class='fw-bold'>Volume 11 Series of 2019</p>
-                    <p>{$result['infographic_description']}</p>
-                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                </div>
+                    <p>{$result['infographic_description']}</p>";
+                    foreach($bookmarks as $ref => $bookmark){
+                        if($result['file_id']==$bookmark['ref_id']){
+                            echo "bookmarked";
+                        }
+                        else{
+                            echo "<p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                        }
+                    }
+                echo "</div>
             </div>
         </div>
         <hr class='my-2'>
