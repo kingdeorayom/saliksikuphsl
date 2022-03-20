@@ -2,23 +2,14 @@
 
 session_start();
 
-if (isset($_SESSION['userType'])) {
-    if ($_SESSION['userType'] === "admin") {
-        header("Location: ./admin-library.php");
-    }
-} else {
+if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");
     die();
 }
 
-include '../../process/connection.php'; // covers profilePanel.php, libraryPanel.php, submissionsPanel.php
-
-if (mysqli_connect_errno()) {
-    exit("Failed to connect to the database: " . mysqli_connect_error());
-};
-
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
+$profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
 
 ?>
 
@@ -30,6 +21,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Library</title>
+    <script src="<?php echo '../../../scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
@@ -45,24 +37,28 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
 
     <section class="submit-research profile">
         <div class="container p-5">
+
+
             <div class="row">
-                <div class="col col-md-12 col-xs-12 main-column mx-auto px-5" id="myLibraryPanel">
-                    <h1 class="my-2">My Library</h1>
-                    <hr class="my-4">
-                    <div class="col-sm-12 col-md-4">
-                        <select class="form-select" aria-label="Default select example" name="dropdownLibrary" id="dropdownLibrary">
-                            <option value="all" selected>All Items</option>
-                            <option value="thesis">Thesis</option>
-                            <option value="capstone">Capstone</option>
-                            <option value="dissertation">Dissertation</option>
-                            <option value="journal">Journal</option>
-                            <option value="infographic">Infographic</option>
-                            <option value="researchcatalog">Research Catalog</option>
-                            <option value="annualreport">Annual Report</option>
-                            <option value="researchagenda">Research Agenda</option>
-                            <option value="researchcompetencydevelopmentprogram">RCDP</option>
+                <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column">
+                    <h1 class="my-2 p-2">Library</h1>
+                    <hr class="my-3">
+                    <div class="col-sm-12 col-md-3 mt-4">
+                        <select class="form-select" aria-label="Default select example" id="submission-status-dropdown">
+                            <option value="" selected>All Items</option>
+                            <option value="">Thesis</option>
+                            <option value="">Capstone</option>
+                            <option value="">Dissertation</option>
+                            <option value="">Journal</option>
+                            <option value="">Infographic</option>
+                            <option value="">Research Catalog</option>
+                            <option value="">Annual Report</option>
+                            <option value="">Research Agenda</option>
+                            <option value="">RCDP</option>
                         </select>
                     </div>
+
+
                     <div class="library my-3">
 
                         <div class="libraryItem p-3">
@@ -81,7 +77,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
                                 </div>
                             </div>
                             <div class="row">
-                                <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018-2019.</p>
+                                <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 - 2019.</p>
                             </div>
                             <div class="row">
                                 <p><i class="fas fa-trash-alt"></i> Delete</p>
@@ -105,7 +101,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
                                 </div>
                             </div>
                             <div class="row">
-                                <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 –2019.</p>
+                                <p>Building community relations is considered as one of the most important undertakings of an educational leader who should see a constant engagement continuum between the school and the society. It can be reasonably argued that it entails challenges, thus, relevant engagement and strategies should be demonstrated. This descriptive-correlational study randomly selected educational leaders in public schools in Biñan City, Laguna, Philippines for the academic year 2018 – 2019.</p>
                             </div>
                             <div class="row">
                                 <p><i class="fas fa-trash-alt"></i> Delete</p>
@@ -114,6 +110,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
@@ -122,7 +119,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
     <!--Footer-->
 
     <?php include_once '../../layouts/general/footer.php' ?>
-
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 
