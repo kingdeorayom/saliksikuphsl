@@ -151,6 +151,28 @@ $("#repository-results-container").on("click", "li > a", function () {
   changePage($(this).data("id"));
 });
 
+$("#repository-results-container").on("click", ".add-bookmark", function () {
+  var id = $(this).data("id");
+  $.ajax({
+    method: "GET",
+    url: "../../process/add-bookmark.php?id=" + id,
+  }).done(function (data) {
+    console.log(id, data);
+    // TODO add notification when bookmark is added; change html to delete bookmark
+  });
+});
+
+$("#repository-results-container").on("click", ".del-bookmark", function () {
+  var id = $(this).data("id");
+  $.ajax({
+    method: "GET",
+    url: "../../process/delete-bookmark.php?id=" + id,
+  }).done(function (data) {
+    console.log(id, data);
+    // TODO add notification when bookmark is deletedchange html to add bookmark
+  });
+});
+
 function changePage(page) {
   var formData = new FormData($("#sidebar-search-filters")[0]);
   var advancedSearch = new FormData($("#advanced-search")[0]);

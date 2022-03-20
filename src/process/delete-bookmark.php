@@ -19,7 +19,7 @@ if(!isset($_GET['id']) || empty($_GET['id'])){
 else{
     $connection->begin_transaction();
     try{
-        $statement = $connection->prepare("INSERT INTO user_bookmarks (user_id,ref_id) VALUES (?,?)");
+        $statement = $connection->prepare("DELETE FROM user_bookmarks WHERE user_id = ? AND ref_id = ?");
         $statement->bind_param("ii", $_SESSION["userid"],$_GET['id']);
         $statement->execute();
         $statement->close();

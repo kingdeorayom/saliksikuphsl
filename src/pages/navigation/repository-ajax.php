@@ -244,13 +244,11 @@ foreach ($published as $key => $result) :
         echo "</p>
         <p class='fw-bold'>{$result['publication_year']}</p>
         <p>{$result['research_abstract']}</p>";
-        foreach($bookmarks as $ref => $bookmark){
-            if($result['file_id']==$bookmark['ref_id']){
-                echo "bookmarked";
-            }
-            else{
-                echo "<p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-            }
+        if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='far fa-solid fa-bookmark me-2'></i> Delete Bookmark</p>";;
+        }
+        else {
+            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
         }
         echo "<hr class='my-2'>
     </div>";
@@ -273,13 +271,11 @@ foreach ($published as $key => $result) :
                     <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
                     <p class='fw-bold'>Volume 11 Series of 2019</p>
                     <p>{$result['journal_description']}</p>";
-                    foreach($bookmarks as $ref => $bookmark){
-                        if($result['file_id']==$bookmark['ref_id']){
-                            echo "bookmarked";
-                        }
-                        else{
-                            echo "<p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                        }
+                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='far fa-solid fa-bookmark me-2'></i> Delete Bookmark</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
                     }
                 echo "</div>
             </div>
@@ -305,13 +301,11 @@ foreach ($published as $key => $result) :
                     <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
                     <p class='fw-bold'>Volume 11 Series of 2019</p>
                     <p>{$result['infographic_description']}</p>";
-                    foreach($bookmarks as $ref => $bookmark){
-                        if($result['file_id']==$bookmark['ref_id']){
-                            echo "bookmarked";
-                        }
-                        else{
-                            echo "<p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                        }
+                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='far fa-solid fa-bookmark me-2'></i> Delete Bookmark</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
                     }
                 echo "</div>
             </div>
