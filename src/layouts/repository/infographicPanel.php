@@ -41,7 +41,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     }
                     ?>
                     <?php echo "<p>{$fileInfo['infographic_publication_year']}, {$fileInfo['infographic_publication_month']} {$fileInfo['infographic_publication_day']}</p>"?>
-                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
+                    <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$fileInfo['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                    }
+                    ?>
                     <h3 class='mt-5'>Abstract</h3>
                     <?php echo "<p>{$fileInfo['infographic_description']}</p>" ?>
 

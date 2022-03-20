@@ -153,23 +153,31 @@ $("#repository-results-container").on("click", "li > a", function () {
 
 $("#repository-results-container").on("click", ".add-bookmark", function () {
   var id = $(this).data("id");
+  var container = $(this);
   $.ajax({
     method: "GET",
     url: "../../process/add-bookmark.php?id=" + id,
   }).done(function (data) {
     console.log(id, data);
-    // TODO add notification when bookmark is added; change html to delete bookmark
+    // TODO add notification when bookmark is added
+    container.html("<i class='fas fa-bookmark me-2'></i> Added to Bookmarks");
+    container.removeClass("add-bookmark");
+    container.addClass("del-bookmark");
   });
 });
 
 $("#repository-results-container").on("click", ".del-bookmark", function () {
   var id = $(this).data("id");
+  var container = $(this);
   $.ajax({
     method: "GET",
     url: "../../process/delete-bookmark.php?id=" + id,
   }).done(function (data) {
     console.log(id, data);
-    // TODO add notification when bookmark is deletedchange html to add bookmark
+    // TODO add notification when bookmark is deleted
+    container.html("<i class='far fa-bookmark me-2'></i> Add to Bookmarks");
+    container.removeClass("del-bookmark");
+    container.addClass("add-bookmark");
   });
 });
 
