@@ -114,7 +114,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/repository-style.css')
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
     <script type ="text/javascript">
-        $(".main-column").on("click", ".add-bookmark", function () {
+$(".main-column").on("click", ".add-bookmark", function () {
   var id = $(this).data("id");
   var container = $(this);
   $.ajax({
