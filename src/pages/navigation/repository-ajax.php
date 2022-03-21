@@ -281,13 +281,13 @@ foreach ($published as $key => $result) :
 endforeach;
 
 if ($total_rows != 0) {
-    echo "<div class='row repository-pagination' id='repository-pagination'>
+    echo "<div class='row repository-pagination mt-3' id='repository-pagination'>
         <nav aria-label='Page navigation'>
             <ul class='pagination d-flex justify-content-center'>";
     $previous_page = $page - 1;
     $next_page = $page + 1;
     if ($page != 1) {
-        echo "<li class='page-item'><a class='page-link' data-id='$previous_page'>Previous</a></li>";
+        echo "<li class='page-item prev'><a class='page-link' data-id='$previous_page'>Previous</a></li>";
     }
     for ($i = 1; $i <= $total_pages; $i++) {
         if ($i == $page) {
@@ -297,7 +297,7 @@ if ($total_rows != 0) {
         }
     }
     if ($page < $total_pages) {
-        echo "<li class='page-item'><a class='page-link' data-id=$next_page>Next</a></li>";
+        echo "<li class='page-item next'><a class='page-link' data-id=$next_page>Next</a></li>";
     }
 } else {
     echo '<h5 style="color: grey;"><br>No results found. Try another search filter.</h5>';
