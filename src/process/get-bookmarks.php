@@ -40,90 +40,95 @@ $statement->execute();
 $result = $statement->get_result();
 $bookmarks = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
-
-foreach ($bookmarks as $key => $result) :
-    if ($result['file_type'] === 'thesis') {
-        echo "<div class='repositoryItem p-2'>
-        <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
-        <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
-            <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
-        </a>
-        <p class='fw-bold'>{$result['researcher_surname']}, {$result['researcher_first_name'][0]}.";
-        for ($i = 1; $i <= $result['research_coauthors_count']; $i++) {
-            echo ", {$result["coauthor{$i}_surname"]}, {$result["coauthor{$i}_first_name"][0]}.";
-        }
-        echo "</p>
-        <p class='fw-bold'>{$result['publication_year']}</p>
-        <p>{$result['research_abstract']}</p>";
-        if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
-            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
-        }
-        else {
-            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-        }
-        echo "<hr class='my-2'>
-    </div>";
-    } else if ($result['file_type'] === 'journal') {
-        $journalImage = explode(".pdf", $result['file_dir']);
-        $journalImageLink = $journalImage[0] . ".png";
-        echo "<div class='repositoryItem p-2'>
-        <div class='row'>
-            <div class='text-start'>
-                <p class='fw-bold' style='color: #012265;'>Journal {$result['file_id']}</p>
-            </div>
-            <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-            <img src=../{$result['file_dir2']} width='150'>
-            </div>
-            <div class='col-sm-12 col-lg-10'>
-                <div class='col'>
-                    <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
-                        <h4 class='fw-bold mb-3'>{$result['journal_title']}</h4>
-                    </a>
-                    <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
-                    <p class='fw-bold'>Volume 11 Series of 2019</p>
-                    <p>{$result['journal_description']}</p>";
-                    if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
-                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
-                    }
-                    else {
-                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                    }
-                echo "</div>
-            </div>
-            <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+if(count($bookmarks)!=0){
+    foreach ($bookmarks as $key => $result) :
+        if ($result['file_type'] === 'thesis') {
+            echo "<div class='repositoryItem p-2'>
+            <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
+            <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
+                <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
+            </a>
+            <p class='fw-bold'>{$result['researcher_surname']}, {$result['researcher_first_name'][0]}.";
+            for ($i = 1; $i <= $result['research_coauthors_count']; $i++) {
+                echo ", {$result["coauthor{$i}_surname"]}, {$result["coauthor{$i}_first_name"][0]}.";
+            }
+            echo "</p>
+            <p class='fw-bold'>{$result['publication_year']}</p>
+            <p>{$result['research_abstract']}</p>";
+            if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
+                echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+            }
+            else {
+                echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+            }
+            echo "<hr class='my-2'>
+        </div>";
+        } else if ($result['file_type'] === 'journal') {
+            $journalImage = explode(".pdf", $result['file_dir']);
+            $journalImageLink = $journalImage[0] . ".png";
+            echo "<div class='repositoryItem p-2'>
+            <div class='row'>
+                <div class='text-start'>
+                    <p class='fw-bold' style='color: #012265;'>Journal {$result['file_id']}</p>
+                </div>
+                <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
                 <img src=../{$result['file_dir2']} width='150'>
+                </div>
+                <div class='col-sm-12 col-lg-10'>
+                    <div class='col'>
+                        <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
+                            <h4 class='fw-bold mb-3'>{$result['journal_title']}</h4>
+                        </a>
+                        <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
+                        <p class='fw-bold'>Volume 11 Series of 2019</p>
+                        <p>{$result['journal_description']}</p>";
+                        if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
+                            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                        }
+                        else {
+                            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                        }
+                    echo "</div>
+                </div>
+                <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                    <img src=../{$result['file_dir2']} width='150'>
+                </div>
             </div>
-        </div>
-        <hr class='my-2'>
-    </div>";
-    } else if ($result['file_type'] === 'infographic') {
-        echo "<div class='repositoryItem p-2'>
-        <div class='row'>
-            <div class='text-start'>
-                <p class='fw-bold' style='color: #012265;'>Infographic {$result['file_id']}</p>
+            <hr class='my-2'>
+        </div>";
+        } else if ($result['file_type'] === 'infographic') {
+            echo "<div class='repositoryItem p-2'>
+            <div class='row'>
+                <div class='text-start'>
+                    <p class='fw-bold' style='color: #012265;'>Infographic {$result['file_id']}</p>
+                </div>
+                <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                </div>
+                <div class='col-sm-12 col-lg-10'>
+                    <div class='col'>
+                        <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
+                            <h4 class='fw-bold mb-3'>{$result['infographic_title']}</h4>
+                        </a>
+                        <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
+                        <p class='fw-bold'>Volume 11 Series of 2019</p>
+                        <p>{$result['infographic_description']}</p>";
+                        if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
+                            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                        }
+                        else {
+                            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                        }
+                    echo "</div>
+                </div>
             </div>
-            <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-            </div>
-            <div class='col-sm-12 col-lg-10'>
-                <div class='col'>
-                    <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
-                        <h4 class='fw-bold mb-3'>{$result['infographic_title']}</h4>
-                    </a>
-                    <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
-                    <p class='fw-bold'>Volume 11 Series of 2019</p>
-                    <p>{$result['infographic_description']}</p>";
-                    if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
-                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
-                    }
-                    else {
-                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                    }
-                echo "</div>
-            </div>
-        </div>
-        <hr class='my-2'>
-    </div>";
-    }
+            <hr class='my-2'>
+        </div>";
+        }
+    
+    endforeach;
+}
+else{
+    echo 'No Bookmarks Available';
+}
 
-endforeach;
 ?>
