@@ -3,18 +3,26 @@ export function pendingThesisTemplate(result) {
     <div class="row">
             <div class="col">
                 <div class="text-start">
-                    <p class="fw-bold" style="color: #012265;">${result.resource_type} | ${result.researchers_category} | ${result.research_unit}</p>
+                    <p class="fw-bold" style="color: #012265;">${escapeHtml(
+                      result.resource_type
+                    )} | ${escapeHtml(
+    result.researchers_category
+  )} | ${escapeHtml(result.research_unit)}</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <h4 class="mb-3">${result.research_title}</h4>
+            <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
+            <p><span class="fw-bold">Submitted on:</span> ${
+              result.submitted_on
+            }</p>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${
+          result.file_id
+        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -29,14 +37,18 @@ export function pendingInfographicTemplate(result) {
                 </div>
             </div>
             <div class="row">
-                <h4 class="mb-3">${result.infographic_title}</h4>
+                <h4 class="mb-3">${escapeHtml(result.infographic_title)}</h4>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
+                <p><span class="fw-bold">Submitted on:</span> ${
+                  result.submitted_on
+                }</p>
             </div>
             <hr class="my-1">
             
-            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${
+              result.file_id
+            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             
             </div>`;
   return template;
@@ -47,19 +59,23 @@ export function pendingJournalTemplate(result) {
         <div class="row">
                 <div class="col">
                     <div class="text-start">
-                        <p class="fw-bold" style="color: #012265;">Journal  | ${result.department}</p>
+                        <p class="fw-bold" style="color: #012265;">Journal  | ${escapeHtml(
+                          result.department
+                        )}</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <h4 class="">${result.journal_title}</h4>
-                <h5 class="mb-3">${result.journal_subtitle}</h5>
+                <h4 class="">${escapeHtml(result.journal_title)}</h4>
+                <h5 class="mb-3">${escapeHtml(result.journal_subtitle)}</h5>
             </div>
             <div class="row">
                 
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${
+              result.file_id
+            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -69,26 +85,34 @@ export function revisionThesisTemplate(result) {
         <div class="row">
             <div class="col">
                 <div class="text-start">
-                    <p class="fw-bold" style="color: #012265;">${result.resource_type} | ${result.researchers_category} | ${result.research_unit}</p>
+                    <p class="fw-bold" style="color: #012265;">${escapeHtml(
+                      result.resource_type
+                    )} | ${escapeHtml(
+    result.researchers_category
+  )} | ${escapeHtml(result.research_unit)}</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <h4 class="mb-3">${result.research_title}</h4>
+            <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${result.returned_on}</p>
+            <p><span class="fw-bold">Returned on:</span> ${
+              result.returned_on
+            }</p>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <div class="feedback border bg-white p-1">
                     <p class="fw-bold">Feedback:</p>
-                    <p>${result.feedback}</p>
+                    <p>${escapeHtml(result.feedback)}</p>
                 </div>
             </div>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${
+          result.file_id
+        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -103,21 +127,25 @@ export function revisionInfographicTemplate(result) {
             </div>
         </div>
         <div class="row">
-            <h4 class="mb-3">${result.infographic_title}</h4>
+            <h4 class="mb-3">${escapeHtml(result.infographic_title)}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${result.returned_on}</p>
+            <p><span class="fw-bold">Returned on:</span> ${
+              result.returned_on
+            }</p>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <div class="feedback border bg-white p-1">
                     <p class="fw-bold">Feedback:</p>
-                    <p>${result.feedback}</p>
+                    <p>${escapeHtml(result.feedback)}</p>
                 </div>
             </div>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${
+          result.file_id
+        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -126,27 +154,33 @@ export function revisionJournalTemplate(result) {
             <div class="row">
                 <div class="col">
                     <div class="text-start">
-                        <p class="fw-bold" style="color: #012265;"> Journal | ${result.department} </p>
+                        <p class="fw-bold" style="color: #012265;"> Journal | ${escapeHtml(
+                          result.department
+                        )} </p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <h4 class="">${result.journal_title}</h4>
-                  <h5 class="mb-3">${result.journal_subtitle}</h5>
+                <h4 class="">${escapeHtml(result.journal_title)}</h4>
+                  <h5 class="mb-3">${escapeHtml(result.journal_subtitle)}</h5>
             </div>
             <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${result.returned_on}</p>
+            <p><span class="fw-bold">Returned on:</span> ${
+              result.returned_on
+            }</p>
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <div class="feedback border bg-white p-1">
                         <p class="fw-bold">Feedback:</p>
-                        <p>${result.feedback}</p>
+                        <p>${escapeHtml(result.feedback)}</p>
                     </div>
                 </div>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${
+              result.file_id
+            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -156,24 +190,30 @@ export function revisedThesisTemplate(result) {
               <div class="row">
                   <div class="col">
                       <div class="text-start">
-                      <p class="fw-bold" style="color: #012265;">${result.resource_type} | ${result.researchers_category} | ${result.research_unit}</p>
+                      <p class="fw-bold" style="color: #012265;">${escapeHtml(
+                        result.resource_type
+                      )} | ${escapeHtml(
+    result.researchers_category
+  )} | ${escapeHtml(result.research_unit)}</p>
                       </div>
                   </div>
               </div>
               <div class="row">
-                  <h4 class="">${result.research_title}</h4>
+                  <h4 class="">${escapeHtml(result.research_title)}</h4>
               </div>
               
               <div class="row mb-3">
                   <div class="col">
                       <div class="feedback border bg-white p-1">
                           <p class="fw-bold">Feedback:</p>
-                          <p>${result.feedback}</p>
+                          <p>${escapeHtml(result.feedback)}</p>
                       </div>
                   </div>
               </div>
               <hr class="my-1">
-              <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+              <a href="../../layouts/admin-submission/view.php?id=${
+                result.file_id
+              }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
           </div>`;
   return template;
 }
@@ -183,7 +223,7 @@ export function revisedInfographicTemplate(result) {
           <div class="row">
               <div class="col">
                   <div class="text-start">
-                      <p class="fw-bold" style="color: #012265;"> Infographic | ${result.infographic_researcher_category} | ${result.infographic_research_unit}</p>
+                      <p class="fw-bold" style="color: #012265;"> Infographic</p>
                   </div>
               </div>
           </div>
@@ -212,12 +252,18 @@ export function revisedJournalTemplate(result) {
                   <div class="row">
                       <div class="col">
                           <div class="text-start">
-                          <p class="fw-bold" style="color: #012265;">Journal | ${result.department}</p>                    </div>
+                          <p class="fw-bold" style="color: #012265;">${escapeHtml(
+                            result.resource_type
+                          )} | ${escapeHtml(
+    result.researchers_category
+  )} | ${escapeHtml(result.research_unit)}</p>                    </div>
                       </div>
                   </div>
                   <div class="row">
-                      <h4 class="">${result.journal_title}</h4>
-                        <h5 class="mb-3">${result.journal_subtitle}</h5>
+                      <h4 class="">${escapeHtml(result.journal_title)}</h4>
+                        <h5 class="mb-3">${escapeHtml(
+                          result.journal_subtitle
+                        )}</h5>
                   </div>
                   
                   <div class="row mb-3">
@@ -229,7 +275,9 @@ export function revisedJournalTemplate(result) {
                       </div>
                   </div>
                   <hr class="my-1">
-                  <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+                  <a href="../../layouts/admin-submission/view.php?id=${
+                    result.file_id
+                  }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
                   </div>`;
   return template;
 }
@@ -239,18 +287,26 @@ export function publishedThesisTemplate(result) {
     <div class="row">
             <div class="col">
                 <div class="text-start">
-                    <p class="fw-bold" style="color: #012265;">${result.resource_type} | ${result.researchers_category} | ${result.research_unit}</p>
+                <p class="fw-bold" style="color: #012265;">${escapeHtml(
+                  result.resource_type
+                )} | ${escapeHtml(result.researchers_category)} | ${escapeHtml(
+    result.research_unit
+  )}</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <h4 class="mb-3">${result.research_title}</h4>
+            <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
+            <p><span class="fw-bold">Submitted on:</span> ${
+              result.submitted_on
+            }</p>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+        <a href="../../layouts/admin-submission/view.php?id=${
+          result.file_id
+        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
         </div>`;
   return template;
 }
@@ -264,13 +320,17 @@ export function publishedInfographicTemplate(result) {
                 </div>
             </div>
             <div class="row">
-                <h4 class="mb-3">${result.infographic_title}</h4>
+                <h4 class="mb-3">${escapeHtml(result.infographic_title)}</h4>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
+                <p><span class="fw-bold">Submitted on:</span> ${
+                  result.submitted_on
+                }</p>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+            <a href="../../layouts/admin-submission/view.php?id=${
+              result.file_id
+            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -279,19 +339,44 @@ export function publishedJournalTemplate(result) {
                   <div class="row">
                       <div class="col">
                           <div class="text-start">
-                          <p class="fw-bold" style="color: #012265;">Journal | ${result.department}</p>                    </div>
+                          <p class="fw-bold" style="color: #012265;">Journal | ${escapeHtml(
+                            result.department
+                          )}</p>                    </div>
                       </div>
                   </div>
                   <div class="row">
-                      <h4 class="">${result.journal_title}</h4>
-                        <h5 class="mb-3">${result.journal_subtitle}</h5>
+                      <h4 class="">${escapeHtml(result.journal_title)}</h4>
+                        <h5 class="mb-3">${escapeHtml(
+                          result.journal_subtitle
+                        )}</h5>
                   </div>
                     <div class="row">
-                    <p><span class="fw-bold">Submitted on:</span> ${result.submitted_on}</p>
+                    <p><span class="fw-bold">Submitted on:</span> ${
+                      result.submitted_on
+                    }</p>
                     </div>
                   
                   <hr class="my-1">
-                  <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+                  <a href="../../layouts/admin-submission/view.php?id=${
+                    result.file_id
+                  }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
                   </div>`;
   return template;
+}
+
+var entityMap = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+  "/": "&#x2F;",
+  "`": "&#x60;",
+  "=": "&#x3D;",
+};
+
+function escapeHtml(string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return entityMap[s];
+  });
 }

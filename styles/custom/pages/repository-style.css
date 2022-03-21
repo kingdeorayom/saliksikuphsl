@@ -77,7 +77,6 @@
   color: #ffffff;
 }
 
-
 /*---------------------------------------------------Modal Window---------------------------------------------------*/
 
 .modal-content {
@@ -113,5 +112,10 @@
 }
 
 .repository-pagination {
+  cursor: pointer;
+}
+
+.del-bookmark,
+.add-bookmark {
   cursor: pointer;
 }
