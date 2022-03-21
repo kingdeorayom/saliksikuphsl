@@ -26,6 +26,13 @@ if (isset($_GET['id'])) {
     $research_fields_list = $result->fetch_all(MYSQLI_ASSOC);
     $statement->close();
 
+    $statement = $connection->prepare("SELECT * FROM user_bookmarks WHERE user_id = ?");
+    $statement->bind_param("i", $_SESSION["userid"]);
+    $statement->execute();
+    $result = $statement->get_result();
+    $bookmarks = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
     $id = $_GET['id'];
     $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
     $statement->execute();
@@ -79,7 +86,8 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/repository-style.css')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Article</title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
-
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/repository-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -89,7 +97,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/repository-style.css')
     <!--Header and Navigation section-->
 
     <?php include_once '../../layouts/general/header.php' ?>
-
     <?php
     if ($fileInfo['file_type'] == 'thesis') {
         include_once './thesisPanel.php';
@@ -106,6 +113,37 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/repository-style.css')
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script type ="text/javascript">
+$(".main-column").on("click", ".add-bookmark", function () {
+  var id = $(this).data("id");
+  var container = $(this);
+  $.ajax({
+    method: "GET",
+    url: "../../process/add-bookmark.php?id=" + id,
+  }).done(function (data) {
+    console.log(id, data);
+    // TODO add notification when bookmark is added
+    container.html("<i class='fas fa-bookmark me-2'></i> Added to Bookmarks");
+    container.removeClass("add-bookmark");
+    container.addClass("del-bookmark");
+  });
+});
+
+$(".main-column").on("click", ".del-bookmark", function () {
+  var id = $(this).data("id");
+  var container = $(this);
+  $.ajax({
+    method: "GET",
+    url: "../../process/delete-bookmark.php?id=" + id,
+  }).done(function (data) {
+    console.log(id, data);
+    // TODO add notification when bookmark is deleted
+    container.html("<i class='far fa-bookmark me-2'></i> Add to Bookmarks");
+    container.removeClass("del-bookmark");
+    container.addClass("add-bookmark");
+  });
+});
+    </script>
 </body>
 
 </html>

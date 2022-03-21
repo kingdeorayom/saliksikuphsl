@@ -77,7 +77,6 @@
   color: #ffffff;
 }
 
-
 /*---------------------------------------------------Modal Window---------------------------------------------------*/
 
 .modal-content {
@@ -119,6 +118,7 @@
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 .page-link {
   color: #000000;
 }
@@ -148,3 +148,9 @@
   background-color: grey !important;
   border: solid 1px grey !important;
 } */
+=======
+.del-bookmark,
+.add-bookmark {
+  cursor: pointer;
+}
+>>>>>>> jquery

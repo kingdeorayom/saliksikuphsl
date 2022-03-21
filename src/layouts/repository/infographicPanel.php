@@ -32,18 +32,24 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
 
                 <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column'>
-                    <h2><?php echo $fileInfo['infographic_title']; ?></h2>
+                    <h2><?php echo htmlspecialchars($fileInfo['infographic_title']); ?></h2>
                     <hr class='my-4'>
                     <p class='fw-bold'><?php
-                    echo $fileInfo['author_surname'].", ".$fileInfo['author_first_name'][0].".";
+                    echo htmlspecialchars($fileInfo['author_surname'].", ".$fileInfo['author_first_name'][0].".");
                     for($i = 1; $i <= $fileInfo['coauthors_count']; $i++) {
-                        echo ", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.";
+                        echo htmlspecialchars(", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.");
                     }
                     ?>
-                    <?php echo "<p>{$fileInfo['infographic_publication_year']}, {$fileInfo['infographic_publication_month']} {$fileInfo['infographic_publication_day']}</p>"?>
-                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
+                    <p><?php echo htmlspecialchars("{$fileInfo['infographic_publication_year']}, {$fileInfo['infographic_publication_month']} {$fileInfo['infographic_publication_day']}")?></p>
+                    <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$fileInfo['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                    }
+                    ?>
                     <h3 class='mt-5'>Abstract</h3>
-                    <?php echo "<p>{$fileInfo['infographic_description']}</p>" ?>
+                    <p><?php echo htmlspecialchars($fileInfo['infographic_description']) ?></p>
 
                     <div class='row my-4'>
                         <label class='fw-bold mb-3'>Attached Files</label>
@@ -63,23 +69,23 @@ if (!isset($_SESSION['isLoggedIn'])) {
                             <h6 class='fw-bold my-3'>Author</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
-                            <p class='my-3'><?php echo $fileInfo['author_first_name']. " ",$fileInfo['author_surname'] ?></p>
+                            <p class='my-3'><?php echo htmlspecialchars("{$fileInfo['author_first_name']} {$fileInfo['author_surname']}") ?></p>
                         </div>
                         <?php if(!empty($fileInfo['coauthor1_first_name'])){
                             echo "<div class='col-lg-3 border-top border-2'>
                             <h6 class='fw-bold my-3'>Contributors</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
-                            <p class='my-3'>{$fileInfo['coauthor1_first_name']} {$fileInfo['coauthor1_surname']}</p>
-                            <p class='my-3'>{$fileInfo['coauthor2_first_name']} {$fileInfo['coauthor2_surname']}</p>
-                            <p class='my-3'>{$fileInfo['coauthor3_first_name']} {$fileInfo['coauthor3_surname']}</p>
-                            <p class='my-3'>{$fileInfo['coauthor4_first_name']} {$fileInfo['coauthor4_surname']}</p>
+                            <p class='my-3'>".htmlspecialchars($fileInfo['coauthor1_first_name']." ".$fileInfo['coauthor1_surname']) ."</p>
+                            <p class='my-3'>".htmlspecialchars($fileInfo['coauthor2_first_name']." ".$fileInfo['coauthor2_surname']) ."</p>
+                            <p class='my-3'>".htmlspecialchars($fileInfo['coauthor3_first_name']." ".$fileInfo['coauthor3_surname']) ."</p>
+                            <p class='my-3'>".htmlspecialchars($fileInfo['coauthor4_first_name']." ".$fileInfo['coauthor4_surname']) ."</p>
                         </div>";} ?>
                         <div class='col-lg-3 border-top border-2'>
                             <h6 class='fw-bold my-3'>Graphics Editor</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
-                            <p class='my-3'><?php echo $fileInfo['editor_first_name']. " ",$fileInfo['editor_surname'] ?></p>
+                            <p class='my-3'><?php echo htmlspecialchars("{$fileInfo['editor_first_name']} {$fileInfo['editor_surname']}") ?></p>
                         </div>
                         
                     </div>

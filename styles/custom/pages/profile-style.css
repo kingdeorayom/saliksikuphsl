@@ -89,3 +89,18 @@
   background-color: #27498d !important;
   border-color: #27498d !important;
 }
+
+.article-title {
+  text-decoration: none;
+  color: black;
+}
+
+.article-title:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.del-bookmark,
+.add-bookmark {
+  cursor: pointer;
+}

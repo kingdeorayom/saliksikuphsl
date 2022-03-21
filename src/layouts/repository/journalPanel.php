@@ -38,11 +38,17 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <img src='../<?php echo $fileInfo['file_dir2']?>' width='150'>
                         </div>
                         <div class='col'>
-                        <h2><?php echo $fileInfo['journal_title']?></h2>
-                        <h5 class='mb-3'><?php echo $fileInfo['journal_subtitle']?></h5>
-                        <p class='fw-bold'><?php echo $fileInfo['chief_editor_last_name'].", ".$fileInfo['chief_editor_first_name'][0]?>
+                        <h2><?php echo htmlspecialchars($fileInfo['journal_title'])?></h2>
+                        <h5 class='mb-3'><?php echo htmlspecialchars($fileInfo['journal_subtitle'])?></h5>
+                        <p class='fw-bold'><?php echo htmlspecialchars($fileInfo['chief_editor_last_name'].", ".$fileInfo['chief_editor_first_name'][0])?>
                         <p class='fw-bold'>Volume 11 Series of 2019</p>
-                        <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
+                        <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                        }
+                        else {
+                            echo "<p class='add-bookmark' data-id={$fileInfo['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                        }
+                        ?>
                         <hr class='my-3'>
                         </div>
                         <div class='col-lg-2 d-none d-md-block text-center'>
@@ -73,19 +79,19 @@ if (!isset($_SESSION['isLoggedIn'])) {
                             <h6 class='fw-bold my-3'>Volume Number</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
-                            <p class='my-3'><?php echo $fileInfo['volume_number']?></p>
+                            <p class='my-3'><?php echo htmlspecialchars($fileInfo['volume_number']) ?></p>
                         </div>
                         <div class='col-lg-3 border-top border-2'>
                             <h6 class='fw-bold my-3'>Serial Issue Number</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
-                            <p class='my-3'><?php echo $fileInfo['serial_issue_number']?></p>
+                            <p class='my-3'><?php echo htmlspecialchars($fileInfo['serial_issue_number'])?></p>
                         </div>
                         <div class='col-lg-3 border-top border-2'>
                             <h6 class='fw-bold my-3'>ISSN</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
-                            <p class='my-3'><?php echo $fileInfo['ISSN']?></p>
+                            <p class='my-3'><?php echo htmlspecialchars($fileInfo['ISSN'])?></p>
                         </div>
                     </div>
 

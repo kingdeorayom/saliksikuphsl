@@ -127,8 +127,58 @@ $(window).on("load", function () {
   getResults();
 });
 
+$("#sidebar-clear-filter-button").on("click", function () {
+  $("#sidebar-search-filters")[0].reset();
+  $("#advanced-search")[0].reset();
+  getResults();
+  window.scrollTo(0, 0);
+});
+
+$("#modal-clear-filter-button").on("click", function () {
+  $("#sidebar-search-filters")[0].reset();
+  $("#modal-search-filters")[0].reset();
+  $("#advanced-search")[0].reset();
+  getResults();
+  $("#offcanvasTop .offcanvas-body").animate(
+    {
+      scrollTop: 0,
+    },
+    "slow"
+  );
+});
+
 $("#repository-results-container").on("click", "li > a", function () {
   changePage($(this).data("id"));
+});
+
+$("#repository-results-container").on("click", ".add-bookmark", function () {
+  var id = $(this).data("id");
+  var container = $(this);
+  $.ajax({
+    method: "GET",
+    url: "../../process/add-bookmark.php?id=" + id,
+  }).done(function (data) {
+    console.log(id, data);
+    // TODO add notification when bookmark is added
+    container.html("<i class='fas fa-bookmark me-2'></i> Added to Bookmarks");
+    container.removeClass("add-bookmark");
+    container.addClass("del-bookmark");
+  });
+});
+
+$("#repository-results-container").on("click", ".del-bookmark", function () {
+  var id = $(this).data("id");
+  var container = $(this);
+  $.ajax({
+    method: "GET",
+    url: "../../process/delete-bookmark.php?id=" + id,
+  }).done(function (data) {
+    console.log(id, data);
+    // TODO add notification when bookmark is deleted
+    container.html("<i class='far fa-bookmark me-2'></i> Add to Bookmarks");
+    container.removeClass("del-bookmark");
+    container.addClass("add-bookmark");
+  });
 });
 
 function changePage(page) {

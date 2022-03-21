@@ -182,7 +182,7 @@ if (isset($_POST['research_field'])) {
 if (isset($_POST['resource_unit'])) {
     $resource_unit = " AND (";
     foreach ($_POST['resource_unit'] as $key => $value) {
-        $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%' OR ii.infographic_research_unit LIKE '%$value%'";
+        $resource_unit .= "ri.research_unit LIKE '%$value%' OR ji.department LIKE '%$value%'";
         if ($key < count($_POST['resource_unit']) - 1) {
             $resource_unit .= " OR ";
         }
@@ -190,6 +190,18 @@ if (isset($_POST['resource_unit'])) {
     $resource_unit .= ") ";
     $query .= $resource_unit;
 }
+if (isset($_POST['researcher_category'])) {
+    $researcher_category = " AND (";
+    foreach ($_POST['researcher_category'] as $key => $value) {
+        $researcher_category .= "ri.researchers_category LIKE '%$value%'";
+        if ($key < count($_POST['researcher_category']) - 1) {
+            $researcher_category .= " OR ";
+        }
+    }
+    $researcher_category .= ") ";
+    $query .= $researcher_category;
+}
+
 
 $statement = $connection->prepare($query);
 $statement->execute();
@@ -206,10 +218,24 @@ $result = $statement->get_result();
 $published = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
+$statement = $connection->prepare("SELECT * FROM user_bookmarks WHERE user_id = ?");
+$statement->bind_param("i", $_SESSION["userid"]);
+$statement->execute();
+$result = $statement->get_result();
+$bookmarks = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+
+
 if ($page > $total_pages && $total_pages != 0) {
     echo '<h5 style="color: grey;"><br>No Results on this page. Please go back.</h5>';
 }
+// function to escape all results in $results array
+function filter(&$value){
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
 foreach ($published as $key => $result) :
+    array_walk_recursive($result,"filter");
     if ($result['file_type'] === 'thesis') {
         echo "<div class='repositoryItem p-2'>
         <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
@@ -222,9 +248,14 @@ foreach ($published as $key => $result) :
         }
         echo "</p>
         <p class='fw-bold'>{$result['publication_year']}</p>
-        <p>{$result['research_abstract']}</p>
-        <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-        <hr class='my-2'>
+        <p>{$result['research_abstract']}</p>";
+        if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+        }
+        else {
+            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+        }
+        echo "<hr class='my-2'>
     </div>";
     } else if ($result['file_type'] === 'journal') {
         $journalImage = explode(".pdf", $result['file_dir']);
@@ -244,9 +275,14 @@ foreach ($published as $key => $result) :
                     </a>
                     <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
                     <p class='fw-bold'>Volume 11 Series of 2019</p>
-                    <p>{$result['journal_description']}</p>
-                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                </div>
+                    <p>{$result['journal_description']}</p>";
+                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                    }
+                echo "</div>
             </div>
             <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                 <img src=../{$result['file_dir2']} width='150'>
@@ -269,9 +305,14 @@ foreach ($published as $key => $result) :
                     </a>
                     <h5 class='mb-3'>{$result['infographic_publication_year']}</h5>
                     <p class='fw-bold'>Volume 11 Series of 2019</p>
-                    <p>{$result['infographic_description']}</p>
-                    <p class='bookmark'><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>
-                </div>
+                    <p>{$result['infographic_description']}</p>";
+                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                    }
+                echo "</div>
             </div>
         </div>
         <hr class='my-2'>
