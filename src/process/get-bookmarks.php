@@ -40,8 +40,14 @@ $statement->execute();
 $result = $statement->get_result();
 $bookmarks = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
+
+function filter(&$value){
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
 if(count($bookmarks)!=0){
     foreach ($bookmarks as $key => $result) :
+        array_walk_recursive($result,"filter");
         if ($result['file_type'] === 'thesis') {
             echo "<div class='repositoryItem p-2'>
             <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
@@ -128,7 +134,7 @@ if(count($bookmarks)!=0){
     endforeach;
 }
 else{
-    echo 'No Bookmarks Available';
+    echo '<h5 style="color: grey;"><br>No Bookmarks Available.</h5>';
 }
 
 ?>
