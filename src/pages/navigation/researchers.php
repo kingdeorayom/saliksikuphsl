@@ -189,7 +189,23 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12">
 
                             <form name="add-researcher-form">
-                                <div class="row">
+
+                                <div class="row my-3">
+                                    <div class="col-sm-12">
+                                        <div class="text-start my-2">
+                                            <label class="fw-bold">Select Profile Photo</label>
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                            <div id="display_image" class="my-2">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                            <input class="my-3" type="file" id="image_input" accept=".png, .jpg, .jpeg, .svg">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
                                     <div class="col-sm-12 col-md-6">
                                         <label class="py-2 fw-bold">Researcher Type<span class="text-danger"> *</span></label>
                                         <select class="form-select my-2" aria-label="Default select example" id="dropdownResearcherType" name="researcherType">
@@ -246,8 +262,8 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <input type="text" class="form-control" name="researchTitle[]" required>
                                             <label class="py-2 fw-bold">Link</label>
                                             <input type="text" class="form-control" name="researchLink[]" required>
-                                            <div class="text-end">
-                                                <button type= "button" class="btn btn-link my-2 text-dark" onclick=removeWork(event)><i class="fas fa-trash-alt text-dark"></i>
+                                            <div class="text-end remove">
+                                                <button type= "button" class="btn btn-link my-2 remove-button" onclick=removeWork(event)><i class="fas fa-trash-alt"></i>
                                                 Remove
                                                 </button>
                                             </div>
@@ -281,6 +297,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
     </section>
 
     <?php include_once '../../layouts/general/footer.php' ?>
+
+    <script>
+        const image_input = document.querySelector("#image_input");
+        image_input.addEventListener("change", function() {
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                const uploaded_image = reader.result;
+                document.querySelector("#display_image").style.backgroundImage = `url(${uploaded_image})`;
+            });
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -395,28 +423,30 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             event.preventDefault();
             var formData = new FormData(this);
             $.ajax({
-                method: "POST",
-                url:"../../process/add-researcher.php",
-                data:formData,
-                contentType: false,
-                processData: false,
-            })
-            .done(function(data){
-                console.log(data)
-                // TODO: do something here
-            })
+                    method: "POST",
+                    url: "../../process/add-researcher.php",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                })
+                .done(function(data) {
+                    console.log(data)
+                    // TODO: do something here
+                })
         })
-        function removeWork(event){
+
+        function removeWork(event) {
             event.target.parentElement.parentElement.remove();
         }
-        function addWork(event){
+
+        function addWork(event) {
             $("#published-works-container").append(`<div class="publishedWork border p-3 mt-0 mb-3">
                                             <label class="fw-bold">Title</label>
                                             <input type="text" class="form-control" name="researchTitle[]" required>
                                             <label class="py-2 fw-bold">Link</label>
                                             <input type="text" class="form-control" name="researchLink[]" required>
-                                            <div class="text-end">
-                                                <button type= "button" class="btn btn-link my-2 text-dark" onclick=removeWork(event)><i class="fas fa-trash-alt text-dark"></i>
+                                            <div class="text-end remove">
+                                                <button type= "button" class="btn btn-link my-2 remove-button" onclick=removeWork(event)><i class="fas fa-trash-alt"></i>
                                                 Remove
                                                 </button>
                                             </div>
