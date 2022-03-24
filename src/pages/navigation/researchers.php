@@ -189,11 +189,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12">
 
                             <form name="add-researcher-form">
-
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <label class="py-2 fw-bold">Researcher Type<span class="text-danger"> *</span></label>
-                                        <select class="form-select my-2" aria-label="Default select example" id="dropdownResearcherType">
+                                        <select class="form-select my-2" aria-label="Default select example" id="dropdownResearcherType" name="researcherType">
                                             <option value="Senior Researcher" selected>Senior Researcher</option>
                                             <option value="Junior Researcher">Junior Researcher</option>
                                             <option value="Junior Associate Researcher">Junior Associate Researcher</option>
@@ -202,7 +201,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                     </div>
                                     <div class="col-sm-12 col-md-6 my-2">
                                         <label class="py-2 fw-bold">College/Department<span class="text-danger"> *</span></label>
-                                        <select class="form-select" aria-label="Default select example" id="dropdownResearcherDepartment">
+                                        <select class="form-select" aria-label="Default select example" id="dropdownResearcherDepartment" name="researcherDepartment">
                                             <option value="Basic Education Department" selected>Basic Education Department</option>
                                             <option value="Senior High School Department">Senior High School Department</option>
                                             <option value="College of Arts and Sciences">College of Arts and Sciences</option>
@@ -261,7 +260,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                         <!-- <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork"><i class="fas fa-plus"></i> Add Work</button> -->
                                         
                                         <div class="text-end">
-                                            <button type = "button" class="btn btn-link rounded-0 button-add-work" id="buttonAddWork" onclick="addWork()">Add Another Work</button>
+                                            <button type = "button" class="btn btn-link rounded-0 button-add-work" id="buttonAddWork" onclick="addWork()">Add a Published Work</button>
                                             <button class="btn rounded-0 button-save" id="buttonSave"><i class="fas fa-save me-2"></i> Save Record</button>
                                         </div>
                                     </div>
@@ -404,6 +403,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             })
             .done(function(data){
                 console.log(data)
+                // TODO: do something here
             })
         })
         function removeWork(event){
