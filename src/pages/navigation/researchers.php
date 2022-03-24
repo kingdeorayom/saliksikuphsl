@@ -188,42 +188,42 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <div class="row mx-auto">
                         <div class="col-sm-12">
 
-                            <form action="">
+                            <form name="add-researcher-form">
 
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <label class="py-2 fw-bold">Researcher Type<span class="text-danger"> *</span></label>
                                         <select class="form-select my-2" aria-label="Default select example" id="dropdownResearcherType">
-                                            <option value="" selected>Senior Researcher</option>
-                                            <option value="">Junior Researcher</option>
-                                            <option value="">Junior Associate Researcher</option>
-                                            <option value="">Novice Researcher</option>
+                                            <option value="Senior Researcher" selected>Senior Researcher</option>
+                                            <option value="Junior Researcher">Junior Researcher</option>
+                                            <option value="Junior Associate Researcher">Junior Associate Researcher</option>
+                                            <option value="Novice Researcher">Novice Researcher</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-12 col-md-6 my-2">
                                         <label class="py-2 fw-bold">College/Department<span class="text-danger"> *</span></label>
                                         <select class="form-select" aria-label="Default select example" id="dropdownResearcherDepartment">
-                                            <option value="" selected>Basic Education Department</option>
-                                            <option value="">Senior High School Department</option>
-                                            <option value="">College of Arts and Sciences</option>
-                                            <option value="">College of Business and Accountancy</option>
-                                            <option value="">College of Computer Studies</option>
-                                            <option value="">College of Criminology</option>
-                                            <option value="">College of Education</option>
-                                            <option value="">College of Engineering, Architecture, and Aviation</option>
-                                            <option value="">College of International Hospitality Management</option>
-                                            <option value="">College of Maritime Education</option>
-                                            <option value="">Graduate School</option>
-                                            <option value="">Community Outreach Department</option>
-                                            <option value="">Human Resource Department</option>
-                                            <option value="">Information Technology Services</option>
-                                            <option value="">International and External Affairs</option>
-                                            <option value="">Library</option>
-                                            <option value="">Marketing Department</option>
-                                            <option value="">Quality Assurance Office</option>
-                                            <option value="">Research and Development Center</option>
-                                            <option value="">Student Personnel Services</option>
-                                            <option value="">University Registrar</option>
+                                            <option value="Basic Education Department" selected>Basic Education Department</option>
+                                            <option value="Senior High School Department">Senior High School Department</option>
+                                            <option value="College of Arts and Sciences">College of Arts and Sciences</option>
+                                            <option value="College of Business and Accountancy">College of Business and Accountancy</option>
+                                            <option value="College of Computer Studies">College of Computer Studies</option>
+                                            <option value="College of Criminology">College of Criminology</option>
+                                            <option value="College of Education">College of Education</option>
+                                            <option value="College of Engineering, Architecture, and Aviation">College of Engineering, Architecture, and Aviation</option>
+                                            <option value="College of International Hospitality Management">College of International Hospitality Management</option>
+                                            <option value="College of Maritime Education">College of Maritime Education</option>
+                                            <option value="Graduate School">Graduate School</option>
+                                            <option value="Community Outreach Department">Community Outreach Department</option>
+                                            <option value="Human Resource Department">Human Resource Department</option>
+                                            <option value="Information Technology Services">Information Technology Services</option>
+                                            <option value="International and External Affairs">International and External Affairs</option>
+                                            <option value="Library">Library</option>
+                                            <option value="Marketing Department">Marketing Department</option>
+                                            <option value="Quality Assurance Office">Quality Assurance Office</option>
+                                            <option value="Research and Development Center">Research and Development Center</option>
+                                            <option value="Student Personnel Services">Student Personnel Services</option>
+                                            <option value="University Registrar">University Registrar</option>
                                         </select>
                                     </div>
                                 </div>
@@ -240,23 +240,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                 </div>
 
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col" id="published-works-container">
                                         <label class="py-2 my-2 fw-bold">Published Works</label>
-
                                         <div class="publishedWork border p-3 mt-0 mb-3">
                                             <label class="fw-bold">Title</label>
-                                            <input type="text" class="form-control" name="" id="" required>
+                                            <input type="text" class="form-control" name="researchTitle[]" required>
                                             <label class="py-2 fw-bold">Link</label>
-                                            <input type="text" class="form-control" name="" id="" required>
+                                            <input type="text" class="form-control" name="researchLink[]" required>
+                                            <div class="text-end">
+                                                <button type= "button" class="btn btn-link my-2 text-dark" onclick=removeWork(event)><i class="fas fa-trash-alt text-dark"></i>
+                                                Remove
+                                                </button>
+                                            </div>
                                         </div>
-
-                                        <div class="publishedWork border p-3 my-4">
-                                            <label class="fw-bold">Title</label>
-                                            <input type="text" class="form-control" name="" id="" required>
-                                            <label class="py-2 fw-bold">Link</label>
-                                            <input type="text" class="form-control" name="" id="" required>
-                                        </div>
-
                                     </div>
                                 </div>
 
@@ -265,7 +261,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                         <!-- <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork"><i class="fas fa-plus"></i> Add Work</button> -->
                                         
                                         <div class="text-end">
-                                            <button class="btn btn-link rounded-0 button-add-work" id="buttonAddWork">Add Another Work</button>
+                                            <button type = "button" class="btn btn-link rounded-0 button-add-work" id="buttonAddWork" onclick="addWork()">Add Another Work</button>
                                             <button class="btn rounded-0 button-save" id="buttonSave"><i class="fas fa-save me-2"></i> Save Record</button>
                                         </div>
                                     </div>
@@ -395,7 +391,38 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
     </script>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
-
+    <script type="text/javascript">
+        $("form[name='add-researcher-form']").on("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                method: "POST",
+                url:"../../process/add-researcher.php",
+                data:formData,
+                contentType: false,
+                processData: false,
+            })
+            .done(function(data){
+                console.log(data)
+            })
+        })
+        function removeWork(event){
+            event.target.parentElement.parentElement.remove();
+        }
+        function addWork(event){
+            $("#published-works-container").append(`<div class="publishedWork border p-3 mt-0 mb-3">
+                                            <label class="fw-bold">Title</label>
+                                            <input type="text" class="form-control" name="researchTitle[]" required>
+                                            <label class="py-2 fw-bold">Link</label>
+                                            <input type="text" class="form-control" name="researchLink[]" required>
+                                            <div class="text-end">
+                                                <button type= "button" class="btn btn-link my-2 text-dark" onclick=removeWork(event)><i class="fas fa-trash-alt text-dark"></i>
+                                                Remove
+                                                </button>
+                                            </div>
+                                        </div>`)
+        }
+    </script>
 </body>
 
 </html>
