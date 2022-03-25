@@ -20,7 +20,17 @@ $statement->execute();
 $result = $statement->get_result();
 $researcher = $result->fetch_assoc();
 $statement->close();
-print_r($researcher);
+
+$statement = $connection->prepare("SELECT * FROM researcher_works WHERE researcher_ref_id = ?");
+$statement->bind_param("i",$_GET['id']);
+$statement->execute();
+$result = $statement->get_result();
+$published_works = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+function filter(&$value){
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css');
@@ -34,8 +44,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junior Associate Researcher Profile</title>
-    <!--To be changed with the researcher's name-->
+    <title><?php echo htmlspecialchars($researcher['name']) ?></title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
@@ -71,27 +80,27 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <img src="../../uploads/<?php echo htmlspecialchars($researcher['researcher_image']) ?>" class="img-fluid">
                 </div>
                 <div class="col-lg-10">
-                    <h2 class="fw-bold mt-3">Name of Researcher <a href="./edit-researcher-profile.php" class="edit-profile-button"><i class="fas fa-edit h5" title="Edit profile"></i></a></h2>
-                    <h5 class="mb-2">Junior Associate Researcher</h5>
+                    <h2 class="fw-bold mt-3"><?php echo htmlspecialchars($researcher['name']) ?> <a href="./edit-researcher-profile.php" class="edit-profile-button"><i class="fas fa-edit h5" title="Edit profile"></i></a></h2>
+                    <h5 class="mb-2"><?php echo htmlspecialchars($researcher['type']) ?></h5>
 
                     <div class="row my-5">
                         <div class="col-lg-3 border-top border-2">
                             <h6 class="fw-bold my-3">College/Department</h6>
                         </div>
                         <div class="col-lg-9 border-top border-2">
-                            <p class="my-3">College of Arts and Sciences</p>
+                            <p class="my-3"><?php echo htmlspecialchars($researcher['department']) ?></p>
                         </div>
                         <div class="col-lg-3 border-top border-2">
                             <h6 class="fw-bold my-3">Highest Educational Attainment</h6>
                         </div>
                         <div class="col-lg-9 border-top border-2">
-                            <p class="my-3">Doctor of Philosophy</p>
+                            <p class="my-3"><?php echo htmlspecialchars($researcher['highest_edu_attainment']) ?></p>
                         </div>
                         <div class="col-lg-3 border-top border-2">
                             <h6 class="fw-bold my-3">Research Interest</h6>
                         </div>
                         <div class="col-lg-9 border-top border-2">
-                            <p class="my-3">Publication in High Impact Journals</p>
+                            <p class="my-3"><?php echo htmlspecialchars($researcher['research_interest']) ?></p>
                         </div>
                     </div>
 
@@ -100,10 +109,11 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                             <h3 class="fw-bold">Published Works</h3>
                             <hr>
-
-                            <a href="" class="my-4 published-works h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit Aenean euismod bibendum laoreet Proin gravida dolor</a>
-                            <hr>
-
+                            <?php foreach($published_works as $key => $result){
+                                array_walk_recursive($result,"filter");
+                                echo "<a href='{$result['research_link']}' class='my-4 published-works h5'>{$result['research_title']}</a>
+                                <hr>";
+                            }?>
                         </div>
                     </div>
                 </div>
