@@ -73,19 +73,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
                     <h3>On this page</h3>
                     <hr>
-                    <p class="side-menu-text" id="researchesText">Researches</p>
+                    <p class="side-menu-text px-3" id="researchesText">Researches</p>
                     <hr>
-                    <p class="side-menu-text" id="researchJournalText">Research Journals</p>
+                    <p class="side-menu-text px-3" id="researchJournalText">Research Journals</p>
                     <hr>
-                    <p class="side-menu-text" id="infographicsText">Infographics</p>
+                    <p class="side-menu-text px-3" id="infographicsText">Infographics</p>
                     <hr>
-                    <p class="side-menu-text" id="researchCatalogsText">Research Catalogs</p>
+                    <p class="side-menu-text px-3" id="researchCatalogsText">Research Catalogs</p>
                     <hr>
-                    <p class="side-menu-text" id="annualReportsText">Annual Reports</p>
+                    <p class="side-menu-text px-3" id="annualReportsText">Annual Reports</p>
                     <hr>
-                    <p class="side-menu-text" id="researchAgendaText">Research Agenda</p>
+                    <p class="side-menu-text px-3" id="researchAgendaText">Research Agenda</p>
                     <hr>
-                    <p class="side-menu-text" id="rcdpText">Research Competency Development Program</p>
+                    <p class="side-menu-text px-3" id="rcdpText">Research Competency Development Program</p>
                     <hr>
 
                 </div>
@@ -241,7 +241,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
         $(document).ready(function() {
             /* on load */
             $("#researchesText").css({
-                "border-bottom": "thick solid #012265",
+                "border-left": "thick solid #012265",
             });
             /* on load */
 
@@ -249,10 +249,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#researchesPanel").prop('hidden', false);
                 $("#journalsPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                 $("#researchesText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchJournalText, #infographicsText, #researchCatalogsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -260,10 +260,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#journalsPanel").prop('hidden', false);
                 $("#researchesPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                 $("#researchJournalText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchesText, #infographicsText, #researchCatalogsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -271,10 +271,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#infographicsPanel").prop('hidden', false);
                 $("#researchesPanel, #journalsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                 $("#infographicsText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchesText, #researchJournalText, #researchCatalogsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -282,10 +282,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#researchCatalogsPanel").prop('hidden', false);
                 $("#researchesPanel, #journalsPanel, #infographicsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                 $("#researchCatalogsText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchesText, #researchJournalText, #infographicsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -293,10 +293,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#annualReportsPanel").prop('hidden', false);
                 $("#researchesPanel, #journalsPanel, #infographicsPanel, #researchCatalogsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                 $("#annualReportsText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchesText, #researchJournalText, #infographicsText, #researchCatalogsText, #researchAgendaText, #rcdpText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -304,10 +304,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#researchAgendaPanel").prop('hidden', false);
                 $("#researchesPanel, #journalsPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #rcdpPanel").prop('hidden', true);
                 $("#researchAgendaText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchesText, #researchJournalText, #infographicsText, #researchCatalogsText, #annualReportsText, #rcdpText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -315,10 +315,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                 $("#rcdpPanel").prop('hidden', false);
                 $("#researchesPanel, #journalsPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel").prop('hidden', true);
                 $("#rcdpText").css({
-                    "border-bottom": "thick solid #012265",
+                    "border-left": "thick solid #012265",
                 });
                 $("#researchesText, #researchJournalText, #infographicsText, #researchCatalogsText, #annualReportsText, #researchAgendaText").css({
-                    "border-bottom": "thick none #012265",
+                    "border-left": "thick none #012265",
                 });
             });
 
@@ -327,64 +327,64 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     $("#researchesPanel").prop('hidden', false);
                     $("#journalsPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                     $("#researchesText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchJournalText, #infographicsText, #researchCatalogsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'researchJournal') {
                     $("#journalsPanel").prop('hidden', false);
                     $("#researchesPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                     $("#researchJournalText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchesText, #infographicsText, #researchCatalogsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'infographics') {
                     $("#infographicsPanel").prop('hidden', false);
                     $("#researchesPanel, #journalsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                     $("#infographicsText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchesText, #researchJournalText, #researchCatalogsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'researchCatalogs') {
                     $("#researchCatalogsPanel").prop('hidden', false);
                     $("#researchesPanel, #journalsPanel, #infographicsPanel, #annualReportsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                     $("#researchCatalogsText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchesText, #researchJournalText, #infographicsText, #annualReportsText, #researchAgendaText, #rcdpText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'annualReports') {
                     $("#annualReportsPanel").prop('hidden', false);
                     $("#researchesPanel, #journalsPanel, #infographicsPanel, #researchCatalogsPanel, #researchAgendaPanel, #rcdpPanel").prop('hidden', true);
                     $("#annualReportsText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchesText, #researchJournalText, #infographicsText, #researchCatalogsText, #researchAgendaText, #rcdpText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'researchAgenda') {
                     $("#researchAgendaPanel").prop('hidden', false);
                     $("#researchesPanel, #journalsPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #rcdpPanel").prop('hidden', true);
                     $("#researchAgendaText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchesText, #researchJournalText, #infographicsText, #researchCatalogsText, #annualReportsText, #rcdpText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'rcdp') {
                     $("#rcdpPanel").prop('hidden', false);
                     $("#researchesPanel, #journalsPanel, #infographicsPanel, #researchCatalogsPanel, #annualReportsPanel, #researchAgendaPanel").prop('hidden', true);
                     $("#rcdpText").css({
-                        "border-bottom": "thick solid #012265",
+                        "border-left": "thick solid #012265",
                     });
                     $("#researchesText, #researchJournalText, #infographicsText, #researchCatalogsText, #annualReportsText, #researchAgendaText").css({
-                        "border-bottom": "thick none #012265",
+                        "border-left": "thick none #012265",
                     });
                 }
             });
