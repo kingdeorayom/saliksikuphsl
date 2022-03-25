@@ -266,12 +266,12 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-if (!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor1'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor2'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor3'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor4'], FILTER_VALIDATE_EMAIL)) {
-    $arr = array('response' => "invalid_email");
-    header('Content-Type: application/json');
-    echo json_encode($arr);
-    exit();
-}
+// if (!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor1'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor2'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor3'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor4'], FILTER_VALIDATE_EMAIL)) {
+//     $arr = array('response' => "invalid_email");
+//     header('Content-Type: application/json');
+//     echo json_encode($arr);
+//     exit();
+// }
 
 if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldResearchTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaAbstract'], $_POST['textareaKeywords'], $_POST['researchFields'], $_FILES['fileSubmit'])) {
     $userId = $_SESSION['userid'];

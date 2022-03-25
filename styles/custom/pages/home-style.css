@@ -231,3 +231,47 @@ h5 {
   text-decoration: underline;
   color: #000000;
 }
+
+/*---------------------------------------------------Researches Per Course Items---------------------------------------------------*/
+
+.title-link {
+  text-decoration: none;
+  color: #012265;
+  font-weight: bold;
+}
+
+.title-link:hover {
+  text-decoration: underline;
+  color: #012265;
+}
+
+.repository-researches {
+  cursor: pointer;
+}
+
+/*---------------------------------------------------Researches Pagination---------------------------------------------------*/
+
+.page-link {
+  color: #000000;
+}
+.page-link:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.pagination > .prev > .page-link,
+.pagination > .next > .page-link {
+  color: #012265 !important;
+  background-color: #dcdcdc !important;
+}
+
+.pagination > .prev > .page-link:hover,
+.pagination > .next > .page-link:hover {
+  text-decoration: underline !important;
+}
+
+.pagination > .active > span {
+  color: #ffffff !important;
+  background-color: #012265 !important;
+  border: solid 1px #012265 !important;
+}

@@ -111,14 +111,12 @@
   /* color: white; */
 }
 
-
 /*---------------------------------------------------Pagination---------------------------------------------------*/
 
 .repository-pagination {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 .page-link {
   color: #000000;
 }
@@ -126,31 +124,19 @@
   color: #000000;
 }
 
-.pagination > .prev > .page-link, 
+.pagination > .prev > .page-link,
 .pagination > .next > .page-link {
   color: #012265 !important;
   background-color: #dcdcdc !important;
 }
 
-.pagination > .prev > .page-link:hover, 
+.pagination > .prev > .page-link:hover,
 .pagination > .next > .page-link:hover {
   text-decoration: underline !important;
 }
 
 .pagination > .active > span {
-    color: #ffffff !important;
-    background-color: #012265 !important;
-    border: solid 1px #012265 !important;
-}
-
-/* .pagination > .active > span:hover {
   color: #ffffff !important;
-  background-color: grey !important;
-  border: solid 1px grey !important;
-} */
-=======
-.del-bookmark,
-.add-bookmark {
-  cursor: pointer;
+  background-color: #012265 !important;
+  border: solid 1px #012265 !important;
 }
->>>>>>> jquery
