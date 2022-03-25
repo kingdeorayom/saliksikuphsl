@@ -103,7 +103,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12 col-md-6">
                                 <?php foreach ($researchers as $key => $researcher){
                                     if($researcher['type']=="Senior Researcher"){
-                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                        echo "<a href='../../pages/navigation/view-researcher.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
                                                     <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
@@ -128,7 +128,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12 col-md-6">
                         <?php foreach ($researchers as $key => $researcher){
                                     if($researcher['type']=="Junior Researcher"){
-                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                        echo "<a href='../../pages/navigation/view-researcher.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
                                                     <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
@@ -153,7 +153,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12 col-md-6">
                         <?php foreach ($researchers as $key => $researcher){
                                     if($researcher['type']=="Junior Associate Researcher"){
-                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                        echo "<a href='../../pages/navigation/view-researcher.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
                                                     <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
@@ -178,7 +178,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12 col-md-6">
                         <?php foreach ($researchers as $key => $researcher){
                                     if($researcher['type']=="Novice Researcher"){
-                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                        echo "<a href='../../pages/navigation/view-researcher.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
                                                     <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
