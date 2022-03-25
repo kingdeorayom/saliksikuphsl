@@ -2,10 +2,22 @@
 
 session_start();
 
+include '../../process/connection.php';
+
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");
     die();
 }
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
+$statement = $connection->prepare("SELECT * FROM researcher_profile");
+$statement->execute();
+$result = $statement->get_result();
+$researchers = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css');
@@ -89,20 +101,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
-                            <a href="../../layouts/researchers-profile/senior-researcher-profile.php" class="researchers-link">
-
-                                <div class="box my-2">
-                                    <div class="row py-3 researcher">
-                                        <div class="col-3 avatar">
-                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
-                                        </div>
-                                        <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name">Name of Researcher</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </a>
+                                <?php foreach ($researchers as $key => $researcher){
+                                    if($researcher['type']=="Senior Researcher"){
+                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                            <div class='box my-2'>
+                                                <div class='row py-3 researcher'>
+                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                        <p class='h5 researcher-name'>{$researcher['name']}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>";
+                                    }
+                                }
+                                ?>
                         </div>
                     </div>
 
@@ -114,18 +126,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
-                            <a href="../../layouts/researchers-profile/junior-researcher-profile.php" class="researchers-link">
-                                <div class="box my-2">
-                                    <div class="row py-3 researcher">
-                                        <div class="col-3 avatar">
-                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
-                                        </div>
-                                        <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name">Name of Researcher</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                        <?php foreach ($researchers as $key => $researcher){
+                                    if($researcher['type']=="Junior Researcher"){
+                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                            <div class='box my-2'>
+                                                <div class='row py-3 researcher'>
+                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                        <p class='h5 researcher-name'>{$researcher['name']}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>";
+                                    }
+                                }
+                                ?>
                         </div>
                     </div>
 
@@ -137,18 +151,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
-                            <a href="../../layouts/researchers-profile/junior-associate-profile.php" class="researchers-link">
-                                <div class="box my-2">
-                                    <div class="row py-3 researcher">
-                                        <div class="col-3 avatar">
-                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
-                                        </div>
-                                        <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name">Name of Researcher</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                        <?php foreach ($researchers as $key => $researcher){
+                                    if($researcher['type']=="Junior Associate Researcher"){
+                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                            <div class='box my-2'>
+                                                <div class='row py-3 researcher'>
+                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                        <p class='h5 researcher-name'>{$researcher['name']}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>";
+                                    }
+                                }
+                                ?>
                         </div>
                     </div>
 
@@ -160,18 +176,20 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
 
                     <div class="row mx-auto">
                         <div class="col-sm-12 col-md-6">
-                            <a href="../../layouts/researchers-profile/novice-researcher-profile.php" class="researchers-link">
-                                <div class="box my-2">
-                                    <div class="row py-3 researcher">
-                                        <div class="col-3 avatar">
-                                            <img src="../../../assets/images/researchers/avatar.svg" alt="">
-                                        </div>
-                                        <div class="col-9 d-flex align-items-center">
-                                            <p class="h5 researcher-name">Name of Researcher</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                        <?php foreach ($researchers as $key => $researcher){
+                                    if($researcher['type']=="Novice Researcher"){
+                                        echo "<a href='../../layouts/researchers-profile/senior-researcher-profile.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                                            <div class='box my-2'>
+                                                <div class='row py-3 researcher'>
+                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                        <p class='h5 researcher-name'>{$researcher['name']}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>";
+                                    }
+                                }
+                                ?>
                         </div>
                     </div>
 
