@@ -80,7 +80,10 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     <img src="../../uploads/<?php echo htmlspecialchars($researcher['researcher_image']) ?>" class="img-fluid">
                 </div>
                 <div class="col-lg-10">
-                    <h2 class="fw-bold mt-3"><?php echo htmlspecialchars($researcher['name']) ?> <a href="./edit-researcher-profile.php" class="edit-profile-button"><i class="fas fa-edit h5" title="Edit profile"></i></a></h2>
+                    <h2 class="fw-bold mt-3"><?php echo htmlspecialchars($researcher['name']) ?>
+                    <?php if($_SESSION['userType'] == 'admin'){
+                        echo "<a href='./edit-researcher-profile.php' class='edit-profile-button'><i class='fas fa-edit h5'></i></a></h2>";
+                    } ?>
                     <h5 class="mb-2"><?php echo htmlspecialchars($researcher['type']) ?></h5>
 
                     <div class="row my-5">
