@@ -92,11 +92,12 @@
 }
 
 #display_image {
-  width: 137px;
+  width: 140px;
   height: 140px;
   border: 2px solid gray;
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .remove-button {

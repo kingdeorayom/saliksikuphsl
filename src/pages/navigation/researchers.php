@@ -200,7 +200,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-start">
-                                            <input class="my-3" type="file" id="image_input" accept=".png, .jpg, .jpeg, .svg">
+                                            <input class="my-3" type="file" id="image_input" accept=".png, .jpg, .jpeg, .svg" name="researcherImage" required>
                                         </div>
                                     </div>
                                 </div>
