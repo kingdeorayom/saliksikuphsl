@@ -201,7 +201,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                         <div class="col-sm-12">
 
                             <form name="add-researcher-form">
-
                                 <div class="row my-3">
                                     <div class="col-sm-12">
                                         <div class="text-start my-2">

@@ -77,12 +77,12 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             </div>
             <div class="row">
                 <div class="col-lg-2 p-2">
-                    <img src="../../uploads/<?php echo htmlspecialchars($researcher['researcher_image']) ?>" class="img-fluid">
+                    <img src="../<?php echo htmlspecialchars($researcher['researcher_image']) ?>" class="img-fluid">
                 </div>
                 <div class="col-lg-10">
                     <h2 class="fw-bold mt-3"><?php echo htmlspecialchars($researcher['name']) ?>
                     <?php if($_SESSION['userType'] == 'admin'){
-                        echo "<a href='./edit-researcher-profile.php' class='edit-profile-button'><i class='fas fa-edit h5'></i></a></h2>";
+                        echo "<a href='./edit-researcher-profile.php?id={$researcher['researcher_id']}' class='edit-profile-button'><i class='fas fa-edit h5'></i></a></h2>";
                     } ?>
                     <h5 class="mb-2"><?php echo htmlspecialchars($researcher['type']) ?></h5>
 
