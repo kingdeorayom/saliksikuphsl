@@ -17,8 +17,6 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-print_r($_POST);
-
 $file = $_FILES['researcherImage'];
 $fileName = $file['name'];
 $fileSize = $file['size'];
@@ -51,10 +49,14 @@ try{
     $statement->close();
     $connection->commit();
 
-    echo 'succes';
+    $arr = array('response' => "success");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
 }catch(mysqli_sql_exception $exception){
     $connection->rollback();
-    echo $exception;
+    $arr = array('response' => "database_error");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
 }
 
 ?>

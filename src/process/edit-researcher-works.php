@@ -32,9 +32,14 @@ if(isset($_POST['researchTitle'])){
         }
         $statement->close();
         $connection->commit();
-        echo 'success';
+        $arr = array('response' => "success");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
     }catch(mysqli_sql_exception $exception){
         $connection->rollback();
+        $arr = array('response' => "database_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
     }
     
 }

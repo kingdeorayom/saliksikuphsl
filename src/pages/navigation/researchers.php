@@ -441,8 +441,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     processData: false,
                 })
                 .done(function(data) {
-                    console.log(data)
-                    // TODO: do something here
+                    if(data.response==='success'){
+                        window.location.reload();
+                    }
                 })
         })
 

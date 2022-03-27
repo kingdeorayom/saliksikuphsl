@@ -234,8 +234,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     processData: false,
                 })
                 .done(function(data) {
-                    console.log(data)
-                    // TODO: do something here
+                    if(data.response=='success'){
+                        window.location.href = 'view-researcher.php?id='+id;
+                    }
                 })
         })
         $("form[name='published-worked-form']").on("submit", function(event) {
@@ -250,8 +251,9 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     processData: false,
                 })
                 .done(function(data) {
-                    console.log(data)
-                    // TODO: do something here
+                    if(data.response=='success'){
+                        window.location.href = 'view-researcher.php?id='+id;
+                    }
                 })
         })
 

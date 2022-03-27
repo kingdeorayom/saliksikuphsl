@@ -50,14 +50,21 @@ $file = $_FILES['researcherImage'];
                 echo json_encode($arr);
             }catch(mysqli_sql_exception $exception){
                 $connection->rollback();
+                $arr = array('response' => "database_error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
         }
         else{
-            // file error
+            $arr = array('response' => "file_error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
         }
     }
     else{
-        // file type mismatch
+        $arr = array('response' => "file_type_mismatch");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
     }
 
 ?>
