@@ -93,7 +93,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                 <hr class="my-2">
                 <div class="row mx-auto">
                     <div class="col-sm-12">
-                        <form name="edit-researcher-form" data-id="<?php echo $researcher['researcher_id'] ?>"
+                        <form name="edit-researcher-form" data-id="<?php echo $researcher['researcher_id'] ?>">
                             <div class="row">
                                 <div class="text-start my-2">
                                             <label class="fw-bold">Select Profile Photo</label>
@@ -153,6 +153,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                     <input type="text" class="form-control" name="textFieldResearchInterest" id="textFieldResearchInterest" value="<?php echo htmlspecialchars($researcher['research_interest']);?>" required>
                                 </div>
                             </div>
+                            
 
                             <div class="row">
                                 <div class="col">
@@ -162,6 +163,39 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                 </div>
                             </div>
 
+                        </form>
+
+                        <form name="published-worked-form" data-id="<?php echo $researcher['researcher_id'] ?>">
+                            
+                        <div class="row">
+                            <div class="col" id="published-works-container">
+                                <label class="py-2 my-2 fw-bold">Published Works</label>
+                                <?php foreach($published_works as $key => $work):?>
+                                <div class="publishedWork border p-3 mt-0 mb-3">
+                                    <label class="fw-bold">Title</label>
+                                    <input type="text" class="form-control" name="researchTitle[]" value="<?php echo htmlspecialchars($work['research_title']);?>" required>
+                                    <label class="py-2 fw-bold">Link</label>
+                                    <input type="text" class="form-control" name="researchLink[]" value="<?php echo htmlspecialchars($work['research_link']);?>" required>
+                                    <div class="text-end remove">
+                                        <button type= "button" class="btn btn-link my-2 remove-button" onclick=removeWork(event)><i class="fas fa-trash-alt"></i>
+                                        Remove
+                                        </button>
+                                    </div>
+                                </div>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                                    <div class="col">
+                                        <!-- <button class="btn rounded-0 button-add-work w-100" id="buttonAddWork"><i class="fas fa-plus"></i> Add Work</button> -->
+                                        
+                                        <div class="text-end">
+                                            <button type = "button" class="btn btn-link rounded-0 button-add-work" id="buttonAddWork" onclick="addWork()">Add a Published Work</button>
+                                            <button class="btn rounded-0 button-save" id="buttonSave"><i class="fas fa-save me-2"></i> Save Published Works</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
                         </form>
 
                     </div>
@@ -204,6 +238,40 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                     // TODO: do something here
                 })
         })
+        $("form[name='published-worked-form']").on("submit", function(event) {
+            event.preventDefault();
+            var id = $(this).data("id");
+            var formData = new FormData(this);
+            $.ajax({
+                    method: "POST",
+                    url: "../../process/edit-researcher-works.php?id="+id,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                })
+                .done(function(data) {
+                    console.log(data)
+                    // TODO: do something here
+                })
+        })
+
+        function removeWork(event) {
+            event.target.parentElement.parentElement.remove();
+        }
+
+        function addWork(event) {
+            $("#published-works-container").append(`<div class="publishedWork border p-3 mt-0 mb-3">
+                                            <label class="fw-bold">Title</label>
+                                            <input type="text" class="form-control" name="researchTitle[]" required>
+                                            <label class="py-2 fw-bold">Link</label>
+                                            <input type="text" class="form-control" name="researchLink[]" required>
+                                            <div class="text-end remove">
+                                                <button type= "button" class="btn btn-link my-2 remove-button" onclick=removeWork(event)><i class="fas fa-trash-alt"></i>
+                                                Remove
+                                                </button>
+                                            </div>
+                                        </div>`)
+        }
         </script>
 </body>
 

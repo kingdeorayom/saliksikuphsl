@@ -40,7 +40,6 @@ $file = $_FILES['researcherImage'];
                     foreach ($_POST['researchTitle'] as $key => $value) {
                         $statement->bind_param("iss",$insertedId,$_POST['researchTitle'][$key],$_POST['researchLink'][$key]);
                         $statement->execute();
-                        
                     }
                     $statement->close();
                 }
