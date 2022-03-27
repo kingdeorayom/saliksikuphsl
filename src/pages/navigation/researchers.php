@@ -272,7 +272,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <label class="fw-bold">Title</label>
                                             <input type="text" class="form-control" name="researchTitle[]" required>
                                             <label class="py-2 fw-bold">Link</label>
-                                            <input type="text" class="form-control" name="researchLink[]" required>
+                                            <input type="url" class="form-control" placeholder="http://example.com" name="researchLink[]" required>
                                             <div class="text-end remove">
                                                 <button type= "button" class="btn btn-link my-2 remove-button" onclick=removeWork(event)><i class="fas fa-trash-alt"></i>
                                                 Remove
@@ -455,7 +455,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
                                             <label class="fw-bold">Title</label>
                                             <input type="text" class="form-control" name="researchTitle[]" required>
                                             <label class="py-2 fw-bold">Link</label>
-                                            <input type="text" class="form-control" name="researchLink[]" required>
+                                            <input type="url" class="form-control" placeholder="http://example.com" name="researchLink[]" required>
                                             <div class="text-end remove">
                                                 <button type= "button" class="btn btn-link my-2 remove-button" onclick=removeWork(event)><i class="fas fa-trash-alt"></i>
                                                 Remove
