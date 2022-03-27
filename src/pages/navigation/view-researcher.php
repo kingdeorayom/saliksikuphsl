@@ -34,7 +34,7 @@ function filter(&$value){
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css');
-
+$imageVersion = filemtime("../".$researcher['researcher_image']);
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +77,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/researchers-style.css'
             </div>
             <div class="row">
                 <div class="col-lg-2 p-2">
-                    <img src="../<?php echo htmlspecialchars($researcher['researcher_image']) ?>" class="img-fluid">
+                    <img src="../<?php echo htmlspecialchars($researcher['researcher_image'])."?id=".$imageVersion ?>" class="img-fluid">
                 </div>
                 <div class="col-lg-10">
                     <h2 class="fw-bold mt-3"><?php echo htmlspecialchars($researcher['name']) ?>
