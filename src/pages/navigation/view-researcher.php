@@ -127,9 +127,28 @@ $imageVersion = filemtime("../" . $researcher['researcher_image']);
                         <div class="row my-5">
                             <div class="text-start">
                                 <p class="fst-italic text-danger"><span class="fw-bold">IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p>
-                                <button class="btn btn-danger rounded-0"><i class='fas fa-trash-alt'></i> Delete profile</button>
-
+                                <button class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class='fas fa-trash-alt'></i> Delete profile</button>
                             </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete this profile?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label>This action is irreversible.</label>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-danger rounded-0"><i class='fas fa-trash-alt'></i> Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                 </div>
             </div>
