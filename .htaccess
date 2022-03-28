@@ -1,1 +1,1 @@
-ErrorDocument 404 http://www.google.com
+ErrorDocument 404 /PROJECTS/saliksikuphsl/src/layouts/general/error.php

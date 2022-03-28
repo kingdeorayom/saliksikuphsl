@@ -13,15 +13,19 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-// $query = "SELECT `file_id`,`file_type`,`file_name`,`file_dir`,`file_dir2`,`file_uploader`,`status`,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, `infographic_research_unit`, `infographic_researcher_category`,`infographic_publication_month`, `infographic_publication_year`, `infographic_title`, `infographic_description`, ii.author_first_name, ii.author_middle_initial, ii.author_surname, ii.author_ext, ii.author_email, ii.editor_first_name, ii.editor_middle_initial, ii.editor_surname, ii.editor_ext, ii.editor_email, ji.journal_title, ji.journal_subtitle, ji.department, ji.volume_number, ji.serial_issue_number, ji.ISSN, ji.journal_description, ji.chief_editor_first_name, ji.chief_editor_middle_initial, ji.chief_editor_last_name, ji.chief_editor_name_ext, ji.chief_editor_email, ci.coauthor1_first_name, ci.coauthor1_middle_initial, ci.coauthor1_surname, ci.coauthor1_name_ext, ci.coauthor1_email, ci.coauthor2_first_name, ci.coauthor2_middle_initial, ci.coauthor2_surname, ci.coauthor2_name_ext, ci.coauthor2_email, ci.coauthor3_first_name, ci.coauthor3_middle_initial, ci.coauthor3_surname, ci.coauthor3_name_ext, ci.coauthor3_email, ci.coauthor4_first_name, ci.coauthor4_middle_initial, ci.coauthor4_surname, ci.coauthor4_name_ext, ci.coauthor4_email FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
-// $statement = $connection->prepare($query);
-// $statement->execute();
-// $result = $statement->get_result();
-// $published = $result->fetch_all(MYSQLI_ASSOC);
-// $statement->close();
+$query = "SELECT fi.*,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_month`,`publication_day`,`publication_year`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
+$statement = $connection->prepare($query);
+$statement->execute();
+$result = $statement->get_result();
+$published = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
+function filter(&$value){
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+array_walk_recursive($published, "filter");
 ?>
 
 <!DOCTYPE html>
@@ -96,15 +100,15 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
                     <div class="row">
                         <div class="accordion accordion-flush">
-                            <!-- <?php
+                            <?php
                                     $unit_array = array();
                                     foreach ($published as $key => $result) {
+                                        
                                         if ($result['file_type'] == 'thesis') {
                                             array_push($unit_array, $result['research_unit']);
                                         }
                                     }
                                     $unit_array = array_unique($unit_array);
-                                    print_r($unit_array);
                                     foreach ($unit_array as $key => $result) {
                                         echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
@@ -126,8 +130,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                         </div>
                     </div>";
                                     }
-                                    ?> -->
-
+                                    ?>
                         </div>
 
                     </div>
@@ -137,26 +140,61 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
                     <h1 class="my-2">Browse Journals</h1>
                     <hr>
                     <div class="row">
-
+                    <div class="accordion accordion-flush">
+                            <?php
+                                    $unit_array = array();
+                                    foreach ($published as $key => $result) {
+                                        
+                                        if ($result['file_type'] == 'journal') {
+                                            array_push($unit_array, $result['department']);
+                                        }
+                                    }
+                                    $unit_array = array_unique($unit_array);
+                                    foreach ($unit_array as $key => $result) {
+                                        echo "<div class='accordion-item my-2'>
+                        <h2 class='accordion-header'>
+                            <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
+                                {$result}
+                            </button>
+                        </h2>
+                        <div id='field-{$key}-researches' class='accordion-collapse collapse'>
+                            <div class='accordion-body'>";
+                                        foreach ($published as $key => $item) {
+                                            if ($item['file_type'] == 'journal' && $item['department'] == $result) {
+                                                echo "
+                                    <a href='#' class='department-title-content'>
+                                        <p>{$item['journal_title']}</p>
+                                    </a>";
+                                            }
+                                        }
+                                        echo "</div>
+                        </div>
+                    </div>";
+                                    }
+                                    ?>
                     </div>
                 </div>
+                                </div>
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
                     <h1 class="my-2">Browse Infographics</h1>
                     <hr>
                     <div class="row">
-                        <div class="browseInfographics">
-                            <a href="#" class="actual-content-title">
-                                <p>Infographic 1 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Infographic 2 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Infographic 2 Title Here</p>
-                            </a>
-                        </div>
+                    <div class="accordion accordion-flush">
+                            <?php
+                                    foreach ($published as $key => $item) {
+                                        if ($item['file_type'] == 'infographic') {
+                                            echo "
+                                <a href='#' class='department-title-content'>
+                                    <p>{$item['infographic_title']}</p>
+                                </a>";
+                                        }
+                                    }
+                                    echo "</div>";
+                                
+                                ?>
                     </div>
+                </div>
                 </div>
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="researchCatalogsPanel" hidden>
