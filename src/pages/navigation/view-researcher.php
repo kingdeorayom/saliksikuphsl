@@ -18,8 +18,15 @@ $statement = $connection->prepare("SELECT * FROM researcher_profile WHERE resear
 $statement->bind_param("i", $_GET['id']);
 $statement->execute();
 $result = $statement->get_result();
+$num_rows = mysqli_num_rows($result);
+if ($num_rows ==0){
+    die();
+    // does not exist in database
+}
 $researcher = $result->fetch_assoc();
 $statement->close();
+
+
 
 $statement = $connection->prepare("SELECT * FROM researcher_works WHERE researcher_ref_id = ?");
 $statement->bind_param("i", $_GET['id']);
@@ -47,6 +54,8 @@ $imageVersion = filemtime("../" . $researcher['researcher_image']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($researcher['name']) ?></title>
     <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
@@ -123,33 +132,34 @@ $imageVersion = filemtime("../" . $researcher['researcher_image']);
 
                         </div>
 
-
-                        <div class="row my-5">
-                            <div class="text-start">
-                                <p class="fst-italic text-danger"><span class="fw-bold">IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p>
-                                <button class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class='fas fa-trash-alt'></i> Delete profile</button>
+                        <?php if($_SESSION['userType'] == 'admin'){
+                            echo "<div class='row my-5'>
+                            <div class='text-start'>
+                                <p class='fst-italic text-danger'><span class='fw-bold'>IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p>
+                                <button class='btn btn-danger rounded-0' data-bs-toggle='modal' data-bs-target='#modalDelete'><i class='fas fa-trash-alt'></i> Delete profile</button>
                             </div>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete this profile?</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                        <div class='modal-header'>
+                                            <h5 class='modal-title' id='exampleModalLabel'>Delete this profile?</h5>
+                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class='modal-body'>
                                             <label>This action is irreversible.</label>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-danger rounded-0"><i class='fas fa-trash-alt'></i> Delete</button>
+                                        <div class='modal-footer'>
+                                            <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
+                                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-profile' data-id='{$researcher['researcher_id']}><i class='fas fa-trash-alt'></i> Delete</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
+                        </div>";
+                        }?>
                 </div>
             </div>
 
@@ -161,6 +171,20 @@ $imageVersion = filemtime("../" . $researcher['researcher_image']);
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("#btn-delete-profile").on("click", function(){
+            var id = $(this).data("id");
+            $.ajax({
+                method: "POST",
+                url:"../../process/delete-researcher-profile.php?id="+ id
+            }).done(function(data){
+                console.log(data)
+                if(data.response=="success"){
+                    // do something here; close modal? go back to researchers page?
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
