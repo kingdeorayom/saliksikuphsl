@@ -101,7 +101,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 else if($fileInfo['file_type']=='infographic'){
                     include_once './view-submission-forms/infographicsPanel.php';
                 }
-                else if($fileInfo['file_type']=='infographic'){
+                else if($fileInfo['file_type']=='journal'){
                     include_once './view-submission-forms/researchJournalPanel.php';
                 }
                 ?>

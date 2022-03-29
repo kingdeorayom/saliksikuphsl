@@ -488,11 +488,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-3">
             <label class="fw-bold mb-1">Attached Files</label>
             <div class="col">
-                <p class="my-3">File1.pdf</p>
+                <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']); ?></a></p>
                 <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
                 <input class="form-control my-2" type="file" name="" accept=".pdf" required>
 
-                <p class="my-3">File2.pdf</p>
+                <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']); ?></a></p>
                 <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
                 <input class="form-control my-2" type="file" name="" accept=".pdf" required>
             </div>

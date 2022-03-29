@@ -104,7 +104,9 @@ export function revisionThesisTemplate(result) {
             </div>
             <div class="col">
                     <div class="text-end">
-                        <a href="../../layouts/user-submission/view-revision.php" class="editReviseButton">
+                        <a href="../../layouts/user-submission/view-revision.php?id=${escapeHtml(
+                          result.file_id
+                        )}" class="editReviseButton">
                             <p class="fw-bold"><i class="fas fa-edit"></i> Revise</p>
                         </a>
                     </div>

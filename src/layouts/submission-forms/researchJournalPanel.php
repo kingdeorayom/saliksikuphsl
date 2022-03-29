@@ -22,7 +22,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <!-- container for alert messages -->
     <h1 class="my-2">Research Journal Submission Form</h1>
     <hr>
-    <form onsubmit="submitJournalForm(event)" name="journal-form">
+    <form name="journal-form">
         <div class="row mt-4">
             <div>
                 <label class="fw-bold">Title<span class="text-danger"> *</span></label>

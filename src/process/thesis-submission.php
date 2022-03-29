@@ -320,10 +320,6 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
                     $fileNameQuestionNew = $filenameUnique . "-questionnaire." . $fileQuestionnaireActualExt;
                     $fileQuestionDestination = '../uploads/theses/questionnaires/' . $fileNameQuestionNew;
-
-                    $fileNameQuestionNew = $filenameUnique."-questionnaire.".$fileQuestionnaireActualExt;
-                    $fileQuestionDestination = '../uploads/theses/questionnaires/'.$fileNameQuestionNew;
-                    
                     
                     $connection->begin_transaction();
                     try {
@@ -342,8 +338,8 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         $fileType = "thesis";
 
                         $submitted = date('Y-m-d H:i:s');
-                        $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on) VALUES(?,?,?,?,?,?,?,?,?)');
-                        $statement -> bind_param('issssssis',$userId,$fileType,$fileName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId,$submitted);
+                        $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_name2, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on) VALUES(?,?,?,?,?,?,?,?,?,?)');
+                        $statement -> bind_param('isssssssis',$userId,$fileType,$fileName,$fileQuestionnaireName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId,$submitted);
                         $statement -> execute();
                         $insertedId = $statement ->insert_id;
                         $statement ->close();

@@ -54,7 +54,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <div class='row my-4'>
                         <label class='fw-bold mb-3'>Attached Files</label>
                         <div class='col'>
-                        <button class='btn button-file rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> File.pdf</button>
+                        <?php if($fileInfo['file1_shown']):?>
+                            <a href="../<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
+                        <?php endif?>
                         </div>
                     </div>
 
