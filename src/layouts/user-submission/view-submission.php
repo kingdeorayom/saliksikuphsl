@@ -2,6 +2,8 @@
 
 session_start();
 
+include '../../process/connection.php';
+
 if (isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] === "admin") {
         header("Location: ../../pages/users/admin-submissions.php");
@@ -10,6 +12,56 @@ if (isset($_SESSION['userType'])) {
     header("location: ../../layouts/general/error.php");
     die();
 }
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
+if (isset($_GET['id'])) {
+    $statement = $connection->prepare("SELECT * FROM department_list");
+    $statement->execute();
+    $result = $statement->get_result();
+    $department_list = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
+    $statement = $connection->prepare("SELECT * FROM research_fields");
+    $statement->execute();
+    $result = $statement->get_result();
+    $research_fields_list = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
+    $id = $_GET['id'];
+    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
+    $statement->execute();
+    $result = $statement->get_result();
+    $file = $result->fetch_assoc();
+    $statement->close();
+
+    if ($file == null) {
+        die(); //file doesnt exist
+    } else {
+        if ($file['file_type'] === "thesis") {
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
+            $statement->execute();
+            $result = $statement->get_result();
+
+            $fileInfo = $result->fetch_assoc();
+            $statement->close();
+            $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
+        } else {
+            die();
+            // thesis lang pede submit ni user
+        }
+    }
+} else {
+    die(); //GET['id'] is not defined;
+}
+
+if($fileInfo['user_id']!=$_SESSION['userid']){
+    die();
+    // not the file uploader
+}
+
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style.css');
@@ -42,36 +94,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
 
     <section class="submit-research">
         <div class="container p-5">
-            <div class="row my-3 d-lg-none">
-                <h5>Submission Details</h5>
-                <hr>
-                <p class="side-menu-text">Submitted on:</p>
-                <p class="side-menu-text">2021-11-17 08:52:03</p>
-                <hr>
-            </div>
             <div class="row">
-                <div class="col-lg-2 d-none d-md-none d-lg-block">
-                    <!--col-md-12 to stack on top of next column. remove display-none-->
-                    <h5>Submission Details</h5>
-                    <hr>
-                    <p class="side-menu-text" onclick="hey();">Submitted on:</p>
-                    <p class="side-menu-text">2021-11-17 08:52:03</p>
-                    <hr>
-                </div>
-
-                <?php include_once './view-submission-forms/infographicsPanel.php' ?>
-
-                <!--Paste include_once statement below here, delete the php tag below-->
-                <?php
-
-                // include 1 of the 3 based on whether file is infographics, thesis, journal
-                /* 
-                <?php include_once './view-submission-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './view-submission-forms/researchJournalPanel.php' ?>
-                <?php include_once './view-submission-forms/infographicsPanel.php' ?>
-                */
-
+                <?php if($fileInfo['file_type']=='thesis'){
+                    include_once './view-submission-forms/thesisDissertationPanel.php';
+                }
+                else if($fileInfo['file_type']=='infographic'){
+                    include_once './view-submission-forms/infographicsPanel.php';
+                }
+                else if($fileInfo['file_type']=='infographic'){
+                    include_once './view-submission-forms/researchJournalPanel.php';
+                }
                 ?>
+
 
             </div>
         </div>

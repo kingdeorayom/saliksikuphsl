@@ -12,7 +12,9 @@ export function pendingThesisTemplate(result) {
         </div>
         <div class="col">
             <div class="text-end">
-                <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
+                <a href="../../layouts/user-submission/view-submission.php?id=${escapeHtml(
+                  result.file_id
+                )}" class="editReviseButton">
                     <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                 </a>
             </div>
