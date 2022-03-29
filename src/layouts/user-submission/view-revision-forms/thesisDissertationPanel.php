@@ -502,13 +502,13 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Feedback</label>
-                        <?php foreach ($feedback as $key => $row):?>
-                            <div class="feedback-container">
-                                <div>Feedback # <?php echo $key + 1 ?></div>
-                                <div><?php echo $row['feedback']?></div>
-                                Returned on: <?php echo $row['returned_on'] ?>
-                            </div>
+                        <?php foreach ($feedback as $key => $row) : $reverse_key = $feedback_count -$key;?>
+                            <div class="feedback-container p-3 my-2 border border-1">
                                 
+                                <p class="fw-bold">Feedback # <?php echo $reverse_key ?></p>
+                                <p><?php echo $row['feedback'] ?></p>
+                                <p class="fw-bold">Returned on: <span class="fw-normal"><?php echo $row['returned_on'] ?></span></p>
+                            </div>
                         <?php endforeach ?>
                     </div>
                 </div>

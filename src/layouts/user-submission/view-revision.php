@@ -49,11 +49,14 @@ if (isset($_GET['id'])) {
             $statement->close();
             $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
 
-            $statement = $connection->prepare("SELECT * FROM feedback_log WHERE ref_id= ?");
+            $statement = $connection->prepare("SELECT * FROM feedback_log WHERE ref_id= ? ORDER BY log_id DESC");
             $statement->bind_param("i", $_GET['id']);
             $statement->execute();
             $result = $statement->get_result();
             $feedback = $result->fetch_all(MYSQLI_ASSOC);
+            // $feedback = array_reverse($feedback);
+            $feedback_count = count($feedback);
+
             $statement->close();
             print_r($feedback);
         } else {
@@ -91,6 +94,11 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/submission-forms-style.css?id=' . $pagecssVersion ?>" type="text/css">
+    <style>
+        .feedback-container:first-of-type{
+            background-color:#f5f5f5;
+        }
+    </style>
 </head>
 
 
