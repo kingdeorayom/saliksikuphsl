@@ -187,38 +187,34 @@ export function revisionJournalTemplate(result) {
 
 export function revisedThesisTemplate(result) {
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
-        <div class="row">
-            <div class="col">
-                <div class="text-start">
-                    <p class="fw-bold" style="color: #012265;">${escapeHtml(
-                      result.resource_type
-                    )} | ${escapeHtml(
+              <div class="row">
+                  <div class="col">
+                      <div class="text-start">
+                      <p class="fw-bold" style="color: #012265;">${escapeHtml(
+                        result.resource_type
+                      )} | ${escapeHtml(
     result.researchers_category
   )} | ${escapeHtml(result.research_unit)}</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
-        </div>
-        <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${
-              result.returned_on
-            }</p>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <div class="feedback border bg-white p-1">
-                    <p class="fw-bold">Feedback:</p>
-                    <p>${escapeHtml(result.feedback)}</p>
-                </div>
-            </div>
-        </div>
-        <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${
-          result.file_id
-        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
-    </div>`;
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <h4 class="">${escapeHtml(result.research_title)}</h4>
+              </div>
+              
+              <div class="row mb-3">
+                  <div class="col">
+                      <div class="feedback border bg-white p-1">
+                          <p class="fw-bold">Feedback:</p>
+                          <p>${escapeHtml(result.feedback)}</p>
+                      </div>
+                  </div>
+              </div>
+              <hr class="my-1">
+              <a href="../../layouts/admin-submission/view.php?id=${
+                result.file_id
+              }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+          </div>`;
   return template;
 }
 
