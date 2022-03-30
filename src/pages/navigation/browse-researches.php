@@ -22,7 +22,8 @@ $statement->close();
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
-function filter(&$value){
+function filter(&$value)
+{
     $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 array_walk_recursive($published, "filter");
@@ -101,16 +102,16 @@ array_walk_recursive($published, "filter");
                     <div class="row">
                         <div class="accordion accordion-flush">
                             <?php
-                                    $unit_array = array();
-                                    foreach ($published as $key => $result) {
-                                        
-                                        if ($result['file_type'] == 'thesis') {
-                                            array_push($unit_array, $result['research_unit']);
-                                        }
-                                    }
-                                    $unit_array = array_unique($unit_array);
-                                    foreach ($unit_array as $key => $result) {
-                                        echo "<div class='accordion-item my-2'>
+                            $unit_array = array();
+                            foreach ($published as $key => $result) {
+
+                                if ($result['file_type'] == 'thesis') {
+                                    array_push($unit_array, $result['research_unit']);
+                                }
+                            }
+                            $unit_array = array_unique($unit_array);
+                            foreach ($unit_array as $key => $result) {
+                                echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
                             <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
                                 {$result}
@@ -118,19 +119,19 @@ array_walk_recursive($published, "filter");
                         </h2>
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
                             <div class='accordion-body'>";
-                                        foreach ($published as $key => $item) {
-                                            if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
-                                                echo "
+                                foreach ($published as $key => $item) {
+                                    if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
+                                        echo "
                                     <a href='../../layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                         <p>{$item['research_title']}</p>
                                     </a>";
-                                            }
-                                        }
-                                        echo "</div>
+                                    }
+                                }
+                                echo "</div>
                         </div>
                     </div>";
-                                    }
-                                    ?>
+                            }
+                            ?>
                         </div>
 
                     </div>
@@ -140,18 +141,18 @@ array_walk_recursive($published, "filter");
                     <h1 class="my-2">Browse Journals</h1>
                     <hr>
                     <div class="row">
-                    <div class="accordion accordion-flush">
+                        <div class="accordion accordion-flush">
                             <?php
-                                    $unit_array = array();
-                                    foreach ($published as $key => $result) {
-                                        
-                                        if ($result['file_type'] == 'journal') {
-                                            array_push($unit_array, $result['department']);
-                                        }
-                                    }
-                                    $unit_array = array_unique($unit_array);
-                                    foreach ($unit_array as $key => $result) {
-                                        echo "<div class='accordion-item my-2'>
+                            $unit_array = array();
+                            foreach ($published as $key => $result) {
+
+                                if ($result['file_type'] == 'journal') {
+                                    array_push($unit_array, $result['department']);
+                                }
+                            }
+                            $unit_array = array_unique($unit_array);
+                            foreach ($unit_array as $key => $result) {
+                                echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
                             <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
                                 {$result}
@@ -159,42 +160,21 @@ array_walk_recursive($published, "filter");
                         </h2>
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
                             <div class='accordion-body'>";
-                                        foreach ($published as $key => $item) {
-                                            if ($item['file_type'] == 'journal' && $item['department'] == $result) {
-                                                echo "
+                                foreach ($published as $key => $item) {
+                                    if ($item['file_type'] == 'journal' && $item['department'] == $result) {
+                                        echo "
                                     <a href='../../layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                         <p>{$item['journal_title']}</p>
                                     </a>";
-                                            }
-                                        }
-                                        echo "</div>
+                                    }
+                                }
+                                echo "</div>
                         </div>
                     </div>";
-                                    }
-                                    ?>
+                            }
+                            ?>
+                        </div>
                     </div>
-                </div>
-                                </div>
-
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
-                    <h1 class="my-2">Browse Infographics</h1>
-                    <hr>
-                    <div class="row">
-                    <div class="accordion accordion-flush">
-                            <?php
-                                    foreach ($published as $key => $item) {
-                                        if ($item['file_type'] == 'infographic') {
-                                            echo "
-                                <a href='../../layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                    <p>{$item['infographic_title']}</p>
-                                </a>";
-                                        }
-                                    }
-                                    echo "</div>";
-                                
-                                ?>
-                    </div>
-                </div>
                 </div>
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="researchCatalogsPanel" hidden>
@@ -268,6 +248,31 @@ array_walk_recursive($published, "filter");
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
+                    <h1 class="my-2">Browse Infographics</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="accordion accordion-flush">
+                            <?php
+                            foreach ($published as $key => $item) {
+                                if ($item['file_type'] == 'infographic') {
+                                    echo "
+                                <a href='../../layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <p>{$item['infographic_title']}</p>
+                                </a>";
+                                }
+                            }
+                            echo "</div>";
+
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
             </div>
         </div>

@@ -189,7 +189,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     </div>
 
                     <div id="dropdownSupportServices" hidden>
-                        <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
+                        <label class="py-2 fw-bold" id="labelCourseOrDepartment">Course</label>
                         <select class=" form-select" name="dropdownCourse" disabled>
                             <option value="Community Outreach Department">Community Outreach Department</option>
                             <option value="Human Resource Department">Human Resource Department</option>
@@ -641,6 +641,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownSupportServices :input").prop('disabled', true);
 
                 } else if (this.value == 'Support Services') {
+                    $("#labelCourseOrDepartment").text("Department");
 
                     $("#dropdownSupportServices").prop('hidden', false);
                     $("#dropdownSupportServices :input").prop('disabled', false);

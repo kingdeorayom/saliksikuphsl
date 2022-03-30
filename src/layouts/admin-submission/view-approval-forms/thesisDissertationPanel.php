@@ -190,7 +190,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     </div>
 
                     <div id="dropdownSupportServices" hidden>
-                        <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
+                        <label class="py-2 fw-bold" id="labelCourseOrDepartment">Course</label>
                         <select class=" form-select" name="dropdownCourse" disabled>
                             <option value="Community Outreach Department">Community Outreach Department</option>
                             <option value="Human Resource Department">Human Resource Department</option>
@@ -488,14 +488,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-4">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir'])?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name'])?></a></label>
+                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if ($fileInfo['file1_shown']) {
                                                                                                                             echo 'checked';
                                                                                                                         } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
-                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2'])?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2'])?></a></label>
+                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']) ?></a></label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if ($fileInfo['file2_shown']) {
                                                                                                                                 echo 'checked';
@@ -658,7 +658,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownSupportServices :input").prop('disabled', true);
 
                 } else if (this.value == 'Support Services') {
-
+                    $("#labelCourseOrDepartment").text("Department");
                     $("#dropdownSupportServices").prop('hidden', false);
                     $("#dropdownSupportServices :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool").prop('hidden', true);

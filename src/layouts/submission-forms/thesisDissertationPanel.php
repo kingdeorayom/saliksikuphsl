@@ -187,7 +187,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
 
                 <div id="dropdownSupportServices" hidden>
-                    <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
+                    <label class="py-2 fw-bold" id="labelCourseOrDepartment">Course<span class="text-danger"> *</span></label>
                     <select class=" form-select" name="dropdownCourse" disabled>
                         <option value="Community Outreach Department">Community Outreach Department</option>
                         <option value="Human Resource Department">Human Resource Department</option>
@@ -304,8 +304,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-2 col-sm-12">
                 <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" id="year-picker" onchange="changeInput()" required>
                     <!-- <option value="" selected>Year</option> -->
-                    <option value="2022">2022</option>
-                    <option value="2021" selected>2021</option>
+                    <option value="2022" selected>2022</option>
+                    <option value="2021">2021</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
@@ -518,8 +518,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit your research" id="submitResearchDissertationButton" <?php if ($_SESSION['userType'] !== "admin") {
-                                                                                                                                                                        echo 'disabled';
-                                                                                                                                                                    } ?>>Submit your research</button>
+                                                                                                                                                                            echo 'disabled';
+                                                                                                                                                                        } ?>>Submit your research</button>
             </div>
         </div>
 
@@ -644,6 +644,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
             } else if (this.value == 'Support Services') {
 
+                $("#labelCourseOrDepartment").text("Department");
                 $("#dropdownSupportServices").prop('hidden', false);
                 $("#dropdownSupportServices :input").prop('disabled', false);
                 $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool").prop('hidden', true);
