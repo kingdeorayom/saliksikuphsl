@@ -333,7 +333,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postInfographic(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/infographic-submission");
+            http.open("POST", "../../process/infographic-submission.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

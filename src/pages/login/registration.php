@@ -97,7 +97,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         function postRegister(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/register");
+                http.open("POST", "../../process/register.php");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data)

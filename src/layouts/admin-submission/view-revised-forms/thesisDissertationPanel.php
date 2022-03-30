@@ -694,7 +694,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postThesis(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/update-file.php");
+            http.open("POST", "../../process/update-file.php.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);
