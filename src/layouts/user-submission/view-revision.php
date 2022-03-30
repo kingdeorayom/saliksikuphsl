@@ -168,7 +168,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
             formData.append("coauthor_id",coauthor_id)
             $.ajax({
                 method: "POST",
-                url:"../../process/user-update-submission.php?id="+id,
+                url:"../../process/user-revised-submission.php?id="+id,
                 contentType: false,
                 processData: false,
                 data: formData

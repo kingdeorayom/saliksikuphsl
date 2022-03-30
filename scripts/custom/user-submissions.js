@@ -43,11 +43,11 @@ function loadData(data) {
       }
     } else if (result["status"] == "revised") {
       if (result["file_type"] == "thesis") {
-        $("#results-container").append(revisedThesisTemplate(result));
+        $("#revised-container").append(revisedThesisTemplate(result));
       } else if (result["file_type"] == "journal") {
-        $("#results-container").append(revisedJournalTemplate(result));
+        $("#revised-container").append(revisedJournalTemplate(result));
       } else if (result["file_type"] == "infographic") {
-        $("#results-container").append(revisedInfographicTemplate(result));
+        $("#revised-container").append(revisedInfographicTemplate(result));
       }
     } else if (result["status"] == "published") {
       if (result["file_type"] == "thesis") {

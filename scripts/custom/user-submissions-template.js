@@ -110,7 +110,7 @@ export function revisionThesisTemplate(result) {
                             <p class="fw-bold"><i class="fas fa-edit"></i> Revise</p>
                         </a>
                     </div>
-                </div>
+            </div>
         </div>
         <div class="row">
             <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
@@ -218,13 +218,7 @@ export function revisedThesisTemplate(result) {
   )} | ${escapeHtml(result.research_unit)}</p>
                       </div>
                   </div>
-                  <div class="col">
-                    <div class="text-end">
-                        <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
-                            <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
-                        </a>
-                    </div>
-                </div>
+                  
               </div>
               <div class="row">
                   <h4 class="">${escapeHtml(result.research_title)}</h4>
