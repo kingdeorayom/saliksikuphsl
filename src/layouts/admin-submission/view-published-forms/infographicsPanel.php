@@ -294,7 +294,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             formData.append("coauthor_id", authorGroupId);
             $.ajax({
                 method: "POST",
-                url: "../../process/update-file",
+                url: "../../process/update-file.php",
                 data: formData,
                 contentType: false,
                 processData: false,

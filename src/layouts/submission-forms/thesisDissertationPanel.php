@@ -546,7 +546,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 return xhr;
             },
             method: "POST",
-            url: "../../process/thesis-submission",
+            url: "../../process/thesis-submission.php",
             data: formData,
             contentType: false,
             processData: false,

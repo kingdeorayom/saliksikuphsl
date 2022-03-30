@@ -16,7 +16,7 @@ import {
 $(document).ready(function () {
   $.ajax({
     method: "POST",
-    url: "../../../src/process/get-user-submissions",
+    url: "../../../src/process/get-user-submissions.php",
     contentType: false,
     processData: false,
   }).done(function (data) {

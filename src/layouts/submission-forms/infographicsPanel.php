@@ -342,7 +342,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 return xhr;
             },
             method: "POST",
-            url: "../../process/infographic-submission",
+            url: "../../process/infographic-submission.php",
             data: formData,
             contentType: false,
             processData: false,
