@@ -13,8 +13,8 @@ if (isset($_SESSION['userType'])) {
     }
     else{
 
-        $id = $_POST['fileId'];
-        $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
+        $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= ?");
+        $statement ->bind_param("i",$_POST['fileId']);
         $statement->execute();
         $result = $statement->get_result();
         

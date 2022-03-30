@@ -36,10 +36,14 @@ if (isset($_GET['id'])) {
     $result = $statement->get_result();
     $file = $result->fetch_assoc();
     $statement->close();
+    
 
     if ($file == null) {
         die(); //file doesnt exist
     } else {
+        if($file['status']!=='for revision'){
+            die(); //not revision or header location it
+        }
         if ($file['file_type'] === "thesis") {
             $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");
             $statement->bind_param("i", $_GET['id']);
@@ -58,7 +62,6 @@ if (isset($_GET['id'])) {
             $feedback_count = count($feedback);
 
             $statement->close();
-            print_r($feedback);
         } else {
             die();
             // thesis lang pede submit ni user
@@ -94,11 +97,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
     <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/submission-forms-style.css?id=' . $pagecssVersion ?>" type="text/css">
-    <style>
-        .feedback-container:first-of-type{
-            background-color:#f5f5f5;
-        }
-    </style>
 </head>
 
 
@@ -156,6 +154,28 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 document.getElementById("resubmitButtonInfographics").disabled = true;
             }
         }
+    </script>
+    <script type="text/javascript">
+        $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
+                                    <span class='badge rounded-pill' style='background-color:#012265'>New</span>
+                                </div>`)
+        $("form[name='thesis-form']").on('submit', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var coauthor_id = $(this).data('coauthor_id');
+
+            var formData = new FormData(this);
+            formData.append("coauthor_id",coauthor_id)
+            $.ajax({
+                method: "POST",
+                url:"../../process/user-update-submission.php?id="+id,
+                contentType: false,
+                processData: false,
+                data: formData
+            }).done(function (data) {
+                console.log(data)
+            })
+        })
     </script>
 </body>
 

@@ -39,7 +39,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <h1 class="my-2">File Upload Information</h1>
         <hr>
         <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
-        <form onsubmit="submitForm(event)" name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+        <form name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
             <div class="row mt-4">
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
@@ -489,12 +489,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <label class="fw-bold mb-1">Attached Files</label>
             <div class="col">
                 <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']); ?></a></p>
-                <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
-                <input class="form-control my-2" type="file" name="" accept=".pdf" required>
-
+                <input class="form-control my-2" type="file" name="fileSubmit" accept=".pdf">
                 <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']); ?></a></p>
-                <p class="text-danger remove-attachment"><i class="fas fa-trash-alt"></i> Remove attachment</p>
-                <input class="form-control my-2" type="file" name="" accept=".pdf" required>
+                <input class="form-control my-2" type="file" name="fileQuestionnaire" accept=".pdf">
             </div>
         </div>
             <hr>

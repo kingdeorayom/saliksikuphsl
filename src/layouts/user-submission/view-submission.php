@@ -116,6 +116,24 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
     <?php include_once '../../layouts/general/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("form[name='thesis-form']").on('submit', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var coauthor_id = $(this).data('coauthor_id');
+            var formData = new FormData(this);
+            formData.append("coauthor_id",coauthor_id)
+            $.ajax({
+                method: "POST",
+                url:"../../process/user-update-submission.php?id="+id,
+                contentType: false,
+                processData: false,
+                data: formData
+            }).done(function (data) {
+                console.log(data)
+            })
+        })
+    </script>
 </body>
 
 </html>
