@@ -49,7 +49,7 @@ function submitData() {
   formData.append("sort_by", $("#submission-category-dropdown").val());
   $.ajax({
     method: "POST",
-    url: "../../../src/process/get-submissions.php",
+    url: "../../../src/process/get-submissions",
     contentType: false,
     processData: false,
     data: formData,

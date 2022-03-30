@@ -170,7 +170,7 @@ print_r($_SESSION);
             var formData = new FormData(this);
             $.ajax({
                 method: "POST",
-                url:"update-account.php",
+                url:"update-password.php",
                 data: formData,
                 contentType: false, 
         processData: false, 

@@ -1,1 +1,12 @@
-ErrorDocument 404 http://www.google.com
+ErrorDocument 404 /saliksikuphsl/src/layouts/general/error
+
+
+
+RewriteEngine On
+#removes extension
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^([^.]+)$ $1.php [NC,L]
+
+#redirects from extension to non extension
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=302,NE,L]

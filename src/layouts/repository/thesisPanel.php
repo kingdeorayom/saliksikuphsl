@@ -57,8 +57,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <div class='row my-4'>
                         <p class='fw-bold mb-3'>Attached Files</p>
                         <div class='col'>
-                            <button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> Full manuscript.pdf</button>
-                            <button class='btn button-file mx-1 my-2 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i> Survey questionnaire.pdf</button>
+                            <?php if($fileInfo['file1_shown']):?>
+                            <a href="../<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
+                            <?php endif?>
+                            <?php if($fileInfo['file2_shown']):?>
+                            <a href="../<?php echo $fileInfo['file_dir2'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name2']); ?></button></a>
+                            <?php endif?>
                         </div>
                     </div>
 

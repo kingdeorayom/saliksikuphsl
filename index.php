@@ -86,7 +86,6 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                     </div>
                     <div class="row">
                         <form onsubmit="submitLogin(event)" name="login-form">
-                            <!-- <form action="./src/process/login.php" method="POST"> -->
                             <label>Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
@@ -132,7 +131,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
         function postLogin(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "./src/process/login.php");
+                http.open("POST", "./src/process/login");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data)

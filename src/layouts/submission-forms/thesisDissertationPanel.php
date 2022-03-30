@@ -28,7 +28,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
     <h1 class="my-2">Thesis and Dissertation Submission Form</h1>
     <hr>
-    <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
     <form name="thesis-form">
         <div class="row mt-4">
             <div class="col-lg-4 col-sm-12">
@@ -547,7 +546,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 return xhr;
             },
             method: "POST",
-            url: "../../process/thesis-submission.php",
+            url: "../../process/thesis-submission",
             data: formData,
             contentType: false,
             processData: false,

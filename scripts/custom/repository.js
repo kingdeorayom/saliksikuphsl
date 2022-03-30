@@ -193,7 +193,7 @@ function changePage(page) {
   $.ajax({
     method: "POST",
     data: formData,
-    url: "./repository-ajax.php",
+    url: "./repository-ajax",
     contentType: false,
     processData: false,
   }).done(function (data) {
@@ -215,7 +215,7 @@ function getResults() {
   $.ajax({
     method: "POST",
     data: formData,
-    url: "./repository-ajax.php",
+    url: "./repository-ajax",
     contentType: false,
     processData: false,
   }).done(function (data) {

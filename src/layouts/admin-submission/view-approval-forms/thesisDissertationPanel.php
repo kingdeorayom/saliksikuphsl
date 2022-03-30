@@ -488,14 +488,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-4">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                    <label class="my-2">File1.pdf</label>
+                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir'])?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name'])?></a></label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if ($fileInfo['file1_shown']) {
                                                                                                                             echo 'checked';
                                                                                                                         } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
-                    <label class="my-2">File2.pdf</label>
+                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2'])?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2'])?></a></label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if ($fileInfo['file2_shown']) {
                                                                                                                                 echo 'checked';
@@ -560,7 +560,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         function postThesis(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/update-file.php");
+                http.open("POST", "../../process/update-file");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data);

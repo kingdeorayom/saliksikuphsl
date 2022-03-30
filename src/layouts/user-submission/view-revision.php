@@ -2,13 +2,78 @@
 
 session_start();
 
+include '../../process/connection.php';
+
 if (isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] === "admin") {
-        header("Location: ../../pages/users/admin-submissions.php");
+        header("Location: ../../pages/users/admin-submissions");
     }
 } else {
     header("location: ../../layouts/general/error.php");
     die();
+}
+
+if (mysqli_connect_errno()) {
+    exit("Failed to connect to the database: " . mysqli_connect_error());
+};
+
+if (isset($_GET['id'])) {
+    $statement = $connection->prepare("SELECT * FROM department_list");
+    $statement->execute();
+    $result = $statement->get_result();
+    $department_list = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
+    $statement = $connection->prepare("SELECT * FROM research_fields");
+    $statement->execute();
+    $result = $statement->get_result();
+    $research_fields_list = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
+    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= ?");
+    $statement->bind_param("i", $_GET['id']);
+    $statement->execute();
+    $result = $statement->get_result();
+    $file = $result->fetch_assoc();
+    $statement->close();
+    
+
+    if ($file == null) {
+        die(); //file doesnt exist
+    } else {
+        if($file['status']!=='for revision'){
+            die(); //not revision or header location it
+        }
+        if ($file['file_type'] === "thesis") {
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");
+            $statement->bind_param("i", $_GET['id']);
+            $statement->execute();
+            $result = $statement->get_result();
+            $fileInfo = $result->fetch_assoc();
+            $statement->close();
+            $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
+
+            $statement = $connection->prepare("SELECT * FROM feedback_log WHERE ref_id= ? ORDER BY log_id DESC");
+            $statement->bind_param("i", $_GET['id']);
+            $statement->execute();
+            $result = $statement->get_result();
+            $feedback = $result->fetch_all(MYSQLI_ASSOC);
+            // $feedback = array_reverse($feedback);
+            $feedback_count = count($feedback);
+
+            $statement->close();
+        } else {
+            die();
+            // thesis lang pede submit ni user
+        }
+    }
+} else {
+    die(); //GET['id'] is not defined;
+}
+
+if($fileInfo['user_id']!=$_SESSION['userid']){
+    die();
+    // not the file uploader
 }
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
@@ -43,42 +108,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
 
     <section class="submit-research">
         <div class="container p-5">
-            <div class="row my-3 d-lg-none">
-                <h5>Submission Details</h5>
-                <hr>
-                <p class="side-menu-text">Submitted on:</p>
-                <p class="side-menu-text">2021-11-17 08:52:03</p>
-                <hr>
-                <p class="side-menu-text">Returned on:</p>
-                <p class="side-menu-text">2021-11-17 08:52:03</p>
-                <hr>
-            </div>
             <div class="row">
-                <div class="col-lg-2 d-none d-md-none d-lg-block">
-                    <!--col-md-12 to stack on top of next column. remove display-none-->
-                    <h5>Submission Details</h5>
-                    <hr>
-                    <p class="side-menu-text">Submitted on:</p>
-                    <p class="side-menu-text">2021-11-17 08:52:03</p>
-                    <hr>
-                    <p class="side-menu-text">Returned on:</p>
-                    <p class="side-menu-text">2021-11-17 08:52:03</p>
-                    <hr>
-                </div>
-
-                <?php include_once './view-revision-forms/thesisDissertationPanel.php' ?>
-
-                <!--Paste include_once statement below here, delete the php tag below-->
-                <?php
-
-                // include 1 of the 3 based on whether file is infographics, thesis, journal
-                /* 
-                <?php include_once './view-revision-forms/thesisDissertationPanel.php' ?>
-                <?php include_once './view-revision-forms/researchJournalPanel.php' ?>
-                <?php include_once './view-revision-forms/infographicsPanel.php' ?>
-                */
-
+                <?php if($fileInfo['file_type']=='thesis'){
+                    include_once './view-revision-forms/thesisDissertationPanel.php';
+                }
+                else if($fileInfo['file_type']=='infographic'){
+                    include_once './view-revision-forms/infographicsPanel.php';
+                }
+                else if($fileInfo['file_type']=='infographic'){
+                    include_once './view-revision-forms/researchJournalPanel.php';
+                }
                 ?>
+
 
             </div>
         </div>
@@ -113,6 +154,28 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/submission-forms-style
                 document.getElementById("resubmitButtonInfographics").disabled = true;
             }
         }
+    </script>
+    <script type="text/javascript">
+        $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
+                                    <span class='badge rounded-pill' style='background-color:#012265'>New</span>
+                                </div>`)
+        $("form[name='thesis-form']").on('submit', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var coauthor_id = $(this).data('coauthor_id');
+
+            var formData = new FormData(this);
+            formData.append("coauthor_id",coauthor_id)
+            $.ajax({
+                method: "POST",
+                url:"../../process/user-revised-submission.php?id="+id,
+                contentType: false,
+                processData: false,
+                data: formData
+            }).done(function (data) {
+                console.log(data)
+            })
+        })
     </script>
 </body>
 

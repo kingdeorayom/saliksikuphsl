@@ -90,3 +90,26 @@
   background-color: #012265;
   border-color: #012265;
 }
+
+#display_image {
+  width: 140px;
+  height: 140px;
+  border: 2px solid gray;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.remove-button {
+  text-decoration: none;
+  color: black;
+}
+
+.remove-button:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.remove:hover {
+  color: red;
+}

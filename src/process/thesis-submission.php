@@ -327,11 +327,15 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
                     $fileNameQuestionNew = $filenameUnique . "-questionnaire." . $fileQuestionnaireActualExt;
                     $fileQuestionDestination = '../uploads/theses/questionnaires/' . $fileNameQuestionNew;
+<<<<<<< HEAD
 
                     $fileNameQuestionNew = $filenameUnique . "-questionnaire." . $fileQuestionnaireActualExt;
                     $fileQuestionDestination = '../uploads/theses/questionnaires/' . $fileNameQuestionNew;
 
 
+=======
+                    
+>>>>>>> jquery
                     $connection->begin_transaction();
                     try {
                         $statement = $connection->prepare("INSERT INTO coauthors_information(coauthor1_first_name,coauthor1_middle_initial,coauthor1_surname,coauthor1_name_ext,coauthor1_email,coauthor2_first_name,coauthor2_middle_initial,coauthor2_surname,coauthor2_name_ext,coauthor2_email,coauthor3_first_name,coauthor3_middle_initial,coauthor3_surname,coauthor3_name_ext,coauthor3_email,coauthor4_first_name,coauthor4_middle_initial,coauthor4_surname,coauthor4_name_ext,coauthor4_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -348,6 +352,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         $fileType = "thesis";
 
                         $submitted = date('Y-m-d H:i:s');
+<<<<<<< HEAD
                         $statement = $connection->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on) VALUES(?,?,?,?,?,?,?,?,?)');
                         $statement->bind_param('issssssis', $userId, $fileType, $fileName, $fileDestination, $fileQuestionDestination, $userName, $fileStatus, $coauthorsInsertedId, $submitted);
                         $statement->execute();
@@ -356,6 +361,16 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
                         $comma_separated_fields = implode(', ', $_POST['researchFields']);
                         if (!isset($_POST['dropdownCourse'])) {
+=======
+                        $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_name2, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on) VALUES(?,?,?,?,?,?,?,?,?,?)');
+                        $statement -> bind_param('isssssssis',$userId,$fileType,$fileName,$fileQuestionnaireName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId,$submitted);
+                        $statement -> execute();
+                        $insertedId = $statement ->insert_id;
+                        $statement ->close();
+
+                        $comma_separated_fields = implode(', ',$_POST['researchFields']);
+                        if(!isset($_POST['dropdownCourse'])){
+>>>>>>> jquery
                             $course = '';
                         } else {
                             $course = $_POST['dropdownCourse'];
