@@ -38,7 +38,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
         <form name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
             <div class="row mt-4">
                 <div class="col-lg-4 col-sm-12">
@@ -544,7 +543,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         function postThesis(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/update-file.php");
+                http.open("POST", "../../process/update-file");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data);

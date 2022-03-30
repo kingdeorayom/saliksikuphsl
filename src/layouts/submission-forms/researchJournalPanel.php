@@ -169,7 +169,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 return xhr;
             },
             method: "POST",
-            url: "../../process/journal-submission.php",
+            url: "../../process/journal-submission",
             data: formData,
             contentType: false,
             processData: false,
