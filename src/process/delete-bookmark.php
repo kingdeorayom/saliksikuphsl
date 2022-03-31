@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connection.php';
+include '../../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");

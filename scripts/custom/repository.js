@@ -156,7 +156,7 @@ $("#repository-results-container").on("click", ".add-bookmark", function () {
   var container = $(this);
   $.ajax({
     method: "GET",
-    url: "../../process/add-bookmark.php?id=" + id,
+    url: "src/process/add-bookmark.php?id=" + id,
   }).done(function (data) {
     console.log(id, data);
     // TODO add notification when bookmark is added
@@ -171,7 +171,7 @@ $("#repository-results-container").on("click", ".del-bookmark", function () {
   var container = $(this);
   $.ajax({
     method: "GET",
-    url: "../../process/delete-bookmark.php?id=" + id,
+    url: "src/process/delete-bookmark.php?id=" + id,
   }).done(function (data) {
     console.log(id, data);
     // TODO add notification when bookmark is deleted
@@ -215,7 +215,7 @@ function getResults() {
   $.ajax({
     method: "POST",
     data: formData,
-    url: "./repository-ajax.php",
+    url: "src/process/repository-ajax.php",
     contentType: false,
     processData: false,
   }).done(function (data) {

@@ -2,7 +2,7 @@
 session_start();
 
 
-include 'connection.php';
+include '../../includes/connection.php';
 
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
@@ -12,6 +12,28 @@ if (empty($_POST['textFieldInfographicsTitle'] && $_POST['textFieldGraphicsEdito
     $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
     header("location: ../pages/navigation/submission-forms.php");
     exit();
+}
+
+if(isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'])){
+    if(!is_numeric($_POST['dropdownPublicationMonth'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    if(!is_numeric($_POST['dropdownPublicationDay'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    if(!is_numeric($_POST['dropdownPublicationYear'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    $publication_date = date("Y-m-d", mktime(0,0,0,$_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear']));
 }
 
 if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldInfographicsTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaDescription'], $_FILES['fileSubmit'])) {
@@ -63,8 +85,8 @@ if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], 
                             $insertedId = $statement->insert_id;
                             $statement->close();
         
-                            $statement = $connection->prepare("INSERT INTO infographic_information(file_ref_id,infographic_publication_month,infographic_publication_day,infographic_publication_year,	infographic_title,infographic_description,author_first_name,author_middle_initial,author_surname,author_ext,author_email,editor_first_name,editor_middle_initial,editor_surname,editor_ext,editor_email,coauthors_count) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                            $statement->bind_param('iiiissssssssssssi', $insertedId, $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldInfographicsTitle'], $_POST['textareaDescription'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors']);
+                            $statement = $connection->prepare("INSERT INTO infographic_information(file_ref_id,infographic_publication_date,infographic_title,infographic_description,author_first_name,author_middle_initial,author_surname,author_ext,author_email,editor_first_name,editor_middle_initial,editor_surname,editor_ext,editor_email,coauthors_count) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                            $statement->bind_param('isssssssssssssi', $insertedId,$publication_date, $_POST['textFieldInfographicsTitle'], $_POST['textareaDescription'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['textFieldGraphicsEditorFirstName'], $_POST['textFieldGraphicsEditorMiddleInitial'], $_POST['textFieldGraphicsEditorLastName'], $_POST['textFieldGraphicsEditorNameExtension'], $_POST['textFieldGraphicsEditorEmail'], $_POST['dropdownCoAuthors']);
                             $statement->execute();
                             $statement->close();
         

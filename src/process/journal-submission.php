@@ -1,23 +1,37 @@
 <?php
 session_start();
 
-include 'connection.php';
-$all_required_fields = array(
-    $_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'],
-    $_POST['textFieldSerialIssueNumber'], $_POST['textFieldISSN'], $_POST['textFieldChiefEditorFirstName'], $_POST['textFieldChiefEditorMiddleInitial'],
-    $_POST['textFieldChiefEditorLastName'], $_POST['textFieldChiefEditorNameExtension'], $_POST['textFieldEmail'], $_POST['textAreaDescription'],
-    $_FILES['journalCoverFile'], $_FILES['journalFile']
-);
-
+include '../../includes/connection.php';
 
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
+
 // hindi naman matatawag to? tanggalin nalang
 if (empty($_POST['textFieldJournalTitle'] && $_POST['textFieldChiefEditorFirstName'])) {
     $_SESSION['emptyInput'] = "Invalid input. Fill up all fields.";
     header("location: ../pages/navigation/submission-forms.php");
     exit();
+}
+
+$statement = $connection->prepare("SELECT name FROM department_list");
+$statement->execute();
+$result = $statement->get_result();
+$department_list = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+$department_list_values = array();
+foreach ($department_list as $key => $value) {  
+    array_push($department_list_values,$value['name']);
+}
+
+if(isset($_POST['dropdownDepartment'])){
+    if(!in_array($_POST['dropdownDepartment'],$department_list_values)){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
 }
 
 if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $_POST['dropdownDepartment'], $_POST['textFieldVolumeNumber'], $_POST['textFieldSerialIssueNumber'], $_POST['textFieldISSN'], $_POST['textFieldChiefEditorFirstName'], $_POST['textFieldChiefEditorMiddleInitial'], $_POST['textFieldChiefEditorLastName'], $_POST['textFieldChiefEditorNameExtension'], $_POST['textFieldEmail'], $_POST['textAreaDescription'], $_FILES['journalCoverFile'], $_FILES['journalFile'])) {

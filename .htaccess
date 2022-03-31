@@ -1,1 +1,2 @@
-ErrorDocument 404 /PROJECTS/saliksikuphsl/src/layouts/general/error.php
+ErrorDocument 404 /saliksikuphsl/src/layouts/general/error.php
+

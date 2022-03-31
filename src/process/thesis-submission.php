@@ -7,7 +7,7 @@ require '../../vendor/autoload.php';
 
 session_start();
 
-include 'connection.php';
+include '../../includes/connection.php';  
 
 function sendMail()
 {
@@ -273,6 +273,82 @@ if (mysqli_connect_errno()) {
 //     exit();
 // }
 
+$resourceTypeValues = array("Dissertation","Thesis", "Capstone");
+if(isset($_POST['dropdownResourceType'])){
+    if(!in_array($_POST['dropdownResourceType'],$resourceTypeValues)){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+}
+
+$researchersCategoryValues = array("Undergraduate","Postgraduate", "Faculty", "Non-Teaching Staff","Department Head");
+if(isset($_POST['dropdownResearchersCategory'])){
+    if(!in_array($_POST['dropdownResearchersCategory'],$researchersCategoryValues)){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+}
+
+$statement = $connection->prepare("SELECT name FROM department_list");
+$statement->execute();
+$result = $statement->get_result();
+$department_list = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+$department_list_values = array();
+foreach ($department_list as $key => $value) {  
+    array_push($department_list_values,$value['name']);
+}
+
+if(isset($_POST['dropdownResearchUnit'])){
+    if(!in_array($_POST['dropdownResearchUnit'],$department_list_values)){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+}
+if(isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'])){
+    if(!is_numeric($_POST['dropdownPublicationMonth'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    if(!is_numeric($_POST['dropdownPublicationDay'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    if(!is_numeric($_POST['dropdownPublicationYear'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    $publication_date = date("Y-m-d", mktime(0,0,0,$_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear']));
+}
+
+if(isset($_POST['dropdownCoAuthors'])){
+    if(!is_numeric($_POST['dropdownCoAuthors'])){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+    if($_POST['dropdownCoAuthors']<0 || $_POST['dropdownCoAuthors']>4){
+        $arr = array('response' => "input_error");
+        header('Content-Type: application/json');
+        echo json_encode($arr);
+        exit();
+    }
+}
+
 if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['textFieldResearchTitle'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail'], $_POST['dropdownCoAuthors'], $_POST['textareaAbstract'], $_POST['textareaKeywords'], $_POST['researchFields'], $_FILES['fileSubmit'])) {
     $userId = $_SESSION['userid'];
     $userName = $_SESSION['fullName'];
@@ -327,15 +403,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
                     $fileNameQuestionNew = $filenameUnique . "-questionnaire." . $fileQuestionnaireActualExt;
                     $fileQuestionDestination = '../uploads/theses/questionnaires/' . $fileNameQuestionNew;
-<<<<<<< HEAD
-
-                    $fileNameQuestionNew = $filenameUnique . "-questionnaire." . $fileQuestionnaireActualExt;
-                    $fileQuestionDestination = '../uploads/theses/questionnaires/' . $fileNameQuestionNew;
-
-
-=======
                     
->>>>>>> jquery
                     $connection->begin_transaction();
                     try {
                         $statement = $connection->prepare("INSERT INTO coauthors_information(coauthor1_first_name,coauthor1_middle_initial,coauthor1_surname,coauthor1_name_ext,coauthor1_email,coauthor2_first_name,coauthor2_middle_initial,coauthor2_surname,coauthor2_name_ext,coauthor2_email,coauthor3_first_name,coauthor3_middle_initial,coauthor3_surname,coauthor3_name_ext,coauthor3_email,coauthor4_first_name,coauthor4_middle_initial,coauthor4_surname,coauthor4_name_ext,coauthor4_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -351,17 +419,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         }
                         $fileType = "thesis";
 
-                        $submitted = date('Y-m-d H:i:s');
-<<<<<<< HEAD
-                        $statement = $connection->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on) VALUES(?,?,?,?,?,?,?,?,?)');
-                        $statement->bind_param('issssssis', $userId, $fileType, $fileName, $fileDestination, $fileQuestionDestination, $userName, $fileStatus, $coauthorsInsertedId, $submitted);
-                        $statement->execute();
-                        $insertedId = $statement->insert_id;
-                        $statement->close();
-
-                        $comma_separated_fields = implode(', ', $_POST['researchFields']);
-                        if (!isset($_POST['dropdownCourse'])) {
-=======
+                        $submitted = date("Y-m-d H:i:s");
                         $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_name2, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on) VALUES(?,?,?,?,?,?,?,?,?,?)');
                         $statement -> bind_param('isssssssis',$userId,$fileType,$fileName,$fileQuestionnaireName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId,$submitted);
                         $statement -> execute();
@@ -370,13 +428,12 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
                         $comma_separated_fields = implode(', ',$_POST['researchFields']);
                         if(!isset($_POST['dropdownCourse'])){
->>>>>>> jquery
                             $course = '';
                         } else {
                             $course = $_POST['dropdownCourse'];
                         }
-                        $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_course,research_title,research_abstract,research_fields,keywords,publication_month,publication_day,publication_year,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                        $statement->bind_param('issssssssiiiisssss', $insertedId, $_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $course, $_POST['textFieldResearchTitle'], $_POST['textareaAbstract'], $comma_separated_fields, $_POST['textareaKeywords'], $_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'], $_POST['dropdownCoAuthors'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail']);
+                        $statement = $connection->prepare("INSERT INTO research_information(file_ref_id,resource_type,researchers_category,research_unit,research_course,research_title,research_abstract,research_fields,keywords,publication_date,coauthors_count,author_first_name,author_middle_initial,author_surname,author_name_ext,author_email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        $statement->bind_param('isssssssssisssss', $insertedId, $_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'], $_POST['dropdownResearchUnit'], $course, $_POST['textFieldResearchTitle'], $_POST['textareaAbstract'], $comma_separated_fields, $_POST['textareaKeywords'], $publication_date, $_POST['dropdownCoAuthors'], $_POST['textFieldAuthorFirstName'], $_POST['textFieldAuthorMiddleInitial'], $_POST['textFieldAuthorLastName'], $_POST['textFieldAuthorNameExtension'], $_POST['textFieldEmail']);
                         $statement->execute();
                         $statement->close();
 
@@ -393,7 +450,10 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                     } catch (mysqli_sql_exception $exception) {
                         $connection->rollback();
 
-                        echo json_encode("error");
+                        $arr = array('response' => "error", 'errorText'=>$exception->getMessage());
+                        header('Content-Type: application/json');
+                        echo json_encode($arr);
+                        exit();
                     }
                 }
             } else {
