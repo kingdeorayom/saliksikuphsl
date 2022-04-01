@@ -4,7 +4,7 @@ session_start();
 
 
 if (isset($_SESSION['isLoggedIn'])) {
-    header("Location: /saliksikuphsl/home.php");
+    header("Location: /home.php");
     die();
 }
 
