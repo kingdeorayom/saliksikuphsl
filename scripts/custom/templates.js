@@ -20,9 +20,9 @@ export function pendingThesisTemplate(result) {
             }</p>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${
-          result.file_id
-        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       <a href="submissions/view.php?id=${
+         result.file_id
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -46,9 +46,9 @@ export function pendingInfographicTemplate(result) {
             </div>
             <hr class="my-1">
             
-            <a href="../../layouts/admin-submission/view.php?id=${
-              result.file_id
-            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+           <a href="submissions/view.php?id=${
+             result.file_id
+           }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             
             </div>`;
   return template;
@@ -73,9 +73,9 @@ export function pendingJournalTemplate(result) {
                 
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view.php?id=${
-              result.file_id
-            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+           <a href="submissions/view.php?id=${
+             result.file_id
+           }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -110,9 +110,9 @@ export function revisionThesisTemplate(result) {
             </div>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${
-          result.file_id
-        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       <a href="submissions/view.php?id=${
+         result.file_id
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -143,9 +143,9 @@ export function revisionInfographicTemplate(result) {
             </div>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${
-          result.file_id
-        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       <a href="submissions/view.php?id=${
+         result.file_id
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
     </div>`;
   return template;
 }
@@ -178,9 +178,9 @@ export function revisionJournalTemplate(result) {
                 </div>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view.php?id=${
-              result.file_id
-            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+           <a href="submissions/view.php?id=${
+             result.file_id
+           }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -211,9 +211,9 @@ export function revisedThesisTemplate(result) {
                   </div>
               </div>
               <hr class="my-1">
-              <a href="../../layouts/admin-submission/view.php?id=${
-                result.file_id
-              }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+             <a href="submissions/view.php?id=${
+               result.file_id
+             }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
           </div>`;
   return template;
 }
@@ -242,7 +242,7 @@ export function revisedInfographicTemplate(result) {
               </div>
           </div>
           <hr class="my-1">
-          <a href="../../layouts/admin-submission/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+         <a href="submissions/view.php?id=${result.file_id}"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
       </div>`;
   return template;
 }
@@ -275,9 +275,9 @@ export function revisedJournalTemplate(result) {
                       </div>
                   </div>
                   <hr class="my-1">
-                  <a href="../../layouts/admin-submission/view.php?id=${
-                    result.file_id
-                  }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+                 <a href="submissions/view.php?id=${
+                   result.file_id
+                 }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
                   </div>`;
   return template;
 }
@@ -304,9 +304,9 @@ export function publishedThesisTemplate(result) {
             }</p>
         </div>
         <hr class="my-1">
-        <a href="../../layouts/admin-submission/view.php?id=${
-          result.file_id
-        }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       <a href="submissions/view.php?id=${
+         result.file_id
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
         </div>`;
   return template;
 }
@@ -328,9 +328,9 @@ export function publishedInfographicTemplate(result) {
                 }</p>
             </div>
             <hr class="my-1">
-            <a href="../../layouts/admin-submission/view.php?id=${
-              result.file_id
-            }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+           <a href="submissions/view.php?id=${
+             result.file_id
+           }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
             </div>`;
   return template;
 }
@@ -357,9 +357,9 @@ export function publishedJournalTemplate(result) {
                     </div>
                   
                   <hr class="my-1">
-                  <a href="../../layouts/admin-submission/view.php?id=${
-                    result.file_id
-                  }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+                 <a href="submissions/view.php?id=${
+                   result.file_id
+                 }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
                   </div>`;
   return template;
 }

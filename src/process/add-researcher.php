@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connection.php';
+include '../../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");
@@ -24,7 +24,7 @@ $file = $_FILES['researcherImage'];
 
     $allowed = array('png','jpg','jpeg','svg');
     $fileNameNew = uniqid('image', true) . "." . $fileActualExt;
-    $fileDestination = '../uploads/researcher_image/' . $fileNameNew;
+    $fileDestination = 'uploads/researcher_image/' . $fileNameNew;
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             $connection->begin_transaction();
@@ -43,7 +43,7 @@ $file = $_FILES['researcherImage'];
                     }
                     $statement->close();
                 }
-                move_uploaded_file($fileTempLoc, $fileDestination);
+                move_uploaded_file($fileTempLoc, "../".$fileDestination);
                 $connection->commit();
                 $arr = array('response' => "success");
                 header('Content-Type: application/json');

@@ -75,10 +75,10 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                     $filenameUnique = uniqid('', true);
 
                     $newFileCover =  $filenameUnique . "." . $fileCoverActualExt;
-                    $fileCoverDestination = '../uploads/journals/' . $newFileCover;
+                    $fileCoverDestination = 'uploads/journals/' . $newFileCover;
 
                     $newFile =  $filenameUnique . "." . $fileActualExt;
-                    $fileDestination = '../uploads/journals/' . $newFile;
+                    $fileDestination = 'uploads/journals/' . $newFile;
 
                     $connection->begin_transaction();
                     try{
@@ -103,8 +103,8 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                         $connection->commit();
                         
     
-                        move_uploaded_file($fileCoverTempLoc, $fileCoverDestination);
-                        move_uploaded_file($fileTempLoc, $fileDestination);
+                        move_uploaded_file($fileCoverTempLoc, "../".$fileCoverDestination);
+                        move_uploaded_file($fileTempLoc, "../".$fileDestination);
     
                         $arr = array('response'=>"success");
                         header('Content-Type: application/json');

@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connection.php';
+include '../../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../layouts/general/error.php");
@@ -36,7 +36,7 @@ if($file['error']===0){
         $result = $statement->get_result();
         $file_dir = $result->fetch_row();
         $statement->close();
-        move_uploaded_file($fileTempLoc,$file_dir[0]);
+        move_uploaded_file($fileTempLoc,"../".$file_dir[0]);
         // replace existing image with new image
     }
 }

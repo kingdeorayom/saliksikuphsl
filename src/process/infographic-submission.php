@@ -65,7 +65,7 @@ if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], 
                     exit();
                 }else {
                     $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                    $fileDestination = '../uploads/infographics/' . $fileNameNew;
+                    $fileDestination = 'uploads/infographics/' . $fileNameNew;
                     $connection->begin_transaction();
                         try{
                             $statement = $connection->prepare("INSERT INTO coauthors_information(coauthor1_first_name,coauthor1_middle_initial,coauthor1_surname,coauthor1_name_ext,coauthor1_email,coauthor2_first_name,coauthor2_middle_initial,coauthor2_surname,coauthor2_name_ext,coauthor2_email,coauthor3_first_name,coauthor3_middle_initial,coauthor3_surname,coauthor3_name_ext,coauthor3_email,coauthor4_first_name,coauthor4_middle_initial,coauthor4_surname,coauthor4_name_ext,coauthor4_email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -92,7 +92,7 @@ if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], 
         
                             $connection->commit();
 
-                            move_uploaded_file($fileTempLoc, $fileDestination);
+                            move_uploaded_file($fileTempLoc, "../".$fileDestination);
         
                             $arr = array('response'=>"success");
                             header('Content-Type: application/json');

@@ -4,16 +4,22 @@ if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../../layouts/general/error.php");
     die();
 }
-
+$date_time = date_create($fileInfo['infographic_publication_date']);
+$day = date_format($date_time,"d");
+$month = date_format($date_time,"m");
+$year = date_format($date_time,"Y");
 ?>
 <div class="row my-3 d-lg-none">
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'];?></p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']?></p>
+    <hr>
+    <p class="side-menu-text">Published on:</p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['published_on']; ?></p>
     <hr>
 </div>
 <div class="row">
@@ -22,11 +28,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <h5>Submission Details</h5>
         <hr>
         <p class="side-menu-text">Submitted by:</p>
-        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
+        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'];?></p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']?></p>
         <hr>
+        <p class="side-menu-text">Published on:</p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['published_on']; ?></p>
+    <hr>
     </div>
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
 
@@ -39,7 +48,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <hr>
         <form onsubmit="submitFormInfographic(event)" name="infographic-form" data-id="<?php echo $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
 
-            <div class="row my-3">
+            <div class="row my-2">
                 <div>
                     <label class="fw-bold my-2">Title/Topic<span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" name="textFieldInfographicsTitle" value="<?php echo $fileInfo['infographic_title'] ?>" required>
@@ -86,7 +95,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <?php
                         $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
                         foreach ($months as $key => $row) : ?>
-                            <option value="<?= $key + 1 ?>" <?= $fileInfo['infographic_publication_month'] == $key + 1 ? 'selected' : '' ?>><?= $row ?></option>
+                            <option value="<?= $key + 1 ?>" <?= $month == $key + 1 ? 'selected' : '' ?>><?= $row ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -94,7 +103,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <select class="form-select" aria-label="Default select example" name="dropdownPublicationDay" id="info-day-picker">
                         <!-- <option value="" selected>Day</option> -->
                         <?php for ($i = 1; $i != 32; $i++) {
-                            if ($fileInfo['infographic_publication_day'] == $i) {
+                            if ($day == $i) {
                                 echo "<option value ='$i' selected>$i</option>";
                             } else {
                                 echo "<option value ='$i'>$i</option>";
@@ -106,7 +115,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" id="info-year-picker" onchange="changeInputInfo()" required>
                         <!-- <option value="" selected>Year</option> -->
                         <?php for ($i = 2022; $i != 2000; $i--) {
-                            if ($fileInfo['infographic_publication_year'] == $i) {
+                            if ($year == $i) {
                                 echo "<option value ='$i' selected>$i</option>";
                             }
                             echo "<option value='$i'>$i</option>";
@@ -259,7 +268,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-4">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                    <label class="my-2" id="infographic-file-name">Infographic.pdf</label>
+                    <label class="my-2" id="infographic-file-name"><a href='<?php echo "../".$fileInfo['file_dir']; ?>'>Infographic.pdf</a></label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
@@ -267,31 +276,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
             <hr>
-            <div class="row my-3">
-                <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" id="needsRevisionInfographics" name="needsRevision" value="for revision" onclick="enableRevisionInfographics(this);">
-                    <label for="needsRevisionInfographics" class="text-danger">Needs Revision</label>
-                </div>
-            </div>
-
-            <div class="row" id="textAreaFeedbackInfographics" hidden>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                        <textarea class="form-control" name="textAreaFeedbackInfographics" rows="10" placeholder="Write your comment..."></textarea>
-                    </div>
-                </div>
-            </div>
 
             <div class="row" id="publishButtonInfographics">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitInfographicsButton">
-                </div>
-            </div>
-
-            <div class="row" id="returnButtonInfographics" style="display: none;">
-                <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnInfographicsButton">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitInfographicsButton">
                 </div>
             </div>
 
@@ -299,53 +287,37 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </div>
 
     <script>
-        var alertContainerInfographic = document.getElementById("alert-container-infographic")
-        var infographicsForm = document.forms.namedItem("infographic-form");
-
-        function submitFormInfographic(event) {
+        $("form[name='infographic-form']").on("submit", function(event){
             event.preventDefault();
-            const fileId = event.target.dataset.id
-            const authorGroupId = event.target.dataset.coauthor_id
+            var fileId = event.target.dataset.id
+            var authorGroupId = event.target.dataset.coauthor_id
 
+            var formData = new FormData(this);
+            formData.append("fileId", fileId);
+            formData.append("coauthor_id", authorGroupId);
+            $.ajax({
+                method: "POST",
+                url: "../../src/process/update-file.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+            }).done(function(data){
+                if (data.response === "type_error") {
+                    $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "generic_error") {
+                    $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "size_error") {
+                    $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "duplicate_error") {
+                    $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "success") {
+                    $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
 
-            var formdata = new FormData(infographicsForm);
-
-            formdata.append("fileId", fileId);
-            formdata.append("coauthor_id", authorGroupId);
-            postInfographic(formdata).then(data => checkResponseInfographic(JSON.parse(data)));
-            //     for (var pair of formdata.entries()) {
-            //     console.log(pair[0]+ ', ' + pair[1]); 
-            // }
-            window.scrollTo(0, 0);
-        }
-
-        function postInfographic(data) {
-            return new Promise((resolve, reject) => {
-                var http = new XMLHttpRequest();
-                http.open("POST", "../../process/update-file.php");
-                http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
-                http.onerror = (e) => reject(Error(`Networking error: ${e}`));
-                http.send(data);
-
-            });
-        }
-
-        function checkResponseInfographic(data) {
-            if (data.response === "type_error") {
-                alertContainerInfographic.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "generic_error") {
-                alertContainerInfographic.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "size_error") {
-                alertContainerInfographic.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "duplicate_error") {
-                alertContainerInfographic.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "success") {
-                alertContainerInfographic.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-
-        }
+                }
+            })
+        })
     </script>

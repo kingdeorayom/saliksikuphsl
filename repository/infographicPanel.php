@@ -5,7 +5,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
-
+$date_time = date_create($fileInfo['infographic_publication_date']);
+$date_time = date_format($date_time,"M d, Y");
 ?>
 
 <section class='submit-research' style="font-family: 'Roboto';">
@@ -40,7 +41,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         echo htmlspecialchars(", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.");
                     }
                     ?>
-                    <p><?php echo htmlspecialchars("{$fileInfo['infographic_publication_year']}, {$fileInfo['infographic_publication_month']} {$fileInfo['infographic_publication_day']}")?></p>
+                    <p><?php echo $date_time?></p>
                     <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
                         echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
                     }
@@ -55,7 +56,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <label class='fw-bold mb-3'>Attached Files</label>
                         <div class='col'>
                         <?php if($fileInfo['file1_shown']):?>
-                            <a href="../<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
+                            <a href="../src/<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
                         <?php endif?>
                         </div>
                     </div>

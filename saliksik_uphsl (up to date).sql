@@ -90,9 +90,9 @@ CREATE TABLE `file_information` (
 --
 
 INSERT INTO `file_information` (`user_id`, `file_id`, `file_type`, `file_name`, `file_dir`, `file_uploader`, `status`, `feedback`) VALUES
-(91, 146, 'thesis', 'pre_SW2 - Menguito.pdf', '../uploads/theses/62020b2fb14833.21251587.pdf', 'Marc Menguito', 'pending', ''),
-(91, 147, 'journal', 'Activity #1 - Menguito.pdf', '../uploads/journals/62020b9292bd99.31897748.pdf', 'Marc Menguito', 'pending', ''),
-(91, 148, 'infographic', 'Marc Lloyd Menguito_OJT Contract copy.docx-signed.pdf', '../uploads/infographics/6207007267ac74.42603155.pdf', 'Marc Menguito', 'pending', '');
+(91, 146, 'thesis', 'pre_SW2 - Menguito.pdf', 'uploads/theses/62020b2fb14833.21251587.pdf', 'Marc Menguito', 'pending', ''),
+(91, 147, 'journal', 'Activity #1 - Menguito.pdf', 'uploads/journals/62020b9292bd99.31897748.pdf', 'Marc Menguito', 'pending', ''),
+(91, 148, 'infographic', 'Marc Lloyd Menguito_OJT Contract copy.docx-signed.pdf', 'uploads/infographics/6207007267ac74.42603155.pdf', 'Marc Menguito', 'pending', '');
 
 >>>>>>> development
 -- --------------------------------------------------------

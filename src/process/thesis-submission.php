@@ -399,10 +399,10 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                     $filenameUnique = uniqid('', true);
 
                     $fileNameNew = $filenameUnique . "." . $fileActualExt;
-                    $fileDestination = '../uploads/theses/' . $fileNameNew;
+                    $fileDestination = 'uploads/theses/' . $fileNameNew;
 
                     $fileNameQuestionNew = $filenameUnique . "-questionnaire." . $fileQuestionnaireActualExt;
-                    $fileQuestionDestination = '../uploads/theses/questionnaires/' . $fileNameQuestionNew;
+                    $fileQuestionDestination = 'uploads/theses/questionnaires/' . $fileNameQuestionNew;
                     
                     $connection->begin_transaction();
                     try {
@@ -439,8 +439,8 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
                         $connection->commit();
 
-                        move_uploaded_file($fileTempLoc, $fileDestination);
-                        move_uploaded_file($fileQuestionnaireTempLoc, $fileQuestionDestination);
+                        move_uploaded_file($fileTempLoc, "../".$fileDestination);
+                        move_uploaded_file($fileQuestionnaireTempLoc, "../".$fileQuestionDestination);
 
                         $arr = array('response' => "success");
                         header('Content-Type: application/json');

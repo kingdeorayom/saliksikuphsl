@@ -12,7 +12,7 @@ export function pendingThesisTemplate(result) {
         </div>
         <div class="col">
             <div class="text-end">
-                <a href="../../layouts/user-submission/view-submission.php?id=${escapeHtml(
+                <a href="submissions/view.php?id=${escapeHtml(
                   result.file_id
                 )}" class="editReviseButton">
                     <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
@@ -43,7 +43,7 @@ export function pendingInfographicTemplate(result) {
                 </div>
                 <div class="col">
                     <div class="text-end">
-                        <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
+                        <a href="submissions/view.php" class="editReviseButton">
                             <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                         </a>
                     </div>
@@ -73,7 +73,7 @@ export function pendingJournalTemplate(result) {
                 </div>
                 <div class="col">
                     <div class="text-end">
-                        <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
+                        <a href="submissions/view.php" class="editReviseButton">
                             <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                         </a>
                     </div>
@@ -220,7 +220,7 @@ export function revisedThesisTemplate(result) {
                   </div>
                   <div class="col">
                     <div class="text-end">
-                        <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
+                        <a href="submissions/view.php" class="editReviseButton">
                             <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                         </a>
                     </div>
@@ -254,7 +254,7 @@ export function revisedInfographicTemplate(result) {
               </div>
               <div class="col">
                     <div class="text-end">
-                        <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
+                        <a href="submissions/view.php" class="editReviseButton">
                             <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                         </a>
                     </div>
@@ -292,7 +292,7 @@ export function revisedJournalTemplate(result) {
                   </div>
                   <div class="col">
                     <div class="text-end">
-                        <a href="../../layouts/user-submission/view-submission.php" class="editReviseButton">
+                        <a href="submissions/view.php" class="editReviseButton">
                             <p class="fw-bold"><i class="fas fa-edit"></i> Edit</p>
                         </a>
                     </div>

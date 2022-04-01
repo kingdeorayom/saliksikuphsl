@@ -15,6 +15,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p class="side-menu-text">Submitted on:</p>
     <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
     <hr>
+    <p class="side-menu-text">Submitted on:</p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['returned_on']; ?></p>
+    <hr>
+    
 </div>
 <div class="row">
     <div class="col-lg-2 d-none d-md-none d-lg-block">
@@ -27,6 +31,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <p class="side-menu-text">Submitted on:</p>
         <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
         <hr>
+        <p class="side-menu-text">Returned on:</p>
+        <p class="side-menu-text" name="date-returned"><?php echo $fileInfo['returned_on']; ?></p>
+        <hr>
     </div>
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
 
@@ -38,8 +45,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
-        <form onsubmit="submitForm(event)" name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+        <form name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
             <div class="row mt-4">
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
@@ -485,52 +491,42 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     </div>
                 </div>
             </div>
-            <div class="row my-4">
-                <label class="fw-bold mb-3">Attached Files</label>
-                <div class="col">
-                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if ($fileInfo['file1_shown']) {
-                                                                                                                            echo 'checked';
-                                                                                                                        } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
-                    </div>
-                    <label class="my-2"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']) ?></a></label>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if ($fileInfo['file2_shown']) {
-                                                                                                                                echo 'checked';
-                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckDefaultTwo">Show in Repository</label>
-                    </div>
-                </div>
+            <div class="row my-3">
+            <label class="fw-bold mb-1">Attached Files</label>
+            <div class="col">
+            <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']); ?></a></p>
+                <input class="form-control my-2" type="file" name="fileSubmit" accept=".pdf">
+                <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']); ?></a></p>
+                <input class="form-control my-2" type="file" name="fileQuestionnaire" accept=".pdf">
             </div>
+        </div>
             <hr>
-
-            <div class="row my-4">
-                <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" id="needsRevisionThesis" name="needsRevision" value="for revision" onclick="enableRevisionThesis(this);">
-                    <label for="needsRevisionThesis" class="text-danger">Needs Revision</label>
-                </div>
-            </div>
-
-            <div class="row" id="publishButtonThesis">
-                <div class="col">
-                    <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Publish</button>
-                </div>
-            </div>
-
-            <div class="row" id="textAreaFeedbackThesis" hidden>
+                <div class="row">
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                        <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" placeholder="Write your comment..."></textarea>
+                        <label class="form-label fw-bold">Feedback</label>
+                        <?php foreach ($feedback as $key => $row) : $reverse_key = $feedback_count -$key;?>
+                            <div class="feedback-container p-3 my-2 border border-1">
+                                
+                                <p class="fw-bold">Feedback # <?php echo $reverse_key ?></p>
+                                <p><?php echo $row['feedback'] ?></p>
+                                <p class="fw-bold">Returned on: <span class="fw-normal"><?php echo $row['returned_on'] ?></span></p>
+                            </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>
 
-            <div class="row" id="returnButtonThesis" style="display: none;">
+            <hr>
+            <div class="row my-4">
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" id="checkBoxAgreeThesis" onclick="enableDisableResubmitButtonThesis(this);">
+                    <label for="checkBoxAgreeThesis">I have followed and fulfilled all the recommendations stated in the feedback.</label>
+                </div>
+            </div>
+    <div class="row">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnThesisButton">
+                    <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Resubmit" id="resubmitButtonThesis" disabled>Resubmit</button>
                 </div>
             </div>
 
@@ -560,7 +556,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         function postThesis(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/update-file.php");
+                http.open("POST", "../../src/process/update-file.php");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data);
@@ -659,6 +655,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
                 } else if (this.value == 'Support Services') {
                     $("#labelCourseOrDepartment").text("Department");
+
                     $("#dropdownSupportServices").prop('hidden', false);
                     $("#dropdownSupportServices :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool").prop('hidden', true);

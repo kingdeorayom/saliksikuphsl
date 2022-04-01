@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'connection.php';
+include '../../includes/connection.php';
 
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
@@ -22,6 +22,65 @@ if (isset($_SESSION['userType'])) {
         $statement->close();
 
         if($file['file_type']==="thesis"){
+            $resourceTypeValues = array("Dissertation","Thesis", "Capstone");
+            if(isset($_POST['dropdownResourceType'])){
+                if(!in_array($_POST['dropdownResourceType'],$resourceTypeValues)){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+            }
+
+            $researchersCategoryValues = array("Undergraduate","Postgraduate", "Faculty", "Non-Teaching Staff","Department Head");
+            if(isset($_POST['dropdownResearchersCategory'])){
+                if(!in_array($_POST['dropdownResearchersCategory'],$researchersCategoryValues)){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+            }
+
+            $statement = $connection->prepare("SELECT name FROM department_list");
+            $statement->execute();
+            $result = $statement->get_result();
+            $department_list = $result->fetch_all(MYSQLI_ASSOC);
+            $statement->close();
+
+            $department_list_values = array();
+            foreach ($department_list as $key => $value) {  
+                array_push($department_list_values,$value['name']);
+            }
+            if(isset($_POST['dropdownResearchUnit'])){
+                if(!in_array($_POST['dropdownResearchUnit'],$department_list_values)){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+            }
+            if(isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'])){
+                if(!is_numeric($_POST['dropdownPublicationMonth'])){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+                if(!is_numeric($_POST['dropdownPublicationDay'])){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+                if(!is_numeric($_POST['dropdownPublicationYear'])){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+                $publication_date = date("Y-m-d", mktime(0,0,0,$_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear']));
+            }
             $connection -> begin_transaction();
             try{
                 if(isset($_POST['file1Shown'])){
@@ -55,8 +114,8 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
 
                     $comma_separated_fields = implode(', ',$_POST['researchFields']);
-                    $statement = $connection->prepare("UPDATE research_information SET resource_type= ?,researchers_category=?,research_unit=?,research_title=?,research_abstract=?,research_fields=?,keywords=?,publication_month=?,publication_day=?,publication_year = ?, coauthors_count=?,author_first_name = ?,author_middle_initial = ?, author_surname = ?, author_name_ext = ?, author_email = ? WHERE file_ref_id = ?");
-                    $statement->bind_param("sssssssiiiisssssi",$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE research_information SET resource_type= ?,researchers_category=?,research_unit=?,research_title=?,research_abstract=?,research_fields=?,keywords=?,publication_date = ?, coauthors_count=?,author_first_name = ?,author_middle_initial = ?, author_surname = ?, author_name_ext = ?, author_email = ? WHERE file_ref_id = ?");
+                    $statement->bind_param("ssssssssisssssi",$_POST['dropdownResourceType'],$_POST['dropdownResearchersCategory'],$_POST['dropdownResearchUnit'],$_POST['textFieldResearchTitle'],$_POST['textareaAbstract'],$comma_separated_fields,$_POST['textareaKeywords'],$publication_date,$_POST['dropdownCoAuthors'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['fileId']);
                     $statement->execute();
                     
                     $statement->close();
@@ -131,6 +190,27 @@ if (isset($_SESSION['userType'])) {
         }
 
         else if($file['file_type']==="infographic"){
+            if(isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'])){
+                if(!is_numeric($_POST['dropdownPublicationMonth'])){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+                if(!is_numeric($_POST['dropdownPublicationDay'])){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+                if(!is_numeric($_POST['dropdownPublicationYear'])){
+                    $arr = array('response' => "input_error");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+                    exit();
+                }
+                $publication_date = date("Y-m-d", mktime(0,0,0,$_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear']));
+            }
             $connection -> begin_transaction();
             try{
                 if(isset($_POST['file1Shown'])){
@@ -157,8 +237,8 @@ if (isset($_SESSION['userType'])) {
                     $statement->bind_param("issi",$fileOneShown,$fileStatus,$published_on,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
-               
-                    $statement = $connection->prepare("UPDATE `infographic_information` SET infographic_publication_month = ?,infographic_publication_day = ?,infographic_publication_year = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
+                                   $statement = $connection->prepare("UPDATE `infographic_information` SET 
+infographic_publication_month = ?,infographic_publication_day = ?,infographic_publication_year = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
                     $statement->bind_param("iiissssssssssssii",$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldInfographicsTitle'],$_POST['textareaDescription'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['textFieldGraphicsEditorFirstName'],$_POST['textFieldGraphicsEditorMiddleInitial'],$_POST['textFieldGraphicsEditorLastName'],$_POST['textFieldGraphicsEditorNameExtension'],$_POST['textFieldGraphicsEditorEmail'],$_POST['dropdownCoAuthors'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();

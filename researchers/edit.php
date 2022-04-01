@@ -99,7 +99,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/researchers-style.css');
                                             <label class="fw-bold">Select Profile Photo</label>
                                         </div>
                                         <div class="d-flex justify-content-start">
-                                            <div id="display_image" class="my-2" style="background-image: url('../<?php echo $researcher['researcher_image']?>'">
+                                            <div id="display_image" class="my-2" style="background-image: url('../src/<?php echo $researcher['researcher_image']?>'">
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-start">
@@ -226,16 +226,19 @@ $pagecssVersion = filemtime('../styles/custom/pages/researchers-style.css');
             event.preventDefault();
             var id = $(this).data("id");
             var formData = new FormData(this);
+            for(var pair of formData){
+                console.log(pair)
+            }
             $.ajax({
                     method: "POST",
-                    url: "../../process/edit-researcher.php?id="+id,
+                    url: "../src/process/edit-researcher.php?id="+id,
                     data: formData,
                     contentType: false,
                     processData: false,
                 })
                 .done(function(data) {
                     if(data.response=='success'){
-                        window.location.href = 'view-researcher.php?id='+id;
+                        window.location.href = 'view.php?id='+id;
                     }
                 })
         })
@@ -245,14 +248,14 @@ $pagecssVersion = filemtime('../styles/custom/pages/researchers-style.css');
             var formData = new FormData(this);
             $.ajax({
                     method: "POST",
-                    url: "../../process/edit-researcher-works.php?id="+id,
+                    url: "../src/process/edit-researcher-works.php?id="+id,
                     data: formData,
                     contentType: false,
                     processData: false,
                 })
                 .done(function(data) {
                     if(data.response=='success'){
-                        window.location.href = 'view-researcher.php?id='+id;
+                        window.location.href = 'view.php?id='+id;
                     }
                 })
         })

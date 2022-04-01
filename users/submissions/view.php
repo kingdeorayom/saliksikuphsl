@@ -37,6 +37,11 @@ if (isset($_GET['id'])) {
     $file = $result->fetch_assoc();
     $statement->close();
 
+    if($file['user_id']!=$_SESSION['userid']){
+        die();
+        // not the file uploader
+    }
+
     if ($file == null) {
         die(); //file doesnt exist
     } else {
@@ -57,10 +62,7 @@ if (isset($_GET['id'])) {
     die(); //GET['id'] is not defined;
 }
 
-if($fileInfo['user_id']!=$_SESSION['userid']){
-    die();
-    // not the file uploader
-}
+
 
 
 $maincssVersion = filemtime('../../styles/custom/main-style.css');
@@ -95,15 +97,23 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
     <section class="submit-research">
         <div class="container p-5">
             <div class="row">
-                <?php if($fileInfo['file_type']=='thesis'){
-                    include_once '../../includes/view-submission-forms/thesisDissertationPanel.php';
+                <?php 
+                if($fileInfo['status']=='pending'){
+                    if($fileInfo['file_type']=='thesis'){
+                        include_once '../../includes/view-submission-forms/thesisDissertationPanel.php';
+                    }
                 }
-                else if($fileInfo['file_type']=='infographic'){
-                    include_once '../../includes/view-submission-forms/infographicsPanel.php';
+                else if ($fileInfo['for revision']){
+                    if($fileInfo['file_type']=='thesis'){
+                        include_once '../../includes/view-revision-forms/thesisDissertationPanel.php';
+                    }
                 }
-                else if($fileInfo['file_type']=='journal'){
-                    include_once '../../includes/view-submission-forms/researchJournalPanel.php';
-                }
+                // else if($fileInfo['file_type']=='infographic'){
+                //     include_once '../../includes/view-submission-forms/infographicsPanel.php';
+                // }
+                // else if($fileInfo['file_type']=='journal'){
+                //     include_once '../../includes/view-submission-forms/researchJournalPanel.php';
+                // }
                 ?>
 
 
@@ -126,7 +136,7 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
             formData.append("coauthor_id",coauthor_id)
             $.ajax({
                 method: "POST",
-                url:"../../process/user-update-submission.php?id="+id,
+                url:"../../src/process/user-update-submission.php?id="+id,
                 contentType: false,
                 processData: false,
                 data: formData

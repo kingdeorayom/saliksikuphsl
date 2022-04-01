@@ -5,6 +5,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
+$date_time = date_create($fileInfo['publication_date']);
+$day = date_format($date_time,"d");
+$month = date_format($date_time,"m");
+$year = date_format($date_time,"Y");
+
 ?>
 <div class="row my-3 d-lg-none">
     <h5>Submission Details</h5>
@@ -256,15 +261,17 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <?php
                         $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
                         foreach ($months as $key => $row) : ?>
-                            <option value="<?= $key + 1 ?>" <?= $fileInfo['publication_month'] == $key + 1 ? 'selected' : '' ?>><?= $row ?></option>
+                            <option value="<?= $key + 1 ?>" <?= $month == $key + 1 ? 'selected' : '' ?>><?= $row ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
                 <div class="col-lg-2 col-sm-12 mb-3">
                     <select class="form-select" aria-label="Default select example" name="dropdownPublicationDay" id="day-picker">
                         <!-- <option value="" selected>Day</option> -->
-                        <?php for ($i = 1; $i != 32; $i++) {
-                            if ($fileInfo['publication_day'] == $i) {
+                        <?php
+                        
+                        for ($i = 1; $i != 32; $i++) {
+                            if ($day == $i) {
                                 echo "<option value ='$i' selected>$i</option>";
                             }
                             echo "<option value ='$i'>$i</option>";
@@ -275,7 +282,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <select class="form-select" aria-label="Default select example" name="dropdownPublicationYear" id="year-picker" onchange="changeInput()" required>
                         <!-- <option value="" selected>Year</option> -->
                         <?php for ($i = 2022; $i != 2000; $i--) {
-                            if ($fileInfo['publication_year'] == $i) {
+                            if ($year == $i) {
                                 echo "<option value ='$i' selected>$i</option>";
                             } else {
                                 echo "<option value ='$i'>$i</option>";
@@ -543,7 +550,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         function postThesis(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/update-file.php");
+                http.open("POST", "../../src/process/update-file.php");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data);

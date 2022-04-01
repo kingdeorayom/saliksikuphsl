@@ -4,7 +4,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../../layouts/general/error.php");
     die();
 }
-
+$date_time = date_create($fileInfo['infographic_publication_date']);
+$day = date_format($date_time,"d");
+$month = date_format($date_time,"m");
+$year = date_format($date_time,"Y");
 ?>
 
 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
@@ -360,7 +363,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     function postInfographic(data) {
         return new Promise((resolve, reject) => {
             var http = new XMLHttpRequest();
-            http.open("POST", "../../process/update-file.php");
+            http.open("POST", "../../src/process/update-file.php");
             http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
             http.onerror = (e) => reject(Error(`Networking error: ${e}`));
             http.send(data);

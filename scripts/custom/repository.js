@@ -193,7 +193,7 @@ function changePage(page) {
   $.ajax({
     method: "POST",
     data: formData,
-    url: "./repository-ajax.php",
+    url: "src/process/repository-ajax.php",
     contentType: false,
     processData: false,
   }).done(function (data) {
