@@ -10,13 +10,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['file_uploader'] ?></p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['submitted_on'] ?></p>
-    <hr>
-    <p class="side-menu-text">Returned on:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['returned_on'] ?></p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'];?></p>
     <hr>
 </div>
 <div class="row">
@@ -25,13 +22,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <h5>Submission Details</h5>
         <hr>
         <p class="side-menu-text">Submitted by:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['file_uploader'] ?></p>
+        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['submitted_on'] ?></p>
-        <hr>
-        <p class="side-menu-text">Returned on:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['returned_on'] ?></p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'];?></p>
         <hr>
     </div>
     <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
@@ -42,7 +36,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <!-- container for alert messages -->
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <form onsubmit="submitJournalForm(event)" name="journal-form" data-id=<?php echo $fileInfo['file_id'] ?>>
+        <form onsubmit="submitJournalForm(event)" name="journal-form" data-id="<?php echo $fileInfo['file_id'] ?>">
             <div class="row mt-4">
                 <div>
                     <label class="fw-bold">Title<span class="text-danger"> *</span></label>
@@ -59,7 +53,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row mt-2">
                 <div class="col-lg-6 col-sm-12">
                     <label class="py-2 fw-bold">College/Department<span class="text-danger"> *</span></label>
-
                     <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
                         <?php foreach ($department_list as $key => $row) : ?>
                             <option value="<?php echo $row['name'] ?>" <?= $fileInfo['department'] == $row['name'] ? 'selected' : '' ?>><?php echo $row['name'] ?></option>
@@ -131,32 +124,41 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col">
                     <label class="my-2" id="journal-file-name">Journal.pdf</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if($fileInfo['file1_shown']){ echo 'checked';} ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
                     <label class="my-2" id="journal-cover">Front Cover.png</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if($fileInfo['file2_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if($fileInfo['file2_shown']){ echo 'checked';} ?>> 
                         <label class="form-check-label" for="flexSwitchCheckDefaultTwo">Show in Repository</label>
                     </div>
                 </div>
             </div>
             <hr>
-            <div class="row">
+            <div class="row my-4">
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" id="needsRevisionJournal" name="needsRevision" value="for revision" onclick="enableRevisionJournal(this);">
+                    <label for="needsRevisionJournal" class="text-danger">Needs Revision</label>
+                </div>
+            </div>
+            <div class="row" id="publishButtonJournal">
+                <div class="col">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitJournalButton">
+                </div>
+            </div>
+            <div class="row" id="textAreaFeedbackJournal" hidden>
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                        <textarea class="form-control" name="textAreaFeedbackJournal" rows="10" required><?php echo $fileInfo['feedback'] ?></textarea>
+                        <textarea class="form-control" name="textAreaFeedbackJournal" rows="10" placeholder="Write your comment..."></textarea>
                     </div>
                 </div>
             </div>
-
-            <div class="row" id="publishButtonJournal">
+            <div class="row" id="returnButtonJournal" style="display: none;">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitJournalButton">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnJournalButton">
                 </div>
             </div>
-
 
         </form>
     </div>
@@ -170,7 +172,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
             var formdata = new FormData(journalForm);
             formdata.append("fileId", fileId);
-            formdata.append("needsRevision", "needsRevision")
             updateJournal(formdata).then(data => checkResponse(JSON.parse(data)));
             //     for (var pair of formdata.entries()) {
             //     console.log(pair[0]+ ', ' + pair[1]); 

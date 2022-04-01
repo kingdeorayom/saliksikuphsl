@@ -4,6 +4,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../../../layouts/general/error.php");
     die();
 }
+
+$statement = $connection->prepare("SELECT * FROM feedback_log WHERE ref_id= ? ORDER BY log_id DESC");
+$statement->bind_param("i", $_GET['id']);
+$statement->execute();
+$result = $statement->get_result();
+$feedback = $result->fetch_all(MYSQLI_ASSOC);
+$feedback_count = count($feedback);
+
 $date_time = date_create($fileInfo['publication_date']);
 $day = date_format($date_time,"d");
 $month = date_format($date_time,"m");
@@ -508,17 +516,46 @@ $year = date_format($date_time,"Y");
                 </div>
             </div>
             <hr>
-
-            <div class="col">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                    <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" required><?php echo $fileInfo['feedback'] ?></textarea>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Feedback</label>
+                        <?php foreach ($feedback as $key => $row) : $reverse_key = $feedback_count -$key;?>
+                            <div class="feedback-container p-3 my-2 border border-1">
+                                
+                                <p class="fw-bold">Feedback # <?php echo $reverse_key ?></p>
+                                <p><?php echo $row['feedback'] ?></p>
+                                <p class="fw-bold">Returned on: <span class="fw-normal"><?php echo $row['returned_on'] ?></span></p>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" id="needsRevisionThesis" name="needsRevision" value="for revision" onclick="enableRevisionThesis(this);">
+                    <label for="needsRevisionThesis" class="text-danger">Needs Revision</label>
                 </div>
             </div>
 
             <div class="row" id="publishButtonThesis">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Edit</button>
+                    <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Publish</button>
+                </div>
+            </div>
+
+            <div class="row" id="textAreaFeedbackThesis" hidden>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
+                        <textarea class="form-control" name="textAreaFeedbackThesis" rows="10" placeholder="Write your comment..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="returnButtonThesis" style="display: none;">
+                <div class="col">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnThesisButton">
                 </div>
             </div>
 
@@ -539,7 +576,6 @@ $year = date_format($date_time,"Y");
 
             formdata.append("fileId", fileId);
             formdata.append("coauthor_id", authorGroupId);
-            formdata.append("needsRevision", "needsRevision")
             postThesis(formdata).then(data => checkResponseThesis(JSON.parse(data)));
             //     for (var pair of formdata.entries()) {
             //     console.log(pair[0]+ ', ' + pair[1]); 

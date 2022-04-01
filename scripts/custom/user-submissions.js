@@ -1,13 +1,7 @@
 import {
   pendingThesisTemplate,
-  pendingInfographicTemplate,
-  pendingJournalTemplate,
   revisionThesisTemplate,
-  revisionInfographicTemplate,
-  revisionJournalTemplate,
   revisedThesisTemplate,
-  revisedInfographicTemplate,
-  revisedJournalTemplate,
   publishedThesisTemplate,
   publishedInfographicTemplate,
   publishedJournalTemplate,
@@ -28,26 +22,14 @@ function loadData(data) {
     if (result["status"] == "pending") {
       if (result["file_type"] == "thesis") {
         $("#pending-container").append(pendingThesisTemplate(result));
-      } else if (result["file_type"] == "journal") {
-        $("#pending-container").append(pendingJournalTemplate(result));
-      } else if (result["file_type"] == "infographic") {
-        $("#pending-container").append(pendingInfographicTemplate(result));
       }
     } else if (result["status"] == "for revision") {
       if (result["file_type"] == "thesis") {
         $("#revision-container").append(revisionThesisTemplate(result));
-      } else if (result["file_type"] == "journal") {
-        $("#revision-container").append(revisionJournalTemplate(result));
-      } else if (result["file_type"] == "infographic") {
-        $("#revision-container").append(revisionInfographicTemplate(result));
       }
     } else if (result["status"] == "revised") {
       if (result["file_type"] == "thesis") {
-        $("#results-container").append(revisedThesisTemplate(result));
-      } else if (result["file_type"] == "journal") {
-        $("#results-container").append(revisedJournalTemplate(result));
-      } else if (result["file_type"] == "infographic") {
-        $("#results-container").append(revisedInfographicTemplate(result));
+        $("#revised-container").append(revisedThesisTemplate(result));
       }
     } else if (result["status"] == "published") {
       if (result["file_type"] == "thesis") {

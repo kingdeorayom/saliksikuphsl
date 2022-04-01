@@ -58,7 +58,6 @@ if (isset($_GET['id'])) {
             $statement->execute();
             $result = $statement->get_result();
             $feedback = $result->fetch_all(MYSQLI_ASSOC);
-            // $feedback = array_reverse($feedback);
             $feedback_count = count($feedback);
 
             $statement->close();

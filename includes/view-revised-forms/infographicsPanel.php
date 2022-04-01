@@ -9,18 +9,14 @@ $day = date_format($date_time,"d");
 $month = date_format($date_time,"m");
 $year = date_format($date_time,"Y");
 ?>
-
 <div class="row my-3 d-lg-none">
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['file_uploader'] ?></p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['submitted_on'] ?></p>
-    <hr>
-    <p class="side-menu-text">Returned on:</p>
-    <p class="side-menu-text"><?php echo $fileInfo['returned_on'] ?></p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'];?></p>
     <hr>
 </div>
 <div class="row">
@@ -29,13 +25,10 @@ $year = date_format($date_time,"Y");
         <h5>Submission Details</h5>
         <hr>
         <p class="side-menu-text">Submitted by:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['file_uploader'] ?></p>
+        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['submitted_on'] ?></p>
-        <hr>
-        <p class="side-menu-text">Returned on:</p>
-        <p class="side-menu-text"><?php echo $fileInfo['returned_on'] ?></p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'];?></p>
         <hr>
     </div>
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="infographicsPanel">
@@ -74,11 +67,11 @@ $year = date_format($date_time,"Y");
                             <option value="<?php echo $row['name'] ?>" <?= $fileInfo['infographic_research_unit'] == $row['name'] ? 'selected' : '' ?>><?php echo $row['name'] ?></option>
                         <?php endforeach ?>
                     </select>
-                </div> -->
-                <!-- <div class="col-lg-3 d-sm-block d-lg-none">
+                </div>
+                <div class="col-lg-3 d-sm-block d-lg-none">
                     <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-                </div> -->
-                <!-- <div class="col-lg-3 col-sm-12 py-2">
+                </div>
+                <div class="col-lg-3 col-sm-12 py-2">
                     <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
                         <option value="Undergraduate" <?= $fileInfo['infographic_researcher_category'] == 'Undergraduate' ? 'selected' : '' ?>>Undergraduate</option>
                         <option value="Postgraduate" <?= $fileInfo['infographic_researcher_category'] == 'Postgraduate' ? 'selected' : '' ?>>Postgraduate</option>
@@ -277,19 +270,31 @@ $year = date_format($date_time,"Y");
                 </div>
             </div>
             <hr>
+            <div class="row my-3">
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" id="needsRevisionInfographics" name="needsRevision" value="for revision" onclick="enableRevisionInfographics(this);">
+                    <label for="needsRevisionInfographics" class="text-danger">Needs Revision</label>
+                </div>
+            </div>
 
-            <div class="row">
+            <div class="row" id="textAreaFeedbackInfographics" hidden>
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Feedback<span class="text-danger"> *</span></label>
-                        <textarea class="form-control" name="textAreaFeedbackInfographics" rows="10" required><?php echo $fileInfo['feedback'] ?></textarea>
+                        <textarea class="form-control" name="textAreaFeedbackInfographics" rows="10" placeholder="Write your comment..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="row" id="publishButtonInfographics">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitInfographicsButton">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Publish" id="submitInfographicsButton">
+                </div>
+            </div>
+
+            <div class="row" id="returnButtonInfographics" style="display: none;">
+                <div class="col">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Return" id="returnInfographicsButton">
                 </div>
             </div>
 
@@ -310,7 +315,6 @@ $year = date_format($date_time,"Y");
 
             formdata.append("fileId", fileId);
             formdata.append("coauthor_id", authorGroupId);
-            formdata.append("needsRevision", "needsRevision")
             postInfographic(formdata).then(data => checkResponseInfographic(JSON.parse(data)));
             //     for (var pair of formdata.entries()) {
             //     console.log(pair[0]+ ', ' + pair[1]); 
@@ -343,7 +347,6 @@ $year = date_format($date_time,"Y");
                 alertContainerInfographic.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
             }
             if (data.response === "success") {
-                form.reset();
                 alertContainerInfographic.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
             }
 

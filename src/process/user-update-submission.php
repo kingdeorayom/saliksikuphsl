@@ -129,6 +129,9 @@ else{
         }
 
         $fileStatus = 'pending';
+        if(isset($_POST['checkboxAgree'])){
+            $fileStatus = 'revised';
+        }
 
         $statement = $connection->prepare("UPDATE `file_information` SET  status= ? WHERE file_id = ?");
         $statement->bind_param("si",$fileStatus,$_GET['id']);

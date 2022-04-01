@@ -103,17 +103,11 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
                         include_once '../../includes/view-submission-forms/thesisDissertationPanel.php';
                     }
                 }
-                else if ($fileInfo['for revision']){
+                else if ($fileInfo['status']=='for revision'){
                     if($fileInfo['file_type']=='thesis'){
                         include_once '../../includes/view-revision-forms/thesisDissertationPanel.php';
                     }
                 }
-                // else if($fileInfo['file_type']=='infographic'){
-                //     include_once '../../includes/view-submission-forms/infographicsPanel.php';
-                // }
-                // else if($fileInfo['file_type']=='journal'){
-                //     include_once '../../includes/view-submission-forms/researchJournalPanel.php';
-                // }
                 ?>
 
 
@@ -144,7 +138,19 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
                 console.log(data)
             })
         })
+        $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
+                <span class='badge rounded-pill' style='background-color:#012265'>New</span>
+            </div>`)
+        function enableDisableResubmitButtonThesis(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("resubmitButtonThesis").disabled = false;
+            } else {
+                document.getElementById("resubmitButtonThesis").disabled = true;
+            }
+        }
+    
     </script>
+    
 </body>
 
 </html>
