@@ -21,7 +21,7 @@ try {
     $mail->Password = 'Serkingd28();';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
-    $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
+    $mail->setFrom('researchrepository@saliksik-uphsl.com', 'SALIKSIK: UPHSL Research Repository');
     $mail->isHTML(true);
 
     if (isset($_SESSION['toVerifyAccountCreation'])) {
