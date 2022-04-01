@@ -44,7 +44,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <option value="Undergraduate" selected>Undergraduate</option>
                     <option value="Postgraduate">Postgraduate</option>
                     <option value="Faculty">Faculty</option>
-                    <option value="Non-Teaching Staff">Non-teaching Staff</option>
+                    <option value="Non-Teaching Staff">Non-Teaching Staff</option>
                     <option value="Department Head">Department Head</option>
                 </select>
             </div>
@@ -590,7 +590,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         var unitDropdown = $("#dropdownResearchUnit");
 
         unitDropdown.on('change', function() {
-            if(categoryDropdown.val()!=="Faculty" && categoryDropdown.val()!="Non-Teaching Staff" && categoryDropdown.val()!="Department Head"){
+            if(categoryDropdown.val()!="Non-Teaching Staff" && categoryDropdown.val()!="Department Head" || $(this).val()=="Support Services"){
                 if (this.value == 'Arts and Sciences') {
 
                     $("#dropdownArtsSciences").prop('hidden', false);
@@ -673,89 +673,91 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
                 }
             }
+            else{
+                $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                    $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
+            }
             
         });
         categoryDropdown.on('change', function(){
-            if (this.value == 'Faculty' || this.value == 'Non-teaching Staff'||this.value == 'Department Head') {
-            $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
-            $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
-            }
-            else{
+            if($(this).val()!="Non-Teaching Staff" && $(this).val()!="Department Head" || unitDropdown.val()=="Support Services"){
                 if (unitDropdown.val() == 'Arts and Sciences') {
-
                     $("#dropdownArtsSciences").prop('hidden', false);
                     $("#dropdownArtsSciences :input").prop('disabled', false);
                     $("#dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Business and Accountancy') {
+                    } else if (unitDropdown.val() == 'Business and Accountancy') {
 
                     $("#dropdownBusinessAccountancy").prop('hidden', false);
                     $("#dropdownBusinessAccountancy :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Computer Studies') {
+                    } else if (unitDropdown.val() == 'Computer Studies') {
 
                     $("#dropdownComputerStudies").prop('hidden', false);
                     $("#dropdownComputerStudies :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Criminology') {
+                    } else if (unitDropdown.val() == 'Criminology') {
 
                     $("#dropdownCriminology").prop('hidden', false);
                     $("#dropdownCriminology :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Education') {
+                    } else if (unitDropdown.val() == 'Education') {
 
                     $("#dropdownEducation").prop('hidden', false);
                     $("#dropdownEducation :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Engineering, Architecture and Aviation') {
+                    } else if (unitDropdown.val() == 'Engineering, Architecture and Aviation') {
 
                     $("#dropdownEngineering").prop('hidden', false);
                     $("#dropdownEngineering :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Maritime Education') {
+                    } else if (unitDropdown.val() == 'Maritime Education') {
 
                     $("#dropdownMaritime").prop('hidden', false);
                     $("#dropdownMaritime :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'International Hospitality Management') {
+                    } else if (unitDropdown.val() == 'International Hospitality Management') {
 
                     $("#dropdownManagement").prop('hidden', false);
                     $("#dropdownManagement :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Graduate School') {
+                    } else if (unitDropdown.val() == 'Graduate School') {
 
                     $("#dropdownGraduateSchool").prop('hidden', false);
                     $("#dropdownGraduateSchool :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownSupportServices").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownSupportServices :input").prop('disabled', true);
 
-                } else if (unitDropdown.val() == 'Support Services') {
-
+                    } else if (unitDropdown.val() == 'Support Services') {
                     $("#labelCourseOrDepartment").text("Department");
                     $("#dropdownSupportServices").prop('hidden', false);
                     $("#dropdownSupportServices :input").prop('disabled', false);
                     $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool").prop('hidden', true);
                     $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input").prop('disabled', true);
 
-                }
+                    }
             }
+            else{
+                $("#dropdownArtsSciences, #dropdownBusinessAccountancy, #dropdownComputerStudies, #dropdownCriminology, #dropdownEducation, #dropdownEngineering, #dropdownMaritime, #dropdownManagement, #dropdownGraduateSchool, #dropdownSupportServices").prop('hidden', true);
+                $("#dropdownArtsSciences :input, #dropdownBusinessAccountancy :input, #dropdownComputerStudies :input, #dropdownCriminology :input, #dropdownEducation :input, #dropdownEngineering :input, #dropdownMaritime :input, #dropdownManagement :input, #dropdownGraduateSchool :input, #dropdownSupportServices :input").prop('disabled', true);
+            } 
+            
         })
-
         $("#dropdownResearchUnit").trigger("change");
     });
 </script>
