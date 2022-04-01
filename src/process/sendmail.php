@@ -15,7 +15,7 @@ $mail = new PHPMailer(true);
 try {
     $mail->SMTPDebug = 0;
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com;';
+    $mail->Host = 'smtp.hostinger.com;';
     $mail->SMTPAuth = true;
     $mail->Username = 'researchrepository@saliksik-uphsl.com';
     $mail->Password = 'Serkingd28();';
