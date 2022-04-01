@@ -17,8 +17,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com;';
     $mail->SMTPAuth = true;
-    $mail->Username = 'saliksikuphsl@gmail.com';
-    $mail->Password = 'kingdeorayom();';
+    $mail->Username = 'researchrepository@saliksik-uphsl.com';
+    $mail->Password = 'Serkingd28();';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     $mail->setFrom('saliksikuphsl@gmail.com', 'SALIKSIK: UPHSL Research Repository');
