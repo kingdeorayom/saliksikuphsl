@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connection.php';
+include '../../includes/connection.php';
 
 if (!isset($_POST['textFieldEmail'])) {
     header("location: ../../index.php");
