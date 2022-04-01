@@ -41,14 +41,14 @@
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/saliksikuphsl/admin/submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/saliksikuphsl/users/library.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/saliksikuphsl/admin/system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="/saliksikuphsl/src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="/src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                 </ul>';
                 } else {
                     echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/saliksikuphsl/users/profile.php"><i class="far fa-user me-2"></i>My Profile</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/saliksikuphsl/users/library.php"><i class="far fa-bookmark me-2"></i>My Library</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/saliksikuphsl/users/my-submissions.php"><i class="far fa-file-alt me-2"></i>My Submissions</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="/saliksikuphsl/src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="/src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                     </ul>';
                 }
                 ?>
