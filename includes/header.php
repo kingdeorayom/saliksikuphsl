@@ -90,7 +90,7 @@
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/library.php"><i class="far fa-file-alt me-2"></i>Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/admin/system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/admin/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
