@@ -505,9 +505,9 @@ $year = date_format($date_time,"Y");
             <div class="row my-3">
             <label class="fw-bold mb-1">Attached Files</label>
             <div class="col">
-            <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']); ?></a></p>
+            <p class="my-3"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']); ?></a></p>
                 <input class="form-control my-2" type="file" name="fileSubmit" accept=".pdf">
-                <p class="my-3"><a href="../<?php echo htmlspecialchars($fileInfo['file_dir2']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']); ?></a></p>
+                <p class="my-3"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir2']); ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']); ?></a></p>
                 <input class="form-control my-2" type="file" name="fileQuestionnaire" accept=".pdf">
             </div>
         </div>
