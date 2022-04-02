@@ -35,7 +35,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
                     <div class='row'>
                     <div class='col-sm-12 d-sm-block d-md-none text-center'>
-                    <img src='<?php echo $fileInfo['file_dir2']?>' width='150'>
+                    <img src='../src/<?php echo $fileInfo['file_dir2']?>' width='150'>
                         </div>
                         <div class='col'>
                         <h2><?php echo htmlspecialchars($fileInfo['journal_title'])?></h2>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <hr class='my-3'>
                         </div>
                         <div class='col-lg-2 d-none d-md-block text-center'>
-                        <img src='../<?php echo $fileInfo['file_dir2']?>' width='150'>
+                        <img src='../src/<?php echo $fileInfo['file_dir2']?>' width='150'>
                         </div>
                     </div>
 
