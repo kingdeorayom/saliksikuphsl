@@ -80,42 +80,36 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
     <section class="research-fields">
         <div class="container p-5">
             <div class="accordion accordion-flush">
-                <div class="accordion-item my-2">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#researches2022" aria-expanded="false">
-                            2022 Researches
-                        </button>
-                    </h2>
-                    <div id="researches2022" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
+            <?php
+                            $unit_array = array();
+                            foreach ($published as $key => $result) {
+                                if ($result['file_type'] == 'thesis') {
+                                    array_push($unit_array, $result['research_unit']);
+                                }
+                            }
+                            $unit_array = array_unique($unit_array);
+                            foreach ($unit_array as $key => $result) {
+                                echo "<div class='accordion-item my-2'>
+                        <h2 class='accordion-header'>
+                            <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
+                                {$result}
+                            </button>
+                        </h2>
+                        <div id='field-{$key}-researches' class='accordion-collapse collapse'>
+                            <div class='accordion-body'>";
+                                foreach ($published as $key => $item) {
+                                    if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
+                                        echo "
+                                    <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                        <p>{$item['research_title']}</p>
+                                    </a>";
+                                    }
+                                }
+                                echo "</div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item my-2">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#researches2021" aria-expanded="false">
-                            2021 Researches
-                        </button>
-                    </h2>
-                    <div id="researches2021" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
-                            <a href="#" class="field-research-title">
-                                <p>Research Title Here</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+                    </div>";
+                            }
+                            ?>
             </div>
 
         </div>
