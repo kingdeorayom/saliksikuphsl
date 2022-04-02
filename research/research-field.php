@@ -38,6 +38,12 @@ $statement->close();
 
 $maincssVersion = filemtime('../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
+function filter(&$value)
+{
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+array_walk_recursive($published, "filter");
+
 ?>
 
 <!DOCTYPE html>
