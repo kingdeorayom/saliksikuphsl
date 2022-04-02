@@ -22,10 +22,6 @@ $published = $result->fetch_all(MYSQLI_ASSOC);
 
 $statement->close();
 
-$arr = array('response' => "success");
-header('Content-Type: application/json');
-echo json_encode($published);
-
 $statement = $connection->prepare("SELECT * FROM ");
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
@@ -61,6 +57,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
     <section class="research-fields">
         <div class="container p-5">
+            <?php echo $published[0]['file_id'];?>
 
 
             <div class="accordion accordion-flush">
