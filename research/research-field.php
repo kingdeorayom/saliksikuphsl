@@ -56,9 +56,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
     <section class="research-fields">
         <div class="container p-5">
-            <?php echo $published[0]['file_id'];?>
-
-
             <div class="accordion accordion-flush">
 
                 <div class="accordion-item my-2">
