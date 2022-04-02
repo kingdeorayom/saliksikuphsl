@@ -590,7 +590,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         var unitDropdown = $("#dropdownResearchUnit");
 
         unitDropdown.on('change', function() {
-            if(categoryDropdown.val()!="Non-Teaching Staff" && categoryDropdown.val()!="Department Head" || $(this).val()=="Support Services"){
+            if(categoryDropdown.val()!="Faculty" && categoryDropdown.val()!="Non-Teaching Staff" && categoryDropdown.val()!="Department Head" || $(this).val()=="Support Services"){
                 if (this.value == 'Arts and Sciences') {
 
                     $("#dropdownArtsSciences").prop('hidden', false);
@@ -680,7 +680,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             
         });
         categoryDropdown.on('change', function(){
-            if($(this).val()!="Non-Teaching Staff" && $(this).val()!="Department Head" || unitDropdown.val()=="Support Services"){
+            if($(this).val()!="Faculty" &&$(this).val()!="Non-Teaching Staff" && $(this).val()!="Department Head" || unitDropdown.val()=="Support Services"){
                 if (unitDropdown.val() == 'Arts and Sciences') {
                     $("#dropdownArtsSciences").prop('hidden', false);
                     $("#dropdownArtsSciences :input").prop('disabled', false);
