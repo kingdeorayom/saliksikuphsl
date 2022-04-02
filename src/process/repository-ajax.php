@@ -239,7 +239,6 @@ foreach ($published as $key => $result) :
     if ($result['file_type'] === 'thesis') {
         $date_time = date_create($result['publication_date']);
         $date_time = date_format($date_time,"M d, Y");
-        // $result['publication_date'] = date("M-d-Y h:i:s A",$result['publication_date']);
         echo "<div class='repositoryItem p-2'>
         <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
         <a href='repository/view-article.php?id={$result['file_id']}' class='article-title'>
@@ -277,7 +276,7 @@ foreach ($published as $key => $result) :
                         <h4 class='fw-bold mb-3'>{$result['journal_title']}</h4>
                     </a>
                     <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
-                    <p class='fw-bold'>Volume 11 Series of 2019</p>
+                    <p class='fw-bold'>Volume {$result['volume_number']} Series of {$result['serial_issue_number']}}</p>
                     <p>{$result['journal_description']}</p>";
                     if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
                         echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
@@ -308,8 +307,7 @@ foreach ($published as $key => $result) :
                     <a href='repository/view-article.php?id={$result['file_id']}' class='article-title'>
                         <h4 class='fw-bold mb-3'>{$result['infographic_title']}</h4>
                     </a>
-                    <h5 class='mb-3'>{$date_time}</h5>
-                    <p class='fw-bold'>Volume 11 Series of 2019</p>
+                    <p class='fw-bold'>{$date_time}</p>
                     <p>{$result['infographic_description']}</p>";
                     if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
                         echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
