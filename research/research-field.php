@@ -83,7 +83,8 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
             <?php
                             $unit_array = array();
                             foreach ($published as $key => $result) {
-                                $yearOnly  = date("Y",$result['publication_date']);
+                                $date_time = date_create($result['publication_date']);
+                                $yearOnly  = date_format($date_time,"Y");
                                 if ($result['file_type'] == 'thesis') {
                                     array_push($unit_array, $yearOnly);
                                 }
@@ -99,7 +100,8 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
                             <div class='accordion-body'>";
                                 foreach ($published as $key => $item) {
-                                    $thisYear = date('Y',$item['publication_date']);
+                                    $date_time = date_create($item['publication_date']);
+                                    $thisYear  = date_format($date_time,"Y");
                                     if ($item['file_type'] == 'thesis' && $thisYear == $result) {
                                         echo "
                                     <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
