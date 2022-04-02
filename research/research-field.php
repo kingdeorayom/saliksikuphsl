@@ -81,39 +81,44 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
         <div class="container p-5">
             <div class="accordion accordion-flush">
             <?php
-                            $unit_array = array();
-                            foreach ($published as $key => $result) {
-                                $date_time = date_create($result['publication_date']);
-                                $yearOnly  = date_format($date_time,"Y");
-                                if ($result['file_type'] == 'thesis') {
-                                    array_push($unit_array, $yearOnly);
+            if(count($published)){
+                $unit_array = array();
+                        foreach ($published as $key => $result) {
+                            $date_time = date_create($result['publication_date']);
+                            $yearOnly  = date_format($date_time,"Y");
+                            if ($result['file_type'] == 'thesis') {
+                                array_push($unit_array, $yearOnly);
+                            }
+                        }
+                        $unit_array = array_unique($unit_array);
+                        foreach ($unit_array as $key => $result) {
+                            echo "<div class='accordion-item my-2'>
+                    <h2 class='accordion-header'>
+                        <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
+                            {$result}
+                        </button>
+                    </h2>
+                    <div id='field-{$key}-researches' class='accordion-collapse collapse'>
+                        <div class='accordion-body'>";
+                            foreach ($published as $key => $item) {
+                                $date_time = date_create($item['publication_date']);
+                                $thisYear  = date_format($date_time,"Y");
+                                if ($item['file_type'] == 'thesis' && $thisYear == $result) {
+                                    echo "
+                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <p>{$item['research_title']}</p>
+                                </a>";
                                 }
                             }
-                            $unit_array = array_unique($unit_array);
-                            foreach ($unit_array as $key => $result) {
-                                echo "<div class='accordion-item my-2'>
-                        <h2 class='accordion-header'>
-                            <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
-                                {$result}
-                            </button>
-                        </h2>
-                        <div id='field-{$key}-researches' class='accordion-collapse collapse'>
-                            <div class='accordion-body'>";
-                                foreach ($published as $key => $item) {
-                                    $date_time = date_create($item['publication_date']);
-                                    $thisYear  = date_format($date_time,"Y");
-                                    if ($item['file_type'] == 'thesis' && $thisYear == $result) {
-                                        echo "
-                                    <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                        <p>{$item['research_title']}</p>
-                                    </a>";
-                                    }
-                                }
-                                echo "</div>
-                        </div>
-                    </div>";
-                            }
-                            ?>
+                            echo "</div>
+                    </div>
+                </div>";
+                        }
+            }
+            else{
+                echo 'empty';//TODO
+            }
+            ?>
             </div>
 
         </div>

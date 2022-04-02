@@ -130,7 +130,7 @@ array_walk_recursive($published, "filter");
                                 foreach ($published as $key => $item) {
                                     if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
                                         echo "
-                                    <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                         <p>{$item['research_title']}</p>
                                     </a>";
                                     }
@@ -171,7 +171,7 @@ array_walk_recursive($published, "filter");
                                 foreach ($published as $key => $item) {
                                     if ($item['file_type'] == 'journal' && $item['department'] == $result) {
                                         echo "
-                                    <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                         <p>{$item['journal_title']}</p>
                                     </a>";
                                     }
@@ -266,7 +266,7 @@ array_walk_recursive($published, "filter");
                             foreach ($published as $key => $item) {
                                 if ($item['file_type'] == 'infographic') {
                                     echo "
-                                <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                     <p>{$item['infographic_title']}</p>
                                 </a>";
                                 }
