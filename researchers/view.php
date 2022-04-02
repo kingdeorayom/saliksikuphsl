@@ -152,7 +152,7 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
                                         </div>
                                         <div class='modal-footer'>
                                             <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
-                                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-profile' data-id='{$researcher['researcher_id']}><i class='fas fa-trash-alt'></i> Delete</button>
+                                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-profile' data-id='{$researcher['researcher_id']}'><i class='fas fa-trash-alt'></i> Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -176,11 +176,10 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
             var id = $(this).data("id");
             $.ajax({
                 method: "POST",
-                url:"../../process/delete-researcher-profile.php?id="+ id
+                url:"../src/process/delete-researcher-profile.php?id="+ id
             }).done(function(data){
-                console.log(data)
                 if(data.response=="success"){
-                    // do something here; close modal? go back to researchers page?
+                    //TODO do something here; close modal? go back to researchers page?
                 }
             })
         })
