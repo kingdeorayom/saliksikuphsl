@@ -81,16 +81,16 @@
             echo '<li class="nav-item"><h4> ' . $_SESSION["fullName"] . '</strong></h4> </li>';
             echo '
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/admin-profile.php"><i class="far fa-user me-2"></i>Account</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/admin/profile.php"><i class="far fa-user me-2"></i>Account</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/admin-submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/admin/submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/library.php"><i class="far fa-file-alt me-2"></i>Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
+                <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/admin/system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
