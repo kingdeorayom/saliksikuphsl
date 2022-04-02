@@ -130,7 +130,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
-                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                    <div class='col-3 avatar'><img src='../src/{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
                                                         <p class='h5 researcher-name'>{$researcher['name']}</p>
                                                     </div>
                                                 </div>
@@ -153,7 +153,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
-                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                    <div class='col-3 avatar'><img src='../src/{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
                                                         <p class='h5 researcher-name'>{$researcher['name']}</p>
                                                     </div>
                                                 </div>
@@ -176,7 +176,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
-                                                    <div class='col-3 avatar'><img src='../{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
+                                                    <div class='col-3 avatar'><img src='../src/{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
                                                         <p class='h5 researcher-name'>{$researcher['name']}</p>
                                                     </div>
                                                 </div>
