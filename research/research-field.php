@@ -9,19 +9,22 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
-if(!isset($_GET['query'])){
+if(!isset($_GET['q'])){
     die();
 }
 
 $query = "SELECT fi.*,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published' && research_fields LIKE %?%";
 $statement = $connection->prepare($query);
-$statement->bind_param("s",$_GET['query']);
+$statement->bind_param("s",$_GET['q']);
 $statement->execute();
 $result = $statement->get_result();
 $published = $result->fetch_all(MYSQLI_ASSOC);
 
-print_r($published);
 $statement->close();
+
+$arr = array('response' => "success");
+header('Content-Type: application/json');
+echo json_encode($arr);
 
 $statement = $connection->prepare("SELECT * FROM ");
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
