@@ -22,7 +22,6 @@ $published = $result->fetch_all(MYSQLI_ASSOC);
 
 $statement->close();
 
-$statement = $connection->prepare("SELECT * FROM ");
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 ?>
