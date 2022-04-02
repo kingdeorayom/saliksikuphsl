@@ -268,7 +268,7 @@ $year = date_format($date_time,"Y");
             <div class="row my-4">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                    <label class="my-2" id="infographic-file-name"><a href='<?php echo "../".$fileInfo['file_dir']; ?>'>Infographic.pdf</a></label>
+                <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
