@@ -27,7 +27,7 @@ if(!in_array($_GET['q'],$research_field_list_values)){
     die();
 };
 $field = "%".$_GET['q']."%";
-$query = "SELECT fi.*,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published' && research_fields LIKE ?";
+$query = "SELECT fi.*,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.file_type = 'thesis' && fi.status = 'published' && research_fields LIKE ?";
 $statement = $connection->prepare($query);
 $statement->bind_param("s",$field);
 $statement->execute();
@@ -83,8 +83,9 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
             <?php
                             $unit_array = array();
                             foreach ($published as $key => $result) {
+                                $yearOnly  = date("Y",$result['publication_date']);
                                 if ($result['file_type'] == 'thesis') {
-                                    array_push($unit_array, $result['research_unit']);
+                                    array_push($unit_array, $yearOnly);
                                 }
                             }
                             $unit_array = array_unique($unit_array);
@@ -98,7 +99,8 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
                             <div class='accordion-body'>";
                                 foreach ($published as $key => $item) {
-                                    if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
+                                    $thisYear = date('Y',$item['publication_date']);
+                                    if ($item['file_type'] == 'thesis' && $thisYear == $result) {
                                         echo "
                                     <a href='layouts/repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
                                         <p>{$item['research_title']}</p>
