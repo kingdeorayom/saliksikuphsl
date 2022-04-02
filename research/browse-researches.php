@@ -104,7 +104,6 @@ array_walk_recursive($published, "filter");
                             <?php
                             $unit_array = array();
                             foreach ($published as $key => $result) {
-
                                 if ($result['file_type'] == 'thesis') {
                                     array_push($unit_array, $result['research_unit']);
                                 }

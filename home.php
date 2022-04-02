@@ -158,19 +158,19 @@ $pagecssVersion = filemtime('styles/custom/pages/home-style.css');
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <!--Add justify-content-center to center items inside col-->
                     <img src="assets/images/research-fields/accountancy-marketing.png" class="research-fields-logos" alt="Accountancy and Marketing">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Accountancy and Marketing" class="research-field-image-link">
                         <p>Accountancy and Marketing</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/arts-humanities.png" class="research-fields-logos" alt="Arts and Humanities">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Arts and Humanities" class="research-field-image-link">
                         <p>Arts and Humanities</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/educational-management.png" class="research-fields-logos" alt="Educational Management">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Educational Management" class="research-field-image-link">
                         <p>Educational Management</p>
                     </a>
                 </div>
@@ -178,19 +178,19 @@ $pagecssVersion = filemtime('styles/custom/pages/home-style.css');
             <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/education-social-sciences.png" class="research-fields-logos" alt="Education and Social Sciences">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Education and Social Sciences" class="research-field-image-link">
                         <p>Education and Social Sciences</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/business-management.png" class="research-fields-logos" alt="Business Management">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Business Management" class="research-field-image-link">
                         <p>Business Management</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/health-sciences.png" class="research-fields-logos" alt="Health and Sciences">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Health and Sciences" class="research-field-image-link">
                         <p>Health and Sciences</p>
                     </a>
                 </div>
@@ -198,19 +198,19 @@ $pagecssVersion = filemtime('styles/custom/pages/home-style.css');
             <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/it-engineering.png" class="research-fields-logos" alt="IT and Engineering">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=IT and Engineering" class="research-field-image-link">
                         <p>IT and Engineering</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/law-justice-system.png" class="research-fields-logos" alt="Law and Justice System">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Law and Justice System" class="research-field-image-link">
                         <p>Law and Justice System</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
                     <img src="assets/images/research-fields/tourism-hospitality.png" class="research-fields-logos" alt="Tourism and Hospitality">
-                    <a href="#" class="research-field-image-link">
+                    <a href="research/research-field.php?q=Tourism and Hospitality" class="research-field-image-link">
                         <p>Tourism and Hospitality</p>
                     </a>
                 </div>
