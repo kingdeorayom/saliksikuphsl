@@ -19,6 +19,7 @@ if (mysqli_connect_errno()) {
 
 $maincssVersion = filemtime('../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
+$userSubmissionsJSVersion = filemtime('../scripts/custom/user-submissions.js');
 
 ?>
 
@@ -33,7 +34,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <?php include_once '../assets/fonts/google-fonts.php' ?>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../scripts/custom/user-submissions.js" type="module"></script>
+    <script src="<?php echo '../scripts/custom/user-submissions.js?id=' . $userSubmissionsJSVersion ?>" type="module"></script>
     <link rel="stylesheet" href="../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../styles/custom/pages/profile-style.css?id=' . $pagecssVersion ?>" type="text/css">
