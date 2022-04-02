@@ -24,7 +24,7 @@ $statement->close();
 
 $arr = array('response' => "success");
 header('Content-Type: application/json');
-echo json_encode($arr);
+echo json_encode($published);
 
 $statement = $connection->prepare("SELECT * FROM ");
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
