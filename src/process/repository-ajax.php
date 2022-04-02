@@ -269,7 +269,7 @@ foreach ($published as $key => $result) :
                 <p class='fw-bold' style='color: #012265;'>Journal </p>
             </div>
             <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-            <img src=../{$result['file_dir2']} width='150'>
+            <img src='src/{$result['file_dir2']}' width='150'>
             </div>
             <div class='col-sm-12 col-lg-10'>
                 <div class='col'>
@@ -288,7 +288,7 @@ foreach ($published as $key => $result) :
                 echo "</div>
             </div>
             <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                <img src=../{$result['file_dir2']} width='150'>
+                <img src='src/{$result['file_dir2']}' width='150'>
             </div>
         </div>
         <hr class='my-2'>
