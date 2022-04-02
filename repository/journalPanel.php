@@ -35,7 +35,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
                     <div class='row'>
                     <div class='col-sm-12 d-sm-block d-md-none text-center'>
-                    <img src='../src/<?php echo $fileInfo['file_dir2']?>' width='150'>
+                    <img src='../src/<?php echo $fileInfo['file_dir2']?>' width='150' class="mt-4 mb-5">
                         </div>
                         <div class='col'>
                         <h2><?php echo htmlspecialchars($fileInfo['journal_title'])?></h2>
@@ -65,10 +65,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <p class='fw-bold mb-3'>Attached Files</p>
                         <div class='col'>
                         <?php if($fileInfo['file1_shown']):?>
-                            <a href="../<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
+                            <a href="../<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file m-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
                             <?php endif?>
                             <?php if($fileInfo['file2_shown']):?>
-                            <a href="../<?php echo $fileInfo['file_dir2'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name2']); ?></button></a>
+                            <a href="../<?php echo $fileInfo['file_dir2'] ?>" target="_blank"><button class='btn button-file m-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name2']); ?></button></a>
                             <?php endif?>
                         </div>
                     </div>
