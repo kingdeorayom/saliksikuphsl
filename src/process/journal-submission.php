@@ -100,11 +100,13 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
                         $statement->execute();
                         $statement->close();
                         
-                        $connection->commit();
+                        
                         
     
                         move_uploaded_file($fileCoverTempLoc, "../".$fileCoverDestination);
                         move_uploaded_file($fileTempLoc, "../".$fileDestination);
+
+                        $connection->commit();
     
                         $arr = array('response'=>"success");
                         header('Content-Type: application/json');

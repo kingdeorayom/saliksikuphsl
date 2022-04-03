@@ -551,10 +551,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
             contentType: false,
             processData: false,
             error: function (xhr, textStatus, errorThrown){
-                console.log(textStatus);
-                console.log(xhr.responseText);
-                console.log(xhr.status);
-                alert(errorThrown);
                 $("#thesis-progress-container").prop('hidden', true);
                 $("#fileUploadLabelThesis").prop('hidden', true);
                 $('#thesis-progress-bar').attr('aria-valuenow', 0).css('width', 0 + '%').text(0 + '%');

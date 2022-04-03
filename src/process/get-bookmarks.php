@@ -53,7 +53,7 @@ if(count($bookmarks)!=0){
             $date_time = date_format($date_time,"M d, Y");
             echo "<div class='repositoryItem p-2'>
             <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} {$result['file_id']}</p>
-            <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
+            <a href='../repository/view-article.php?id={$result['file_id']}' class='article-title'>
                 <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
             </a>
             <p class='fw-bold'>{$result['researcher_surname']}, {$result['researcher_first_name'][0]}.";
@@ -84,7 +84,7 @@ if(count($bookmarks)!=0){
                 </div>
                 <div class='col-sm-12 col-lg-10'>
                     <div class='col'>
-                        <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
+                        <a href='../repository/view-article.php?id={$result['file_id']}' class='article-title'>
                             <h4 class='fw-bold mb-3'>{$result['journal_title']}</h4>
                         </a>
                         <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
@@ -116,7 +116,7 @@ if(count($bookmarks)!=0){
                 </div>
                 <div class='col-sm-12 col-lg-10'>
                     <div class='col'>
-                        <a href='../../layouts/repository/view-article.php?id={$result['file_id']}' class='article-title'>
+                        <a href='../repository/view-article.php?id={$result['file_id']}' class='article-title'>
                             <h4 class='fw-bold mb-3'>{$result['infographic_title']}</h4>
                         </a>
                         <h5 class='mb-3'>{$date_time}</h5>

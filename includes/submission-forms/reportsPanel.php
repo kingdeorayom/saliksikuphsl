@@ -22,7 +22,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <!-- container for alert messages -->
     <h1 class="my-2">Research Reports Submission Form</h1>
     <hr>
-    <form onsubmit="submitReportsForm(event)" name="reports-form">
+    <form name="reports-form">
         <div class="row my-4">
             <div class="col-lg-6 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldPublicationDate" required>
+                <input type="text" class="form-control" name="textFieldPublicationYear" required>
             </div>
         </div>
         <div class="row my-2">
@@ -114,8 +114,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
             data: formData,
             contentType: false,
             processData: false,
+            error: function (xhr, textStatus, errorThrown){
+                $("#reports-progress-container").prop('hidden', true);
+                $("#fileUploadLabelReports").prop('hidden', true);
+                $('#reports-progress-bar').attr('aria-valuenow', 0).css('width', 0 + '%').text(0 + '%');
+            }
         }).done(function(data) {
-
             $("#reports-progress-container").prop('hidden', true);
             $("#fileUploadLabelReports").prop('hidden', true);
             if (data.response === "type_error") {

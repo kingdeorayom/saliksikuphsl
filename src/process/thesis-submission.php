@@ -387,9 +387,13 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 5000000) {
-                $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
-                $result = mysqli_query($connection, $sql);
-                if (mysqli_num_rows($result) > 0) {
+                $statement = $connection->prepare("SELECT file_name FROM file_information WHERE file_name = ?");
+                $statement->bind_param("s",$fileName);
+                $statement->execute();
+                $result = $statement->get_result();
+                $statement->close();
+                $files_found = mysqli_num_rows($result);
+                if ($files_found > 0) {
                     $connection->close();
                     $arr = array('response' => "duplicate_error");
                     header('Content-Type: application/json');
