@@ -79,8 +79,10 @@ if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], 
                             $fileType = "infographic";
 
                             $submitted = date('Y-m-d H:i:s');
-                            $statement = $connection->prepare("INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_uploader, status, coauthor_group_id, submitted_on) VALUES(?,?,?,?,?,?,?,?)");
-                            $statement->bind_param('isssssis', $userId, $fileType, $fileName, $fileDestination, $userName, $fileStatus,$coauthorsInsertedId,$submitted);
+                            $published_on = date("Y-m-d H:i:s");
+
+                            $statement = $connection->prepare("INSERT INTO file_information(user_id,file_type, file_name, file_dir, file_uploader, status, coauthor_group_id, submitted_on,published_on) VALUES(?,?,?,?,?,?,?,?,?)");
+                            $statement->bind_param('isssssiss', $userId, $fileType, $fileName, $fileDestination, $userName, $fileStatus,$coauthorsInsertedId,$submitted,$published_on);
                             $statement->execute();
                             $insertedId = $statement->insert_id;
                             $statement->close();
