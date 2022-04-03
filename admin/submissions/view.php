@@ -36,7 +36,8 @@ if (isset($_GET['id'])) {
     $statement->close();
 
     $id = $_GET['id'];
-    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
+    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= ?");
+    $statement->bind_param("i",$id);
     $statement->execute();
     $result = $statement->get_result();
     $file = $result->fetch_assoc();
@@ -46,7 +47,8 @@ if (isset($_GET['id'])) {
         die(); //file doesnt exist
     } else {
         if ($file['file_type'] === "thesis") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information AS ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
             $statement->execute();
             $result = $statement->get_result();
 
@@ -54,14 +56,24 @@ if (isset($_GET['id'])) {
             $statement->close();
             $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
         } else if ($file['file_type'] === "journal") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id LEFT JOIN (SELECT ref_id, feedback, MAX(returned_on) as 'returned_on' FROM feedback_log GROUP BY ref_id) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN (SELECT ref_id, feedback, MAX(returned_on) AS 'returned_on' FROM feedback_log GROUP BY ref_id) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
             $statement->execute();
             $result = $statement->get_result();
 
             $fileInfo = $result->fetch_assoc();
             $statement->close();
         } else if ($file['file_type'] === "infographic") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
+            $statement->execute();
+            $result = $statement->get_result();
+
+            $fileInfo = $result->fetch_assoc();
+            $statement->close();
+        } else if ($file['file_type'] === "report") {
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
             $statement->execute();
             $result = $statement->get_result();
 
@@ -137,30 +149,20 @@ $coauthorsDropdown = filemtime('../../scripts/custom/coauthors-dropdown.js');
                     include_once '../../includes/admin/view-published-forms/researchJournalPanel.php';
                 } else if ($fileInfo['file_type'] == 'infographic') {
                     include_once '../../includes/admin/view-published-forms/infographicsPanel.php';
+                } else if ($fileInfo['file_type'] == 'report') {
+                    include_once '../../includes/admin/view-published-forms/reportsPanel.php';
                 }
             } else if ($fileInfo['status'] == 'revised') {
                 if ($fileInfo['file_type'] == 'thesis') {
                     include_once '../../includes/admin/view-revised-forms/thesisDissertationPanel.php';
-                } else if ($fileInfo['file_type'] == 'journal') {
-                    include_once '../../includes/admin/view-revised-forms/researchJournalPanel.php';
-                } else if ($fileInfo['file_type'] == 'infographic') {
-                    include_once '../../includes/admin/view-revised-forms/infographicsPanel.php';
                 }
             } else if ($fileInfo['status'] == 'for revision') {
                 if ($fileInfo['file_type'] == 'thesis') {
                     include_once '../../includes/admin/view-revision-forms/thesisDissertationPanel.php';
-                } else if ($fileInfo['file_type'] == 'journal') {
-                    include_once '../../includes/admin/view-revision-forms/researchJournalPanel.php';
-                } else if ($fileInfo['file_type'] == 'infographic') {
-                    include_once '../../includes/admin/view-revision-forms/infographicsPanel.php';
                 }
             } else if ($fileInfo['status'] == 'pending') {
                 if ($fileInfo['file_type'] == 'thesis') {
                     include_once '../../includes/admin/view-approval-forms/thesisDissertationPanel.php';
-                } else if ($fileInfo['file_type'] == 'journal') {
-                    include_once '../../includes/admin/view-approval-forms/researchJournalPanel.php';
-                } else if ($fileInfo['file_type'] == 'infographic') {
-                    include_once '../../includes/admin/view-approval-forms/infographicsPanel.php';
                 }
             }
             ?>

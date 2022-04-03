@@ -1,16 +1,11 @@
 import {
   pendingThesisTemplate,
-  pendingInfographicTemplate,
-  pendingJournalTemplate,
   revisionThesisTemplate,
-  revisionInfographicTemplate,
-  revisionJournalTemplate,
   revisedThesisTemplate,
-  revisedInfographicTemplate,
-  revisedJournalTemplate,
   publishedThesisTemplate,
   publishedInfographicTemplate,
   publishedJournalTemplate,
+  publishedReportTemplate,
 } from "./templates.js";
 $(document).ready(function () {
   submitData();
@@ -65,26 +60,14 @@ function loadData(data) {
     if (result["status"] == "pending") {
       if (result["file_type"] == "thesis") {
         $("#results-container").append(pendingThesisTemplate(result));
-      } else if (result["file_type"] == "journal") {
-        $("#results-container").append(pendingJournalTemplate(result));
-      } else if (result["file_type"] == "infographic") {
-        $("#results-container").append(pendingInfographicTemplate(result));
       }
     } else if (result["status"] == "for revision") {
       if (result["file_type"] == "thesis") {
         $("#results-container").append(revisionThesisTemplate(result));
-      } else if (result["file_type"] == "journal") {
-        $("#results-container").append(revisionJournalTemplate(result));
-      } else if (result["file_type"] == "infographic") {
-        $("#results-container").append(revisionInfographicTemplate(result));
       }
     } else if (result["status"] == "revised") {
       if (result["file_type"] == "thesis") {
         $("#results-container").append(revisedThesisTemplate(result));
-      } else if (result["file_type"] == "journal") {
-        $("#results-container").append(revisedJournalTemplate(result));
-      } else if (result["file_type"] == "infographic") {
-        $("#results-container").append(revisedInfographicTemplate(result));
       }
     } else if (result["status"] == "published") {
       if (result["file_type"] == "thesis") {
@@ -93,6 +76,8 @@ function loadData(data) {
         $("#results-container").append(publishedJournalTemplate(result));
       } else if (result["file_type"] == "infographic") {
         $("#results-container").append(publishedInfographicTemplate(result));
+      } else if (result["file_type"] == "report") {
+        $("#results-container").append(publishedReportTemplate(result));
       }
     }
   });
