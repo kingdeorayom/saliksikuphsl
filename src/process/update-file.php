@@ -13,7 +13,6 @@ if (isset($_SESSION['userType'])) {
         echo "you do not have access to this!";
     }
     else{
-
         $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= ?");
         $statement ->bind_param("i",$_POST['fileId']);
         $statement->execute();
@@ -21,6 +20,10 @@ if (isset($_SESSION['userType'])) {
         
         $file = $result->fetch_assoc();
         $statement->close();
+        // checks if it was already published to prevent email when just editing
+        if($file['status']!=='published'){
+            $newlyPublished = true;
+        }
 
         if($file['file_type']==="thesis"){
             $resourceTypeValues = array("Dissertation","Thesis", "Capstone");
@@ -128,13 +131,17 @@ if (isset($_SESSION['userType'])) {
                     
                     $connection->commit();
 
+                    if(isset($_POST["needsRevision"])){
+                        sendMailReturned();
+                    }
+                    else if($newlyPublished){
+                        sendMailPublished();
+                    }
+
                     $arr = array('response'=>"success");
                     header('Content-Type: application/json');
                     echo json_encode($arr);
-
-                    sendMailPublished();
-                    sendMailReturned();
-
+                   
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
