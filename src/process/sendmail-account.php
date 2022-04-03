@@ -1,4 +1,5 @@
 <?php
+// EMAIL SEND FOR ACCOUNT RELATED SUCH AS LOGIN, FORGOT PASSWORD
 
 if (!isset($_SESSION['email'])) {
     header('Location: ../../layouts/general/error.php');

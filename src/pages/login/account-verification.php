@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../../process/sendmail.php';
+include '../../process/sendmail-account.php';
 
 $maincssVersion = filemtime('../../../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
