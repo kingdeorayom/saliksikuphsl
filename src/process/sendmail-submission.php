@@ -390,4 +390,141 @@ function sendMailPublished() {
     }
 }
 
+function sendMailReturned() {
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.hostinger.com;';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'researchrepository@saliksik-uphsl.com';
+        $mail->Password = 'Serkingd28();';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+        $mail->setFrom('researchrepository@saliksik-uphsl.com', 'SALIKSIK: UPHSL Research Repository');
+        $mail->isHTML(true);
+        $subject = "[SALIKSIK: UPHSL Research Repository] Manuscript Returned";
+        $mail->Subject = $subject;
+
+        if (empty($_POST['textFieldEmailAuthor1'] || $_POST['textFieldEmailAuthor2'] || $_POST['textFieldEmailAuthor3'] ||  $_POST['textFieldEmailAuthor4'])) {
+            // email to author ONLY
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $mail->addAddress($recipient1);
+            $mail->Body = '
+            <body>
+                <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ',</p>
+                <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
+                <p>Please follow the feedback accordingly:</p>
+                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p>Once done, please resubmit your work.</p>
+                <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
+                <p>Thanks,</p>
+                <p>The SALIKSIK: UPHSL Research Repository Team</p>
+                <p><em>This is a system generated message. Do not reply.</em></p>
+            </body>';
+            $mail->send();
+        } else if (empty($_POST['textFieldEmailAuthor2'] || $_POST['textFieldEmailAuthor3'] ||  $_POST['textFieldEmailAuthor4'])) {
+
+            // email to author and co author 1 -- WORKING
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->Body = '
+            <body>
+                <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ',</p>
+                <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
+                <p>Please follow the feedback accordingly:</p>
+                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p>Once done, please resubmit your work.</p>
+                <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
+                <p>Thanks,</p>
+                <p>The SALIKSIK: UPHSL Research Repository Team</p>
+                <p><em>This is a system generated message. Do not reply.</em></p>
+            </body>';
+            $mail->send();
+        } else  if (empty($_POST['textFieldEmailAuthor3'] || $_POST['textFieldEmailAuthor4'])) {
+
+            // email to author and co author 1, 2 -- WORKING
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $recipient3 = $_POST['textFieldEmailAuthor2'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->addAddress($recipient3);
+            $mail->Body = '
+            <body>
+                <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ',</p>
+                <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
+                <p>Please follow the feedback accordingly:</p>
+                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p>Once done, please resubmit your work.</p>
+                <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
+                <p>Thanks,</p>
+                <p>The SALIKSIK: UPHSL Research Repository Team</p>
+                <p><em>This is a system generated message. Do not reply.</em></p>
+            </body>';
+            $mail->send();
+        } else  if (empty($_POST['textFieldEmailAuthor4'])) {
+
+            // email to author and co author 1, 2, 3 -- WORKING
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $recipient3 = $_POST['textFieldEmailAuthor2'];
+            $recipient4 = $_POST['textFieldEmailAuthor3'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->addAddress($recipient3);
+            $mail->addAddress($recipient4);
+            $mail->Body = '
+            <body>
+                <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ', ' . $_POST['textFieldFirstNameCoAuthor3'] . ' ' . $_POST['textFieldLastNameCoAuthor3'] . ',</p>
+                <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
+                <p>Please follow the feedback accordingly:</p>
+                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p>Once done, please resubmit your work.</p>
+                <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
+                <p>Thanks,</p>
+                <p>The SALIKSIK: UPHSL Research Repository Team</p>
+                <p><em>This is a system generated message. Do not reply.</em></p>
+            </body>';
+            $mail->send();
+        } else {
+
+            // email to author and co author 1, 2, 3, 4 -- WORKING
+
+            $recipient1 = $_POST['textFieldEmail'];
+            $recipient2 = $_POST['textFieldEmailAuthor1'];
+            $recipient3 = $_POST['textFieldEmailAuthor2'];
+            $recipient4 = $_POST['textFieldEmailAuthor3'];
+            $recipient5 = $_POST['textFieldEmailAuthor4'];
+            $mail->addAddress($recipient1);
+            $mail->addAddress($recipient2);
+            $mail->addAddress($recipient3);
+            $mail->addAddress($recipient4);
+            $mail->addAddress($recipient5);
+            $mail->Body = '
+            <body>
+                <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ', ' . $_POST['textFieldFirstNameCoAuthor3'] . ' ' . $_POST['textFieldLastNameCoAuthor3'] . ', ' . $_POST['textFieldFirstNameCoAuthor4'] . ' ' . $_POST['textFieldLastNameCoAuthor4'] . ',</p>
+                <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
+                <p>Please follow the feedback accordingly:</p>
+                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p>Once done, please resubmit your work.</p>
+                <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
+                <p>Thanks,</p>
+                <p>The SALIKSIK: UPHSL Research Repository Team</p>
+                <p><em>This is a system generated message. Do not reply.</em></p>
+            </body>';
+            $mail->send();
+        }
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
+
 ?>

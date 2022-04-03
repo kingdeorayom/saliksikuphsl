@@ -74,7 +74,6 @@
     </div>
     <div class="offcanvas-body">
 
-
         <?php
         if ($_SESSION['userType'] === "admin") {
             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">';
@@ -135,7 +134,7 @@
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/my-submissions.php"><i class="far fa-file-alt me-2"></i>My Submissions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../../process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
+                <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
             </li>
             <hr>
             <li class="nav-item">

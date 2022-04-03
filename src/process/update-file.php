@@ -133,6 +133,7 @@ if (isset($_SESSION['userType'])) {
                     echo json_encode($arr);
 
                     sendMailPublished();
+                    sendMailReturned();
 
             }
             catch(mysqli_sql_exception $exception){
