@@ -94,7 +94,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                     </div>
                     <div class="row">
                         <form name="login-form">
-                            <input type ="text" hidden value="<?php if(isset($_POST['location'])){echo htmlspecialchars($_GET['location']);} ?>" name="location">
+                            <input type ="text" hidden value="<?php if(isset($_GET['location'])){echo htmlspecialchars($_GET['location']);} ?>" name="location">
                             <label>Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
