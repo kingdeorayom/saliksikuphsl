@@ -5,7 +5,7 @@ session_start();
 include '../../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../../layouts/general/error.php");
+    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
