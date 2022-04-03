@@ -161,7 +161,7 @@ if (isset($_POST['from_year']) && $_POST['from_year'] != '' && isset($_POST['to_
 if (isset($_POST['resource_type'])) {
     $resource_type = " AND (";
     foreach ($_POST['resource_type'] as $key => $value) {
-        $resource_type .= "fi.file_type LIKE '$value' OR ri.resource_type LIKE '$value'";
+        $resource_type .= "ri.resource_type LIKE '$value'";
         if ($key < count($_POST['resource_type']) - 1) {
             $resource_type .= " OR ";
         }
