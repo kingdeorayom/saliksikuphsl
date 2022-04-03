@@ -181,11 +181,14 @@ if (isset($_SESSION['userType'])) {
                     $arr = array('response'=>"success");
                     header('Content-Type: application/json');
                     echo json_encode($arr);
+                    
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
 
-                echo $exception;
+                $arr = array('response'=>"error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
         }
 
