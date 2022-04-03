@@ -189,6 +189,13 @@ if (isset($_SESSION['userType'])) {
                     
                     $connection->commit();
 
+                    if(isset($_POST["needsRevision"])){
+                        sendMailReturned();
+                    }
+                    else if($newlyPublished){
+                        sendMailPublished();
+                    }
+
                     $arr = array('response'=>"success");
                     header('Content-Type: application/json');
                     echo json_encode($arr);
@@ -250,9 +257,8 @@ if (isset($_SESSION['userType'])) {
                     $statement->bind_param("issi",$fileOneShown,$fileStatus,$published_on,$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
-                                   $statement = $connection->prepare("UPDATE `infographic_information` SET 
-infographic_publication_month = ?,infographic_publication_day = ?,infographic_publication_year = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
-                    $statement->bind_param("iiissssssssssssii",$_POST['dropdownPublicationMonth'],$_POST['dropdownPublicationDay'],$_POST['dropdownPublicationYear'],$_POST['textFieldInfographicsTitle'],$_POST['textareaDescription'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['textFieldGraphicsEditorFirstName'],$_POST['textFieldGraphicsEditorMiddleInitial'],$_POST['textFieldGraphicsEditorLastName'],$_POST['textFieldGraphicsEditorNameExtension'],$_POST['textFieldGraphicsEditorEmail'],$_POST['dropdownCoAuthors'],$_POST['fileId']);
+                    $statement = $connection->prepare("UPDATE `infographic_information` SET infographic_publication_date = ?,infographic_title = ?, infographic_description = ?, author_first_name = ?, author_middle_initial = ?, author_surname =?,author_ext =?, author_email = ?,editor_first_name =?, editor_middle_initial =?, editor_surname=?,editor_ext=?, editor_email=?,coauthors_count=? WHERE file_ref_id = ?");
+                    $statement->bind_param("sssssssssssssii",$publication_date,$_POST['textFieldInfographicsTitle'],$_POST['textareaDescription'],$_POST['textFieldAuthorFirstName'],$_POST['textFieldAuthorMiddleInitial'],$_POST['textFieldAuthorLastName'],$_POST['textFieldAuthorNameExtension'],$_POST['textFieldEmail'],$_POST['textFieldGraphicsEditorFirstName'],$_POST['textFieldGraphicsEditorMiddleInitial'],$_POST['textFieldGraphicsEditorLastName'],$_POST['textFieldGraphicsEditorNameExtension'],$_POST['textFieldGraphicsEditorEmail'],$_POST['dropdownCoAuthors'],$_POST['fileId']);
                     $statement->execute();
                     $statement->close();
 
@@ -262,6 +268,13 @@ infographic_publication_month = ?,infographic_publication_day = ?,infographic_pu
                     $statement->close();
 
                     $connection->commit();
+
+                    if(isset($_POST["needsRevision"])){
+                        sendMailReturned();
+                    }
+                    else if($newlyPublished){
+                        sendMailPublished();
+                    }
 
                     $arr = array('response'=>"success");
                     header('Content-Type: application/json');
