@@ -193,7 +193,11 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         header('Content-Type: application/json');
                         echo json_encode($arr);
 
-                        sendMail();
+
+                        if ($_SESSION['userType'] === "user") {
+                            sendMailSubmit();
+                        }
+
                     } catch (mysqli_sql_exception $exception) {
                         $connection->rollback();
 

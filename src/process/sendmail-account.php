@@ -48,6 +48,7 @@ try {
                 </body>';
 
         $mail->send();
+        unset($_SESSION['toVerifyAccountCreation']); ////////////////
     } else if (isset($_SESSION['toVerifyPasswordReset'])) {
 
         $verificationCode = uniqid();
@@ -71,6 +72,7 @@ try {
             </body>';
 
         $mail->send();
+        unset($_SESSION['toVerifyPasswordReset']); ////////////////
     }
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
