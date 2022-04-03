@@ -44,7 +44,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
     <section class=" masthead p-5 bg-light">
         <div class="container">
             <h1 id="masthead-title-text">Statistics</h1>
-            <canvas id="myChart" width="400" height="50"></canvas>
+            <canvas id="myChart" width="200" height="50"></canvas>
         </div>
     </section>
 
@@ -63,6 +63,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                 url:"src/process/get-statistics.php",
                 async: false
             }).done(function(result){
+                console.log(result)
                 result.forEach(function(val,key){
                     labels.push(val.year)
                     data.push(val.count)
