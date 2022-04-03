@@ -13,6 +13,11 @@ if (!isset($_POST['textFieldEmail'], $_POST['textFieldPassword'])) {
     exit();
 }
 
+$redirect = NULL;
+if($_POST['location'] != '') {
+    $redirect = $_POST['location'];
+}
+
 if (empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
     $arr = array('response' => "empty_fields");
     header('Content-Type: application/json');
@@ -41,7 +46,12 @@ if (empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
                 $_SESSION['fullName'] = $firstName . ' ' . $lastName;
                 $_SESSION['userid'] = $userid;
 
-                $arr = array('response' => "login_success");
+                if($redirect){
+                    $arr = array('location' => $redirect);
+                }
+                else{
+                    $arr = array('response' => "login_success");
+                }
                 header('Content-Type: application/json');
                 echo json_encode($arr);
             } else {

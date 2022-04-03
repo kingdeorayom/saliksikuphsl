@@ -94,7 +94,10 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                         <h3>Sign in to your account</h3>
                     </div>
                     <div class="row">
-                        <form onsubmit="submitLogin(event)" name="login-form">
+                        <form name="login-form">
+                            <?php if(isset($_GET['location'])): ?>
+                            <input type ="text" hidden value="<?php echo $_GET['location']?>" name="location"> 
+                            <?php endif; ?>
                             <label>Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
@@ -128,40 +131,36 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
         });
     </script>
     <script>
-        var alertLogin = document.getElementById('alert-container-login')
+        var alertLogin = $("#alert-container-login");
 
-        function submitLogin(event) {
-            event.preventDefault();
-            var loginForm = document.forms.namedItem('login-form');
-            var loginData = new FormData(loginForm)
-            postLogin(loginData).then(data => checkLoginResponse(JSON.parse(data)));
-        }
-
-        function postLogin(data) {
-            return new Promise((resolve, reject) => {
-                var http = new XMLHttpRequest();
-                http.open("POST", "./src/process/login.php");
-                http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
-                http.onerror = (e) => reject(Error(`Networking error: ${e}`));
-                http.send(data)
+        $("form[name='login-form']").submit(function(e){
+            e.preventDefault();
+            var loginData = new FormData(this);
+            $.ajax({
+                method:"POST",
+                url:"./src/process/login.php",
+                data:loginData,
+                contentType: false,
+                processData: false,
+            }).done(function(data){
+                checkLoginResponse(data)
             })
-        }
-
+        })
         function checkLoginResponse(data) {
-            console.log(data)
             if (data.response === "login_success") {
                 window.location.reload();
-                console.log("success")
             }
-            if (data.response === "empty_fields") {
-                alertLogin.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+            else if (data.response === "empty_fields") {
+                alertLogin.html(`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
             }
-            if (data.response === "incorrect_credentials") {
-                alertLogin.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Incorrect email or password!</strong> Please try again.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+            else if (data.response === "incorrect_credentials") {
+                alertLogin.html( `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Incorrect email or password!</strong> Please try again.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
+            }
+            else if(data.location){
+                window.location.href = data.location;
             }
         }
     </script>
-
     <script src="scripts/bootstrap/bootstrap.js"></script>
 
 </body>

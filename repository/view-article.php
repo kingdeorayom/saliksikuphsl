@@ -7,9 +7,11 @@ include '../includes/connection.php';
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
+$base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
+$url = $base_url . $_SERVER["REQUEST_URI"];;
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../../layouts/general/error.php");
+    header("location: /saliksikuphsl/index.php?location=".$url);
     die();
 }
 
