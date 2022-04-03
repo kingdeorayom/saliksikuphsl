@@ -132,6 +132,8 @@ if (isset($_SESSION['userType'])) {
                     header('Content-Type: application/json');
                     echo json_encode($arr);
 
+                    sendMailPublished();
+
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
@@ -182,8 +184,6 @@ if (isset($_SESSION['userType'])) {
                     $arr = array('response'=>"success");
                     header('Content-Type: application/json');
                     echo json_encode($arr);
-
-                    sendMailPublished();
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
