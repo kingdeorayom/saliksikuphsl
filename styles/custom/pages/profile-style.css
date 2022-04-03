@@ -104,3 +104,12 @@
 .add-bookmark {
   cursor: pointer;
 }
+
+.publishedWorkTitle {
+  text-decoration: none;
+  color: #012265;
+}
+
+.publishedWorkTitle:hover {
+  text-decoration: underline;
+}

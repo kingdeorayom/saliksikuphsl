@@ -285,7 +285,7 @@ function sendMailPublished() {
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been approved and published in the SALIKSIK: UPHSL Research Repository.</p>
                 <p>You may now check and visit your work by clicking <a href="https://www.saliksik-uphsl.com/repository/view-article.php?id=' . $_POST['fileId']
-                . '">here</a></p>
+                . '">here</a>.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
                 <p>The SALIKSIK: UPHSL Research Repository Team</p>
@@ -304,7 +304,8 @@ function sendMailPublished() {
             <body>
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been approved and published in the SALIKSIK: UPHSL Research Repository.</p>
-                <p>You may now check and visit your work at: <insert link here></p>
+                <p>You may now check and visit your work by clicking <a href="https://www.saliksik-uphsl.com/repository/view-article.php?id=' . $_POST['fileId']
+                . '">here</a>.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
                 <p>The SALIKSIK: UPHSL Research Repository Team</p>
@@ -325,7 +326,8 @@ function sendMailPublished() {
             <body>
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been approved and published in the SALIKSIK: UPHSL Research Repository.</p>
-                <p>You may now check and visit your work at: <insert link here></p>
+                <p>You may now check and visit your work by clicking <a href="https://www.saliksik-uphsl.com/repository/view-article.php?id=' . $_POST['fileId']
+                . '">here</a>.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
                 <p>The SALIKSIK: UPHSL Research Repository Team</p>
@@ -348,7 +350,8 @@ function sendMailPublished() {
             <body>
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ', ' . $_POST['textFieldFirstNameCoAuthor3'] . ' ' . $_POST['textFieldLastNameCoAuthor3'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been approved and published in the SALIKSIK: UPHSL Research Repository.</p>
-                <p>You may now check and visit your work at: <insert link here></p>
+                <p>You may now check and visit your work by clicking <a href="https://www.saliksik-uphsl.com/repository/view-article.php?id=' . $_POST['fileId']
+                . '">here</a>.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
                 <p>The SALIKSIK: UPHSL Research Repository Team</p>
@@ -373,7 +376,8 @@ function sendMailPublished() {
             <body>
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ', ' . $_POST['textFieldFirstNameCoAuthor3'] . ' ' . $_POST['textFieldLastNameCoAuthor3'] . ', ' . $_POST['textFieldFirstNameCoAuthor4'] . ' ' . $_POST['textFieldLastNameCoAuthor4'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been approved and published in the SALIKSIK: UPHSL Research Repository.</p>
-                <p>You may now check and visit your work at: <insert link here></p>
+                <p>You may now check and visit your work by clicking <a href="https://www.saliksik-uphsl.com/repository/view-article.php?id=' . $_POST['fileId']
+                . '">here</a>.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
                 <p>The SALIKSIK: UPHSL Research Repository Team</p>

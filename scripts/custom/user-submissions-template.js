@@ -122,7 +122,7 @@ export function publishedThesisTemplate(result) {
           <a href="../repository/view-article.php?id=${escapeHtml(
             result.file_id
           )}">
-            <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
+            <h4 class="mb-3 publishedWorkTitle">${escapeHtml(result.research_title)}</h4>
           </a>
         </div>
         <div class="row">
@@ -149,7 +149,7 @@ export function publishedInfographicTemplate(result) {
                 <div class="col"><a href="../repository/view-article.php?id=${escapeHtml(
                   result.file_id
                 )}">
-                    <h4 class="mb-3 fw-bold">${escapeHtml(
+                    <h4 class="mb-3 fw-bold publishedWorkTitle">${escapeHtml(
                       result.infographic_title
                     )}</h4>
                     </a>
@@ -183,7 +183,7 @@ export function publishedJournalTemplate(result) {
                   <a href="../repository/view-article.php?id=${escapeHtml(
                     result.file_id
                   )}">
-                      <h4 class="">${escapeHtml(result.journal_title)}</h4>
+                      <h4 class="publishedWorkTitle">${escapeHtml(result.journal_title)}</h4>
                       </a>
                         <h5 class="mb-3">${escapeHtml(
                           result.journal_subtitle
