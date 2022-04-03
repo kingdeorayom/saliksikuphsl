@@ -2,8 +2,6 @@
 
 session_start();
 
-print_r($_SESSION);
-
 if (isset($_SESSION['isLoggedIn'])) {
     header("Location: /home.php");
     die();
