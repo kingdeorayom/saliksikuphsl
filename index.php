@@ -2,6 +2,7 @@
 
 session_start();
 
+print_r($_SESSION);
 
 if (isset($_SESSION['isLoggedIn'])) {
     header("Location: /home.php");
@@ -95,9 +96,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                     </div>
                     <div class="row">
                         <form name="login-form">
-                            <?php if(isset($_GET['location'])): ?>
-                            <input type ="text" hidden value="<?php echo $_GET['location']?>" name="location"> 
-                            <?php endif; ?>
+                            <input type ="text" hidden value="<?php if(isset($_POST['location'])){echo $_GET['location'];} ?>" name="location">
                             <label>Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>

@@ -2,6 +2,8 @@
 
 session_start();
 
+print_r($_SESSION);
+
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: /index.php");
     die();
