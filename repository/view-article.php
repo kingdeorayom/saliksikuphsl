@@ -11,7 +11,7 @@ $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'h
 $url = $base_url . $_SERVER["REQUEST_URI"];;
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: /saliksikuphsl/index.php?location=".$url);
+    header("location: ../index.php?location=".$url);
     die();
 }
 
