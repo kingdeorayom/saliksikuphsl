@@ -5,7 +5,7 @@ session_start();
 include '../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: error.php");
+    header("location: /index.php");
     die();
 }
 

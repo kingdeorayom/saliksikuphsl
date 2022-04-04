@@ -114,18 +114,17 @@ array_walk_recursive($published, "filter");
                             $unit_array = array();
                             $no_course_array = array();
                             foreach ($published as $key => $result) {
-                                if ($result['file_type'] == 'thesis' && !empty($result['research_course'])) {
+                                if ($result['file_type'] == 'thesis' && (!empty($result['research_course'] || $result['researchers_category']=='Faculty' || $result['researchers_category']=='Department Head'))) {
                                     array_push($unit_array, $result['research_unit']);
                                 }
-                                else if ($result['file_type'] == 'thesis' && empty($result['research_course'])) {
-                                    array_push($no_course_array, $result['research_unit']);
-                                }
+                                // else if ($result['file_type'] == 'thesis' && empty($result['research_course'])) {
+                                //     array_push($no_course_array, $result['research_unit']);
+                                // }
                             }
                             $unit_array_count = array_count_values($unit_array);
                             $unit_array = array_unique($unit_array);
 
-                            $no_course_array_count = array_count_values($no_course_array);
-                            $no_course_array = array_unique($no_course_array);
+                            
                             foreach ($unit_array as $key => $result) {
                                 echo "<div class='accordion-item my-2'>
                                         <h2 class='accordion-header'>
@@ -138,9 +137,15 @@ array_walk_recursive($published, "filter");
                             $course_array = array();
                                 foreach ($published as $key => $item) {
                                     if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
-                                        array_push($course_array, $item['research_course']);
+                                        if(!empty($item['research_course'])){
+                                            array_push($course_array, $item['research_course']);
+                                        }
+                                        else if($item['researchers_category']=='Faculty' || $item['researchers_category']=='Department Head'){
+                                            array_push($course_array, "Faculty and Department Head Works");
+                                        }
                                     }
                                 }
+                                
                                 $course_array_count = array_count_values($course_array);
                                 $course_array= array_unique($course_array);
                                 foreach($course_array as $key => $course){
@@ -152,6 +157,10 @@ array_walk_recursive($published, "filter");
                                         </div>
                                     </div>";
                             }
+
+                            // $no_course_array_count = array_count_values($no_course_array);
+                            // $no_course_array = array_unique($no_course_array);
+                            
                             foreach($no_course_array as $row => $result){
                                 echo "<div class='accordion-item my-2'><h2 class='accordion-header'>
                                 <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field{$row}-researches' aria-expanded='false'>
