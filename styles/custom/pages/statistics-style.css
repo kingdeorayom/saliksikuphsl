@@ -1,0 +1,8 @@
+body {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .repository-metrics-logos {
+  max-width: 64px;
+  max-height: 64px;
+}
