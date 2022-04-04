@@ -417,7 +417,7 @@ function sendMailReturned() {
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
                 <p>Please follow the feedback accordingly:</p>
-                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p><em>'. $_POST['textAreaFeedbackThesis'] .'</em></p>
                 <p>Once done, please resubmit your work.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
@@ -438,7 +438,7 @@ function sendMailReturned() {
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
                 <p>Please follow the feedback accordingly:</p>
-                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p><em>'. $_POST['textAreaFeedbackThesis'] .'</em></p>
                 <p>Once done, please resubmit your work.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
@@ -461,7 +461,7 @@ function sendMailReturned() {
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
                 <p>Please follow the feedback accordingly:</p>
-                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p><em>'. $_POST['textAreaFeedbackThesis'] .'</em></p>
                 <p>Once done, please resubmit your work.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
@@ -486,7 +486,7 @@ function sendMailReturned() {
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ', ' . $_POST['textFieldFirstNameCoAuthor3'] . ' ' . $_POST['textFieldLastNameCoAuthor3'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
                 <p>Please follow the feedback accordingly:</p>
-                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p><em>'. $_POST['textAreaFeedbackThesis'] .'</em></p>
                 <p>Once done, please resubmit your work.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
@@ -513,7 +513,7 @@ function sendMailReturned() {
                 <p>Dear ' . $_POST['textFieldAuthorFirstName'] . ' ' . $_POST['textFieldAuthorLastName'] . ', ' . $_POST['textFieldFirstNameCoAuthor1'] . ' ' . $_POST['textFieldLastNameCoAuthor1'] . ', ' . $_POST['textFieldFirstNameCoAuthor2'] . ' ' . $_POST['textFieldLastNameCoAuthor2'] . ', ' . $_POST['textFieldFirstNameCoAuthor3'] . ' ' . $_POST['textFieldLastNameCoAuthor3'] . ', ' . $_POST['textFieldFirstNameCoAuthor4'] . ' ' . $_POST['textFieldLastNameCoAuthor4'] . ',</p>
                 <p>Your <strong>' . $_POST['dropdownResourceType']. '</strong> submission entitled <strong>' . $_POST['textFieldResearchTitle'] . '</strong> has been reviewed by the Research and Development Center.</p>
                 <p>Please follow the feedback accordingly:</p>
-                <p>'. $_POST['textAreaFeedbackThesis'] .'</p>
+                <p><em>'. $_POST['textAreaFeedbackThesis'] .'</em></p>
                 <p>Once done, please resubmit your work.</p>
                 <p>For any queries or questions, please email us at research@uphsl.edu.ph.</p>
                 <p>Thanks,</p>
@@ -526,5 +526,3 @@ function sendMailReturned() {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-
-?>
