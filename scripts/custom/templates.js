@@ -4,7 +4,7 @@ export function pendingThesisTemplate(result) {
             <div class="col">
                 <div class="text-start">
                     <p class="fw-bold" style="color: #012265;">${escapeHtml(
-                      result.resource_type
+                      result.research_type
                     )} | ${escapeHtml(
     result.researchers_category
   )} | ${escapeHtml(result.research_unit)}</p>
@@ -32,7 +32,7 @@ export function revisionThesisTemplate(result) {
             <div class="col">
                 <div class="text-start">
                     <p class="fw-bold" style="color: #012265;">${escapeHtml(
-                      result.resource_type
+                      result.research_type
                     )} | ${escapeHtml(
     result.researchers_category
   )} | ${escapeHtml(result.research_unit)}</p>
@@ -68,7 +68,7 @@ export function revisedThesisTemplate(result) {
                   <div class="col">
                       <div class="text-start">
                       <p class="fw-bold" style="color: #012265;">${escapeHtml(
-                        result.resource_type
+                        result.research_type
                       )} | ${escapeHtml(
     result.researchers_category
   )} | ${escapeHtml(result.research_unit)}</p>
@@ -100,7 +100,7 @@ export function publishedThesisTemplate(result) {
             <div class="col">
                 <div class="text-start">
                 <p class="fw-bold" style="color: #012265;">${escapeHtml(
-                  result.resource_type
+                  result.research_type
                 )} | ${escapeHtml(result.researchers_category)} | ${escapeHtml(
     result.research_unit
   )}</p>

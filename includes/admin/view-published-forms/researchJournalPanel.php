@@ -16,7 +16,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
     <hr>
     <p class="side-menu-text">Published on:</p>
-    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['published_on']; ?></p>
+    <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
     <hr>
 </div>
 <div class="row">
@@ -31,7 +31,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
         <hr>
         <p class="side-menu-text">Published on:</p>
-    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['published_on']; ?></p>
+    <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
     <hr>
     </div>
     <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <!-- container for alert messages -->
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <form onsubmit="submitJournalForm(event)" name="journal-form" data-id=<?php echo $fileInfo['file_id'] ?>>
+        <form name="journal-form" data-id=<?php echo $fileInfo['file_id'] ?>>
             <div class="row mt-4">
                 <div>
                     <label class="fw-bold">Title<span class="text-danger"> *</span></label>
@@ -153,48 +153,27 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </form>
     </div>
     <script>
-        var alertContainerJournal = document.getElementById("alert-container-journal")
-        var journalForm = document.forms.namedItem("journal-form");
-
-        function submitJournalForm(event) {
+        $("form[name='journal-form']").on("submit", function(event){
             event.preventDefault();
-            const fileId = event.target.dataset.id
+            var fileId = event.target.dataset.id
 
-            var formdata = new FormData(journalForm);
-            formdata.append("fileId", fileId);
-            updateJournal(formdata).then(data => checkResponse(JSON.parse(data)));
-            //     for (var pair of formdata.entries()) {
-            //     console.log(pair[0]+ ', ' + pair[1]); 
-            // }
-            window.scrollTo(0, 0);
-        }
+            var formData = new FormData(this);
+            formData.append("fileId", fileId);
 
-        function updateJournal(data) {
-            return new Promise((resolve, reject) => {
-                var http = new XMLHttpRequest();
-                http.open("POST", "../../src/process/update-file.php");
-                http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
-                http.onerror = (e) => reject(Error(`Networking error: ${e}`));
-                http.send(data);
-
-            });
-        }
-
-        function checkResponse(data) {
-            if (data.response === "type_error") {
-                alertContainerJournal.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is in <strong>PDF</strong> format, or that the file to be uploaded is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "generic_error") {
-                alertContainerJournal.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "size_error") {
-                alertContainerJournal.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> The file size is too large. The maximum allowed size is 10 MB.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "duplicate_error") {
-                alertContainerJournal.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-            if (data.response === "success") {
-                alertContainerJournal.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File updated successfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
-            }
-        }
+            $.ajax({
+                method: "POST",
+                url: "../../src/process/update-file.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+            }).done(function(data){
+                window.scrollTo(0, 0);
+                if (data.response === "error") {
+                    $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "success") {
+                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Changes saved successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+            })
+        })
     </script>

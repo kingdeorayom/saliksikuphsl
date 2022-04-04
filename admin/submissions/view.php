@@ -109,6 +109,9 @@ $coauthorsDropdown = filemtime('../../scripts/custom/coauthors-dropdown.js');
         } else if ($fileInfo['file_type'] == 'infographic') {
             echo $fileInfo['infographic_title'];
         }
+        else if ($fileInfo['file_type'] == 'report') {
+            echo $fileInfo['report_title'];
+        }
         ?></title>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

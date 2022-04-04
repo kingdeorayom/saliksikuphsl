@@ -21,6 +21,7 @@ if (isset($_SESSION['userType'])) {
         $file = $result->fetch_assoc();
         $statement->close();
         // checks if it was already published to prevent email when just editing
+        $newlyPublished = NULL;
         if($file['status']!=='published'){
             $newlyPublished = true;
         }
@@ -146,7 +147,9 @@ if (isset($_SESSION['userType'])) {
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
 
-                echo $exception;
+                $arr = array('response'=>"error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
             
         }
@@ -283,7 +286,67 @@ if (isset($_SESSION['userType'])) {
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
 
-                echo $exception;
+                $arr = array('response'=>"error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
+            }
+        }
+        else if($file['file_type']==="report"){
+            $connection -> begin_transaction();
+            try{
+                if(isset($_POST['file1Shown'])){
+                    $fileOneShown = 1;
+                }
+                else if(!isset($_POST['file1Shown'])){
+                    $fileOneShown = 0;
+                }
+                if(isset($_POST['file2Shown'])){
+                    $fileTwoShown = 1;
+                }
+                else if(!isset($_POST['file2Shown'])){
+                    $fileTwoShown = 0;
+                }
+                $fileStatus = 'published';
+                if(isset($_POST["needsRevision"])){
+                    $fileStatus = 'for revision';
+
+                    $returned = date('Y-m-d H:i:s');
+                    $statement = $connection->prepare("INSERT INTO feedback_log (ref_id, feedback, returned_on) VALUES (?,?,?)");
+                    $statement->bind_param("iss",$_POST['fileId'],$_POST['textAreaFeedbackJournal'],$returned);
+                    $statement->execute();
+                    $statement->close();
+                }
+                if($fileStatus == 'published'){
+                    $published_on = date('Y-m-d H:i:s');
+                }
+                    $statement = $connection->prepare("UPDATE `file_information` SET file1_shown = ?, file2_shown = ?, status= ?, published_on = ? WHERE file_id = ?");
+                    $statement->bind_param("iissi",$fileOneShown,$fileTwoShown,$fileStatus,$published_on,$_POST['fileId']);
+                    $statement->execute();
+                    $statement->close();
+                
+                    $statement = $connection->prepare("UPDATE reports_information SET report_type = ?, report_title = ?, report_year = ?, report_description = ? WHERE file_ref_id = ?");
+                    $statement->bind_param("ssisi",$_POST["dropdownResourceTypeReports"],$_POST["textFieldReportsTitle"],$_POST["textFieldPublicationYear"],$_POST["textAreaDescription"],$_POST['fileId']);
+                    $statement->execute();
+                    
+                    $connection->commit();
+
+                    if(isset($_POST["needsRevision"])){
+                        sendMailReturned();
+                    }
+                    else if($newlyPublished){
+                        sendMailPublished();
+                    }
+
+                    $arr = array('response'=>"success");
+                    header('Content-Type: application/json');
+                    echo json_encode($arr);
+            }
+            catch(mysqli_sql_exception $exception){
+                $connection->rollback();
+
+                $arr = array('response'=>"error");
+                header('Content-Type: application/json');
+                echo json_encode($arr);
             }
         }
 

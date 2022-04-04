@@ -55,7 +55,7 @@ $year = date_format($date_time,"Y");
 
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <form onsubmit="submitForm(event)" name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+        <form  name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
             <div class="row mt-4">
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
