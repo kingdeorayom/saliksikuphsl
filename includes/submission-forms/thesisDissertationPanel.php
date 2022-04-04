@@ -511,7 +511,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             echo '<div class="row my-4">
             <div class="form-check m-2">
                 <input class="form-check-input" type="checkbox" id="checkBoxAgreeThesis">
-                <label for="checkBoxAgreeThesis">I have read, understood, and agreed to the <a href="../../pages/navigation/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
+                <label for="checkBoxAgreeThesis">I have read, understood, and agreed to the <a href="/about.php" target="_blank">Copyright and Policies</a> of the SALIKSIK: UPHSL Research Respository.</label>
             </div>
         </div>';
         } ?>

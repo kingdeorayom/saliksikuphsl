@@ -2,6 +2,23 @@
 
 session_start();
 
+include './includes/connection.php';
+$statement = $connection->prepare("SELECT fi.status AS status, COUNT(fi.file_id) AS count FROM file_information AS fi WHERE fi.status = 'published'");
+$statement->execute();
+$result = $statement->get_result();
+$total_published = $result->fetch_assoc();
+$statement->close();
+
+$statement = $connection->prepare("SELECT ri.resource_type, COUNT(ri.file_ref_id) AS count FROM research_information AS ri GROUP BY ri.resource_type");
+$statement->execute();
+$result = $statement->get_result();
+$thesis_count = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+print_r($thesis_count);
+
+
+
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
@@ -72,38 +89,19 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                         <div class="col-sm-12 col-lg">
                             <div class="box bg-light text-center border border-2 py-3 my-2">
                                 <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-3 img-fluid">
-                                <h2>10,123</h2>
+                                <h2><?php echo number_format($total_published['count'])?></h2>
                                 <p>Research Outputs</p>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-lg">
-                            <div class="box bg-light text-center border border-2 py-3 my-2">
-                                <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-3">
-                                <h2>16,025</h2>
-                                <p>Authors</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg">
-                            <div class="box bg-light text-center border border-2 py-3 my-2">
-                                <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-3">
-                                <h2>6,010</h2>
-                                <p>Theses</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg">
+                        <?php foreach($thesis_count as $key => $row): ?>
+                            <div class="col-sm-12 col-lg">
                             <div class="box bg-light text-center border border-2 py-3 my-2">
                                 <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-3">
-                                <h2>4,015</h2>
-                                <p>Dissertations</p>
+                                <h2><?php echo number_format($row['count'])?></h2>
+                                <p><?php echo $row['resource_type'];?></p>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-lg">
-                            <div class="box bg-light text-center border border-2 py-3 my-2">
-                                <img src="../../../assets/images/repository-metrics/total-downloads.png" class="repository-metrics-logos my-3">
-                                <h2>25,525</h2>
-                                <p>Total Downloads</p>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
 
                     </div>
 

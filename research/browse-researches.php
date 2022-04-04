@@ -112,24 +112,18 @@ array_walk_recursive($published, "filter");
                         <div class="accordion accordion-flush">
                             <?php
                             $unit_array = array();
-                            $no_course_array = array();
                             foreach ($published as $key => $result) {
                                 if ($result['file_type'] == 'thesis' && (!empty($result['research_course'] || $result['researchers_category']=='Faculty' || $result['researchers_category']=='Department Head'))) {
                                     array_push($unit_array, $result['research_unit']);
+                                    // echo $result['file_id']. " ". $result['research_unit']. " ". $result['research_course']. " ". $result['researchers_category']. "/ ";
                                 }
-                                // else if ($result['file_type'] == 'thesis' && empty($result['research_course'])) {
-                                //     array_push($no_course_array, $result['research_unit']);
-                                // }
                             }
-                            $unit_array_count = array_count_values($unit_array);
                             $unit_array = array_unique($unit_array);
-
-                            
                             foreach ($unit_array as $key => $result) {
                                 echo "<div class='accordion-item my-2'>
                                         <h2 class='accordion-header'>
                                         <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
-                                            {$result} ({$unit_array_count[$result]})
+                                            {$result}
                                         </button>
                                         </h2>
                                             <div id='field-{$key}-researches' class='accordion-collapse collapse'>
@@ -140,12 +134,14 @@ array_walk_recursive($published, "filter");
                                         if(!empty($item['research_course'])){
                                             array_push($course_array, $item['research_course']);
                                         }
-                                        else if($item['researchers_category']=='Faculty' || $item['researchers_category']=='Department Head'){
-                                            array_push($course_array, "Faculty and Department Head Works");
+                                        else if($item['researchers_category']=='Faculty'){
+                                            array_push($course_array, "Faculty");
+                                        }
+                                        else if($item['researchers_category']=='Department Head'){
+                                            array_push($course_array, "Department Head");
                                         }
                                     }
                                 }
-                                
                                 $course_array_count = array_count_values($course_array);
                                 $course_array= array_unique($course_array);
                                 foreach($course_array as $key => $course){
@@ -157,31 +153,6 @@ array_walk_recursive($published, "filter");
                                         </div>
                                     </div>";
                             }
-
-                            // $no_course_array_count = array_count_values($no_course_array);
-                            // $no_course_array = array_unique($no_course_array);
-                            
-                            foreach($no_course_array as $row => $result){
-                                echo "<div class='accordion-item my-2'><h2 class='accordion-header'>
-                                <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field{$row}-researches' aria-expanded='false'>
-                                    {$result} ({$no_course_array_count[$result]})
-                                </button>
-                            </h2>
-                            <div id='field{$row}-researches' class='accordion-collapse collapse'>
-                                <div class='accordion-body'>";
-                                    foreach ($published as $key => $item) {
-                                        if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
-                                            echo "
-                                        <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                            <p>{$item['research_title']}</p>
-                                        </a>";
-                                        }
-                                    }
-                                    echo "</div>
-                            </div>
-                        </div>";
-                                };
-                            
                             ?>
                         </div>
 

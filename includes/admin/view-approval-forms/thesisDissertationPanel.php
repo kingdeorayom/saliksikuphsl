@@ -34,7 +34,7 @@ $year = date_format($date_time,"Y");
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
 
         <!-- container for alert messages -->
-        <div id='alert-container'>
+        <div id='alert-container-thesis'>
 
         </div>
         <!-- container for alert messages -->
