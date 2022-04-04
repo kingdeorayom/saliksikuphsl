@@ -92,10 +92,8 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <input class="form-control my-2" type="password" name="textFieldNewPassword">
                             </div>
                             <hr class="mt-4 mb-3">
-                            <label for="" class="mt-3 mb-2"><span class="fw-bold">Please note:</span> If you change your password, you will have to log in again using the new password.</label>
                             <div class="text-end">
-                                <button type="button" class="btn btn-secondary button-edit-acctpref rounded-0" id='edit-button'>Edit</button>
-                                <button type="submit" class="btn btn-secondary button-update-acctpref rounded-0" id='update-button' disabled>Update</button>
+                                <button type="submit" class="btn btn-secondary button-update-acctpref rounded-0" id='update-button'>Update</button>
                             </div>
                         </div>
                     </form>
@@ -182,11 +180,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <?php include_once '../includes/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../scripts/bootstrap/bootstrap.js"></script>
-    <script type="text/javascript">
-        $("#edit-button").on("click", function(){
-            $("#update-button").prop("disabled",!$("#update-button").prop("disabled"))
-        })
-    </script>
 </body>
 
 </html>

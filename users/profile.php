@@ -144,7 +144,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <div>
                                     <label class="fw-bold mb-2">New Password</label>
                                     <input type="password" class="form-control" name="textFieldNewPassword" required>
-                                    <p class="text-secondary my-3"><span class="fw-bold text-danger">IMPORTANT:</span> If you change your password, you will have to log in again using the new password.</p>
                                 </div>
                             </div>
                             <hr class="my-2">

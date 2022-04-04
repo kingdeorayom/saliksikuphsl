@@ -24,7 +24,7 @@ $statement->close();
         if($statement->execute()){
             $statement->close();
             $_SESSION['changedPassword']= true;
-            header("Location: /users/profile.php");
+            header("Location: /admin/profile.php");
             exit();
         }
     $statement->close();

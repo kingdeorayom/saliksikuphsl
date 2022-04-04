@@ -138,28 +138,28 @@
             </li>
             <hr>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="home.php">HOME</a>
+                <a class="nav-link offcanvas-link-color" href="/home.php">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="repository.php">REPOSITORY</a>
+                <a class="nav-link offcanvas-link-color" href="/repository.php">REPOSITORY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="statistics.php">STATISTICS</a>
+                <a class="nav-link offcanvas-link-color" href="/statistics.php">STATISTICS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="submit.php">SUBMIT</a>
+                <a class="nav-link offcanvas-link-color" href="/submit.php">SUBMIT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="researchers.php">RESEARCHERS</a>
+                <a class="nav-link offcanvas-link-color" href="/researchers.php">RESEARCHERS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="contact.php">CONTACT</a>
+                <a class="nav-link offcanvas-link-color" href="/contact.php">CONTACT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="about.php">ABOUT</a>
+                <a class="nav-link offcanvas-link-color" href="/about.php">ABOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link-color" href="faqs.php">FAQs</a>
+                <a class="nav-link offcanvas-link-color" href="/faqs.php">FAQs</a>
             </li>
 
         </ul>';
