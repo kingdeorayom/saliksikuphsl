@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-$query = "SELECT fi.*,`research_id`,ri.resource_type AS research_type,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*,rp.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
+$query = "SELECT fi.*,`research_id`,ri.resource_type AS research_type,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`research_course`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*,rp.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
 $statement = $connection->prepare($query);
 $statement->execute();
 $result = $statement->get_result();
@@ -112,34 +112,67 @@ array_walk_recursive($published, "filter");
                         <div class="accordion accordion-flush">
                             <?php
                             $unit_array = array();
+                            $no_course_array = array();
                             foreach ($published as $key => $result) {
-                                if ($result['file_type'] == 'thesis') {
+                                if ($result['file_type'] == 'thesis' && !empty($result['research_course'])) {
                                     array_push($unit_array, $result['research_unit']);
+                                }
+                                else if ($result['file_type'] == 'thesis' && empty($result['research_course'])) {
+                                    array_push($no_course_array, $result['research_unit']);
                                 }
                             }
                             $unit_array_count = array_count_values($unit_array);
                             $unit_array = array_unique($unit_array);
+
+                            $no_course_array_count = array_count_values($no_course_array);
+                            $no_course_array = array_unique($no_course_array);
                             foreach ($unit_array as $key => $result) {
                                 echo "<div class='accordion-item my-2'>
-                        <h2 class='accordion-header'>
-                            <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
-                                {$result} ({$unit_array_count[$result]})
-                            </button>
-                        </h2>
-                        <div id='field-{$key}-researches' class='accordion-collapse collapse'>
-                            <div class='accordion-body'>";
+                                        <h2 class='accordion-header'>
+                                        <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
+                                            {$result} ({$unit_array_count[$result]})
+                                        </button>
+                                        </h2>
+                                            <div id='field-{$key}-researches' class='accordion-collapse collapse'>
+                                                <div class='accordion-body'>";
+                            $course_array = array();
                                 foreach ($published as $key => $item) {
                                     if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
-                                        echo "
-                                    <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                        <p>{$item['research_title']}</p>
-                                    </a>";
+                                        array_push($course_array, $item['research_course']);
                                     }
                                 }
-                                echo "</div>
-                        </div>
-                    </div>";
+                                $course_array_count = array_count_values($course_array);
+                                $course_array= array_unique($course_array);
+                                foreach($course_array as $key => $course){
+                                    echo "<a href='../research/browse-course-researches.php?q={$course}' class='department-title-content'>
+                                    <p>{$course}</p>
+                                </a>";
+                                }
+                                            echo "</div>
+                                        </div>
+                                    </div>";
                             }
+                            foreach($no_course_array as $row => $result){
+                                echo "<div class='accordion-item my-2'><h2 class='accordion-header'>
+                                <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field{$row}-researches' aria-expanded='false'>
+                                    {$result} ({$no_course_array_count[$result]})
+                                </button>
+                            </h2>
+                            <div id='field{$row}-researches' class='accordion-collapse collapse'>
+                                <div class='accordion-body'>";
+                                    foreach ($published as $key => $item) {
+                                        if ($item['file_type'] == 'thesis' && $item['research_unit'] == $result) {
+                                            echo "
+                                        <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                            <p>{$item['research_title']}</p>
+                                        </a>";
+                                        }
+                                    }
+                                    echo "</div>
+                            </div>
+                        </div>";
+                                };
+                            
                             ?>
                         </div>
 

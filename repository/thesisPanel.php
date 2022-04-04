@@ -86,6 +86,14 @@ $date_time = date_format($date_time,"M d, Y");
                         <div class='col-lg-9 border-top border-2'>
                             <p class='my-3'><?php echo htmlspecialchars($fileInfo['research_unit']) ?></p>
                         </div>
+                        <?php if(!empty($fileInfo['research_course'])):?>
+                        <div class='col-lg-3 border-top border-2'>
+                            <h6 class='fw-bold my-3'>Research Course</h6>
+                        </div>
+                        <div class='col-lg-9 border-top border-2'>
+                            <p class='my-3'><?php echo htmlspecialchars($fileInfo['research_course']) ?></p>
+                        </div>
+                        <?php endif;?>
                         <div class='col-lg-3 border-top border-2'>
                             <h6 class='fw-bold my-3'>Research Field</h6>
                         </div>
