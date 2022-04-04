@@ -9,6 +9,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
+// function to escape all results in an array
+function filter(&$value){
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+array_walk_recursive($_POST,"filter");
 if (isset($_POST['page'])) {
     $page = $_POST['page'];
 } else {
@@ -231,10 +236,7 @@ $statement->close();
 if ($page > $total_pages && $total_pages != 0) {
     echo '<h5 style="color: grey;"><br>No Results on this page. Please go back.</h5>';
 }
-// function to escape all results in $results array
-function filter(&$value){
-    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
+
 foreach ($published as $key => $result) :
     array_walk_recursive($result,"filter");
     if ($result['file_type'] === 'thesis') {
