@@ -201,7 +201,6 @@ export function publishedReportTemplate(result) {
                   </div>`;
   return template;
 }
-
 var entityMap = {
   "&": "&amp;",
   "<": "&lt;",
