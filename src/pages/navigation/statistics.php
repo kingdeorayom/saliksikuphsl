@@ -41,24 +41,88 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/statistics-style.css')
 
             <div class="row">
 
-                <!-- <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
-
-                    <h3>On this page</h3>
-                    <hr>
-                    <p class="side-menu-text px-3" id="submitText">Submit</p>
-                    <hr>
-                    <p class="side-menu-text px-3" id="submissionGuidelinesText">Submission Form and Guidelines</p>
-                    <hr>
-                </div> -->
-
-                <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column" id="statisticsPanel">
+                <div class="col-lg-12 col-md-12 col-xs-12 main-column" id="statisticsPanel">
 
                     <h1 class="my-2">Summary Statistics</h1>
 
-                    <div class="row">
+                    <div class="row researchOutputs">
                         <hr class="my-4">
-                        <p class="my-4 fw-bold">Research Outputs Over Time</p>
+                        <h5 class="my-4 fw-bold">Research Outputs Over Time</h5>
+
                     </div>
+
+                    <div class="row activityOverview">
+                        <hr class="my-4">
+                        <h5 class="my-4 fw-bold">Activity Overview</h5>
+
+                        <div class="col-sm-12 col-lg">
+                            <div class="box bg-light text-center border border-2 py-3 my-2">
+                                <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-3 img-fluid">
+                                <h2>10,123</h2>
+                                <p>Research Outputs</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg">
+                            <div class="box bg-light text-center border border-2 py-3 my-2">
+                                <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-3">
+                                <h2>16,025</h2>
+                                <p>Authors</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg">
+                            <div class="box bg-light text-center border border-2 py-3 my-2">
+                                <img src="../../../assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-3">
+                                <h2>6,010</h2>
+                                <p>Theses</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg">
+                            <div class="box bg-light text-center border border-2 py-3 my-2">
+                                <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-3">
+                                <h2>4,015</h2>
+                                <p>Dissertations</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg">
+                            <div class="box bg-light text-center border border-2 py-3 my-2">
+                                <img src="../../../assets/images/repository-metrics/total-downloads.png" class="repository-metrics-logos my-3">
+                                <h2>25,525</h2>
+                                <p>Total Downloads</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mostDownloaded">
+                        <hr class="my-4">
+                        <h5 class="my-4 fw-bold">Most Downloaded Items</h5>
+
+                        <div class="row my-2">
+                            <div class="col-sm-12 col-md-8 p-2">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt nihil aspernatur rem. Placeat nihil animi similique corporis doloribus neque deleniti, impedit eos, modi voluptates quas eum quasi non quisquam!</p>
+                            </div>
+                            <div class="col-4 p-2">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #012265;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <hr class="my-3">
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col-sm-12 col-md-8 p-2">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt nihil aspernatur rem. Placeat nihil animi similique corporis doloribus neque deleniti, impedit eos, modi voluptates quas eum quasi non quisquam!</p>
+                            </div>
+                            <div class="col-4 p-2">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #012265;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <hr class="my-3">
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
