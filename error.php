@@ -26,7 +26,7 @@
                     <li class="my-2">Accessing a page the wrong way</li>
                     <li class="my-2">Not logged in as an administrator</li>
                 </ul>
-                <h4 class="my-5">Please click <a href="/saliksikuphsl/index.php">here</a> to return to the login page, or to the homepage if already logged in.</h4>
+                <h4 class="my-5">Please click <a href="/index.php">here</a> to return to the login page, or to the homepage if already logged in.</h4>
             </div>
         </div>
         <div class="row my-5">
