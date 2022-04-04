@@ -34,7 +34,8 @@ if (isset($_GET['id'])) {
     $statement->close();
 
     $id = $_GET['id'];
-    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= $id");
+    $statement = $connection->prepare("SELECT * FROM file_information WHERE file_id= ?");
+    $statement->bind_param("i",$id);
     $statement->execute();
     $result = $statement->get_result();
     $file = $result->fetch_assoc();
@@ -45,7 +46,8 @@ if (isset($_GET['id'])) {
         die();
     } else {
         if ($file['file_type'] === "thesis") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
             $statement->execute();
             $result = $statement->get_result();
 
@@ -53,14 +55,25 @@ if (isset($_GET['id'])) {
             $statement->close();
             $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
         } else if ($file['file_type'] === "journal") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN journal_information as ji ON ji.file_ref_id=fi.file_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
             $statement->execute();
             $result = $statement->get_result();
 
             $fileInfo = $result->fetch_assoc();
             $statement->close();
         } else if ($file['file_type'] === "infographic") {
-            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= $id");
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN infographic_information as ii ON ii.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
+            $statement->execute();
+            $result = $statement->get_result();
+
+            $fileInfo = $result->fetch_assoc();
+            $statement->close();
+        }
+        else if ($file['file_type'] === "report") {
+            $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id WHERE file_id= ?");
+            $statement->bind_param("i",$id);
             $statement->execute();
             $result = $statement->get_result();
 
@@ -69,7 +82,8 @@ if (isset($_GET['id'])) {
         }
     }
 } else {
-    die(); //GET['id'] is not defined;
+    header("Location: /repository.php");
+    exit();
 }
 
 $maincssVersion = filemtime('../styles/custom/main-style.css');
@@ -113,6 +127,9 @@ $pagecssVersion = filemtime('../styles/custom/pages/repository-style.css');
         include_once './journalPanel.php';
     } else if ($fileInfo['file_type'] == 'infographic') {
         include_once './infographicPanel.php';
+    }
+    else if ($fileInfo['file_type'] == 'report') {
+        include_once './reportPanel.php';
     }
     ?>
 

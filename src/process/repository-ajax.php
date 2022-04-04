@@ -22,7 +22,7 @@ if (mysqli_connect_errno()) {
 };
 
 $query = "SELECT
-fi.*,`research_id`,`resource_type`,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*,rp.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
+fi.*,`research_id`,ri.resource_type AS research_type,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*,rp.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
 
 if (isset($_POST['exists'])) {
     if ($_POST['exists'] == 'anywhere') {
@@ -161,7 +161,7 @@ if (isset($_POST['from_year']) && $_POST['from_year'] != '' && isset($_POST['to_
 if (isset($_POST['resource_type'])) {
     $resource_type = " AND (";
     foreach ($_POST['resource_type'] as $key => $value) {
-        $resource_type .= "ri.resource_type LIKE '$value' OR ii.resource_type LIKE '$value' OR ji.resource_type LIKE '$value' OR rp.resource_type LIKE '$value'";
+        $resource_type .= "ri.resource_type LIKE '$value' OR ii.resource_type LIKE '$value' OR ji.resource_type LIKE '$value' OR rp.report_type LIKE '$value'";
         if ($key < count($_POST['resource_type']) - 1) {
             $resource_type .= " OR ";
         }
@@ -241,7 +241,7 @@ foreach ($published as $key => $result) :
         $date_time = date_create($result['publication_date']);
         $date_time = date_format($date_time,"M d, Y");
         echo "<div class='repositoryItem p-2'>
-        <p class='fw-bold text-start' style='color: #012265;'>{$result['resource_type']} </p>
+        <p class='fw-bold text-start' style='color: #012265;'>{$result['research_type']} </p>
         <a href='repository/view-article.php?id={$result['file_id']}' class='article-title'>
             <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
         </a>
@@ -261,8 +261,7 @@ foreach ($published as $key => $result) :
         echo "<hr class='my-2'>
     </div>";
     } else if ($result['file_type'] === 'journal') {
-        $journalImage = explode(".pdf", $result['file_dir']);
-        $journalImageLink = $journalImage[0] . ".png";
+        
         echo "<div class='repositoryItem p-2'>
         <div class='row'>
             <div class='text-start'>
@@ -317,6 +316,36 @@ foreach ($published as $key => $result) :
                         echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
                     }
                 echo "</div>
+            </div>
+        </div>
+        <hr class='my-2'>
+    </div>";
+    }
+    else if ($result['file_type'] === 'report') {
+        echo "<div class='repositoryItem p-2'>
+        <div class='row'>
+            <div class='text-start'>
+                <p class='fw-bold' style='color: #012265;'>{$result['report_type']}</p>
+            </div>
+            <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+            <img src='src/{$result['file_dir2']}' width='150'>
+            </div>
+            <div class='col-sm-12 col-lg-10'>
+                <div class='col'>
+                    <a href='repository/view-article.php?id={$result['file_id']}' class='article-title'>
+                        <h4 class='fw-bold mb-3'>{$result['report_title']}</h4>
+                    </a>
+                    <p>{$result['report_description']}</p>";
+                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                    }
+                    else {
+                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+                    }
+                echo "</div>
+            </div>
+            <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                <img src='src/{$result['file_dir2']}' width='150'>
             </div>
         </div>
         <hr class='my-2'>
