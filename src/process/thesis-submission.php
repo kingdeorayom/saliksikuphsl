@@ -170,7 +170,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         $submitted = date("Y-m-d H:i:s");
                         
                         $statement = $connection ->prepare('INSERT INTO file_information(user_id, file_type, file_name, file_name2, file_dir, file_dir2, file_uploader, status, coauthor_group_id,submitted_on,published_on) VALUES(?,?,?,?,?,?,?,?,?,?,?)');
-                        $statement -> bind_param('isssssssiss',$userId,$fileType,$fileName,$fileQuestionnaireName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId,$submitted,$published_on = date("Y-m-d H:i:s"));
+                        $statement -> bind_param('isssssssiss',$userId,$fileType,$fileName,$fileQuestionnaireName,$fileDestination,$fileQuestionDestination,$userName,$fileStatus,$coauthorsInsertedId,$submitted,$published_on);
                         $statement -> execute();
                         $insertedId = $statement ->insert_id;
                         $statement ->close();

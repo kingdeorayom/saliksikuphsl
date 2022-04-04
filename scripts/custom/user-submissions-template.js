@@ -122,7 +122,9 @@ export function publishedThesisTemplate(result) {
           <a href="../repository/view-article.php?id=${escapeHtml(
             result.file_id
           )}" class="publishedWorkTitle">
-            <h4 class="mb-3 publishedWorkTitle">${escapeHtml(result.research_title)}</h4>
+            <h4 class="mb-3 publishedWorkTitle">${escapeHtml(
+              result.research_title
+            )}</h4>
           </a>
         </div>
         <div class="row">

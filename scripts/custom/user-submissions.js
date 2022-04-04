@@ -43,9 +43,13 @@ function loadData(data) {
   });
   // code to show message if no results are found
   if ($(".submissions > div > div").length == 0) {
-    $(".submissions").html("<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>");
+    $(".submissions").html(
+      "<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>"
+    );
   }
   if ($(".published > div > div").length == 0) {
-    $(".published").html("<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>");
+    $(".published").html(
+      "<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>"
+    );
   }
 }

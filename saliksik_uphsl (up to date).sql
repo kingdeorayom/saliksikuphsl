@@ -171,7 +171,7 @@ INSERT INTO `journal_information` (`file_ref_id`, `journal_id`, `journal_title`,
 CREATE TABLE `research_information` (
   `file_ref_id` int(11) NOT NULL,
   `research_id` int(11) NOT NULL,
-  `resource_type` varchar(255) NOT NULL,
+  ri.resource_type AS research_type varchar(255) NOT NULL,
   `researchers_category` varchar(255) NOT NULL,
   `research_unit` varchar(255) NOT NULL,
   `research_title` varchar(255) NOT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE `research_information` (
 -- Dumping data for table `research_information`
 --
 
-INSERT INTO `research_information` (`file_ref_id`, `research_id`, `resource_type`, `researchers_category`, `research_unit`, `research_title`, `research_abstract`, `research_fields`, `keywords`, `publication_month`, `publication_day`, `publication_year`, `coauthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
+INSERT INTO `research_information` (`file_ref_id`, `research_id`, ri.resource_type AS research_type, `researchers_category`, `research_unit`, `research_title`, `research_abstract`, `research_fields`, `keywords`, `publication_month`, `publication_day`, `publication_year`, `coauthors_count`, `author_first_name`, `author_middle_initial`, `author_surname`, `author_name_ext`, `author_email`, `coauthor_group_id`) VALUES
 (146, 56, 'Dissertation', 'Undergraduate', 'Basic Education', 'Research Title with a really long description to test search function 2', 'abstract', 'Accountancy and Marketing, Educational Management, IT and Engineering', 'key, key21, key234', 1, 1, 2021, 1, 'Marc', 'C.', 'Menguito', 'ext', 'lloydmenguito@gmail.com', 60);
 
 >>>>>>> development

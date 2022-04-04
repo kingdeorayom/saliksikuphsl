@@ -304,10 +304,13 @@ $year = date_format($date_time,"Y");
             }).done(function(data){
                 window.scrollTo(0, 0);
                 if (data.response === "error") {
-                    $("#alert-container-reports").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-infographic").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
                 if (data.response === "success") {
-                    $("#alert-container-reports").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Changes saved successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Published successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "revision") {
+                    $("#alert-container-infographic").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
             })
         })

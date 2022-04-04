@@ -132,14 +132,17 @@ if (isset($_SESSION['userType'])) {
                     
                     $connection->commit();
 
+                    $arr = array('response'=>"success");
+
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
+                        $arr = array('response'=>"revision");
                     }
                     else if($newlyPublished){
                         sendMailPublished();
                     }
 
-                    $arr = array('response'=>"success");
+                    
                     header('Content-Type: application/json');
                     echo json_encode($arr);
                    
@@ -191,15 +194,18 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     
                     $connection->commit();
+                    $arr = array('response'=>"success");
 
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
+                        $arr = array('response'=>"revision");
+
                     }
                     else if($newlyPublished){
                         sendMailPublished();
                     }
 
-                    $arr = array('response'=>"success");
+                    
                     header('Content-Type: application/json');
                     echo json_encode($arr);
             }
@@ -272,14 +278,16 @@ if (isset($_SESSION['userType'])) {
 
                     $connection->commit();
 
+                    $arr = array('response'=>"success");
+
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
+                        $arr = array('response'=>"revision");
                     }
                     else if($newlyPublished){
                         sendMailPublished();
                     }
 
-                    $arr = array('response'=>"success");
                     header('Content-Type: application/json');
                     echo json_encode($arr);
             }
@@ -329,15 +337,15 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     
                     $connection->commit();
+                    $arr = array('response'=>"success");
 
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
+                        $arr = array('response'=>"revision");
                     }
                     else if($newlyPublished){
                         sendMailPublished();
                     }
-
-                    $arr = array('response'=>"success");
                     header('Content-Type: application/json');
                     echo json_encode($arr);
             }

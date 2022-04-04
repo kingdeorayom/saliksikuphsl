@@ -95,7 +95,7 @@ $fileInfo = $result->fetch_assoc();
 $statement->close();
 
 if($_SESSION['userid']!=$fileInfo['user_id']){
-    echo 'not fileInfo';
+    echo 'not file owner';
     die();
 }
 else{
