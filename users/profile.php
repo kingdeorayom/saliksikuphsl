@@ -17,8 +17,9 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-$sql = "SELECT department FROM users WHERE user_id = " . $_SESSION['userid'];
+$sql = "SELECT first_name, last_name, department FROM users WHERE user_id = " . $_SESSION['userid'];
 $result = $connection->query($sql);
+$user = $result->fetch_assoc();
 
 $connection->close();
 
@@ -55,8 +56,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
 
     <!--Header and Navigation section-->
 
-    <?php include_once '../includes/header.php' ?>
-
+    <?php include_once '../includes/header.php'?>
     <section class="submit-research profile">
         <div class="container p-5">
 
@@ -66,52 +66,51 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                     <h1 class="my-2">About you</h1>
                     <hr class="my-4">
                     <div class="row">
-                        <form action="process/update-user-profile.php" method="POST">
+                    <?php 
+                    if(isset($_SESSION['changedAbout'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Account details changed successfully!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php unset($_SESSION['changedAbout']); endif;?>
+                        <form action="../src/process/update-user-profile.php" method="POST">
                             <div class="row">
                                 <div>
                                     <label class="fw-bold mb-2">Email Address</label>
-                                    <input type="text" class="form-control" name="textFieldEmailAddress" value="<?php echo $_SESSION['email']; ?>" required>
+                                    <input type="text" class="form-control" name="textFieldEmailAddress" value="<?php echo $_SESSION['email']; ?>" disabled>
                                 </div>
                             </div>
                             <div class="row my-2">
                                 <div>
                                     <label class="fw-bold mb-2">First Name</label>
-                                    <input type="text" class="form-control" id="textFieldFirstName" value="<?php echo $_SESSION['firstName']; ?>" required>
+                                    <input type="text" class="form-control" name="textFieldFirstName" value="<?php echo $user['first_name']; ?>" required>
                                 </div>
                             </div>
                             <div class="row my-2">
                                 <div>
                                     <label class="fw-bold mb-2">Last Name</label>
-                                    <input type="text" class="form-control" id="textFieldLastName" value="<?php echo $_SESSION['lastName']; ?>" required>
+                                    <input type="text" class="form-control" name="textFieldLastName" value="<?php echo $user['last_name']; ?>" required>
                                 </div>
                             </div>
                             <div class="row my-2">
                                 <div>
                                     <label class="fw-bold mb-2">College/Department</label>
-                                    <?php
-
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                    ?>
                                             <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
-                                                <option value="Basic Education" <?= $row['department'] == "Basic Education" ? 'selected=selected' : '' ?>>Basic Education</option>
-                                                <option value="Senior High School" <?= $row['department'] == "Senior High School" ? 'selected=selected' : '' ?>>Senior High School</option>
-                                                <option value="Arts and Sciences" <?= $row['department'] == "Arts and Sciences" ? 'selected=selected' : '' ?>>Arts and Sciences</option>
-                                                <option value="Business and Accountancy" <?= $row['department'] == "Business and Accountancy" ? 'selected=selected' : '' ?>>Business and Accountancy</option>
-                                                <option value="Computer Studies" <?= $row['department'] == "Computer Studies" ? 'selected=selected' : '' ?>>Computer Studies</option>
-                                                <option value="Criminology" <?= $row['department'] == "Criminology" ? 'selected=selected' : '' ?>>Criminology</option>
-                                                <option value="Education" <?= $row['department'] == "Education" ? 'selected=selected' : '' ?>>Education</option>
-                                                <option value="Engineering, Architecture and Aviation" <?= $row['department'] == "Engineering, Architecture and Aviation" ? 'selected=selected' : '' ?>>Engineering, Architecture and Aviation</option>
-                                                <option value="Law" <?= $row['department'] == "Law" ? 'selected=selected' : '' ?>>Law</option>
-                                                <option value="Maritime Education" <?= $row['department'] == "Maritime Education" ? 'selected=selected' : '' ?>>Maritime Education</option>
-                                                <option value="International Hospitality Management" <?= $row['department'] == "International Hospitality Management" ? 'selected=selected' : '' ?>>International Hospitality Management</option>
-                                                <option value="Graduate School" <?= $row['department'] == "Graduate School" ? 'selected=selected' : '' ?>>Graduate School</option>
-                                                <option value="Support Services" <?= $row['department'] == "Support Services" ? 'selected=selected' : '' ?>>Support Services</option>
+                                                <option value="Basic Education" <?= $user['department'] == "Basic Education" ? 'selected=selected' : '' ?>>Basic Education</option>
+                                                <option value="Senior High School" <?= $user['department'] == "Senior High School" ? 'selected=selected' : '' ?>>Senior High School</option>
+                                                <option value="Arts and Sciences" <?= $user['department'] == "Arts and Sciences" ? 'selected=selected' : '' ?>>Arts and Sciences</option>
+                                                <option value="Business and Accountancy" <?= $user['department'] == "Business and Accountancy" ? 'selected=selected' : '' ?>>Business and Accountancy</option>
+                                                <option value="Computer Studies" <?= $user['department'] == "Computer Studies" ? 'selected=selected' : '' ?>>Computer Studies</option>
+                                                <option value="Criminology" <?= $user['department'] == "Criminology" ? 'selected=selected' : '' ?>>Criminology</option>
+                                                <option value="Education" <?= $user['department'] == "Education" ? 'selected=selected' : '' ?>>Education</option>
+                                                <option value="Engineering, Architecture and Aviation" <?= $user['department'] == "Engineering, Architecture and Aviation" ? 'selected=selected' : '' ?>>Engineering, Architecture and Aviation</option>
+                                                <option value="Law" <?= $user['department'] == "Law" ? 'selected=selected' : '' ?>>Law</option>
+                                                <option value="Maritime Education" <?= $user['department'] == "Maritime Education" ? 'selected=selected' : '' ?>>Maritime Education</option>
+                                                <option value="International Hospitality Management" <?= $user['department'] == "International Hospitality Management" ? 'selected=selected' : '' ?>>International Hospitality Management</option>
+                                                <option value="Graduate School" <?= $user['department'] == "Graduate School" ? 'selected=selected' : '' ?>>Graduate School</option>
+                                                <option value="Support Services" <?= $user['department'] == "Support Services" ? 'selected=selected' : '' ?>>Support Services</option>
                                             </select>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
+                                   
                                 </div>
                             </div>
                             <div class="row my-3">
@@ -122,17 +121,29 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         </form>
                         <h1 class="my-1">Account Parameters</h1>
                         <hr class="my-4">
-                        <form action="process/update-user-profile.php" method="POST">
+                        <?php if(isset($_SESSION['changedPassword'])): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Password changed successfully!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php unset($_SESSION['changedPassword']); endif;?>
+                        <?php if(isset($_SESSION['wrongPassword'])): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Wrong Password!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php unset($_SESSION['wrongPassword']); endif;?>
+                        <form action="../src/process/update-user-password.php" method="POST">
                             <div class="row">
                                 <div>
                                     <label class="fw-bold mb-2">Current Password</label>
-                                    <input type="text" class="form-control" name="textFieldCurrentPassword" required>
+                                    <input type="password" class="form-control" name="textFieldCurrentPassword" required>
                                 </div>
                             </div>
                             <div class="row my-2">
                                 <div>
                                     <label class="fw-bold mb-2">New Password</label>
-                                    <input type="text" class="form-control" id="textFieldNewPassword" required>
+                                    <input type="password" class="form-control" name="textFieldNewPassword" required>
                                     <p class="text-secondary my-3"><span class="fw-bold text-danger">IMPORTANT:</span> If you change your password, you will have to log in again using the new password.</p>
                                 </div>
                             </div>
