@@ -30,11 +30,41 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/statistics-style.css')
 
     <?php include_once '../../layouts/general/header.php' ?>
 
-    <section class=" masthead p-5 bg-light">
+    <section class="masthead p-5 bg-light">
         <div class="container">
-            <h1 id="masthead-title-text">Statistics</h1>
+            <h1 id="masthead-title-text">Research Statistics</h1>
         </div>
     </section>
+
+    <section class="submit-research">
+        <div class="container p-5">
+
+            <div class="row">
+
+                <!-- <div class="col-lg-2 d-none d-md-none d-lg-block fw-bold">
+
+                    <h3>On this page</h3>
+                    <hr>
+                    <p class="side-menu-text px-3" id="submitText">Submit</p>
+                    <hr>
+                    <p class="side-menu-text px-3" id="submissionGuidelinesText">Submission Form and Guidelines</p>
+                    <hr>
+                </div> -->
+
+                <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column" id="statisticsPanel">
+
+                    <h1 class="my-2">Summary Statistics</h1>
+
+                    <div class="row">
+                        <hr class="my-4">
+                        <p class="my-4 fw-bold">Research Outputs Over Time</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 
     <!--Footer section-->
 
