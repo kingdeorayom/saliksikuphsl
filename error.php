@@ -6,28 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
-    <!-- <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css"> -->
+    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-
+    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
 </head>
 
 <body>
-    <div style="font-family: arial; padding: 3%; font-size: 25px; text-align: center;">
-        <p style="font-size: 50px; font-weight: bold">Oops!</p>
-        <p>If you are seeing this message, it means you accessed a page outside of the normal process intended by the developers.</p>
-        <p>Please click <a href="/index.php">here</a> to return to the login page, or to the homepage if already logged in.</p>
-        <br><br><br>
-        <p style="font-size: 20px; color: grey;">SALIKSIK: UPHSL Research Repository</p>
+    <div class="container p-5">
+        <div class="row my-5 d-flex">
+            <div class="col-sm-12 col-md-4 d-flex align-items-center">
+                <div class="text-center">
+                    <img src="../../../assets/images/core/error-image.png" alt="" class="img-fluid" width="350">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8" style="font-family: Roboto, sans-serif; color: #012256">
+                <h1 class="display-1 fw-bold my-5">Oops!</h1>
+                <h4 class="my-5 fw-bold">If you're seeing this page, you may be:</h4>
+                <ul class="h4">
+                    <li class="my-2">Accessing a page the wrong way</li>
+                    <li class="my-2">Not logged in as an administrator</li>
+                </ul>
+                <h4 class="my-5">Please click <a href="/saliksikuphsl/index.php">here</a> to return to the login page, or to the homepage if already logged in.</h4>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="text-center text-secondary">
+                <h5>SALIKSIK: UPHSL Research Repository</h5>
+            </div>
+        </div>
     </div>
-
-    <!-- <script src="../../../scripts/bootstrap/bootstrap.js"></script> -->
+    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

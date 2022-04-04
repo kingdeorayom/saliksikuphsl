@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 if ($_SESSION['userType']!=='admin') {
-    // header("location: ../../layouts/general/error.php");
+    // header("location: ../../error.php");
     die();
 }
 

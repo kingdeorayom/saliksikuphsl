@@ -1,7 +1,7 @@
 <?php session_start();
 
 if (!isset($_SESSION['resetPassword'])) {
-    header("location: ../../layouts/general/error.php");
+    header("location: ../../error.php");
     die();
 }
 

@@ -17,7 +17,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 if (isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] === "user") {
-        header("location: ../../layouts/general/error.php");
+        header("location: ../../error.php");
         die();
     }
 }

@@ -9,7 +9,7 @@ if (isset($_SESSION['userType'])) {
         header("Location: ../../pages/users/admin-submissions");
     }
 } else {
-    header("location: ../../layouts/general/error.php");
+    header("location: ../../error.php");
     die();
 }
 

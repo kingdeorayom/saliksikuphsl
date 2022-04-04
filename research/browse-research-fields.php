@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: layouts/general/error.php");
+    header("location: error.php");
     die();
 }
 $maincssVersion = filemtime('../styles/custom/main-style.css');

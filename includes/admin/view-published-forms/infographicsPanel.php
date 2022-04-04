@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../../../layouts/general/error.php");
+    header("location: ../../../error.php");
     die();
 }
 $date_time = date_create($fileInfo['infographic_publication_date']);

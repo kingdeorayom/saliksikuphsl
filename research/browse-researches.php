@@ -5,7 +5,7 @@ session_start();
 include '../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: layouts/general/error.php");
+    header("location: error.php");
     die();
 }
 
@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-$query = "SELECT fi.*,`research_id`,ri.resource_type AS research_type,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
+$query = "SELECT fi.*,`research_id`,ri.resource_type AS research_type,`researchers_category`,`research_unit`,`research_title`,`research_abstract`,`research_fields`,`keywords`,`publication_date`,ri.coauthors_count AS `research_coauthors_count`,ri.author_first_name AS researcher_first_name, ri.author_middle_initial AS researcher_middle_initial, ri.author_surname AS researcher_surname, ri.author_name_ext AS researcher_name_ext, ri.author_email AS researcher_email, ii.*, ji.*,rp.*, ci.* FROM file_information AS fi LEFT JOIN research_information as ri ON ri.file_ref_id=fi.file_id LEFT JOIN journal_information AS ji ON ji.file_ref_id=fi.file_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id=fi.file_id LEFT JOIN reports_information AS rp ON rp.file_ref_id=fi.file_id LEFT JOIN coauthors_information AS ci on ci.group_id = fi.coauthor_group_id WHERE fi.status = 'published'";
 $statement = $connection->prepare($query);
 $statement->execute();
 $result = $statement->get_result();
@@ -117,12 +117,13 @@ array_walk_recursive($published, "filter");
                                     array_push($unit_array, $result['research_unit']);
                                 }
                             }
+                            $unit_array_count = array_count_values($unit_array);
                             $unit_array = array_unique($unit_array);
                             foreach ($unit_array as $key => $result) {
                                 echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
                             <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
-                                {$result}
+                                {$result} ({$unit_array_count[$result]})
                             </button>
                         </h2>
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
@@ -158,12 +159,13 @@ array_walk_recursive($published, "filter");
                                     array_push($unit_array, $result['department']);
                                 }
                             }
+                            $unit_array_count = array_count_values($unit_array);
                             $unit_array = array_unique($unit_array);
                             foreach ($unit_array as $key => $result) {
                                 echo "<div class='accordion-item my-2'>
                         <h2 class='accordion-header'>
                             <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
-                                {$result}
+                                {$result} ({$unit_array_count[$result]})
                             </button>
                         </h2>
                         <div id='field-{$key}-researches' class='accordion-collapse collapse'>
@@ -190,15 +192,16 @@ array_walk_recursive($published, "filter");
                     <hr>
                     <div class="row">
                         <div class="browseResearchCatalogs">
-                            <a href="#" class="actual-content-title">
-                                <p>Research Catalog 1 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Research Catalog 2 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Research Catalog 3 Title Here</p>
-                            </a>
+                        <?php
+                            foreach ($published as $key => $item) {
+                                if ($item['report_type'] == 'Research Catalogs') {
+                                    echo "
+                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <p>{$item['report_title']}</p>
+                                </a>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -208,15 +211,16 @@ array_walk_recursive($published, "filter");
                     <hr>
                     <div class="row">
                         <div class="browseAnnualReports">
-                            <a href="#" class="actual-content-title">
-                                <p>Annual Report 1 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Annual Report 2 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Annual Report 3 Title Here</p>
-                            </a>
+                        <?php
+                            foreach ($published as $key => $item) {
+                                if ($item['report_type'] == 'Annual Reports') {
+                                    echo "
+                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <p>{$item['report_title']}</p>
+                                </a>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -226,15 +230,16 @@ array_walk_recursive($published, "filter");
                     <hr>
                     <div class="row">
                         <div class="browseResearchAgenda">
-                            <a href="#" class="actual-content-title">
-                                <p>Research Agenda 1 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Research Agenda 2 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>Research Agenda 3 Title Here</p>
-                            </a>
+                        <?php
+                            foreach ($published as $key => $item) {
+                                if ($item['report_type'] == 'Research Agenda') {
+                                    echo "
+                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <p>{$item['report_title']}</p>
+                                </a>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -244,15 +249,16 @@ array_walk_recursive($published, "filter");
                     <hr>
                     <div class="row">
                         <div class="browseRCDP">
-                            <a href="#" class="actual-content-title">
-                                <p>RCDP 1 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>RCDP 2 Title Here</p>
-                            </a>
-                            <a href="#" class="actual-content-title">
-                                <p>RCDP 3 Title Here</p>
-                            </a>
+                        <?php
+                            foreach ($published as $key => $item) {
+                                if ($item['report_type'] == 'Research Competency Development Program') {
+                                    echo "
+                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
+                                    <p>{$item['report_title']}</p>
+                                </a>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

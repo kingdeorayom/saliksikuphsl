@@ -1,2 +1,2 @@
-ErrorDocument 404 /src/layouts/general/error.php
+ErrorDocument 404 /error.php
 

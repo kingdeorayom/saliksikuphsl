@@ -5,7 +5,7 @@ session_start();
 include '../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: layouts/general/error.php");
+    header("location: error.php");
     die();
 }
 
@@ -96,12 +96,13 @@ array_walk_recursive($published, "filter");
                                 array_push($unit_array, $yearOnly);
                             }
                         }
+                        $unit_array_count = array_count_values($unit_array);
                         $unit_array = array_unique($unit_array);
                         foreach ($unit_array as $key => $result) {
                             echo "<div class='accordion-item my-2'>
                     <h2 class='accordion-header'>
                         <button class='accordion-button collapsed fw-bold' type='button' data-bs-toggle='collapse' data-bs-target='#field-{$key}-researches' aria-expanded='false'>
-                            {$result}
+                            {$result} ({$unit_array_count[$result]})
                         </button>
                     </h2>
                     <div id='field-{$key}-researches' class='accordion-collapse collapse'>

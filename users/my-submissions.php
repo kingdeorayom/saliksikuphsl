@@ -7,7 +7,7 @@ if (isset($_SESSION['userType'])) {
         header("Location: ./admin-profile.php");
     }
 } else {
-    header("location: layouts/general/error.php");
+    header("location: error.php");
     die();
 }
 
