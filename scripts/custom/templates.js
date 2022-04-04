@@ -175,6 +175,7 @@ export function publishedJournalTemplate(result) {
                   </div>`;
   return template;
 }
+//wtf
 export function publishedReportTemplate(result) {
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
                   <div class="row">
