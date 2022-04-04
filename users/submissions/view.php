@@ -146,7 +146,7 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
             }).done(function(data){
                 window.scrollTo(0, 0);
                 if (data.response === "error") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with submitting data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
                 if (data.response === "success") {
                     $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Resubmitted sucessfully! Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
