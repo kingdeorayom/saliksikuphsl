@@ -51,10 +51,22 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
         <div class="container p-5">
             <div class="row">
                 <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column">
-                    <form class="submissions" name="account-preference">
+                    <form action="../src/process/update-password.php" method="POST">
                         <h1 class="my-2 p-2">Account Preference</h1>
                         <hr class="my-3">
                         <div class="row my-5">
+                        <?php if(isset($_SESSION['changedPassword'])): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Password changed successfully!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php unset($_SESSION['changedPassword']); endif;?>
+                        <?php if(isset($_SESSION['wrongPassword'])): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Wrong Password!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php unset($_SESSION['wrongPassword']); endif;?>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">First Name</h6>
                             </div>
@@ -71,13 +83,13 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <h6 class="fw-bold mt-3 mb-2">Current Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name="current-password-input">
+                                <input class="form-control my-2" type="password" name="textFieldCurrentPassword">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">New Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name="new-password-input">
+                                <input class="form-control my-2" type="password" name="textFieldNewPassword">
                             </div>
                             <hr class="mt-4 mb-3">
                             <label for="" class="mt-3 mb-2"><span class="fw-bold">Please note:</span> If you change your password, you will have to log in again using the new password.</label>
@@ -173,17 +185,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <script type="text/javascript">
         $("#edit-button").on("click", function(){
             $("#update-button").prop("disabled",!$("#update-button").prop("disabled"))
-        })
-        $("form[name='account-preference']").on("submit", function(event){
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                method: "POST",
-                url:"update-password.php",
-                data: formData,
-                contentType: false, 
-        processData: false, 
-            })
         })
     </script>
 </body>
