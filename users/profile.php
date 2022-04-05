@@ -76,7 +76,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <form action="../src/process/update-user-profile.php" method="POST">
                             <div class="row">
                                 <div>
-                                    <label class="fw-bold mb-2">Email Address <i class="fas fa-question-circle text-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="For security purposes, you can't change your email address."></i></label>
+                                    <label class="fw-bold mb-2">Email Address <i class="fas fa-question-circle text-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="For security purposes, you can't change your email address"></i></label>
                                     <input type="text" class="form-control" name="textFieldEmailAddress" value="<?php echo $_SESSION['email']; ?>" disabled>
                                 </div>
                             </div>
