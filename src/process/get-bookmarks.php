@@ -156,6 +156,9 @@ if(count($bookmarks)!=0){
                     <p class='fw-bold' style='color: #012265;'>{$result['report_type']}</p>
                 </div>
                 <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                    <img src=../../src/{$result['file_dir2']} width='150'>
+                </div>
+                <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
                 </div>
                 <div class='col-sm-12 col-lg-10'>
                     <div class='col'>
@@ -171,6 +174,9 @@ if(count($bookmarks)!=0){
                             echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
                         }
                     echo "</div>
+                </div>
+                <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                    <img src=../../src/{$result['file_dir2']} width='150'>
                 </div>
             </div>
             <hr class='my-2'>
