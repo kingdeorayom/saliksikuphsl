@@ -72,7 +72,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <label class="py-2 fw-bold">Volume Number<span class="text-danger"> *</span></label>
                 </div>
                 <div class="col-lg-4">
-                    <label class="py-2 fw-bold d-none d-lg-block">Serial/Issue Number<span class="text-danger"> *</span></label>
+                    <label class="py-2 fw-bold d-none d-lg-block">Series<span class="text-danger"> *</span></label>
                 </div>
                 <div class="col-lg-4">
                     <label class="py-2 fw-bold d-none d-lg-block">ISSN<span class="text-danger"> *</span></label>
@@ -83,7 +83,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input type="number" class="form-control" name="textFieldVolumeNumber" value=<?php echo $fileInfo['volume_number'] ?> required>
                 </div>
                 <div class="col-lg-12 d-sm-block d-lg-none">
-                    <label class="py-2 fw-bold">Serial/Issue Number*</label>
+                    <label class="py-2 fw-bold">Series*</label>
                 </div>
                 <div class="col-lg-4 col-sm-12 py-2">
                     <input type="number" class="form-control" name="textFieldSerialIssueNumber" value=<?php echo $fileInfo['serial_issue_number'] ?> required>
