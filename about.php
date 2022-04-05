@@ -100,17 +100,13 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
                     <h1 class="my-4">Copyright ownership in a work</h1>
                     <p>While research outputs submitted become part of the UPHSL Research Repository, the authorship remains to a researcher or group of researchers as articulated in the Research and Development Manual of the University and its Intellectual Property Rights policy. It should be noted that the ownership and authorship of researches submitted remain to the author/s even if the materials are already uploaded to the UPHSL Research Repository unless the University Declaration of IP Assignment form is signed.</p>
                     <hr>
-
                     <h1 class="my-4">Copyright information for users</h1>
-
                     <p>The University reserves the right to use, publish and reproduce IP creation in whatever form i.e. electronic or otherwise for teaching, research and other academic purposes with appropriate notification and acknowledgment of whoever originally owns the materials uploaded, viewed and downloaded through the UPHSL Research Repository. </p>
-
-                    <h1 class="my-4">Repository Policies</h1>
-
-                    <p><a href="https://digitalarchives.upd.edu.ph/policy">Policy</a></p>
-
+                    <hr>
+                    <!-- <h1 class="my-4">Repository Policies</h1>
+                        <p><a href="https://digitalarchives.upd.edu.ph/policy">Policy</a></p>
+                        <hr> -->
                     <h1 class="my-4">Privacy Policy</h1>
-
                     <p>UPHSL Research Repository follows a restricted access environment through username and password of all teaching, non-teaching, and administrative personnel of the institution as well as all its bona fide students who wish to use the tool for their research and academic purposes. No personal information of the researchers are provided except for those which are part of the prescribed format and expected contents of their manuscript like their names and email addresses. UPHSL Research Repository complies with the provisions of Data Privacy Act of 2012.</p>
                 </div>
             </div>
