@@ -15,6 +15,19 @@ $result = $statement->get_result();
 $thesis_count = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
+$statement = $connection->prepare("SELECT fi.file_id, fi.file_type, av.hits,ri.research_title,ji.journal_title, ii.infographic_title, rp.report_title FROM article_visits AS av LEFT JOIN file_information AS fi ON fi.file_id = av.article_id LEFT JOIN research_information AS ri ON ri.file_ref_id = av.article_id LEFT JOIN journal_information AS ji ON ji.file_ref_id = av.article_id LEFT JOIN infographic_information AS ii ON ii.file_ref_id = av.article_id LEFT JOIN reports_information AS rp ON rp.file_ref_id = av.article_id ORDER BY hits DESC LIMIT 10 ");
+$statement->execute();
+$result = $statement->get_result();
+$page_hits = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+$statement = $connection->prepare("SELECT SUM(hits) AS total_hits FROM article_visits LIMIT 10");
+$statement->execute();
+$result = $statement->get_result();
+$article = $result->fetch_assoc();
+$statement->close();
+
+
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
@@ -103,32 +116,60 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
 
                     <div class="row mostDownloaded">
                         <hr class="my-4">
-                        <h5 class="my-4 fw-bold">Most Downloaded Items</h5>
-
-                        <div class="row my-2">
-                            <div class="col-sm-12 col-md-8 p-2">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt nihil aspernatur rem. Placeat nihil animi similique corporis doloribus neque deleniti, impedit eos, modi voluptates quas eum quasi non quisquam!</p>
-                            </div>
-                            <div class="col-4 p-2">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #012265;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <h5 class="my-4 fw-bold">Most Viewed Items</h5>
+                        <?php foreach($page_hits as $key =>$page):
+                            $page_percent = $page['hits']/$article['total_hits']*100;
+                            ?>
+                            <?php if($page['file_type'] == 'thesis'): ?>
+                                <div class="row my-2">
+                                    <div class="col-sm-12 col-md-8 p-2">
+                                        <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>"><p><?php echo htmlspecialchars($page['research_title']) ?></p></a>
+                                    </div>
+                                <div class="col-4 p-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
                                 </div>
-                            </div>
                             <hr class="my-3">
-                        </div>
-
-                        <div class="row my-2">
-                            <div class="col-sm-12 col-md-8 p-2">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt nihil aspernatur rem. Placeat nihil animi similique corporis doloribus neque deleniti, impedit eos, modi voluptates quas eum quasi non quisquam!</p>
-                            </div>
-                            <div class="col-4 p-2">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #012265;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <?php endif ?>
+                            <?php if($page['file_type'] == 'journal'): ?>
+                                <div class="row my-2">
+                                    <div class="col-sm-12 col-md-8 p-2">
+                                        <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>"><p><?php echo htmlspecialchars($page['journal_title']) ?></p></a>
+                                    </div>
+                                <div class="col-4 p-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
                                 </div>
-                            </div>
                             <hr class="my-3">
+                            <?php endif ?>
+                            <?php if($page['file_type'] == 'infographic'): ?>
+                                <div class="row my-2">
+                                    <div class="col-sm-12 col-md-8 p-2">
+                                        <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>"><p><?php echo htmlspecialchars($page['infographic_title']) ?></p></a>
+                                    </div>
+                                <div class="col-4 p-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            <hr class="my-3">
+                            <?php endif ?>
+                            <?php if($page['file_type'] == 'report'): ?>
+                                <div class="row my-2">
+                                    <div class="col-sm-12 col-md-8 p-2">
+                                        <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>"><p><?php echo htmlspecialchars($page['report_title']) ?></p></a>
+                                    </div>
+                                <div class="col-4 p-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            <hr class="my-3">
+                            <?php endif ?>
                         </div>
-
+                        <?php endforeach?>
                     </div>
 
                 </div>
@@ -154,6 +195,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
             }).done(function(result) {
                 console.log(result)
                 result.forEach(function(val, key) {
+                    console.table(result);
                     labels.push(val.year)
                     data.push(val.count)
                 })
@@ -175,6 +217,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                         }]
                     },
                 });
+                console.table(data);
             })
         })
     </script>
