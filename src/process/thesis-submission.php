@@ -129,7 +129,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
 
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
-            if ($fileSize < 5000000) {
+            if ($fileSize < 10000000) {
                 $statement = $connection->prepare("SELECT file_name FROM file_information WHERE file_name = ?");
                 $statement->bind_param("s",$fileName);
                 $statement->execute();

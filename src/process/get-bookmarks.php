@@ -158,8 +158,6 @@ if(count($bookmarks)!=0){
                 <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
                     <img src=../../src/{$result['file_dir2']} width='150'>
                 </div>
-                <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                </div>
                 <div class='col-sm-12 col-lg-10'>
                     <div class='col'>
                         <a href='../repository/view-article.php?id={$result['file_id']}' class='article-title'>
@@ -175,7 +173,7 @@ if(count($bookmarks)!=0){
                         }
                     echo "</div>
                 </div>
-                <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block mb-4'>
                     <img src=../../src/{$result['file_dir2']} width='150'>
                 </div>
             </div>
