@@ -34,6 +34,11 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <meta property="og:image" content="./assets/images/core/saliksik-meta-preview.png" />
+    <meta property="og:description" content="SALIKSIK: UPHSL Research Repository is an online tool and database where you can view, upload and download materials pertaining to research outputs of the university. It allows you to have access to a wide array of research materials in terms of a given time period, particular college/department, or research areas. It also provides access to the annual reports, research competency development program, institutional research agenda and other relevant research documents of the Research Center." />
+    <meta property="og:url" content="http://www.coachesneedsocial.com/coacheswisdomtelesummit/" />
+    <meta property="og:title" content="SALIKSIK: UPHSL Research Repository" />
+
 </head>
 
 <body>
@@ -94,7 +99,9 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                     </div>
                     <div class="row">
                         <form name="login-form">
-                            <input type ="text" hidden value="<?php if(isset($_GET['location'])){echo htmlspecialchars($_GET['location']);} ?>" name="location">
+                            <input type="text" hidden value="<?php if (isset($_GET['location'])) {
+                                                                    echo htmlspecialchars($_GET['location']);
+                                                                } ?>" name="location">
                             <label>Email</label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
@@ -130,37 +137,35 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
     <script>
         var alertLogin = $("#alert-container-login");
 
-        $("form[name='login-form']").submit(function(e){
+        $("form[name='login-form']").submit(function(e) {
             e.preventDefault();
             var loginData = new FormData(this);
             $.ajax({
-                method:"POST",
-                url:"./src/process/login.php",
-                data:loginData,
+                method: "POST",
+                url: "./src/process/login.php",
+                data: loginData,
                 contentType: false,
                 processData: false,
-            }).done(function(data){
+            }).done(function(data) {
                 checkLoginResponse(data)
             })
         })
+
         function checkLoginResponse(data) {
             if (data.response === "login_success") {
                 window.location.reload();
-            }
-            else if (data.response === "empty_fields") {
+            } else if (data.response === "empty_fields") {
                 alertLogin.html(`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
-            }
-            else if (data.response === "incorrect_credentials") {
-                alertLogin.html( `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Incorrect email or password!</strong> Please try again.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
-            }
-            else if(data.location){
+            } else if (data.response === "incorrect_credentials") {
+                alertLogin.html(`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Incorrect email or password!</strong> Please try again.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
+            } else if (data.location) {
                 window.location.href = data.location;
             }
         }
     </script>
     <script src="scripts/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
-    sessionStorage.clear();
+        sessionStorage.clear();
     </script>
 
 </body>

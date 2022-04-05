@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -10,127 +10,131 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']?></p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'] ?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
-    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']?></p>
+    <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'] ?></p>
     <hr>
     <p class="side-menu-text">Published on:</p>
     <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
     <hr>
 </div>
-<div class= "row">
-<div class="col-lg-2 d-none d-md-none d-lg-block">
+<div class="row">
+    <div class="col-lg-2 d-none d-md-none d-lg-block">
         <!--col-md-12 to stack on top of next column. remove display-none-->
         <h5>Submission Details</h5>
         <hr>
         <p class="side-menu-text">Submitted by:</p>
-        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']?></p>
+        <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'] ?></p>
         <hr>
         <p class="side-menu-text">Submitted on:</p>
-        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']?></p>
+        <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on'] ?></p>
         <hr>
         <p class="side-menu-text">Published on:</p>
-    <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
-    <hr>
+        <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
+        <hr>
     </div>
-<div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="reportsPanel">
-    <!-- container for alert messages -->
-    <div class="row my-3">
-        <label class="my-2" id="fileUploadLabelReports" hidden>Uploading your file...</label>
+    <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="reportsPanel">
+        <!-- container for alert messages -->
+        <div class="row my-3">
+            <label class="my-2" id="fileUploadLabelReports" hidden>Uploading your file...</label>
 
-        <div class="progress" id='reports-progress-container' hidden>
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="reports-progress-bar">0%</div>
+            <div class="progress" id='reports-progress-container' hidden>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="reports-progress-bar">0%</div>
+            </div>
         </div>
-    </div>
-    <div id='alert-container-reports'>
+        <div id='alert-container-reports'>
 
-    </div>
-    <!-- container for alert messages -->
-    <h1 class="my-2">File Upload Information</h1>
-    <hr>
-    <form name="reports-form" data-id="<?php echo $fileInfo['file_id'] ?>">
-        <div class="row my-4">
-            <div class="col-lg-6 col-sm-12">
-                <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
-                <select class="form-select" aria-label="Default select example" name="dropdownResourceTypeReports">
-                    <option value="Annual Report" <?= $fileInfo['report_type'] == 'Annual Report' ? 'selected' : '' ?>>Annual Report</option>
-                    <option value="Research Agenda" <?= $fileInfo['report_type'] == 'Research Agenda' ? 'selected' : '' ?>>Research Agenda</option>
-                    <option value="Research Competency Development Program" <?= $fileInfo['report_type'] == 'Research Competency Development Program' ? 'selected' : '' ?>>Research Competency Development Program</option>
-                    <option value="Research Catalog" <?= $fileInfo['report_type'] == 'Research Catalog' ? 'selected' : '' ?>>Research Catalog</option>
-                </select>
+        </div>
+        <!-- container for alert messages -->
+        <h1 class="my-2">File Upload Information</h1>
+        <hr>
+        <form name="reports-form" data-id="<?php echo $fileInfo['file_id'] ?>">
+            <div class="row my-4">
+                <div class="col-lg-6 col-sm-12">
+                    <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
+                    <select class="form-select" aria-label="Default select example" name="dropdownResourceTypeReports">
+                        <option value="Annual Report" <?= $fileInfo['report_type'] == 'Annual Report' ? 'selected' : '' ?>>Annual Report</option>
+                        <option value="Research Agenda" <?= $fileInfo['report_type'] == 'Research Agenda' ? 'selected' : '' ?>>Research Agenda</option>
+                        <option value="Research Competency Development Program" <?= $fileInfo['report_type'] == 'Research Competency Development Program' ? 'selected' : '' ?>>Research Competency Development Program</option>
+                        <option value="Research Catalog" <?= $fileInfo['report_type'] == 'Research Catalog' ? 'selected' : '' ?>>Research Catalog</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div>
-            <label class="fw-bold">Report Title<span class="text-danger"> *</span></label>
-            <input type="text" class="form-control" name="textFieldReportsTitle" value="<?php echo $fileInfo['report_title'] ?>" required>
-            <p class="text-secondary my-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"Institutional Research Agenda"</span>.</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <label class="py-2 fw-bold">Publication Year/Year of Effectivity<span class="text-danger"> *</span></label>
+            <div>
+                <label class="fw-bold">Report Title<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control" name="textFieldReportsTitle" value="<?php echo $fileInfo['report_title'] ?>" required>
+                <p class="text-secondary my-2">Please enter the title using <span style="font-weight: bold; text-decoration:underline;">Title Case Capitalization</span>. For example, <span class="fst-italic">"Institutional Research Agenda"</span>.</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-sm-12 py-2">
-                <input type="text" class="form-control" name="textFieldPublicationYear" value="<?php echo $fileInfo['report_year'] ?>" required>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="py-2 fw-bold">Publication Year/Year of Effectivity<span class="text-danger"> *</span></label>
+                </div>
             </div>
-        </div>
-        <div class="row my-2">
-            <div class="col">
-                <label class="form-label fw-bold">Description<span class="text-danger"> *</span></label>
-                <textarea class="form-control" name="textAreaDescription" rows="10" required><?php echo $fileInfo['report_description'] ?></textarea>
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 py-2">
+                    <input type="text" class="form-control" name="textFieldPublicationYear" value="<?php echo $fileInfo['report_year'] ?>" required>
+                </div>
             </div>
-        </div>
+            <div class="row my-2">
+                <div class="col">
+                    <label class="form-label fw-bold">Description<span class="text-danger"> *</span></label>
+                    <textarea class="form-control" name="textAreaDescription" rows="10" required><?php echo $fileInfo['report_description'] ?></textarea>
+                </div>
+            </div>
 
-        <div class="row my-2">
+            <div class="row my-2">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
+                    <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if ($fileInfo['file1_shown']) {
+                                                                                                                            echo 'checked';
+                                                                                                                        } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
                     <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir2']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']) ?></a></label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo"  name='file2Shown' <?php if($fileInfo['file2_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if ($fileInfo['file2_shown']) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefaultTwo">Show in Repository</label>
                     </div>
                 </div>
             </div>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitJournalButton">
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitJournalButton">
+                </div>
             </div>
-        </div>
 
-    </form>
+        </form>
+    </div>
 </div>
-                                                                                                                                            </div>
 <script type="text/javascript">
-    $("form[name='reports-form']").on("submit", function(event){
-            event.preventDefault();
-            var fileId = event.target.dataset.id
-            var formData = new FormData(this);
-            formData.append("fileId", fileId);
-            $.ajax({
-                method: "POST",
-                url: "../../src/process/update-file.php",
-                data: formData,
-                contentType: false,
-                processData: false,
-            }).done(function(data){
-                window.scrollTo(0, 0);
-                if (data.response === "error") {
-                    $("#alert-container-reports").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "success") {
-                    $("#alert-container-reports").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Published successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "revision") {
-                    $("#alert-container-reports").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-            })
+    $("form[name='reports-form']").on("submit", function(event) {
+        event.preventDefault();
+        var fileId = event.target.dataset.id
+        var formData = new FormData(this);
+        formData.append("fileId", fileId);
+        $.ajax({
+            method: "POST",
+            url: "../../src/process/update-file.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+        }).done(function(data) {
+            window.scrollTo(0, 0);
+            if (data.response === "error") {
+                $("#alert-container-reports").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            }
+            if (data.response === "success") {
+                $("#alert-container-reports").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Published successfully!</strong> You may now check your work inside the repository.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            }
+            if (data.response === "revision") {
+                $("#alert-container-reports").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            }
         })
+    })
 </script>

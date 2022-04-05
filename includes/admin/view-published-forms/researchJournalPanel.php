@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     <h5>Submission Details</h5>
     <hr>
     <p class="side-menu-text">Submitted by:</p>
-    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader'];?></p>
+    <p class="side-menu-text" name="author-submitted"><?php echo $fileInfo['file_uploader']; ?></p>
     <hr>
     <p class="side-menu-text">Submitted on:</p>
     <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
@@ -31,8 +31,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <p class="side-menu-text" name="date-submitted"><?php echo $fileInfo['submitted_on']; ?></p>
         <hr>
         <p class="side-menu-text">Published on:</p>
-    <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
-    <hr>
+        <p class="side-menu-text" name="date-published"><?php echo $fileInfo['published_on']; ?></p>
+        <hr>
     </div>
     <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
         <!-- container for alert messages -->
@@ -129,14 +129,18 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="row my-2">
                 <label class="fw-bold mb-3">Attached Files</label>
                 <div class="col">
-                <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
+                    <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name']) ?></a></label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  name='file1Shown' <?php if($fileInfo['file1_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name='file1Shown' <?php if ($fileInfo['file1_shown']) {
+                                                                                                                            echo 'checked';
+                                                                                                                        } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Show in Repository</label>
                     </div>
                     <label class="my-2"><a href="../../src/<?php echo htmlspecialchars($fileInfo['file_dir2']) ?>" target="_blank"><?php echo htmlspecialchars($fileInfo['file_name2']) ?></a></label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo"  name='file2Shown' <?php if($fileInfo['file2_shown']){echo 'checked';} ?>>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTwo" name='file2Shown' <?php if ($fileInfo['file2_shown']) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                         <label class="form-check-label" for="flexSwitchCheckDefaultTwo">Show in Repository</label>
                     </div>
                 </div>
@@ -153,7 +157,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </form>
     </div>
     <script>
-        $("form[name='journal-form']").on("submit", function(event){
+        $("form[name='journal-form']").on("submit", function(event) {
             event.preventDefault();
             var fileId = event.target.dataset.id
 
@@ -166,16 +170,16 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 data: formData,
                 contentType: false,
                 processData: false,
-            }).done(function(data){
+            }).done(function(data) {
                 window.scrollTo(0, 0);
                 if (data.response === "error") {
                     $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
                 if (data.response === "success") {
-                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Published successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Published successfully!</strong> You may now check your work inside the repository.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
                 if (data.response === "revision") {
-                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
             })
         })
