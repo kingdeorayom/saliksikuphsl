@@ -66,7 +66,7 @@ $maincssVersion = filemtime('styles/custom/main-style.css');
                 <li>Upon successful verification, you will be able to reset your password.</li>
                 <li>For any issues, you may email <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a> for assistance.</li>
             </ul>
-            <h5 class="fw-bold">My login doesn't work, what should I do?</h5>
+            <!-- <h5 class="fw-bold">My login doesn't work, what should I do?</h5>
             <ul>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
                 <li>Proin sodales pulvinar tempor.</li>
@@ -75,7 +75,7 @@ $maincssVersion = filemtime('styles/custom/main-style.css');
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
                 <li>Proin sodales pulvinar tempor.</li>
                 <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-            </ul>
+            </ul> -->
             <hr class="my-5">
 
             <h3 class="fw-bold my-5" id="faq2">Adding works to SALIKSIK: UPHSL Research Repository</h3>
