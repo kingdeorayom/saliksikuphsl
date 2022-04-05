@@ -1,4 +1,14 @@
+var options = {
+  month: "long",
+  day: "2-digit",
+  year: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+};
 export function pendingThesisTemplate(result) {
+  var date = new Date(result.submitted_on);
+  var strDate = date.toLocaleString("default", options);
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
     <div class="row">
         <div class="col">
@@ -25,14 +35,14 @@ export function pendingThesisTemplate(result) {
     </div>
     
     <div class="row">
-        <p><span class="fw-bold">Submitted on:</span> ${escapeHtml(
-          result.submitted_on
-        )}</p>
+        <p><span class="fw-bold">Submitted on:</span> ${escapeHtml(strDate)}</p>
     </div>
     </div>`;
   return template;
 }
 export function revisionThesisTemplate(result) {
+  var date = new Date(result.returned_on);
+  var strDate = date.toLocaleString("default", options);
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
         <div class="row">
             <div class="col">
@@ -58,9 +68,7 @@ export function revisionThesisTemplate(result) {
             <h4 class="mb-3">${escapeHtml(result.research_title)}</h4>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Returned on:</span> ${
-              result.returned_on
-            }</p>
+            <p><span class="fw-bold">Returned on:</span> ${strDate}</p>
         </div>
         <div class="row mb-3">
             <div class="col">
@@ -106,6 +114,8 @@ export function revisedThesisTemplate(result) {
 }
 
 export function publishedThesisTemplate(result) {
+  var date = new Date(result.published_on);
+  var strDate = date.toLocaleString("default", options);
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
     <div class="row">
             <div class="col">
@@ -131,14 +141,14 @@ export function publishedThesisTemplate(result) {
                 <p>${escapeHtml(result.research_abstract)}</p>
         </div>
         <div class="row">
-            <p><span class="fw-bold">Published on:</span> ${escapeHtml(
-              result.published_on
-            )}</p>
+            <p><span class="fw-bold">Published on:</span> ${strDate}</p>
         </div>
         </div>`;
   return template;
 }
 export function publishedInfographicTemplate(result) {
+  var date = new Date(result.published_on);
+  var strDate = date.toLocaleString("default", options);
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
         <div class="row">
                 <div class="col">
@@ -164,14 +174,14 @@ export function publishedInfographicTemplate(result) {
                     <p>${escapeHtml(result.infographic_description)}</p>
             </div>
             <div class="row">
-                <p><span class="fw-bold">Published on:</span> ${escapeHtml(
-                  result.published_on
-                )}</p>
+                <p><span class="fw-bold">Published on:</span> ${strDate}</p>
             </div>
             </div>`;
   return template;
 }
 export function publishedJournalTemplate(result) {
+  var date = new Date(result.published_on);
+  var strDate = date.toLocaleString("default", options);
   var template = `<div class="box p-3 my-3" style="background-color: #f5f5f5;">
                   <div class="row">
                       <div class="col">
@@ -195,9 +205,7 @@ export function publishedJournalTemplate(result) {
                         <p>${escapeHtml(result.journal_description)}</p>
                   </div>
                     <div class="row">
-                    <p><span class="fw-bold">Published on:</span> ${escapeHtml(
-                      result.published_on
-                    )}</p>
+                    <p><span class="fw-bold">Published on:</span> ${strDate}</p>
                     </div>
                   </div>`;
   return template;

@@ -67,7 +67,7 @@ if(isset($_POST['dropdownResourceTypeReports'],$_POST['textFieldReportsTitle'],$
                     $statement->close();
 
                     $statement = $connection->prepare('INSERT INTO reports_information(file_ref_id, report_type, report_title, report_year, report_description) VALUES(?,?,?,?,?)');
-                    $statement->bind_param('issis',$insertedId,$_POST['dropdownResourceTypeReports'],$_POST['textFieldReportsTitle'],$_POST['textFieldPublicationYear'],$_POST['textAreaDescription']);
+                    $statement->bind_param('issss',$insertedId,$_POST['dropdownResourceTypeReports'],$_POST['textFieldReportsTitle'],$_POST['textFieldPublicationYear'],$_POST['textAreaDescription']);
                     $statement->execute();
                     $statement->close();
 

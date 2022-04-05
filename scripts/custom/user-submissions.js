@@ -56,6 +56,15 @@ function loadData(data) {
   if ($(".revised  > div").length == 0) {
     $(".revised").hide();
   }
+  if (
+    $(".revised  > div").length == 0 &&
+    $(".forRevision  > div").length == 0 &&
+    $(".pendingApproval  > div").length == 0
+  ) {
+    $(".submissions").html(
+      "<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>"
+    );
+  }
   if ($(".published > div > div").length == 0) {
     $(".published").html(
       "<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>"
