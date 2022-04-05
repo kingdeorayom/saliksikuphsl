@@ -8,7 +8,7 @@
     <title>Error</title>
     <?php include_once 'assets/fonts/google-fonts.php' ?>
 
-    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/styles/bootstrap/bootstrap.css" type="text/css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         <div class="row my-5 d-flex">
             <div class="col-sm-12 col-md-4 d-flex align-items-center">
                 <div class="text-center">
-                    <img src="../../../assets/images/core/error-image.png" alt="" class="img-fluid" width="350">
+                    <img src="/assets/images/core/error-image.png" alt="" class="img-fluid" width="350">
                 </div>
             </div>
             <div class="col-sm-12 col-md-8" style="font-family: Roboto, sans-serif; color: #012256">
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="/scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

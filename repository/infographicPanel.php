@@ -56,7 +56,7 @@ $date_time = date_format($date_time,"M d, Y");
                         <label class='fw-bold mb-3'>Attached Files</label>
                         <div class='col'>
                         <?php if($fileInfo['file1_shown']):?>
-                            <a href="../src/<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i><?php echo htmlspecialchars($fileInfo['file_name']); ?></button></a>
+                            <a href="../src/<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file mx-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i>Infographic</button></a>
                         <?php endif?>
                         </div>
                     </div>
