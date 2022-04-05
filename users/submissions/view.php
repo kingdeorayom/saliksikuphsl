@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
     $file = $result->fetch_assoc();
     $statement->close();
 
-    if($file['user_id']!=$_SESSION['userid']){
+    if ($file['user_id'] != $_SESSION['userid']) {
         die();
         // not the file uploader
     }
@@ -106,14 +106,13 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
     <section class="submit-research">
         <div class="container p-5">
             <div class="row">
-                <?php 
-                if($fileInfo['status']=='pending'){
-                    if($fileInfo['file_type']=='thesis'){
+                <?php
+                if ($fileInfo['status'] == 'pending') {
+                    if ($fileInfo['file_type'] == 'thesis') {
                         include_once '../../includes/view-submission-forms/thesisDissertationPanel.php';
                     }
-                }
-                else if ($fileInfo['status']=='for revision'){
-                    if($fileInfo['file_type']=='thesis'){
+                } else if ($fileInfo['status'] == 'for revision') {
+                    if ($fileInfo['file_type'] == 'thesis') {
                         include_once '../../includes/view-revision-forms/thesisDissertationPanel.php';
                     }
                 }
@@ -131,31 +130,32 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../scripts/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
-        $("form[name='thesis-form']").on('submit', function (e) {
+        $("form[name='thesis-form']").on('submit', function(e) {
             e.preventDefault();
             var id = $(this).data('id');
             var coauthor_id = $(this).data('coauthor_id');
             var formData = new FormData(this);
-            formData.append("coauthor_id",coauthor_id)
+            formData.append("coauthor_id", coauthor_id)
             $.ajax({
                 method: "POST",
-                url:"../../src/process/user-update-submission.php?id="+id,
+                url: "../../src/process/user-update-submission.php?id=" + id,
                 contentType: false,
                 processData: false,
                 data: formData
-            }).done(function(data){
+            }).done(function(data) {
                 window.scrollTo(0, 0);
                 if (data.response === "error") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with submitting data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Error with submitting data.</strong> Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
                 if (data.response === "success") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Resubmitted sucessfully! Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Resubmitted sucessfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
             })
         })
         $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
                 <span class='badge rounded-pill' style='background-color:#012265'>New</span>
             </div>`)
+
         function enableDisableResubmitButtonThesis(checkBoxStatus) {
             if (checkBoxStatus.checked) {
                 document.getElementById("resubmitButtonThesis").disabled = false;
@@ -163,9 +163,8 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
                 document.getElementById("resubmitButtonThesis").disabled = true;
             }
         }
-    
     </script>
-    
+
 </body>
 
 </html>
