@@ -544,6 +544,41 @@ $year = date_format($date_time,"Y");
         </form>
 
     </div>
+    <script type="text/javascript">
+        $("form[name='thesis-form']").on('submit', function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var coauthor_id = $(this).data('coauthor_id');
+            var formData = new FormData(this);
+            formData.append("coauthor_id", coauthor_id)
+            $.ajax({
+                method: "POST",
+                url: "../../src/process/user-update-submission.php?id=" + id,
+                contentType: false,
+                processData: false,
+                data: formData
+            }).done(function(data) {
+                window.scrollTo(0, 0);
+                if (data.response === "error") {
+                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Error with submitting data.</strong> Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "success") {
+                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Resubmitted sucessfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+            })
+        })
+        $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
+                <span class='badge rounded-pill' style='background-color:#012265'>New</span>
+            </div>`)
+
+        function enableDisableResubmitButtonThesis(checkBoxStatus) {
+            if (checkBoxStatus.checked) {
+                document.getElementById("resubmitButtonThesis").disabled = false;
+            } else {
+                document.getElementById("resubmitButtonThesis").disabled = true;
+            }
+        }
+    </script>
     <script>
     $(document).ready(function() {
         var categoryDropdown = $("#dropdownResearchersCategory");
