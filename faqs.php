@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -51,12 +51,13 @@ $maincssVersion = filemtime('styles/custom/main-style.css');
             <h5>Click the following topics for answers to FAQs related to the UPHSL Research Repository or scroll to see each section:</h5>
             <ul>
                 <li><a href="#faq1" class="faq-link">Login to the Repository</a></li>
-                <li><a href="#faq2" class="faq-link">Adding Publication Details</a></li>
-                <li><a href="#faq3" class="faq-link">Adding Theses</a></li>
-                <li><a href="#faq4" class="faq-link">Copyright and Take-down Requests</a></li>
+                <li><a href="#faq2" class="faq-link">Adding works to SALIKSIK: UPHSL Research Repository</a></li>
+                <li><a href="#faq3" class="faq-link">Viewing works in SALIKSIK: UPHSL Research Repository</a></li>
             </ul>
             <hr class="my-5">
-            <h3 class="fw-bold mb-3" id="faq1">Login to the Repository</h3>
+
+            <h3 class="fw-bold my-5" id="faq1">Login to the Repository</h3>
+
             <h5 class="fw-bold">How do I login?</h5>
             <ul>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
@@ -78,21 +79,26 @@ $maincssVersion = filemtime('styles/custom/main-style.css');
                 <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
             </ul>
             <hr class="my-5">
-            <h3 class="fw-bold mb-3" id="faq2">Adding publication details to the UPHSL Research Repository</h3>
-            <h5 class="fw-bold">I have received an email notification that a publication record has been added to the UPHSLResearch Repository. What do I do next?</h5>
+
+            <h3 class="fw-bold my-5" id="faq2">Adding works to SALIKSIK: UPHSL Research Repository</h3>
+
+            <h5 class="fw-bold">Who can submit scholarly work in the SALIKSIK: UPHSL Research Repository?</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-            <h5 class="fw-bold">How do I add my publications into the UWA Profiles and Research Repository?</h5>
+            <h5 class="fw-bold">I have completed my degree at UPHSL but my thesis is not listed in the SALIKSIK: UPHSL Research Repository. Can it be added?</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            <h5 class="fw-bold">I have received an email notification that my work has been published to the SALIKSIK: UPHSL Research Repository. What do I do next?</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            <h5 class="fw-bold">I have received an email notification that my submission has been returned. What do I do next?</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
             <hr class="my-5">
-            <h3 class="fw-bold mb-3" id="faq3">Adding theses to the UPHSL Research Repository</h3>
-            <h5 class="fw-bold">I have completed my degree at UPHSL but my thesis is not listed in the UWA Profiles and Research Repository. Can it be added?</h5>
+
+            <h3 class="fw-bold my-5" id="faq3">Viewing works in SALIKSIK: UPHSL Research Repository</h3>
+
+            <h5 class="fw-bold">Can I access the full-text of theses and dissertations?</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-            <h5 class="fw-bold">I completed my degree at a different institution - can I upload my thesis in the UWA Profiles and Research Repository?</h5>
+            <h5 class="fw-bold">Are all theses, dissertations, and research works in the library included in SALIKSIK: UPHSL Research Repository?</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-            <hr class="my-5">
-            <h3 class="fw-bold mb-3" id="faq4">Copyright and take-down requests</h3>
-            <h5 class="fw-bold">Copyright and take-down requests</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+
         </div>
     </section>
 
