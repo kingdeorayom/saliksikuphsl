@@ -55,7 +55,7 @@ $statement->close();
         <div class="container">
             <div class="jumbotron">
                 <h1 id="masthead-title-text">Welcome to the UPHSL Research Repository</h1>
-                <p class="mt-3" id="masthead-content-text" style="text-align:start">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <p class="mt-3" id="masthead-content-text" style="text-align:start">UPHSL Research Repository is an online tool and database where you can view, upload and download materials pertaining to research outputs of the university. It allows you to have access to a wide array of research materials in terms of a given time period, particular college/department, or research areas. It also provides access to the annual reports, research competency development program, institutional research agenda and other relevant research documents of the Research Center.</p>
             </div>
         </div>
     </section>
@@ -248,13 +248,13 @@ $statement->close();
                 </div>
             </div>
             <div class="row d-flex justify-content-center m-5">
-            <?php foreach($thesis_count as $key => $row): ?>
-                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
-                    <img src="assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5">
-                    <p class="repository-metrics-counter"><?php echo number_format($row['count'])?></p>
-                    <p class="repository-metrics-p-text"><?php echo $row['resource_type'];?></p>
-                </div>
-            <?php endforeach; ?>
+                <?php foreach ($thesis_count as $key => $row) : ?>
+                    <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
+                        <img src="assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5">
+                        <p class="repository-metrics-counter"><?php echo number_format($row['count']) ?></p>
+                        <p class="repository-metrics-p-text"><?php echo $row['resource_type']; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
@@ -271,8 +271,7 @@ $statement->close();
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-5 col-md-12 m-1">
                     <p class="promotion-header-text h2">Why submit your research?</p>
-                    <p class="promotion-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui iusto facilis, voluptas ipsa totam, necessitatibus, quod pariatur praesentium natus magnam ducimus. Sequi, laudantium rem magnam iure nisi provident reiciendis impedit.</p>
-                    <p class="promotion-content-text">Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+                    <p class="promotion-content-text">Submitting your work to UPHSL research repository will help the university in its improved document management system through which the tracking and storing electronic documents such as PDFs, word processing files and digital images of paper-based content becomes more accessible and efficient.</p>
                     <p class="text-end">
                         <a class="btn btn-link btn-lg masthead-link" href="./about.php" role="button">Learn more</a>
                     </p>

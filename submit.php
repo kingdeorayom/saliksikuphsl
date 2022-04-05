@@ -65,25 +65,27 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="submitPanel">
                     <h1 class="my-2">Submit</h1>
                     <div class="row">
-                        <hr class="my-4">
+                        <hr class="my-2">
+                        <h2 class="my-4">Why should I submit my work?</h2>
+                        <p>Submitting your work to UPHSL research repository will help the university in its improved document management system through which the tracking and storing electronic documents such as PDFs, word processing files and digital images of paper-based content becomes more accessible and efficient.</p>
+                        <hr class="my-3">
                         <h2 class="my-4">What are the benefits of having my research on the Repository?</h2>
                         <div class="col-lg-12">
-                            <p>Currently, the types of research outputs that will be accepted into the Repository include the following:</p>
-                            <ul>
-                                <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                                <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                                <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                                <li>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                            </ul>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic nulla laboriosam, magni nostrum quibusdam alias doloremque minima iste consequatur, ea reprehenderit, ab in iure aliquid illum. A dolor explicabo molestias?</p>
+                            <p>The benefits include:</p>
+                            <ol type="1">
+                                <li>Ease of submitting research as terminal requirement making you secure your graduation clearance from the Research Center.</li>
+                                <li>Quick access to your research works in case you need it for academic purposes.</li>
+                                <li>Facilitation of review of related literature and studies which are produced by the student and faculty researchers of the university.</li>
+                                <li>Ease of accessing university research materials online wherever you are.</li>
+                            </ol>
                             <hr class="my-4">
                             <h2 class="my-4">How do I submit my research?</h2>
                             <div class="col-lg-12">
-                                <p>To submit a copy of your thesis you are required to complete the Thesis Deposit Form (link below) - your thesis can be attached to the Form:</p><br>
+                                <p>To submit a copy of your work you are required to complete the Submission Form. Please read the submission guidelines first by clicking the button below.</p><br>
                                 <div class="text-center">
                                     <button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0" id="buttonToSubmission">Submit Research</button>
                                 </div>
-                                <p class="py-5">Please contact <a href="#" target="_blank">research@uphsl.edu.ph</a> if you have any further queries regarding thesis submission.</p>
+                                <!-- <p class="py-5">Please contact <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a> if you have any further queries regarding thesis submission.</p> -->
                             </div>
                         </div>
                     </div>
@@ -91,12 +93,18 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
 
                 <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="submissionGuidelinesPanel" hidden>
                     <h1 class="my-2">Submission Form and Guidelines</h1>
-                    <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+                    <p class="py-3">The following guidelines shall be observed before submitting your work:</p>
+                    <ol type="1">
+                        <li>Ensure that you have followed the research format of your college.</li>
+                        <li>Check the completeness of contents, correctness of contents in terms of grammar and punctuation as well as compliance with your department/college research requirements.</li>
+                        <li>Upload your document only in the assigned folder or link for your college/department.</li>
+                        <li>The filename format should be: <br><br><span style="font-style:italic">researcher/group leader's name (surname and first name)_title_academic year<br><br>Example: Dela Cruz Mark_UPHSL Research Repository_AY2021-2022</span></li>
+                    </ol>
                     <div class="row">
-                        <hr class="my-4">
-                        <h2 class="my-4 fw-bold">General Outline for Manuscript</h2>
+                        <hr class="my-2">
+                        <!-- <h2 class="my-4 fw-bold">General Outline for Manuscript</h2> -->
                         <div class="col-lg-12">
-                            <ul>
+                            <!-- <ul>
                                 <li><span class="fw-bold fst-italic">Introduction.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
                                 <li><span class="fw-bold fst-italic">Methods.</span> Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
                                 <li><span class="fw-bold fst-italic">Results.</span> Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</li>
@@ -110,12 +118,13 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
                                 <p><span class="fw-bold">Abstract.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
                                 <p><span class="fw-bold">Keywords.</span> Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
                             </div>
-                            <hr class="my-5">
+                            <hr class="my-5"> -->
                             <h2 class="my-4 fw-bold">Submit your research</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+                            <p>To submit a copy of your research, click the button below.</p>
                             <div class="text-center">
                                 <a href="submission-forms.php"><button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0 my-5">Submit Research</button></a>
                             </div>
+                            <p class="my-2">Please contact <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a> if you have any further queries regarding thesis submission.</p>
                         </div>
                     </div>
                 </div>
