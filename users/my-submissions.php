@@ -70,7 +70,7 @@ $userSubmissionsJSVersion = filemtime('../scripts/custom/user-submissions.js');
                         <div class="forRevision my-3"  id="revision-container">
                             <h4 class="fw-bold" style="color: #012265;">For revision</h4>
                         </div>
-                        <div class="forRevision my-3"  id="revised-container">
+                        <div class="revised my-3"  id="revised-container">
                             <h4 class="fw-bold" style="color: #012265;">Revised</h4>
                         </div>
                     </div>

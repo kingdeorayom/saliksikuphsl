@@ -504,7 +504,7 @@ $year = date_format($date_time,"Y");
 
             <div class="row">
                 <div class="col">
-                    <a href="../../pages/users/my-submissions.php"><button type="button" class="btn btn-secondary button-cancel rounded-0" id="">Cancel</button></a>
+                    <a href="../my-submissions.php"><button type="button" class="btn btn-secondary button-cancel rounded-0" id="">Cancel</button></a>
                     <button type="submit" class="btn btn-primary button-submit-research rounded-0" id="">Save</button>
                 </div>
             </div>
