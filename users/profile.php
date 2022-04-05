@@ -146,7 +146,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                     <input type="password" class="form-control" name="textFieldNewPassword" required>
                                 </div>
                             </div>
-                            <hr class="my-2">
                             <div class="row my-3">
                                 <div class="text-end">
                                     <input type="submit" class="btn btn-primary button-update rounded-0" value="Change password" id="buttonUpdate">
