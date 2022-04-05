@@ -123,7 +123,7 @@ array_walk_recursive($published, "filter");
                         }
             }
             else{
-                echo '<h5 style="color: grey;"><br>No results found.</h5>';//TODO
+                echo '<h5 style="color: grey; text-align: center;"><br>No results found.</h5>';//TODO
             }
             ?>
             </div>
