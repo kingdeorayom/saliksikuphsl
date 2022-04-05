@@ -78,6 +78,7 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
                     <div class="d-lg-none">
                         <!-- <h1 class="my-4">Copyright & Policies</h1>
                         <hr> -->
+                        <hr class="d-sm-block d-none">
                         <h1 class="my-4">Copyright ownership in a work</h1>
                         <p>While research outputs submitted become part of the UPHSL Research Repository, the authorship remains to a researcher or group of researchers as articulated in the Research and Development Manual of the University and its Intellectual Property Rights policy. It should be noted that the ownership and authorship of researches submitted remain to the author/s even if the materials are already uploaded to the UPHSL Research Repository unless the University Declaration of IP Assignment form is signed.</p>
                         <hr>
