@@ -56,6 +56,12 @@ function submitData() {
 
 function loadData(data) {
   $("#results-container").html("");
+  if (data.length == 0) {
+    $("#results-container").html(
+      "<h5 style='color: grey; text-align:center;'><br>No results found.</h5>"
+    );
+  }
+
   data.forEach((result) => {
     if (result["status"] == "pending") {
       if (result["file_type"] == "thesis") {
