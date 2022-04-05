@@ -345,7 +345,7 @@ foreach ($published as $key => $result) :
                 <img src='src/{$result['file_dir2']}' width='150'>
             </div>
         </div>
-        <hr class='my-2'>
+        <hr class='my-4'>
     </div>";
     } else if ($result['file_type'] === 'infographic') {
         $date_time = date_create($result['infographic_publication_date']);
@@ -424,7 +424,7 @@ foreach ($published as $key => $result) :
                 <img src='src/{$result['file_dir2']}' width='150'>
             </div>
         </div>
-        <hr class='my-2'>
+        <hr class='my-4'>
     </div>";
     }
 

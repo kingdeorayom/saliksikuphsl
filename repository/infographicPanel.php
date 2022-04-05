@@ -27,9 +27,9 @@ $date_time = date_format($date_time,"F Y");
                     <h3><?php echo $article_visits['hits']?></h3>
                     <p>Views</p>
                     <hr>
-                    <h3>24</h3>
+                    <!-- <h3>24</h3>
                     <p>Downloads</p>
-                    <hr>
+                    <hr> -->
                 </div>
 
                 <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column'>
