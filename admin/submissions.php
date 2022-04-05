@@ -119,7 +119,7 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
                             <hr class="mb-4">
                             <!-- results-container shows "No Results!" or something when empty -->
                             <div id="results-container">
-                                <div>No Results!</div>
+                                <div><h5 style="color: grey; text-align:center;"><br>No results found.</h5></div>
                             </div>
                         </div>
                     </div>

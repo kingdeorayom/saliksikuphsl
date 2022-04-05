@@ -76,7 +76,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <form action="../src/process/update-user-profile.php" method="POST">
                             <div class="row">
                                 <div>
-                                    <label class="fw-bold mb-2">Email Address</label>
+                                    <label class="fw-bold mb-2">Email Address <i class="fas fa-question-circle text-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="For security purposes, you can't change your email address."></i></label>
                                     <input type="text" class="form-control" name="textFieldEmailAddress" value="<?php echo $_SESSION['email']; ?>" disabled>
                                 </div>
                             </div>
@@ -123,13 +123,14 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <hr class="my-4">
                         <?php if(isset($_SESSION['changedPassword'])): ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Password changed successfully!</strong>
+                            <strong>Password changed successfully!</strong> In case of forgotten password, proceed to the <strong>Forgot Password</strong> section in the login page to reset your password.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php unset($_SESSION['changedPassword']); endif;?>
                         <?php if(isset($_SESSION['wrongPassword'])): ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Wrong Password!</strong>
+                            
+                        <strong>Password change unsuccessful!</strong> The current password you entered is incorrect.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php unset($_SESSION['wrongPassword']); endif;?>
@@ -146,7 +147,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                     <input type="password" class="form-control" name="textFieldNewPassword" required>
                                 </div>
                             </div>
-                            <hr class="my-2">
                             <div class="row my-3">
                                 <div class="text-end">
                                     <input type="submit" class="btn btn-primary button-update rounded-0" value="Change password" id="buttonUpdate">
@@ -165,8 +165,14 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <?php include_once '../includes/footer.php' ?>
 
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script src="../scripts/popper/popper.min.js"></script>
     <script src="../scripts/bootstrap/bootstrap.js"></script>
-
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>

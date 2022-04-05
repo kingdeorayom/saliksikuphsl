@@ -139,6 +139,15 @@
   color: #ffffff;
 }
 
+.footer-link {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-link:hover {
+  color: white;
+}
+
 .ext-link:hover {
   color: #dcdcdc;
 }

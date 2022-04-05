@@ -41,7 +41,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <h2><?php echo htmlspecialchars($fileInfo['report_title'])?></h2>
                         <p class='fw-bold'><?php echo htmlspecialchars($fileInfo['report_year']) ?></p>
                         <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
-                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
                         }
                         else {
                             echo "<p class='add-bookmark' data-id={$fileInfo['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";

@@ -43,7 +43,7 @@ $date_time = date_format($date_time,"M d, Y");
                     ?>
                     <p><?php echo $date_time?></p>
                     <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
-                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
                     }
                     else {
                         echo "<p class='add-bookmark' data-id={$fileInfo['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";

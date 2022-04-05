@@ -37,10 +37,10 @@
     <div class="container">
         <div class="row px-5">
             <div class="col-sm-12 col-md-3">
-                <p class="text-white">Copyright and Disclaimer</p>
+                <p class="text-white"><a href="../about.php" target="_blank" class="footer-link">Copyright and Disclaimer</a></p>
             </div>
             <div class="col-sm-12 col-md-3">
-                <p class="text-white">Privacy Policy</p>
+                <p class="text-white"><a href="../about.php" target="_blank" class="footer-link">Privacy Policy</a></p>
             </div>
             <div class="col-sm-12 col-md-3">
                 <p class="text-white">Copyright &copy; 2022 UPHSL</p>

@@ -102,7 +102,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                             <input type="text" hidden value="<?php if (isset($_GET['location'])) {
                                                                     echo htmlspecialchars($_GET['location']);
                                                                 } ?>" name="location">
-                            <label>Email</label>
+                            <label>Email <i class="fas fa-question-circle text-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Create an account if you don't have one yet"></i></label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
                             <input class="form-control my-2" type="password" name="textFieldPassword" id="textFieldPassword">
@@ -163,11 +163,18 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
             }
         }
     </script>
+    <script src="/scripts/popper/popper.min.js"></script>
     <script src="scripts/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
         sessionStorage.clear();
     </script>
-
+    <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>
