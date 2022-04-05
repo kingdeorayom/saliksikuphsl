@@ -87,7 +87,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                             <p class='my-3'><?php echo htmlspecialchars($fileInfo['volume_number']) ?></p>
                         </div>
                         <div class='col-lg-3 border-top border-2'>
-                            <h6 class='fw-bold my-3'>Serial Issue Number</h6>
+                            <h6 class='fw-bold my-3'>Series</h6>
                         </div>
                         <div class='col-lg-9 border-top border-2'>
                             <p class='my-3'><?php echo htmlspecialchars($fileInfo['serial_issue_number'])?></p>
