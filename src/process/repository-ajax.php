@@ -383,7 +383,7 @@ foreach ($published as $key => $result) :
                 <img src='src/{$result['file_dir2']}' width='150'>
             </div>
         </div>
-        <hr class='my-2'>
+        <hr class='my-4'>
     </div>";
     }
 
