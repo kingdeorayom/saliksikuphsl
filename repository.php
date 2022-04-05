@@ -615,7 +615,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column">
                     <h1>Suggestions</h1>
-                    <hr class="my-2">
+                    <hr class="my-4">
                     <div id="repository-results-container">
                     </div> 
                 </div>

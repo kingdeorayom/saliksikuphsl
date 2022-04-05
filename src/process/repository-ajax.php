@@ -303,7 +303,7 @@ foreach ($published as $key => $result) :
         else {
             echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
         }
-        echo "<hr class='my-2'>
+        echo "<hr class='my-4'>
     </div>";
     } else if ($result['file_type'] === 'journal') {
         if(strlen($result['journal_description'])>500){
@@ -384,7 +384,7 @@ foreach ($published as $key => $result) :
                 echo "</div>
             </div>
         </div>
-        <hr class='my-2'>
+        <hr class='my-4'>
     </div>";
     }
     else if ($result['file_type'] === 'report') {
