@@ -6,7 +6,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 $date_time = date_create($fileInfo['publication_date']);
-$date_time = date_format($date_time,"M d, Y");
+$date_time = date_format($date_time,"F Y");
 ?>
 
 <section class='submit-research' style="font-family: 'Roboto';">
