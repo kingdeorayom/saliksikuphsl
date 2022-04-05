@@ -282,7 +282,7 @@ foreach ($published as $key => $result) :
         </a>
         <p class='fw-bold'>{$result['researcher_first_name']} {$result['researcher_middle_initial']} {$result['researcher_surname']}";
         for ($i = 1; $i <= $result['research_coauthors_count']; $i++) {
-            echo ", {$result["coauthor{$i}_first_name"]} {$result["coauthor{$i}_middle_initial"]} {$result["coauthor{$i}_surname"]}, ";
+            echo ", {$result["coauthor{$i}_first_name"]} {$result["coauthor{$i}_middle_initial"]} {$result["coauthor{$i}_surname"]}";
         }
         echo "</p>
         <p class='fw-bold'>{$date_time}</p>
