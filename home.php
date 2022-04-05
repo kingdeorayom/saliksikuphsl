@@ -321,6 +321,12 @@ $statement->close();
         $.each(modalInputs, function(key, value) {
             $("#" + key).prop("value", value);
         });
+
+        $("#home-search-bar").on("keyup", function(event){
+            if(event.keyCode==13){
+                $("#button-search").click();
+            }
+        })
     </script>
 </body>
 

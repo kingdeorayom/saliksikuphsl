@@ -136,7 +136,7 @@ if (isset($_POST['title_query']) && $_POST['title_query'] != '') {
     OR ji.journal_title LIKE '%{$_POST["title_query"]}%'
     OR ii.infographic_title LIKE '%{$_POST["title_query"]}%'
     OR rp.report_title LIKE '%{$_POST["title_query"]}%'
-    OR research_type LIKE '%{$_POST["title_query"]}%'
+    OR ri.resource_type LIKE '%{$_POST["title_query"]}%'
     OR ri.researchers_category LIKE '%{$_POST["title_query"]}%'
     OR ri.research_unit LIKE '%{$_POST["title_query"]}%'
     OR ri.research_course LIKE '%{$_POST["title_query"]}%'
@@ -144,9 +144,15 @@ if (isset($_POST['title_query']) && $_POST['title_query'] != '') {
     OR ri.research_fields LIKE '%{$_POST["title_query"]}%'
     OR ri.publication_date LIKE '%{$_POST["title_query"]}%'
     OR ri.keywords LIKE '%{$_POST["title_query"]}%'
+    OR ri.author_first_name LIKE '%{$_POST["title_query"]}%'
+    OR ri.author_surname LIKE '%{$_POST["title_query"]}%'
     OR ii.resource_type LIKE '%{$_POST["title_query"]}%'
     OR ii.infographic_description LIKE '%{$_POST["title_query"]}%'
     OR ii.infographic_publication_date LIKE '%{$_POST["title_query"]}%'
+    OR ii.author_first_name LIKE '%{$_POST["title_query"]}%'
+    OR ii.author_surname LIKE '%{$_POST["title_query"]}%'
+    OR ii.editor_first_name LIKE '%{$_POST["title_query"]}%'
+    OR ii.editor_surname LIKE '%{$_POST["title_query"]}%'
     OR ji.resource_type LIKE '%{$_POST["title_query"]}%'
     OR ji.journal_subtitle LIKE '%{$_POST["title_query"]}%'
     OR ji.department LIKE '%{$_POST["title_query"]}%'
@@ -154,6 +160,8 @@ if (isset($_POST['title_query']) && $_POST['title_query'] != '') {
     OR ji.serial_issue_number LIKE '%{$_POST["title_query"]}%'
     OR ji.ISSN LIKE '%{$_POST["title_query"]}%'
     OR ji.journal_description LIKE '%{$_POST["title_query"]}%'
+    OR ji.chief_editor_first_name LIKE '%{$_POST["title_query"]}%'
+    OR ji.chief_editor_last_name LIKE '%{$_POST["title_query"]}%'
     OR rp.report_type LIKE '%{$_POST["title_query"]}%'
     OR rp.report_year LIKE '%{$_POST["title_query"]}%'
     OR rp.report_description LIKE '%{$_POST["title_query"]}%'
@@ -295,7 +303,7 @@ foreach ($published as $key => $result) :
                 <p class='fw-bold' style='color: #012265;'>Journal </p>
             </div>
             <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-            <img src='src/{$result['file_dir2']}' width='150'>
+            <img src='src/{$result['file_dir2']}' widtresearch_typeh='150'>
             </div>
             <div class='col-sm-12 col-lg-10'>
                 <div class='col'>
