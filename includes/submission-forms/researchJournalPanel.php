@@ -102,7 +102,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <div class="row">
             <div class="col-lg-6 col-sm-12 mb-2">
                 <label class="fw-bold">Email<span class="text-danger"></span></label>
-                <input type="text" class="form-control" name="textFieldEmail">
+                <input type="email" class="form-control" name="textFieldEmail">
                 <label class="text-secondary mt-2">Consider your active email address</label>
             </div>
         </div>

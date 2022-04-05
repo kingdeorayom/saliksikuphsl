@@ -237,7 +237,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 mb-2">
-                <input type="text" class="form-control" name="textFieldEmail" required>
+                <input type="email" class="form-control" name="textFieldEmail" required>
             </div>
             <div class="col-lg-6 col-sm-12 mb-3 d-sm-block d-lg-none">
                 <label class="text-secondary">Consider your active email address</label>
@@ -367,7 +367,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor1" id="textFieldEmailAuthor1">
+                <input type="email" class="form-control" name="textFieldEmailAuthor1" id="textFieldEmailAuthor1">
             </div>
         </div>
         <div class="row" id="co-author-2-td-panel">
@@ -386,7 +386,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor2" id="textFieldEmailAuthor2">
+                <input type="email" class="form-control" name="textFieldEmailAuthor2" id="textFieldEmailAuthor2">
             </div>
         </div>
         <div class="row" id="co-author-3-td-panel">
@@ -405,7 +405,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor3" id="textFieldEmailAuthor3">
+                <input type="email" class="form-control" name="textFieldEmailAuthor3" id="textFieldEmailAuthor3">
             </div>
         </div>
         <div class="row" id="co-author-4-td-panel">
@@ -424,7 +424,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             </div>
             <div class="col-lg-6 col-sm-12 my-2">
                 <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control" name="textFieldEmailAuthor4" id="textFieldEmailAuthor4">
+                <input type="email" class="form-control" name="textFieldEmailAuthor4" id="textFieldEmailAuthor4">
             </div>
         </div>
         <div class="row">
