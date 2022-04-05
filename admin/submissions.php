@@ -83,12 +83,10 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
 
                     <div class="row">
                         <div class="col my-1 mx-1">
-                            <form action="">
                                 <div class="input-group">
                                     <input type="search" autofocus class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions" id="search-submissions-admin" name="title_query">
                                     <button class="btn text-light search-button btn-lg rounded-0" type="button" id="admin-search-button">Search</button>
                                 </div>
-                            </form>
                         </div>
                     </div>
 

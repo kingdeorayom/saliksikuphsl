@@ -333,7 +333,7 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                 
                     $statement = $connection->prepare("UPDATE reports_information SET report_type = ?, report_title = ?, report_year = ?, report_description = ? WHERE file_ref_id = ?");
-                    $statement->bind_param("ssisi",$_POST["dropdownResourceTypeReports"],$_POST["textFieldReportsTitle"],$_POST["textFieldPublicationYear"],$_POST["textAreaDescription"],$_POST['fileId']);
+                    $statement->bind_param("ssssi",$_POST["dropdownResourceTypeReports"],$_POST["textFieldReportsTitle"],$_POST["textFieldPublicationYear"],$_POST["textAreaDescription"],$_POST['fileId']);
                     $statement->execute();
                     
                     $connection->commit();
