@@ -53,7 +53,7 @@ if (isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], 
 
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
-            if ($fileSize < 5000000) {
+            if ($fileSize < 10000000) {
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
                 $result = mysqli_query($connection, $sql); 
                 if (mysqli_num_rows($result) > 0) {
