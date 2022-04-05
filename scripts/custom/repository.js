@@ -160,7 +160,7 @@ $("#repository-results-container").on("click", ".add-bookmark", function () {
   }).done(function (data) {
     console.log(id, data);
     // TODO add notification when bookmark is added
-    container.html("<i class='fas fa-bookmark me-2'></i> Added to Bookmarks");
+    container.html("<i class='fas fa-bookmark me-2'></i> Remove from Bookmarks");
     container.removeClass("add-bookmark");
     container.addClass("del-bookmark");
   });

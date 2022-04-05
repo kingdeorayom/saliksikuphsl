@@ -57,14 +57,14 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <div class="row my-5">
                         <?php if(isset($_SESSION['changedPassword'])): ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Password changed successfully!</strong>
+                        <strong>Password changed successfully!</strong> In case of forgotten password, proceed to the <strong>Forgot Password</strong> section in the login page to reset your password.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php unset($_SESSION['changedPassword']); endif;?>
                         <?php if(isset($_SESSION['wrongPassword'])): ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Wrong Password!</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>Password change unsuccessful!</strong> The current password you entered is incorrect.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php unset($_SESSION['wrongPassword']); endif;?>
                             <div class="col-lg-3">

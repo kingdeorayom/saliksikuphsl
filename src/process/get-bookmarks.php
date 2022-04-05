@@ -64,7 +64,7 @@ if(count($bookmarks)!=0){
             <p class='fw-bold'>{$date_time}</p>
             <p>{$result['research_abstract']}</p>";
             if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
-                echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
             }
             else {
                 echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
@@ -91,7 +91,7 @@ if(count($bookmarks)!=0){
                         <p class='fw-bold'>Volume 11 Series of 2019</p>
                         <p>{$result['journal_description']}</p>";
                         if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
-                            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
                         }
                         else {
                             echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
@@ -123,7 +123,7 @@ if(count($bookmarks)!=0){
                         <p class='fw-bold'>Volume 11 Series of 2019</p>
                         <p>{$result['infographic_description']}</p>";
                         if(in_array($result['file_id'],array_column($bookmarks,'file_id'))){
-                            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
                         }
                         else {
                             echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";

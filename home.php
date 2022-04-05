@@ -250,7 +250,7 @@ $statement->close();
             <div class="row d-flex justify-content-center m-5">
                 <?php foreach ($thesis_count as $key => $row) : ?>
                     <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
-                        <img src="assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5">
+                        <img src="assets/images/repository-metrics/research-file.png" class="repository-metrics-logos my-5">
                         <p class="repository-metrics-counter"><?php echo number_format($row['count']) ?></p>
                         <p class="repository-metrics-p-text"><?php echo $row['resource_type']; ?></p>
                     </div>

@@ -43,7 +43,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         <p class='fw-bold'><?php echo htmlspecialchars($fileInfo['chief_editor_last_name'].", ".$fileInfo['chief_editor_first_name'])?>
                         <p class='fw-bold'>Volume 11 Series of 2019</p>
                         <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
-                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Added to Bookmarks</p>";;
+                        echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
                         }
                         else {
                             echo "<p class='add-bookmark' data-id={$fileInfo['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
