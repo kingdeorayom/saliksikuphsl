@@ -67,7 +67,7 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
 
                     <h1 class="my-4">What is the SALIKSIK: UPHSL Research Repository?</h1>
                     <p>UPHSL Research Repository is an online tool and database where you can view, upload and download materials pertaining to research outputs of the university. It allows you to have access to a wide array of research materials in terms of a given time period, particular college/department, or research areas. It also provides access to the annual reports, research competency development program, institutional research agenda and other relevant research documents of the Research Center.</p>
-                    <hr>
+                    <hr class="my-3">
 
                     <h1 class="my-4">What type of items are included on the Research Repository?</h1>
 
@@ -81,10 +81,10 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
                         <hr class="d-sm-block d-none">
                         <h1 class="my-4">Copyright ownership in a work</h1>
                         <p>While research outputs submitted become part of the UPHSL Research Repository, the authorship remains to a researcher or group of researchers as articulated in the Research and Development Manual of the University and its Intellectual Property Rights policy. It should be noted that the ownership and authorship of researches submitted remain to the author/s even if the materials are already uploaded to the UPHSL Research Repository unless the University Declaration of IP Assignment form is signed.</p>
-                        <hr>
+                        <hr class="my-3">
                         <h1 class="my-4">Copyright information for users</h1>
                         <p>The University reserves the right to use, publish and reproduce IP creation in whatever form i.e. electronic or otherwise for teaching, research and other academic purposes with appropriate notification and acknowledgment of whoever originally owns the materials uploaded, viewed and downloaded through the UPHSL Research Repository. </p>
-                        <hr>
+                        <hr class="my-3">
                         <!-- <h1 class="my-4">Repository Policies</h1>
                         <p><a href="https://digitalarchives.upd.edu.ph/policy">Policy</a></p>
                         <hr> -->
@@ -100,10 +100,10 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
                         <hr> -->
                     <h1 class="my-4">Copyright ownership in a work</h1>
                     <p>While research outputs submitted become part of the UPHSL Research Repository, the authorship remains to a researcher or group of researchers as articulated in the Research and Development Manual of the University and its Intellectual Property Rights policy. It should be noted that the ownership and authorship of researches submitted remain to the author/s even if the materials are already uploaded to the UPHSL Research Repository unless the University Declaration of IP Assignment form is signed.</p>
-                    <hr>
+                    <hr class="my-3">
                     <h1 class="my-4">Copyright information for users</h1>
                     <p>The University reserves the right to use, publish and reproduce IP creation in whatever form i.e. electronic or otherwise for teaching, research and other academic purposes with appropriate notification and acknowledgment of whoever originally owns the materials uploaded, viewed and downloaded through the UPHSL Research Repository. </p>
-                    <hr>
+                    <hr class="my-3">
                     <!-- <h1 class="my-4">Repository Policies</h1>
                         <p><a href="https://digitalarchives.upd.edu.ph/policy">Policy</a></p>
                         <hr> -->
