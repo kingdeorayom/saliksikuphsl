@@ -54,8 +54,8 @@ $statement->close();
     <section class="masthead p-5">
         <div class="container">
             <div class="jumbotron">
-                <h1 id="masthead-title-text">Welcome to the UPHSL Research Repository</h1>
-                <p class="mt-3" id="masthead-content-text" style="text-align:start">UPHSL Research Repository is an online tool and database where you can view, upload and download materials pertaining to research outputs of the university. It allows you to have access to a wide array of research materials in terms of a given time period, particular college/department, or research areas. It also provides access to the annual reports, research competency development program, institutional research agenda and other relevant research documents of the Research Center.</p>
+                <h1 id="masthead-title-text">Welcome to SALIKSIK: UPHSL Research Repository</h1>
+                <p class="mt-3" id="masthead-content-text" style="text-align:start">SALIKSIK: UPHSL Research Repository is an online tool and database where you can view, upload and download materials pertaining to research outputs of the university. It allows you to have access to a wide array of research materials in terms of a given time period, particular college/department, or research areas. It also provides access to the annual reports, research competency development program, institutional research agenda and other relevant research documents of the Research Center.</p>
             </div>
         </div>
     </section>
