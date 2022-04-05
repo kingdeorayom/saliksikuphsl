@@ -159,6 +159,9 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
         }
     </script>
     <script src="scripts/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript">
+    sessionStorage.clear();
+    </script>
 
 </body>
 

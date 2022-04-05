@@ -241,15 +241,15 @@ foreach ($published as $key => $result) :
     array_walk_recursive($result,"filter");
     if ($result['file_type'] === 'thesis') {
         $date_time = date_create($result['publication_date']);
-        $date_time = date_format($date_time,"M d, Y");
+        $date_time = date_format($date_time,"F Y");
         echo "<div class='repositoryItem p-2'>
         <p class='fw-bold text-start' style='color: #012265;'>{$result['research_type']} </p>
         <a href='repository/view-article.php?id={$result['file_id']}' class='article-title'>
             <h4 class='fw-bold mb-3'>{$result['research_title']}</h4>
         </a>
-        <p class='fw-bold'>{$result['researcher_surname']}, {$result['researcher_first_name']}";
+        <p class='fw-bold'>{$result['researcher_first_name']} {$result['researcher_middle_initial']} {$result['researcher_surname']}";
         for ($i = 1; $i <= $result['research_coauthors_count']; $i++) {
-            echo ", {$result["coauthor{$i}_surname"]}, {$result["coauthor{$i}_first_name"]}";
+            echo ", {$result["coauthor{$i}_first_name"]} {$result["coauthor{$i}_middle_initial"]} {$result["coauthor{$i}_surname"]}, ";
         }
         echo "</p>
         <p class='fw-bold'>{$date_time}</p>
@@ -296,7 +296,7 @@ foreach ($published as $key => $result) :
     </div>";
     } else if ($result['file_type'] === 'infographic') {
         $date_time = date_create($result['infographic_publication_date']);
-        $date_time = date_format($date_time,"M d, Y");
+        $date_time = date_format($date_time,"F Y");
         echo "<div class='repositoryItem p-2'>
         <div class='row'>
             <div class='text-start'>

@@ -42,10 +42,19 @@ function loadData(data) {
     }
   });
   // code to show message if no results are found
-  if ($(".submissions > div > div").length == 0) {
-    $(".submissions").html(
-      "<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>"
-    );
+  // if ($(".submissions > div > div").length == 0) {
+  //   $(".submissions").html(
+  //     "<h5 style='color: grey; text-align:center;' class='my-5'>No results found.</h5>"
+  //   );
+  // }
+  if ($(".pendingApproval  > div").length == 0) {
+    $(".pendingApproval").hide();
+  }
+  if ($(".forRevision  > div").length == 0) {
+    $(".forRevision").hide();
+  }
+  if ($(".revised  > div").length == 0) {
+    $(".revised").hide();
   }
   if ($(".published > div > div").length == 0) {
     $(".published").html(
