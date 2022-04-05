@@ -411,6 +411,7 @@ foreach ($published as $key => $result) :
                     <a href='repository/view-article.php?id={$result['file_id']}' class='article-title'>
                         <h4 class='fw-bold mb-3'>{$result['report_title']}</h4>
                     </a>
+                    <p class='fw-bold'>{$result['report_year']}</p>
                     <p>{$result['report_description']}</p>";
                     if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
                         echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
