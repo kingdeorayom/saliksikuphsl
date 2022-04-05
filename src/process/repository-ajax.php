@@ -132,8 +132,7 @@ if (isset($_POST['advanced_from_year']) && $_POST['advanced_from_year'] == '' &&
 }
 
 if (isset($_POST['title_query']) && $_POST['title_query'] != '') {
-    $search = " AND (ri.research_title LIKE 
-    '%{$_POST["title_query"]}%'
+    $search = " AND (ri.research_title LIKE '%{$_POST["title_query"]}%'
     OR ji.journal_title LIKE '%{$_POST["title_query"]}%'
     OR ii.infographic_title LIKE '%{$_POST["title_query"]}%'
     OR rp.report_title LIKE '%{$_POST["title_query"]}%'
