@@ -50,23 +50,21 @@ $maincssVersion = filemtime('styles/custom/main-style.css');
             <hr class="mb-5">
             <h5>Click the following topics for answers to FAQs related to the UPHSL Research Repository or scroll to see each section:</h5>
             <ul>
-                <li><a href="#faq1" class="faq-link">Login to the Repository</a></li>
+                <li><a href="#faq1" class="faq-link">Account-related issues</a></li>
                 <li><a href="#faq2" class="faq-link">Adding works to SALIKSIK: UPHSL Research Repository</a></li>
                 <li><a href="#faq3" class="faq-link">Viewing works in SALIKSIK: UPHSL Research Repository</a></li>
             </ul>
             <hr class="my-5">
 
-            <h3 class="fw-bold my-5" id="faq1">Login to the Repository</h3>
+            <h3 class="fw-bold my-5" id="faq1">Account-related issues</h3>
 
-            <h5 class="fw-bold">How do I login?</h5>
+            <h5 class="fw-bold">I forgot my password. What should I do?</h5>
             <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
-                <li>Proin sodales pulvinar tempor.</li>
-                <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                <li>Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
-                <li>Proin sodales pulvinar tempor.</li>
-                <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+                <li>You can use the email address you used to register your account to reset your password.</li>
+                <li>To do so, go to the login page and click on <strong>Forgot Password</strong>.</li>
+                <li>Provide the email address you used to create your account. A verification code will be sent to the provided email.</li>
+                <li>Upon successful verification, you will be able to reset your password.</li>
+                <li>For any issues, you may email <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a> for assistance.</li>
             </ul>
             <h5 class="fw-bold">My login doesn't work, what should I do?</h5>
             <ul>
@@ -83,22 +81,39 @@ $maincssVersion = filemtime('styles/custom/main-style.css');
             <h3 class="fw-bold my-5" id="faq2">Adding works to SALIKSIK: UPHSL Research Repository</h3>
 
             <h5 class="fw-bold">Who can submit scholarly work in the SALIKSIK: UPHSL Research Repository?</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-            <h5 class="fw-bold">I have completed my degree at UPHSL but my thesis is not listed in the SALIKSIK: UPHSL Research Repository. Can it be added?</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            <ul>
+                <li>Students from all colleges including Graduate School who finished their final research subject required in their degree (e.g. Thesis, Capstone, Masteral Thesis, Dissertation) are all required to submit their work in this repository.</li>
+                <li>Faculty, Department Heads, and Non-teaching Personnel from Basic Education Department, Senior High School, all Colleges, Graduate School, and Support Services Departments can submit their research works.</li>
+            </ul>
+            <!-- <h5 class="fw-bold">I have completed my degree at UPHSL but my thesis is not listed in the SALIKSIK: UPHSL Research Repository. Can it be added?</h5>
+            <ul>
+                <li>Students from all colleges including Graduate School who finished their final research subject required in their degree (e.g. Thesis, Capstone, Masteral Thesis, Dissertation) are all required to submit their work in this repository.</li>
+                <li>Faculty, Department Heads, and Non-teaching Personnel from Basic Education Department, Senior High School, all Colleges, Graduate School, and Support Services Departments can submit their research works.</li>
+            </ul> -->
             <h5 class="fw-bold">I have received an email notification that my work has been published to the SALIKSIK: UPHSL Research Repository. What do I do next?</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            <ul>
+                <li>You can search or browse your research work inside the repository.</li>
+                <li>If you are a graduating student, you may now proceed to the Research and Development Center for the signing of clearance.</li>
+            </ul>
+
             <h5 class="fw-bold">I have received an email notification that my submission has been returned. What do I do next?</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            <ul>
+                <li>Follow the provided feedback accordingly. After performing the feedback, update your submission located in “My Submission” under your profile, then resubmit your work.</li>
+            </ul>
+
             <hr class="my-5">
 
             <h3 class="fw-bold my-5" id="faq3">Viewing works in SALIKSIK: UPHSL Research Repository</h3>
 
             <h5 class="fw-bold">Can I access the full-text of theses and dissertations?</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            <ul>
+                <li>Yes, full-text manuscripts are open-access, they can be viewed and downloaded.</li>
+                <li>If there are no displayed manuscripts in an article, you can still access it by sending a request at <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a>.</li>
+            </ul>
             <h5 class="fw-bold">Are all theses, dissertations, and research works in the library included in SALIKSIK: UPHSL Research Repository?</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-
+            <ul>
+                <li>As of the moment, only recent works are available inside the repository. Old research works stored in the library are not yet available here.</li>
+            </ul>
         </div>
     </section>
 
