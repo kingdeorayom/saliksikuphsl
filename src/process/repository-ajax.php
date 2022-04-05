@@ -282,7 +282,7 @@ foreach ($published as $key => $result) :
 
             //if the string doesn't contain any space then it will cut without word basis.
             $result['research_abstract']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-            $result['research_abstract'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}'>Read More</a>";
+            $result['research_abstract'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
 
         }
         echo "<div class='repositoryItem p-2'>
@@ -313,7 +313,7 @@ foreach ($published as $key => $result) :
  
              //if the string doesn't contain any space then it will cut without word basis.
              $result['journal_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-             $result['journal_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}'>Read More</a>";
+             $result['journal_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
  
          }
         
@@ -358,7 +358,7 @@ foreach ($published as $key => $result) :
  
              //if the string doesn't contain any space then it will cut without word basis.
              $result['infographic_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-             $result['infographic_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}'>Read More</a>";
+             $result['infographic_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
  
          }
         echo "<div class='repositoryItem p-2'>
@@ -395,7 +395,7 @@ foreach ($published as $key => $result) :
  
              //if the string doesn't contain any space then it will cut without word basis.
              $result['report_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-             $result['report_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}'>Read More</a>";
+             $result['report_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
  
          }
         echo "<div class='repositoryItem p-2'>
