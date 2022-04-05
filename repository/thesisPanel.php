@@ -24,7 +24,7 @@ $date_time = date_format($date_time,"M d, Y");
                 <div class='col-lg-2 col-md-12 col-sm-12'>
                     <h5 class='fw-bold'>Article Metrics</h5>
                     <hr>
-                    <h3>123</h3>
+                    <h3><?php echo $article_visits['hits']?></h3>
                     <p>Views</p>
                     <hr>
                     <h3>24</h3>
@@ -37,9 +37,9 @@ $date_time = date_format($date_time,"M d, Y");
                     <hr class='my-4'>
                     <p class='fw-bold'>
                     <?php
-                    echo htmlspecialchars($fileInfo['author_surname'].", ".$fileInfo['author_first_name'][0].".");
+                    echo htmlspecialchars($fileInfo['author_surname'].", ".$fileInfo['author_first_name']);
                     for($i = 1; $i <= $fileInfo['coauthors_count']; $i++) {
-                        echo htmlspecialchars(", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"][0]}.");
+                        echo htmlspecialchars(", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"]}.");
                     }
                     ?>
                     <p><?php echo $date_time?> </p>

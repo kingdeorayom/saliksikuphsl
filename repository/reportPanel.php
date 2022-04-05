@@ -23,7 +23,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class='col-lg-2 col-md-12 col-sm-12'>
                     <h5 class='fw-bold'>Article Metrics</h5>
                     <hr>
-                    <h3>123</h3>
+                    <h3><?php echo $article_visits['hits']?></h3>
                     <p>Views</p>
                     <hr>
                     <h3>24</h3>

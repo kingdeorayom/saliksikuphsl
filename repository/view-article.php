@@ -45,6 +45,10 @@ if (isset($_GET['id'])) {
     } else if ($file['status'] != 'published') {
         die();
     } else {
+        $statement = $connection->prepare("INSERT INTO article_visits (article_id, hits) VALUES ($id, 0) ON DUPLICATE KEY UPDATE hits=hits+1");
+        $statement->execute();
+        $statement->close();
+
         if ($file['file_type'] === "thesis") {
             $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information as ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id WHERE file_id= ?");
             $statement->bind_param("i",$id);
@@ -80,6 +84,12 @@ if (isset($_GET['id'])) {
             $fileInfo = $result->fetch_assoc();
             $statement->close();
         }
+        $statement = $connection->prepare("SELECT * FROM article_visits WHERE article_id = ?");
+        $statement->bind_param("i",$id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $article_visits = $result->fetch_assoc();
+        $statement->close();
     }
 } else {
     header("Location: /repository.php");

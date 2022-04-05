@@ -15,10 +15,6 @@ $result = $statement->get_result();
 $thesis_count = $result->fetch_all(MYSQLI_ASSOC);
 $statement->close();
 
-print_r($thesis_count);
-
-
-
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
@@ -96,7 +92,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                         <?php foreach($thesis_count as $key => $row): ?>
                             <div class="col-sm-12 col-lg">
                             <div class="box bg-light text-center border border-2 py-3 my-2">
-                                <img src="../../../assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-3">
+                                <img src="../../../assets/images/repository-metrics/research-file.png" class="repository-metrics-logos my-3">
                                 <h2><?php echo number_format($row['count'])?></h2>
                                 <p><?php echo $row['resource_type'];?></p>
                             </div>

@@ -2,6 +2,7 @@
 
 session_start();
 
+include './includes/connection.php';
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: /index.php");
     die();
@@ -9,6 +10,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
 $maincssVersion = filemtime('styles/custom/main-style.css');
 $pagecssVersion = filemtime('styles/custom/pages/home-style.css');
+
+$statement = $connection->prepare("SELECT ri.resource_type, COUNT(ri.file_ref_id) AS count FROM research_information AS ri GROUP BY ri.resource_type");
+$statement->execute();
+$result = $statement->get_result();
+$thesis_count = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
 
 ?>
 
@@ -241,24 +248,13 @@ $pagecssVersion = filemtime('styles/custom/pages/home-style.css');
                 </div>
             </div>
             <div class="row d-flex justify-content-center m-5">
-
+            <?php foreach($thesis_count as $key => $row): ?>
                 <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
-                    <img src="assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5" alt="Research Outputs">
-                    <p class="repository-metrics-counter" id="research-output-counter">10,025</p>
-                    <p class="repository-metrics-p-text">Research Outputs</p>
+                    <img src="assets/images/repository-metrics/research-outputs.png" class="repository-metrics-logos my-5">
+                    <p class="repository-metrics-counter"><?php echo number_format($row['count'])?></p>
+                    <p class="repository-metrics-p-text"><?php echo $row['resource_type'];?></p>
                 </div>
-
-                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
-                    <img src="assets/images/repository-metrics/authors.png" class="repository-metrics-logos my-5" alt="Authors">
-                    <p class="repository-metrics-counter" id="authors-counter">10,025</p>
-                    <p class="repository-metrics-p-text">Authors</p>
-                </div>
-
-                <div class="col-lg-3 col-sm-12 repository-metrics-column-item m-3 text-center rounded-0">
-                    <img src="assets/images/repository-metrics/total-downloads.png" class="repository-metrics-logos my-5" alt="Total Downloads">
-                    <p class="repository-metrics-counter" id="total-downloads-counter">10,025</p>
-                    <p class="repository-metrics-p-text">Total Downloads</p>
-                </div>
+            <?php endforeach; ?>
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center">
