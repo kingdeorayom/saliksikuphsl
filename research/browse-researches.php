@@ -185,15 +185,81 @@ array_walk_recursive($published, "filter");
                             <div class='accordion-body'>";
                                 foreach ($published as $key => $item) {
                                     if ($item['file_type'] == 'journal' && $item['department'] == $result) {
-                                        echo "
-                                    <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                        <p>{$item['journal_title']}</p>
-                                    </a>";
+                                        if(strlen($item['journal_description'])>500){
+                                            // truncate string
+                                             $stringCut = substr($item['journal_description'], 0, 500);
+                                             $endPoint = strrpos($item['journal_description'], ' ');
+                                 
+                                             //if the string doesn't contain any space then it will cut without word basis.
+                                             $item['journal_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                             $item['journal_description'] .= "... <a href='../repository/view-article.php?id={$item['file_id']}' class='read-more'>Read More</a>";
+                                 
+                                         }
+                                        echo "<div class='row'>
+                                        <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-10'>
+                                            <div class='col'>
+                                                <a href='../repository/view-article.php?id={$item['file_id']}' class='article-title'>
+                                                    <h4 class='fw-bold mb-3'>{$item['journal_title']}</h4>
+                                                </a>
+                                                <p class='fw-bold'>{$item['serial_issue_number']}</p>
+                                                <p>{$item['journal_description']}</p></div>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                            <img src='src/{$item['file_dir2']}' width='150'>
+                                        </div>
+                                    </div>";
                                     }
                                 }
                                 echo "</div>
                         </div>
                     </div>";
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
+                    <h1 class="my-2">Browse Infographics</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="accordion accordion-flush">
+                            <?php
+                            foreach ($published as $key => $item) {
+                                if ($item['file_type'] == 'infographic') {
+                                    $date_time = date_create($item['infographic_publication_date']);
+                                    $date_time = date_format($date_time,"F Y");
+
+                                    if(strlen($item['infographic_description'])>500){
+                                        // truncate string
+                                        $stringCut = substr($item['infographic_description'], 0, 500);
+                                        $endPoint = strrpos($item['infographic_description'], ' ');
+                            
+                                        //if the string doesn't contain any space then it will cut without word basis.
+                                        $item['infographic_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                        $item['infographic_description'] .= "... <a href='/repository/view-article.php?id={$item['file_id']}' class='read-more'>Read More</a>";
+                            
+                                    }
+                                    echo "<div class='repositoryItem p-2'>
+                                    <div class='row'>
+                                        <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                        </div>
+                                        <div class='col-sm-12 col-lg-10'>
+                                            <div class='col'>
+                                                <a href='../repository/view-article.php?id={$item['file_id']}' class='article-title'>
+                                                    <h4 class='fw-bold mb-3'>{$item['infographic_title']}</h4>
+                                                </a>
+                                                <p class='fw-bold'>{$date_time}</p>
+                                                <p>{$item['infographic_description']}</p>";
+                                            echo "</div>
+                                        </div>
+                                    </div>
+                                    <hr class='my-4'>
+                                </div>";
+                                }
                             }
                             ?>
                         </div>
@@ -207,11 +273,33 @@ array_walk_recursive($published, "filter");
                         <div class="browseResearchCatalogs">
                         <?php
                             foreach ($published as $key => $item) {
-                                if ($item['report_type'] == 'Research Catalogs') {
-                                    echo "
-                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                    <p>{$item['report_title']}</p>
-                                </a>";
+                                if ($item['report_type'] == 'Research Catalog') {
+                                    if(strlen($item['report_description'])>500){
+                                        // truncate string
+                                         $stringCut = substr($item['report_description'], 0, 500);
+                                         $endPoint = strrpos($item['report_description'], ' ');
+                             
+                                         //if the string doesn't contain any space then it will cut without word basis.
+                                         $item['report_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                         $item['report_description'] .= "... <a href='/repository/view-article.php?id={$item['file_id']}' class='read-more'>Read More</a>";
+                             
+                                     }
+                                    echo "<div class='row'>
+                                    <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    </div>
+                                    <div class='col-sm-12 col-lg-10'>
+                                        <div class='col'>
+                                            <a href='../repository/view-article.php?id={$item['file_id']}' class='article-title'>
+                                                <h4 class='fw-bold mb-3'>{$item['report_title']}</h4>
+                                            </a>
+                                            <p class='fw-bold'>{$item['report_year']}</p>
+                                            <p>{$item['report_description']}</p></div>
+                                    </div>
+                                    <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                    </div>
+                                </div>";
                                 }
                             }
                             ?>
@@ -226,14 +314,36 @@ array_walk_recursive($published, "filter");
                         <div class="browseAnnualReports">
                         <?php
                             foreach ($published as $key => $item) {
-                                if ($item['report_type'] == 'Annual Reports') {
-                                    echo "
-                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                    <p>{$item['report_title']}</p>
-                                </a>";
+                                if ($item['report_type'] == 'Annual Report') {
+                                    if(strlen($item['report_description'])>500){
+                                        // truncate string
+                                         $stringCut = substr($item['report_description'], 0, 500);
+                                         $endPoint = strrpos($item['report_description'], ' ');
+                             
+                                         //if the string doesn't contain any space then it will cut without word basis.
+                                         $item['report_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                         $item['report_description'] .= "... <a href='/repository/view-article.php?id={$item['file_id']}' class='read-more'>Read More</a>";
+                             
+                                     }
+                                    echo "<div class='row'>
+                                    <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    </div>
+                                    <div class='col-sm-12 col-lg-10'>
+                                        <div class='col'>
+                                            <a href='../repository/view-article.php?id={$item['file_id']}' class='article-title'>
+                                                <h4 class='fw-bold mb-3'>{$item['report_title']}</h4>
+                                            </a>
+                                            <p class='fw-bold'>{$item['report_year']}</p>
+                                            <p>{$item['report_description']}</p></div>
+                                    </div>
+                                    <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                    </div>
+                                </div>";
                                 }
                             }
-                            ?>
+                        ?>
                         </div>
                     </div>
                 </div>
@@ -245,11 +355,32 @@ array_walk_recursive($published, "filter");
                         <div class="browseResearchAgenda">
                         <?php
                             foreach ($published as $key => $item) {
-                                if ($item['report_type'] == 'Research Agenda') {
-                                    echo "
-                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                    <p>{$item['report_title']}</p>
-                                </a>";
+                                if ($item['report_type'] == 'Research Agenda') {if(strlen($item['report_description'])>500){
+                                    // truncate string
+                                     $stringCut = substr($item['report_description'], 0, 500);
+                                     $endPoint = strrpos($item['report_description'], ' ');
+                         
+                                     //if the string doesn't contain any space then it will cut without word basis.
+                                     $item['report_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                     $item['report_description'] .= "... <a href='/repository/view-article.php?id={$item['file_id']}' class='read-more'>Read More</a>";
+                         
+                                 }
+                                echo "<div class='row'>
+                                <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                <img src='src/{$item['file_dir2']}' width='150'>
+                                </div>
+                                <div class='col-sm-12 col-lg-10'>
+                                    <div class='col'>
+                                        <a href='../repository/view-article.php?id={$item['file_id']}' class='article-title'>
+                                            <h4 class='fw-bold mb-3'>{$item['report_title']}</h4>
+                                        </a>
+                                        <p class='fw-bold'>{$item['report_year']}</p>
+                                        <p>{$item['report_description']}</p></div>
+                                </div>
+                                <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                </div>
+                            </div>";
                                 }
                             }
                             ?>
@@ -265,42 +396,39 @@ array_walk_recursive($published, "filter");
                         <?php
                             foreach ($published as $key => $item) {
                                 if ($item['report_type'] == 'Research Competency Development Program') {
-                                    echo "
-                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                    <p>{$item['report_title']}</p>
-                                </a>";
+                                    if(strlen($item['report_description'])>500){
+                                        // truncate string
+                                         $stringCut = substr($item['report_description'], 0, 500);
+                                         $endPoint = strrpos($item['report_description'], ' ');
+                             
+                                         //if the string doesn't contain any space then it will cut without word basis.
+                                         $item['report_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                         $item['report_description'] .= "... <a href='/repository/view-article.php?id={$item['file_id']}' class='read-more'>Read More</a>";
+                             
+                                     }
+                                    echo "<div class='row'>
+                                    <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
+                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    </div>
+                                    <div class='col-sm-12 col-lg-10'>
+                                        <div class='col'>
+                                            <a href='../repository/view-article.php?id={$item['file_id']}' class='article-title'>
+                                                <h4 class='fw-bold mb-3'>{$item['report_title']}</h4>
+                                            </a>
+                                            <p class='fw-bold'>{$item['report_year']}</p>
+                                            <p>{$item['report_description']}</p></div>
+                                    </div>
+                                    <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
+                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                    </div>
+                                </div>";
                                 }
                             }
                             ?>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
-                    <h1 class="my-2">Browse Infographics</h1>
-                    <hr>
-                    <div class="row">
-                        <div class="accordion accordion-flush">
-                            <?php
-                            foreach ($published as $key => $item) {
-                                if ($item['file_type'] == 'infographic') {
-                                    echo "
-                                <a href='../repository/view-article.php?id={$item['file_id']}' class='department-title-content'>
-                                    <p>{$item['infographic_title']}</p>
-                                </a>";
-                                }
-                            }
-                            echo "</div>";
-
-                            ?>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
+                
             </div>
         </div>
     </section>
