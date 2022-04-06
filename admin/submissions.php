@@ -24,7 +24,7 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Submissions</title>
+    <title>Submissions</title>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="<?php echo '../scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
