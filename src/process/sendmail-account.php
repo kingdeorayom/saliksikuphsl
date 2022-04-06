@@ -48,7 +48,6 @@ try {
                 </body>';
 
         $mail->send();
-        unset($_SESSION['toVerifyAccountCreation']); ////////////////
     } else if (isset($_SESSION['toVerifyPasswordReset'])) {
 
         $verificationCode = uniqid();
