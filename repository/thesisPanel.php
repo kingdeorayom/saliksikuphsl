@@ -37,9 +37,9 @@ $date_time = date_format($date_time,"F Y");
                     <hr class='my-4'>
                     <p class='fw-bold'>
                     <?php
-                    echo htmlspecialchars($fileInfo['author_surname'].", ".$fileInfo['author_first_name']);
+                    echo htmlspecialchars($fileInfo['author_first_name']." ".$fileInfo['author_surname']);
                     for($i = 1; $i <= $fileInfo['coauthors_count']; $i++) {
-                        echo htmlspecialchars(", {$fileInfo["coauthor{$i}_surname"]}, {$fileInfo["coauthor{$i}_first_name"]}");
+                        echo htmlspecialchars(", {$fileInfo["coauthor{$i}_first_name"]} {$fileInfo["coauthor{$i}_surname"]}");
                     }
                     ?>
                     <p><?php echo $date_time?> </p>
