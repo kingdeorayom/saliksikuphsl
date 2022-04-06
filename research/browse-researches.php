@@ -210,6 +210,7 @@ array_walk_recursive($published, "filter");
                                         <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                                             <img src='../src/{$item['file_dir2']}' width='150'>
                                         </div>
+                                        <hr class='my-4'>
                                     </div>";
                                     }
                                 }
