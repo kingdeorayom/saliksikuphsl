@@ -9,7 +9,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
-print_r($_GET);
 // if (isset($_GET['page'])) {
 //     $page = $_GET['page'];
 // } else {
@@ -196,7 +195,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check mt-2">
-                                        <input class="form-check-input" type="radio" name="exists" value="anywhere" id="radio-button-anywhere" <?php echo (isset($_GET['exists']) && $_GET['exists']=='anywhere') ? "checked" :"" ?>>
+                                        <input class="form-check-input" type="radio" name="exists" value="anywhere" id="radio-button-anywhere" checked <?php echo (isset($_GET['exists']) && $_GET['exists']=='anywhere') ? "checked" :"" ?>>
                                         <label class="form-check-label" for="radio-button-anywhere">anywhere in the article</label>
                                     </div>
                                     <div class="form-check">
