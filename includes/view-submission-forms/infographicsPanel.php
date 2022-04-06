@@ -58,7 +58,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
             </div>
             <div class="col-lg-3 col-sm-12 py-2">
-                <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
+                <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory" id ="dropdownResearchersCategory">
                     <option value="undergraduate" selected>Undergraduate</option>
                     <option value="postgraduate">Postgraduate</option>
                     <option value="faculty">Faculty</option>

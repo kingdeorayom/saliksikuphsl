@@ -61,7 +61,7 @@ $year = date_format($date_time, "Y");
                 </div>
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-                    <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
+                    <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory" id ="dropdownResearchersCategory">
                         <option value="Undergraduate" <?= $fileInfo['researchers_category'] == 'Undergraduate' ? 'selected' : '' ?>>Undergraduate</option>
                         <option value="Postgraduate" <?= $fileInfo['researchers_category'] == 'Postgraduate' ? 'selected' : '' ?>>Postgraduate</option>
                         <option value="Faculty" <?= $fileInfo['researchers_category'] == 'Faculty' ? 'selected' : '' ?>>Faculty</option>
@@ -81,136 +81,135 @@ $year = date_format($date_time, "Y");
 
             <div class="row my-2">
                 <div class="col-lg-6 col-sm-12">
-
                     <div id="dropdownArtsSciences" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Psychology">Bachelor of Science in Psychology</option>
-                            <option value="Bachelor of Arts in Psychology">Bachelor of Arts in Psychology</option>
-                            <option value="Bachelor of Arts in Political Science">Bachelor of Arts in Political Science</option>
-                            <option value="Bachelor of Arts in Communication">Bachelor of Arts in Communication</option>
+                            <option value="Bachelor of Science in Psychology" <?php if($fileInfo['research_course']=='Bachelor of Science in Psychology'){ echo 'selected';}?>>Bachelor of Science in Psychology</option>
+                            <option value="Bachelor of Arts in Psychology" <?php if($fileInfo['research_course']=='Bachelor of Arts in Psychology'){ echo 'selected';}?>>Bachelor of Arts in Psychology</option>
+                            <option value="Bachelor of Arts in Political Science" <?php if($fileInfo['research_course']=='Bachelor of Arts in Political'){ echo 'selected';}?>>Bachelor of Arts in Political Science</option>
+                            <option value="Bachelor of Arts in Communication" <?php if($fileInfo['research_course']=='Bachelor of Arts in Communication'){ echo 'selected';}?>>Bachelor of Arts in Communication</option>
                         </select>
                     </div>
 
                     <div id="dropdownBusinessAccountancy" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Accountancy">Bachelor of Science in Accountancy</option>
-                            <option value="Bachelor of Science in Management Accounting">Bachelor of Science in Management Accounting</option>
-                            <option value="Bachelor of Science in Business Administration Major In Business Management">Bachelor of Science in Business Administration Major In Business Management</option>
-                            <option value="Bachelor of Science in Business Administration Major In Marketing Management">Bachelor of Science in Business Administration Major In Marketing Management</option>
+                            <option value="Bachelor of Science in Accountancy" <?php if($fileInfo['research_course']=='Bachelor of Science in Accountancy'){ echo 'selected';}?>>Bachelor of Science in Accountancy</option>
+                            <option value="Bachelor of Science in Management Accounting" <?php if($fileInfo['research_course']=='Bachelor of Science in Management Accounting'){ echo 'selected';}?>>Bachelor of Science in Management Accounting</option>
+                            <option value="Bachelor of Science in Business Administration Major In Business Management" <?php if($fileInfo['research_course']=='Bachelor of Science in Business Administration Major In Business Management'){ echo 'selected';}?>>Bachelor of Science in Business Administration Major In Business Management</option>
+                            <option value="Bachelor of Science in Business Administration Major In Marketing Management" <?php if($fileInfo['research_course']=='Bachelor of Science in Business Administration Major In Marketing Management'){ echo 'selected';}?>>Bachelor of Science in Business Administration Major In Marketing Management</option>
                         </select>
                     </div>
 
                     <div id="dropdownComputerStudies" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
-                            <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+                            <option value="Bachelor of Science in Information Technology" <?php if($fileInfo['research_course']=='Bachelor of Science in Information Technology'){ echo 'selected';}?>>Bachelor of Science in Information Technology</option>
+                            <option value="Bachelor of Science in Computer Science" <?php if($fileInfo['research_course']=='Bachelor of Science in Computer Science'){ echo 'selected';}?>>Bachelor of Science in Computer Science</option>
                         </select>
                     </div>
 
                     <div id="dropdownCriminology" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Criminology">Bachelor of Science in Criminology</option>
+                            <option value="Bachelor of Science in Criminology" <?php if($fileInfo['research_course']=='Bachelor of Science in Criminology'){ echo 'selected';}?>>Bachelor of Science in Criminology</option>
                         </select>
                     </div>
 
                     <div id="dropdownEducation" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Secondary Education Major in English">Bachelor of Secondary Education Major in English</option>
-                            <option value="Bachelor of Secondary Education Major in Filipino">Bachelor of Secondary Education Major in Filipino</option>
-                            <option value="Bachelor of Secondary Education Major in Mathematics">Bachelor of Secondary Education Major in Mathematics</option>
-                            <option value="Bachelor of Secondary Education Major in Science">Bachelor of Secondary Education Major in Science</option>
-                            <option value="Bachelor of Secondary Education Major in Social Studies">Bachelor of Secondary Education Major in Social Studies</option>
-                            <option value="Bachelor of Elementary Education">Bachelor of Elementary Education</option>
-                            <option value="Bachelor in Library and Information Science">Bachelor in Library and Information Science</option>
-                            <option value="Bachelor of Early Childhood Education">Bachelor of Early Childhood Education</option>
-                            <option value="Bachelor of Special Needs Education">Bachelor of Special Needs Education</option>
-                            <option value="Bachelor of Physical Education">Bachelor of Physical Education</option>
-                            <option value="Education Modular Approach Program">Education Modular Approach Program</option>
+                            <option value="Bachelor of Secondary Education Major in English" <?php if($fileInfo['research_course']=='Bachelor of Secondary Education Major in English'){ echo 'selected';}?>>Bachelor of Secondary Education Major in English</option>
+                            <option value="Bachelor of Secondary Education Major in Filipino" <?php if($fileInfo['research_course']=='Bachelor of Secondary Education Major in Filipino'){ echo 'selected';}?>>Bachelor of Secondary Education Major in Filipino</option>
+                            <option value="Bachelor of Secondary Education Major in Mathematics" <?php if($fileInfo['research_course']=='Bachelor of Secondary Education Major in Mathematics'){ echo 'selected';}?>>Bachelor of Secondary Education Major in Mathematics</option>
+                            <option value="Bachelor of Secondary Education Major in Science" <?php if($fileInfo['research_course']=='Bachelor of Secondary Education Major in Science'){ echo 'selected';}?>>Bachelor of Secondary Education Major in Science</option>
+                            <option value="Bachelor of Secondary Education Major in Social Studies" <?php if($fileInfo['research_course']=='Bachelor of Secondary Education Major in Social Studies'){ echo 'selected';}?>>Bachelor of Secondary Education Major in Social Studies</option>
+                            <option value="Bachelor of Elementary Education" <?php if($fileInfo['research_course']=='Bachelor of Elementary Education'){ echo 'selected';}?>>Bachelor of Elementary Education</option>
+                            <option value="Bachelor in Library and Information Science" <?php if($fileInfo['research_course']=='Bachelor in Library and Information Science'){ echo 'selected';}?>>Bachelor in Library and Information Science</option>
+                            <option value="Bachelor of Early Childhood Education" <?php if($fileInfo['research_course']=='Bachelor of Early Childhood Education'){ echo 'selected';}?>>Bachelor of Early Childhood Education</option>
+                            <option value="Bachelor of Special Needs Education" <?php if($fileInfo['research_course']=='Bachelor of Special Needs Education'){ echo 'selected';}?>>Bachelor of Special Needs Education</option>
+                            <option value="Bachelor of Physical Education" <?php if($fileInfo['research_course']=='Bachelor of Physical Education'){ echo 'selected';}?>>Bachelor of Physical Education</option>
+                            <option value="Education Modular Approach Program" <?php if($fileInfo['research_course']=='Education Modular Approach Program'){ echo 'selected';}?>>Education Modular Approach Program</option>
                         </select>
                     </div>
 
                     <div id="dropdownEngineering" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Mechanical Engineering">Bachelor of Science in Mechanical Engineering</option>
-                            <option value="Bachelor of Science in Industrial Engineering">Bachelor of Science in Industrial Engineering</option>
-                            <option value="Bachelor of Science in Computer Engineering">Bachelor of Science in Computer Engineering</option>
-                            <option value="Bachelor of Science in Electronics Engineering">Bachelor of Science in Electronics Engineering</option>
-                            <option value="Bachelor of Science in Electrical Engineering">Bachelor of Science in Electrical Engineering</option>
-                            <option value="Bachelor of Science in Civil Engineering">Bachelor of Science in Civil Engineering</option>
-                            <option value="Bachelor of Science in Architecture">Bachelor of Science in Architecture</option>
-                            <option value="Bachelor of Science in Aircraft Maintenance Technology">Bachelor of Science in Aircraft Maintenance Technology</option>
+                            <option value="Bachelor of Science in Mechanical Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Mechanical Engineering'){ echo 'selected';}?>>Bachelor of Science in Mechanical Engineering</option>
+                            <option value="Bachelor of Science in Industrial Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Industrial Engineering'){ echo 'selected';}?>>Bachelor of Science in Industrial Engineering</option>
+                            <option value="Bachelor of Science in Computer Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Computer Engineering'){ echo 'selected';}?>>Bachelor of Science in Computer Engineering</option>
+                            <option value="Bachelor of Science in Electronics Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Electronics Engineering'){ echo 'selected';}?>>Bachelor of Science in Electronics Engineering</option>
+                            <option value="Bachelor of Science in Electrical Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Electrical Engineering'){ echo 'selected';}?>>Bachelor of Science in Electrical Engineering</option>
+                            <option value="Bachelor of Science in Civil Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Civil Engineering'){ echo 'selected';}?>>Bachelor of Science in Civil Engineering</option>
+                            <option value="Bachelor of Science in Architecture" <?php if($fileInfo['research_course']=='Bachelor of Science in Architecture'){ echo 'selected';}?>>Bachelor of Science in Architecture</option>
+                            <option value="Bachelor of Science in Aircraft Maintenance Technology" <?php if($fileInfo['research_course']=='Bachelor of Science in Aircraft Maintenance Technology'){ echo 'selected';}?>>Bachelor of Science in Aircraft Maintenance Technology</option>
                         </select>
                     </div>
 
                     <div id="dropdownMaritime" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Marine Engineering">Bachelor of Science in Marine Engineering</option>
-                            <option value="Bachelor of Science in Marine Transportation">Bachelor of Science in Marine Transportation</option>
+                            <option value="Bachelor of Science in Marine Engineering" <?php if($fileInfo['research_course']=='Bachelor of Science in Marine Engineering'){ echo 'selected';}?>>Bachelor of Science in Marine Engineering</option>
+                            <option value="Bachelor of Science in Marine Transportation" <?php if($fileInfo['research_course']=='Bachelor of Science in Marine Transportation'){ echo 'selected';}?>>Bachelor of Science in Marine Transportation</option>
                         </select>
                     </div>
 
                     <div id="dropdownManagement" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in Hospitality Management</option>
-                            <option value="Bachelor of Science in Tourism Management">Bachelor of Science in Tourism Management</option>
-                            <option value="Bachelor of Science in Nutrition and Dietetics">Bachelor of Science in Nutrition and Dietetics</option>
+                            <option value="Bachelor of Science in Hospitality Management" <?php if($fileInfo['research_course']=='Bachelor of Science in Hospitality Management'){ echo 'selected';}?>>Bachelor of Science in Hospitality Management</option>
+                            <option value="Bachelor of Science in Tourism Management" <?php if($fileInfo['research_course']=='Bachelor of Science in Tourism Management'){ echo 'selected';}?>>Bachelor of Science in Tourism Management</option>
+                            <option value="Bachelor of Science in Nutrition and Dietetics" <?php if($fileInfo['research_course']=='Bachelor of Science in Nutrition and Dietetics'){ echo 'selected';}?>>Bachelor of Science in Nutrition and Dietetics</option>
                         </select>
                     </div>
 
                     <div id="dropdownGraduateSchool" hidden>
                         <label class="py-2 fw-bold">Course<span class="text-danger"> *</span></label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Doctor of Philosophy Major in Educational Management">Doctor of Philosophy Major in Educational Management</option>
-                            <option value="Doctor of Philosophy in Business Management">Doctor of Philosophy in Business Management</option>
-                            <option value="Doctor of Occupational Therapy">Doctor of Occupational Therapy</option>
-                            <option value="Doctor of Physical Therapy">Doctor of Physical Therapy</option>
-                            <option value="Master in Business Administration">Master in Business Administration</option>
-                            <option value="Master of Science of Clinical Program Development">Master of Science of Clinical Program Development</option>
-                            <option value="Master of Science in Microbiology">Master of Science in Microbiology</option>
-                            <option value="Master of Arts in Education - Major in Administration and Supervision">Master of Arts in Education - Major in Administration and Supervision</option>
-                            <option value="Master of Arts in Education - Major in Health Sciences Education">Master of Arts in Education - Major in Health Sciences Education</option>
-                            <option value="Master of Arts in Education - Major in Guidance and Counseling">Master of Arts in Education - Major in Guidance and Counseling</option>
-                            <option value="Master of Arts in Education - Major in Teaching English as Second Language">Master of Arts in Education - Major in Teaching English as Second Language</option>
-                            <option value="Master of Arts in Education - Major in Educational Management">Master of Arts in Education - Major in Educational Management</option>
-                            <option value="Master of Arts in Education - Major in Religious Studies">Master of Arts in Education - Major in Religious Studies</option>
-                            <option value="Master of Arts in Education - Major in Special Education">Master of Arts in Education - Major in Special Education</option>
-                            <option value="Master of Arts in Education - Major in Mathematics">Master of Arts in Education - Major in Mathematics</option>
-                            <option value="Master of Arts in Education - Major in Filipino">Master of Arts in Education - Major in Filipino</option>
-                            <option value="Master of Science in Clinical Laboratory Science">Master of Science in Clinical Laboratory Science</option>
-                            <option value="Master of Science in Management Engineering">Master of Science in Management Engineering</option>
-                            <option value="Master of Science in Information Technology">Master of Science in Information Technology</option>
-                            <option value="Master of Arts in Guidance and Counseling">Master of Arts in Guidance and Counseling</option>
-                            <option value="Master of Arts in Communication">Master of Arts in Communication</option>
-                            <option value="Master of Science in Microbiology">Master of Science in Microbiology</option>
-                            <option value="Master of Science in Pharmacy">Master of Science in Pharmacy</option>
-                            <option value="Master of Science in Psychology">Master of Science in Psychology</option>
-                            <option value="Master of Science in Radiologic Technology">Master of Science in Radiologic Technology</option>
-                            <option value="Master of Library and Information Science">Master of Library and Information Science</option>
-                            <option value="Master in Hospital Administration">Master in Hospital Administration</option>
+                            <option value="Doctor of Philosophy Major in Educational Management" <?php if($fileInfo['research_course']=='Doctor of Philosophy Major in Educational Management'){ echo 'selected';}?>>Doctor of Philosophy Major in Educational Management</option>
+                            <option value="Doctor of Philosophy in Business Management" <?php if($fileInfo['research_course']=='Doctor of Philosophy in Business Management'){ echo 'selected';}?>>Doctor of Philosophy in Business Management</option>
+                            <option value="Doctor of Occupational Therapy" <?php if($fileInfo['research_course']=='Doctor of Occupational Therapy'){ echo 'selected';}?>>Doctor of Occupational Therapy</option>
+                            <option value="Doctor of Physical Therapy" <?php if($fileInfo['research_course']=='Doctor of Physical Therapy'){ echo 'selected';}?>>Doctor of Physical Therapy</option>
+                            <option value="Master in Business Administration" <?php if($fileInfo['research_course']=='Master in Business Administration'){ echo 'selected';}?>>Master in Business Administration</option>
+                            <option value="Master of Science of Clinical Program Development" <?php if($fileInfo['research_course']=='Master of Science of Clinical Program Development'){ echo 'selected';}?>>Master of Science of Clinical Program Development</option>
+                            <option value="Master of Science in Microbiology" <?php if($fileInfo['research_course']=='Master of Science in Microbiology'){ echo 'selected';}?>>Master of Science in Microbiology</option>
+                            <option value="Master of Arts in Education - Major in Administration and Supervision" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Administration and Supervision'){ echo 'selected';}?>>Master of Arts in Education - Major in Administration and Supervision</option>
+                            <option value="Master of Arts in Education - Major in Health Sciences Education" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Health Sciences Education'){ echo 'selected';}?>>Master of Arts in Education - Major in Health Sciences Education</option>
+                            <option value="Master of Arts in Education - Major in Guidance and Counseling" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Guidance and Counseling'){ echo 'selected';}?>>Master of Arts in Education - Major in Guidance and Counseling</option>
+                            <option value="Master of Arts in Education - Major in Teaching English as Second Language" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Teaching English as Second Language'){ echo 'selected';}?>>Master of Arts in Education - Major in Teaching English as Second Language</option>
+                            <option value="Master of Arts in Education - Major in Educational Management" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Educational Management'){ echo 'selected';}?>>Master of Arts in Education - Major in Educational Management</option>
+                            <option value="Master of Arts in Education - Major in Religious Studies" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Religious Studies'){ echo 'selected';}?>>Master of Arts in Education - Major in Religious Studies</option>
+                            <option value="Master of Arts in Education - Major in Special Education" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Special Education'){ echo 'selected';}?>>Master of Arts in Education - Major in Special Education</option>
+                            <option value="Master of Arts in Education - Major in Mathematics" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Mathematics'){ echo 'selected';}?>>Master of Arts in Education - Major in Mathematics</option>
+                            <option value="Master of Arts in Education - Major in Filipino" <?php if($fileInfo['research_course']=='Master of Arts in Education - Major in Filipino'){ echo 'selected';}?>>Master of Arts in Education - Major in Filipino</option>
+                            <option value="Master of Science in Clinical Laboratory Science" <?php if($fileInfo['research_course']=='Master of Science in Clinical Laboratory Science'){ echo 'selected';}?>>Master of Science in Clinical Laboratory Science</option>
+                            <option value="Master of Science in Management Engineering" <?php if($fileInfo['research_course']=='Master of Science in Management Engineering'){ echo 'selected';}?>>Master of Science in Management Engineering</option>
+                            <option value="Master of Science in Information Technology" <?php if($fileInfo['research_course']=='Master of Science in Information Technology'){ echo 'selected';}?>>Master of Science in Information Technology</option>
+                            <option value="Master of Arts in Guidance and Counseling" <?php if($fileInfo['research_course']=='Master of Arts in Guidance and Counseling'){ echo 'selected';}?>>Master of Arts in Guidance and Counseling</option>
+                            <option value="Master of Arts in Communication" <?php if($fileInfo['research_course']=='Master of Arts in Communication'){ echo 'selected';}?>>Master of Arts in Communication</option>
+                            <option value="Master of Science in Microbiology" <?php if($fileInfo['research_course']=='Master of Science in Microbiology'){ echo 'selected';}?>>Master of Science in Microbiology</option>
+                            <option value="Master of Science in Pharmacy" <?php if($fileInfo['research_course']=='Master of Science in Pharmacy'){ echo 'selected';}?>>Master of Science in Pharmacy</option>
+                            <option value="Master of Science in Psychology" <?php if($fileInfo['research_course']=='Master of Science in Psychology'){ echo 'selected';}?>>Master of Science in Psychology</option>
+                            <option value="Master of Science in Radiologic Technology" <?php if($fileInfo['research_course']=='Master of Science in Radiologic Technology'){ echo 'selected';}?>>Master of Science in Radiologic Technology</option>
+                            <option value="Master of Library and Information Science" <?php if($fileInfo['research_course']=='Master of Library and Information Science'){ echo 'selected';}?>>Master of Library and Information Science</option>
+                            <option value="Master in Hospital Administration" <?php if($fileInfo['research_course']=='Master in Hospital Administration'){ echo 'selected';}?>>Master in Hospital Administration</option>
                         </select>
                     </div>
 
                     <div id="dropdownSupportServices" hidden>
                         <label class="py-2 fw-bold" id="labelCourseOrDepartment">Course</label>
                         <select class=" form-select" name="dropdownCourse" disabled>
-                            <option value="Community Outreach Department">Community Outreach Department</option>
-                            <option value="Human Resource Department">Human Resource Department</option>
-                            <option value="Information Technology Services">Information Technology Services</option>
-                            <option value="International and External Affairs">International and External Affairs</option>
-                            <option value="Library">Library</option>
-                            <option value="Marketing Department">Marketing Department</option>
-                            <option value="Quality Assurance Office">Quality Assurance Office</option>
-                            <option value="Research and Development Center">Research and Development Center</option>
-                            <option value="Student Personnel Services">Student Personnel Services</option>
-                            <option value="University Registrar">University Registrar</option>
+                            <option value="Community Outreach Department" <?php if($fileInfo['research_course']=='Community Outreach Department'){ echo 'selected';}?>>Community Outreach Department</option>
+                            <option value="Human Resource Department" <?php if($fileInfo['research_course']=='Human Resource Department'){ echo 'selected';}?>>Human Resource Department</option>
+                            <option value="Information Technology Services" <?php if($fileInfo['research_course']=='Information Technology Services'){ echo 'selected';}?>>Information Technology Services</option>
+                            <option value="International and External Affairs" <?php if($fileInfo['research_course']=='International and External Affairs'){ echo 'selected';}?>>International and External Affairs</option>
+                            <option value="Library" <?php if($fileInfo['research_course']=='Library'){ echo 'selected';}?>>Library</option>
+                            <option value="Marketing Department" <?php if($fileInfo['research_course']=='Marketing Department'){ echo 'selected';}?>>Marketing Department</option>
+                            <option value="Quality Assurance Office" <?php if($fileInfo['research_course']=='Quality Assurance Office'){ echo 'selected';}?>>Quality Assurance Office</option>
+                            <option value="Research and Development Center" <?php if($fileInfo['research_course']=='Research and Development Center'){ echo 'selected';}?>>Research and Development Center</option>
+                            <option value="Student Personnel Services" <?php if($fileInfo['research_course']=='Student Personnel Services'){ echo 'selected';}?>>Student Personnel Services</option>
+                            <option value="University Registrar" <?php if($fileInfo['research_course']=='University Registrar'){ echo 'selected';}?>>University Registrar</option>
                         </select>
                     </div>
 
@@ -525,7 +524,6 @@ $year = date_format($date_time, "Y");
         </form>
 
     </div>
-    <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
     <script>
         $("form[name='thesis-form']").on("submit", function(event) {
             event.preventDefault();
@@ -561,7 +559,6 @@ $year = date_format($date_time, "Y");
         $(document).ready(function() {
             var categoryDropdown = $("#dropdownResearchersCategory");
             var unitDropdown = $("#dropdownResearchUnit");
-
             unitDropdown.on('change', function() {
                 if (categoryDropdown.val() != "Faculty" && categoryDropdown.val() != "Non-Teaching Staff" && categoryDropdown.val() != "Department Head" || $(this).val() == "Support Services") {
                     if (this.value == 'Arts and Sciences') {
