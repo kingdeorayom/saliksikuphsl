@@ -281,7 +281,7 @@ $year = date_format($date_time, "Y");
 
             <div class="row" id="publishButtonInfographics">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitInfographicsButton">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Save changes" id="submitInfographicsButton">
                 </div>
             </div>
 

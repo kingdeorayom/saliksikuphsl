@@ -105,7 +105,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <hr>
             <div class="row">
                 <div class="col">
-                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Edit" id="submitJournalButton">
+                    <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Save changes" id="submitJournalButton">
                 </div>
             </div>
 
