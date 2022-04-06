@@ -68,7 +68,7 @@ $year = date_format($date_time,"Y");
                 </div>
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Researcher's Category<span class="text-danger"> *</span></label>
-                    <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory">
+                    <select class="form-select" aria-label="Default select example" name="dropdownResearchersCategory" id ="dropdownResearchersCategory">
                         <option value="Undergraduate" <?= $fileInfo['researchers_category'] == 'Undergraduate' ? 'selected' : '' ?>>Undergraduate</option>
                         <option value="Postgraduate" <?= $fileInfo['researchers_category'] == 'Postgraduate' ? 'selected' : '' ?>>Postgraduate</option>
                         <option value="Faculty" <?= $fileInfo['researchers_category'] == 'Faculty' ? 'selected' : '' ?>>Faculty</option>
@@ -563,7 +563,6 @@ $year = date_format($date_time,"Y");
         </form>
 
     </div>
-    <script src="../../../scripts/custom/thesis-calendar-date-picker.js"></script>
     <script type="text/javascript">
         $("form[name='thesis-form']").on("submit", function(event) {
         event.preventDefault();

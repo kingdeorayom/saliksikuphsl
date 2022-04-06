@@ -133,7 +133,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <h1 class="my-2">Junior Researchers</h1>
                     <hr>
 
-                    <div class="row mx-auto">
+                    <div class="row mx-auto researcher-container">
                         <?php foreach ($researchers as $key => $researcher) {
                             if ($researcher['type'] == "Junior Researcher") {
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
@@ -156,7 +156,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <h1 class="my-2">Junior Associate Researchers</h1>
                     <hr>
 
-                    <div class="row mx-auto">
+                    <div class="row mx-auto researcher-container">
                         <?php foreach ($researchers as $key => $researcher) {
                             if ($researcher['type'] == "Junior Associate Researcher") {
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
@@ -179,7 +179,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <h1 class="my-2">Novice Researchers</h1>
                     <hr>
 
-                    <div class="row mx-auto">
+                    <div class="row mx-auto researcher-container">
                         <?php foreach ($researchers as $key => $researcher) {
                             if ($researcher['type'] == "Novice Researcher") {
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
@@ -333,6 +333,12 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
 
     <script>
         $(document).ready(function() {
+
+            $(".researcher-container").each(function() {
+                if($(this).find("div").length == 0) {
+                    $(this).append("<h5 style='color: grey;'><br>No researcher profile found.</h5>")
+                }
+            })
             /* on load */
             $("#seniorResearchersText").css({
                 "border-left": "thick solid #012265",

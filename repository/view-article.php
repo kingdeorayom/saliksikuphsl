@@ -41,9 +41,11 @@ if (isset($_GET['id'])) {
     $file = $result->fetch_assoc();
     $statement->close();
     if ($file == null) {
-        die(); //file doesnt exist
+        header("Location: /repository.php");
+        exit();
     } else if ($file['status'] != 'published') {
-        die();
+        header("Location: /repository.php");
+        exit();
     } else {
         $statement = $connection->prepare("INSERT INTO article_visits (article_id, hits) VALUES ($id, 0) ON DUPLICATE KEY UPDATE hits=hits+1");
         $statement->execute();
@@ -108,7 +110,17 @@ $pagecssVersion = filemtime('../styles/custom/pages/repository-style.css');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Article</title>
+    <title><?php if ($fileInfo['file_type'] == 'thesis') {
+        echo $fileInfo['research_title'];
+    } else if ($fileInfo['file_type'] == 'journal') {
+        echo $fileInfo['journal_title'];
+    } else if ($fileInfo['file_type'] == 'infographic') {
+        echo $fileInfo['infographic_title'];
+    }
+    else if ($fileInfo['file_type'] == 'report') {
+        echo $fileInfo['report_title'];
+    }
+    ?></title>
     <?php include_once '../assets/fonts/google-fonts.php' ?>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
