@@ -66,10 +66,10 @@ $statement->close();
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="input-group mb-3">
+                    <form class="input-group mb-3" method="GET" action="/repository.php">
                         <input type="search" autofocus class="form-control form-search rounded-0" id="home-search-bar" placeholder="Search the repository" aria-label="Search the repository" name="title_query">
-                        <a href="repository.php"><button class="btn text-light search-button btn-lg rounded-0" id="button-search">Search</button></a>
-                    </div>
+                        <button class="btn text-light search-button btn-lg rounded-0" id="button-search">Search</button>
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -84,12 +84,12 @@ $statement->close();
             <!-- Modal window -->
             <div class="modal fade" id="search-modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <form class="modal-content" method="GET" action="/repository.php">
                         <div class="modal-header">
                             <h5 class="modal-title"><i class="fas fa-search mx-2" style="color: white;"></i> Advanced Search</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body" id="advanced-search" name="advanced-filter">
+                        <form class="modal-body" id="advanced-search" name="advanced-filter">
                             <div class="row my-3 px-3">
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">Find articles</h6>
@@ -152,11 +152,11 @@ $statement->close();
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <a href="repository.php"><button class="btn btn-primary rounded-0 modal-search-button">Search</button></a>
+                                    <button class="btn btn-primary rounded-0 modal-search-button">Search</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </form>
+                    </form>
                 </div>
             </div>
 
@@ -291,36 +291,37 @@ $statement->close();
     <script src="scripts/bootstrap/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-        var searchbarValue = sessionStorage.getItem("searchbarValue");
-        $("#home-search-bar").on("input", function() {
-            searchbarValue = this.value;
-            sessionStorage.setItem("searchbarValue", searchbarValue);
-        });
-        var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
-        var $modalRadio = $("#advanced-search :radio");
-        $modalRadio.on("change", function() {
-            $modalRadio.each(function() {
-                modalRadio[this.id] = this.checked;
-            });
-            sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
-        });
+        // code to cache search queries
+        // var searchbarValue = sessionStorage.getItem("searchbarValue");
+        // $("#home-search-bar").on("input", function() {
+        //     searchbarValue = this.value;
+        //     sessionStorage.setItem("searchbarValue", searchbarValue);
+        // });
+        // var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
+        // var $modalRadio = $("#advanced-search :radio");
+        // $modalRadio.on("change", function() {
+        //     $modalRadio.each(function() {
+        //         modalRadio[this.id] = this.checked;
+        //     });
+        //     sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
+        // });
 
-        $.each(modalRadio, function(key, value) {
-            $("#" + key).prop("checked", value);
-        });
+        // $.each(modalRadio, function(key, value) {
+        //     $("#" + key).prop("checked", value);
+        // });
 
-        var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
-        var $modalInputs = $("#advanced-search :text");
-        $modalInputs.on("change", function() {
-            $modalInputs.each(function() {
-                modalInputs[this.id] = this.value;
-            });
-            sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
-        });
+        // var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
+        // var $modalInputs = $("#advanced-search :text");
+        // $modalInputs.on("change", function() {
+        //     $modalInputs.each(function() {
+        //         modalInputs[this.id] = this.value;
+        //     });
+        //     sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
+        // });
 
-        $.each(modalInputs, function(key, value) {
-            $("#" + key).prop("value", value);
-        });
+        // $.each(modalInputs, function(key, value) {
+        //     $("#" + key).prop("value", value);
+        // });
 
         $("#home-search-bar").on("keyup", function(event){
             if(event.keyCode==13){

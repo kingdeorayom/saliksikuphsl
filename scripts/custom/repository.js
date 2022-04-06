@@ -60,68 +60,68 @@ $("#repository-search-bar").on("change", getResults);
 $("form[name='sidebar-filters']").on("change", getResults);
 $("form[name='modal-filters']").on("change", getResults);
 
-$(document).ready(function () {
-  // code to cache form values
-  var searchbarValue = sessionStorage.getItem("searchbarValue");
-  $("#repository-search-bar").on("input", function () {
-    searchbarValue = this.value;
-    sessionStorage.setItem("searchbarValue", searchbarValue);
-  });
-  $("#repository-search-bar").val(sessionStorage.searchbarValue);
+// $(document).ready(function () {
+//   // code to cache form values
+//   var searchbarValue = sessionStorage.getItem("searchbarValue");
+//   $("#repository-search-bar").on("input", function () {
+//     searchbarValue = this.value;
+//     sessionStorage.setItem("searchbarValue", searchbarValue);
+//   });
+//   $("#repository-search-bar").val(sessionStorage.searchbarValue);
 
-  var textInputs = JSON.parse(sessionStorage.getItem("textInputs")) || {};
-  var $textInputs = $("#sidebar-search-filters :text");
-  $textInputs.on("change", function () {
-    $textInputs.each(function () {
-      textInputs[this.id] = this.value;
-    });
-    sessionStorage.setItem("textInputs", JSON.stringify(textInputs));
-  });
+//   var textInputs = JSON.parse(sessionStorage.getItem("textInputs")) || {};
+//   var $textInputs = $("#sidebar-search-filters :text");
+//   $textInputs.on("change", function () {
+//     $textInputs.each(function () {
+//       textInputs[this.id] = this.value;
+//     });
+//     sessionStorage.setItem("textInputs", JSON.stringify(textInputs));
+//   });
 
-  $.each(textInputs, function (key, value) {
-    $("#" + key).prop("value", value);
-  });
+//   $.each(textInputs, function (key, value) {
+//     $("#" + key).prop("value", value);
+//   });
 
-  var checkboxValues =
-    JSON.parse(sessionStorage.getItem("checkboxValues")) || {};
-  var $checkboxes = $("#sidebar-search-filters :checkbox");
-  $checkboxes.on("change", function () {
-    $checkboxes.each(function () {
-      checkboxValues[this.id] = this.checked;
-    });
-    sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-  });
+//   var checkboxValues =
+//     JSON.parse(sessionStorage.getItem("checkboxValues")) || {};
+//   var $checkboxes = $("#sidebar-search-filters :checkbox");
+//   $checkboxes.on("change", function () {
+//     $checkboxes.each(function () {
+//       checkboxValues[this.id] = this.checked;
+//     });
+//     sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+//   });
 
-  $.each(checkboxValues, function (key, value) {
-    $("#" + key).prop("checked", value);
-  });
+//   $.each(checkboxValues, function (key, value) {
+//     $("#" + key).prop("checked", value);
+//   });
 
-  var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
-  var $modalRadio = $("#advanced-search :radio");
-  $modalRadio.on("change", function () {
-    $modalRadio.each(function () {
-      modalRadio[this.id] = this.checked;
-    });
-    sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
-  });
+//   var modalRadio = JSON.parse(sessionStorage.getItem("modalRadio")) || {};
+//   var $modalRadio = $("#advanced-search :radio");
+//   $modalRadio.on("change", function () {
+//     $modalRadio.each(function () {
+//       modalRadio[this.id] = this.checked;
+//     });
+//     sessionStorage.setItem("modalRadio", JSON.stringify(modalRadio));
+//   });
 
-  $.each(modalRadio, function (key, value) {
-    $("#" + key).prop("checked", value);
-  });
+//   $.each(modalRadio, function (key, value) {
+//     $("#" + key).prop("checked", value);
+//   });
 
-  var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
-  var $modalInputs = $("#advanced-search :text");
-  $modalInputs.on("change", function () {
-    $modalInputs.each(function () {
-      modalInputs[this.id] = this.value;
-    });
-    sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
-  });
+//   var modalInputs = JSON.parse(sessionStorage.getItem("modalInputs")) || {};
+//   var $modalInputs = $("#advanced-search :text");
+//   $modalInputs.on("change", function () {
+//     $modalInputs.each(function () {
+//       modalInputs[this.id] = this.value;
+//     });
+//     sessionStorage.setItem("modalInputs", JSON.stringify(modalInputs));
+//   });
 
-  $.each(modalInputs, function (key, value) {
-    $("#" + key).prop("value", value);
-  });
-});
+//   $.each(modalInputs, function (key, value) {
+//     $("#" + key).prop("value", value);
+//   });
+// });
 
 $(window).on("load", function () {
   getResults();
@@ -160,7 +160,9 @@ $("#repository-results-container").on("click", ".add-bookmark", function () {
   }).done(function (data) {
     console.log(id, data);
     // TODO add notification when bookmark is added
-    container.html("<i class='fas fa-bookmark me-2'></i> Remove from Bookmarks");
+    container.html(
+      "<i class='fas fa-bookmark me-2'></i> Remove from Bookmarks"
+    );
     container.removeClass("add-bookmark");
     container.addClass("del-bookmark");
   });
