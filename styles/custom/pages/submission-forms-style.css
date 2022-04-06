@@ -95,3 +95,15 @@
 .side-menu-text:hover {
   cursor: pointer;
 }
+
+.delete-article {
+  text-decoration: none;
+  /* background-color: #6c757d;
+  color: white; */
+}
+
+/* .delete-article:hover {
+font-weight: bold;
+background-color: rgb(185, 38, 38);
+  color: white;
+} */

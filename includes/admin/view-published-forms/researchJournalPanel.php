@@ -151,8 +151,28 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 <div class="col">
                     <input type="submit" class="btn btn-primary button-submit-research rounded-0" value="Save changes" id="submitJournalButton">
                 </div>
+                <div class="col text-end">
+                    <button class='btn btn-link text-danger rounded-0 delete-article' type="button" data-bs-toggle='modal' data-bs-target='#modalDelete'><i class='fas fa-trash-alt'></i> Delete</button>
+                </div>
             </div>
 
+            <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                <div class='modal-dialog modal-dialog-centered'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title' id='exampleModalLabel'>Delete this article?</h5>
+                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div class='modal-body'>
+                            <label>This will delete this record from database and won't appear anymore in the system. This action is irreversible.</label>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
+                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-article' data-id=''><i class='fas fa-trash-alt'></i> Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </form>
     </div>
