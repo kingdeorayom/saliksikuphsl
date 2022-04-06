@@ -10,6 +10,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 if(!isset($_GET['q'])){
+    header("location: /research/browse-researches.php");
     die();
 }
 $statement = $connection->prepare("SELECT name FROM course_database");
@@ -24,6 +25,7 @@ foreach ($course_list as $key => $value) {
 }
 
 if(!in_array($_GET['q'],$course_list_values)){
+    header("location: /research/browse-researches.php");
     die();
 };
 $field = "%".$_GET['q']."%";
@@ -53,7 +55,7 @@ array_walk_recursive($published, "filter");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Research Fields</title>
+    <title><?php echo $_GET['q'];?></title>
     <?php include_once '../assets/fonts/google-fonts.php' ?>
 
     <link rel="stylesheet" href="../styles/bootstrap/bootstrap.css" type="text/css">
