@@ -67,7 +67,7 @@ $statement->close();
             <div class="row">
                 <div class="col">
                     <form class="input-group mb-3" method="GET" action="/repository.php">
-                        <input type="search" autofocus class="form-control form-search rounded-0" id="home-search-bar" placeholder="Search the repository" aria-label="Search the repository" name="title_query">
+                        <input type="search" class="form-control form-search rounded-0" id="home-search-bar" placeholder="Search the repository" aria-label="Search the repository" name="title_query">
                         <button class="btn text-light search-button btn-lg rounded-0" id="button-search">Search</button>
                     </form>
                 </div>

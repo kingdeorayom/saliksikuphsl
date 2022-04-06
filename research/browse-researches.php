@@ -106,7 +106,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="researchesPanel">
                     <h1 class="my-2">Browse Researches</h1>
-                    <hr>
+                    <hr class="my-4">
 
                     <div class="row">
                         <div class="accordion accordion-flush browseThesis panel-container">
@@ -161,7 +161,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="journalsPanel" hidden>
                     <h1 class="my-2">Browse Journals</h1>
-                    <hr>
+                    <hr class="my-4">
                     <div class="row">
                         <div class="accordion accordion-flush browseJournal panel-container">
                             <?php
@@ -210,6 +210,7 @@ array_walk_recursive($published, "filter");
                                         <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                                             <img src='../src/{$item['file_dir2']}' width='150'>
                                         </div>
+                                        <hr class='my-4'>
                                     </div>";
                                     }
                                 }
@@ -224,7 +225,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="infographicsPanel" hidden>
                     <h1 class="my-2">Browse Infographics</h1>
-                    <hr>
+                    <hr class="my-4">
                     <div class="row">
                         <div class="browseInfographic panel-container">
                             <?php
@@ -268,7 +269,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="researchCatalogsPanel" hidden>
                     <h1 class="my-2">Browse Research Catalogs</h1>
-                    <hr>
+                    <hr class="my-4">
                     <div class="row">
                         <div class="browseResearchCatalogs panel-container">
                         <?php
@@ -299,6 +300,7 @@ array_walk_recursive($published, "filter");
                                     <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                                         <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
+                                    <hr class='my-4'>
                                 </div>";
                                 }
                             }
@@ -309,7 +311,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="annualReportsPanel" hidden>
                     <h1 class="my-2">Browse Annual Reports</h1>
-                    <hr>
+                    <hr class="my-4">
                     <div class="row">
                         <div class="browseAnnualReports panel-container">
                         <?php
@@ -340,6 +342,7 @@ array_walk_recursive($published, "filter");
                                     <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                                         <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
+                                    <hr class='my-4'>
                                 </div>";
                                 }
                             }
@@ -350,7 +353,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="researchAgendaPanel" hidden>
                     <h1 class="my-2">Browse Research Agenda</h1>
-                    <hr>
+                    <hr class="my-4">
                     <div class="row">
                         <div class="browseResearchAgenda panel-container">
                         <?php
@@ -380,6 +383,7 @@ array_walk_recursive($published, "filter");
                                 <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                                     <img src='../src/{$item['file_dir2']}' width='150'>
                                 </div>
+                                <hr class='my-4'>
                             </div>";
                                 }
                             }
@@ -390,7 +394,7 @@ array_walk_recursive($published, "filter");
 
                 <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="rcdpPanel" hidden>
                     <h1 class="my-2">Browse Research Competency Development Program</h1>
-                    <hr>
+                    <hr class="my-4">
                     <div class="row">
                         <div class="browseRCDP panel-container">
                         <?php
@@ -421,6 +425,7 @@ array_walk_recursive($published, "filter");
                                     <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                                         <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
+                                    <hr class='my-4'>
                                 </div>";
                                 }
                             }

@@ -61,7 +61,7 @@ if (isset($_POST['textFieldJournalTitle'], $_POST['textFieldJournalSubTitle'], $
 
     if (in_array($fileActualExt, $allowedFile) && in_array($fileCoverActualExt, $allowedCover)) {
         if ($fileError === 0 && $fileCoverError === 0) {
-            if ($fileSize < 10000000 && $fileCoverSize < 10000000) {
+            if ($fileSize < 11000000 && $fileCoverSize < 11000000) {
                 $sql = "SELECT file_name FROM file_information WHERE file_name = '$fileName'";
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {

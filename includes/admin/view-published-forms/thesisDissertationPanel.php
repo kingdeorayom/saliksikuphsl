@@ -517,7 +517,7 @@ $year = date_format($date_time, "Y");
 
             <div class="row" id="publishButtonThesis">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Edit</button>
+                    <button type="submit" class="btn btn-primary button-submit-research rounded-0" value="Submit your research" id="submitResearchDissertationButton">Save changes</button>
                 </div>
             </div>
 
