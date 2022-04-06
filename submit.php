@@ -122,7 +122,7 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
                             <h2 class="my-4 fw-bold">Submit your research</h2>
                             <p>To submit a copy of your research, click the button below.</p>
                             <div class="text-center">
-                                <a href="submission-forms.php"><button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0 my-5">Submit Research</button></a>
+                                <a href="submission-forms.php"><button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0 my-5">Submission Form</button></a>
                             </div>
                             <p class="my-2">Please contact <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a> if you have any further queries regarding thesis submission.</p>
                         </div>
