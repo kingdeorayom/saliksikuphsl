@@ -64,43 +64,55 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
             <form onsubmit="submitRegister(event)" name="login-form">
 
                 <div class="input-group mb-3">
-
                     <span class="input-group-text" id="basic-addon2">c</span>
                     <input type="text" name="recipient1" id="recipient1" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
-
                 </div>
-
                 <div class="input-group mb-3">
-
                     <span class="input-group-text" id="basic-addon2">c</span>
                     <input type="text" name="recipient2" id="recipient2" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
-
                 </div>
-
                 <div class="input-group mb-3">
-
                     <span class="input-group-text" id="basic-addon2">c</span>
                     <input type="text" name="recipient3" id="recipient3" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
-
                 </div>
-
                 <div class="input-group mb-3">
-
                     <span class="input-group-text" id="basic-addon2">c</span>
                     <input type="text" name="recipient4" id="recipient4" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
-
                 </div>
-
                 <div class="input-group mb-3">
-
                     <span class="input-group-text" id="basic-addon2">c</span>
                     <input type="text" name="recipient5" id="recipient5" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
+                </div>
 
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">c</span>
+                    <input type="text" name="recipient6" id="recipient6" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">c</span>
+                    <input type="text" name="recipient7" id="recipient7" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">c</span>
+                    <input type="text" name="recipient8" id="recipient8" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">c</span>
+                    <input type="text" name="recipient9" id="recipient9" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">c</span>
+                    <input type="text" name="recipient10" id="recipient10" class="form-control" placeholder="xx-xxxx-xxx" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">@uphsl.edu.ph</span>
                 </div>
 
                 <button type="submit" class="btn text-white rounded-0 send my-5" style="background-color: #012265; border-color: #012265;">Send</button>
@@ -135,7 +147,7 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
         function checkLoginResponse(data) {
             if (data.response === "login_success") {
                 // alertLogin.html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>email sent succesfully!</strong> di ko alam kung mas madali ba ito pero tingin ko naman hahaha<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`)
-                $("#recipient1, #recipient2, #recipient3, #recipient4, #recipient5").val("");
+                $("#recipient1, #recipient2, #recipient3, #recipient4, #recipient5, #recipient6, #recipient7, #recipient8, #recipient9, #recipient10").val("");
 
                 let timerInterval
                 Swal.fire({

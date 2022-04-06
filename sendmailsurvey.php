@@ -25,12 +25,22 @@ try {
     $recipient3 = 'c' . $_POST['recipient3'] . '@uphsl.edu.ph';
     $recipient4 = 'c' . $_POST['recipient4'] . '@uphsl.edu.ph';
     $recipient5 = 'c' . $_POST['recipient5'] . '@uphsl.edu.ph';
+    $recipient6 = 'c' . $_POST['recipient6'] . '@uphsl.edu.ph';
+    $recipient7 = 'c' . $_POST['recipient7'] . '@uphsl.edu.ph';
+    $recipient8 = 'c' . $_POST['recipient8'] . '@uphsl.edu.ph';
+    $recipient9 = 'c' . $_POST['recipient9'] . '@uphsl.edu.ph';
+    $recipient10 = 'c' . $_POST['recipient10'] . '@uphsl.edu.ph';
 
     $mail->addAddress($recipient1);
     $mail->addAddress($recipient2);
     $mail->addAddress($recipient3);
     $mail->addAddress($recipient4);
     $mail->addAddress($recipient5);
+    $mail->addAddress($recipient6);
+    $mail->addAddress($recipient7);
+    $mail->addAddress($recipient8);
+    $mail->addAddress($recipient9);
+    $mail->addAddress($recipient10);
     $mail->Subject = $subject;
     $mail->Body = '
                 <body>
