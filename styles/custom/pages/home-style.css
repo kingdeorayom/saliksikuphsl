@@ -275,3 +275,13 @@ h5 {
   background-color: #012265 !important;
   border: solid 1px #012265 !important;
 }
+
+.article-title {
+  text-decoration: none;
+  color: #012265;
+}
+
+.article-title:hover {
+  text-decoration: underline;
+  color: #012265;
+}
