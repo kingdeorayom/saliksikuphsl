@@ -24,7 +24,8 @@
                 <h4 class="my-5 fw-bold">If you're seeing this page, you may be:</h4>
                 <ul class="h4">
                     <li class="my-2">Accessing a page the wrong way</li>
-                    <li class="my-2">Not logged in as an administrator</li>
+                    <li class="my-2">Not logged in</li>
+                    <li class="my-2">Does not have the correct permission to access the page</li>
                 </ul>
                 <h4 class="my-5">Please click <a href="/index.php">here</a> to return to the login page, or to the homepage if already logged in.</h4>
             </div>
