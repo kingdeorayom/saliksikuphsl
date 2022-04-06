@@ -104,12 +104,12 @@ array_walk_recursive($published, "filter");
 
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="researchesPanel">
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="researchesPanel">
                     <h1 class="my-2">Browse Researches</h1>
                     <hr>
 
                     <div class="row">
-                        <div class="accordion accordion-flush">
+                        <div class="accordion accordion-flush browseThesis panel-container">
                             <?php
                             $unit_array = array();
                             foreach ($published as $key => $result) {
@@ -159,11 +159,11 @@ array_walk_recursive($published, "filter");
                     </div>
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="journalsPanel" hidden>
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="journalsPanel" hidden>
                     <h1 class="my-2">Browse Journals</h1>
                     <hr>
                     <div class="row">
-                        <div class="accordion accordion-flush">
+                        <div class="accordion accordion-flush browseJournal panel-container">
                             <?php
                             $unit_array = array();
                             foreach ($published as $key => $result) {
@@ -222,11 +222,11 @@ array_walk_recursive($published, "filter");
                     </div>
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="infographicsPanel" hidden>
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="infographicsPanel" hidden>
                     <h1 class="my-2">Browse Infographics</h1>
                     <hr>
                     <div class="row">
-                        <div class="accordion accordion-flush">
+                        <div class="browseInfographic panel-container">
                             <?php
                             foreach ($published as $key => $item) {
                                 if ($item['file_type'] == 'infographic') {
@@ -266,11 +266,11 @@ array_walk_recursive($published, "filter");
                     </div>
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="researchCatalogsPanel" hidden>
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="researchCatalogsPanel" hidden>
                     <h1 class="my-2">Browse Research Catalogs</h1>
                     <hr>
                     <div class="row">
-                        <div class="browseResearchCatalogs">
+                        <div class="browseResearchCatalogs panel-container">
                         <?php
                             foreach ($published as $key => $item) {
                                 if ($item['report_type'] == 'Research Catalog') {
@@ -307,11 +307,11 @@ array_walk_recursive($published, "filter");
                     </div>
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="annualReportsPanel" hidden>
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="annualReportsPanel" hidden>
                     <h1 class="my-2">Browse Annual Reports</h1>
                     <hr>
                     <div class="row">
-                        <div class="browseAnnualReports">
+                        <div class="browseAnnualReports panel-container">
                         <?php
                             foreach ($published as $key => $item) {
                                 if ($item['report_type'] == 'Annual Report') {
@@ -348,11 +348,11 @@ array_walk_recursive($published, "filter");
                     </div>
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="researchAgendaPanel" hidden>
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="researchAgendaPanel" hidden>
                     <h1 class="my-2">Browse Research Agenda</h1>
                     <hr>
                     <div class="row">
-                        <div class="browseResearchAgenda">
+                        <div class="browseResearchAgenda panel-container">
                         <?php
                             foreach ($published as $key => $item) {
                                 if ($item['report_type'] == 'Research Agenda') {if(strlen($item['report_description'])>500){
@@ -388,11 +388,11 @@ array_walk_recursive($published, "filter");
                     </div>
                 </div>
 
-                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column" id="rcdpPanel" hidden>
+                <div class="col-lg-9 mx-auto col-md-12 col-xs-12 main-column " id="rcdpPanel" hidden>
                     <h1 class="my-2">Browse Research Competency Development Program</h1>
                     <hr>
                     <div class="row">
-                        <div class="browseRCDP">
+                        <div class="browseRCDP panel-container">
                         <?php
                             foreach ($published as $key => $item) {
                                 if ($item['report_type'] == 'Research Competency Development Program') {
@@ -437,6 +437,11 @@ array_walk_recursive($published, "filter");
 
     <script>
         $(document).ready(function() {
+            $(".panel-container").each(function() {
+                if($(this).find("div").length == 0) {
+                    $(this).append("<h5 style='color: grey;'><br>No results found.</h5>")
+                }
+            })
             /* on load */
             $("#researchesText").css({
                 "border-left": "thick solid #012265",
