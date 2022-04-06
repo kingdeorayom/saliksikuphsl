@@ -323,7 +323,7 @@ foreach ($published as $key => $result) :
                 <p class='fw-bold' style='color: #012265;'>Journal </p>
             </div>
             <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-            <img src='src/{$result['file_dir2']}' widtresearch_typeh='150'>
+            <img src='src/{$result['file_dir2']}' width='150'>
             </div>
             <div class='col-sm-12 col-lg-10'>
                 <div class='col'>
