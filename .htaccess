@@ -1,5 +1,7 @@
 ErrorDocument 404 /error.php
 
+
+OPTIONS -Indexes
 #RewriteEngine on
 #RewriteCond %{QUERY_STRING}    "title_query=" [NC]
 #RewriteRule (.*)  /$1? [R=301,L]
