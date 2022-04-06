@@ -284,7 +284,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                         <label class="form-check-label" for="checkBoxJournal">Journal</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographics" name="resource_type[]">
+                        <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographics" name="resource_type[]">
                         <label class="form-check-label" for="checkBoxInfographics">Infographics</label>
                     </div>
                     <div class="form-check">
@@ -478,7 +478,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                 <label class="form-check-label" for="checkBoxJournaloffcanvas">Journal</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="infographic" id="checkBoxInfographicsoffcanvas" name="resource_type[]">
+                                <input class="form-check-input" type="checkbox" value="infographics" id="checkBoxInfographicsoffcanvas" name="resource_type[]">
                                 <label class="form-check-label" for="checkBoxInfographicsoffcanvas">Infographics</label>
                             </div>
                             <div class="form-check">
