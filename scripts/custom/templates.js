@@ -22,7 +22,7 @@ export function pendingThesisTemplate(result) {
         <hr class="my-1">
        <a href="submissions/view.php?id=${
          result.file_id
-       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
     </div>`;
   return template;
 }
@@ -58,7 +58,7 @@ export function revisionThesisTemplate(result) {
         <hr class="my-1">
        <a href="submissions/view.php?id=${
          result.file_id
-       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
     </div>`;
   return template;
 }
@@ -90,7 +90,7 @@ export function revisedThesisTemplate(result) {
               <hr class="my-1">
              <a href="submissions/view.php?id=${
                result.file_id
-             }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+             }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
           </div>`;
   return template;
 }
@@ -118,7 +118,7 @@ export function publishedThesisTemplate(result) {
         <hr class="my-1">
        <a href="submissions/view.php?id=${
          result.file_id
-       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+       }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
         </div>`;
   return template;
 }
@@ -142,7 +142,7 @@ export function publishedInfographicTemplate(result) {
             <hr class="my-1">
            <a href="submissions/view.php?id=${
              result.file_id
-           }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+           }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
             </div>`;
   return template;
 }
@@ -171,7 +171,7 @@ export function publishedJournalTemplate(result) {
                   <hr class="my-1">
                  <a href="submissions/view.php?id=${
                    result.file_id
-                 }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+                 }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
                   </div>`;
   return template;
 }
@@ -198,7 +198,7 @@ export function publishedReportTemplate(result) {
                   <hr class="my-1">
                  <a href="submissions/view.php?id=${
                    result.file_id
-                 }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view</button></a>
+                 }"><button class="btn text-light view-button rounded-0 mt-3">Click here to view/edit</button></a>
                   </div>`;
   return template;
 }

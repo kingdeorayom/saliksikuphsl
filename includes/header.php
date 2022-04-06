@@ -40,7 +40,7 @@
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/admin/profile.php"><i class="far fa-user me-2"></i>Account</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/admin/submissions.php"><i class="far fa-file-pdf me-2"></i>Submissions</a></li>
                     <li><a class="dropdown-item my-1 d-flex align-items-center" href="/users/library.php"><i class="far fa-file-alt me-2"></i>Library</a></li>
-                    <li><a class="dropdown-item my-1 d-flex align-items-center" href="/admin/system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>
+                    <!--<li><a class="dropdown-item my-1 d-flex align-items-center" href="/admin/system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a></li>-->
                     <li><a class="dropdown-item my-1 d-flex align-items-center text-danger" href="/src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a></li>
                 </ul>';
                 } else {
@@ -88,9 +88,9 @@
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/users/library.php"><i class="far fa-file-alt me-2"></i>Library</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-link-color" href="/admin/admin-system-logs.php"><i class="far fa-clipboard me-2"></i>System Logs</a>
-            </li>
+            </li>-->
             <li class="nav-item">
                 <a class="nav-link d-flex align-items-center offcanvas-signout-link-color" href="../src/process/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sign out</a>
             </li>
