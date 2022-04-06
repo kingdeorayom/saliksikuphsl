@@ -176,6 +176,9 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
                 $("#submitText").css({
                     "border-left": "thick none #012265",
                 });
+
+                window.scrollTo(0, 0);
+
             });
         });
     </script>
