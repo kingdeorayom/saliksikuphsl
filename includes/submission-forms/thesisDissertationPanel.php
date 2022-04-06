@@ -237,6 +237,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 mb-2">
+                <!--HUWAG MO NA SUBUKAN, ALAM NAMIN NA DAPAT I-HANDLE YAN SA SERVER-SIDE. KINAPOS LANG KAMI SA ORAS. GANON DIN SA IBANG PART NA SIMILAR DITO.-->
                 <input type="email" class="form-control" name="textFieldEmail" required>
             </div>
             <div class="col-lg-6 col-sm-12 mb-3 d-sm-block d-lg-none">
