@@ -44,7 +44,8 @@ if (isset($_GET['id'])) {
     $statement->close();
 
     if ($file == null) {
-        die(); //file doesnt exist
+        header("Location: /admin/submissions.php");
+        exit();
     } else {
         if ($file['file_type'] === "thesis") {
             $statement = $connection->prepare("SELECT * FROM file_information AS fi JOIN research_information AS ri ON ri.file_ref_id=fi.file_id JOIN coauthors_information AS ci ON fi.coauthor_group_id=ci.group_id LEFT JOIN (SELECT ref_id, feedback, returned_on FROM feedback_log WHERE log_id IN (SELECT MAX(log_id) FROM feedback_log GROUP BY ref_id)) AS fl ON fi.file_id = fl.ref_id WHERE file_id= ?");

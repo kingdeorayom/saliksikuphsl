@@ -9,6 +9,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
     die();
 }
 
+if($_SESSION['userType']!='admin') {
+    die();
+}
+
 if(!isset($_GET['id'])){
     die();
 }

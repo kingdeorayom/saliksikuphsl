@@ -112,7 +112,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 </div>
             </div>
 
-            <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+             <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                 <div class='modal-dialog modal-dialog-centered'>
                     <div class='modal-content'>
                         <div class='modal-header'>
@@ -124,7 +124,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
-                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-article' data-id=''><i class='fas fa-trash-alt'></i> Delete</button>
+                            <a href="../../src/process/delete-item.php?id=<?php echo $fileInfo['file_id'] ?>" class='btn btn-danger rounded-0' id='btn-delete-article'><i class='fas fa-trash-alt'></i> Delete</a>
                         </div>
                     </div>
                 </div>

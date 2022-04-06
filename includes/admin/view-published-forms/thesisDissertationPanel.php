@@ -536,7 +536,7 @@ $year = date_format($date_time, "Y");
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
-                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-article' data-id=''><i class='fas fa-trash-alt'></i> Delete</button>
+                            <a href="../../src/process/delete-item.php?id=<?php echo $fileInfo['file_id'] ?>" class='btn btn-danger rounded-0' id='btn-delete-article'><i class='fas fa-trash-alt'></i> Delete</a>
                         </div>
                     </div>
                 </div>
