@@ -197,7 +197,7 @@ array_walk_recursive($published, "filter");
                                          }
                                         echo "<div class='row'>
                                         <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                        <img src='../src/{$item['file_dir2']}' width='150'>
                                         </div>
                                         <div class='col-sm-12 col-lg-10'>
                                             <div class='col'>
@@ -208,7 +208,7 @@ array_walk_recursive($published, "filter");
                                                 <p>{$item['journal_description']}</p></div>
                                         </div>
                                         <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                            <img src='src/{$item['file_dir2']}' width='150'>
+                                            <img src='../src/{$item['file_dir2']}' width='150'>
                                         </div>
                                     </div>";
                                     }
@@ -286,7 +286,7 @@ array_walk_recursive($published, "filter");
                                      }
                                     echo "<div class='row'>
                                     <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
                                     <div class='col-sm-12 col-lg-10'>
                                         <div class='col'>
@@ -297,7 +297,7 @@ array_walk_recursive($published, "filter");
                                             <p>{$item['report_description']}</p></div>
                                     </div>
                                     <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                        <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
                                 </div>";
                                 }
@@ -327,7 +327,7 @@ array_walk_recursive($published, "filter");
                                      }
                                     echo "<div class='row'>
                                     <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
                                     <div class='col-sm-12 col-lg-10'>
                                         <div class='col'>
@@ -338,7 +338,7 @@ array_walk_recursive($published, "filter");
                                             <p>{$item['report_description']}</p></div>
                                     </div>
                                     <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                        <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
                                 </div>";
                                 }
@@ -367,7 +367,7 @@ array_walk_recursive($published, "filter");
                                  }
                                 echo "<div class='row'>
                                 <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                <img src='src/{$item['file_dir2']}' width='150'>
+                                <img src='../src/{$item['file_dir2']}' width='150'>
                                 </div>
                                 <div class='col-sm-12 col-lg-10'>
                                     <div class='col'>
@@ -378,7 +378,7 @@ array_walk_recursive($published, "filter");
                                         <p>{$item['report_description']}</p></div>
                                 </div>
                                 <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    <img src='../src/{$item['file_dir2']}' width='150'>
                                 </div>
                             </div>";
                                 }
@@ -408,7 +408,7 @@ array_walk_recursive($published, "filter");
                                      }
                                     echo "<div class='row'>
                                     <div class='col-sm-12 col-lg-2 d-sm-block d-lg-none text-center mb-3 mt-1'>
-                                    <img src='src/{$item['file_dir2']}' width='150'>
+                                    <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
                                     <div class='col-sm-12 col-lg-10'>
                                         <div class='col'>
@@ -419,7 +419,7 @@ array_walk_recursive($published, "filter");
                                             <p>{$item['report_description']}</p></div>
                                     </div>
                                     <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
-                                        <img src='src/{$item['file_dir2']}' width='150'>
+                                        <img src='../src/{$item['file_dir2']}' width='150'>
                                     </div>
                                 </div>";
                                 }
