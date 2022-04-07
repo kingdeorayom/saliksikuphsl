@@ -166,7 +166,7 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
                                     </div>
                                 </div>
                             </div>
-                        </div>";
+                        </div>
                         <?php endif;?>
                 </div>
             </div>
