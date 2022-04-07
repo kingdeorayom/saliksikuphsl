@@ -168,13 +168,14 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                     
                     $connection->commit();
-                    $_SESSION['file_updated'] = "published";
+                    $_SESSION['file_updated'] = "edited";
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
                         $_SESSION['file_updated'] = "for revision";
                     }
                     else if($newlyPublished){
                         sendMailPublished();
+                        $_SESSION['file_updated'] = "published";
                     }
                     
                     header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
@@ -228,7 +229,7 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     
                     $connection->commit();
-                    $_SESSION['file_updated'] = "published";
+                    $_SESSION['file_updated'] = "edited";
                     
                 
                     if(isset($_POST["needsRevision"])){
@@ -238,6 +239,7 @@ if (isset($_SESSION['userType'])) {
                     }
                     else if($newlyPublished){
                         sendMailPublished();
+                        $_SESSION['file_updated'] = "published";
                     }
 
                     
@@ -310,7 +312,7 @@ if (isset($_SESSION['userType'])) {
 
                     $connection->commit();
 
-                    $_SESSION['file_updated'] = "published";
+                    $_SESSION['file_updated'] = "edited";
 
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
@@ -318,6 +320,7 @@ if (isset($_SESSION['userType'])) {
                     }
                     else if($newlyPublished){
                         sendMailPublished();
+                        $_SESSION['file_updated'] = "published";
                     }
 
                     header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
@@ -369,7 +372,7 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     
                     $connection->commit();
-                    $_SESSION['file_updated'] = "published";
+                    $_SESSION['file_updated'] = "edited";
 
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
@@ -377,6 +380,7 @@ if (isset($_SESSION['userType'])) {
                     }
                     else if($newlyPublished){
                         sendMailPublished();
+                        $_SESSION['file_updated'] = "published";
                     }
                     header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
                     exit();

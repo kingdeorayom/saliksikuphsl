@@ -70,6 +70,12 @@ $year = date_format($date_time, "Y");
             <?php endif;?>
             <?php if($_SESSION['file_updated']=='published'): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Submission published successfully!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php endif;?>
+            <?php if($_SESSION['file_updated']=='edited'): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Submission edited successfully!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
