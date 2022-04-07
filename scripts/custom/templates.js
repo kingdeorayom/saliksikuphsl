@@ -188,8 +188,9 @@ export function publishedReportTemplate(result) {
                   </div>
                   <div class="row">
                       <h4 class="">${escapeHtml(result.report_title)}</h4>
+                      <h6 class="">${escapeHtml(result.report_year)}</h6>
                   </div>
-                    <div class="row">
+                    <div class="row my-1">
                     <p><span class="fw-bold">Submitted on:</span> ${
                       result.submitted_on
                     }</p>
