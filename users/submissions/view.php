@@ -38,8 +38,14 @@ if (isset($_GET['id'])) {
     $statement->close();
 
     if ($file['user_id'] != $_SESSION['userid']) {
+        // not owner
         header("Location: /users/my-submissions.php");
         exit();
+    }
+    if($file['file_type']=='revised'){
+        header("Location: /users/my-submissions.php");
+        exit();
+        
     }
 
     if ($file == null) {
@@ -60,7 +66,9 @@ if (isset($_GET['id'])) {
         }
     }
 } else {
-    die(); //GET['id'] is not defined;
+    //GET['id'] is not defined;
+    header("Location: /users/my-submissions.php");
+    exit();
 }
 
 
