@@ -113,7 +113,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         }
 
         function checkResponseRegister(data) {
-            console.log(data)
             if (data.response === "empty_fields") {
                 alertRegister.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
             }

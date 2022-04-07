@@ -103,7 +103,50 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                     <div class="submissions">
                         <h1 class="p-2">Create New Account</h1>
                         <hr class="my-3">
-                        <div class="row my-5">
+                        <!-- alert containers php -->
+
+                        <?php if (isset($_SESSION['wrongPasswordAdmin'])) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Passwords do not match.</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php endif;
+                        unset($_SESSION['wrongPasswordAdmin']); ?>
+
+                        <?php if (isset($_SESSION['invalidEmailAdmin'])) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Invalid Email.</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php endif;
+                        unset($_SESSION['invalidEmailAdmin']); ?>
+
+                        <?php if (isset($_SESSION['notSchoolEmail'])) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Not School Email.</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php endif;
+                        unset($_SESSION['notSchoolEmail']); ?>
+
+                        <?php if (isset($_SESSION['emailExistsAdmin'])) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Email exists.</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php endif;
+                        unset($_SESSION['emailExistsAdmin']); ?>
+                        
+                        <?php if (isset($_SESSION['createAccountSuccess'])) : ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Account created successfully.</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php endif;
+                        unset($_SESSION['createAccountSuccess']); ?>
+
+                        <!--end of alert containers php -->
+                        <form class="row my-5" action="../src/process/create-new-account.php" method="POST">
                             <div class="col-lg-3">
                                 <h6 class="fw-bold my-3">Account Type</h6>
                             </div>
@@ -117,19 +160,19 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <h6 class="fw-bold mt-3 mb-2">First Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text">
+                                <input class="form-control my-2" type="text" placeholder="First name" name="textFieldFirstName" required>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Last Name</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text">
+                                <input class="form-control my-2" type="text" placeholder="Last name" name="textFieldLastName" required>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="fw-bold mt-3 mb-2">School Email</h6>
+                                <h6 class="fw-bold mt-3 mb-2">Email</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text">
+                                <input class="form-control my-2" type="email" placeholder="Email" name="textFieldEmail" required>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Department</h6>
@@ -155,19 +198,19 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <h6 class="fw-bold mt-3 mb-2">Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text">
+                                <input class="form-control my-2" type="password" name='textFieldPassword' required>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Confirm Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="text">
+                                <input class="form-control my-2" type="password" name='textFieldPasswordConfirm' required>
                             </div>
                             <hr class="my-4">
                             <div class="text-end">
-                                <button type="button" class="btn btn-secondary button-create rounded-0">Create account</button>
+                                <button class="btn btn-secondary button-create rounded-0">Create account</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 

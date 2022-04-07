@@ -57,15 +57,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                         unset($_SESSION['invalidEmail']);
                     }
 
-                    if (isset($_SESSION['notSchoolEmail'])) { ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Invalid email!</strong> Please use your school email.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php
-                        unset($_SESSION['notSchoolEmail']);
-                    }
-
                     if (isset($_SESSION['emailDoesNotExists'])) { ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Account not found!</strong> There is no account linked to the email provided.

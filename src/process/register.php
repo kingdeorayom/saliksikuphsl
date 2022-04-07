@@ -37,7 +37,7 @@ if (!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL)) {
 
 $email = $_POST['textFieldEmail'];
 if (preg_match("~@uphsl\.edu\.ph$~", $email)) {
-    if ($statement = $connection->prepare('SELECT user_id, password FROM users WHERE email = ?')) {
+    if ($statement = $connection->prepare('SELECT user_id FROM users WHERE email = ?')) {
         $statement->bind_param('s', $_POST['textFieldEmail']);
         $statement->execute();
         $statement->store_result();

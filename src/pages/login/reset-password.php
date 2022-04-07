@@ -118,7 +118,6 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         }
 
         function checkResetResponse(data) {
-            console.log(data)
             if (data.response === "login_success") {
                 window.location.href = "../../../index.php";
             }
