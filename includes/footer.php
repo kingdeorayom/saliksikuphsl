@@ -46,7 +46,7 @@
                 <p class="text-white">Copyright &copy; 2022 UPHSL</p>
             </div>
             <div class="col-sm-12 col-md-3">
-                <p class="text-white fst-italic">Last Updated: Dec 06, 2021 11:41 AM</p>
+                <p class="text-white fst-italic">Last Updated: Apr 07, 2022</p>
             </div>
         </div>
     </div>
