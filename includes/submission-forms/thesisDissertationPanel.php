@@ -564,7 +564,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             }else if (data.response === "input_error") {
                 $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Form Validation Error. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
             } else if (data.response === "invalid_email") {
-                $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Please check all the email fields and enter a valid email.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Invalid Email!</strong> Please check all the email fields and enter a valid email.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
             } else if (data.response === "generic_error") {
                 $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> Check to make sure the file is <strong>less than 10 MB</strong> or that the file to be submitted is attached.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
             } else if (data.response === "size_error") {

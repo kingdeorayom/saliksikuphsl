@@ -8,13 +8,52 @@ include '../../includes/connection.php';
 if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
-
-// if (!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor1'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor2'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor3'], FILTER_VALIDATE_EMAIL) || !filter_var($_POST['textFieldEmailAuthor4'], FILTER_VALIDATE_EMAIL)) {
-//     $arr = array('response' => "invalid_email");
-//     header('Content-Type: application/json');
-//     echo json_encode($arr);
-//     exit();
-// }
+if(!filter_var($_POST['textFieldEmail'], FILTER_VALIDATE_EMAIL)){
+    $arr = array('response' => "invalid_email");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
+    exit();
+}
+if(isset($_POST['textFieldEmailAuthor1'])){
+    if(!empty($_POST['textFieldEmailAuthor1'])){
+        if(!filter_var($_POST['textFieldEmailAuthor1'], FILTER_VALIDATE_EMAIL)){
+            $arr = array('response' => "invalid_email");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
+            exit();
+        }
+    }
+}
+if(isset($_POST['textFieldEmailAuthor2'])){
+    if(!empty($_POST['textFieldEmailAuthor2'])){
+        if(!filter_var($_POST['textFieldEmailAuthor2'], FILTER_VALIDATE_EMAIL)){
+            $arr = array('response' => "invalid_email");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
+            exit();
+        }
+    }
+}
+if(isset($_POST['textFieldEmailAuthor3'])){
+    if(!empty($_POST['textFieldEmailAuthor3'])){
+        if(!filter_var($_POST['textFieldEmailAuthor3'], FILTER_VALIDATE_EMAIL)){
+            $arr = array('response' => "invalid_email");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
+            exit();
+        }
+    }
+}
+if(isset($_POST['textFieldEmailAuthor4'])){
+    if(!empty($_POST['textFieldEmailAuthor4'])){
+        if(!filter_var($_POST['textFieldEmailAuthor4'], FILTER_VALIDATE_EMAIL)){
+            $arr = array('response' => "invalid_email");
+            header('Content-Type: application/json');
+            echo json_encode($arr);
+            exit();
+        }
+    }
+}
 
 $resourceTypeValues = array("Dissertation","Thesis", "Capstone");
 if(isset($_POST['dropdownResourceType'])){
