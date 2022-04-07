@@ -107,7 +107,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
 
                         <?php if (isset($_SESSION['wrongPasswordAdmin'])) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Passwords do not match.</strong>
+                            <strong>Passwords do not match.</strong> Check for unwanted spaces and capitalizations.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php endif;
@@ -115,7 +115,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
 
                         <?php if (isset($_SESSION['invalidEmailAdmin'])) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Invalid Email.</strong>
+                            <strong>Invalid Email.</strong> Please enter a valid email.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php endif;
@@ -131,7 +131,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
 
                         <?php if (isset($_SESSION['emailExistsAdmin'])) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Email exists.</strong>
+                            <strong>Email already exists.</strong> Please provide another one.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php endif;
@@ -139,14 +139,14 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         
                         <?php if (isset($_SESSION['createAccountSuccess'])) : ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Account created successfully.</strong>
+                            <strong>Account created successfully.</strong> The account will now be able to login to the system using the registered email and password.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php endif;
                         unset($_SESSION['createAccountSuccess']); ?>
 
                         <!--end of alert containers php -->
-                        <form class="row my-5" action="../src/process/create-new-account.php" method="POST">
+                        <form class="row my-3" action="../src/process/create-new-account.php" method="POST">
                             <div class="col-lg-3">
                                 <h6 class="fw-bold my-3">Account Type</h6>
                             </div>
