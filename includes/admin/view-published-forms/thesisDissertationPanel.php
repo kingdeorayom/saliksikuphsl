@@ -44,13 +44,6 @@ $year = date_format($date_time, "Y");
 
         </div>
         <!-- container for alert messages -->
-        <?php if (isset($_SESSION['deleteFail'])) : ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Cannot delete record. Please try again.</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php endif;
-                    unset($_SESSION['deleteFail']); ?>
         <h1 class="my-2">File Upload Information</h1>
         <hr>
         <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
