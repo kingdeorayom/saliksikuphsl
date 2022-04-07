@@ -140,9 +140,6 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         var formdata = new FormData(form);
         postJournal(formdata).then(data => checkResponse(JSON.parse(data)));
-        //     for (var pair of formdata.entries()) {
-        //     console.log(pair[0]+ ', ' + pair[1]); 
-        // }
         window.scrollTo(0, 0);
     }
 

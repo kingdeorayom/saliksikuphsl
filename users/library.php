@@ -92,7 +92,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     method: "GET",
     url: "../src/process/add-bookmark.php?id=" + id,
   }).done(function (data) {
-    console.log(id, data);
     // TODO add notification when bookmark is added
     container.html("<i class='fas fa-bookmark me-2'></i> Remove from Bookmarks");
     container.removeClass("add-bookmark");
@@ -107,7 +106,6 @@ $(".library").on("click", ".del-bookmark", function () {
     method: "GET",
     url: "../src/process/delete-bookmark.php?id=" + id,
   }).done(function (data) {
-    console.log(id, data);
     // TODO add notification when bookmark is deleted
     container.html("<i class='far fa-bookmark me-2'></i> Add to Bookmarks");
     container.removeClass("del-bookmark");

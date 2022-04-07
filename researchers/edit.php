@@ -235,9 +235,6 @@ $pagecssVersion = filemtime('../styles/custom/pages/researchers-style.css');
             event.preventDefault();
             var id = $(this).data("id");
             var formData = new FormData(this);
-            for(var pair of formData){
-                console.log(pair)
-            }
             $.ajax({
                     method: "POST",
                     url: "../src/process/edit-researcher.php?id="+id,

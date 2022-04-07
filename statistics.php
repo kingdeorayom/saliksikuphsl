@@ -193,9 +193,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                 url: "src/process/get-statistics.php",
                 async: false
             }).done(function(result) {
-                console.log(result)
                 result.forEach(function(val, key) {
-                    console.table(result);
                     labels.push(val.year)
                     data.push(val.count)
                 })
@@ -217,7 +215,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                         }]
                     },
                 });
-                console.table(data);
+                
             })
         })
     </script>

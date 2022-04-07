@@ -44,7 +44,6 @@ $year = date_format($date_time, "Y");
 
         </div>
         <!-- container for alert messages -->
-
         <h1 class="my-2">File Upload Information</h1>
         <hr>
         <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
