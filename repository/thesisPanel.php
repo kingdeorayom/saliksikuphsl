@@ -56,14 +56,28 @@ $date_time = date_format($date_time,"F Y");
                     <p class='fst-italic'><?php echo htmlspecialchars($fileInfo['keywords']) ?></p> 
 
                     <div class='row my-4'>
-                        <p class='fw-bold mb-3'>Attached Files</p>
+
+                        <?php if($fileInfo['file1_shown'] || $fileInfo['file2_shown']):?>
+                            <p class='fw-bold mb-3'>Attached Files</p>
+                        <?php endif?>
+
+                        <?php if(!$fileInfo['file1_shown'] && !$fileInfo['file2_shown']):?>
+                            
+                            <div class="border border-1 bg-light">
+                                <p class='my-3'><i class="fas fa-lock mx-1" style="color: #012265;"></i> To access the <strong>full manuscript</strong> and/or <strong>survey questionnaire</strong>, you may send a request through <a href="mailto:research@uphsl.edu.ph">research@uphsl.edu.ph</a></p>
+                            </div>
+                        <?php endif?>
+
                         <div class='col'>
-                            <?php if($fileInfo['file1_shown']):?>
+                            
+                        <?php if($fileInfo['file1_shown']):?>
                             <a href="../src/<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file m-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i>Manuscript</button></a>
-                            <?php endif?>
-                            <?php if($fileInfo['file2_shown']):?>
+                        <?php endif?>
+
+                        <?php if($fileInfo['file2_shown']):?>
                             <a href="../src/<?php echo $fileInfo['file_dir2'] ?>" target="_blank"><button class='btn button-file m-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i>Survey Questionnaire</button></a>
-                            <?php endif?>
+                        <?php endif?>
+
                         </div>
                     </div>
 
