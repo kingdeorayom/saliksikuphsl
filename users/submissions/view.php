@@ -61,8 +61,8 @@ if (isset($_GET['id'])) {
             $statement->close();
             $researchFieldsArray = array_map('trim', explode(",", $fileInfo['research_fields']));
         } else {
-            die();
-            // thesis lang pede submit ni user
+            header("Location: /users/my-submissions.php");
+            exit();
         }
     }
 } else {
