@@ -45,13 +45,13 @@ $year = date_format($date_time, "Y");
         </div> -->
         <?php if(isset($_SESSION['error'])): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Invalid Email input.</strong>
+                <strong>Invalid Email input.</strong> Check to make sure all email fields have valid email input.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php unset($_SESSION['error']); endif;?>
         <?php if(isset($_SESSION['invalid_email'])): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Invalid Email input.</strong>
+                <strong>Invalid Email input.</strong> Check to make sure all email fields have valid email input.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php unset($_SESSION['invalid_email']); endif;?>

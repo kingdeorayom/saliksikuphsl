@@ -244,7 +244,7 @@ $year = date_format($date_time,"Y");
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mb-2">
-                    <input type="text" class="form-control" name="textFieldEmail" value="<?php echo $fileInfo['author_email'] ?>" required>
+                    <input type="email" class="form-control" name="textFieldEmail" value="<?php echo $fileInfo['author_email'] ?>" required>
                 </div>
                 <div class="col-lg-6 col-sm-12 mb-3 d-sm-block d-lg-none">
                     <label class="text-secondary">Consider your active email address</label>
@@ -328,7 +328,7 @@ $year = date_format($date_time,"Y");
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
                     <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldEmailAuthor1" value="<?php echo $fileInfo['coauthor1_email'] ?>">
+                    <input type="email" class="form-control" name="textFieldEmailAuthor1" value="<?php echo $fileInfo['coauthor1_email'] ?>">
                 </div>
             </div>
             <div class="row" id="co-author-2-td-panel" <?= $fileInfo['coauthors_count'] >= 2 ? '' : 'style="display: none;"' ?>>
@@ -347,7 +347,7 @@ $year = date_format($date_time,"Y");
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
                     <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldEmailAuthor2" value="<?php echo $fileInfo['coauthor2_email'] ?>">
+                    <input type="email" class="form-control" name="textFieldEmailAuthor2" value="<?php echo $fileInfo['coauthor2_email'] ?>">
                 </div>
             </div>
             <div class="row" id="co-author-3-td-panel" <?= $fileInfo['coauthors_count'] >= 3 ? '' : 'style="display: none;"' ?>>
@@ -366,7 +366,7 @@ $year = date_format($date_time,"Y");
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
                     <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldEmailAuthor3" value="<?php echo $fileInfo['coauthor3_email'] ?>">
+                    <input type="email" class="form-control" name="textFieldEmailAuthor3" value="<?php echo $fileInfo['coauthor3_email'] ?>">
                 </div>
             </div>
             <div class="row" id="co-author-4-td-panel" <?= $fileInfo['coauthors_count'] >= 4 ? '' : 'style="display: none;"' ?>>
@@ -385,7 +385,7 @@ $year = date_format($date_time,"Y");
                 </div>
                 <div class="col-lg-6 col-sm-12 my-2">
                     <label class="fw-bold">Email<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" name="textFieldEmailAuthor4" value="<?php echo $fileInfo['coauthor4_email'] ?>">
+                    <input type="email" class="form-control" name="textFieldEmailAuthor4" value="<?php echo $fileInfo['coauthor4_email'] ?>">
                 </div>
             </div>
             <div class="row">
@@ -548,7 +548,7 @@ $year = date_format($date_time,"Y");
                     $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Error with submitting data.</strong> Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
                 if (data.response === "success") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Resubmitted sucessfully!</strong> Changes saved successfully! Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Changes saved successfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
             })
         })
