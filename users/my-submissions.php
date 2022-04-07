@@ -58,6 +58,12 @@ $userSubmissionsJSVersion = filemtime('../scripts/custom/user-submissions.js');
     <section class="submit-research profile">
         <div class="container p-5">
             <div class="row">
+            <?php if(isset($_SESSION['success'])): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>File Submission Success.</strong> Wait for your submission to be approved by the administration.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['success']); endif;?>
 
                 <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column" id="myProfilePanel">
 

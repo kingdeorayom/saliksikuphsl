@@ -45,7 +45,6 @@ if (isset($_GET['id'])) {
     if($file['file_type']=='revised'){
         header("Location: /users/my-submissions.php");
         exit();
-        
     }
 
     if ($file == null) {

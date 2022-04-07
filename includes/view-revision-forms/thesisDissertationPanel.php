@@ -49,14 +49,31 @@ $year = date_format($date_time,"Y");
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
 
         <!-- container for alert messages -->
-        <div id='alert-container-thesis'>
-
-        </div>
+        <!-- <div id='alert-container-thesis'>
+        </div> -->
+        <?php if(isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Email input.</strong> Check to make sure all email fields have valid email input.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['error']); endif;?>
+        <?php if(isset($_SESSION['invalid_email'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Email input.</strong> Check to make sure all email fields have valid email input.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['invalid_email']); endif;?>
+        <?php if(isset($_SESSION['input_error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Input.</strong> Please try again.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['input_error']); endif;?>
         <!-- container for alert messages -->
 
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <form name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+        <form name="thesis-form" action="<?php echo "../../src/process/user-update-submission.php?id=".$fileInfo['file_id']."&coauthor_id=".$fileInfo['coauthor_group_id']; ?>" method="POST" enctype="multipart/form-data">
             <div class="row mt-4">
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
@@ -545,28 +562,28 @@ $year = date_format($date_time,"Y");
 
     </div>
     <script type="text/javascript">
-        $("form[name='thesis-form']").on('submit', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var coauthor_id = $(this).data('coauthor_id');
-            var formData = new FormData(this);
-            formData.append("coauthor_id", coauthor_id)
-            $.ajax({
-                method: "POST",
-                url: "../../src/process/user-update-submission.php?id=" + id,
-                contentType: false,
-                processData: false,
-                data: formData
-            }).done(function(data) {
-                window.scrollTo(0, 0);
-                if (data.response === "error") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Error with submitting data.</strong> Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "success") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Resubmitted sucessfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-            })
-        })
+        // $("form[name='thesis-form']").on('submit', function(e) {
+        //     e.preventDefault();
+        //     var id = $(this).data('id');
+        //     var coauthor_id = $(this).data('coauthor_id');
+        //     var formData = new FormData(this);
+        //     formData.append("coauthor_id", coauthor_id)
+        //     $.ajax({
+        //         method: "POST",
+        //         url: "../../src/process/user-update-submission.php?id=" + id,
+        //         contentType: false,
+        //         processData: false,
+        //         data: formData
+        //     }).done(function(data) {
+        //         window.scrollTo(0, 0);
+        //         if (data.response === "error") {
+        //             $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Error with submitting data.</strong> Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+        //         }
+        //         if (data.response === "success") {
+        //             $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Resubmitted sucessfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+        //         }
+        //     })
+        // })
         $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
                 <span class='badge rounded-pill' style='background-color:#012265'>New</span>
             </div>`)
