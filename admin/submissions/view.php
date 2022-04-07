@@ -143,6 +143,7 @@ $coauthorsDropdown = filemtime('../../scripts/custom/coauthors-dropdown.js');
     <!--Header and Navigation section-->
 
     <?php include_once '../../includes/header.php' ?>
+    
     <section class="submit-research">
         <div class="container p-5">
             <?php

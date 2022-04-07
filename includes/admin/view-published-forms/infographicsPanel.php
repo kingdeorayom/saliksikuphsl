@@ -44,6 +44,13 @@ $year = date_format($date_time, "Y");
 
         </div>
         <!-- container for alert messages -->
+        <?php if (isset($_SESSION['deleteFail'])) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Cannot delete record. Please try again.</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif;
+                    unset($_SESSION['deleteFail']); ?>
         <h1 class="my-2">File Upload Information</h1>
         <hr>
         <form name="infographic-form" data-id="<?php echo $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
@@ -288,7 +295,7 @@ $year = date_format($date_time, "Y");
                 </div>
             </div>
 
-             <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                 <div class='modal-dialog modal-dialog-centered'>
                     <div class='modal-content'>
                         <div class='modal-header'>

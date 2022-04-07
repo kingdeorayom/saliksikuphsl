@@ -14,6 +14,13 @@ if(!isset($_GET['id'])){
     die();
 }
 
+$statement = $connection->prepare("SELECT * FROM file_information AS fi WHERE fi.file_id = ?");
+$statement->bind_param("i",$_GET['id']);
+$statement->execute();
+$result = $statement->get_result();
+$fileInfo =$result->fetch_assoc();
+$statement->close();
+
 $connection->begin_transaction();
 
 try{
@@ -29,6 +36,45 @@ WHERE fi.file_id = ?");
 $statement->bind_param("i",$_GET['id']);
 $statement->execute();
 $statement->close();
+
+
+// $deleteFile1 = true;
+// $deleteFile2 = true;
+
+// $file1_not_empty = !empty($fileInfo['file_dir']);
+// $file1_not_exists = !file_exists("../".$fileInfo['file_dir']);
+
+// $file2_not_empty = !empty($fileInfo['file_dir2']);
+// $file2_not_exists = !file_exists("../".$fileInfo['file_dir2']);
+
+// var_dump($file1_not_exists);
+
+
+// if($file1_not_empty && $file1_not_exists){
+//     $deleteFile1 = true;
+// }
+// if($file2_not_empty && $file2_not_exists){
+//     $deleteFile2 = true;
+// }
+
+// // echo json_encode($deleteFile1);
+// var_dump($deleteFile1);
+// var_dump($deleteFile2);
+
+// if($deleteFile1 && $deleteFile2){
+
+@unlink("../".$fileInfo['file_dir']);
+@unlink("../".$fileInfo['file_dir2']);
+
+//     echo 'succes';
+// }
+// else{
+//     $_SESSION['deleteFail'] = true;
+//     // header("Location: /admin/submissions/view.php?id={$_GET['id']}");
+//     exit();
+// }
+
+
 
 $connection->commit();
 $_SESSION['deleteSuccess'] = true;

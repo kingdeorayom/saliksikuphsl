@@ -51,14 +51,17 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
     <?php include_once '../includes/header.php' ?>
 
     <section class="submit-research profile">
-       <?php if(isset($_SESSION['deleteSuccess'])):?>
-        <div>just deleted!</div>
-       <?php endif; unset($_SESSION['deleteSuccess']);?>
         <div class="container p-5">
 
             <div class="row">
-
                 <div class="col-lg-12 px-5 col-md-12 col-xs-12 main-column">
+                    <?php if (isset($_SESSION['deleteSuccess'])) : ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Record deleted successfully!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif;
+                    unset($_SESSION['deleteSuccess']); ?>
                     <h1 class="my-2 p-2">Submissions</h1>
                     <hr class="my-3">
                     <div class="row fw-bold p-3 text-light text-center d-flex justify-content-center">
