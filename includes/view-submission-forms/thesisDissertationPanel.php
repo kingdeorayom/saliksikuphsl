@@ -550,6 +550,15 @@ $year = date_format($date_time,"Y");
                 if (data.response === "success") {
                     $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Changes saved successfully!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 }
+                if (data.response === "invalid_email") {
+                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Resubmitted sucessfully!</strong> Changes saved successfully! Wait for your submission to be approved by the administration. You can view the submission status by checking My Submissions under My Profile.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "input_error") {
+                    $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Form Validation Error. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                }
+                if (data.response === "invalid_email") {
+                    $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>Invalid Email!</strong> Please check all the email fields and enter a valid email.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            }
             })
         })
         $(".feedback-container:first-of-type").prepend(`<div class='text-end'>
