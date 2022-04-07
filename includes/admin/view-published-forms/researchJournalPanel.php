@@ -36,13 +36,45 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </div>
     <div class=" col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="researchJournalPanel">
         <!-- container for alert messages -->
-        <div id='alert-container-journal'>
+        <!-- <div id='alert-container-journal'>
 
-        </div>
+        </div> -->
+        <?php if(isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Email input.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['error']); endif;?>
+        <?php if(isset($_SESSION['invalid_email'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Email input.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['invalid_email']); endif;?>
+        <?php if(isset($_SESSION['input_error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Input.</strong> Please try again.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['input_error']); endif;?>
+        <?php if(isset($_SESSION['file_updated'])): ?>
+            <?php if($_SESSION['file_updated']=='for revision'): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Submission returned successfully!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php endif;?>
+            <?php if($_SESSION['file_updated']=='published'): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Submission edited successfully!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php endif;?>
+        <?php unset($_SESSION['file_updated']); endif;?>
         <!-- container for alert messages -->
         <h1 class="my-2">File Upload Information</h1>
         <hr>
-        <form name="journal-form" data-id=<?php echo $fileInfo['file_id'] ?>>
+        <form name="journal-form" action="<?php echo "../../src/process/update-file.php?id=".$fileInfo['file_id'] ?>" method="POST">
             <div class="row mt-4">
                 <div>
                     <label class="fw-bold">Title<span class="text-danger"> *</span></label>
@@ -176,31 +208,3 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
         </form>
     </div>
-    <script>
-        $("form[name='journal-form']").on("submit", function(event) {
-            event.preventDefault();
-            var fileId = event.target.dataset.id
-
-            var formData = new FormData(this);
-            formData.append("fileId", fileId);
-
-            $.ajax({
-                method: "POST",
-                url: "../../src/process/update-file.php",
-                data: formData,
-                contentType: false,
-                processData: false,
-            }).done(function(data) {
-                window.scrollTo(0, 0);
-                if (data.response === "error") {
-                    $("#alert-container-journal").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "success") {
-                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Published successfully!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "revision") {
-                    $("#alert-container-journal").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-            })
-        })
-    </script>

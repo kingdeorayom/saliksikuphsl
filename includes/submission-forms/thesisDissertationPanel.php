@@ -21,46 +21,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="thesis-progress-bar">0%</div>
         </div>
     </div>
-    <!-- <div id='alert-container'>
+    <div id='alert-container'>
 
-    </div> -->
-    <?php if(isset($_SESSION['error'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Invalid Email input.</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php unset($_SESSION['error']); endif;?>
-        <?php if(isset($_SESSION['invalid_email'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Invalid Email input.</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php unset($_SESSION['invalid_email']); endif;?>
-        <?php if(isset($_SESSION['input_error'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Invalid Input.</strong> Please try again.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php unset($_SESSION['input_error']); endif;?>
-        <?php if(isset($_SESSION['file_updated'])): ?>
-            <?php if($_SESSION['file_updated']=='for revision'): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Submission returned successfully!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php endif;?>
-            <?php if($_SESSION['file_updated']=='published'): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Published successfully!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php endif;?>
-        <?php unset($_SESSION['file_updated']); endif;?>
+    </div>
     <!-- container for alert messages -->
 
     <h1 class="my-2">Thesis and Dissertation Submission Form</h1>
     <hr>
-    <form name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+    <form name="thesis-form">
         <div class="row mt-4">
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>

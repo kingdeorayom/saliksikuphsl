@@ -40,14 +40,47 @@ $year = date_format($date_time, "Y");
     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="thesisDissertationPanel">
 
         <!-- container for alert messages -->
-        <div id='alert-container-thesis'>
+        <!-- <div id='alert-container-thesis'>
 
-        </div>
+        </div> -->
+
+        <?php if(isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Email input.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['error']); endif;?>
+        <?php if(isset($_SESSION['invalid_email'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Email input.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['invalid_email']); endif;?>
+        <?php if(isset($_SESSION['input_error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid Input.</strong> Please try again.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php unset($_SESSION['input_error']); endif;?>
+        <?php if(isset($_SESSION['file_updated'])): ?>
+            <?php if($_SESSION['file_updated']=='for revision'): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Submission returned successfully!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php endif;?>
+            <?php if($_SESSION['file_updated']=='published'): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Submission edited successfully!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php endif;?>
+        <?php unset($_SESSION['file_updated']); endif;?>
         <!-- container for alert messages -->
         <h1 class="my-2">File Upload Information</h1>
         <hr>
         <!-- <form action="../../process/thesis-submission.php" method="POST" enctype="multipart/form-data"> -->
-        <form name="thesis-form" data-id="<?= $fileInfo['file_id'] ?>" data-coauthor_id="<?= $fileInfo['coauthor_group_id'] ?>">
+        <form name="thesis-form" action="<?php echo "../../src/process/update-file.php?id=".$fileInfo['file_id']."&coauthor_id=".$fileInfo['coauthor_group_id']; ?>" method="POST">
             <div class="row mt-4">
                 <div class="col-lg-4 col-sm-12">
                     <label class="py-2 fw-bold">Resource Type<span class="text-danger"> *</span></label>
@@ -544,36 +577,6 @@ $year = date_format($date_time, "Y");
         </form>
 
     </div>
-    <script>
-        $("form[name='thesis-form']").on("submit", function(event) {
-            event.preventDefault();
-            var fileId = event.target.dataset.id
-            var authorGroupId = event.target.dataset.coauthor_id
-            var formData = new FormData(this);
-
-            formData.append("fileId", fileId);
-            formData.append("coauthor_id", authorGroupId);
-
-            $.ajax({
-                method: "POST",
-                url: "../../src/process/update-file.php",
-                data: formData,
-                contentType: false,
-                processData: false,
-            }).done(function(data) {
-                window.scrollTo(0, 0);
-                if (data.response === "error") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert">Error with editing data. Please try again later.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "success") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Published successfully!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-                if (data.response === "revision") {
-                    $("#alert-container-thesis").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">Submission returned successfully!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
-                }
-            })
-        })
-    </script>
 
     <script>
         $(document).ready(function() {

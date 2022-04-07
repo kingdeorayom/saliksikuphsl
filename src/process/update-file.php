@@ -168,16 +168,13 @@ if (isset($_SESSION['userType'])) {
                     $statement->close();
                     
                     $connection->commit();
-
-                    $arr = array('response'=>"success");
-
+                    $_SESSION['file_updated'] = "published";
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
                         $_SESSION['file_updated'] = "for revision";
                     }
                     else if($newlyPublished){
                         sendMailPublished();
-                        $_SESSION['file_updated'] = "published";
                     }
                     
                     header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
@@ -231,11 +228,12 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     
                     $connection->commit();
-                    $arr = array('response'=>"success");
-
+                    $_SESSION['file_updated'] = "published";
+                    
+                
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
-                        $arr = array('response'=>"revision");
+                        $_SESSION['file_updated'] = "for revision";
 
                     }
                     else if($newlyPublished){
@@ -243,8 +241,8 @@ if (isset($_SESSION['userType'])) {
                     }
 
                     
-                    header('Content-Type: application/json');
-                    echo json_encode($arr);
+                    header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
+                    exit();
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
@@ -258,21 +256,18 @@ if (isset($_SESSION['userType'])) {
         else if($file['file_type']==="infographic"){
             if(isset($_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear'])){
                 if(!is_numeric($_POST['dropdownPublicationMonth'])){
-                    $arr = array('response' => "input_error");
-                    header('Content-Type: application/json');
-                    echo json_encode($arr);
+                    $_SESSION['input_error'] = true;
+                    header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
                     exit();
                 }
                 if(!is_numeric($_POST['dropdownPublicationDay'])){
-                    $arr = array('response' => "input_error");
-                    header('Content-Type: application/json');
-                    echo json_encode($arr);
+                    $_SESSION['input_error'] = true;
+                    header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
                     exit();
                 }
                 if(!is_numeric($_POST['dropdownPublicationYear'])){
-                    $arr = array('response' => "input_error");
-                    header('Content-Type: application/json');
-                    echo json_encode($arr);
+                    $_SESSION['input_error'] = true;
+                    header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
                     exit();
                 }
                 $publication_date = date("Y-m-d", mktime(0,0,0,$_POST['dropdownPublicationMonth'], $_POST['dropdownPublicationDay'], $_POST['dropdownPublicationYear']));
@@ -315,18 +310,18 @@ if (isset($_SESSION['userType'])) {
 
                     $connection->commit();
 
-                    $arr = array('response'=>"success");
+                    $_SESSION['file_updated'] = "published";
 
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
-                        $arr = array('response'=>"revision");
+                        $_SESSION['file_updated'] = "for revision";
                     }
                     else if($newlyPublished){
                         sendMailPublished();
                     }
 
-                    header('Content-Type: application/json');
-                    echo json_encode($arr);
+                    header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
+                    exit();
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
@@ -374,17 +369,17 @@ if (isset($_SESSION['userType'])) {
                     $statement->execute();
                     
                     $connection->commit();
-                    $arr = array('response'=>"success");
+                    $_SESSION['file_updated'] = "published";
 
                     if(isset($_POST["needsRevision"])){
                         sendMailReturned();
-                        $arr = array('response'=>"revision");
+                        $_SESSION['file_updated'] = "for revision";
                     }
                     else if($newlyPublished){
                         sendMailPublished();
                     }
-                    header('Content-Type: application/json');
-                    echo json_encode($arr);
+                    header("location: ../../admin/submissions/view.php?id=".$_GET['id']);
+                    exit();
             }
             catch(mysqli_sql_exception $exception){
                 $connection->rollback();
