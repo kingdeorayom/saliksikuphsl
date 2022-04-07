@@ -11,6 +11,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 }
 
 if (!isset($_GET['id'])) {
+    header("location: ../researchers.php");
     die();
 }
 
@@ -20,8 +21,8 @@ $statement->execute();
 $result = $statement->get_result();
 $num_rows = mysqli_num_rows($result);
 if ($num_rows ==0){
+    header("location: ../researchers.php");
     die();
-    // does not exist in database
 }
 $researcher = $result->fetch_assoc();
 $statement->close();
@@ -141,13 +142,12 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
 
                         </div>
 
-                        <?php if($_SESSION['userType'] == 'admin'){
-                            echo "<div class='row my-5'>
+                        <?php if($_SESSION['userType'] == 'admin'): ?>
+                            <div class='row my-5'>
                             <div class='text-start'>
                                 <p class='fst-italic text-danger'><span class='fw-bold'>IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p>
                                 <button class='btn btn-danger rounded-0' data-bs-toggle='modal' data-bs-target='#modalDelete'><i class='fas fa-trash-alt'></i> Delete profile</button>
                             </div>
-
                             <!-- Modal -->
                             <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                 <div class='modal-dialog modal-dialog-centered'>
@@ -159,16 +159,15 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
                                         <div class='modal-body'>
                                             <label>This action is irreversible.</label>
                                         </div>
-                                        <div class='modal-footer'>
+                                        <form class='modal-footer' action="<?php echo "../src/process/delete-researcher-profile.php?id=".$researcher['researcher_id'] ?>" method="POST">
                                             <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
-                                            <button type='button' class='btn btn-danger rounded-0' id='btn-delete-profile' data-id='{$researcher['researcher_id']}'><i class='fas fa-trash-alt'></i> Delete</button>
-                                        </div>
+                                            <button class='btn btn-danger rounded-0'><i class='fas fa-trash-alt'></i> Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>";
-                        }?>
+                        <?php endif;?>
                 </div>
             </div>
 
@@ -180,19 +179,6 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
     <?php include_once '../includes/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../scripts/bootstrap/bootstrap.js"></script>
-    <script type="text/javascript">
-        $("#btn-delete-profile").on("click", function(){
-            var id = $(this).data("id");
-            $.ajax({
-                method: "POST",
-                url:"../src/process/delete-researcher-profile.php?id="+ id
-            }).done(function(data){
-                if(data.response=="success"){
-                    //TODO do something here; close modal? go back to researchers page?
-                }
-            })
-        })
-    </script>
 </body>
 
 </html>

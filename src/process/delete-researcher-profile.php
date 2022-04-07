@@ -5,15 +5,17 @@ session_start();
 include '../../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php");
     die();
 }
 
 if($_SESSION['userType']!='admin') {
+    header("location: ../../home.php");
     die();
 }
 
 if(!isset($_GET['id'])){
+    header("location: ../../home.php");
     die();
 }
 
@@ -43,12 +45,12 @@ $connection->begin_transaction();
         unlink($image_path['researcher_image']); //DELETES IMAGE
 
         $connection->commit();
-        $arr = array('response' => "success");
-        header('Content-Type: application/json');
-        echo json_encode($arr);
+        $SESSION['deletedResearcher']= true;
+        header('Location: ../../researchers.php');
+        exit();
     }catch(mysqli_sql_exception $exception){
         $connection->rollback();
-        $arr = array('response' => "database_error");
-        header('Content-Type: application/json');
-        echo json_encode($arr);
+        $SESSION['deleteResearcherFail']= true;
+        header('Location: ../../researchers/view.php?id='.$_GET['id']);
+        exit();
     }
