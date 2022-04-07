@@ -49,7 +49,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
             <div class="row mx-auto">
                 <div class="col-lg-5 mx-auto d-flex justify-content-center align-items-center">
                     <div class="text-center text-white">
-                        <img src="assets/images/core/saliksik-logo.png" id="saliksik-logo" alt="Saliksik Logo" class="img-fluid mb-5">
+                        <img src="assets/images/core/saliksik-logo.png" id="saliksik-logo" alt="SALIKSIK: UPHSL Research Repository" class="img-fluid mb-5">
                         <p class="h4 d-none d-lg-block">The Official Institutional Repository of University of Perpetual Help System Laguna</p>
                     </div>
                 </div>

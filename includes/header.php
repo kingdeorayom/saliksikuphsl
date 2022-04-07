@@ -2,7 +2,7 @@
     <section class="header navbar navbar-dark bg-dark">
         <div class="container p-2">
             <div class="d-flex align-items-center">
-                <a href="/home.php"><img src="/assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid mx-2"></a>
+                <a href="/home.php"><img src="/assets/images/core/saliksik-logo.png" id="header-logo" alt="SALIKSIK: UPHSL Research Repository" class="img-fluid mx-2"></a>
             </div>
 
             <div class="navbar navbar-expand-md">
@@ -65,7 +65,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <div class="d-flex align-items-center">
-            <a href="home.php"><img src="/assets/images/core/saliksik-logo.png" id="header-logo" alt="Saliksik Logo" class="img-fluid"></a>
+            <a href="home.php"><img src="/assets/images/core/saliksik-logo.png" id="header-logo" alt="SALIKSIK: UPHSL Research Repository" class="img-fluid"></a>
         </div>
         <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
