@@ -33,6 +33,8 @@
     </div>
 </section>
 
+
+
 <section class="footer footer-banner pt-3">
     <div class="container">
         <div class="row px-5">
@@ -46,7 +48,7 @@
                 <p class="text-white">Copyright &copy; 2022 UPHSL</p>
             </div>
             <div class="col-sm-12 col-md-3">
-                <p class="text-white fst-italic">Last Updated: Apr 07, 2022</p>
+                <p class="text-white fst-italic">Last Updated: <?php echo date("D, M j, Y, h:i:s"); ?></p>
             </div>
         </div>
     </div>
