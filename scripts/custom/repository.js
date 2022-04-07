@@ -23,9 +23,6 @@
 
 $("form[name='sidebar-filters']")
   .on("change", function () {
-    // console.log($("form[name='modal-filters']").find(":input"));
-    // console.log($("form[name='sidebar-filters']").find(":input"));
-
     $(this)
       .find(":input")
       .each(function (index) {

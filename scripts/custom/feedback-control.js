@@ -1,5 +1,4 @@
 function enableRevisionInfographics(checkBoxStatus) {
-  console.log(document.querySelector("[name='textAreaFeedbackInfographics']"));
   if (checkBoxStatus.checked) {
     document.getElementById("textAreaFeedbackInfographics").hidden = false;
     document.querySelector(
