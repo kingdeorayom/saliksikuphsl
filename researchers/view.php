@@ -135,7 +135,7 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
                                 <hr>
                                 <?php foreach ($published_works as $key => $result) {
                                     array_walk_recursive($result, "filter");
-                                    echo "<a href='{$result['research_link']}' class='my-4 published-works h5'>{$result['research_title']}</a>
+                                    echo "<a href='{$result['research_link']}' target='_blank' class='my-4 published-works h5'>{$result['research_title']}</a>
                                 <hr>";
                                 } ?>
                             </div>
