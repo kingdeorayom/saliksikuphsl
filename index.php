@@ -25,7 +25,6 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -33,7 +32,6 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-
     <meta property="og:image" content="./assets/images/core/saliksik-meta-preview.png" />
     <meta property="og:description" content="SALIKSIK: UPHSL Research Repository is an online tool and database where you can view, upload and download materials pertaining to research outputs of the university. It allows you to have access to a wide array of research materials in terms of a given time period, particular college/department, or research areas. It also provides access to the annual reports, research competency development program, institutional research agenda and other relevant research documents of the Research Center." />
     <meta property="og:url" content="http://www.coachesneedsocial.com/coacheswisdomtelesummit/" />
@@ -105,11 +103,14 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                             <label>Email <i class="fas fa-question-circle text-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Create an account if you don't have one yet"></i></label>
                             <input class="form-control my-2" type="text" name="textFieldEmail" id="textFieldEmail" autofocus>
                             <label>Password</label>
-                            <input class="form-control my-2" type="password" name="textFieldPassword" id="textFieldPassword">
-                            <div class="form-check py-2">
+                            <div class="input-group my-2">
+                                <input class="form-control" type="password" name="textFieldPassword" id="textFieldPassword">
+                                <span class="input-group-text toggle-password fas fa-eye d-flex align-items-center"></span>
+                            </div>
+                            <!-- <div class="form-check py-2">
                                 <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword">
                                 <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
-                            </div>
+                            </div> -->
                             <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonLogin" id="buttonLogin">Login</button>
                         </form>
                         <div class="text-center py-2">
@@ -124,16 +125,13 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
     </main>
 
     <script>
-        $(document).ready(function() {
-            $("#checkboxShowHidePassword").change(function() {
-                if ($(this).is(':checked')) {
-                    $("#textFieldPassword").attr("type", "text");
-                } else {
-                    $("#textFieldPassword").attr("type", "password");
-                }
-            });
+        $(document).on('click', '.toggle-password', function() {
+            $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+            var input = $("#textFieldPassword");
+            input.attr('type', input.attr('type') === 'password' ? 'text' : 'password')
         });
     </script>
+
     <script>
         var alertLogin = $("#alert-container-login");
 

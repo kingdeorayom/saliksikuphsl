@@ -67,6 +67,18 @@ if(count($bookmarks)!=0){
         if ($result['file_type'] === 'thesis') {
             $date_time = date_create($result['publication_date']);
             $date_time = date_format($date_time,"F Y");
+
+            if(strlen($result['research_abstract'])>500){
+                // truncate string
+                 $stringCut = substr($result['research_abstract'], 0, 500);
+                 $endPoint = strrpos($result['research_abstract'], ' ');
+     
+                 //if the string doesn't contain any space then it will cut without word basis.
+                 $result['research_abstract']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                 $result['research_abstract'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' target='_blank' class='read-more'>Read More</a>";
+     
+             }
+
             echo "<div class='repositoryItem p-2'>
             <p class='fw-bold text-start' style='color: #012265;'>{$result['research_type']}</p>
             <a href='../repository/view-article.php?id={$result['file_id']}' class='article-title'>
@@ -90,6 +102,18 @@ if(count($bookmarks)!=0){
         } else if ($result['file_type'] === 'journal') {
             $journalImage = explode(".pdf", $result['file_dir']);
             $journalImageLink = $journalImage[0] . ".png";
+
+            if(strlen($result['journal_description'])>500){
+                // truncate string
+                 $stringCut = substr($result['journal_description'], 0, 500);
+                 $endPoint = strrpos($result['journal_description'], ' ');
+     
+                 //if the string doesn't contain any space then it will cut without word basis.
+                 $result['journal_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                 $result['journal_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' target='_blank' class='read-more'>Read More</a>";
+     
+             }
+
             echo "<div class='repositoryItem p-2'>
             <div class='row'>
                 <div class='text-start'>
@@ -123,6 +147,18 @@ if(count($bookmarks)!=0){
         } else if ($result['file_type'] === 'infographic') {
             $date_time = date_create($result['publication_date']);
             $date_time = date_format($date_time,"F Y");
+
+            if(strlen($result['infographic_description'])>500){
+                // truncate string
+                 $stringCut = substr($result['infographic_description'], 0, 500);
+                 $endPoint = strrpos($result['infographic_description'], ' ');
+     
+                 //if the string doesn't contain any space then it will cut without word basis.
+                 $result['infographic_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                 $result['infographic_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' target='_blank' class='read-more'>Read More</a>";
+     
+             }
+
             echo "<div class='repositoryItem p-2'>
             <div class='row'>
                 <div class='text-start'>

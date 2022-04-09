@@ -113,3 +113,13 @@
 .publishedWorkTitle:hover {
   text-decoration: underline;
 }
+
+.read-more {
+  text-decoration: none;
+  color: #012265;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+  color: #012265;
+}

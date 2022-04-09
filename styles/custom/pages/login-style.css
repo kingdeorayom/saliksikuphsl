@@ -38,6 +38,10 @@ body {
   border-color: #27498d;
 }
 
+.toggle-password {
+  cursor: pointer;
+}
+
 /* ------------------------------ Registration Page ------------------------------ */
 
 .to-login {

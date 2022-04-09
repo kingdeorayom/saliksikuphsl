@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 my-1">
-                <a href="/home.php"><img src="/assets/images/core/saliksik-logo.png" alt="" class="img-fluid saliksik-logo mb-1"></a>
+                <a href="/home.php"><img src="/assets/images/core/saliksik-logo.png" id="footer-logo" alt="" class="img-fluid saliksik-logo mb-2"></a>
                 <p class="footer-column-title fw-bold">University of Perpetual Help System Laguna</p>
                 <ul class="footer-list">
                     <li><a class="footer-list-link">UPH Compound, National Highway,</a></li>

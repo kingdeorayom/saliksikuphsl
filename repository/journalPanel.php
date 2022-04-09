@@ -38,7 +38,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <img src='../src/<?php echo $fileInfo['file_dir2']?>' width='150' class="mt-4 mb-5">
                         </div>
                         <div class='col'>
-                        <h2><?php echo htmlspecialchars($fileInfo['journal_title'])?></h2>
+                        <h2><?php echo htmlspecialchars($fileInfo['journal_title'])?><?php if ($_SESSION['userType'] == 'admin') {
+                            echo " <a target='_blank' class='edit-submission-icon' href='../admin/submissions/view.php?id=".$_GET['id']."'><i class='fas fa-edit h6'></i></a>";
+                        } ?></h2>
                         <h5 class='mb-3'><?php echo htmlspecialchars($fileInfo['journal_subtitle'])?></h5>
                         <p class='fw-bold'><?php echo htmlspecialchars($fileInfo['chief_editor_first_name']." ".$fileInfo['chief_editor_last_name'])?>
                         <p class='fw-bold'><?php echo "Volume " . htmlspecialchars($fileInfo['volume_number']). " Series of " . htmlspecialchars($fileInfo['serial_issue_number']);?></p>

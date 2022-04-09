@@ -26,14 +26,19 @@ $date_time = date_format($date_time,"F Y");
                     <hr>
                     <h3><?php echo $article_visits['hits']?></h3>
                     <p>Views</p>
-                    <hr>
+                    <hr class="mb-5">
                     <!-- <h3>24</h3>
                     <p>Downloads</p>
                     <hr> -->
                 </div>
 
                 <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column'>
-                    <h2><?php echo htmlspecialchars($fileInfo['research_title']) ?></h2>
+                    <h2>
+                        <?php echo htmlspecialchars($fileInfo['research_title']) ?>
+                        <?php if ($_SESSION['userType'] == 'admin') {
+                            echo "<a target='_blank' class='edit-submission-icon' href='../admin/submissions/view.php?id=".$_GET['id']."'><i class='fas fa-edit h6'></i></a>";
+                        } ?>
+                    </h2>
                     <hr class='my-4'>
                     <p class='fw-bold'>
                     <?php
@@ -57,28 +62,39 @@ $date_time = date_format($date_time,"F Y");
 
                     <div class='row my-4'>
 
-                        <?php if($fileInfo['file1_shown'] || $fileInfo['file2_shown']):?>
-                            <p class='fw-bold mb-3'>Attached Files</p>
-                        <?php endif?>
+                        <?php
+                        
+                            if($_SESSION['userType'] == 'admin') { // files always shown for admin
+                                echo '<p class="fw-bold mb-3">Attached Files</p>';
+                                echo '<div class=\'col\'>
+                                <a href="../src/ '.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>
+                                <a href="../src/ '.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>
+                                </div>'; 
+                            }
+                            else if($_SESSION['userType'] == 'user') {
 
-                        <?php if(!$fileInfo['file1_shown'] && !$fileInfo['file2_shown']):?>
-                            
-                            <div class="border border-1 bg-light">
-                                <p class='my-3'><i class="fas fa-lock mx-1" style="color: #012265;"></i> To access the <strong>full manuscript</strong> and/or <strong>survey questionnaire</strong>, you may send a request through <a href="mailto:research@uphsl.edu.ph">research@uphsl.edu.ph</a></p>
-                            </div>
-                        <?php endif?>
+                                if($fileInfo['file1_shown'] || $fileInfo['file2_shown']):
+                                    echo "<p class='fw-bold mb-3'>Attached Files</p>";
+                                endif;
+                                if(!$fileInfo['file1_shown'] && !$fileInfo['file2_shown']):
+                                    echo "<div class='border border-1 bg-light'>
+                                        <p class='my-3'><i class='fas fa-lock mx-1' style='color: #012265;'></i> To access the <strong>full manuscript</strong> and/or <strong>survey questionnaire</strong>, you may send a request through <a href='mailto:research@uphsl.edu.ph'>research@uphsl.edu.ph</a></p>
+                                    </div>";
+                                endif;
+                                echo '<div class="col">';
+                                if($fileInfo['file1_shown']):
+                                        echo '<a href="../src/ '.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+                                endif;
+                                if($fileInfo['file2_shown']):
+                                        echo '<a href="../src/ '.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+                                endif;
 
-                        <div class='col'>
-                            
-                        <?php if($fileInfo['file1_shown']):?>
-                            <a href="../src/<?php echo $fileInfo['file_dir'] ?>" target="_blank"><button class='btn button-file m-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i>Manuscript</button></a>
-                        <?php endif?>
+                                echo '</div>';  
+                            }
 
-                        <?php if($fileInfo['file2_shown']):?>
-                            <a href="../src/<?php echo $fileInfo['file_dir2'] ?>" target="_blank"><button class='btn button-file m-1 rounded-0'><i class='far fa-file-pdf me-2' style="color: red;"></i>Survey Questionnaire</button></a>
-                        <?php endif?>
+                        ?>
 
-                        </div>
+                        
                     </div>
 
                     <div class='row my-3'>

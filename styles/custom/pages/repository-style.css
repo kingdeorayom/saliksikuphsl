@@ -77,6 +77,15 @@
   color: #ffffff;
 }
 
+
+.edit-submission-icon {
+  color: black;
+}
+
+.edit-submission-icon:hover {
+  color: gray;
+}
+
 /*---------------------------------------------------Modal Window---------------------------------------------------*/
 
 .modal-content {

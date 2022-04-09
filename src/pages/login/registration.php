@@ -80,7 +80,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                         <input class="form-control" type="password" name="textFieldConfirmPassword" id="textFieldConfirmPassword">
                         <div class="form-check py-2">
                             <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword">
-                            <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
+                            <label class="form-check-label" for="checkboxShowHidePassword">Show Password</label>
                         </div>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Create account</button>
                     </form>
@@ -117,7 +117,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                 alertRegister.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
             }
             if (data.response === "passwords_mismatch") {
-                alertRegister.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> <code>Password</code> and <code>Confirm Password</code> do not match.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+                alertRegister.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Password and Confirm Password do not match.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
             }
             if (data.response === "not_school_email") {
                 alertRegister.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid email!</strong> Please use your school email.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`

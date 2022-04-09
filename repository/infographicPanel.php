@@ -33,7 +33,9 @@ $date_time = date_format($date_time,"F Y");
                 </div>
 
                 <div class='col-lg-9 col-md-12 col-xs-12 mx-auto main-column'>
-                    <h2><?php echo htmlspecialchars($fileInfo['infographic_title']); ?></h2>
+                    <h2><?php echo htmlspecialchars($fileInfo['infographic_title']); ?><?php if ($_SESSION['userType'] == 'admin') {
+                            echo " <a target='_blank' class='edit-submission-icon' href='../admin/submissions/view.php?id=".$_GET['id']."'><i class='fas fa-edit h6'></i></a>";
+                        } ?></h2>
                     <hr class='my-4'>
                     <p class='fw-bold'><?php
                     echo htmlspecialchars($fileInfo['author_first_name']." ".$fileInfo['author_surname']);

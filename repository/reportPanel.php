@@ -38,7 +38,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <img src='../src/<?php echo $fileInfo['file_dir2']?>' width='150' class="mt-4 mb-5">
                         </div>
                         <div class='col'>
-                        <h2><?php echo htmlspecialchars($fileInfo['report_title'])?></h2>
+                        <h2><?php echo htmlspecialchars($fileInfo['report_title'])?><?php if ($_SESSION['userType'] == 'admin') {
+                            echo " <a target='_blank' class='edit-submission-icon' href='../admin/submissions/view.php?id=".$_GET['id']."'><i class='fas fa-edit h6'></i></a>";
+                        } ?></h2>
                         <p class='fw-bold'><?php echo $fileInfo['report_year'] ?></p>
                         <?php  if(in_array($fileInfo['file_id'],array_column($bookmarks,'ref_id'))){
                         echo "<p class='del-bookmark' data-id={$fileInfo['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
