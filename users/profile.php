@@ -37,7 +37,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <?php include_once '../assets/fonts/google-fonts.php' ?>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo '../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo '../styles/custom/pages/profile-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -56,7 +56,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
 
     <!--Header and Navigation section-->
 
-    <?php include_once '../includes/header.php'?>
+    <?php include_once '../includes/header.php' ?>
     <section class="submit-research profile">
         <div class="container p-5">
 
@@ -66,13 +66,14 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                     <h1 class="my-2">About you</h1>
                     <hr class="my-4">
                     <div class="row">
-                    <?php 
-                    if(isset($_SESSION['changedAbout'])): ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Account details changed successfully!</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php unset($_SESSION['changedAbout']); endif;?>
+                        <?php
+                        if (isset($_SESSION['changedAbout'])) : ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Account details changed successfully!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php unset($_SESSION['changedAbout']);
+                        endif; ?>
                         <form action="../src/process/update-user-profile.php" method="POST">
                             <div class="row">
                                 <div>
@@ -95,22 +96,22 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                             <div class="row my-2">
                                 <div>
                                     <label class="fw-bold mb-2">College/Department</label>
-                                            <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
-                                                <option value="Basic Education" <?= $user['department'] == "Basic Education" ? 'selected=selected' : '' ?>>Basic Education</option>
-                                                <option value="Senior High School" <?= $user['department'] == "Senior High School" ? 'selected=selected' : '' ?>>Senior High School</option>
-                                                <option value="Arts and Sciences" <?= $user['department'] == "Arts and Sciences" ? 'selected=selected' : '' ?>>Arts and Sciences</option>
-                                                <option value="Business and Accountancy" <?= $user['department'] == "Business and Accountancy" ? 'selected=selected' : '' ?>>Business and Accountancy</option>
-                                                <option value="Computer Studies" <?= $user['department'] == "Computer Studies" ? 'selected=selected' : '' ?>>Computer Studies</option>
-                                                <option value="Criminology" <?= $user['department'] == "Criminology" ? 'selected=selected' : '' ?>>Criminology</option>
-                                                <option value="Education" <?= $user['department'] == "Education" ? 'selected=selected' : '' ?>>Education</option>
-                                                <option value="Engineering, Architecture and Aviation" <?= $user['department'] == "Engineering, Architecture and Aviation" ? 'selected=selected' : '' ?>>Engineering, Architecture and Aviation</option>
-                                                <option value="Law" <?= $user['department'] == "Law" ? 'selected=selected' : '' ?>>Law</option>
-                                                <option value="Maritime Education" <?= $user['department'] == "Maritime Education" ? 'selected=selected' : '' ?>>Maritime Education</option>
-                                                <option value="International Hospitality Management" <?= $user['department'] == "International Hospitality Management" ? 'selected=selected' : '' ?>>International Hospitality Management</option>
-                                                <option value="Graduate School" <?= $user['department'] == "Graduate School" ? 'selected=selected' : '' ?>>Graduate School</option>
-                                                <option value="Support Services" <?= $user['department'] == "Support Services" ? 'selected=selected' : '' ?>>Support Services</option>
-                                            </select>
-                                   
+                                    <select class="form-select" aria-label="Default select example" name="dropdownDepartment">
+                                        <option value="Basic Education" <?= $user['department'] == "Basic Education" ? 'selected=selected' : '' ?>>Basic Education</option>
+                                        <option value="Senior High School" <?= $user['department'] == "Senior High School" ? 'selected=selected' : '' ?>>Senior High School</option>
+                                        <option value="Arts and Sciences" <?= $user['department'] == "Arts and Sciences" ? 'selected=selected' : '' ?>>Arts and Sciences</option>
+                                        <option value="Business and Accountancy" <?= $user['department'] == "Business and Accountancy" ? 'selected=selected' : '' ?>>Business and Accountancy</option>
+                                        <option value="Computer Studies" <?= $user['department'] == "Computer Studies" ? 'selected=selected' : '' ?>>Computer Studies</option>
+                                        <option value="Criminology" <?= $user['department'] == "Criminology" ? 'selected=selected' : '' ?>>Criminology</option>
+                                        <option value="Education" <?= $user['department'] == "Education" ? 'selected=selected' : '' ?>>Education</option>
+                                        <option value="Engineering, Architecture and Aviation" <?= $user['department'] == "Engineering, Architecture and Aviation" ? 'selected=selected' : '' ?>>Engineering, Architecture and Aviation</option>
+                                        <option value="Law" <?= $user['department'] == "Law" ? 'selected=selected' : '' ?>>Law</option>
+                                        <option value="Maritime Education" <?= $user['department'] == "Maritime Education" ? 'selected=selected' : '' ?>>Maritime Education</option>
+                                        <option value="International Hospitality Management" <?= $user['department'] == "International Hospitality Management" ? 'selected=selected' : '' ?>>International Hospitality Management</option>
+                                        <option value="Graduate School" <?= $user['department'] == "Graduate School" ? 'selected=selected' : '' ?>>Graduate School</option>
+                                        <option value="Support Services" <?= $user['department'] == "Support Services" ? 'selected=selected' : '' ?>>Support Services</option>
+                                    </select>
+
                                 </div>
                             </div>
                             <div class="row my-3">
@@ -121,31 +122,37 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         </form>
                         <h1 class="my-1">Account Parameters</h1>
                         <hr class="my-4">
-                        <?php if(isset($_SESSION['changedPassword'])): ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Password changed successfully!</strong> In case of forgotten password, proceed to the <strong>Forgot Password</strong> section in the login page to reset your password.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php unset($_SESSION['changedPassword']); endif;?>
-                        <?php if(isset($_SESSION['wrongPassword'])): ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            
-                        <strong>Password change unsuccessful!</strong> The current password you entered is incorrect.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php unset($_SESSION['wrongPassword']); endif;?>
+                        <?php if (isset($_SESSION['changedPassword'])) : ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Password changed successfully!</strong> In case of forgotten password, proceed to the <strong>Forgot Password</strong> section in the login page to reset your password.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php unset($_SESSION['changedPassword']);
+                        endif; ?>
+                        <?php if (isset($_SESSION['wrongPassword'])) : ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                                <strong>Password change unsuccessful!</strong> The current password you entered is incorrect.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php unset($_SESSION['wrongPassword']);
+                        endif; ?>
                         <form action="../src/process/update-user-password.php" method="POST">
                             <div class="row">
                                 <div>
                                     <label class="fw-bold mb-2">Current Password</label>
-                                    <input type="password" class="form-control" name="textFieldCurrentPassword" required>
+                                    <input type="password" class="form-control" name="textFieldCurrentPassword" id="textFieldCurrentPassword" required>
                                 </div>
                             </div>
                             <div class="row my-2">
                                 <div>
                                     <label class="fw-bold mb-2">New Password</label>
-                                    <input type="password" class="form-control" name="textFieldNewPassword" required>
+                                    <input type="password" class="form-control" name="textFieldNewPassword" id="textFieldNewPassword" required>
                                 </div>
+                            </div>
+                            <div class="form-check py-2">
+                                <input class="form-check-input" type="checkbox" id="checkboxShowHidePassword">
+                                <label class="form-check-label" for="checkboxShowHidePassword">Show Password</label>
                             </div>
                             <div class="row my-3">
                                 <div class="text-end">
@@ -173,6 +180,21 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#checkboxShowHidePassword").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#textFieldNewPassword").attr("type", "text");
+                    $("#textFieldCurrentPassword").attr("type", "text");
+                } else {
+                    $("#textFieldNewPassword").attr("type", "password");
+                    $("#textFieldCurrentPassword").attr("type", "password");
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

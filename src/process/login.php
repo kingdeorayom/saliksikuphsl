@@ -14,7 +14,7 @@ if (!isset($_POST['textFieldEmail'], $_POST['textFieldPassword'])) {
 }
 
 $redirect = NULL;
-if($_POST['location'] != '') {
+if ($_POST['location'] != '') {
     $redirect = $_POST['location'];
 }
 
@@ -46,11 +46,38 @@ if (empty($_POST['textFieldEmail'] && $_POST['textFieldPassword'])) {
                 $_SESSION['fullName'] = $firstName . ' ' . $lastName;
                 $_SESSION['userid'] = $userid;
 
-                if($redirect){
+                if ($redirect) {
                     $arr = array('location' => $redirect);
-                }
-                else{
+                } else {
                     $arr = array('response' => "login_success");
+
+
+                    function getIPAddress()
+                    {
+                        //whether ip is from the share internet  
+                        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                            $ip = $_SERVER['HTTP_CLIENT_IP'];
+                        }
+                        //whether ip is from the proxy  
+                        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                        }
+                        //whether ip is from the remote address  
+                        else {
+                            $ip = $_SERVER['REMOTE_ADDR'];
+                        }
+                        return $ip;
+                    }
+
+                    $ip = getIPAddress();
+
+
+                    $login_time = date('h:i:s A');
+                    $login_date = date('D, M j, Y');
+
+                    $statement = $connection->prepare('INSERT into login_history (user_id, last_name, first_name, email_address, user_type, ip_address, login_time, login_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+                    $statement->bind_param('ssssssss', $_SESSION['userid'], $_SESSION['lastName'], $_SESSION['firstName'], $_SESSION['email'], $_SESSION['userType'], $ip, $login_time, $login_date);
+                    $statement->execute();
                 }
                 header('Content-Type: application/json');
                 echo json_encode($arr);

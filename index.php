@@ -40,10 +40,10 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 </head>
 
 <body>
-<div class="alert alert-light alert-dismissible fade show" role="alert">
-  <strong>IMPORTANT!</strong> We're working on improving the system right now. You may notice some underdeveloped parts inside the website.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    <div class="alert alert-light alert-dismissible fade show rounded-0" role="alert">
+        <strong>IMPORTANT!</strong> We're working on improving the system right now. You may notice some underdeveloped parts inside the website.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <!--Main Section-->
     <main class="main">
         <div class="container mx-auto my-5">
@@ -56,6 +56,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                 </div>
                 <div class="col-lg-5 mx-auto p-5 bg-light">
                     <div class="row p-2" id="alert-container-login">
+
                         <?php
                         if (isset($_SESSION['registrationSuccessful'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -99,6 +100,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                         <h3>Sign in to your account</h3>
                     </div>
                     <div class="row">
+
                         <form name="login-form">
                             <input type="text" hidden value="<?php if (isset($_GET['location'])) {
                                                                     echo htmlspecialchars($_GET['location']);

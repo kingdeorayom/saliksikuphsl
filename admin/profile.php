@@ -55,18 +55,20 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <h1 class="my-2 p-2">Account Preference</h1>
                         <hr class="my-3">
                         <div class="row my-5">
-                        <?php if(isset($_SESSION['changedPassword'])): ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Password changed successfully!</strong> In case of forgotten password, proceed to the <strong>Forgot Password</strong> section in the login page to reset your password.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php unset($_SESSION['changedPassword']); endif;?>
-                        <?php if(isset($_SESSION['wrongPassword'])): ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Password change unsuccessful!</strong> The current password you entered is incorrect.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php unset($_SESSION['wrongPassword']); endif;?>
+                            <?php if (isset($_SESSION['changedPassword'])) : ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Password changed successfully!</strong> In case of forgotten password, proceed to the <strong>Forgot Password</strong> section in the login page to reset your password.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php unset($_SESSION['changedPassword']);
+                            endif; ?>
+                            <?php if (isset($_SESSION['wrongPassword'])) : ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Password change unsuccessful!</strong> The current password you entered is incorrect.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php unset($_SESSION['wrongPassword']);
+                            endif; ?>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">First Name</h6>
                             </div>
@@ -83,13 +85,22 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <h6 class="fw-bold mt-3 mb-2">Current Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name="textFieldCurrentPassword">
+                                <input class="form-control my-2" type="password" name="textFieldCurrentPassword" id="textFieldCurrentPassword">
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">New Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name="textFieldNewPassword">
+                                <input class="form-control my-2" type="password" name="textFieldNewPassword" id="textFieldNewPassword">
+                            </div>
+                            <div class="col-lg-3">
+
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-check py-2">
+                                    <input class="form-check-input" type="checkbox" id="checkboxShowHidePasswordAccountPreference">
+                                    <label class="form-check-label" for="checkboxShowHidePasswordAccountPreference">Show Password</label>
+                                </div>
                             </div>
                             <hr class="mt-4 mb-3">
                             <div class="text-end">
@@ -106,42 +117,42 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <!-- alert containers php -->
 
                         <?php if (isset($_SESSION['wrongPasswordAdmin'])) : ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Passwords do not match.</strong> Check for unwanted spaces and capitalizations.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Passwords do not match.</strong> Check for unwanted spaces and capitalizations.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         <?php endif;
                         unset($_SESSION['wrongPasswordAdmin']); ?>
 
                         <?php if (isset($_SESSION['invalidEmailAdmin'])) : ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Invalid Email.</strong> Please enter a valid email.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Invalid Email.</strong> Please enter a valid email.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         <?php endif;
                         unset($_SESSION['invalidEmailAdmin']); ?>
 
                         <?php if (isset($_SESSION['notSchoolEmail'])) : ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Not School Email.</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Not School Email.</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         <?php endif;
                         unset($_SESSION['notSchoolEmail']); ?>
 
                         <?php if (isset($_SESSION['emailExistsAdmin'])) : ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Email already exists.</strong> Please provide another one.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Email already exists.</strong> Please provide another one.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         <?php endif;
                         unset($_SESSION['emailExistsAdmin']); ?>
-                        
+
                         <?php if (isset($_SESSION['createAccountSuccess'])) : ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Account created successfully.</strong> The account will now be able to login to the system using the registered email and password.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Account created successfully.</strong> The account will now be able to login to the system using the registered email and password.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         <?php endif;
                         unset($_SESSION['createAccountSuccess']); ?>
 
@@ -198,13 +209,21 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 <h6 class="fw-bold mt-3 mb-2">Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name='textFieldPassword' required>
+                                <input class="form-control my-2" type="password" name='textFieldPassword' id='textFieldPassword' required>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="fw-bold mt-3 mb-2">Confirm Password</h6>
                             </div>
                             <div class="col-lg-9">
-                                <input class="form-control my-2" type="password" name='textFieldPasswordConfirm' required>
+                                <input class="form-control my-2" type="password" name='textFieldPasswordConfirm' id='textFieldPasswordConfirm' required>
+                            </div>
+                            <div class="col-lg-3">
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-check py-2">
+                                    <input class="form-check-input" type="checkbox" id="checkboxShowHidePasswordCreateAccount">
+                                    <label class="form-check-label" for="checkboxShowHidePasswordCreateAccount">Show Password</label>
+                                </div>
                             </div>
                             <hr class="my-4">
                             <div class="text-end">
@@ -223,6 +242,31 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <?php include_once '../includes/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../scripts/bootstrap/bootstrap.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#checkboxShowHidePasswordAccountPreference").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#textFieldCurrentPassword").attr("type", "text");
+                    $("#textFieldNewPassword").attr("type", "text");
+                } else {
+                    $("#textFieldCurrentPassword").attr("type", "password");
+                    $("#textFieldNewPassword").attr("type", "password");
+                }
+            });
+
+            $("#checkboxShowHidePasswordCreateAccount").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#textFieldPassword").attr("type", "text");
+                    $("#textFieldPasswordConfirm").attr("type", "text");
+                } else {
+                    $("#textFieldPassword").attr("type", "password");
+                    $("#textFieldPasswordConfirm").attr("type", "password");
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
