@@ -67,31 +67,23 @@ $date_time = date_format($date_time, "F Y");
                         echo '<p class="fw-bold mb-3">Attached Files</p>';
                         echo '<div class="col">';
 
-                        if ($fileInfo['file1_shown']) :
 
-                            $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
+                        $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
 
-                            if ($fileExt == 'pdf') {
+                        if ($fileExt == 'pdf') {
 
-                                echo '<a href="../src/' . $fileInfo['file_dir'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
-                            } else if ($fileExt == 'docx') {
-                                echo '<a href="./view-document.php?id=' . $fileInfo['file_id'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
-                            }
+                            echo '<a href="../src/' . $fileInfo['file_dir'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+                        } else if ($fileExt == 'docx') {
+                            echo '<a href="#" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
+                        }
 
-                        endif;
+                        $fileExt2 = substr(strrchr($fileInfo['file_dir2'], '.'), 1);
 
-                        if ($fileInfo['file2_shown']) :
-
-                            $fileExt2 = substr(strrchr($fileInfo['file_dir2'], '.'), 1);
-
-                            if ($fileExt2 == 'pdf') {
-                                echo '<a href="../src/' . $fileInfo['file_dir2'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
-                            } else if ($fileExt2 == 'docx') {
-                                echo '<a href="./view-document.php?id=' . $fileInfo['file_id'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
-                            }
-
-                        endif;
-
+                        if ($fileExt2 == 'pdf') {
+                            echo '<a href="../src/' . $fileInfo['file_dir2'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+                        } else if ($fileExt2 == 'docx') {
+                            echo '<a href="#" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
+                        }
                         echo '</div>';
                     } else if ($_SESSION['userType'] == 'user') {
 
@@ -114,7 +106,7 @@ $date_time = date_format($date_time, "F Y");
                             if ($fileExt == 'pdf') {
                                 echo '<a href="../src/' . $fileInfo['file_dir'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
                             } else if ($fileExt == 'docx') {
-                                echo '<a href="./view-document.php?id=' . $fileInfo['file_id'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
+                                echo '<a href="#" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
                             }
                         endif;
 
@@ -125,7 +117,7 @@ $date_time = date_format($date_time, "F Y");
                             if ($fileExt2 == 'pdf') {
                                 echo '<a href="../src/' . $fileInfo['file_dir2'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
                             } else if ($fileExt2 == 'docx') {
-                                echo '<a href="./view-document.php?id=' . $fileInfo['file_id'] . '" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
+                                echo '<a href="#" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
                             }
                         endif;
 

@@ -25,7 +25,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/repository-style.css');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Document</title>
+    <title>Request Form</title>
     <?php include_once '../assets/fonts/google-fonts.php' ?>
     <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -50,47 +50,30 @@ $pagecssVersion = filemtime('../styles/custom/pages/repository-style.css');
 
     <section class="search-section">
         <div class="container p-5">
-
-            <div class="row my-2">
-                <div class="col">
-                    <div class="text-start">
-                        <button class="btn btn-link page-control">
-                            <h1>Thesis Request Form</h1>
-                            <?php
-                            echo '<a href="/repository/view-article.php?id=' . $_SESSION['fileId'] . '" class="page-control"><i class="fas fa-arrow-left" style="color: #012265;"></i> Back</a>';
-
-                            ?>
-
-                        </button>
-                    </div>
+            <div class="row">
+                <div class="request-form p-5 bg-white">
+                    <h1>Request Access Form</h1>
+                    <hr class="my-4">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label fw-bold">Message</label>
+                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                        </div>
+                        <div class="form-check py-2">
+                            <input class="form-check-input" type="checkbox" id="checkBoxEnableButtonRequest">
+                            <label class="form-check-label" for="checkBoxEnableButtonRequest">I have reviewed my request and understand that my message will be sent to the <span class="fw-bold">University Research Center</span>. </label>
+                        </div>
+                        <div class="mt-3">
+                            <input type="submit" value="Send your request" class="btn rounded-0 text-white" id="buttonSendRequest" style="background-color: #012265;" disabled>
+                        </div>
+                    </form>
                 </div>
 
-                <div class="col">
-                    <div class="text-end">
-                        <button class="btn btn-link page-control"><a href="#" class="page-control"><i class="fas fa-download" style="color: #012265;"></i> Download</a></button>
-                    </div>
-                </div>
+
             </div>
-
-            <div class="row document-frame my-2">
-
-                <?php
-
-                // if (isset($_SESSION['isFile2'])) {
-                //     echo '<iframe class=\'w-100\' src="https://view.officeapps.live.com/op/embed.aspx?src=https://saliksik-uphsl.com/src/'.$_SESSION['fileDir2'].'" width=\'80%\' height=\'565px\' frameborder=\'0\'> </iframe>';
-                // } else {
-                //     echo '<iframe class=\'w-100\' src="https://view.officeapps.live.com/op/embed.aspx?src=https://saliksik-uphsl.com/src/'.$_SESSION['fileDir'].'" width=\'80%\' height=\'565px\' frameborder=\'0\'> </iframe>';
-                // }
-
-                ?>
-
-                <!-- <iframe class='w-100' src="https://view.officeapps.live.com/op/embed.aspx?src=https://saliksik-uphsl.com/src/uploads/theses/62524e9f18d5e7.96195220.docx" width='80%' height='565px' frameborder='0'> </iframe> -->
-            </div>
-
 
         </div>
     </section>
-
 
 
     <!--Footer section-->
@@ -98,6 +81,19 @@ $pagecssVersion = filemtime('../styles/custom/pages/repository-style.css');
     <?php include_once '../includes/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../scripts/bootstrap/bootstrap.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#checkBoxEnableButtonRequest").change(function() {
+                if ($(this).is(':checked')) {
+                    $("#buttonSendRequest").prop('disabled', false);
+                } else {
+                    $("#buttonSendRequest").prop('disabled', true);
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
