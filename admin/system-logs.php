@@ -4,17 +4,17 @@ session_start();
 
 if (isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] !== "admin") {
-        header("location: ../../error.php");
+        header("location: ../error.php");
         die();
     }
 } else {
-    header("location: ../../error.php");
+    header("location: ../error.php");
     die();
 }
 
-$maincssVersion = filemtime('../../../styles/custom/main-style.css');
-$pagecssVersion = filemtime('../../../styles/custom/pages/profile-style.css');
-$profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
+$maincssVersion = filemtime('../styles/custom/main-style.css');
+$pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
+$profileadminjs = filemtime('../scripts/custom/profile-admin.js');
 
 ?>
 
@@ -26,12 +26,12 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Logs</title>
-    <script src="<?php echo '../../../scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
-    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+    <script src="<?php echo './scripts/custom/profile-admin.js?id=' . $profileadminjs ?>" type="module"></script>
+    <?php include_once '../assets/fonts/google-fonts.php' ?>
 
-    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/profile-style.css?id=' . $pagecssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="../styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo '../styles/custom/pages/profile-style.css?id=' . $pagecssVersion ?>" type="text/css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -47,7 +47,7 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
 
     <!--Header and Navigation section-->
 
-    <?php include_once '../../layouts/general/header.php' ?>
+    <?php include_once '../includes/header.php' ?>
 
     <section class="submit-research profile">
         <div class="container p-5">
@@ -65,7 +65,7 @@ $profileadminjs = filemtime('../../../scripts/custom/profile-admin.js');
 
     <!--Footer-->
 
-    <?php include_once '../../layouts/general/footer.php' ?>
+    <?php include_once '../includes/footer.php' ?>
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="../../../scripts/bootstrap/bootstrap.js"></script>
 

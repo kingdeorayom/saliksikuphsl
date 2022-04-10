@@ -147,7 +147,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     //extension
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
-    $allowed = array('pdf');
+    $allowed = array('pdf', 'docx');
 
 
     //Questionnaire
@@ -162,7 +162,7 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
     //questionExtension
     $fileQuestionnaireExt = explode('.', $fileQuestionnaireName);
     $fileQuestionnaireActualExt = strtolower(end($fileQuestionnaireExt));
-    $questionnaireAllowed = array('pdf');
+    $questionnaireAllowed = array('pdf', 'docx');
 
 
 
@@ -230,12 +230,18 @@ if (isset($_POST['dropdownResourceType'], $_POST['dropdownResearchersCategory'],
                         move_uploaded_file($fileTempLoc, "../".$fileDestination);
                         move_uploaded_file($fileQuestionnaireTempLoc, "../".$fileQuestionDestination);
 
-                        $arr = array('response' => "success");
-                        header('Content-Type: application/json');
-                        echo json_encode($arr);
-
-
+                        if($_SESSION['userType'] === "admin") {
+                            $arr = array('response' => "success_admin");
+                            header('Content-Type: application/json');
+                            echo json_encode($arr);
+                        }
+                        
                         if ($_SESSION['userType'] === "user") {
+
+                            $arr = array('response' => "success");
+                            header('Content-Type: application/json');
+                            echo json_encode($arr);
+
                             sendMailSubmit();
                         }
 

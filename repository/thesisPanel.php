@@ -66,27 +66,67 @@ $date_time = date_format($date_time,"F Y");
                         
                             if($_SESSION['userType'] == 'admin') { // files always shown for admin
                                 echo '<p class="fw-bold mb-3">Attached Files</p>';
-                                echo '<div class=\'col\'>
-                                <a href="../src/ '.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>
-                                <a href="../src/ '.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>
-                                </div>'; 
+                                echo '<div class="col">';
+
+                                if($fileInfo['file1_shown']):
+                                    $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
+                                    if($fileExt == 'pdf') {
+                                        echo '<a href="../src/'.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+                                    } else if ($fileExt == 'docx') {
+                                        $_SESSION['fileId'] = $fileInfo['file_id'];
+                                        $_SESSION['fileDir'] = $fileInfo['file_dir'];
+                                        echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
+                                    }
+                                endif;
+
+                                if($fileInfo['file2_shown']):
+                                    $fileExt2 = substr(strrchr($fileInfo['file_dir2'], '.'), 1);
+                                    if($fileExt2 == 'pdf') {
+                                        echo '<a href="../src/'.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+                                    } else if ($fileExt2 == 'docx') {
+                                        $_SESSION['fileId'] = $fileInfo['file_id'];
+                                        $_SESSION['fileDir2'] = $fileInfo['file_dir2'];
+                                        echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
+                                    }
+                                endif;
+
+                                echo '</div>';  
                             }
+                            
                             else if($_SESSION['userType'] == 'user') {
 
                                 if($fileInfo['file1_shown'] || $fileInfo['file2_shown']):
                                     echo "<p class='fw-bold mb-3'>Attached Files</p>";
                                 endif;
+
                                 if(!$fileInfo['file1_shown'] && !$fileInfo['file2_shown']):
                                     echo "<div class='border border-1 bg-light'>
                                         <p class='my-3'><i class='fas fa-lock mx-1' style='color: #012265;'></i> To access the <strong>full manuscript</strong> and/or <strong>survey questionnaire</strong>, you may send a request through <a href='mailto:research@uphsl.edu.ph'>research@uphsl.edu.ph</a></p>
                                     </div>";
                                 endif;
+
                                 echo '<div class="col">';
+
                                 if($fileInfo['file1_shown']):
-                                        echo '<a href="../src/ '.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+                                    $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
+                                    if($fileExt == 'pdf') {
+                                        echo '<a href="../src/'.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+                                    } else if ($fileExt == 'docx') {
+                                        $_SESSION['fileId'] = $fileInfo['file_id'];
+                                        $_SESSION['fileDir'] = $fileInfo['file_dir'];
+                                        echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
+                                    }
                                 endif;
+
                                 if($fileInfo['file2_shown']):
-                                        echo '<a href="../src/ '.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+                                    $fileExt2 = substr(strrchr($fileInfo['file_dir2'], '.'), 1);
+                                    if($fileExt2 == 'pdf') {
+                                        echo '<a href="../src/'.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+                                    } else if ($fileExt2 == 'docx') {
+                                        $_SESSION['fileId'] = $fileInfo['file_id'];
+                                        $_SESSION['fileDir2'] = $fileInfo['file_dir2'];
+                                        echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
+                                    }
                                 endif;
 
                                 echo '</div>';  

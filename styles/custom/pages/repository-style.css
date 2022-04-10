@@ -169,3 +169,11 @@
   text-decoration: underline;
   color: #012265;
 }
+
+/*---------------------------------------------------Pagination---------------------------------------------------*/
+
+.page-control {
+  cursor: pointer;
+  text-decoration: none;
+  color: #012265;
+}

@@ -495,14 +495,14 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-0">
                     <label class="fw-bold mb-3">Attach Research Paper<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="fileSubmit" accept=".pdf" required>
+                    <input class="form-control" type="file" name="fileSubmit" accept=".pdf, .docx" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="mb-0">
                     <label class="fw-bold mb-3">Attach Questionnaire<span class="text-danger"> *</span></label>
-                    <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf" required>
+                    <input class="form-control" type="file" name="fileQuestionnaire" accept=".pdf, .docx" required>
                     <label class="mt-3 text-secondary"><span class="fw-bold text-danger">Important:</span> Maximum Size Allowed 10 MB. File must be in <strong>PDF</strong> file format.</label>
                 </div>
             </div>
@@ -573,6 +573,11 @@ if (!isset($_SESSION['isLoggedIn'])) {
                 $("#alert-container").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert" id = "file-type-alert"><strong>File upload failed!</strong> There is already a file with the same name uploaded to the database.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
             } else if (data.response === "success") {
                 $("#alert-container").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> Wait for your submission to be approved by the administration. You can view the submission status by checking <strong>My Submissions</strong> under <strong>My Profile</strong>.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                document.forms.namedItem("thesis-form").reset();
+                $("#dropdownResearchUnit").trigger("change");
+                $("#dropdownThesisDissertationCoAuthors").trigger('change');
+            } else if (data.response === "success_admin") {
+                $("#alert-container").html(`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>File upload success!</strong> You can now view the submission inside the <strong>Repository</strong>.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                 document.forms.namedItem("thesis-form").reset();
                 $("#dropdownResearchUnit").trigger("change");
                 $("#dropdownThesisDissertationCoAuthors").trigger('change');
