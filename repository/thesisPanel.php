@@ -69,25 +69,29 @@ $date_time = date_format($date_time,"F Y");
                                 echo '<div class="col">';
 
                                 if($fileInfo['file1_shown']):
+
                                     $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
+
                                     if($fileExt == 'pdf') {
                                         echo '<a href="../src/'.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+
                                     } else if ($fileExt == 'docx') {
-                                        $_SESSION['fileId'] = $fileInfo['file_id'];
-                                        $_SESSION['fileDir'] = $fileInfo['file_dir'];
                                         echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
                                     }
+
                                 endif;
 
                                 if($fileInfo['file2_shown']):
+
                                     $fileExt2 = substr(strrchr($fileInfo['file_dir2'], '.'), 1);
+
                                     if($fileExt2 == 'pdf') {
                                         echo '<a href="../src/'.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+
                                     } else if ($fileExt2 == 'docx') {
-                                        $_SESSION['fileId'] = $fileInfo['file_id'];
-                                        $_SESSION['fileDir2'] = $fileInfo['file_dir2'];
                                         echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
                                     }
+
                                 endif;
 
                                 echo '</div>';  
@@ -108,23 +112,25 @@ $date_time = date_format($date_time,"F Y");
                                 echo '<div class="col">';
 
                                 if($fileInfo['file1_shown']):
+
                                     $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
+
                                     if($fileExt == 'pdf') {
                                         echo '<a href="../src/'.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
+
                                     } else if ($fileExt == 'docx') {
-                                        $_SESSION['fileId'] = $fileInfo['file_id'];
-                                        $_SESSION['fileDir'] = $fileInfo['file_dir'];
                                         echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Manuscript</button></a>';
                                     }
                                 endif;
 
                                 if($fileInfo['file2_shown']):
+
                                     $fileExt2 = substr(strrchr($fileInfo['file_dir2'], '.'), 1);
+
                                     if($fileExt2 == 'pdf') {
                                         echo '<a href="../src/'.$fileInfo['file_dir2'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Survey Questionnaire</button></a>';
+
                                     } else if ($fileExt2 == 'docx') {
-                                        $_SESSION['fileId'] = $fileInfo['file_id'];
-                                        $_SESSION['fileDir2'] = $fileInfo['file_dir2'];
                                         echo '<a href="./view-document.php?id='.$fileInfo['file_id'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-word me-2\' style="color: blue;"></i>Survey Questionnaire</button></a>';
                                     }
                                 endif;

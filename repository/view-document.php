@@ -72,7 +72,18 @@ $pagecssVersion = filemtime('../styles/custom/pages/repository-style.css');
     </div>
 
     <div class="row document-frame my-2">
-            <iframe class='w-100' src='https://view.officeapps.live.com/op/embed.aspx?src=http://saliksikuphsl/src/uploads/theses/62519df737ed02.29468511.docx' width='80%' height='565px' frameborder='0'> </iframe>
+
+    <?php
+    
+    // if (isset($_SESSION['isFile2'])) {
+    //     echo '<iframe class=\'w-100\' src="https://view.officeapps.live.com/op/embed.aspx?src=https://saliksik-uphsl.com/src/'.$_SESSION['fileDir2'].'" width=\'80%\' height=\'565px\' frameborder=\'0\'> </iframe>';
+    // } else {
+    //     echo '<iframe class=\'w-100\' src="https://view.officeapps.live.com/op/embed.aspx?src=https://saliksik-uphsl.com/src/'.$_SESSION['fileDir'].'" width=\'80%\' height=\'565px\' frameborder=\'0\'> </iframe>';
+    // }
+
+    ?>
+
+        <!-- <iframe class='w-100' src="https://view.officeapps.live.com/op/embed.aspx?src=https://saliksik-uphsl.com/src/uploads/theses/62524e9f18d5e7.96195220.docx" width='80%' height='565px' frameborder='0'> </iframe> -->
     </div>
 
         
