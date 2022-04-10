@@ -40,7 +40,10 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 </head>
 
 <body>
-
+<div class="alert alert-light alert-dismissible fade show" role="alert">
+  <strong>IMPORTANT!</strong> We're working on improving the system right now. You may notice some underdeveloped parts inside the website.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
     <!--Main Section-->
     <main class="main">
         <div class="container mx-auto my-5">

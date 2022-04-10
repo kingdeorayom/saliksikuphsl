@@ -73,6 +73,7 @@ $date_time = date_format($date_time,"F Y");
                                     $fileExt = substr(strrchr($fileInfo['file_dir'], '.'), 1);
 
                                     if($fileExt == 'pdf') {
+
                                         echo '<a href="../src/'.$fileInfo['file_dir'].'" target="_blank"><button class=\'btn button-file m-1 rounded-0\'><i class=\'far fa-file-pdf me-2\' style="color: red;"></i>Manuscript</button></a>';
 
                                     } else if ($fileExt == 'docx') {
