@@ -156,10 +156,18 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                         <?php endif;
                         unset($_SESSION['createAccountSuccess']); ?>
 
+                        <?php if (isset($_SESSION['emptyField'])) : ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Account creation failed.</strong> Please fill up all the fields.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif;
+                        unset($_SESSION['emptyField']); ?>
+
                         <!--end of alert containers php -->
                         <form class="row my-3" action="../src/process/create-new-account.php" method="POST">
                             <div class="col-lg-3">
-                                <h6 class="fw-bold my-3">Account Type</h6>
+                                <h6 class="fw-bold my-3">Account Type <span class="text-danger"> *</span></h6>
                             </div>
                             <div class="col-lg-9">
                                 <select class="form-select my-2" aria-label="Default select example" id="dropdown-account-type" name="dropdownAccountType">
@@ -168,19 +176,19 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 </select>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="fw-bold mt-3 mb-2">First Name</h6>
+                                <h6 class="fw-bold mt-3 mb-2">First Name <span class="text-danger"> *</span></h6>
                             </div>
                             <div class="col-lg-9">
                                 <input class="form-control my-2" type="text" placeholder="First name" name="textFieldFirstName" required>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="fw-bold mt-3 mb-2">Last Name</h6>
+                                <h6 class="fw-bold mt-3 mb-2">Last Name <span class="text-danger"> *</span></h6>
                             </div>
                             <div class="col-lg-9">
                                 <input class="form-control my-2" type="text" placeholder="Last name" name="textFieldLastName" required>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="fw-bold mt-3 mb-2">Email</h6>
+                                <h6 class="fw-bold mt-3 mb-2">Email <span class="text-danger"> *</span></h6>
                             </div>
                             <div class="col-lg-9">
                                 <input class="form-control my-2" type="email" placeholder="Email" name="textFieldEmail" required>
@@ -206,13 +214,13 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
                                 </select>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="fw-bold mt-3 mb-2">Password</h6>
+                                <h6 class="fw-bold mt-3 mb-2">Password <span class="text-danger"> *</span></h6>
                             </div>
                             <div class="col-lg-9">
                                 <input class="form-control my-2" type="password" name='textFieldPassword' id='textFieldPassword' required>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="fw-bold mt-3 mb-2">Confirm Password</h6>
+                                <h6 class="fw-bold mt-3 mb-2">Confirm Password <span class="text-danger"> *</span></h6>
                             </div>
                             <div class="col-lg-9">
                                 <input class="form-control my-2" type="password" name='textFieldPasswordConfirm' id='textFieldPasswordConfirm' required>

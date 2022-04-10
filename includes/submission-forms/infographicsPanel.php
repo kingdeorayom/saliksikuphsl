@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -315,9 +315,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit your work" id="submitInfographicsButton" <?php if ($_SESSION['userType'] !== "admin") {
-                                                                                                                                                                echo 'disabled';
-                                                                                                                                                            } ?>>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Upload to Repository" id="submitInfographicsButton" <?php if ($_SESSION['userType'] !== "admin") {
+                                                                                                                                                                    echo 'disabled';
+                                                                                                                                                                } ?>>
             </div>
         </div>
     </form>

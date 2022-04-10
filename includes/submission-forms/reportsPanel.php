@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -83,9 +83,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit" id="submitReportsButton" <?php if ($_SESSION['userType'] !== "admin") {
-                                                                                                                                                    echo 'disabled';
-                                                                                                                                                } ?>>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Upload to Repository" id="submitReportsButton" <?php if ($_SESSION['userType'] !== "admin") {
+                                                                                                                                                                echo 'disabled';
+                                                                                                                                                            } ?>>
             </div>
         </div>
 
@@ -114,7 +114,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             data: formData,
             contentType: false,
             processData: false,
-            error: function (xhr, textStatus, errorThrown){
+            error: function(xhr, textStatus, errorThrown) {
                 $("#reports-progress-container").prop('hidden', true);
                 $("#fileUploadLabelReports").prop('hidden', true);
                 $('#reports-progress-bar').attr('aria-valuenow', 0).css('width', 0 + '%').text(0 + '%');

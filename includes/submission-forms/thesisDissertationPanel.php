@@ -518,9 +518,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
         } ?>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" value="Submit your research" id="submitResearchDissertationButton" <?php if ($_SESSION['userType'] !== "admin") {
-                                                                                                                                                                            echo 'disabled';
-                                                                                                                                                                        } ?>>Submit your research</button>
+                <input type="submit" class="btn btn-primary button-submit-research rounded-0 my-3" id="submitResearchDissertationButton" <?php if ($_SESSION['userType'] !== "admin") {echo 'disabled value="Submit your research"';} else {
+                    echo 'value="Upload to Repository"';
+                } ?>>
             </div>
         </div>
 

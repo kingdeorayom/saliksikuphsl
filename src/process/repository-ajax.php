@@ -5,15 +5,16 @@ session_start();
 include '../../includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
 // function to escape all results in an array
-function filter(&$value){
+function filter(&$value)
+{
     $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
-array_walk_recursive($_POST,"filter");
+array_walk_recursive($_POST, "filter");
 if (isset($_POST['page'])) {
     $page = $_POST['page'];
 } else {
@@ -271,19 +272,18 @@ if ($page > $total_pages && $total_pages != 0) {
 }
 
 foreach ($published as $key => $result) :
-    array_walk_recursive($result,"filter");
+    array_walk_recursive($result, "filter");
     if ($result['file_type'] === 'thesis') {
         $date_time = date_create($result['publication_date']);
-        $date_time = date_format($date_time,"F Y");
-        if(strlen($result['research_abstract'])>500){
-           // truncate string
+        $date_time = date_format($date_time, "F Y");
+        if (strlen($result['research_abstract']) > 500) {
+            // truncate string
             $stringCut = substr($result['research_abstract'], 0, 500);
             $endPoint = strrpos($result['research_abstract'], ' ');
 
             //if the string doesn't contain any space then it will cut without word basis.
-            $result['research_abstract']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+            $result['research_abstract'] = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
             $result['research_abstract'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
-
         }
         echo "<div class='repositoryItem p-2'>
         <p class='fw-bold text-start' style='color: #012265;'>{$result['research_type']} </p>
@@ -297,26 +297,24 @@ foreach ($published as $key => $result) :
         echo "</p>
         <p class='fw-bold'>{$date_time}</p>
         <p>{$result['research_abstract']}</p>";
-        if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
+        if (in_array($result['file_id'], array_column($bookmarks, 'ref_id'))) {
             echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
-        }
-        else {
+        } else {
             echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
         }
         echo "<hr class='my-4'>
     </div>";
     } else if ($result['file_type'] === 'journal') {
-        if(strlen($result['journal_description'])>500){
+        if (strlen($result['journal_description']) > 500) {
             // truncate string
-             $stringCut = substr($result['journal_description'], 0, 500);
-             $endPoint = strrpos($result['journal_description'], ' ');
- 
-             //if the string doesn't contain any space then it will cut without word basis.
-             $result['journal_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-             $result['journal_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
- 
-         }
-        
+            $stringCut = substr($result['journal_description'], 0, 500);
+            $endPoint = strrpos($result['journal_description'], ' ');
+
+            //if the string doesn't contain any space then it will cut without word basis.
+            $result['journal_description'] = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+            $result['journal_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
+        }
+
         echo "<div class='repositoryItem p-2'>
         <div class='row'>
             <div class='text-start'>
@@ -333,13 +331,12 @@ foreach ($published as $key => $result) :
                     <h5 class='mb-3'>{$result['journal_subtitle']}</h5>
                     <p class='fw-bold'>Volume {$result['volume_number']} Series of {$result['serial_issue_number']}</p>
                     <p>{$result['journal_description']}</p>";
-                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
-                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
-                    }
-                    else {
-                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                    }
-                echo "</div>
+        if (in_array($result['file_id'], array_column($bookmarks, 'ref_id'))) {
+            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
+        } else {
+            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+        }
+        echo "</div>
             </div>
             <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                 <img src='src/{$result['file_dir2']}' width='150'>
@@ -349,18 +346,17 @@ foreach ($published as $key => $result) :
     </div>";
     } else if ($result['file_type'] === 'infographic') {
         $date_time = date_create($result['infographic_publication_date']);
-        $date_time = date_format($date_time,"F Y");
+        $date_time = date_format($date_time, "F Y");
 
-        if(strlen($result['infographic_description'])>500){
+        if (strlen($result['infographic_description']) > 500) {
             // truncate string
-             $stringCut = substr($result['infographic_description'], 0, 500);
-             $endPoint = strrpos($result['infographic_description'], ' ');
- 
-             //if the string doesn't contain any space then it will cut without word basis.
-             $result['infographic_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-             $result['infographic_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
- 
-         }
+            $stringCut = substr($result['infographic_description'], 0, 500);
+            $endPoint = strrpos($result['infographic_description'], ' ');
+
+            //if the string doesn't contain any space then it will cut without word basis.
+            $result['infographic_description'] = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+            $result['infographic_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
+        }
         echo "<div class='repositoryItem p-2'>
         <div class='row'>
             <div class='text-start'>
@@ -375,29 +371,26 @@ foreach ($published as $key => $result) :
                     </a>
                     <p class='fw-bold'>{$date_time}</p>
                     <p>{$result['infographic_description']}</p>";
-                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
-                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
-                    }
-                    else {
-                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                    }
-                echo "</div>
+        if (in_array($result['file_id'], array_column($bookmarks, 'ref_id'))) {
+            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
+        } else {
+            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+        }
+        echo "</div>
             </div>
         </div>
         <hr class='my-4'>
     </div>";
-    }
-    else if ($result['file_type'] === 'report') {
-        if(strlen($result['report_description'])>500){
+    } else if ($result['file_type'] === 'report') {
+        if (strlen($result['report_description']) > 500) {
             // truncate string
-             $stringCut = substr($result['report_description'], 0, 500);
-             $endPoint = strrpos($result['report_description'], ' ');
- 
-             //if the string doesn't contain any space then it will cut without word basis.
-             $result['report_description']= $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-             $result['report_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
- 
-         }
+            $stringCut = substr($result['report_description'], 0, 500);
+            $endPoint = strrpos($result['report_description'], ' ');
+
+            //if the string doesn't contain any space then it will cut without word basis.
+            $result['report_description'] = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+            $result['report_description'] .= "... <a href='/repository/view-article.php?id={$result['file_id']}' class='read-more'>Read More</a>";
+        }
         echo "<div class='repositoryItem p-2'>
         <div class='row'>
             <div class='text-start'>
@@ -413,13 +406,12 @@ foreach ($published as $key => $result) :
                     </a>
                     <p class='fw-bold'>{$result['report_year']}</p>
                     <p>{$result['report_description']}</p>";
-                    if(in_array($result['file_id'],array_column($bookmarks,'ref_id'))){
-                        echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
-                    }
-                    else {
-                        echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
-                    }
-                echo "</div>
+        if (in_array($result['file_id'], array_column($bookmarks, 'ref_id'))) {
+            echo "<p class='del-bookmark' data-id={$result['file_id']}><i class='fas fa-bookmark me-2'></i> Remove from Bookmarks</p>";;
+        } else {
+            echo "<p class='add-bookmark' data-id={$result['file_id']}><i class='far fa-bookmark me-2'></i> Add to Bookmarks</p>";
+        }
+        echo "</div>
             </div>
             <div class='col-sm-12 col-lg-2 d-none d-sm-none d-lg-block'>
                 <img src='src/{$result['file_dir2']}' width='150'>
