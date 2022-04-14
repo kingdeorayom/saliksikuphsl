@@ -130,6 +130,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                         <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
+                                </div>
                             <hr class="my-3">
                             <?php endif ?>
                             <?php if($page['file_type'] == 'journal'): ?>
@@ -141,6 +142,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                     <div class="progress">
                                         <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+                                </div>
                                 </div>
                             <hr class="my-3">
                             <?php endif ?>
@@ -154,6 +156,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                         <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
+                                </div>
                             <hr class="my-3">
                             <?php endif ?>
                             <?php if($page['file_type'] == 'report'): ?>
@@ -166,9 +169,10 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                         <div class="progress-bar" role="progressbar" style="width: <?php echo $page_percent?>%; background-color: #012265;" aria-valuenow="<?php echo $page_percent?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
+                                </div>
                             <hr class="my-3">
                             <?php endif ?>
-                        </div>
+                        
                         <?php endforeach?>
                     </div>
 
