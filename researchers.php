@@ -5,7 +5,7 @@ session_start();
 include 'includes/connection.php';
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -46,10 +46,10 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    
+
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <?php include_once 'includes/header.php' ?>
 
@@ -335,7 +335,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
         $(document).ready(function() {
 
             $(".researcher-container").each(function() {
-                if($(this).find("div").length == 0) {
+                if ($(this).find("div").length == 0) {
                     $(this).append("<h5 style='color: grey;'><br>No researcher profile found.</h5>")
                 }
             })
@@ -457,7 +457,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     processData: false,
                 })
                 .done(function(data) {
-                    if(data.response==='success'){
+                    if (data.response === 'success') {
                         window.location.reload();
                     }
                 })

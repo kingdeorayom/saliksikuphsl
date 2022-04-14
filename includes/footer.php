@@ -1,6 +1,6 @@
 <!--Footer-->
 
-<section class="footer px-5 py-3">
+<section class="footer px-5 py-3 mt-auto">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 my-1">
@@ -48,7 +48,7 @@
                 <p class="text-white">Copyright &copy; 2022 UPHSL</p>
             </div>
             <div class="col-sm-12 col-md-3">
-                <p class="text-white fst-italic">Last Updated: <?php echo date("D, M j, Y, h:i:s"); ?></p>
+                <p class="text-white fst-italic">Last Updated: <?php echo date("M j, Y, h:i:s"); ?></p>
             </div>
         </div>
     </div>

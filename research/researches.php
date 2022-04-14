@@ -42,7 +42,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/home-style.css');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <?php include_once '../../layouts/general/header.php' ?>
 

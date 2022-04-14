@@ -4,7 +4,7 @@ session_start();
 
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -40,7 +40,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!--Header and Navigation section-->
 
@@ -84,44 +84,44 @@ $pagecssVersion = filemtime('../styles/custom/pages/profile-style.css');
     <script src="../scripts/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
         $(document).ready(getBookmarks)
-        $("#submission-type-dropdown").on("change",getBookmarks)
-        $(".library").on("click", ".add-bookmark", function () {
-  var id = $(this).data("id");
-  var container = $(this);
-  $.ajax({
-    method: "GET",
-    url: "../src/process/add-bookmark.php?id=" + id,
-  }).done(function (data) {
-    // TODO add notification when bookmark is added
-    container.html("<i class='fas fa-bookmark me-2'></i> Remove from Bookmarks");
-    container.removeClass("add-bookmark");
-    container.addClass("del-bookmark");
-  });
-});
+        $("#submission-type-dropdown").on("change", getBookmarks)
+        $(".library").on("click", ".add-bookmark", function() {
+            var id = $(this).data("id");
+            var container = $(this);
+            $.ajax({
+                method: "GET",
+                url: "../src/process/add-bookmark.php?id=" + id,
+            }).done(function(data) {
+                // TODO add notification when bookmark is added
+                container.html("<i class='fas fa-bookmark me-2'></i> Remove from Bookmarks");
+                container.removeClass("add-bookmark");
+                container.addClass("del-bookmark");
+            });
+        });
 
-$(".library").on("click", ".del-bookmark", function () {
-  var id = $(this).data("id");
-  var container = $(this);
-  $.ajax({
-    method: "GET",
-    url: "../src/process/delete-bookmark.php?id=" + id,
-  }).done(function (data) {
-    // TODO add notification when bookmark is deleted
-    container.html("<i class='far fa-bookmark me-2'></i> Add to Bookmarks");
-    container.removeClass("del-bookmark");
-    container.addClass("add-bookmark");
-  });
-});
+        $(".library").on("click", ".del-bookmark", function() {
+            var id = $(this).data("id");
+            var container = $(this);
+            $.ajax({
+                method: "GET",
+                url: "../src/process/delete-bookmark.php?id=" + id,
+            }).done(function(data) {
+                // TODO add notification when bookmark is deleted
+                container.html("<i class='far fa-bookmark me-2'></i> Add to Bookmarks");
+                container.removeClass("del-bookmark");
+                container.addClass("add-bookmark");
+            });
+        });
 
-function getBookmarks(){
-    var str = $("#submission-type-dropdown").val();
-    $.ajax({
-            method:"GET",
-            url:"../src/process/get-bookmarks.php?type=" +str
-        }).done(function(data){
-            $(".library").html(data)
-        })
-    }
+        function getBookmarks() {
+            var str = $("#submission-type-dropdown").val();
+            $.ajax({
+                method: "GET",
+                url: "../src/process/get-bookmarks.php?type=" + str
+            }).done(function(data) {
+                $(".library").html(data)
+            })
+        }
     </script>
 </body>
 

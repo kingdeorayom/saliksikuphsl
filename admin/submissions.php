@@ -44,7 +44,7 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!--Header and Navigation section-->
 
@@ -89,10 +89,10 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
 
                     <div class="row">
                         <div class="col my-1 mx-1">
-                                <div class="input-group">
-                                    <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions" id="search-submissions-admin" name="title_query">
-                                    <button class="btn text-light search-button btn-lg rounded-0" type="button" id="admin-search-button">Search</button>
-                                </div>
+                            <div class="input-group">
+                                <input type="search" class="form-control form-search rounded-0" aria-label="Search the repository" aria-describedby="button-addon2" placeholder="Search submissions" id="search-submissions-admin" name="title_query">
+                                <button class="btn text-light search-button btn-lg rounded-0" type="button" id="admin-search-button">Search</button>
+                            </div>
                         </div>
                     </div>
 
@@ -118,12 +118,14 @@ $profileadminjs = filemtime('../scripts/custom/profile-admin.js');
                         </div>
                     </div>
                     <div class="row my-4">
-                        <div class ="my-3">
+                        <div class="my-3">
                             <h5>Results</h5>
                             <hr class="mb-4">
                             <!-- results-container shows "No Results!" or something when empty -->
                             <div id="results-container">
-                                <div><h5 style="color: grey; text-align:center;"><br>No results found.</h5></div>
+                                <div>
+                                    <h5 style="color: grey; text-align:center;"><br>No results found.</h5>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -35,7 +35,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!--Main Section-->
     <main class="main">

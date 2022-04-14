@@ -41,7 +41,7 @@ $pagecssVersion = filemtime('styles/custom/pages/about-style.css');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 
     <section class="masthead p-5 bg-light">

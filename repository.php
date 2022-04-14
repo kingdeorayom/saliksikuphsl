@@ -124,7 +124,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!--Header and Navigation section-->
 
     <?php include_once 'includes/header.php' ?>

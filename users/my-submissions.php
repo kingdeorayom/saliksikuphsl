@@ -49,7 +49,7 @@ $userSubmissionsJSVersion = filemtime('../scripts/custom/user-submissions.js');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!--Header and Navigation section-->
 

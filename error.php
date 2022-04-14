@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap.css" type="text/css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="container p-5">
         <div class="row my-5 d-flex">
             <div class="col-sm-12 col-md-4 d-flex align-items-center">

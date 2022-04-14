@@ -64,7 +64,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!--Header and Navigation section-->
 
     <?php include_once 'includes//header.php' ?>

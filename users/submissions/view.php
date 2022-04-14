@@ -105,7 +105,7 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
 </head>
 
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!--Header and Navigation section-->
 
