@@ -21,7 +21,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
     <?php include_once './assets/fonts/google-fonts.php' ?>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./scripts/jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -40,10 +40,10 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- <div class="alert alert-light alert-dismissible fade show rounded-0" role="alert">
+    <div class="alert alert-light alert-dismissible fade show rounded-0" role="alert">
         <strong>IMPORTANT!</strong> We're improving the system right now. You may notice some underdeveloped parts inside the website.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> -->
+    </div>
     <!--Main Section-->
     <main class="main d-flex justify-content-md-center align-items-center vh-100">
         <div class="container mx-auto my-5">

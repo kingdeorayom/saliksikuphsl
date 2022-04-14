@@ -114,8 +114,7 @@ $coauthorsDropdown = filemtime('../../scripts/custom/coauthors-dropdown.js');
             echo $fileInfo['report_title'];
         }
         ?></title>
-    <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../scripts/jquery/jquery-3.6.0.min.js"></script>
     <script src="<?php echo '../../scripts/custom/coauthors-dropdown.js?id=' . $coauthorsDropdown ?>"></script>
     <?php include_once '../../assets/fonts/google-fonts.php' ?>
 

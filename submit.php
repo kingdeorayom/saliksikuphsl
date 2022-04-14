@@ -22,7 +22,7 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
     <title>Submit</title>
     <?php include_once 'assets/fonts/google-fonts.php' ?>
 
-    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+    <script src="./scripts/jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/pages/submit-style.css?id=' . $pagecssVersion ?>" type="text/css">
@@ -85,7 +85,6 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
                                 <div class="text-center">
                                     <button type="button" class="btn btn-lg btn-primary button-submit-research rounded-0" id="buttonToSubmission">Submit Research</button>
                                 </div>
-                                <!-- <p class="py-5">Please contact <a href="mailto:research@uphsl.edu.ph" target="_blank">research@uphsl.edu.ph</a> if you have any further queries regarding thesis submission.</p> -->
                             </div>
                         </div>
                     </div>
@@ -102,23 +101,7 @@ $pagecssVersion = filemtime('styles/custom/pages/submit-style.css');
                     </ol>
                     <div class="row">
                         <hr class="my-2">
-                        <!-- <h2 class="my-4 fw-bold">General Outline for Manuscript</h2> -->
                         <div class="col-lg-12">
-                            <!-- <ul>
-                                <li><span class="fw-bold fst-italic">Introduction.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                                <li><span class="fw-bold fst-italic">Methods.</span> Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</li>
-                                <li><span class="fw-bold fst-italic">Results.</span> Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</li>
-                                <li><span class="fw-bold fst-italic">Discussion.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                            </ul>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic nulla laboriosam, magni nostrum quibusdam alias doloremque minima iste consequatur, ea reprehenderit, ab in iure aliquid illum. A dolor explicabo molestias?</p>
-                            <hr class="my-5">
-                            <h2 class="my-4 fw-bold">Title Page</h2>
-                            <div class="col-lg-12">
-                                <p>In addition to the body of the manuscript, your paper must include a title page featuring the following: an abstract, a list of key terms, and your acknowledgements. The following sections describe in detail these parts of the paper</p>
-                                <p><span class="fw-bold">Abstract.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
-                                <p><span class="fw-bold">Keywords.</span> Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                            </div>
-                            <hr class="my-5"> -->
                             <h2 class="my-4 fw-bold">Submit your research</h2>
                             <p>To submit a copy of your research, click the button below.</p>
                             <div class="text-center">

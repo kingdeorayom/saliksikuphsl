@@ -86,8 +86,7 @@ $pagecssVersion = filemtime('../../styles/custom/pages/submission-forms-style.cs
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Submission</title>
-    <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../scripts/jquery/jquery-3.6.0.min.js"></script>
     <?php include_once '../../assets/fonts/google-fonts.php' ?>
 
     <link rel="stylesheet" href="../../styles/bootstrap/bootstrap.css" type="text/css">

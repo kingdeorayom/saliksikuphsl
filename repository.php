@@ -101,19 +101,19 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repository</title>
-    
+
     <?php include_once 'assets/fonts/google-fonts.php' ?>
     <script>
-    // hides query parameters 
-    if(typeof window.history.pushState == 'function') {
-        window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF'];?>');
-    }
+        // hides query parameters 
+        if (typeof window.history.pushState == 'function') {
+            window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
+        }
     </script>
-    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+    <script src="./scripts/jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo 'styles/custom/pages/repository-style.css?id=' . $pagecssVersion ?>" type="text/css">
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -137,7 +137,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                     <h2 id="masthead-title-text">Search the repository</h2>
 
                     <div class="input-group my-3">
-                        <input type="search" autofocus class="form-control form-search rounded-0" id="repository-search-bar" aria-label="Search the repository" name='title_query' <?php echo (isset($_GET['title_query'])) ? "value='{$_GET['title_query']}'" :"" ?>>
+                        <input type="search" autofocus class="form-control form-search rounded-0" id="repository-search-bar" aria-label="Search the repository" name='title_query' <?php echo (isset($_GET['title_query'])) ? "value='{$_GET['title_query']}'" : "" ?>>
                         <button type="button" class="btn text-light rounded-0 search-button btn-lg" id="repository-search-button">Search</button>
                     </div>
                 </div>
@@ -150,8 +150,8 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                     <a href="research/browse-researches.php"><button class="btn btn-link btn-lg search-option-buttons" type="button" id=""><i class="fas fa-book fa-2x p-3" style="color: gray;"></i><br>Browse Researches</button></a>
                 </div>
             </div>
-			
-			 <!-- Modal window -->
+
+            <!-- Modal window -->
             <div class="modal fade" id="search-modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -170,36 +170,36 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">all</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_word_search" type="text" name="word_search" <?php echo (isset($_GET['word_search'])) ? "value='{$_GET['word_search']}'" :"" ?>>
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_word_search" type="text" name="word_search" <?php echo (isset($_GET['word_search'])) ? "value='{$_GET['word_search']}'" : "" ?>>
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with the <span class="fw-bold">exact phrase</span></h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_phrase_search" type="text" name="phrase_search" <?php echo (isset($_GET['phrase_search'])) ? "value='{$_GET['phrase_search']}'" :"" ?>>
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_phrase_search" type="text" name="phrase_search" <?php echo (isset($_GET['phrase_search'])) ? "value='{$_GET['phrase_search']}'" : "" ?>>
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">with <span class="fw-bold">at least one</span> of the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_exist" type="text" name="word_exists" <?php echo (isset($_GET['word_exists'])) ? "value='{$_GET['word_exists']}'" :"" ?>>
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_exist" type="text" name="word_exists" <?php echo (isset($_GET['word_exists'])) ? "value='{$_GET['word_exists']}'" : "" ?>>
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal"><span class="fw-bold">without</span> the words</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_not_exists" type="text" name="word_not_exists" <?php echo (isset($_GET['word_not_exists'])) ? "value='{$_GET['word_not_exists']}'" :"" ?>>
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_words_not_exists" type="text" name="word_not_exists" <?php echo (isset($_GET['word_not_exists'])) ? "value='{$_GET['word_not_exists']}'" : "" ?>>
                                 </div>
                                 <div class="col-6">
                                     <h6 class="my-2 fw-normal">where my words occur</h6>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check mt-2">
-                                        <input class="form-check-input" type="radio" name="exists" value="anywhere" id="radio-button-anywhere" checked <?php echo (isset($_GET['exists']) && $_GET['exists']=='anywhere') ? "checked" :"" ?>>
+                                        <input class="form-check-input" type="radio" name="exists" value="anywhere" id="radio-button-anywhere" checked <?php echo (isset($_GET['exists']) && $_GET['exists'] == 'anywhere') ? "checked" : "" ?>>
                                         <label class="form-check-label" for="radio-button-anywhere">anywhere in the article</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exists" value="title" id="radio-button-title" <?php echo (isset($_GET['exists']) && $_GET['exists']=='title') ? "checked" :"" ?>>
+                                        <input class="form-check-input" type="radio" name="exists" value="title" id="radio-button-title" <?php echo (isset($_GET['exists']) && $_GET['exists'] == 'title') ? "checked" : "" ?>>
                                         <label class="form-check-label" for="radio-button-title">in the title of the article</label>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                     <h6 class="my-2 fw-normal">Return articles <span class="fw-bold">authored</span> by</h6>
                                 </div>
                                 <div class="col-6">
-                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_author_search" type="text" name="authored_by" <?php echo (isset($_GET['authored_by'])) ? "value='{$_GET['authored_by']}'" :"" ?>>
+                                    <input class="form-control form-control-sm rounded-0 my-1" id="advanced_author_search" type="text" name="authored_by" <?php echo (isset($_GET['authored_by'])) ? "value='{$_GET['authored_by']}'" : "" ?>>
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., "Dela Cruz" or Garcia</label>
                                 </div>
                                 <div class="col-6">
@@ -215,9 +215,9 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group mt-2">
-                                        <input type="text" class="form-control form-control-sm rounded-0 me-1" id="advanced_from_year" name="advanced_from_year" <?php echo (isset($_GET['advanced_from_year'])) ? "value='{$_GET['advanced_from_year']}'" :"" ?>>
+                                        <input type="text" class="form-control form-control-sm rounded-0 me-1" id="advanced_from_year" name="advanced_from_year" <?php echo (isset($_GET['advanced_from_year'])) ? "value='{$_GET['advanced_from_year']}'" : "" ?>>
                                         <label class="mt-1">—</label>
-                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1" id="advanced_to_year" name="advanced_to_year" <?php echo (isset($_GET['advanced_to_year'])) ? "value='{$_GET['advanced_to_year']}'" :"" ?>>
+                                        <input type="text" class="form-control form-control-sm rounded-0 ms-1" id="advanced_to_year" name="advanced_to_year" <?php echo (isset($_GET['advanced_to_year'])) ? "value='{$_GET['advanced_to_year']}'" : "" ?>>
                                     </div>
                                     <label class="fst-italic text-secondary" style="font-size: 12px;">e.g., 2021</label>
                                 </div>
@@ -229,7 +229,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                     </div>
                 </div>
             </div>
-			
+
         </div>
     </section>
 
@@ -237,7 +237,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
         <div class="container p-3">
 
             <div class="row">
-                <form class="col-lg-2 d-none d-md-none d-lg-block"  id="sidebar-search-filters" name="sidebar-filters">
+                <form class="col-lg-2 d-none d-md-none d-lg-block" id="sidebar-search-filters" name="sidebar-filters">
                     <p class="fw-bold"><i class="fas fa-filter"></i> SEARCH FILTERS</p>
                     <hr>
                     <p class="side-menu-text fw-bold">Publication Year</p>
@@ -264,8 +264,8 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                     <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                     <div class="collapse" id="customRangeCollapse">
                         <div class="input-group my-3">
-                            <input type="text" class="form-control" name = "from_year" id="sidebar-from-year">
-                            <input type="text" class="form-control" name = "to_year"  id="sidebar-to-year">
+                            <input type="text" class="form-control" name="from_year" id="sidebar-from-year">
+                            <input type="text" class="form-control" name="to_year" id="sidebar-to-year">
                         </div>
                         <button type="button" class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
 
@@ -421,10 +421,10 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
 
                     <div class="row my-0">
                         <hr class="my-3">
-                        <button type ="button" class="btn w-100 rounded-0 button-clear-side-menu my-3" id="sidebar-clear-filter-button">Clear all</button>
+                        <button type="button" class="btn w-100 rounded-0 button-clear-side-menu my-3" id="sidebar-clear-filter-button">Clear all</button>
                     </div>
                 </form>
-                
+
                 <div class="col-sm-12 d-sm-block d-lg-none">
                     <div class="text-end my-3">
                         <p class="fw-bold filter-results" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">FILTER RESULTS <i class="fas fa-filter"></i></p>
@@ -445,22 +445,22 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                 <label class="form-check-label" for="checkBox2021offcanvas">2021</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas"  name="publication_year[]">
+                                <input class="form-check-input" type="checkbox" value="2020" id="checkBox2020offcanvas" name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2020offcanvas">2020</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas"  name="publication_year[]">
+                                <input class="form-check-input" type="checkbox" value="2019" id="checkBox2019offcanvas" name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2019offcanvas">2019</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas"  name="publication_year[]">
+                                <input class="form-check-input" type="checkbox" value="2018" id="checkBox2018offcanvas" name="publication_year[]">
                                 <label class="form-check-label" for="checkBox2018offcanvas">2018</label>
                             </div>
                             <a class="my-3 text-dark" data-bs-toggle="collapse" href="#customRangeCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">Custom Range</a>
                             <div class="collapse" id="customRangeCollapse">
                                 <div class="input-group my-3">
-                                    <input type="text" class="form-control" name = "from_year" id="modal-from-year">
-                                    <input type="text" class="form-control" name = "to_year"  id="modal-to-year">
+                                    <input type="text" class="form-control" name="from_year" id="modal-from-year">
+                                    <input type="text" class="form-control" name="to_year" id="modal-to-year">
                                 </div>
                                 <button type="button" class="btn rounded-0" style="background-color: #012265; color:white; border-color:#012265">OK</button>
                             </div>
@@ -611,7 +611,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                             <div class="row my-0">
                                 <hr class="my-3">
                                 <div class="text-center">
-                                <button type="button" class="btn rounded-0 button-clear-offcanvas my-3 w-50 mx-auto" id="modal-clear-filter-button">Clear all</button>
+                                    <button type="button" class="btn rounded-0 button-clear-offcanvas my-3 w-50 mx-auto" id="modal-clear-filter-button">Clear all</button>
                                 </div>
                             </div>
                         </form>
@@ -622,7 +622,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                     <h1>Recently Added</h1>
                     <hr class="my-4">
                     <div id="repository-results-container">
-                    </div> 
+                    </div>
                 </div>
 
             </div>
@@ -637,7 +637,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
     <script src="https://kit.fontawesome.com/dab8986b00.js" crossorigin="anonymous"></script>
     <script src="scripts/bootstrap/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="<?php echo 'scripts/custom/repository.js?id=' . $repositoryjs ?>"></script>
+    <script src="<?php echo 'scripts/custom/repository.js?id=' . $repositoryjs ?>"></script>
 </body>
 
 </html>
