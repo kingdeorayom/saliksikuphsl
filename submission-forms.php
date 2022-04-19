@@ -2,6 +2,15 @@
 
 session_start();
 
+include 'includes/connection.php';
+
+$statement = $connection->prepare("SELECT * FROM department_list");
+$statement->execute();
+$result = $statement->get_result();
+$department_list = $result->fetch_all(MYSQLI_ASSOC);
+$statement->close();
+
+
 if (!isset($_SESSION['isLoggedIn'])) {
     header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
     die();

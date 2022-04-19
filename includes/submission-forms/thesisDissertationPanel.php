@@ -51,18 +51,9 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <div class="col-lg-4 col-sm-12">
                 <label class="py-2 fw-bold">Research Unit<span class="text-danger"> *</span></label>
                 <select class="form-select" aria-label="Default select example" name="dropdownResearchUnit" id="dropdownResearchUnit">
-                    <option value="Basic Education" selected>Basic Education</option>
-                    <option value="Senior High School">Senior High School</option>
-                    <option value="Arts and Sciences">Arts and Sciences</option>
-                    <option value="Business and Accountancy">Business and Accountancy</option>
-                    <option value="Computer Studies">Computer Studies</option>
-                    <option value="Criminology">Criminology</option>
-                    <option value="Education">Education</option>
-                    <option value="Engineering, Architecture and Aviation">Engineering, Architecture and Aviation</option>
-                    <option value="Maritime Education">Maritime Education</option>
-                    <option value="International Hospitality Management">International Hospitality Management</option>
-                    <option value="Graduate School">Graduate School</option>
-                    <option value="Support Services">Support Services</option>
+                <?php foreach ($department_list as $key => $row) : ?>
+                            <option value="<?php echo $row['name'] ?>" ><?php echo $row['name'] ?></option>
+                <?php endforeach ?>
                 </select>
             </div>
         </div>
