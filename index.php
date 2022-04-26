@@ -119,7 +119,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
                             <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonLogin" id="buttonLogin">Login</button>
                         </form>
                         <div class="text-center py-2">
-                            <a href="./src/pages/login/forgot-password.php" class="forgot-password">Forgot password?</a>
+                            <a href="./forgot-password.php" class="forgot-password">Forgot password?</a>
                             <hr class="my-4">
                             <label>No account yet? <a href="src/pages/login/registration.php" class="sign-up">Sign up</a></label>
                         </div>

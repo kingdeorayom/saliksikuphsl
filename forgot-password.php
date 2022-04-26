@@ -2,8 +2,8 @@
 
 session_start();
 
-$maincssVersion = filemtime('../../../styles/custom/main-style.css');
-$pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
+$maincssVersion = filemtime('styles/custom/main-style.css');
+$pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 
 ?>
 
@@ -15,17 +15,17 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset your password</title>
-    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+    <?php include_once 'assets/fonts/google-fonts.php' ?>
 
-    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
-    <link rel="manifest" href="../../../site.webmanifest">
-    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -73,19 +73,19 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                     <p class="my-2">Enter the email you used to register your account.</p>
                 </div>
                 <div class="row">
-                    <form action="../../process/forgot-password-email-verify.php" method="POST">
+                    <form action="src/process/forgot-password-email-verify.php" method="POST">
                         <input class="form-control" type="text" name="textFieldEmail" id="textFieldEmail" value="<?php if (isset($_SESSION['email'])) {
                                                                                                                         echo $_SESSION['email'];
                                                                                                                         unset($_SESSION['email']);
                                                                                                                     } ?>" autofocus>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonSubmit" id="buttonSubmit">Submit</button>
-                        <a href="../../../index.php"><button class="btn btn-secondary text-white w-100 mb-2 button-cancel" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
+                        <a href="index.php"><button class="btn btn-secondary text-white w-100 mb-2 button-cancel" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
             </div>
         </div>
     </main>
-    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

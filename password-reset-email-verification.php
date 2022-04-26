@@ -2,10 +2,10 @@
 
 session_start();
 
-include '../../process/sendmail-account.php';
+include 'src/process/sendmail-account.php';
 
-$maincssVersion = filemtime('../../../styles/custom/main-style.css');
-$pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
+$maincssVersion = filemtime('styles/custom/main-style.css');
+$pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 
 ?>
 
@@ -17,18 +17,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify your email</title>
-    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+    <?php include_once 'assets/fonts/google-fonts.php' ?>
 
-    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
-    <link rel="stylesheet" href="../../../plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="plugins/sweetalert/package/dist/sweetalert2.css" type="text/css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
-    <link rel="manifest" href="../../../site.webmanifest">
-    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -54,7 +54,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                         <input class="form-control" type="text" name="textFieldVerificationCode" id="textFieldVerificationCode" autofocus maxlength="6">
 
                         <button class="btn text-white w-100 mt-4" type="submit" name="buttonSubmitVerificationCode" id="buttonSubmitVerificationCode">Submit</button>
-                        <a href="../../process/logout.php"><button class="btn btn-secondary text-white w-100 mt-2 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
+                        <a href="src/process/logout.php"><button class="btn btn-secondary text-white w-100 mt-2 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                     <div class="text-center py-2 resend-verification-code">
                         <p onclick="fireSweetAlertResendVerificationCode();">Didn't receive a code? Click here to resend</p>
@@ -112,8 +112,8 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         }
     </script>
 
-    <script src="../../../plugins/sweetalert/package/dist/sweetalert2.js"></script>
-    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="plugins/sweetalert/package/dist/sweetalert2.js"></script>
+    <script src="scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>
