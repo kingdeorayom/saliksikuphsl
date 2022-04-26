@@ -40,21 +40,21 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <div class="alert alert-light alert-dismissible fade show rounded-0" role="alert">
+    <!-- <div class="alert alert-light alert-dismissible fade show rounded-0" role="alert">
         <strong>IMPORTANT!</strong> We're improving the system right now. You may notice some underdeveloped parts inside the website.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    </div> -->
     <!--Main Section-->
     <main class="main d-flex justify-content-md-center align-items-center vh-100">
         <div class="container mx-auto my-5">
             <div class="row mx-auto">
                 <div class="col-lg-5 mx-auto d-flex justify-content-center align-items-center">
                     <div class="text-center text-white">
-                        <img src="assets/images/core/saliksik-logo.png" id="saliksik-logo" alt="SALIKSIK: UPHSL Research Repository" class="img-fluid mb-5">
+                        <img src="assets/images/core/saliksik-logo.png" id="saliksik-logo" alt="SALIKSIK: UPHSL Research Repository" class="img-fluid">
                         <p class="h4 d-none d-lg-block">The Official Institutional Repository of University of Perpetual Help System Laguna</p>
                     </div>
                 </div>
-                <div class="col-lg-5 mx-auto p-5 bg-light">
+                <div class="col-lg-5 mx-auto p-5 bg-light my-3">
                     <div class="row p-2" id="alert-container-login">
 
                         <?php

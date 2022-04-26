@@ -122,7 +122,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                             ?>
                             <?php if($page['file_type'] == 'thesis'): ?>
                                 <div class="row my-2">
-                                    <div class="col-sm-12 col-md-8 p-2">
+                                    <div class="col-sm-12 col-md-8">
                                         <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>" class="top-viewed-links"><p><?php echo htmlspecialchars($page['research_title']) ?></p></a>
                                     </div>
                                 <div class="col-4 p-2">
@@ -131,11 +131,11 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                     </div>
                                 </div>
                                 </div>
-                            <hr class="my-3">
+                            <hr class="">
                             <?php endif ?>
                             <?php if($page['file_type'] == 'journal'): ?>
                                 <div class="row my-2">
-                                    <div class="col-sm-12 col-md-8 p-2">
+                                    <div class="col-sm-12 col-md-8">
                                         <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>" class="top-viewed-links"><p><?php echo htmlspecialchars($page['journal_title']) ?></p></a>
                                     </div>
                                 <div class="col-4 p-2">
@@ -144,11 +144,11 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                     </div>
                                 </div>
                                 </div>
-                            <hr class="my-3">
+                            <hr class="">
                             <?php endif ?>
                             <?php if($page['file_type'] == 'infographic'): ?>
                                 <div class="row my-2">
-                                    <div class="col-sm-12 col-md-8 p-2">
+                                    <div class="col-sm-12 col-md-8">
                                         <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>" class="top-viewed-links"><p><?php echo htmlspecialchars($page['infographic_title']) ?></p></a>
                                     </div>
                                 <div class="col-4 p-2">
@@ -157,11 +157,11 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                     </div>
                                 </div>
                                 </div>
-                            <hr class="my-3">
+                            <hr class="">
                             <?php endif ?>
                             <?php if($page['file_type'] == 'report'): ?>
                                 <div class="row my-2">
-                                    <div class="col-sm-12 col-md-8 p-2">
+                                    <div class="col-sm-12 col-md-8">
                                         <a href="/repository/view-article.php?id=<?php echo $page['file_id'];?>" class="top-viewed-links"><p><?php echo htmlspecialchars($page['report_title']) ?></p></a>
                                     </div>
                                 <div class="col-4 p-2">
@@ -170,7 +170,7 @@ $pagecssVersion = filemtime('styles/custom/pages/statistics-style.css');
                                     </div>
                                 </div>
                                 </div>
-                            <hr class="my-3">
+                            <hr class="">
                             <?php endif ?>
                         
                         <?php endforeach?>
