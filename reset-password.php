@@ -5,8 +5,8 @@ if (!isset($_SESSION['resetPassword'])) {
     die();
 }
 
-$maincssVersion = filemtime('../../../styles/custom/main-style.css');
-$pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
+$maincssVersion = filemtime('styles/custom/main-style.css');
+$pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 
 ?>
 
@@ -18,18 +18,18 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset your password</title>
-    <?php include_once '../../../assets/fonts/google-fonts.php' ?>
+    <?php include_once 'assets/fonts/google-fonts.php' ?>
 
-    <script src="../../../scripts/jquery/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../../styles/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
-    <link rel="stylesheet" href="<?php echo '../../../styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
+    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/main-style.css?id=' . $maincssVersion ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo 'styles/custom/pages/login-style.css?id=' . $pagecssVersion ?>" type="text/css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
-    <link rel="manifest" href="../../../site.webmanifest">
-    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -78,7 +78,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
                             <label class="form-check-label" for="checkboxShowHidePassword">Show/Hide Password</label>
                         </div>
                         <button class="btn text-white w-100 mt-4 mb-2" type="submit" name="buttonCreateAccount" id="buttonCreateAccount">Submit</button>
-                        <a href="../../process/logout.php"><button class="btn btn-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
+                        <a href="src/process/logout.php"><button class="btn btn-secondary text-white w-100 mb-2" type="button" name="buttonCancel" id="buttonCancel">Cancel</button></a>
                     </form>
                 </div>
             </div>
@@ -110,7 +110,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         function postReset(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/reset-password-actual.php");
+                http.open("POST", "src/process/reset-password-actual.php");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data)
@@ -119,7 +119,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
 
         function checkResetResponse(data) {
             if (data.response === "login_success") {
-                window.location.href = "../../../index.php";
+                window.location.href = "index.php";
             }
             if (data.response === "empty_fields") {
                 alertReset.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
@@ -130,7 +130,7 @@ $pagecssVersion = filemtime('../../../styles/custom/pages/login-style.css');
         }
     </script>
 
-    <script src="../../../scripts/bootstrap/bootstrap.js"></script>
+    <script src="scripts/bootstrap/bootstrap.js"></script>
 </body>
 
 </html>

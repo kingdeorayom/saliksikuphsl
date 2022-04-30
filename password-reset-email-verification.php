@@ -92,7 +92,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
         function postVerificationCode(data) {
             return new Promise((resolve, reject) => {
                 var http = new XMLHttpRequest();
-                http.open("POST", "../../process/reset-password-redirect.php");
+                http.open("POST", "src/process/reset-password-redirect.php");
                 http.onload = () => http.status == 200 ? resolve(http.response) : reject(Error(http.statusText));
                 http.onerror = (e) => reject(Error(`Networking error: ${e}`));
                 http.send(data)
@@ -101,7 +101,7 @@ $pagecssVersion = filemtime('styles/custom/pages/login-style.css');
 
         function checkVerificationCodeResponse(data) {
             if (data.response === "verification_success") {
-                window.location.href = "../login/reset-password.php";
+                window.location.href = "/reset-password.php";
             }
             if (data.response === "empty_fields") {
                 alertVerificationCode.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid input!</strong> Please fill up all the fields.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
