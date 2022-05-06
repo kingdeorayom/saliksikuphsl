@@ -91,13 +91,13 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <hr>
                     <p class="side-menu-text px-3" id="noviceText">Novice Researchers</p>
                     <hr>
-                    <p class="side-menu-text px-3" id="archivedText">Archived Researchers</p>
-                    <hr>
+                    
 
                     <?php
 
                     if ($_SESSION['userType'] === "admin") {
-                        echo '
+                        echo '<p class="side-menu-text px-3" id="archivedText">Archived Researchers</p>
+                        <hr>
                         <!-- <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile"><i class="fas fa-plus"></i> Add Profile</button> -->
                         <button class="btn rounded-0 button-add-profile w-100" id="buttonAddProfile">+ Add Profile</button>
                         ';
