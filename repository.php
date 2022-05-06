@@ -319,12 +319,20 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                         <label class="form-check-label" for="checkBoxArtsHumanities">Arts and Humanities</label>
                     </div>
                     <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Aviation" id="checkBoxAviation" name="research_field[]">
+                        <label class="form-check-label" for="checkBoxAviation">Aviation</label>
+                    </div>
+                    <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagement" name="research_field[]">
                         <label class="form-check-label" for="checkBoxEducationalManagement">Educational Management</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciences" name="research_field[]">
                         <label class="form-check-label" for="checkBoxEducationSocialSciences">Education and Social Sciences</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="research_field[]">
+                        <label class="form-check-label" for="checkBoxEngineering">Engineering</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagement" name="research_field[]">
@@ -335,16 +343,16 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                         <label class="form-check-label" for="checkBoxHealthSciences">Health and Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="research_field[]">
-                        <label class="form-check-label" for="checkBoxITEngineering">IT and Engineering</label>
+                        <input class="form-check-input" type="checkbox" value="IT" id="checkBoxIT" name="research_field[]">
+                        <label class="form-check-label" for="checkBoxIT">Information Technology</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="research_field[]">
                         <label class="form-check-label" for="checkBoxLawJusticeSystem">Law and Justice System</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="research_field[]">
-                        <label class="form-check-label" for="checkBoxMarineAviation">Marine and Aviation</label>
+                        <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="research_field[]">
+                        <label class="form-check-label" for="checkBoxMaritime">Maritime</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="research_field[]">
@@ -513,12 +521,20 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                 <label class="form-check-label" for="checkBoxArtsHumanitiesoffcanvas">Arts and Humanities</label>
                             </div>
                             <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Aviation" id="checkBoxAviation" name="research_field[]">
+                                <label class="form-check-label" for="checkBoxAviation">Aviation</label>
+                            </div>
+                            <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Educational Management" id="checkBoxEducationalManagementoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxEducationalManagementoffcanvas">Educational Management</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Education and Social Sciences" id="checkBoxEducationSocialSciencesoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxEducationSocialSciencesoffcanvas">Education and Social Sciences</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="resource_unit[]">
+                                <label class="form-check-label" for="checkBoxEngineering">Engineering</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Business Management" id="checkBoxBusinessManagementoffcanvas" name="research_field[]">
@@ -529,16 +545,16 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                                 <label class="form-check-label" for="checkBoxHealthSciencesoffcanvas">Health and Sciences</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineeringoffcanvas" name="research_field[]">
-                                <label class="form-check-label" for="checkBoxITEngineeringoffcanvas">IT and Engineering</label>
+                                <input class="form-check-input" type="checkbox" value="IT" id="checkBoxIT" name="research_field[]">
+                                <label class="form-check-label" for="checkBoxIT">Information Technology</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystemoffcanvas" name="research_field[]">
                                 <label class="form-check-label" for="checkBoxLawJusticeSystemoffcanvas">Law and Justice System</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviationoffcanvas" name="research_field[]">
-                                <label class="form-check-label" for="checkBoxMarineAviationoffcanvas">Marine and Aviation</label>
+                                <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="research_field[]">
+                                <label class="form-check-label" for="checkBoxMaritime">Maritime</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitalityoffcanvas" name="research_field[]">

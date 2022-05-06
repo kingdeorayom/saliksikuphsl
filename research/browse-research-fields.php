@@ -168,7 +168,7 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                     <a href="research-field.php?q=Maritime" class="field-link">
                         <div class="row field bg-light my-4 mx-auto">
                             <div class="col-3 logo mx-auto">
-                                <img src="../assets/images/research-fields/marine.png" class="research-fields-logos">
+                                <img src="../assets/images/research-fields/maritime.png" class="research-fields-logos">
                             </div>
                             <div class="col-9 d-flex align-items-center mx-auto">
                                 <p class="h6 px-3">Maritime</p>
