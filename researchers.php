@@ -334,14 +334,11 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                                                     <div class='col-3 avatar'><img src='../src/{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
                                                         <p class='h5 researcher-name'>{$researcher['name']}</p>
                                                     </div>
-                                                    </a>
                                                     <hr class='my-4'>
-                                                    <form action='src/process/unarchive-researcher-profile.php?id={$researcher['researcher_id']}' method='POST'>
-                                                        <button class='btn button-restore-profile rounded-0'><i class='fas fa-archive'></i> Unarchive</button>
-                                                    </form>
+                                                    <button class='btn button-restore-profile w-25 rounded-0'>Restore</button>
                                                 </div>
                                             </div>
-                                        </div>";
+                                        </a></div>";
                                 }
                             }
                             ?>
