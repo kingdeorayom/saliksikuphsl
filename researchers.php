@@ -117,8 +117,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <h1 class="my-2">Senior Researchers</h1>
                     <hr>
 
-                    <div class="row mx-auto">
-
+                    <div class="row mx-auto researcher-container">
                         <?php foreach ($researchers as $key => $researcher) {
                             if ($researcher['type'] == "Senior Researcher" && $researcher['archived'] == 0) {
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
@@ -331,7 +330,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                                     echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher-archived px-3'>
-                                                <p>Senior Researcher</p>
+                                                <p>{$researcher['type']}</p>
                                                     <div class='col-3 avatar'><img src='../src/{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
                                                         <p class='h5 researcher-name'>{$researcher['name']}</p>
                                                     </div>
@@ -370,7 +369,6 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
 
     <script>
         $(document).ready(function() {
-
             $(".researcher-container").each(function() {
                 if ($(this).find("div").length == 0) {
                     $(this).append("<h5 style='color: grey;'><br>No researcher profile found.</h5>")
