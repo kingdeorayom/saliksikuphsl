@@ -445,8 +445,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <label for="checkBoxEducationalManagement">Educational Management</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="researchFields[]">
-                    <label for="checkBoxITEngineering">IT and Engineering</label>
+                    <input class="form-check-input" type="checkbox" value="Information Technology" id="checkBoxIT" name="researchFields[]">
+                    <label for="checkBoxIT">Information Technology</label>
                 </div>
                 <div class="form-check m-2">
                     <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="researchFields[]">
@@ -466,6 +466,10 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <input class="form-check-input" type="checkbox" value="Law and Justice System" id="checkBoxLawJusticeSystem" name="researchFields[]">
                     <label for="checkBoxLawJusticeSystem">Law and Justice System</label>
                 </div>
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="researchFields[]">
+                    <label for="checkBoxEngineering">Engineering</label>
+                </div>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="form-check m-2">
@@ -477,8 +481,12 @@ if (!isset($_SESSION['isLoggedIn'])) {
                     <label for="checkBoxHealthSciences">Health and Sciences</label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="researchFields[]">
-                    <label for="checkBoxMarineAviation">Marine and Aviation</label>
+                    <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="researchFields[]">
+                    <label for="checkBoxMaritime">Maritime</label>
+                </div>
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="checkbox" value="Aviation" id="checkBoxAviation" name="researchFields[]">
+                    <label for="checkBoxAviation">Aviation</label>
                 </div>
             </div>
         </div>
