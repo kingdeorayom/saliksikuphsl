@@ -251,7 +251,7 @@ $statement->close();
 
 $total_pages = ceil($total_rows / $results_per_page);
 
-$statement = $connection->prepare($query . " ORDER BY fi.file_id ASC LIMIT ?, ?");
+$statement = $connection->prepare($query . " ORDER BY fi.file_id DESC LIMIT ?, ?");
 $statement->bind_param("ii", $offset, $results_per_page);
 $statement->execute();
 $result = $statement->get_result();
