@@ -13,11 +13,10 @@ if (mysqli_connect_errno()) {
     exit("Failed to connect to the database: " . mysqli_connect_error());
 };
 
-$researcher_query = "SELECT * FROM researcher_profile WHERE archived = 0"; 
+$researcher_query = "SELECT * FROM researcher_profile WHERE archived = 0";
 
 if ($_SESSION['userType'] === "admin") {
-$researcher_query = "SELECT * FROM researcher_profile"; 
-
+    $researcher_query = "SELECT * FROM researcher_profile";
 }
 
 $statement = $connection->prepare($researcher_query);
@@ -98,7 +97,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <hr>
                     <p class="side-menu-text px-3" id="noviceText">Novice Researchers</p>
                     <hr>
-                    
+
 
                     <?php
 
@@ -145,7 +144,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
 
                     <div class="row mx-auto researcher-container">
                         <?php foreach ($researchers as $key => $researcher) {
-                            if ($researcher['type'] == "Junior Researcher" && $researcher['archived'] == 0 ) {
+                            if ($researcher['type'] == "Junior Researcher" && $researcher['archived'] == 0) {
                                 echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
                                                 <div class='row py-3 researcher'>
@@ -323,27 +322,30 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
 
                 <?php if ($_SESSION['userType'] === "admin") : ?>
                     <div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="archivedPanel" hidden>
-                    <h1 class="my-2">Archived Researchers</h1>
-                    <hr>
+                        <h1 class="my-2">Archived Researchers</h1>
+                        <hr>
 
-                    <div class="row mx-auto researcher-container">
-                    <?php foreach ($researchers as $key => $researcher) {
-                            if ($researcher['archived'] == 1) {
-                                echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
+                        <div class="row mx-auto researcher-container">
+                            <?php foreach ($researchers as $key => $researcher) {
+                                if ($researcher['archived'] == 1) {
+                                    echo "<div class='col-sm-12 col-md-6'><a href='researchers/view.php?id={$researcher['researcher_id']}' class='researchers-link'>
                                             <div class='box my-2'>
-                                                <div class='row py-3 researcher'>
+                                                <div class='row py-3 researcher-archived px-3'>
+                                                <p>Senior Researcher</p>
                                                     <div class='col-3 avatar'><img src='../src/{$researcher['researcher_image']}' alt='' width='58px'></div><div class='col-9 d-flex align-items-center'>
                                                         <p class='h5 researcher-name'>{$researcher['name']}</p>
                                                     </div>
+                                                    <hr class='my-4'>
+                                                    <button class='btn button-restore-profile w-25 rounded-0'>Restore</button>
                                                 </div>
                                             </div>
                                         </a></div>";
+                                }
                             }
-                        }
-                        ?>
-                    </div>
+                            ?>
+                        </div>
 
-                </div>
+                    </div>
 
                 <?php endif ?>
 

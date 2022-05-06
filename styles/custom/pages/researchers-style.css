@@ -23,6 +23,18 @@
   cursor: pointer;
 }
 
+.researcher-archived {
+  background-color: #dcdcdc;
+  margin-bottom: 10px;
+  margin-right: 2px;
+}
+
+.researcher-archived:hover {
+  background-color: #dcdcdc;
+  color: #000000;
+  cursor: pointer;
+}
+
 .researchers-link {
   text-decoration: none;
   color: #000000;
@@ -58,6 +70,16 @@
 }
 
 .button-add-profile:hover {
+  background-color: #27498d;
+  color: #ffffff;
+}
+
+.button-restore-profile {
+  background-color: #012265;
+  color: #ffffff;
+}
+
+.button-restore-profile:hover {
   background-color: #27498d;
   color: #ffffff;
 }
