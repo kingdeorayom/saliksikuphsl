@@ -452,7 +452,7 @@ $year = date_format($date_time, "Y");
                         <label for="checkBoxEducationalManagement">Educational Management</label>
                     </div>
                     <div class="form-check m-2">
-                        <input class="form-check-input" type="checkbox" value="Information Technology" id="checkBoxITEngineering" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                        <input class="form-check-input" type="checkbox" value="Information Technology" id="checkBoxIT" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
                                                                                                                                                             if ($value == 'Information Technology') {
                                                                                                                                                                 echo 'checked';
                                                                                                                                                             }
