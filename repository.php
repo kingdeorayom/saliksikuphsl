@@ -343,7 +343,7 @@ $repositoryjs = filemtime('scripts/custom/repository.js');
                         <label class="form-check-label" for="checkBoxHealthSciences">Health and Sciences</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="IT" id="checkBoxIT" name="research_field[]">
+                        <input class="form-check-input" type="checkbox" value="Information Technology" id="checkBoxIT" name="research_field[]">
                         <label class="form-check-label" for="checkBoxIT">Information Technology</label>
                     </div>
                     <div class="form-check">

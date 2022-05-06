@@ -464,12 +464,12 @@ $year = date_format($date_time,"Y");
                         <label for="checkBoxEducationalManagement">Educational Management</label>
                     </div>
                     <div class="form-check m-2">
-                        <input class="form-check-input" type="checkbox" value="IT and Engineering" id="checkBoxITEngineering" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
-                                                                                                                                                            if ($value == 'IT and Engineering') {
+                        <input class="form-check-input" type="checkbox" value="Information Technology" id="checkBoxITEngineering" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                                                                                                                                                            if ($value == 'Information Technology') {
                                                                                                                                                                 echo 'checked';
                                                                                                                                                             }
                                                                                                                                                         } ?>>
-                        <label for="checkBoxITEngineering">IT and Engineering</label>
+                        <label for="checkBoxIT">Information Technology</label>
                     </div>
                     <div class="form-check m-2">
                         <input class="form-check-input" type="checkbox" value="Tourism and Hospitality" id="checkBoxTourismHospitality" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
@@ -505,6 +505,14 @@ $year = date_format($date_time,"Y");
                                                                                                                                                                 } ?>>
                         <label for="checkBoxLawJusticeSystem">Law and Justice System</label>
                     </div>
+                    <div class="form-check m-2">
+                        <input class="form-check-input" type="checkbox" value="Engineering" id="checkBoxEngineering" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                                                                                                                                                                    if ($value == 'Engineering') {
+                                                                                                                                                                        echo 'checked';
+                                                                                                                                                                    }
+                                                                                                                                                                } ?>>
+                        <label for="checkBoxEngineering">Engineering</label>
+                    </div>
                 </div>
                 <div class="col-lg-4 col-sm-12">
                     <div class="form-check m-2">
@@ -524,12 +532,20 @@ $year = date_format($date_time,"Y");
                         <label for="checkBoxHealthSciences">Health and Sciences</label>
                     </div>
                     <div class="form-check m-2">
-                        <input class="form-check-input" type="checkbox" value="Marine and Aviation" id="checkBoxMarineAviation" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
-                                                                                                                                                            if ($value == 'Marine and Aviation') {
+                        <input class="form-check-input" type="checkbox" value="Maritime" id="checkBoxMaritime" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                                                                                                                                                            if ($value == 'Maritime') {
                                                                                                                                                                 echo 'checked';
                                                                                                                                                             }
                                                                                                                                                         } ?>>
-                        <label for="checkBoxMarineAviation">Marine and Aviation</label>
+                        <label for="checkBoxMaritime">Maritime</label>
+                    </div>
+                    <div class="form-check m-2">
+                        <input class="form-check-input" type="checkbox" value="Aviation" id="checkBoxAviation" name="researchFields[]" <?php foreach ($researchFieldsArray as $key => $value) {
+                                                                                                                                                            if ($value == 'Aviation') {
+                                                                                                                                                                echo 'checked';
+                                                                                                                                                            }
+                                                                                                                                                        } ?>>
+                        <label for="checkBoxAviation">Aviation</label>
                     </div>
                 </div>
             </div>
