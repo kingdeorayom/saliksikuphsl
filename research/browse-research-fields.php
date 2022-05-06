@@ -72,6 +72,17 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                         </div>
                     </a>
 
+                    <a href="research-field.php?q=Aviation" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../assets/images/research-fields/aviation.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Aviation</p>
+                            </div>
+                        </div>
+                    </a>
+
                     <a href="research-field.php?q=Business Management" class="field-link">
                         <div class="row field bg-light my-4 mx-auto">
                             <div class="col-3 logo mx-auto">
@@ -105,12 +116,24 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                         </div>
                     </a>
 
+
                 </div>
 
                 <div class="col-sm-12 col-md-6">
 
-                    <a href="research-field.php?q=Health and Sciences" class="field-link">
+                    <a href="research-field.php?q=Engineering" class="field-link">
                         <div class="row field bg-light mt-3 mb-4 mx-auto">
+                            <div class="col-3 logo mx-auto">
+                                <img src="../assets/images/research-fields/engineering.png" class="research-fields-logos">
+                            </div>
+                            <div class="col-9 d-flex align-items-center mx-auto">
+                                <p class="h6 px-3">Engineering</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="research-field.php?q=Health and Sciences" class="field-link">
+                        <div class="row field bg-light my-4 mx-auto">
                             <div class="col-3 logo mx-auto">
                                 <img src="../assets/images/research-fields/health-sciences.png" class="research-fields-logos">
                             </div>
@@ -120,13 +143,13 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                         </div>
                     </a>
 
-                    <a href="research-field.php?q=IT and Engineering" class="field-link">
+                    <a href="research-field.php?q=Information Technology" class="field-link">
                         <div class="row field bg-light my-4 mx-auto">
                             <div class="col-3 logo mx-auto">
-                                <img src="../assets/images/research-fields/it-engineering.png" class="research-fields-logos">
+                                <img src="../assets/images/research-fields/it.png" class="research-fields-logos">
                             </div>
                             <div class="col-9 d-flex align-items-center mx-auto">
-                                <p class="h6 px-3">IT and Engineering</p>
+                                <p class="h6 px-3">Information Technology</p>
                             </div>
                         </div>
                     </a>
@@ -142,13 +165,13 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                         </div>
                     </a>
 
-                    <a href="research-field.php?q=Marine and Aviation" class="field-link">
+                    <a href="research-field.php?q=Maritime" class="field-link">
                         <div class="row field bg-light my-4 mx-auto">
                             <div class="col-3 logo mx-auto">
-                                <img src="../assets/images/research-fields/marine-aviation.png" class="research-fields-logos">
+                                <img src="../assets/images/research-fields/marine.png" class="research-fields-logos">
                             </div>
                             <div class="col-9 d-flex align-items-center mx-auto">
-                                <p class="h6 px-3">Marine and Aviation</p>
+                                <p class="h6 px-3">Maritime</p>
                             </div>
                         </div>
                     </a>
@@ -163,6 +186,8 @@ $pagecssVersion = filemtime('../styles/custom/pages/home-style.css');
                             </div>
                         </div>
                     </a>
+
+
 
                 </div>
 

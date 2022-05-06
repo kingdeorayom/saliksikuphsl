@@ -212,9 +212,9 @@ $statement->close();
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
-                    <img src="assets/images/research-fields/it-engineering.png" class="research-fields-logos" alt="IT and Engineering">
-                    <a href="research/research-field.php?q=IT and Engineering" class="research-field-image-link">
-                        <p>IT and Engineering</p>
+                    <img src="assets/images/research-fields/it.png" class="research-fields-logos" alt="Information Technology">
+                    <a href="research/research-field.php?q=Information Technology" class="research-field-image-link">
+                        <p>Information Technology</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-3 mx-auto d-flex align-items-center research-field-column-item">
