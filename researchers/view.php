@@ -6,7 +6,7 @@ include '../includes/connection.php';
 
 
 if (!isset($_SESSION['isLoggedIn'])) {
-    header("location: ../index.php?location=".urlencode($_SERVER['REQUEST_URI']));
+    header("location: ../index.php?location=" . urlencode($_SERVER['REQUEST_URI']));
     die();
 }
 
@@ -20,7 +20,7 @@ $statement->bind_param("i", $_GET['id']);
 $statement->execute();
 $result = $statement->get_result();
 $num_rows = mysqli_num_rows($result);
-if ($num_rows ==0){
+if ($num_rows == 0) {
     header("location: ../researchers.php");
     die();
 }
@@ -43,7 +43,7 @@ function filter(&$value)
 
 $maincssVersion = filemtime('../styles/custom/main-style.css');
 $pagecssVersion = filemtime('../styles/custom/pages/researchers-style.css');
-$imageVersion = filemtime("../src/".$researcher['researcher_image']);
+$imageVersion = filemtime("../src/" . $researcher['researcher_image']);
 ?>
 
 <!DOCTYPE html>
@@ -142,32 +142,52 @@ $imageVersion = filemtime("../src/".$researcher['researcher_image']);
 
                         </div>
 
-                        <?php if($_SESSION['userType'] == 'admin'): ?>
+                        <?php if ($_SESSION['userType'] == 'admin') : ?>
                             <div class='row my-5'>
-                            <div class='text-start'>
-                                <p class='fst-italic text-danger'><span class='fw-bold'>IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p>
-                                <button class='btn btn-danger rounded-0' data-bs-toggle='modal' data-bs-target='#modalDelete'><i class='fas fa-trash-alt'></i> Delete profile</button>
-                            </div>
-                            <!-- Modal -->
-                            <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                <div class='modal-dialog modal-dialog-centered'>
-                                    <div class='modal-content'>
-                                        <div class='modal-header'>
-                                            <h5 class='modal-title' id='exampleModalLabel'>Delete this profile?</h5>
-                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                <div class='text-start'>
+                                    <!-- <p class='fst-italic text-danger'><span class='fw-bold'>IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p> -->
+                                    <button class='btn btn-secondary rounded-0' data-bs-toggle='modal' data-bs-target='#modalArchive'><i class='fas fa-archive'></i> Archive profile</button>
+                                    <button class='btn btn-danger rounded-0' data-bs-toggle='modal' data-bs-target='#modalDelete'><i class='fas fa-trash-alt'></i> Delete profile</button>
+                                </div>
+
+                                <!-- Modal Archive -->
+
+                                <div class='modal fade' id='modalArchive' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog modal-dialog-centered'>
+                                        <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='exampleModalLabel'>Archive this profile?</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                            </div>
+                                            <div class='modal-body'>
+                                                <label>This will archive the profile of this researcher.</label>
+                                            </div>
+                                            <form class='modal-footer' action="<?php echo "../src/process/delete-researcher-profile.php?id=" . $researcher['researcher_id'] ?>" method="POST">
+                                                <button class='btn btn-secondary rounded-0'><i class='fas fa-archive'></i> Archive</button>
+                                            </form>
                                         </div>
-                                        <div class='modal-body'>
-                                            <label>This action is irreversible.</label>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Delete -->
+                                <div class='modal fade' id='modalDelete' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog modal-dialog-centered'>
+                                        <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='exampleModalLabel'>Delete this profile?</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                            </div>
+                                            <div class='modal-body'>
+                                                <label>This will delete all data and records for this researcher. Proceed with caution.</label>
+                                            </div>
+                                            <form class='modal-footer' action="<?php echo "../src/process/delete-researcher-profile.php?id=" . $researcher['researcher_id'] ?>" method="POST">
+                                                <button class='btn btn-danger rounded-0'><i class='fas fa-trash-alt'></i> Delete</button>
+                                            </form>
                                         </div>
-                                        <form class='modal-footer' action="<?php echo "../src/process/delete-researcher-profile.php?id=".$researcher['researcher_id'] ?>" method="POST">
-                                            <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
-                                            <button class='btn btn-danger rounded-0'><i class='fas fa-trash-alt'></i> Delete</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php endif;?>
+                        <?php endif; ?>
                 </div>
             </div>
 

@@ -73,6 +73,7 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <option value="jra">Junior Associate Researchers</option>
                     <option value="nr">Novice Researchers</option>
                     <?php if ($_SESSION['userType'] === "admin") {
+                        echo '<option value="archived">Archived Researchers</option>';
                         echo '<option value="add">Add New Profile</option>';
                     } ?>
                 </select>
@@ -89,6 +90,8 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     <p class="side-menu-text px-3" id="juniorAssociateText">Junior Associate Researchers</p>
                     <hr>
                     <p class="side-menu-text px-3" id="noviceText">Novice Researchers</p>
+                    <hr>
+                    <p class="side-menu-text px-3" id="archivedText">Archived Researchers</p>
                     <hr>
 
                     <?php
@@ -197,7 +200,6 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
                     </div>
 
                 </div>
-
 
                 <?php
 
@@ -312,6 +314,19 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
 
                 ?>
 
+                <?php if ($_SESSION['userType'] === "admin") {
+                    echo '<div class="col-lg-10 px-5 col-md-12 col-xs-12 main-column" id="archivedPanel" hidden>
+                    <h1 class="my-2">Archived Researchers</h1>
+                    <hr>
+
+                    <div class="row mx-auto researcher-container">
+                    </div>
+
+                </div>';
+                }
+
+                ?>
+
             </div>
         </div>
     </section>
@@ -346,50 +361,61 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
             /* on load */
             $("#seniorResearchersText").click(function() {
                 $("#seniorResearchersPanel").prop('hidden', false);
-                $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                 $("#seniorResearchersText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#juniorResearchersText, #juniorAssociateText, #noviceText").css({
+                $("#juniorResearchersText, #juniorAssociateText, #noviceText, #archivedText").css({
                     "border-left": "thick none #012265",
                 });
             });
 
             $("#juniorResearchersText").click(function() {
                 $("#juniorResearchersPanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                 $("#juniorResearchersText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#seniorResearchersText, #juniorAssociateText, #noviceText").css({
+                $("#seniorResearchersText, #juniorAssociateText, #noviceText, #archivedText").css({
                     "border-left": "thick none #012265",
                 });
             });
 
             $("#juniorAssociateText").click(function() {
                 $("#juniorAssociatePanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                 $("#juniorAssociateText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#seniorResearchersText, #juniorResearchersText, #noviceText").css({
+                $("#seniorResearchersText, #juniorResearchersText, #noviceText, #archivedText").css({
                     "border-left": "thick none #012265",
                 });
             });
             $("#noviceText").click(function() {
                 $("#novicePanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                 $("#noviceText").css({
                     "border-left": "thick solid #012265",
                 });
-                $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
+                $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #archivedText, #archivedPanel").css({
                     "border-left": "thick none #012265",
                 });
             });
 
             $("#buttonAddProfile").click(function() {
                 $("#addNewResearcherPanel").prop('hidden', false);
-                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #archivedPanel").prop('hidden', true);
+                $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText, #archivedText").css({
+                    "border-left": "thick none #012265",
+                });
+            });
+
+            $("#archivedText").click(function() {
+                $("#archivedPanel").prop('hidden', false);
+                $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                $("#archivedText").css({
+                    "border-left": "thick solid #012265",
+                });
                 $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText").css({
                     "border-left": "thick none #012265",
                 });
@@ -398,43 +424,52 @@ $pagecssVersion = filemtime('styles/custom/pages/researchers-style.css');
             $('#dropdownShowResearchersOption').on('change', function() {
                 if (this.value == 'sr') {
                     $("#seniorResearchersPanel").prop('hidden', false);
-                    $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                    $("#juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                     $("#seniorResearchersText").css({
                         "border-left": "thick solid #012265",
                     });
-                    $("#juniorResearchersText, #juniorAssociateText, #noviceText").css({
+                    $("#juniorResearchersText, #juniorAssociateText, #noviceText, #archivedText").css({
                         "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'jr') {
                     $("#juniorResearchersPanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                     $("#juniorResearchersText").css({
                         "border-left": "thick solid #012265",
                     });
-                    $("#seniorResearchersText, #juniorAssociateText, #noviceText").css({
+                    $("#seniorResearchersText, #juniorAssociateText, #noviceText, #archivedText").css({
                         "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'jra') {
                     $("#juniorAssociatePanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #novicePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                     $("#juniorAssociateText").css({
                         "border-left": "thick solid #012265",
                     });
-                    $("#seniorResearchersText, #juniorResearchersText, #noviceText").css({
+                    $("#seniorResearchersText, #juniorResearchersText, #noviceText, #archivedText").css({
                         "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'nr') {
                     $("#novicePanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #addNewResearcherPanel, #archivedPanel").prop('hidden', true);
                     $("#noviceText").css({
                         "border-left": "thick solid #012265",
                     });
-                    $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText").css({
+                    $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #archivedText").css({
                         "border-left": "thick none #012265",
                     });
                 } else if (this.value == 'add') {
                     $("#addNewResearcherPanel").prop('hidden', false);
-                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel").prop('hidden', true);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #archivedPanel").prop('hidden', true);
+                    $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText, #archivedText").css({
+                        "border-left": "thick none #012265",
+                    });
+                } else if (this.value == 'archived') {
+                    $("#archivedPanel").prop('hidden', false);
+                    $("#seniorResearchersPanel, #juniorResearchersPanel, #juniorAssociatePanel, #novicePanel, #addNewResearcherPanel").prop('hidden', true);
+                    $("#archivedText").css({
+                        "border-left": "thick solid #012265",
+                    });
                     $("#seniorResearchersText, #juniorResearchersText, #juniorAssociateText, #noviceText").css({
                         "border-left": "thick none #012265",
                     });
