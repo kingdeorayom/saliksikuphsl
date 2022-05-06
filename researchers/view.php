@@ -162,7 +162,7 @@ $imageVersion = filemtime("../src/" . $researcher['researcher_image']);
                                             <div class='modal-body'>
                                                 <label>This will archive the profile of this researcher.</label>
                                             </div>
-                                            <form class='modal-footer' action="<?php echo "../src/process/delete-researcher-profile.php?id=" . $researcher['researcher_id'] ?>" method="POST">
+                                            <form class='modal-footer' action="<?php echo "../src/process/archive-researcher-profile.php?id=" . $researcher['researcher_id'] ?>" method="POST">
                                                 <button class='btn btn-secondary rounded-0'><i class='fas fa-archive'></i> Archive</button>
                                             </form>
                                         </div>
