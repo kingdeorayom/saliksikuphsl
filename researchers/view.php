@@ -27,7 +27,12 @@ if ($num_rows == 0) {
 $researcher = $result->fetch_assoc();
 $statement->close();
 
-
+if ($_SESSION['userType'] !== "admin") {
+    if($researcher['archived'] == 1){
+        header("location: ../researchers.php");
+        die();
+    }
+}
 
 $statement = $connection->prepare("SELECT * FROM researcher_works WHERE researcher_ref_id = ?");
 $statement->bind_param("i", $_GET['id']);
@@ -143,11 +148,36 @@ $imageVersion = filemtime("../src/" . $researcher['researcher_image']);
                         </div>
 
                         <?php if ($_SESSION['userType'] == 'admin') : ?>
+                            
                             <div class='row my-5'>
                                 <div class='text-start'>
                                     <!-- <p class='fst-italic text-danger'><span class='fw-bold'>IMPORTANT:</span> This will delete all data and records for this researcher. Proceed with caution.</p> -->
+                                    <?php if ($researcher['archived']==1) : ?>
+                                    <button class='btn btn-secondary rounded-0' data-bs-toggle='modal' data-bs-target='#modalUnarchive'><i class='fas fa-archive'></i> Unarchive profile</button>
+                                    <?php endif ?>
+                                    <?php if ($researcher['archived']==0) : ?>
                                     <button class='btn btn-secondary rounded-0' data-bs-toggle='modal' data-bs-target='#modalArchive'><i class='fas fa-archive'></i> Archive profile</button>
+                                    <?php endif ?>
                                     <button class='btn btn-danger rounded-0' data-bs-toggle='modal' data-bs-target='#modalDelete'><i class='fas fa-trash-alt'></i> Delete profile</button>
+                                </div>
+
+                                <!-- Modal Unarchive -->
+
+                                <div class='modal fade' id='modalUnarchive' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog modal-dialog-centered'>
+                                        <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='exampleModalLabel'>Unarchive this profile?</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                            </div>
+                                            <div class='modal-body'>
+                                                <label>This will unarchive the profile of this researcher.</label>
+                                            </div>
+                                            <form class='modal-footer' action="<?php echo "../src/process/unarchive-researcher-profile.php?id=" . $researcher['researcher_id'] ?>" method="POST">
+                                                <button class='btn btn-secondary rounded-0'><i class='fas fa-archive'></i> Unarchive</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Modal Archive -->
