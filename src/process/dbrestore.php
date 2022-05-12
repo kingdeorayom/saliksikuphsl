@@ -15,7 +15,7 @@ define("DB_PASSWORD", 'Serkingd28();');
 define("DB_NAME", 'u231629948_saliksik_uphsl');
 define("DB_HOST", 'localhost');
 define("BACKUP_DIR", 'db-backup'); // Comment this line to use same script's directory ('.')
-define("BACKUP_FILE", 'myphp-backup-your_db_name-20181022_164459.sql.gz'); // Script will autodetect if backup file is gzipped based on .gz extension
+define("BACKUP_FILE", 'myphp-backup-u231629948_saliksik_uphsl.sql'); // Script will autodetect if backup file is gzipped based on .gz extension
 define("CHARSET", 'utf8');
 define("DISABLE_FOREIGN_KEY_CHECKS", true); // Set to true if you are having foreign key constraint fails
 

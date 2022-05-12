@@ -78,7 +78,15 @@ $pagecssVersion = filemtime('../styles/custom/pages/backup-style.css');
 
                         <form action="../src/process/dbrestore.php">
                             <p>Click the button below to restore a backup of the system database.</p>
+
+                            <div class="mb-3">
+                                <!-- <label for="formFile" class="form-label">Default file input example</label> -->
+                                <input class="form-control" type="file" id="formFile" accept=".sql">
+                            </div>
+
                             <button type="submit" class="btn button-restore rounded-0">Restore</button>
+
+
                         </form>
 
                     </div>
@@ -91,7 +99,15 @@ $pagecssVersion = filemtime('../styles/custom/pages/backup-style.css');
 
                     <form action="../src/process/dbrestore.php">
                         <p>Click the button below to restore a backup of the system database.</p>
+
+                        <div class="mb-3">
+                            <!-- <label for="formFile" class="form-label">Default file input example</label> -->
+                            <input class="form-control" type="file" id="formFile" accept=".sql">
+                        </div>
+
                         <button type="submit" class="btn button-restore rounded-0">Restore</button>
+
+
                     </form>
 
                 </div>
