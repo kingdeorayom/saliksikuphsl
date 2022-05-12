@@ -104,7 +104,7 @@ class Backup_Database
         $this->charset                 = $charset;
         $this->conn                    = $this->initializeDatabase();
         $this->backupDir               = BACKUP_DIR ? BACKUP_DIR : '.';
-        $this->backupFile              = 'myphp-backup-' . $this->dbName . '-' . date("Ymd_His", time()) . '.sql';
+        $this->backupFile              = 'myphp-backup-' . $this->dbName . '.sql';
         $this->gzipBackupFile          = defined('GZIP_BACKUP_FILE') ? GZIP_BACKUP_FILE : true;
         $this->disableForeignKeyChecks = defined('DISABLE_FOREIGN_KEY_CHECKS') ? DISABLE_FOREIGN_KEY_CHECKS : true;
         $this->batchSize               = defined('BATCH_SIZE') ? BATCH_SIZE : 1000; // default 1000 rows
@@ -501,4 +501,8 @@ $output = $backupDatabase->getOutput();
 
 if (php_sapi_name() != "cli") {
     echo '</div>';
+}
+
+if ($result == 'OK') {
+    echo "add button here to go back";
 }
