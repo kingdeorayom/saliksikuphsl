@@ -1,0 +1,30 @@
+/*---------------------------------------------------About and Copyright Section---------------------------------------------------*/
+
+@media only screen and (max-width: 950px) {
+  .main-column {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+}
+
+/*---------------------------------------------------Side Menu---------------------------------------------------*/
+
+.side-menu-text:hover {
+  cursor: pointer;
+}
+
+/*---------------------------------------------------Font---------------------------------------------------*/
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.button-backup, .button-restore {
+  background-color: #012265;
+  color: #ffffff;
+}
+
+.button-backup:hover, .button-restore:hover {
+  background-color: #27498d;
+  color: #ffffff;
+}
