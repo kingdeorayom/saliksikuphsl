@@ -19,6 +19,7 @@ define("BACKUP_FILE", 'myphp-backup-u231629948_saliksik_uphsl.sql'); // Script w
 define("CHARSET", 'utf8');
 define("DISABLE_FOREIGN_KEY_CHECKS", true); // Set to true if you are having foreign key constraint fails
 
+
 /**
  * The Restore_Database class
  */
@@ -141,7 +142,7 @@ class Restore_Database
             /**
              * Read backup file line by line
              */
-            $handle = fopen($backupDir . '/' . $backupFile, "r");
+            $handle = fopen($_FILES['backupFile']['tmp_name'], "r");
             if ($handle) {
                 while (($line = fgets($handle)) !== false) {
                     $line = ltrim(rtrim($line));
